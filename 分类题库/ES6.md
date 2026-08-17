@@ -3414,15 +3414,15 @@ for (let [key, value] of myMap.entries()) {
 
 ## 一、class类必须new调用，不能直接执行。
 
-![image.png](https://static.ecool.fun//article/c1841b40-fce7-466c-9316-38c057419c40.png)
+![image.png](../images/c1841b40-fce7-466c-9316-38c057419c40.png)
 
 class类执行的话会报错，而es5中的类和普通函数并没有本质区别，执行肯定是ok的。
 
 ## 二、class类不存在变量提升
 
-![image.png](https://static.ecool.fun//article/5378c86b-1d14-41d6-8661-e6bd762cd17a.png)
+![image.png](../images/5378c86b-1d14-41d6-8661-e6bd762cd17a.png)
 
-![image.png](https://static.ecool.fun//article/43a43e47-2362-4f57-9b4c-0461033ed0a6.png)
+![image.png](../images/43a43e47-2362-4f57-9b4c-0461033ed0a6.png)
 
 图2报错，说明class方式没有把类的定义提升到顶部。
 
@@ -4423,7 +4423,7 @@ Map 是一组键值对的结构，和 JSON 对象类似。
 
 这里我们可以看到的是Map的数据结构是一个键值对的结构
 
-![image.png](https://static.ecool.fun//article/c88014da-ef2f-4626-89cc-d3b7729546e6.jpeg)
+![image.png](../images/c88014da-ef2f-4626-89cc-d3b7729546e6.jpg)
 
 
 **(2) key 不仅可以是字符串还可以是对象**
@@ -4435,7 +4435,7 @@ map.set(obj,"111")
 ```
 打印结果如下
 
-![image.png](https://static.ecool.fun//article/f85eb9e7-c056-4b49-82e4-20f8e8a3e8e7.jpeg)
+![image.png](../images/f85eb9e7-c056-4b49-82e4-20f8e8a3e8e7.jpg)
 
 **(3) Map常用语法如下**
 
@@ -4468,7 +4468,7 @@ console.log(map)
 ```
 打印结果如下
 
-![image.png](https://static.ecool.fun//article/fff162fa-10e5-4de8-aa5f-49e04702374a.jpeg)
+![image.png](../images/fff162fa-10e5-4de8-aa5f-49e04702374a.jpg)
 
 ### 再来了解一下 Set
 Set 对象类似于数组，且成员的值都是唯一的
@@ -4477,7 +4477,7 @@ Set 对象类似于数组，且成员的值都是唯一的
 
 这里打印出来是一个对象
 
-![image.png](https://static.ecool.fun//article/74e2e811-d1d8-488b-94ba-fefd47ee649c.jpeg)
+![image.png](../images/74e2e811-d1d8-488b-94ba-fefd47ee649c.jpg)
 
 **(2) 最常用来去重使用，去重方法有很多但是都没有它运行的快。**
 

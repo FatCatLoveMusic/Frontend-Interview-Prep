@@ -38,13 +38,13 @@ for(let i = 0; i &lt; array.length; i++) {
 [0, 1, 2, 3].map(num =&gt; Math.pow(num, 2))</code></pre>
 <p>简单来讲，就是要把过程逻辑写成函数，定义好输入参数，只关心它的输出结果</p>
 <p>即是一种描述集合和集合之间的转换关系，输入通过函数都会返回有且只有一个输出值</p>
-<p> ![](https://static.ecool.fun//article/8054e1a6-df46-4e8d-bc50-cf05f17db45c.png)</p>
+<p> <img src="../images/8054e1a6-df46-4e8d-bc50-cf05f17db45c.png" alt="" loading="lazy"></p>
 <p>可以看到，函数实际上是一个关系，或者说是一种映射，而这种映射关系是可以组合的，一旦我们知道一个函数的输出类型可以匹配另一个函数的输入，那他们就可以进行组合</p>
 <h3>二、概念</h3>
 <h4>纯函数</h4>
 <p>函数式编程旨在尽可能的提高代码的无状态性和不变性。要做到这一点，就要学会使用无副作用的函数，也就是纯函数</p>
 <p>纯函数是对给定的输入返还相同输出的函数，并且要求你所有的数据都是不可变的，即纯函数=无状态+数据不可变</p>
-<p> ![](https://static.ecool.fun//article/7fed8364-372b-438b-902b-571577ee4e04.png)</p>
+<p> <img src="../images/7fed8364-372b-438b-902b-571577ee4e04.png" alt="" loading="lazy"></p>
 <p>举一个简单的例子</p>
 <pre class="code-block"><code>let double = value=&gt;value*2;</code></pre>
 <p>特性：</p>
@@ -71,7 +71,7 @@ for(let i = 0; i &lt; array.length; i++) {
 <h4>高阶函数</h4>
 <p>在我们的编程世界中，我们需要处理的其实也只有“数据”和“关系”，而关系就是函数</p>
 <p>编程工作也就是在找一种映射关系，一旦关系找到了，问题就解决了，剩下的事情，就是让数据流过这种关系，然后转换成另一个数据，如下图所示</p>
-<p> ![](https://static.ecool.fun//article/68c8cde0-0d1d-4601-a86c-a475338a6273.png)</p>
+<p> <img src="../images/68c8cde0-0d1d-4601-a86c-a475338a6273.png" alt="" loading="lazy"></p>
 <p>在这里，就是高阶函数的作用。</p>
 <p>高阶函数，就是以函数作为输入或者输出的函数被称为高阶函数</p>
 <p>通过高阶函数抽象过程，注重结果，如下面例子</p>

@@ -70,13 +70,13 @@
 &lt;img src=&quot;11&quot; onerror=&quot;console.log(window.localStorage)&quot; /&gt;
 &lt;img src=&quot;11&quot; onerror=&quot;alert(111)&quot; /&gt;</code></pre>
 <p>页面输入</p>
-<p>!<a href="https://static.ecool.fun//article/cd44a823-6593-402e-b058-49e6579f00ef.jpeg" target="_blank" rel="noopener">1.png</a></p>
+<p><img src="../images/cd44a823-6593-402e-b058-49e6579f00ef.jpg" alt="1.png" loading="lazy"></p>
 <hr>
-<p>!<a href="https://static.ecool.fun//article/6de5bf7b-c0c2-489b-9743-9c28c8a865d5.jpeg" target="_blank" rel="noopener">2.png</a></p>
+<p><img src="../images/6de5bf7b-c0c2-489b-9743-9c28c8a865d5.jpg" alt="2.png" loading="lazy"></p>
 <p>使用者浏览页面，分别先后触发了<code>alert</code>弹框和<code>localStorage</code>获取本地数据：</p>
-<p>!<a href="https://static.ecool.fun//article/5c597fdc-e561-4265-830f-fba6a685a12a.jpeg" target="_blank" rel="noopener">3.png</a></p>
+<p><img src="../images/5c597fdc-e561-4265-830f-fba6a685a12a.jpg" alt="3.png" loading="lazy"></p>
 <hr>
-<p>!<a href="https://static.ecool.fun//article/d20eb0a6-056a-45c9-9bd6-8006a4b84673.jpeg" target="_blank" rel="noopener">4.png</a>&lt;br /&gt;以上就是一个典型的<strong>存储型</strong>攻击。</p>
+<p><img src="../images/d20eb0a6-056a-45c9-9bd6-8006a4b84673.jpg" alt="4.png" loading="lazy">&lt;br /&gt;以上就是一个典型的<strong>存储型</strong>攻击。</p>
 <h4>基于<code>DOM XSS</code></h4>
 <p>实际上，这种类型的<code>XSS</code>并非按照“数据是否保存在服务器端”来划分，<code>DOM Based XSS</code>从效果上来说也是反射型<code>XSS</code>。单独划分出来，是因为<code>DOM Based XSS</code> 的形成原因比较特别，发现它的安全专家专门提出了这种类型的<code>XSS</code>。<code>DOM 型 XSS</code>跟前两种<code>XSS</code>的区别：<code>DOM 型 XSS</code>攻击中，取出和执行恶意代码由浏览器端完成，属于前端<code>JavaScript</code>自身的安全漏洞，而其他两种<code>XSS</code>都属于服务端的安全漏洞。</p>
 <p>接下来我们来看一个简单的示例：</p>
@@ -113,7 +113,7 @@
 <p>我们再页面输入框中输入以下文本<code>'' onclick=alert(/xss/)</code>，这里的<code>''</code>引号是为了关闭掉<code>href</code>属性，给它赋予了一个空值。然后点击<code>提交内容</code>按钮，则页面中的<code>&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;</code>标签包含了一下<code>html</code>内容</p>
 <pre class="code-block"><code>&lt;a href onlick=&quot;alert(/xss/)&quot;&gt;链接地址&lt;/a&gt;</code></pre>
 <hr>
-<p>!<a href="https://static.ecool.fun//article/2dfeb37e-ed63-49e0-afd8-07530521cb76.jpeg" target="_blank" rel="noopener">7.png</a></p>
+<p><img src="../images/2dfeb37e-ed63-49e0-afd8-07530521cb76.jpg" alt="7.png" loading="lazy"></p>
 <h3><code>XSS</code>攻击防御</h3>
 <p>关于<code>XSS</code>的防御是非常复杂的，值得幸运的是现代浏览器、前端框架/库已经帮我们做了相当大的一部分工作。</p>
 <h4><code>HttpOnly</code></h4>

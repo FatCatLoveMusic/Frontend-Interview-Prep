@@ -29,7 +29,7 @@
 <p>它的独特之处在于，它不像传统的程序那样一次将一个文件读入内存，而是逐块读取数据、处理其内容，而不是将其全部保存在内存中</p>
 <p>流可以分成三部分：<code>source</code>、<code>dest</code>、<code>pipe</code></p>
 <p>在<code>source</code>和<code>dest</code>之间有一个连接的管道<code>pipe</code>,它的基本语法是<code>source.pipe(dest)</code>，<code>source</code>和<code>dest</code>就是通过pipe连接，让数据从<code>source</code>流向了<code>dest</code>，如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/e676a4d2-5cbf-4541-8cd6-7770ac09c348.png)</p>
+<p> <img src="../images/e676a4d2-5cbf-4541-8cd6-7770ac09c348.png" alt="" loading="lazy"></p>
 <h3>二、种类</h3>
 <p>在<code>NodeJS</code>，几乎所有的地方都使用到了流的概念，分成四个种类：</p>
 <ul>
@@ -49,7 +49,7 @@
 <h4>双工流</h4>
 <p>之前了解过<code>websocket</code>通信，是一个全双工通信，发送方和接受方都是各自独立的方法，发送和接收都没有任何关系</p>
 <p>如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/9bc63359-6e40-4582-8bb5-4ab539b12f87.png)</p>
+<p> <img src="../images/9bc63359-6e40-4582-8bb5-4ab539b12f87.png" alt="" loading="lazy"></p>
 <p>基本代码如下：</p>
 <pre class="code-block"><code>const { Duplex } = require('stream');
 
@@ -63,7 +63,7 @@ const myDuplex = new Duplex({
 });</code></pre>
 <h4>双工流</h4>
 <p>双工流的演示图如下所示：</p>
-<p> ![](https://static.ecool.fun//article/7e262767-786d-4abf-84a3-1a3f759a8a57.png)</p>
+<p> <img src="../images/7e262767-786d-4abf-84a3-1a3f759a8a57.png" alt="" loading="lazy"></p>
 <p>除了上述压缩包的例子，还比如一个 <code>babel</code>，把<code>es6</code>转换为，我们在左边写入 <code>es6</code>，从右边读取 <code>es5</code></p>
 <p>基本代码如下所示：</p>
 <pre class="code-block"><code>const { Transform } = require('stream');

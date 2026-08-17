@@ -35,7 +35,7 @@ setTimeout(() =&gt; {
 }, 1000);</code></pre>
 <p>取消请求，<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState" target="_blank" rel="noopener">readyState</a> 会变成 <code>XMLHttpRequest.UNSENT</code>(0)；请求的 xhr.<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status" target="_blank" rel="noopener">status</a> 会被设为 0 ；</p>
 <p>不如在 Chrome DevTools Network 中，看看正常请求和取消请求的对比图：</p>
-<p>!<a href="https://static.ecool.fun//article/86b6d8c6-1afb-465f-b084-bf4716fab7b2.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/86b6d8c6-1afb-465f-b084-bf4716fab7b2.png" alt="image.png" loading="lazy"></p>
 <h4>取消 Fetch 请求</h4>
 <p>取消 Fetch 请求，需要用到 <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target="_blank" rel="noopener">AbortController</a> API。我们可以构造一个 controller 实例：<strong><code>const controller = new AbortController()</code> ,</strong> controller 它有一个只读属性 <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal" target="_blank" rel="noopener">AbortController.signal</a>，可以作为参数传入到 fetch 中，用于将控制器与获取请求相关联；</p>
 <p>代码示例如下：</p>
@@ -51,9 +51,9 @@ setTimeout(() =&gt; {
     controller.abort();
 }, 1000);</code></pre>
 <p>浏览器控制台对比图：</p>
-<p>!<a href="https://static.ecool.fun//article/3d2f4cfa-dd06-4e83-973a-a2c5c6fbfc7f.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/3d2f4cfa-dd06-4e83-973a-a2c5c6fbfc7f.png" alt="image.png" loading="lazy"></p>
 <p>我们其实可以在 controller.abort() 传入“取消请求的原因”参数，然后进行 try...catch 捕获</p>
-<p>!<a href="https://static.ecool.fun//article/db951d09-396d-44e9-bd3c-5c1857dd0b28.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/db951d09-396d-44e9-bd3c-5c1857dd0b28.png" alt="image.png" loading="lazy"></p>
 <h4>取消 axios 请求</h4>
 <p>axios 同样支持 <a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" target="_blank" rel="noopener">AbortController</a></p>
 <pre class="code-block"><code>const controller = new AbortController();
@@ -68,9 +68,9 @@ setTimeout(() =&gt; {
     controller.abort();
 }, 1000);</code></pre>
 <p>控制台截图：</p>
-<p>!<a href="https://static.ecool.fun//article/fd990541-a05b-4d70-b802-130a83e47617.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/fd990541-a05b-4d70-b802-130a83e47617.png" alt="image.png" loading="lazy"></p>
 <p>错误捕获：</p>
-<p>!<a href="https://static.ecool.fun//article/a917101b-364e-43a9-a80f-fe0030ebec20.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/a917101b-364e-43a9-a80f-fe0030ebec20.png" alt="image.png" loading="lazy"></p>
 <p>注意：axios 之前用于取消请求的 CancelToken 方法已经被弃用，更多请见文档 <a href="https://axios-http.com/docs/cancellation" target="_blank" rel="noopener">axios-http.com/docs/cancel…</a>；</p>
 </div>
     </section>

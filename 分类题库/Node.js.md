@@ -705,7 +705,7 @@ process.argv.forEach((val, index) => {
 
 除此之外，还包括一些其他信息如版本、操作系统等
 
-![](https://static.ecool.fun//article/a53d9f6d-8997-4c67-930f-cfa38a46a9e1.png)
+![](../images/a53d9f6d-8997-4c67-930f-cfa38a46a9e1.png)
 
 
 
@@ -743,7 +743,7 @@ function foo() {
 test();
 ```
 
- ![](https://static.ecool.fun//article/2cc42369-79af-4022-9ece-995837b4dd11.png)
+ ![](../images/2cc42369-79af-4022-9ece-995837b4dd11.png)
 
 
 
@@ -905,7 +905,7 @@ const fs = require('fs');
 
 ### 权限位 mode
 
- ![](https://static.ecool.fun//article/e4b10b9f-221f-41f6-b5b1-83531101091c.png)
+ ![](../images/e4b10b9f-221f-41f6-b5b1-83531101091c.png)
 
 针对文件所有者、文件所属组、其他用户进行权限分配，其中类型又分成读、写和执行，具备权限位4、2、1，不具备权限为0
 
@@ -1597,7 +1597,7 @@ npm 是一个功能全面的包管理工具，通过管理 JavaScript 项目的�
 
 而在`NodeJS`中，事件循环是基于`libuv`实现，`libuv`是一个多平台的专注于异步IO的库，如下图最右侧所示：
 
- ![](https://static.ecool.fun//article/a3883f83-894a-475e-9352-2c6d5fe3dc2d.png)
+ ![](../images/a3883f83-894a-475e-9352-2c6d5fe3dc2d.png)
 
 上图`EVENT_QUEUE` 给人看起来只有一个队列，但`EventLoop`存在6个阶段，每个阶段都有对应的一个先进先出的回调队列
 
@@ -1606,7 +1606,7 @@ npm 是一个功能全面的包管理工具，通过管理 JavaScript 项目的�
 
 上节讲到事件循环分成了六个阶段，对应如下：
 
- ![](https://static.ecool.fun//article/b120f48a-402c-4784-a78b-366151217ed5.png)
+ ![](../images/b120f48a-402c-4784-a78b-366151217ed5.png)
 
 - timers阶段：这个阶段执行timer（setTimeout、setInterval）的回调
 - 定时器检测阶段(timers)：本阶段执行 timer 的回调，即 setTimeout、setInterval 里面的回调函数
@@ -1622,7 +1622,7 @@ npm 是一个功能全面的包管理工具，通过管理 JavaScript 项目的�
 
 流程图如下所示：
 
- ![](https://static.ecool.fun//article/6ab9a805-9ff5-4a47-985f-e15c2e3442c2.png)
+ ![](../images/6ab9a805-9ff5-4a47-985f-e15c2e3442c2.png)
 
 在`Node`中，同样存在宏任务和微任务，与浏览器中的事件循环相似
 
@@ -2291,7 +2291,7 @@ console.log('bar');
 
 比如读取一个文件，文件读取完毕后，就会触发对应的状态，然后通过对应的回调函数来进行处理
 
- ![](https://static.ecool.fun//article/049187f0-7001-416a-bc9f-6a7b493e9a7a.png)
+ ![](../images/049187f0-7001-416a-bc9f-6a7b493e9a7a.png)
 
 
 
@@ -2975,7 +2975,7 @@ const buffer = Buffer.from("why")
 
 其存储过程如下图所示：
 
- ![](https://static.ecool.fun//article/e3147a80-c494-4d9b-b9f1-1798213fd233.png)
+ ![](../images/e3147a80-c494-4d9b-b9f1-1798213fd233.png)
 
 
 ## 二、使用方法
@@ -3244,7 +3244,7 @@ PM2 为 Node.js 应用提供了强大的进程管理、负载均衡、日志管�
 
 在`source`和`dest`之间有一个连接的管道`pipe`,它的基本语法是`source.pipe(dest)`，`source`和`dest`就是通过pipe连接，让数据从`source`流向了`dest`，如下图所示：
 
- ![](https://static.ecool.fun//article/e676a4d2-5cbf-4541-8cd6-7770ac09c348.png)
+ ![](../images/e676a4d2-5cbf-4541-8cd6-7770ac09c348.png)
 
 
 
@@ -3273,7 +3273,7 @@ PM2 为 Node.js 应用提供了强大的进程管理、负载均衡、日志管�
 
 如下图所示：
 
- ![](https://static.ecool.fun//article/9bc63359-6e40-4582-8bb5-4ab539b12f87.png)
+ ![](../images/9bc63359-6e40-4582-8bb5-4ab539b12f87.png)
 
 基本代码如下：
 
@@ -3296,7 +3296,7 @@ const myDuplex = new Duplex({
 
 双工流的演示图如下所示：
 
- ![](https://static.ecool.fun//article/7e262767-786d-4abf-84a3-1a3f759a8a57.png)
+ ![](../images/7e262767-786d-4abf-84a3-1a3f759a8a57.png)
 
 除了上述压缩包的例子，还比如一个 `babel`，把`es6`转换为，我们在左边写入 `es6`，从右边读取 `es5`
 
@@ -3422,7 +3422,7 @@ readStream.on('end', function () {
 
 Node的事件循环是libuv实现的，引用一张官网的图：
 
-![image.png](https://static.ecool.fun//article/b6d024fe-2847-4749-99ca-7c1a8d9faeba.png)
+![image.png](../images/b6d024fe-2847-4749-99ca-7c1a8d9faeba.png)
 
 大体的task（宏任务）执行顺序是这样的：
 
@@ -3472,7 +3472,7 @@ Node 11以后：
 
 在我们做数据查询的时候，如果数据量很大，比如几万条数据，放在一个页面显示的话显然不友好，这时候就需要采用分页显示的形式，如每次只显示10条数据
 
-![](https://static.ecool.fun//article/f42f71c4-4bac-4806-98a8-7f91a20a6e31.png)
+![](../images/f42f71c4-4bac-4806-98a8-7f91a20a6e31.png)
 
 要实现分页功能，实际上就是从结果集中显示第1~10条记录作为第1页，显示第11~20条记录作为第2页，以此类推
 
@@ -4007,7 +4007,7 @@ const leak = [];
 
 JWT（JSON Web Token），本质就是一个字符串书写规范，如下图，作用是用来在用户和服务器之间传递安全可靠的信息
 
-![](https://static.ecool.fun//article/d9c35117-2ed2-4a8e-950e-b124994e9d92.png)
+![](../images/d9c35117-2ed2-4a8e-950e-b124994e9d92.png)
 
 在目前前后端分离的开发过程中，使用`token`鉴权机制用于身份验证是最常见的方案，流程如下：
 
@@ -4016,7 +4016,7 @@ JWT（JSON Web Token），本质就是一个字符串书写规范，如下图，
 
 `Token`，分成了三部分，头部（Header）、载荷（Payload）、签名（Signature），并以`.`进行拼接。其中头部和载荷都是以`JSON`格式存放数据，只是进行了编码
 
- ![](https://static.ecool.fun//article/20d0a8a6-ee1c-4e20-82d2-eb1696e65eed.png)
+ ![](../images/20d0a8a6-ee1c-4e20-82d2-eb1696e65eed.png)
 
 
 
@@ -4371,7 +4371,7 @@ npm是Node.js的包管理工具，它的诞生也极大的促进了前端的发�
 
 `require`参数较为简单，但是内部的加载却是十分复杂的，其加载优先级也各自不同，如下图：
 
- ![](https://static.ecool.fun//article/b2d6abb0-d8f5-4398-bcd3-5ee967d1da14.png)
+ ![](../images/b2d6abb0-d8f5-4398-bcd3-5ee967d1da14.png)
 
 从上图可以看见，文件模块存在缓存区，寻找模块路径的时候都会优先从缓存中加载已经存在的模块
 
@@ -4484,7 +4484,7 @@ Require方法的文件查找策略是先在模块的缓存中查找，如果缓�
 
 例如在`express`、`koa`等`web`框架中，中间件的本质为一个回调函数，参数包含请求对象、响应对象和执行下一个中间件的函数
 
- ![](https://static.ecool.fun//article/a76490e1-1167-476a-aadd-cbe205d6e962.png)
+ ![](../images/a76490e1-1167-476a-aadd-cbe205d6e962.png)
 
 在这些中间件函数中，我们可以执行业务逻辑代码，修改请求和响应对象、返回响应数据等操作
 
@@ -4499,7 +4499,7 @@ Require方法的文件查找策略是先在模块的缓存中查找，如果缓�
 - ctx ：封装了request 和  response 的变量
 - next ：进入下一个要执行的中间件的函数
 
- ![](https://static.ecool.fun//article/bd5957e4-1d0c-41ee-9833-906c477cb984.png)
+ ![](../images/bd5957e4-1d0c-41ee-9833-906c477cb984.png)
 
 
 

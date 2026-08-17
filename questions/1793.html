@@ -41,7 +41,7 @@
 <li>非原生模块的文件模块：mod</li>
 </ul>
 <p><code>require</code>参数较为简单，但是内部的加载却是十分复杂的，其加载优先级也各自不同，如下图：</p>
-<p> ![](https://static.ecool.fun//article/b2d6abb0-d8f5-4398-bcd3-5ee967d1da14.png)</p>
+<p> <img src="../images/b2d6abb0-d8f5-4398-bcd3-5ee967d1da14.png" alt="" loading="lazy"></p>
 <p>从上图可以看见，文件模块存在缓存区，寻找模块路径的时候都会优先从缓存中加载已经存在的模块</p>
 <h4>原生模块</h4>
 <p>而像原生模块这些，通过<code>require </code>方法在解析文件名之后，优先检查模块是否在原生模块列表中，如果在则从原生模块中加载</p>

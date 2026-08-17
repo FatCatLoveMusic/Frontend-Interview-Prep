@@ -47,7 +47,7 @@
     }
 })
 app.mount('#app')  // ② 挂载 APP 实例</code></pre>
-<p>通过创建 APP 实例和挂载 APP 实例即可，这时可以看到页面中分别显示对应数值：&lt;br&gt;!<a href="https://static.ecool.fun//article/614ad328-3096-4f32-bbb7-8373f950ed1d.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p>通过创建 APP 实例和挂载 APP 实例即可，这时可以看到页面中分别显示对应数值：&lt;br&gt;<img src="../images/614ad328-3096-4f32-bbb7-8373f950ed1d.jpg" alt="image.png" loading="lazy"></p>
 <p>当我们修改 <code>price</code> 或 <code>quantity</code> 值的时候，页面上引用它们的地方，内容也能正常展示变化后的结果。这时，我们会好奇为何数据发生变化后，相关的数据也会跟着变化，那么我们接着往下看。</p>
 <h4>2. 实现单个值的响应式</h4>
 <p>在普通 JS 代码执行中，并不会有响应式变化，比如在控制台执行下面代码：</p>
@@ -75,13 +75,13 @@ console.log(`total: ${total}`); // total: 40</code></pre>
 <p>① 初始化一个 <code>Set</code> 类型的 <code>dep</code> 变量，用来存放需要执行的副作用（ <code>effect</code> 函数），这边是修改 <code>total</code> 值的方法；</p>
 <p>② 创建 <code>track()</code> 函数，用来将需要执行的副作用保存到 <code>dep</code> 变量中（也称收集副作用）；</p>
 <p>③ 创建 <code>trigger()</code> 函数，用来执行 <code>dep</code> 变量中的所有副作用；</p>
-<p>在每次修改 <code>price</code> 或 <code>quantity</code> 后，调用 <code>trigger()</code> 函数执行所有副作用后， <code>total</code> 值将自动更新为最新值。&lt;br&gt;!<a href="https://static.ecool.fun//article/098e3ad6-2db4-440a-b0a6-7e20c36479c1.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p>在每次修改 <code>price</code> 或 <code>quantity</code> 后，调用 <code>trigger()</code> 函数执行所有副作用后， <code>total</code> 值将自动更新为最新值。&lt;br&gt;<img src="../images/098e3ad6-2db4-440a-b0a6-7e20c36479c1.jpg" alt="image.png" loading="lazy"></p>
 <p>（图片来源：Vue Mastery）</p>
 <h4>3. 实现单个对象的响应式</h4>
 <p>通常，<strong>我们的对象具有多个属性，并且每个属性都需要自己的 <code>dep</code>。我们如何存储这些？比如：</strong></p>
 <pre class="code-block"><code>let product = { price: 10, quantity: 2 };</code></pre>
 <p>从前面介绍我们知道，我们将所有副作用保存在一个 <code>Set</code> 集合中，而该集合不会有重复项，这里我们引入一个 <code>Map</code> 类型集合（即 <code>depsMap</code> ），其 <code>key</code> 为对象的属性（如： <code>price</code> 属性）， <code>value</code> 为前面保存副作用的 <code>Set</code> 集合（如： <code>dep</code> 对象），大致结构如下图：</p>
-<p>!<a href="https://static.ecool.fun//article/a658efdb-5daa-45ef-bcce-6647bc29021e.jpeg" target="_blank" rel="noopener">image.png</a>&lt;br&gt;（图片来源：Vue Mastery）</p>
+<p><img src="../images/a658efdb-5daa-45ef-bcce-6647bc29021e.jpg" alt="image.png" loading="lazy">&lt;br&gt;（图片来源：Vue Mastery）</p>
 <p>实现代码：</p>
 <pre class="code-block"><code>let product = { price: 10, quantity: 2 }, total = 0;
 const depsMap = new Map(); // ① 
@@ -153,7 +153,7 @@ console.log(`total: ${total}`); // total: 40</code></pre>
 <p>③ 创建 <code>trigger()</code> 函数，用来执行指定对象（ <code>target</code> ）中指定属性（ <code>key</code> ）的所有副作用；</p>
 <p>这样就实现监听对象的响应式变化，在 <code>product</code> 对象中的属性值发生变化， <code>total</code> 值也会跟着更新。</p>
 <p>大致流程如下图：</p>
-<p>!<a href="https://static.ecool.fun//article/4ca05d1f-3d74-4d3a-a716-1a54bc6c7ac4.jpeg" target="_blank" rel="noopener">image.png</a>&lt;br&gt;（图片来源：Vue Mastery）</p>
+<p><img src="../images/4ca05d1f-3d74-4d3a-a716-1a54bc6c7ac4.jpg" alt="image.png" loading="lazy">&lt;br&gt;（图片来源：Vue Mastery）</p>
 <h3>二、Proxy 和 Reflect</h3>
 <p>在上一节内容中，介绍了如何在数据发生变化后，自动更新数据，但存在的问题是，每次需要手动通过触发 <code>track()</code> 函数搜集依赖，通过 <code>trigger()</code> 函数执行所有副作用，达到数据更新目的。</p>
 <p>这一节将来解决这个问题，实现这两个函数自动调用。</p>
@@ -198,7 +198,7 @@ console.log(proxiedProduct.price);
 // 正在读取的数据： price
 // 10</code></pre>
 <p>这样就保证我们每次在读取 <code>proxiedProduct.price</code> 都会执行到其中代理的 get 处理函数。其过程如下：</p>
-<p>!<a href="https://static.ecool.fun//article/c65b6a63-6e61-44e0-a56f-04c4eb63bf3e.jpeg" target="_blank" rel="noopener">image.png</a>&lt;br&gt;（图片来源：Vue Mastery）</p>
+<p><img src="../images/c65b6a63-6e61-44e0-a56f-04c4eb63bf3e.jpg" alt="image.png" loading="lazy">&lt;br&gt;（图片来源：Vue Mastery）</p>
 <p>然后结合 Reflect 使用，只需修改 get 函数：</p>
 <pre class="code-block"><code>    get(target, key, receiver){
       console.log('正在读取的数据：',key);
@@ -305,7 +305,7 @@ console.log(total);
 // 正在读取的数据： price
 // 正在读取的数据： quantity
 // 40</code></pre>
-<p>!<a href="https://static.ecool.fun//article/2a941233-fd37-4967-8ce3-3c14746580e2.jpeg" target="_blank" rel="noopener">image.png</a>&lt;br&gt;（图片来源：Vue Mastery）</p>
+<p><img src="../images/2a941233-fd37-4967-8ce3-3c14746580e2.jpg" alt="image.png" loading="lazy">&lt;br&gt;（图片来源：Vue Mastery）</p>
 <h3>三、activeEffect 和 ref</h3>
 <p>在上一节代码中，还存在一个问题： <code>track</code> 函数中的依赖（ <code>effect</code> 函数）是外部定义的，当依赖发生变化， <code>track</code> 函数收集依赖时都要手动修改其依赖的方法名。</p>
 <p>比如现在的依赖为 <code>foo</code> 函数，就要修改 <code>track</code> 函数的逻辑，可能是这样：</p>
@@ -528,7 +528,7 @@ console.log(total.value, salePrice.value);</code></pre>
 <li>ref.ts：定义 reactive 的 ref 使用的对象访问器；</li>
 <li>computed.ts：定义计算属性的方法；</li>
 </ol>
-<p>!<a href="https://static.ecool.fun//article/53093dcc-fa06-464a-bb7c-72242bd868b0.jpeg" target="_blank" rel="noopener">image.png</a>&lt;br&gt;（图片来源：Vue Mastery）</p>
+<p><img src="../images/53093dcc-fa06-464a-bb7c-72242bd868b0.jpg" alt="image.png" loading="lazy">&lt;br&gt;（图片来源：Vue Mastery）</p>
 </div>
     </section>
     <section class="q-pivot"><b>要点</b>：<p>Vue 3 的响应式系统通过使用 Proxy 和 Reflect API，以及引入 activeEffect 和 ref 方法，实现了对数据变化的自动追踪和更新。</p>

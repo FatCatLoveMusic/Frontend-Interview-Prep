@@ -27,7 +27,7 @@
 <p>真正意义上的inline-block水平呈现的元素间，换行显示或空格分隔的情况下会有间距，很简单的个例子：</p>
 <pre class="code-block"><code>&lt;input /&gt; &lt;input type=&quot;submit&quot; /&gt;</code></pre>
 <p>间距就来了~~</p>
-<p>!<a href="https://static.ecool.fun//article/b1a50051-8bf5-4e14-9460-cbe4ff2ee78d.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/b1a50051-8bf5-4e14-9460-cbe4ff2ee78d.png" alt="image.png" loading="lazy"></p>
 <p>我们使用CSS更改非inline-block水平元素为inline-block水平，也会有该问题：</p>
 <pre class="code-block"><code>.space a {
     display: inline-block;
@@ -39,7 +39,7 @@
     &lt;a href=&quot;##&quot;&gt;淡定&lt;/a&gt;
     &lt;a href=&quot;##&quot;&gt;热血&lt;/a&gt;
 &lt;/div&gt;</code></pre>
-<p>!<a href="https://static.ecool.fun//article/5f3fa381-ccb2-43c3-b5ba-58c5ad161abe.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/5f3fa381-ccb2-43c3-b5ba-58c5ad161abe.png" alt="image.png" loading="lazy"></p>
 <p>这种表现是符合规范的应该有的表现。</p>
 <p>元素被当成行内元素排版的时候，元素之间的空白符（空格、回车换行等）都会被浏览器处理，根据white-space的处理方式（默认是normal，合并多余空白），原来HTML代码中的回车换行被转成一个空白符，在字体不为0的情况下，空白符占据一定宽度，所以inline-block的元素之间就出现了空隙。这些元素之间的间距会随着字体的大小而变化，当行内元素font-size:16px时，间距为8px。</p>
 <p>不过，这类间距有时会对我们布局，或是兼容性处理产生影响，以下展示N种方法去掉。</p>
@@ -70,7 +70,7 @@
     margin-right: -3px;
 }</code></pre>
 <p>margin负值的大小与上下文的字体和文字大小相关：</p>
-<p>!<a href="https://static.ecool.fun//article/4d07ee09-ad17-41a8-9dd6-01eab25e0e8a.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/4d07ee09-ad17-41a8-9dd6-01eab25e0e8a.png" alt="image.png" loading="lazy"></p>
 <p>例如，对于12像素大小的上下文，Arial字体的<code>margin</code>负值为<code>-3</code>像素，Tahoma和Verdana就是<code>-4</code>像素，而Geneva为<code>-6</code>像素。</p>
 <p>由于外部环境的不确定性，以及最后一个元素多出的父margin值等问题，这个方法不适合大规模使用。</p>
 <h4>四、让闭合标签吃胶囊</h4>
@@ -88,7 +88,7 @@
     &lt;a href=&quot;##&quot;&gt;热血
 &lt;/div&gt;</code></pre>
 <p>好吧，虽然感觉上有点怪怪的，但是，这是OK的。</p>
-<p>!<a href="https://static.ecool.fun//article/71ea9156-22a7-43a1-9a29-b04cd6ed9280.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/71ea9156-22a7-43a1-9a29-b04cd6ed9280.png" alt="image.png" loading="lazy"></p>
 <h4>五、使用font-size:0</h4>
 <p>类似下面的代码：</p>
 <pre class="code-block"><code>.space {

@@ -57,7 +57,7 @@ import messages from './messages'
 log(messages.hi)</code></pre>
 <p>然后通过<code>rollup</code>进行打包</p>
 <pre class="code-block"><code>$ npx rollup ./src/index.js --file ./dist/bundle.js</code></pre>
-<p>打包结果如下图![](https://static.ecool.fun//article/5cc53952-b3c0-4552-a5b1-245f189f5e67.png)</p>
+<p>打包结果如下图<img src="../images/5cc53952-b3c0-4552-a5b1-245f189f5e67.png" alt="" loading="lazy"></p>
 <p>可以看到，代码非常简洁，完成不像<code>webpack</code>那样存在大量引导代码和模块函数</p>
 <p>并且<code>error</code>方法由于没有被使用，输出的结果中并无<code>error</code>方法，可以看到，<code>rollup</code>默认开始<code>Tree-shaking</code> 优化输出结果</p>
 <p>因此，可以看到<code>Rollup</code>的优点：</p>
@@ -100,13 +100,13 @@ export const log = msg =&gt; {
 <p>打包命令如下：</p>
 <pre class="code-block"><code>npx parcel src/index.html</code></pre>
 <p>由于打包过程是多进程同时工作，构建速度会比<code>Webpack</code> 快，输出文件也会被压缩，并且样式代码也会被单独提取到单个文件中</p>
-<p>![](https://static.ecool.fun//article/8e3bf068-bb5d-4c96-a9f8-6b65ec7d7594.png)</p>
+<p><img src="../images/8e3bf068-bb5d-4c96-a9f8-6b65ec7d7594.png" alt="" loading="lazy"></p>
 <p>可以感受到，<code>Parcel </code>给开发者一种很大的自由度，只管去实现业务代码，其他事情用<code>Parcel</code>解决</p>
 <h4>Snowpack</h4>
 <p>Snowpack，是一种闪电般快速的前端构建工具，专为现代<code>Web</code>设计，较复杂的打包工具（如<code>Webpack</code>或<code>Parcel</code>）的替代方案，利用<code>JavaScript</code>的本机模块系统，避免不必要的工作并保持流畅的开发体验</p>
 <p>开发阶段，每次保存单个文件时，<code>Webpack</code>和<code>Parcel</code>都需要重新构建和重新打包应用程序的整个<code>bundle</code>。而<code>Snowpack</code>为你的应用程序每个文件构建一次，就可以永久缓存，文件更改时，<code>Snowpack</code>会重新构建该单个文件</p>
 <p>下图给出<code>webpack</code>与<code>snowpack</code>打包区别：</p>
-<p> ![](https://static.ecool.fun//article/27ecf664-d9b9-4a44-b6bc-e206e5104cae.png)</p>
+<p> <img src="../images/27ecf664-d9b9-4a44-b6bc-e206e5104cae.png" alt="" loading="lazy"></p>
 <p>在重新构建每次变更时没有任何的时间浪费，只需要在浏览器中进行HMR更新</p>
 <h4>Vite</h4>
 <p>vite ，是一种新型前端构建工具，能够显著提升前端开发体验</p>
@@ -124,7 +124,7 @@ export const log = msg =&gt; {
 <p><code>vite</code>会直接启动开发服务器，不需要进行打包操作，也就意味着不需要分析模块的依赖、不需要编译，因此启动速度非常快</p>
 <p>利用现代浏览器支持<code>ES Module</code>的特性，当浏览器请求某个模块的时候，再根据需要对模块的内容进行编译，这种方式大大缩短了编译时间</p>
 <p>原理图如下所示：</p>
-<p> ![](https://static.ecool.fun//article/9bf6eb03-0aee-437f-a8f7-fb5788b60116.png)</p>
+<p> <img src="../images/9bf6eb03-0aee-437f-a8f7-fb5788b60116.png" alt="" loading="lazy"></p>
 <p>在热模块<code>HMR</code>方面，当修改一个模块的时候，仅需让浏览器重新请求该模块即可，无须像<code>webpack</code>那样需要把该模块的相关依赖模块全部编译一次，效率更高</p>
 <h4>webpack</h4>
 <p>相比上述的模块化工具，<code>webpack</code>大而全，很多常用的功能做到开箱即用。有两大最核心的特点：<strong>一切皆模块</strong>和<strong>按需加载</strong></p>

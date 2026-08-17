@@ -46,7 +46,7 @@ console.log( doSomething.prototype );</code></pre>
 }</code></pre>
 <p>上面这个对象，就是大家常说的原型对象</p>
 <p>可以看到，原型对象有一个自有属性<code>constructor</code>，这个属性指向该函数，如下图关系展示</p>
-<p> ![](https://static.ecool.fun//article/2deaaac4-9732-4c1c-a3dd-8506adf9d0fe.png)</p>
+<p> <img src="../images/2deaaac4-9732-4c1c-a3dd-8506adf9d0fe.png" alt="" loading="lazy"></p>
 <h3>二、原型链</h3>
 <p>原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法</p>
 <p>在对象实例和它的构造器之间建立一个链接（它是<code>__proto__</code>属性，是从构造函数的<code>prototype</code>属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法</p>
@@ -61,7 +61,7 @@ console.log( doSomething.prototype );</code></pre>
 // 第二步 创建实例
 var person = new Person('person')</code></pre>
 <p>根据代码，我们可以得到下图</p>
-<p> ![](https://static.ecool.fun//article/9db8820a-8e19-4755-8edf-fc09231ff6ef.png)</p>
+<p> <img src="../images/9db8820a-8e19-4755-8edf-fc09231ff6ef.png" alt="" loading="lazy"></p>
 <p>下面分析一下：</p>
 <ul>
 <li>构造函数<code>Person</code>存在原型对象<code>Person.prototype</code></li>
@@ -77,7 +77,7 @@ var person = new Person('person')</code></pre>
 <h3>三、总结</h3>
 <p>下面首先要看几个概念：</p>
 <p><code>__proto__</code>作为不同对象之间的桥梁，用来指向创建它的构造函数的原型对象的</p>
-<p> ![](https://static.ecool.fun//article/0c2d0d47-2b06-43ed-92e4-129425b6af0c.png)</p>
+<p> <img src="../images/0c2d0d47-2b06-43ed-92e4-129425b6af0c.png" alt="" loading="lazy"></p>
 <p>每个对象的<code>__proto__</code>都是指向它的构造函数的原型对象<code>prototype</code>的</p>
 <pre class="code-block"><code>person1.__proto__ === Person.prototype</code></pre>
 <p>构造函数是一个函数对象，是通过 <code>Function </code>构造器产生的</p>

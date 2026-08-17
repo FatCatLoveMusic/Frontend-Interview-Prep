@@ -46,7 +46,7 @@ eventTarget.onclick = function () {}; // 第二个会把第一个覆盖</code></
 <pre class="code-block"><code>&lt;div&gt;
   &lt;span&gt;点我&lt;/span&gt;
 &lt;/div&gt;</code></pre>
-<p>当我们点击<code>span</code>标签的时候会经过这么三个过程，在路径内的元素绑定的事件都会进行触发&lt;br&gt;&gt; 捕获阶段 =&gt; 目标阶段 =&gt; 冒泡阶段&lt;br&gt;&gt; &lt;br&gt;!<a href="https://static.ecool.fun/article/82fffff2-46fa-4196-8552-4d7ecbca7e9a.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p>当我们点击<code>span</code>标签的时候会经过这么三个过程，在路径内的元素绑定的事件都会进行触发&lt;br&gt;&gt; 捕获阶段 =&gt; 目标阶段 =&gt; 冒泡阶段&lt;br&gt;&gt; &lt;br&gt;<img src="../images/82fffff2-46fa-4196-8552-4d7ecbca7e9a.jpg" alt="image.png" loading="lazy"></p>
 <h4>合成事件</h4>
 <p>在看之前先看一下这几个问题</p>
 <ul>
@@ -132,9 +132,9 @@ export default function App() {
 </code></pre>
 <p>看这个例子，当我们点击<code>h1</code>的时候</p>
 <p>会先执行原生事件事件流，当执行到<code>document</code>的冒泡阶段的时候做了个拦截，在这个阶段开始执行合成事件</p>
-<p>!<a href="https://static.ecool.fun/article/e4fbc614-6696-4e8d-871a-e144df6b5c8f.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/e4fbc614-6696-4e8d-871a-e144df6b5c8f.jpg" alt="image.png" loading="lazy"></p>
 <p>我们用一个图简单描述一下</p>
-<p>!<a href="https://static.ecool.fun/article/d9f769d9-a375-4caa-81c3-b06bb400312e.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/d9f769d9-a375-4caa-81c3-b06bb400312e.jpg" alt="image.png" loading="lazy"></p>
 <p>知道上面的概念，那我们回答开始阶段的后面两个问题</p>
 <p>当我们把上面的<code>demo</code>的原生<code>div</code>的<code>stopPropagation()</code>  方法调用阻止捕获和冒泡阶段中当前事件的进一步传播，会阻止后续的所有事件执行</p>
 <pre class="code-block"><code>// ...
@@ -143,10 +143,10 @@ const divClickCapFunc = (e) =&gt; {
     logFunc(&quot;div&quot;, false, true);
 };
 // ...</code></pre>
-<p>!<a href="https://static.ecool.fun//article/ca4890af-7c01-4071-970d-1ec5ce85f04c.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/ca4890af-7c01-4071-970d-1ec5ce85f04c.jpg" alt="image.png" loading="lazy"></p>
 <p>我们可以看到，当阻止之后，我们点击<code>h1</code>，事件流运行到<code>div</code>的捕获阶段就不触发了，后续的所有的包括合成事件也都不会触发</p>
 <p>那当我们给合成事件的事件流中断了会发生什么呢？</p>
-<p>!<a href="https://static.ecool.fun//article/b8311107-7e7f-4678-80c4-b4bac281d381.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/b8311107-7e7f-4678-80c4-b4bac281d381.jpg" alt="image.png" loading="lazy"></p>
 <p>可以看到运行到捕获阶段的<code>div</code>之后被阻止传播了，后续的所有合成事件都不会执行了，但是原生的<code>document</code>冒泡还是会执行完。</p>
 <h4>模拟阶段</h4>
 <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
@@ -212,7 +212,7 @@ const divClickCapFunc = (e) =&gt; {
 &lt;/html&gt;
 </code></pre>
 <p>点击<code>h1</code>可以看到一路上的注册的所有事件已经执行了</p>
-<p>!<a href="https://static.ecool.fun/article/a8d86c98-7501-41de-a462-ecf8286d4c3b.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/a8d86c98-7501-41de-a462-ecf8286d4c3b.jpg" alt="image.png" loading="lazy"></p>
 <p><code>React16</code>给<code>document</code>上加的统一的拦截判发事件会在一定情况下出问题，下面举个例子简单说明一下</p>
 <h4>16案例</h4>
 <p><a href="https://codesandbox.io/s/practical-lichterman-1lhvb1?file=/src/App.js:0-924" target="_blank" rel="noopener">点我</a>查看在线案例</p>
@@ -263,7 +263,7 @@ export default App;</code></pre>
 <h4>16和17的区别</h4>
 <p>在<code>17</code>版本中，<code>React</code>把事件节点绑定函数绑定在了<code>render</code>的根节点上，避免了上述的问题,</p>
 <p>用上面的<code>demo</code>的在线案例把版本改成17之后，可以发现事件的执行顺序变了</p>
-<p>!<a href="https://static.ecool.fun/article/b1affb78-f4b6-465f-99e6-705312b4ece6.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/b1affb78-f4b6-465f-99e6-705312b4ece6.jpg" alt="image.png" loading="lazy"></p>
 <h4>模拟17版本</h4>
 <pre class="code-block"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -334,7 +334,7 @@ export default App;</code></pre>
 </code></pre>
 <p>区别就是在外层增加了一个<code>root</code>模拟根节点，修改了<code>dispatchEvent</code>的逻辑</p>
 <p>可以看到，效果已经和<code>17</code>版本的一样了</p>
-<p>!<a href="https://static.ecool.fun/article/32437d31-5387-4d09-8c31-0e08ef64877a.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/32437d31-5387-4d09-8c31-0e08ef64877a.jpg" alt="image.png" loading="lazy"></p>
 <p>回看<code>16demo</code>，切换版本到<code>17</code>，当我们切换到<code>17</code>的时候，用<code>stopPropagation</code>就可以解决问题了,&lt;br&gt;原因就是他在<code>root</code>节点上绑定的事件冒泡函数，<code>stopPropagation</code>切断了事件流，不会流向到<code>document</code>身上了</p>
 <h4>总结</h4>
 <ul>

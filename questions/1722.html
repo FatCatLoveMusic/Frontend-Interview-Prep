@@ -65,7 +65,7 @@
 <p>当说起<code>性能</code>的时候，我们都能联想起一些关键词，比如：启动速度、内存使用优化、布局优化、电量优化、包瘦身等等。</p>
 <p>所以综上可以感受出来，<code>性能</code>是一个<strong>软件多维度指标表现情况</strong>的代名词，<code>高性能表现</code>就是指<strong>软件各项指标都表现优异</strong>。（该快的快、该少的少、该大的大😁、该小的小）</p>
 <h3>Flutter是如何做到跨平台的？</h3>
-<p>!<a href="https://static.ecool.fun//article/45dfef40-11c8-4050-9ce6-44fed129de37.jpeg" target="_blank" rel="noopener">Flutter官方分层架构图</a></p>
+<p><img src="../images/45dfef40-11c8-4050-9ce6-44fed129de37.jpg" alt="Flutter官方分层架构图" loading="lazy"></p>
 <p>这里搬出<strong>Flutter官方分层架构图</strong>，在大的层次上，从上到下依次分为如下三层（可以看出 Framework 层内部又会分层）：</p>
 <ul>
 <li><strong>Framework框架层</strong>：一个纯<code>Dart</code>实现的<code>SDK（一套基础库）</code>，负责 UI 相关的事情，如：动画、widget、绘图、手势、基础能力等。（我们的应用就是围绕这层来构建的）  </li>
@@ -75,7 +75,7 @@
 </ul>
 <p>所以可以看出在设计上<strong>Embedder</strong>层要做的工作就是隔离并适配不同平台的差异，保证对上层暴露统一的<code>API</code>，以此来达到<strong>跨平台的目的</strong>。无论现在的<code>Android</code>、<code>iOS</code>还是未来的<code>Fuchsia</code>、<code>鸿蒙OS</code>，亦或是其他<code>嵌入式操作系统</code>（比如树莓派上的系统 Raspbian ），理论上 Flutter 都是可以<strong>跨</strong>上去的😎。</p>
 <p>以上是针对跨操作系统而言的，在最近刚发步的 Flutter 1.9 中<code>Flutter for web</code>的支持虽然还处于预览版，但 flutter\_web 这个 repo 已经合并到了 flutter 的主 repo，这也是一个重要的里程碑了。那么<strong>Flutter是如何做到支持Web的呢？</strong></p>
-<p>![](https://static.ecool.fun//article/7ad173f3-f647-472b-ba42-07e3eaa617ba.jpeg)</p>
+<p><img src="../images/7ad173f3-f647-472b-ba42-07e3eaa617ba.jpg" alt="" loading="lazy"></p>
 <p>如架构图所示，Framework 层在移动和 web 平台是共享的，当然为了支持 web ，官方对<code>dart:ui</code>库做了新的适配。然后便是使用基于 DOM、Canvas 和 CSS 的代码替换了移动平台上 Skia 实现的引擎层，当我们为 Web 平台编译 Flutter 代码时，应用、Flutter 框架、以及 Web 版本的 dart:ui 库都将编译为 JavaScript ，可以运行在任何现代浏览器上。</p>
 <h3>Flutter是如何做到高保真度的？</h3>
 <p>根据前文这个问题可以转化为：<strong>Flutter是如何做到可以像素级还原UI稿的交互与视觉效果的？</strong></p>

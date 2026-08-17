@@ -25,14 +25,14 @@
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><h3>一、是什么</h3>
 <p>JWT（JSON Web Token），本质就是一个字符串书写规范，如下图，作用是用来在用户和服务器之间传递安全可靠的信息</p>
-<p>![](https://static.ecool.fun//article/d9c35117-2ed2-4a8e-950e-b124994e9d92.png)</p>
+<p><img src="../images/d9c35117-2ed2-4a8e-950e-b124994e9d92.png" alt="" loading="lazy"></p>
 <p>在目前前后端分离的开发过程中，使用<code>token</code>鉴权机制用于身份验证是最常见的方案，流程如下：</p>
 <ul>
 <li>服务器当验证用户账号和密码正确的时候，给用户颁发一个令牌，这个令牌作为后续用户访问一些接口的凭证</li>
 <li>后续访问会根据这个令牌判断用户时候有权限进行访问</li>
 </ul>
 <p><code>Token</code>，分成了三部分，头部（Header）、载荷（Payload）、签名（Signature），并以<code>.</code>进行拼接。其中头部和载荷都是以<code>JSON</code>格式存放数据，只是进行了编码</p>
-<p> ![](https://static.ecool.fun//article/20d0a8a6-ee1c-4e20-82d2-eb1696e65eed.png)</p>
+<p> <img src="../images/20d0a8a6-ee1c-4e20-82d2-eb1696e65eed.png" alt="" loading="lazy"></p>
 <h4>header</h4>
 <p>每个JWT都会带有头部信息，这里主要声明使用的算法。声明算法的字段名为<code>alg</code>，同时还有一个<code>typ</code>的字段，默认<code>JWT</code>即可。以下示例中算法为HS256</p>
 <pre class="code-block"><code>{  &quot;alg&quot;: &quot;HS256&quot;,  &quot;typ&quot;: &quot;JWT&quot; } </code></pre>

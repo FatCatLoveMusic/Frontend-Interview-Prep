@@ -27,7 +27,7 @@
 <p><code>Plugin</code>（Plug-in）是一种计算机应用程序，它和主应用程序互相交互，以提供特定的功能</p>
 <p>是一种遵循一定规范的应用程序接口编写出来的程序，只能运行在程序规定的系统下，因为其需要调用原纯净系统提供的函数库或者数据</p>
 <p><code>webpack</code>中的<code>plugin</code>也是如此，<code>plugin</code>赋予其各种灵活的功能，例如打包优化、资源管理、环境变量注入等，它们会运行在 <code>webpack</code> 的不同阶段（钩子 / 生命周期），贯穿了<code>webpack</code>整个编译周期</p>
-<p>![](https://static.ecool.fun//article/5a030d77-c60e-4318-b6f4-d5402e37de3b.png)</p>
+<p><img src="../images/5a030d77-c60e-4318-b6f4-d5402e37de3b.png" alt="" loading="lazy"></p>
 <p>目的在于解决<code>loader</code> 无法实现的其他事</p>
 <h4>配置方式</h4>
 <p>这里讲述文件的配置方式，一般情况，通过配置文件导出对象中<code>plugins</code>属性传入<code>new</code>实例对象。如下所示：</p>
@@ -70,7 +70,7 @@ module.exports = ConsoleLogOnBuildWebpackPlugin;</code></pre>
 </ul>
 <h3>三、常见的Plugin</h3>
 <p>常见的<code>plugin</code>有如图所示：</p>
-<p>![](https://static.ecool.fun//article/eb9e149a-fda3-4b36-adf3-d938547221ee.png)</p>
+<p><img src="../images/eb9e149a-fda3-4b36-adf3-d938547221ee.png" alt="" loading="lazy"></p>
 <p>下面介绍几个常用的插件用法：</p>
 <h4>HtmlWebpackPlugin</h4>
 <p>在打包结束后，⾃动生成⼀个 <code>html</code> ⽂文件，并把打包生成的<code> js</code> 模块引⼊到该 <code>html</code> 中</p>

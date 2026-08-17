@@ -26,12 +26,12 @@
       <div class="q-block-body"><h3>一、是什么</h3>
 <p><code>loader</code> 用于对模块的&quot;源代码&quot;进行转换，在 <code>import</code> 或&quot;加载&quot;模块时预处理文件</p>
 <p><code>webpack</code>做的事情，仅仅是分析出各种模块的依赖关系，然后形成资源列表，最终打包生成到指定的文件中。如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/af392531-d34f-48c0-937d-496017a3df23.png)</p>
+<p> <img src="../images/af392531-d34f-48c0-937d-496017a3df23.png" alt="" loading="lazy"></p>
 <p>在<code>webpack</code>内部中，任何文件都是模块，不仅仅只是<code>js</code>文件</p>
 <p>默认情况下，在遇到<code>import</code>或者<code>load</code>加载模块的时候，<code>webpack</code>只支持对<code>js</code>文件打包</p>
 <p>像<code>css</code>、<code>sass</code>、<code>png</code>等这些类型的文件的时候，<code>webpack</code>则无能为力，这时候就需要配置对应的<code>loader</code>进行文件内容的解析</p>
 <p>在加载模块的时候，执行顺序如下：</p>
-<p> ![](https://static.ecool.fun//article/b3adf7c6-9956-47c3-8e33-e01cd21283a7.png)</p>
+<p> <img src="../images/b3adf7c6-9956-47c3-8e33-e01cd21283a7.png" alt="" loading="lazy"></p>
 <p>当 <code>webpack</code> 碰到不识别的模块的时候，<code>webpack</code> 会在配置的中查找该文件解析规则</p>
 <p>关于配置<code>loader</code>的方式有三种：</p>
 <ul>

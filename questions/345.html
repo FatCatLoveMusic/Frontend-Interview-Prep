@@ -51,9 +51,9 @@ var maxSubArray = function(nums) {
 <p><strong>思路和算法</strong></p>
 <p>假设 <code>nums</code> 数组的长度是 <code>n</code>，下标从 <code>0</code> 到 <code>n-1</code>。</p>
 <p>我们用 <code>f(i)</code> 代表以第 <code>i</code> 个数结尾的「连续子数组的最大和」，那么很显然我们要求的答案就是：</p>
-<p>!<a href="https://static.ecool.fun//article/9015919d-f6c8-4b2c-aba5-9ee90986b235.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/9015919d-f6c8-4b2c-aba5-9ee90986b235.png" alt="image.png" loading="lazy"></p>
 <p>因此我们只需要求出每个位置的 <code>f(i)</code>，然后返回 <code>f</code> 数组中的最大值即可。那么我们如何求 <code>f(i)</code> 呢？我们可以考虑 <code>nums[i]</code> 单独成为一段还是加入 <code>f(i-1)</code> 对应的那一段，这取决于 <code>nums[i]</code> 和 <code>f(i-1) + nums[i]</code> 的大小，我们希望获得一个比较大的，于是可以写出这样的动态规划转移方程：</p>
-<p>!<a href="https://static.ecool.fun//article/98994b34-7f5c-411b-be8f-d5e0b1a2d125.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/98994b34-7f5c-411b-be8f-d5e0b1a2d125.png" alt="image.png" loading="lazy"></p>
 <p>不难给出一个时间复杂度 <code>O(n)</code>、空间复杂度 <code>O(n)</code> 的实现，即用一个 <code>f</code> 数组来保存 <code>f(i)</code> 的值，用一个循环求出所有 <code>f(i)</code>。考虑到 <code>f(i)</code> 只和 <code>f(i-1)</code> 相关，于是我们可以只用一个变量 <code>pre</code> 来维护对于当前 <code>f(i)</code> 的 <code>f(i-1)</code> 的值是多少，从而让空间复杂度降低到 <code>O(1)</code>，这有点类似「滚动数组」的思想。</p>
 <p><strong>代码</strong></p>
 <pre class="code-block"><code>var maxSubArray = function(nums) {

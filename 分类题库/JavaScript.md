@@ -56,7 +56,7 @@ Promise.reject(1)
 
 下面给出全局上下文和函数上下文的例子：
 
- ![](https://static.ecool.fun//article/dd48614d-e230-48e1-9ad4-e8d985420fbf.png)
+ ![](../images/dd48614d-e230-48e1-9ad4-e8d985420fbf.png)
 
 紫色框住的部分为全局上下文，蓝色和橘色框起来的是不同的函数上下文。只有全局上下文（的变量）能被其他任何上下文访问
 
@@ -228,7 +228,7 @@ FunctionExectionContext = {
 
 执行栈，也叫调用栈，具有 LIFO（后进先出）结构，用于存储在代码执行期间创建的所有执行上下文
 
- ![](https://static.ecool.fun//article/2c9b5dd1-450d-48fd-b22f-bfba63506111.png)
+ ![](../images/2c9b5dd1-450d-48fd-b22f-bfba63506111.png)
 
 当`Javascript`引擎开始执行你第一行脚本代码的时候，它就会创建一个全局执行上下文然后将它压到执行栈中
 
@@ -254,7 +254,7 @@ console.log('Inside Global Execution Context');
 
 转化成图的形式
 
- ![](https://static.ecool.fun//article/76b38335-fbef-4b39-b024-c8526b250dca.png)
+ ![](../images/76b38335-fbef-4b39-b024-c8526b250dca.png)
 
 简单分析一下流程：
 
@@ -556,7 +556,7 @@ document.all[''];  获取页面中的所有元素节点的对象集合型
 
 除此之外，每个`DOM`元素还有`parentNode`、`childNodes`、`firstChild`、`lastChild`、`nextSibling`、`previousSibling`属性，关系图如下图所示
 
- ![](https://static.ecool.fun//article/9d682579-6386-4f28-8e4f-cd885beafb7f.png)
+ ![](../images/9d682579-6386-4f28-8e4f-cd885beafb7f.png)
 
 
 
@@ -1900,7 +1900,7 @@ function deepClone(obj, hash = new WeakMap()) {
 
 下面首先借助两张图，可以更加清晰看到浅拷贝与深拷贝的区别
 
- ![](https://static.ecool.fun//article/8252919d-2855-4ccd-9b2e-d64ce5c07be2.png)
+ ![](../images/8252919d-2855-4ccd-9b2e-d64ce5c07be2.png)
 
 从上图发现，浅拷贝和深拷贝都创建出一个新的对象，但在复制对象属性的时候，行为就不一样
 
@@ -3987,7 +3987,7 @@ use strict是一种ECMAscript5添加的(严格）运行模式，这种模式使�
 
 该属性的兼容性也还行，大家生产环境可以使用。
 
-![image.png](https://static.ecool.fun//article/d08ca711-557a-4da4-88c7-8bdcb20a7fab.png)
+![image.png](../images/d08ca711-557a-4da4-88c7-8bdcb20a7fab.png)
 
 ## js实现原理
 
@@ -4444,7 +4444,7 @@ let doubled = arr.map(num => {
 
 这里是`forEach()`和`map()`的测试结果：
 
-![](https://static.ecool.fun//article/7a9b71f5-e46a-4d4d-a63b-994786896e85.jpeg)
+![](../images/7a9b71f5-e46a-4d4d-a63b-994786896e85.jpg)
 
 可以看到，在我到电脑上`forEach()`的执行速度比`map()`慢了70%。每个人的浏览器的执行结果会不一样。你可以使用下面的链接来测试一下: [Map vs. forEach - jsPref](https://jsperf.com/map-vs-foreach-speed-test)。
 
@@ -5275,21 +5275,21 @@ pnpm对比npm/yarn的优点：
 
 用 node 版本管理工具把 node 版本降到 4，那 npm 版本就是 2.x 了。
 
-![](https://static.ecool.fun//article/620fe3a0-bc84-4b25-a6f5-9ba9c86f6257.jpeg)
+![](../images/620fe3a0-bc84-4b25-a6f5-9ba9c86f6257.jpg)
 
 然后找个目录，执行下 npm init -y，快速创建个 package.json。
 
 然后执行 npm install express，那么 express 包和它的依赖都会被下载下来：
 
-![](https://static.ecool.fun//article/2887153a-9fe1-4b27-8225-9cf566d11485.jpeg)
+![](../images/2887153a-9fe1-4b27-8225-9cf566d11485.jpg)
 
 展开 express，它也有 node\_modules：
 
-![](https://static.ecool.fun//article/7e02c8f1-c18e-45e1-882e-3307595b9925.jpeg)
+![](../images/7e02c8f1-c18e-45e1-882e-3307595b9925.jpg)
 
 再展开几层，每个依赖都有自己的 node\_modules：
 
-![](https://static.ecool.fun//article/27611a70-202f-4329-9531-67b95af51976.jpeg)
+![](../images/27611a70-202f-4329-9531-67b95af51976.jpg)
 
 也就是说 npm2 的 node\_modules 是嵌套的。
 
@@ -5311,15 +5311,15 @@ yarn 是怎么解决依赖重复很多次，嵌套路径过长的问题的呢？
 
 这时候 node\_modules 就是这样了：
 
-![](https://static.ecool.fun//article/30119adb-3912-443b-9af8-9f56da6be114.jpeg)
+![](../images/30119adb-3912-443b-9af8-9f56da6be114.jpg)
 
 全部铺平在了一层，展开下面的包大部分是没有二层 node\_modules 的：
 
-![](https://static.ecool.fun//article/8c053898-f3df-4457-ba3f-f832fb988dc4.jpeg)
+![](../images/8c053898-f3df-4457-ba3f-f832fb988dc4.jpg)
 
 当然也有的包还是有 node\_modules 的，比如这样：
 
-![](https://static.ecool.fun//article/2bd3408f-5342-429d-bb5d-5b10df60879f.jpeg)
+![](../images/2bd3408f-5342-429d-bb5d-5b10df60879f.jpg)
 
 为什么还有嵌套呢？
 
@@ -5327,7 +5327,7 @@ yarn 是怎么解决依赖重复很多次，嵌套路径过长的问题的呢？
 
 npm 后来升级到 3 之后，也是采用这种铺平的方案了，和 yarn 很类似：
 
-![](https://static.ecool.fun//article/5060b347-202a-43ef-80d5-d0495f6bd0e0.jpeg)
+![](../images/5060b347-202a-43ef-80d5-d0495f6bd0e0.jpg)
 
 当然，yarn 还实现了 yarn.lock 来锁定依赖版本的功能，不过这个 npm 也实现了。
 
@@ -5369,31 +5369,31 @@ yarn 和 npm 都采用了铺平的方案，这种方案就没有问题了么？
 
 你会发现它打印了这样一句话：
 
-![](https://static.ecool.fun//article/ec4ef89e-6db5-464e-aff1-00fa6d6ad090.jpeg)
+![](../images/ec4ef89e-6db5-464e-aff1-00fa6d6ad090.jpg)
 
 包是从全局 store 硬连接到虚拟 store 的，这里的虚拟 store 就是 node\_modules/.pnpm。
 
 我们打开 node\_modules 看一下：
 
-![](https://static.ecool.fun//article/5a782293-75d0-492a-a601-d2cdb1ce265b.jpeg)
+![](../images/5a782293-75d0-492a-a601-d2cdb1ce265b.jpg)
 
 确实不是扁平化的了，依赖了 express，那 node\_modules 下就只有 express，没有幽灵依赖。
 
 展开 .pnpm 看一下：
 
-![](https://static.ecool.fun//article/3abd2471-1e10-446b-9680-8d7dd3927c10.jpeg)
+![](../images/3abd2471-1e10-446b-9680-8d7dd3927c10.jpg)
 
 所有的依赖都在这里铺平了，都是从全局 store 硬连接过来的，然后包和包之间的依赖关系是通过软链接组织的。
 
 比如 .pnpm 下的 expresss，这些都是软链接，
 
-![](https://static.ecool.fun//article/4c97a538-7fc3-4143-a851-be795b5fe9a0.jpeg)
+![](../images/4c97a538-7fc3-4143-a851-be795b5fe9a0.jpg)
 
 也就是说，所有的依赖都是从全局 store 硬连接到了 node\_modules/.pnpm 下，然后之间通过软链接来相互依赖。
 
 官方给了一张原理图，配合着看一下就明白了：
 
-![](https://static.ecool.fun//article/a682875c-e2c3-48a1-b31b-337114305806.jpeg)
+![](../images/a682875c-e2c3-48a1-b31b-337114305806.jpg)
 
 这就是 pnpm 的实现原理。
 
@@ -5405,7 +5405,7 @@ yarn 和 npm 都采用了铺平的方案，这种方案就没有问题了么？
 
 这也是它所标榜的优点：
 
-![](https://static.ecool.fun//article/92adbade-99b2-46e9-b812-e7a7c3dcb1e7.jpeg)
+![](../images/92adbade-99b2-46e9-b812-e7a7c3dcb1e7.jpg)
 
 相比 npm2 的优点就是不会进行同样依赖的多次复制。
 
@@ -6522,7 +6522,7 @@ foo('name', 'age', 'sex')
 
 打印结果如下：
 
-![arguments](https://static.ecool.fun//article/13abe176-2fb7-4838-aa09-6260cfe5dcb9.png)
+![arguments](../images/13abe176-2fb7-4838-aa09-6260cfe5dcb9.png)
 
 我们可以看到除了类数组的索引属性和length属性之外，还有一个callee属性，接下来我们一个一个介绍。
 
@@ -7837,7 +7837,7 @@ async、await 函数写起来跟同步函数一样，条件是需要接收 Promi
 
 generator 函数是协程在 ES6 的实现。协程简单来说就是多个线程互相协作，完成异步任务。
 
-![image-1-1620701628067.png](https://static.ecool.fun//article/466ad367-1f3f-4f4c-8fa1-bd5dace7bbb7.jpeg)
+![image-1-1620701628067.png](../images/466ad367-1f3f-4f4c-8fa1-bd5dace7bbb7.jpg)
 
 整个 generator 函数就是一个封装的异步任务，异步操作需要暂停的地方，都用 yield 语句注明。generator 函数的执行方法如下：
 
@@ -11198,7 +11198,7 @@ function debounce(func, wait, immediate) {
 
 如下图所示：
 
- ![](https://static.ecool.fun//article/5650498e-9fc1-4b0e-bd68-63831bc94cb3.png)
+ ![](../images/5650498e-9fc1-4b0e-bd68-63831bc94cb3.png)
 
 
 ## 三、应用场景
@@ -11363,7 +11363,7 @@ doSomething().then(function(result) {
 
 认真阅读下图，我们能够轻松了解`promise`整个流程
 
- ![](https://static.ecool.fun//article/f4d1e317-abd6-499d-8ea4-8680ef2901ba.png)
+ ![](../images/f4d1e317-abd6-499d-8ea4-8680ef2901ba.png)
 
 
 
@@ -11856,7 +11856,7 @@ fn函数直接返回了一个new Promise的，而且fn函数的调用是在start
 
 对于持续运行的服务进程，必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃
 
- ![](https://static.ecool.fun//article/5f67faa9-e84b-4076-b416-bc5a49bf5638.png)
+ ![](../images/5f67faa9-e84b-4076-b416-bc5a49bf5638.png)
 
 在`C`语言中，因为是手动管理内存，内存泄露是经常出现的事情。
 
@@ -13056,7 +13056,7 @@ console.log(result3)  //[6,7,12,20,64,35]
 
 使用工具测试[性能分析](http://tools.jb51.net/aideddesign/js_bianli)结果如下图所示
 
-![性能测试1.png](https://static.ecool.fun//article/c6bf85bb-2291-44b8-9bf1-702d01ebe074.jpeg)
+![性能测试1.png](../images/c6bf85bb-2291-44b8-9bf1-702d01ebe074.jpg)
 
 ### 手动测试
 
@@ -13177,7 +13177,7 @@ clecTime(foroffn, 'forof') //forof执行耗时:221ms
 
 如下图
 
- ![](https://static.ecool.fun//article/601be6fe-4b6e-420b-b88a-0e54be051d02.png)
+ ![](../images/601be6fe-4b6e-420b-b88a-0e54be051d02.png)
 
 上传完之后再由服务端对所有上传的文件进行汇总整合成原始的文件
 
@@ -13207,7 +13207,7 @@ clecTime(foroffn, 'forof') //forof执行耗时:221ms
 
 整体思路比较简单，拿到文件，保存文件唯一性标识，切割文件，分段上传，每次上传一段，根据唯一性标识判断文件上传进度，直到文件的全部片段上传完毕
 
-![](https://static.ecool.fun//article/a9b201e1-12dc-4598-a7a1-205a15d573f2.png)
+![](../images/a9b201e1-12dc-4598-a7a1-205a15d573f2.png)
 
 下面的内容都是伪代码
 
@@ -14025,7 +14025,7 @@ AST通常是由多个节点组成的树状结构，每个节点代表一个语�
 
 先上图：
 
-![](https://static.ecool.fun//article/d0543ddc-0e72-4620-b427-ff7961e2cb3a.png)
+![](../images/d0543ddc-0e72-4620-b427-ff7961e2cb3a.png)
 
 **图1** \==运算规则的图形化表示
 
@@ -14139,7 +14139,7 @@ Number('\v\f') // 结果0
 我们回过头来看一下图1。里面标有N或P的那几条连线是没有方向的。假如我们在这些线上标上箭头，使得连线从标有N或P的那一端指向另一端，那么会得到(不考虑undefined和null)：
 
   
-![](https://static.ecool.fun//article/1bd8d1bf-eeed-4834-b822-627094b0498d.png)
+![](../images/1bd8d1bf-eeed-4834-b822-627094b0498d.png)
 
 **图2** ==运算过程中类型转化的趋势
 
@@ -14192,7 +14192,7 @@ Number('\v\f') // 结果0
 
 其实，图一还不够完美。为什么呢？因为对象与字符串/数字比较时都由对象来转型，但是与同样是原始类型的布尔类型比较时却需要布尔类型转型。实际上，只要稍稍分析一下，全部让对象来转为原始类型也是等价的。所以我们得到了最终的更加完美的图形：
 
-![](https://static.ecool.fun//article/5fd67afd-4393-4358-9e8f-ca8f36ae702f.png)
+![](../images/5fd67afd-4393-4358-9e8f-ca8f36ae702f.png)
 
 **图3** 更完美的==运算规则的图形化表示  
 
@@ -14789,7 +14789,7 @@ const maxVal = Math.max(...arr); // 获取数组中的最大值
 
 首先可以看一张图
 
- ![](https://static.ecool.fun//article/2b902391-514d-4b1f-87e5-c5b4f17e7871.png)
+ ![](../images/2b902391-514d-4b1f-87e5-c5b4f17e7871.png)
 
 上拉加载的本质是页面触底，或者快要触底时的动作
 
@@ -15819,7 +15819,7 @@ if(obj.x === null || obj.x === undefined) {
 
 而计算机只能用二进制（0或1）表示，二进制转换为科学记数法的公式如下：
 
- ![](https://static.ecool.fun//article/af4640ef-8762-4b7e-8bee-27be5e438afc.png)
+ ![](../images/af4640ef-8762-4b7e-8bee-27be5e438afc.png)
 
 其中，`a`的值为0或者1，e为小数点移动的位置
 
@@ -15827,7 +15827,7 @@ if(obj.x === null || obj.x === undefined) {
 
 27.0转化成二进制为11011.0 ，科学计数法表示为：
 
- ![](https://static.ecool.fun//article/e2abc5db-7358-47a9-854e-86e15503fc82.png)
+ ![](../images/e2abc5db-7358-47a9-854e-86e15503fc82.png)
 
 前面讲到，`javaScript`存储方式是双精度浮点数，其长度为8个字节，即64位比特
 
@@ -15839,7 +15839,7 @@ if(obj.x === null || obj.x === undefined) {
 
 如下图所示：
 
- ![](https://static.ecool.fun//article/0172e7c7-4e85-4343-8d79-5ff91cb450e1.png)
+ ![](../images/0172e7c7-4e85-4343-8d79-5ff91cb450e1.png)
 
 举个例子：
 
@@ -16707,7 +16707,7 @@ eval("let y = 20; console.log(y);");  // 输出: 20，y 在外部作用域也能
 - 处于目标阶段(target phase)
 - 事件冒泡阶段(bubbling phase)
 
- ![](https://static.ecool.fun//article/cda1838d-f839-4588-9787-bbaa0bec65ea.png)
+ ![](../images/cda1838d-f839-4588-9787-bbaa0bec65ea.png)
 
 事件冒泡是一种从下往上的传播方式，由最具体的元素（触发节点）然后逐渐向上传播到最不具体的那个节点，也就是`DOM`中最高层的父节点
 
@@ -16988,15 +16988,15 @@ btn.detachEvent(‘onclick’, showMessage);
 
 ## 一、class类必须new调用，不能直接执行。
 
-![image.png](https://static.ecool.fun//article/c1841b40-fce7-466c-9316-38c057419c40.png)
+![image.png](../images/c1841b40-fce7-466c-9316-38c057419c40.png)
 
 class类执行的话会报错，而es5中的类和普通函数并没有本质区别，执行肯定是ok的。
 
 ## 二、class类不存在变量提升
 
-![image.png](https://static.ecool.fun//article/5378c86b-1d14-41d6-8661-e6bd762cd17a.png)
+![image.png](../images/5378c86b-1d14-41d6-8661-e6bd762cd17a.png)
 
-![image.png](https://static.ecool.fun//article/43a43e47-2362-4f57-9b4c-0461033ed0a6.png)
+![image.png](../images/43a43e47-2362-4f57-9b4c-0461033ed0a6.png)
 
 图2报错，说明class方式没有把类的定义提升到顶部。
 
@@ -18258,7 +18258,7 @@ first();
 复制代码
 ```
 
-![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/011b00fb335040b998711518badef78e~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)
+![](../images/011b00fb335040b998711518badef78e_tplv-k3u1fbpfcp-zoom-in-crop-mark_3024_0_0_0.awebp)
 
 #### 这里发生了什么?
 
@@ -18329,7 +18329,7 @@ networkRequest();
 
 为了理解这段代码是如何执行的，咱们必须理解更多的概念，比如事件轮询和回调队列(或消息队列)。
 
-![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca51b8264d114d83b3a9f84940297056~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)
+![](../images/ca51b8264d114d83b3a9f84940297056_tplv-k3u1fbpfcp-zoom-in-crop-mark_3024_0_0_0.awebp)
 
 事件轮询、web api和消息队列不是`JavaScript`引擎的一部分，而是浏览器的`JavaScript`运行时环境或Nodejs JavaScript运行时环境的一部分(对于Nodejs)。在Nodejs中，web api被c/c++ api所替代。
 
@@ -18350,7 +18350,7 @@ console.log('The End');
 复制代码
 ```
 
-![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf142df94784461eb8fcfefd3dded8bd~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)
+![](../images/cf142df94784461eb8fcfefd3dded8bd_tplv-k3u1fbpfcp-zoom-in-crop-mark_3024_0_0_0.awebp)
 
 当上述代码在浏览器中加载时，`console.log(' Hello World ')` 被推送到堆栈中，并在完成后弹出堆栈。接下来，将遇到对 `networkRequest()` 的调用，因此将它推到堆栈的顶部。
 
@@ -18530,7 +18530,7 @@ JavaScript 的动画正好弥补了这两个缺点，控制能力很强，可以
 
 同步任务与异步任务的运行流程图如下：
 
- ![](https://static.ecool.fun//article/85f7d058-08ee-4bb7-af03-610411a08581.png)
+ ![](../images/85f7d058-08ee-4bb7-af03-610411a08581.png)
 
 从上面我们可以看到，同步任务进入主线程，即主执行栈，异步任务进入任务队列，主线程内的任务执行完毕为空，会去任务队列读取对应的任务，推入主线程执行。上述过程的不断重复就是事件循环
 
@@ -18607,7 +18607,7 @@ console.log(3)
 
 这时候，事件循环，宏任务，微任务的关系如图所示
 
- ![](https://static.ecool.fun//article/698f38dc-0399-4a3b-b38a-126c9f5c221e.png)
+ ![](../images/698f38dc-0399-4a3b-b38a-126c9f5c221e.png)
 
 按照这个流程，它的执行机制是：
 
@@ -19353,7 +19353,7 @@ request(config) {
 
 首先看看目录结构
 
- ![](https://static.ecool.fun//article/aa354d57-bb09-40c5-ba3e-cc5680443a28.png)
+ ![](../images/aa354d57-bb09-40c5-ba3e-cc5680443a28.png)
 
 
 
@@ -19708,7 +19708,7 @@ if (config.cancelToken) {
 
 ### 小结
 
- ![](https://static.ecool.fun//article/e785c66f-b0a5-4816-b303-a1f638eda1b8.png)
+ ![](../images/e785c66f-b0a5-4816-b303-a1f638eda1b8.png)
 
 
 
@@ -19886,7 +19886,7 @@ const obj = {
 const [a,b] = obj
 ```
 
-![](https://static.ecool.fun//article/2e0932fb-2f62-41b7-b1cc-17df3a831f50.jpeg)
+![](../images/2e0932fb-2f62-41b7-b1cc-17df3a831f50.jpg)
 
 运行之后打开控制台可以发现报错信息，它告诉我们obj这个对象是不可迭代的，那么我们想办法把obj变成可迭代的是不是就能解决这个问题，这要怎么做呢？想要搞明白这点我们需要先了解一下可迭代协议。
 
@@ -19909,11 +19909,11 @@ const array = [1,2,3]
 console.log(array)
 ```
 
-![](https://static.ecool.fun//article/2174c1e1-7964-41ef-830e-22e876aa652b.jpeg)
+![](../images/2174c1e1-7964-41ef-830e-22e876aa652b.jpg)
 
 点开原型查看
 
-![](https://static.ecool.fun//article/0412f825-a681-48fb-905e-886514b24402.jpeg)
+![](../images/0412f825-a681-48fb-905e-886514b24402.jpg)
 
 发现真的有一个Symbol.iterator()方法，该方法会返回一个迭代器对象。我们来调用一下
 
@@ -19927,7 +19927,7 @@ console.log(iterator.next())
 console.log(iterator.next())
 ```
 
-![](https://static.ecool.fun//article/c0a94fec-8c05-43dc-9039-2b838abfa11c.jpeg)
+![](../images/c0a94fec-8c05-43dc-9039-2b838abfa11c.jpg)
 
 打印iterator对象后发现在它的原型上有一个next()方法，调用next()方法，会得到一个对象value就是当前迭代的值，done则代表当前迭代器是否已经迭代完成。
 
@@ -20065,7 +20065,7 @@ setTimeout(() => {
 
 不如在 Chrome DevTools Network 中，看看正常请求和取消请求的对比图：
 
-![image.png](https://static.ecool.fun//article/86b6d8c6-1afb-465f-b084-bf4716fab7b2.png)
+![image.png](../images/86b6d8c6-1afb-465f-b084-bf4716fab7b2.png)
 
 ### 取消 Fetch 请求
 
@@ -20089,11 +20089,11 @@ setTimeout(() => {
 
 浏览器控制台对比图：
 
-![image.png](https://static.ecool.fun//article/3d2f4cfa-dd06-4e83-973a-a2c5c6fbfc7f.png)
+![image.png](../images/3d2f4cfa-dd06-4e83-973a-a2c5c6fbfc7f.png)
 
 我们其实可以在 controller.abort() 传入“取消请求的原因”参数，然后进行 try...catch 捕获
 
-![image.png](https://static.ecool.fun//article/db951d09-396d-44e9-bd3c-5c1857dd0b28.png)
+![image.png](../images/db951d09-396d-44e9-bd3c-5c1857dd0b28.png)
 
 ### 取消 axios 请求
 
@@ -20115,11 +20115,11 @@ setTimeout(() => {
 
 控制台截图：
 
-![image.png](https://static.ecool.fun//article/fd990541-a05b-4d70-b802-130a83e47617.png)
+![image.png](../images/fd990541-a05b-4d70-b802-130a83e47617.png)
 
 错误捕获：
 
-![image.png](https://static.ecool.fun//article/a917101b-364e-43a9-a80f-fe0030ebec20.png)
+![image.png](../images/a917101b-364e-43a9-a80f-fe0030ebec20.png)
 
 注意：axios 之前用于取消请求的 CancelToken 方法已经被弃用，更多请见文档 [axios-http.com/docs/cancel…](https://axios-http.com/docs/cancellation)；
 
@@ -21022,7 +21022,7 @@ console.log(str2) // dbc
 
 简单点来讲， 就是假设栈中存放了一个数据如"abc"， 那么这个数据就永远不会改变， 而如果是如例子2中赋值了一个其他的字符串或者任何其他改变值的情况下， 栈中都会保留原来的"abc"， 然后新开一个地方存放"dbc"。 类似下图：  
 
-![image](https://static.ecool.fun//article/bb5d1191-ed99-40b7-b557-c70114208619.jpeg)
+![image](../images/bb5d1191-ed99-40b7-b557-c70114208619.jpg)
 
 **为什么要把基础类型的值设成不可变**
 
@@ -21049,7 +21049,7 @@ map.get("notT1"); // 10
 
 1. 为了共享  
 实际上， 基础类型中， 值一样的变量是共享一个内存区域的。  
-![image](https://static.ecool.fun//article/c14cedeb-7b95-4d63-8b78-7337dff6398d.jpeg)
+![image](../images/c14cedeb-7b95-4d63-8b78-7337dff6398d.jpg)
 
 这样做的好处是避免额外的内存开销，提升效能。  
 当然， 这个前提是基础类型不可变， 不然如果str1的值变化了， str2的值也会跟着变化（实际上并没有对其操作）。
@@ -21058,7 +21058,7 @@ map.get("notT1"); // 10
 
 V8中的对象（数组也是对象）存储相对来说比较复杂，他们是存放在堆里面的数据。并且格式大致如下:  
 
-![image](https://static.ecool.fun//article/f231cfc8-947c-4af7-9cd4-c4309206760e.jpeg)
+![image](../images/f231cfc8-947c-4af7-9cd4-c4309206760e.jpg)
 
 这和很多资料说的是用Map实现不同， 很明显， 根据上图（[来自v8的博客](https://v8.dev/blog/fast-properties)）,起码可以说明不是使用Map来处理的。
 
@@ -21070,7 +21070,7 @@ V8是把对象中的属性分成两类， 一类是字符常量， 一类是数�
 第一类： In-object  
 实际上， 在生成一个对象的时候， v8会给该对象留下一些空间以分配属性（数量由对象的初始大小预先确定），这些属性直接存储在对象本身上。这些是V8中最快的属性，因为无需任何间接访问即可访问它们，如下图：
 
-![image](https://static.ecool.fun//article/7ba6b644-2aa0-4d41-93fd-99fbba737e77.jpeg)
+![image](../images/7ba6b644-2aa0-4d41-93fd-99fbba737e77.jpg)
 
 第二类： Fast properties  
 v8的In-object空间并不多，通过对象字面量创建的无属性对象分配 4 个对象内属性存储（inobject\_properties）空间。当这些空间被使用完之后， 即会通过HideClass(隐藏类，有些也叫Map，这里统一叫隐藏类)来协助完成属性的快速访问。
@@ -21079,14 +21079,14 @@ HiddenClasses and DescriptorArrays
 HiddenClass存储有关对象的元信息，包括该对象上的属性数量以及对该对象原型的引用。除此之外，HiddenClasses里面还有一个DescriptorArrays数组， 该数组存储了对象属性的信息。  
 即如下图：  
 
-![image](https://static.ecool.fun//article/7a23abb3-5f63-4bdd-9c79-4f27c2d1f338.jpeg)
+![image](../images/7a23abb3-5f63-4bdd-9c79-4f27c2d1f338.jpg)
 
 这里一般会有一个疑惑， 为什么需要一个隐藏类， 我直接搞一个hashTable不是更快吗？  
 关于隐藏类及ICs的概率， 推荐阅读这一篇文章[JavaScript 引擎基础：Shapes 和 Inline Caches](https://zhuanlan.zhihu.com/p/38202123), 概念清晰易懂，图文并茂。  
 这里简单说一下概念：  
 首先看下， 隐藏类是怎么来的  
 
-![image](https://static.ecool.fun//article/2010441b-9031-47ee-aee1-67466ad11094.jpeg)
+![image](../images/2010441b-9031-47ee-aee1-67466ad11094.jpg)
 
 从图中可以看出， 隐藏类是通过一颗树来不断生成的，每添加一个属性都会新生成一个隐藏类节点（添加数组索引属性不会创建新的）， 然后呢， 具有相同结构（相同属性，顺序相同）的对象具有相同的隐藏类。也就是说， 如果在上面的代码中加一个代码如下：
 
@@ -21106,7 +21106,7 @@ b.b = "test";
 第三类： Slow properties  
 最后一种方式即是字典存储方式。字典存储模式相对来说比较简单， 先看下官方提供的图：  
 
-![image](https://static.ecool.fun//article/8a8c9b4a-05d4-40c3-a17d-ebbb909165be.jpeg)
+![image](../images/8a8c9b4a-05d4-40c3-a17d-ebbb909165be.jpg)
 
   
 简单点说， 就是隐藏类里面的DescriptorArrays会直接置为空， 然后把属性的值和元信息直接存储在properties数组中，并通过hash的方式进行get和set。  
@@ -21145,7 +21145,7 @@ console.log(o[3]);          // Prints undefined
 
 ```
 
-![image](https://static.ecool.fun//article/093d9ed1-ffac-48f7-9633-dc5947400bab.jpeg)
+![image](../images/093d9ed1-ffac-48f7-9633-dc5947400bab.jpg)
 
 1. 稀疏数组， 如果存在这种情况， 那么elements会存在大量的内存没有使用， 所以v8优化成字典模式，也就是和上面的字符串一样。
 
@@ -21696,7 +21696,7 @@ asuna.getName() // 成功访问到父类的方法
 
 下面以一张图作为总结：
 
- ![](https://static.ecool.fun//article/c15679e3-2c26-4aef-a14f-8d6a68179bce.png)
+ ![](../images/c15679e3-2c26-4aef-a14f-8d6a68179bce.png)
 
 通过`Object.create` 来划分不同的继承方式，最后的寄生式组合继承方式是通过组合继承改造之后的最优继承方式，而 `extends` 的语法糖和寄生组合继承的方式基本类似
 
@@ -21829,7 +21829,7 @@ obj2.method2(); // 输出 "Method 2"
 
 在实现二叉树时，采用的存储结构为链式存储结构，链式结构的意思是采用一个链表来存储一颗二叉树，二叉树中每一个节点用链表的一个节点来存储，在二叉树中，节点结构至少有三个域：数据域data，左指针域left，右指针域right，如下图所示：
 
-![](https://static.ecool.fun//article/c2c927d0-7758-4e59-85ef-84a698e7c867.jpeg)
+![](../images/c2c927d0-7758-4e59-85ef-84a698e7c867.jpg)
 
 二叉链表的存储结构描述如下：
 
@@ -22113,7 +22113,7 @@ myTree.insert(57);
 
 新建后的二叉排序树如下图所示：
 
-![](https://static.ecool.fun//article/fad63b51-599a-4113-a217-0c26201abf2a.jpeg)
+![](../images/fad63b51-599a-4113-a217-0c26201abf2a.jpg)
 
   
 获取最大值试一下：
@@ -22873,7 +22873,7 @@ pow(x, n) =
 
 也就是说`pow` 递归地调用自身 直到 `n == 1`
 
- ![](https://static.ecool.fun//article/6ba267f3-37a5-4134-b747-887d23c54c63.png)
+ ![](../images/6ba267f3-37a5-4134-b747-887d23c54c63.png)
 
 为了计算 `pow(2, 4)`，递归变体经过了下面几个步骤：
 
@@ -23483,7 +23483,7 @@ URL（统一资源定位符）在构成上有着严格的限制，只能使用�
 **参考答案**：
 我们都知道，页面的内容都是一帧一帧绘制出来的，浏览器刷新率代表浏览器一秒绘制多少帧。原则上说 1s 内绘制的帧数也多，画面表现就也细腻。目前浏览器大多是 60Hz（60帧/s），每一帧耗时也就是在 16.6ms 左右。那么在这一帧的（16.6ms） 过程中浏览器又干了些什么呢？
 
-![image.png](https://static.ecool.fun//article/8d7519c9-4540-4ec9-bce7-6afa21813061.png)
+![image.png](../images/8d7519c9-4540-4ec9-bce7-6afa21813061.png)
 
 通过上面这张图可以清楚的知道，浏览器一帧会经过下面这几个过程：
 
@@ -24034,7 +24034,7 @@ console.log( doSomething.prototype );
 
 可以看到，原型对象有一个自有属性`constructor`，这个属性指向该函数，如下图关系展示
 
- ![](https://static.ecool.fun//article/2deaaac4-9732-4c1c-a3dd-8506adf9d0fe.png)
+ ![](../images/2deaaac4-9732-4c1c-a3dd-8506adf9d0fe.png)
 
 
 
@@ -24062,7 +24062,7 @@ var person = new Person('person')
 
 根据代码，我们可以得到下图
 
- ![](https://static.ecool.fun//article/9db8820a-8e19-4755-8edf-fc09231ff6ef.png)
+ ![](../images/9db8820a-8e19-4755-8edf-fc09231ff6ef.png)
 
 下面分析一下：
 
@@ -24082,7 +24082,7 @@ var person = new Person('person')
 
 `__proto__`作为不同对象之间的桥梁，用来指向创建它的构造函数的原型对象的
 
- ![](https://static.ecool.fun//article/0c2d0d47-2b06-43ed-92e4-129425b6af0c.png)
+ ![](../images/0c2d0d47-2b06-43ed-92e4-129425b6af0c.png)
 
 每个对象的`__proto__`都是指向它的构造函数的原型对象`prototype`的
 
@@ -25734,7 +25734,7 @@ console.log(Person("战场", "小包"))
 输出结果: 
 
 
-![newFunc-Func.png](https://static.ecool.fun//article/71273689-7fdd-408c-a846-a59497aa53ae.jpeg)
+![newFunc-Func.png](../images/71273689-7fdd-408c-a846-a59497aa53ae.jpg)
 
 通过输出结果可以发现，定义的构造函数被当作普通函数来调用，没有任何错误提示。
 
@@ -25856,7 +25856,7 @@ new Person()
 输出结果:
 
 
-![new-target-class.png](https://static.ecool.fun//article/2f127a0c-478c-4d74-a795-df2656f32e43.jpeg)
+![new-target-class.png](../images/2f127a0c-478c-4d74-a795-df2656f32e43.jpg)
 
 `Class` 内部调用 `new.target`，会返回当前 `Class`。
 
@@ -25881,7 +25881,7 @@ const dog = new Dog()
 ```
 输出结果:
 
-![new-target-extends.png](https://static.ecool.fun//article/36c17124-4ebb-41e9-8c13-918fe82805b9.jpeg)
+![new-target-extends.png](../images/36c17124-4ebb-41e9-8c13-918fe82805b9.jpg)
 
 通过上面案例，我们可以发现子类调用和父类调用的返回结果是不同的，我们利用这个特性，就可以实现父类不可调用而子类可以调用的情况——面向对象中的**抽象类**
 
@@ -27096,7 +27096,7 @@ for(let i = 0; i < array.length; i++) {
 
 即是一种描述集合和集合之间的转换关系，输入通过函数都会返回有且只有一个输出值
 
- ![](https://static.ecool.fun//article/8054e1a6-df46-4e8d-bc50-cf05f17db45c.png)
+ ![](../images/8054e1a6-df46-4e8d-bc50-cf05f17db45c.png)
 
 可以看到，函数实际上是一个关系，或者说是一种映射，而这种映射关系是可以组合的，一旦我们知道一个函数的输出类型可以匹配另一个函数的输入，那他们就可以进行组合
 
@@ -27109,7 +27109,7 @@ for(let i = 0; i < array.length; i++) {
 
 纯函数是对给定的输入返还相同输出的函数，并且要求你所有的数据都是不可变的，即纯函数=无状态+数据不可变
 
- ![](https://static.ecool.fun//article/7fed8364-372b-438b-902b-571577ee4e04.png)
+ ![](../images/7fed8364-372b-438b-902b-571577ee4e04.png)
 
 举一个简单的例子
 
@@ -27146,7 +27146,7 @@ test('double(2) 等于 4', () => {
 
 编程工作也就是在找一种映射关系，一旦关系找到了，问题就解决了，剩下的事情，就是让数据流过这种关系，然后转换成另一个数据，如下图所示
 
- ![](https://static.ecool.fun//article/68c8cde0-0d1d-4601-a86c-a475338a6273.png)
+ ![](../images/68c8cde0-0d1d-4601-a86c-a475338a6273.png)
 
 在这里，就是高阶函数的作用。
 
@@ -28118,7 +28118,7 @@ Source map 想必大家都不陌生。线上的代码多是压缩后的，如果
 
 但是不知道大家有没有对 source map 的原理产生过疑问？先列出了四个疑问，不知道各位是不是也存在过这样的问题：
 
-![Source map 四问](https://static.ecool.fun//article/05bdc382-77b5-4912-8dd4-bbe6452d1dac.jpeg)
+![Source map 四问](../images/05bdc382-77b5-4912-8dd4-bbe6452d1dac.jpg)
 
 接下来的内容会逐步为读者解答这四问。
 
@@ -28244,7 +28244,7 @@ console.log(1);
 
 但是为什么 source map 会知道编译后的代码具体在什么位置呢？这里就要用到 AST 了。让我们打开[网站](https://astexplorer.net/)输入 `console.log(a)` 后观察右边的内容，你应该会发现如图所示的数据：
 
-![image-20210516214636867](https://static.ecool.fun//article/c05dd7b5-8f4b-4984-b02e-0041c2190368.jpeg)
+![image-20210516214636867](../images/c05dd7b5-8f4b-4984-b02e-0041c2190368.jpg)
 
 因为 source map 是由 AST 产出的，所以我们能用上 AST 中的这个数据。
 
@@ -28391,7 +28391,7 @@ Promise.all([p1, p2, p3].map(p => p.catch(e => '出错后返回的值' )))
 
 Node的事件循环是libuv实现的，引用一张官网的图：
 
-![image.png](https://static.ecool.fun//article/b6d024fe-2847-4749-99ca-7c1a8d9faeba.png)
+![image.png](../images/b6d024fe-2847-4749-99ca-7c1a8d9faeba.png)
 
 大体的task（宏任务）执行顺序是这样的：
 
@@ -28740,7 +28740,7 @@ setTimeout是一个异步函数，它的回调函数会在指定的延时后被�
 
 
 **参考答案**：
-![image.png](https://static.ecool.fun//article/e0655cd1-91f2-4cdf-9460-0094bdf47830.png)
+![image.png](../images/e0655cd1-91f2-4cdf-9460-0094bdf47830.png)
 
 > 主线程从任务队列中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop。
 
@@ -29047,7 +29047,7 @@ const users = await Promise.all(ids.map(async (id) => await db.get(id)))
 ### 时间复杂度
 描述该算法的运行时间，通常用`大O`描述，附上一张时间复杂度曲线图帮助理解
 
-![image.png](https://static.ecool.fun//article/d64d13f8-0600-4d41-b958-cb3f0b96a9f8.jpeg)
+![image.png](../images/d64d13f8-0600-4d41-b958-cb3f0b96a9f8.jpg)
     
 ### 空间复杂度
 度量一个算法在运行过程中占用存储空间大小
@@ -29070,7 +29070,7 @@ const users = await Promise.all(ids.map(async (id) => await db.get(id)))
 
 具体分类枚举可以结合下图理解
 
-![image.png](https://static.ecool.fun//article/9ea8e675-8240-438a-b988-187c03dac21e.jpeg)
+![image.png](../images/9ea8e675-8240-438a-b988-187c03dac21e.jpg)
 
 接下来我们写下几个常见的经典排序
 
@@ -29184,7 +29184,7 @@ mergeSort(a); // [6, 25, 34, 76, 221, 232, 456]
 
 最后附上一张各排序算法统计对照表:
 
-![image.png](https://static.ecool.fun//article/139cfecc-7643-41c3-8b25-0113826c6ea6.jpeg)
+![image.png](../images/139cfecc-7643-41c3-8b25-0113826c6ea6.jpg)
 
 
 ## js中的sort方法
@@ -29894,7 +29894,7 @@ div:hover{
 
 **效果图：** 
 
-![在这里插入图片描述](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/17/1735b47d5cabe35b~tplv-t2oaga2asx-image.image)
+![在这里插入图片描述](../images/1735b47d5cabe35b_tplv-t2oaga2asx-image.gif)
 
 由上图可看出：鼠标移入移出时,`width`状态的变化是瞬间完成的。 
 
@@ -29914,7 +29914,7 @@ div:hover{
 
 **效果图：** 
 
-![在这里插入图片描述](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/17/1735b47d5de25bf8~tplv-t2oaga2asx-image.image)
+![在这里插入图片描述](../images/1735b47d5de25bf8_tplv-t2oaga2asx-image.gif)
 
 `transition: 1s;` 设置了`width`属性状态变化的过渡时间为1秒。 
 
@@ -29958,7 +29958,7 @@ div:hover{
 
 **效果图：** 
 
-![在这里插入图片描述](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/17/1735b47d834ba42c~tplv-t2oaga2asx-image.image)
+![在这里插入图片描述](../images/1735b47d834ba42c_tplv-t2oaga2asx-image.gif)
 
 ## 3. 原生`JS`动画
 
@@ -30090,7 +30090,7 @@ $(document).ready(function(){
 
 **效果图：** 
 
-![在这里插入图片描述](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/7/17/1735b47d89e475ad~tplv-t2oaga2asx-image.image)
+![在这里插入图片描述](../images/1735b47d89e475ad_tplv-t2oaga2asx-image.gif)
 
 ##  7. 使用`gif`图片
 
@@ -30509,7 +30509,7 @@ for (let [key, value] of iterEntries(myObj)) {
 
 浏览器的全部内容可以看成`DOM`，整个浏览器可以看成`BOM`。区别如下：
 
-![](https://static.ecool.fun//article/cb0c5ea4-db38-4753-812e-297289372881.png)
+![](../images/cb0c5ea4-db38-4753-812e-297289372881.png)
 ## 二、window
 
 `Bom`的核心对象是`window`，它表示浏览器的一个实例
@@ -30591,9 +30591,9 @@ http://foouser:barpassword@www.wrox.com:80/WileyCDA/?q=javascript#contents
 
 下表列出了`navigator`对象接口定义的属性和方法：
 
- ![](https://static.ecool.fun//article/546c5d88-2583-44b4-9d98-189cf23f3f42.png)
+ ![](../images/546c5d88-2583-44b4-9d98-189cf23f3f42.png)
 
- ![](https://static.ecool.fun//article/89452e1d-6aba-4b51-9587-5da493a116db.png)
+ ![](../images/89452e1d-6aba-4b51-9587-5da493a116db.png)
 
 
 
@@ -30601,7 +30601,7 @@ http://foouser:barpassword@www.wrox.com:80/WileyCDA/?q=javascript#contents
 
 保存的纯粹是客户端能力信息，也就是浏览器窗口外面的客户端显示器的信息，比如像素宽度和像素高度
 
- ![](https://static.ecool.fun//article/edcda89c-e6e1-4cb3-97e3-95478c640f59.png)
+ ![](../images/edcda89c-e6e1-4cb3-97e3-95478c640f59.png)
 
 
 
@@ -30832,7 +30832,7 @@ var b = 10;
 **参考答案**：
 先看浏览器中的执行结果：
 
-![](https://static.ecool.fun/others/619e2a00-4b97-4c4b-b4be-e8c847cc5dcb.png)
+![](../images/619e2a00-4b97-4c4b-b4be-e8c847cc5dcb.png)
 
 ## 解析
 
@@ -31220,7 +31220,7 @@ person1.sayName() // 'Tom'
 
 流程图如下：
 
- ![](https://static.ecool.fun//article/7004e072-f843-4db5-9501-a2311d81885a.png)
+ ![](../images/7004e072-f843-4db5-9501-a2311d81885a.png)
 
 
 
@@ -31302,7 +31302,7 @@ p.say() // huihui
     </div>
 ```
 
-![](https://static.ecool.fun//article/c3fdb11f-9b42-47af-841a-b933f383c6ee.jpeg)
+![](../images/c3fdb11f-9b42-47af-841a-b933f383c6ee.jpg)
 
 ## addEventListener
 
@@ -32791,7 +32791,7 @@ for(var i = 1; i <= 5; i ++){
 
 流程图如下：
 
- ![](https://static.ecool.fun//article/b6c951d9-ba0f-4d0c-b6e8-1155797f29a9.png)
+ ![](../images/b6c951d9-ba0f-4d0c-b6e8-1155797f29a9.png)
 
 下面举个例子：
 
@@ -32877,7 +32877,7 @@ xhr.send([body])
 
 关于`XMLHttpRequest.readyState`属性有五个状态，如下图显示
 
-![](https://static.ecool.fun//article/bd7bf527-914d-4195-82a0-d0f1ea28e00a.png)
+![](../images/bd7bf527-914d-4195-82a0-d0f1ea28e00a.png)
 
 只要 `readyState `属性值一变化，就会触发一次 `readystatechange` 事件
 
@@ -35293,7 +35293,7 @@ if (!String.prototype.repeat) {
 
 可视区域即我们浏览网页的设备肉眼可见的区域，如下图
 
- ![](https://static.ecool.fun//article/caa61e4f-745d-4519-9254-2c8e4640b536.png)
+ ![](../images/caa61e4f-745d-4519-9254-2c8e4640b536.png)
 
 在日常开发中，我们经常需要判断目标元素是否在视窗之内或者和视窗的距离小于一个值（例如 100 px），从而实现一些常用的功能，例如：
 
@@ -35318,7 +35318,7 @@ if (!String.prototype.repeat) {
 
 `offsetTop`，元素的上外边框至包含元素的上内边框之间的像素距离，其他`offset`属性如下图所示：
 
- ![](https://static.ecool.fun//article/617781ee-d43a-4173-a08f-e7a7312c97fd.png)
+ ![](../images/617781ee-d43a-4173-a08f-e7a7312c97fd.png)
 
 下面再来了解下`clientWidth`、`clientHeight`：
 
@@ -35386,7 +35386,7 @@ console.log(clientRect);
 
 属性对应的关系图如下所示：
 
- ![](https://static.ecool.fun//article/3c21ff35-b9e1-4009-920b-79460d148699.png)
+ ![](../images/3c21ff35-b9e1-4009-920b-79460d148699.png)
 
 当页面发生滚动的时候，`top`与`left`属性值都会随之改变
 
@@ -35859,7 +35859,7 @@ CSRF通常从第三方网站发起，被攻击的网站无法防止攻击发生�
 
 Sql 注入攻击，是通过将恶意的 `Sql `查询或添加语句插入到应用的输入参数中，再在后台 `Sql `服务器上解析执行进行的攻击
 
- ![](https://static.ecool.fun//article/91d30bea-31a8-42c5-8037-4aac3ef14669.png)
+ ![](../images/91d30bea-31a8-42c5-8037-4aac3ef14669.png)
 
 流程如下所示：
 
@@ -36693,7 +36693,7 @@ a.style.widht = "10px";
 
 SPA（single-page application），翻译过来就是单页应用`SPA`是一种网络应用程序或网站的模型，它通过动态重写当前页面来与用户交互，这种方法避免了页面之间切换打断用户体验在单页应用中，所有必要的代码（`HTML`、`JavaScript`和`CSS`）都通过单个页面的加载而检索，或者根据需要（通常是为响应用户操作）动态装载适当的资源并添加到页面页面在任何时间点都不会重新加载，也不会将控制转移到其他页面举个例子来讲就是一个杯子，早上装的牛奶，中午装的是开水，晚上装的是茶，我们发现，变的始终是杯子里的内容，而杯子始终是那个杯子结构如下图
 
- ![](https://static.ecool.fun//article/d35464ad-3571-4e60-852a-c65146180338.png)
+ ![](../images/d35464ad-3571-4e60-852a-c65146180338.png)
 
 我们熟知的JS框架如`react`,`vue`,`angular`,`ember`都属于`SPA`
 
@@ -36701,7 +36701,7 @@ SPA（single-page application），翻译过来就是单页应用`SPA`是一种�
 
 上面大家已经对单页面有所了解了，下面来讲讲多页应用MPA（MultiPage-page application），翻译过来就是多页应用在`MPA`中，每个页面都是一个主页面，都是独立的当我们在访问另一个页面的时候，都需要重新加载`html`、`css`、`js`文件，公共文件则根据需求按需加载如下图
 
- ![](https://static.ecool.fun//article/834320df-dc4b-4ab8-8794-3957ad6c6abc.png)
+ ![](../images/834320df-dc4b-4ab8-8794-3957ad6c6abc.png)
 
 #### 单页应用与多页应用的区别
 
@@ -36736,7 +36736,7 @@ SPA（single-page application），翻译过来就是单页应用`SPA`是一种�
 1.  监听地址栏中`hash`变化驱动界面变化
 2.  用`pushsate`记录浏览器的历史，驱动界面发送变化
 
- ![](https://static.ecool.fun//article/7f8f6dfb-74bb-4a6c-b81b-706d3555291d.png)
+ ![](../images/7f8f6dfb-74bb-4a6c-b81b-706d3555291d.png)
 
 #### 实现
 
@@ -36838,7 +36838,7 @@ miniRouter.push('/page2')  // page2
 
 原理是通过`Nginx`配置，判断访问来源是否为爬虫，如果是则搜索引擎的爬虫请求会转发到一个`node server`，再通过`PhantomJS`来解析完整的`HTML`，返回给爬虫。下面是大致流程图
 
- ![](https://static.ecool.fun//article/3777728d-9583-4965-abc2-582e1b56afa3.png)
+ ![](../images/3777728d-9583-4965-abc2-582e1b56afa3.png)
 
 
 **要点**：

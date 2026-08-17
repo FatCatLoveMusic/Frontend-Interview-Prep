@@ -30,7 +30,7 @@
 <li>git pull 命令用于从另一个存储库或本地分支获取并集成(整合)</li>
 </ul>
 <p>再来看一次<code>git</code>的工作流程图，如下所示：</p>
-<p> ![](https://static.ecool.fun//article/5d0c6486-de49-41ef-8c47-127effbb4871.png)</p>
+<p> <img src="../images/5d0c6486-de49-41ef-8c47-127effbb4871.png" alt="" loading="lazy"></p>
 <p>可以看到，<code>git fetch</code>是将远程主机的最新内容拉到本地，用户在检查了以后决定是否合并到工作本机分支中</p>
 <p>而<code>git pull</code> 则是将远程主机的最新内容拉下来后直接合并，即：<code>git pull = git fetch + git merge</code>，这样可能会产生冲突，需要手动解决</p>
 <p>在我们本地的<code>git</code>文件中对应也存储了<code>git</code>本地仓库分支的<code>commit ID </code>和 跟踪的远程分支的<code>commit ID</code>，对应文件如下：</p>
@@ -41,10 +41,10 @@
 <p>使用 <code>git fetch</code>更新代码，本地的库中<code>master</code>的<code>commitID</code>不变</p>
 <p>但是与<code>git</code>上面关联的那个<code>orign/master</code>的<code>commit ID</code>发生改变</p>
 <p>这时候我们本地相当于存储了两个代码的版本号，我们还要通过<code>merge</code>去合并这两个不同的代码版本</p>
-<p> ![](https://static.ecool.fun//article/0ac4ead1-f10d-40fd-80fe-02734514900c.png)</p>
+<p> <img src="../images/0ac4ead1-f10d-40fd-80fe-02734514900c.png" alt="" loading="lazy"></p>
 <p>也就是<code>fetch</code>的时候本地的<code>master</code>没有变化，但是与远程仓关联的那个版本号被更新了，接下来就是在本地<code>merge</code>合并这两个版本号的代码</p>
 <p>相比之下，使用<code>git pull</code>就更加简单粗暴，会将本地的代码更新至远程仓库里面最新的代码版本，如下图：</p>
-<p> ![](https://static.ecool.fun//article/df8f2046-eeb7-4c47-ad17-faeaa9653771.png)</p>
+<p> <img src="../images/df8f2046-eeb7-4c47-ad17-faeaa9653771.png" alt="" loading="lazy"></p>
 <h3>二、用法</h3>
 <p>一般远端仓库里有新的内容更新，当我们需要把新内容下载的时候，就使用到<code>git pull</code>或者<code>git fetch</code>命令</p>
 <h4>fetch</h4>

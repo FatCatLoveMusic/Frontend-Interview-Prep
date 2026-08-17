@@ -90,7 +90,7 @@ var climbStairs = function(n) {
 
 我们得到了这个递推数列的通项公式：
 
-![WX20220320-194804.png](https://static.ecool.fun//article/03dc37f9-0de5-4957-9d3d-bf5014c29c4a.png)
+![WX20220320-194804.png](../images/03dc37f9-0de5-4957-9d3d-bf5014c29c4a.png)
 
 ```js
 var climbStairs = function(n) {
@@ -516,7 +516,7 @@ var lengthOfLongestSubstring = function(s) {
 
 **示例 1：**
 
-![image.png](https://pic.rmb.bdstatic.com/bjh/d0120f6dcc249b00a8a6c6cc5df878d0.png)
+![image.png](../images/d0120f6dcc249b00a8a6c6cc5df878d0.png)
 
 **输入：** hour = 12, minutes = 30
 
@@ -524,7 +524,7 @@ var lengthOfLongestSubstring = function(s) {
 
 **示例 2：**
 
-![image.png](https://pic.rmb.bdstatic.com/bjh/481eaa09c42b10bc5b16f608063d818c.png)
+![image.png](../images/481eaa09c42b10bc5b16f608063d818c.png)
 
 **输入：** hour = 3, minutes = 30
 
@@ -532,7 +532,7 @@ var lengthOfLongestSubstring = function(s) {
 
 **示例 3：**
 
-![image.png](https://pic.rmb.bdstatic.com/bjh/c12b35ca6dc6462b4460a8e7dbfdeae0.png)
+![image.png](../images/c12b35ca6dc6462b4460a8e7dbfdeae0.png)
 
 **输入：** hour = 3, minutes = 15
 
@@ -776,7 +776,7 @@ var countSubstrings = function(s) {
 
 **示例 1：**
 
-![](https://assets.leetcode.com/uploads/2021/01/04/list1.jpg) 
+![](../images/list1.jpg) 
 
 
 **输入：** head = [1,1,2]
@@ -784,7 +784,7 @@ var countSubstrings = function(s) {
 
 **示例 2：**
 
-![](https://assets.leetcode.com/uploads/2021/01/04/list2.jpg) 
+![](../images/list2.jpg) 
 
 
 **输入：** head = [1,1,2,3,3]
@@ -909,11 +909,11 @@ var maxSubArray = function(nums) {
 
 我们用 `f(i)` 代表以第 `i` 个数结尾的「连续子数组的最大和」，那么很显然我们要求的答案就是：
 
-![image.png](https://static.ecool.fun//article/9015919d-f6c8-4b2c-aba5-9ee90986b235.png)
+![image.png](../images/9015919d-f6c8-4b2c-aba5-9ee90986b235.png)
 
 因此我们只需要求出每个位置的 `f(i)`，然后返回 `f` 数组中的最大值即可。那么我们如何求 `f(i)` 呢？我们可以考虑 `nums[i]` 单独成为一段还是加入 `f(i-1)` 对应的那一段，这取决于 `nums[i]` 和 `f(i-1) + nums[i]` 的大小，我们希望获得一个比较大的，于是可以写出这样的动态规划转移方程：
 
-![image.png](https://static.ecool.fun//article/98994b34-7f5c-411b-be8f-d5e0b1a2d125.png)
+![image.png](../images/98994b34-7f5c-411b-be8f-d5e0b1a2d125.png)
 
 不难给出一个时间复杂度 `O(n)`、空间复杂度 `O(n)` 的实现，即用一个 `f` 数组来保存 `f(i)` 的值，用一个循环求出所有 `f(i)`。考虑到 `f(i)` 只和 `f(i-1)` 相关，于是我们可以只用一个变量 `pre` 来维护对于当前 `f(i)` 的 `f(i-1)` 的值是多少，从而让空间复杂度降低到 `O(1)`，这有点类似「滚动数组」的思想。
 
@@ -1153,7 +1153,7 @@ var findKthLargest = function(nums, k) {
 
 **示例 1：**
 
-![](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg) 
+![](../images/tree1.jpg) 
 
 
 **输入：**root = [3,9,20,null,null,15,7]
@@ -1365,7 +1365,7 @@ PS：面试题由 “[前端面试题宝典（https://fe.ecool.fun/）](https://
 
 **示例 1：**
 
-![](https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg)
+![](../images/invert1-tree.jpg)
 
 
 **输入：** root = [4,2,7,1,3,6,9]
@@ -1374,7 +1374,7 @@ PS：面试题由 “[前端面试题宝典（https://fe.ecool.fun/）](https://
 
 **示例 2：**
 
-![](https://assets.leetcode.com/uploads/2021/03/14/invert2-tree.jpg)
+![](../images/invert2-tree.jpg)
 
 
 **输入：** root = [2,1,3]
@@ -1618,7 +1618,7 @@ _如果链表中存在环_ ，则返回 `true` 。 否则，返回 `false` 。
 
 **示例 1：**
 
-![](https://static.ecool.fun/article/aefe67d2-1969-41a6-acc9-0c03a901302f.png)
+![](../images/aefe67d2-1969-41a6-acc9-0c03a901302f.png)
 
 **输入：** head = [3,2,0,-4], pos = 1
 **输出：** true
@@ -1626,7 +1626,7 @@ _如果链表中存在环_ ，则返回 `true` 。 否则，返回 `false` 。
 
 **示例 2：**
 
-![](https://static.ecool.fun/article/ba5d3f1b-fad9-4343-8caa-77624e0894d3.png)
+![](../images/ba5d3f1b-fad9-4343-8caa-77624e0894d3.png)
 
 **输入：** head = [1,2], pos = 0
 **输出：** true
@@ -1634,7 +1634,7 @@ _如果链表中存在环_ ，则返回 `true` 。 否则，返回 `false` 。
 
 **示例 3：**
 
-![](https://static.ecool.fun/article/427b79ba-bc65-4e4e-aa35-30885de75b73.png)
+![](../images/427b79ba-bc65-4e4e-aa35-30885de75b73.png)
 
 **输入：** head = [1], pos = -1
 **输出：** false
@@ -2413,7 +2413,7 @@ function isPossible(piles, H, K) {
 
 **示例 1：**
 
-![](https://pic.rmb.bdstatic.com/bjh/f887a426462de1984fe2ec643db1051e.png) 
+![](../images/f887a426462de1984fe2ec643db1051e.png) 
 
 
 **输入：** root = [3,9,20,null,null,15,7]
@@ -2756,7 +2756,7 @@ var getLeastNumbers = function(arr, k) {
 
 **示例 1：**
 
-![](https://pic.rmb.bdstatic.com/bjh/b55182231d6c4c2a26069ba9b80483ad.png) 
+![](../images/b55182231d6c4c2a26069ba9b80483ad.png) 
 
 
 **输入：** matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
@@ -2765,7 +2765,7 @@ var getLeastNumbers = function(arr, k) {
 
 **示例 2：**
 
-![](https://pic.rmb.bdstatic.com/bjh/c17493cc0065ece0f4fd02fbea646eee.png) 
+![](../images/c17493cc0065ece0f4fd02fbea646eee.png) 
 
 **输入：** matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13
 
@@ -3172,7 +3172,7 @@ var singleNumber = function(nums) {
 
 **示例 1：**
 
-![](https://static.ecool.fun/article/771e5d00-61f3-49a7-9d57-ccde4ae5358a.png) 
+![](../images/771e5d00-61f3-49a7-9d57-ccde4ae5358a.png) 
 
 
 **输入：** root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
@@ -3183,7 +3183,7 @@ var singleNumber = function(nums) {
 
 **示例 2：**
 
-![](https://static.ecool.fun/article/771e5d00-61f3-49a7-9d57-ccde4ae5358a.png) 
+![](../images/771e5d00-61f3-49a7-9d57-ccde4ae5358a.png) 
 
 
 **输入：** root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
@@ -3229,7 +3229,7 @@ var lowestCommonAncestor = function(root, p, q) {
 - 我们使用递归，当节点为null或者节点等于p或q向上返回此节点。
 - 在结果向上回溯的过程中，要对左右节点的返回值进行判断：
   1. 如果左右节点返回的值都不为null（如图中紫色箭头所示）， 
-![image.png](https://static.ecool.fun/article/d088d5a5-e713-4117-977d-5030c527024e.png)
+![image.png](../images/d088d5a5-e713-4117-977d-5030c527024e.png)
 
 # 复杂度
 
@@ -3545,7 +3545,7 @@ var minDistance = function (word1, word2) {
 
 **示例 1：**
 
-![](https://pic.rmb.bdstatic.com/bjh/8771ad1c0da043e18c975fe618d70489.png)
+![](../images/8771ad1c0da043e18c975fe618d70489.png)
 
 
 **输入：** root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22
@@ -3553,7 +3553,7 @@ var minDistance = function (word1, word2) {
 
 **示例 2：**
 
-![](https://pic.rmb.bdstatic.com/bjh/2c1a1aabf2e37caf1fb5d7f5b3efd5f6.png)
+![](../images/2c1a1aabf2e37caf1fb5d7f5b3efd5f6.png)
 
 
 **输入：** root = [1,2,3], targetSum = 5
@@ -3751,7 +3751,7 @@ var twoSum = function(nums, target) {
 
 * 示例 1：
 
-![image.png](https://i.loli.net/2021/09/05/68MQqU7exR4YzTr.png)
+![image.png](../images/68MQqU7exR4YzTr.png)
 
 ```
 输入：l1 = [2,4,3], l2 = [5,6,4]
@@ -4751,7 +4751,7 @@ var reverseList = function(head) {
 
 **示例 1：**
 
-![](https://assets.leetcode.com/uploads/2021/01/18/pathsum1.jpg) 
+![](../images/pathsum1.jpg) 
 
 
 **输入：** root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
@@ -4762,7 +4762,7 @@ var reverseList = function(head) {
 
 **示例 2：**
 
-![](https://assets.leetcode.com/uploads/2021/01/18/pathsum2.jpg) 
+![](../images/pathsum2.jpg) 
 
 
 **输入：** root = [1,2,3], targetSum = 5
@@ -4939,7 +4939,7 @@ var addStrings = function(num1, num2) {
 
 本题我们只需要对两个大整数模拟「竖式加法」的过程。竖式加法就是我们平常学习生活中常用的对两个整数相加的方法，回想一下我们在纸上对两个整数相加的操作，是不是如下图将相同数位对齐，从低到高逐位相加，如果当前位和超过 $10$，则向高位进一位？因此我们只要将这个过程用代码写出来即可。
 
-![fig1](https://static.ecool.fun//article/eb044344-8910-4cc7-918a-28e8dab4061d.png)
+![fig1](../images/eb044344-8910-4cc7-918a-28e8dab4061d.png)
 
 具体实现也不复杂，我们定义两个指针 `i` 和 `j` 分别指向 `num1` 和 `num2` 的末尾，即最低位，同时定义一个变量 `add` 维护当前是否有进位，然后从末尾到开头逐位相加即可。你可能会想两个数字位数不同怎么处理，这里我们统一在指针当前下标处于负数的时候返回 `0`，等价于 **对位数较短的数字进行了补零操作**，这样就可以除去两个数字位数不同情况的处理，具体可以看下面的代码。
 

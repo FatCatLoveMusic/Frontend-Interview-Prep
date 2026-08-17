@@ -28,7 +28,7 @@
 <p>SSO的定义是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统</p>
 <p>SSO 一般都需要一个独立的认证中心（passport），子系统的登录均得通过<code>passport</code>，子系统本身将不参与登录操作</p>
 <p>当一个系统成功登录以后，<code>passport</code>将会颁发一个令牌给各个子系统，子系统可以拿着令牌会获取各自的受保护资源，为了减少频繁认证，各个子系统在被<code>passport</code>授权以后，会建立一个局部会话，在一定时间内可以无需再次向<code>passport</code>发起认证</p>
-<p> ![](https://static.ecool.fun//article/cb203c78-06bb-46cf-8d6f-1af165833421.png)</p>
+<p> <img src="../images/cb203c78-06bb-46cf-8d6f-1af165833421.png" alt="" loading="lazy"></p>
 <p>上图有四个系统，分别是<code>Application1</code>、<code>Application2</code>、<code>Application3</code>、和<code>SSO</code>，当<code>Application1</code>、<code>Application2</code>、<code>Application3</code>需要登录时，将跳到<code>SSO</code>系统，<code>SSO</code>系统完成登录，其他的应用系统也就随之登录了</p>
 <h5>举个例子</h5>
 <p>淘宝、天猫都属于阿里旗下，当用户登录淘宝后，再打开天猫，系统便自动帮用户登录了天猫，这种现象就属于单点登录</p>
@@ -74,7 +74,7 @@ window.addEventListener('message', function (event) {
 <p>此种实现方式完全由前端控制，几乎不需要后端参与，同样支持跨域</p>
 <h3>三、流程</h3>
 <p>单点登录的流程图如下所示：</p>
-<p> ![](https://static.ecool.fun//article/157c2946-2430-4409-b1e5-4ca2a0a092f2.png)</p>
+<p> <img src="../images/157c2946-2430-4409-b1e5-4ca2a0a092f2.png" alt="" loading="lazy"></p>
 <ul>
 <li>用户访问系统1的受保护资源，系统1发现用户未登录，跳转至sso认证中心，并将自己的地址作为参数</li>
 </ul>

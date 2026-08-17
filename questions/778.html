@@ -34,7 +34,7 @@
 <p>应用在命令中，就是<code>push</code>、<code>pull</code>、<code>stash</code>、<code>rebase</code>等命令下都有可能产生冲突情况，从本质上来讲，都是<code>merge</code>和<code>patch</code>（应用补丁）时产生冲突</p>
 <h3>二、分析</h3>
 <p>在本地主分值<code>master</code>创建一个<code>a.txt</code>文件，文件起始位置写上<code>master commit</code>，如下：</p>
-<p> ![](https://static.ecool.fun//article/8713520d-3dbf-44bc-8076-60154dcbe04a.png)</p>
+<p> <img src="../images/8713520d-3dbf-44bc-8076-60154dcbe04a.png" alt="" loading="lazy"></p>
 <p>然后提交到仓库：</p>
 <ul>
 <li>git add a.txt</li>
@@ -53,15 +53,15 @@
 <p>如果此时切换到<code>featurel</code>分支，将文件的内容修改成<code>featrue second commit</code>，然后提交到本地仓库</p>
 <p>然后切换到主分支，如果此时在<code>a.txt</code>文件再次修改，修改成<code>mastet second commit</code>，然后再次提交到本地仓库</p>
 <p>此时，<code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了下图所示：</p>
-<p> ![](https://static.ecool.fun//article/86efa296-626b-45b3-9ea3-0773fab8fa51.png)</p>
+<p> <img src="../images/86efa296-626b-45b3-9ea3-0773fab8fa51.png" alt="" loading="lazy"></p>
 <p>这种情况下，无法执行快速合并，只能试图把各自的修改合并起来，但这种合并就可能会有冲突</p>
 <p>现在通过<code>git merge featurel</code>进行分支合并，如下所示：</p>
-<p> ![](https://static.ecool.fun//article/dd098f38-9cab-4779-be69-dc527ca69272.png)</p>
+<p> <img src="../images/dd098f38-9cab-4779-be69-dc527ca69272.png" alt="" loading="lazy"></p>
 <p>从冲突信息可以看到，<code>a.txt</code>发生冲突，必须手动解决冲突之后再提交</p>
 <p>而<code>git status</code>同样可以告知我们冲突的文件：</p>
-<p> ![](https://static.ecool.fun//article/160655f5-4fd7-499e-8f6e-a05b8b6b9c70.png)</p>
+<p> <img src="../images/160655f5-4fd7-499e-8f6e-a05b8b6b9c70.png" alt="" loading="lazy"></p>
 <p>打开<code>a.txt</code>文件，可以看到如下内容：</p>
-<p> ![](https://static.ecool.fun//article/bbaa45f2-fa9b-459b-9d89-7762c3b5b65d.png)</p>
+<p> <img src="../images/bbaa45f2-fa9b-459b-9d89-7762c3b5b65d.png" alt="" loading="lazy"></p>
 <p><code>git</code>用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容：</p>
 <ul>
 <li>&lt;&lt;&lt;&lt;&lt;&lt;&lt; 和 ======= 之间的区域就是当前更改的内容</li>
@@ -73,9 +73,9 @@
 <li>git commit -m &quot;conflict fixed&quot;</li>
 </ul>
 <p>此时<code>master</code>分支和<code>feature1</code>分支变成了下图所示：</p>
-<p> ![](https://static.ecool.fun//article/5b347556-94ef-4d0b-81a9-dfb4cb853f54.png)</p>
+<p> <img src="../images/5b347556-94ef-4d0b-81a9-dfb4cb853f54.png" alt="" loading="lazy"></p>
 <p>使用<code>git log</code>命令可以看到合并的信息：</p>
-<p> ![](https://static.ecool.fun//article/9bcad801-ec00-49a9-80da-360ec1b54e57.png)</p>
+<p> <img src="../images/9bcad801-ec00-49a9-80da-360ec1b54e57.png" alt="" loading="lazy"></p>
 <h3>三、总结</h3>
 <p>当<code>Git</code>无法自动合并分支时，就必须首先解决冲突，解决冲突后，再提交，合并完成</p>
 <p>解决冲突就是把<code>Git</code>合并失败的文件手动编辑为我们希望的内容，再提交</p>

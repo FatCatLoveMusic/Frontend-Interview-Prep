@@ -24,7 +24,7 @@
     <section class="q-block q-block-answer">
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><p>大家在使用 <code>useEffect</code> 的时候，假如回调函数中使用 <code>async...await...</code> 的时候，会报错如下。</p>
-<p>![](https://static.ecool.fun//article/80b204af-8c56-4a16-9f8e-9dcb668df746.jpeg)</p>
+<p><img src="../images/80b204af-8c56-4a16-9f8e-9dcb668df746.jpg" alt="" loading="lazy"></p>
 <p>看报错，我们知道 <code>effect function</code> 应该返回一个销毁函数（<code>return</code>返回的 <code>cleanup</code> 函数），如果 <code>useEffect</code> 第一个参数传入 <code>async</code>，返回值则变成了 <code>Promise</code>，会导致 <code>react</code> 在调用销毁函数的时候报错**。</p>
 <h3>React 为什么要这么做？</h3>
 <p><code>useEffect</code> 作为 <code>Hooks</code> 中一个很重要的 <code>Hooks</code>，可以让你在函数组件中执行副作用操作。</p>
@@ -112,7 +112,7 @@
   }, dependencies)
 }</code></pre>
 <p>这种做法在github上也有讨论，上面有个大神的说法我表示很赞同：</p>
-<p>![](https://static.ecool.fun//article/64a79134-5af9-4a55-9a84-4376a94d5149.jpeg)</p>
+<p><img src="../images/64a79134-5af9-4a55-9a84-4376a94d5149.jpg" alt="" loading="lazy"></p>
 <p>他认为这种<strong>延迟清除机制</strong>是不对的，应该是一种<strong>取消机制</strong>。否则，在钩子已经被取消之后，回调函数仍然有机会对外部状态产生影响。他的实现和例子我也贴一下，跟 <code>useAsyncEffect</code> 其实思路是一样的，如下：</p>
 <p>实现：</p>
 <pre class="code-block"><code>function useAsyncEffect(effect: (isCanceled: () =&gt; boolean) =&gt; Promise&lt;void&gt;, dependencies?: any[]) {

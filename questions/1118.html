@@ -36,10 +36,10 @@
 <h3>DOM树如何生成</h3>
 <p>HTML 解析器（HTMLParser）： 负责将 HTML 字节流转换为 DOM 结构。</p>
 <p>那么网络进程是如何将数据传给HTML解析器的呢？</p>
-<p>!<a href="https://static.ecool.fun//article/415bb61f-4f46-42b2-a4bd-368330a35008.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/415bb61f-4f46-42b2-a4bd-368330a35008.jpg" alt="image.png" loading="lazy"></p>
 <p>从图中我们可以知道，网络进程和渲染进程之间有一个共享数据通道，网络进程加载了多少数据， 就将数据传给HTML解析器进行解析。</p>
 <p>HTML解析器接收到数据（字节流）之后，字节流将转化成DOM，过程如下：</p>
-<p>!<a href="https://static.ecool.fun//article/6d45bc73-38cb-4dc2-aa61-3d235a6ffca1.jpeg" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/6d45bc73-38cb-4dc2-aa61-3d235a6ffca1.jpg" alt="image.png" loading="lazy"></p>
 <p><strong>有三个阶段</strong>：</p>
 <p>1、通过分词器将字节流转化为Token。 分词器先将字节流转换为一个个 Token，分为 Tag Token 和文本 Token。</p>
 <p>注意，这里的Token并不是我们之前理解的Token，这里就是一个片段。</p>

@@ -28,7 +28,7 @@
 <p>在上篇文章中，了解到了<code>Redux</code>整个工作流程，当<code>action</code>发出之后，<code>reducer</code>立即算出<code>state</code>，整个过程是一个同步的操作</p>
 <p>那么如果需要支持异步操作，或者支持错误处理、日志监控，这个过程就可以用上中间件</p>
 <p><code>Redux</code>中，中间件就是放在就是在<code>dispatch</code>过程，在分发<code>action</code>进行拦截处理，如下图：</p>
-<p> ![](https://static.ecool.fun//article/dd0c2f66-095e-422b-bb79-0332e5d3a909.png)</p>
+<p> <img src="../images/dd0c2f66-095e-422b-bb79-0332e5d3a909.png" alt="" loading="lazy"></p>
 <p>其本质上一个函数，对<code>store.dispatch</code>方法进行了改造，在发出 <code>Action </code>和执行 <code>Reducer </code>这两步之间，添加了其他功能</p>
 <h3>二、常用的中间件</h3>
 <p>有很多优秀的<code>redux</code>中间件，如：</p>

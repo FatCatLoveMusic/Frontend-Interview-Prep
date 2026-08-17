@@ -31,16 +31,16 @@
 }
 
 const [a,b] = obj</code></pre>
-<p>![](https://static.ecool.fun//article/2e0932fb-2f62-41b7-b1cc-17df3a831f50.jpeg)</p>
+<p><img src="../images/2e0932fb-2f62-41b7-b1cc-17df3a831f50.jpg" alt="" loading="lazy"></p>
 <p>运行之后打开控制台可以发现报错信息，它告诉我们obj这个对象是不可迭代的，那么我们想办法把obj变成可迭代的是不是就能解决这个问题，这要怎么做呢？想要搞明白这点我们需要先了解一下可迭代协议。</p>
 <p><strong>可迭代协议的概念（</strong> <strong>MDN</strong> <strong>）</strong></p>
 <blockquote>可迭代协议允许 JavaScript 对象定义或定制它们的迭代行为，例如，在一个 <code>for..of</code> 结构中，哪些值可以被遍历到。一些内置类型同时是[内置的可迭代对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols#%E5%86%85%E7%BD%AE%E7%9A%84%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1 &quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols#%E5%86%85%E7%BD%AE%E7%9A%84%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1&quot;)，并且有默认的迭代行为，比如 <code>Array</code> 或者 <code>Map</code>，而其他内置类型则不是（比如 <code>Object</code>）。&lt;br&gt;&lt;br&gt;要成为可迭代对象，该对象必须实现 <code>@@iterator</code> 方法，这意味着对象（或者它[原型链](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain &quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain&quot;)上的某个对象）必须有一个键为 <code>@@iterator</code> 的属性，可通过常量 <code>Symbol.iterator</code> 访问该属性：&lt;br&gt;&lt;br&gt;<code>[Symbol.iterator]</code>&lt;br&gt;&lt;br&gt;一个无参数的函数，其返回值为一个符合[迭代器协议](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%8D%8F%E8%AE%AE &quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%8D%8F%E8%AE%AE&quot;)的对象。&lt;br&gt;&lt;br&gt;当一个对象需要被迭代的时候（比如被置入一个 <code>for...of</code> 循环时），首先，会不带参数调用它的 <code>@@iterator</code> 方法，然后使用此方法返回的迭代器获得要迭代的值。</blockquote>
 <p>说人话就是，要想让obj成为一个可迭代的对象，就需要它实现 <code>@@iterator</code> 方法，具体表现为对象身上要有一个名为<code>[Symbol.iterator]</code> 的方法。而数组和Map则是一开始就有这个方法，所以它们是可迭代的。而对象身上则没有这个默认行为，所以不可迭代。真的是这样吗？我们创建一个数组，看看数组身上到底有没有<code>[Symbol.iterator]</code> 方法。</p>
 <pre class="code-block"><code>const array = [1,2,3]
 console.log(array)</code></pre>
-<p>![](https://static.ecool.fun//article/2174c1e1-7964-41ef-830e-22e876aa652b.jpeg)</p>
+<p><img src="../images/2174c1e1-7964-41ef-830e-22e876aa652b.jpg" alt="" loading="lazy"></p>
 <p>点开原型查看</p>
-<p>![](https://static.ecool.fun//article/0412f825-a681-48fb-905e-886514b24402.jpeg)</p>
+<p><img src="../images/0412f825-a681-48fb-905e-886514b24402.jpg" alt="" loading="lazy"></p>
 <p>发现真的有一个Symbol.iterator()方法，该方法会返回一个迭代器对象。我们来调用一下</p>
 <pre class="code-block"><code>const array = [1,2,3]
 const iterator = array[Symbol.iterator]()
@@ -49,7 +49,7 @@ console.log(iterator.next())
 console.log(iterator.next())
 console.log(iterator.next())
 console.log(iterator.next())</code></pre>
-<p>![](https://static.ecool.fun//article/c0a94fec-8c05-43dc-9039-2b838abfa11c.jpeg)</p>
+<p><img src="../images/c0a94fec-8c05-43dc-9039-2b838abfa11c.jpg" alt="" loading="lazy"></p>
 <p>打印iterator对象后发现在它的原型上有一个next()方法，调用next()方法，会得到一个对象value就是当前迭代的值，done则代表当前迭代器是否已经迭代完成。</p>
 <p><strong>数组</strong> <strong>解构</strong> <strong>的本质</strong></p>
 <pre class="code-block"><code>const array = [1,2,3]

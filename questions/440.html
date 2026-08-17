@@ -26,7 +26,7 @@
       <div class="q-block-body"><p>我们都知道TCP是面向连接的，`<code>三次握手</code><code>就是用来建立连接的，</code><code>四次握手</code>`就是用来断开连接的。</p>
 <h2>三次握手</h2>
 <p>先上图：</p>
-<p>!<a href="https://static.ecool.fun//article/9a807886-899e-4778-a7a8-82c70e0b3bb1.jpeg" target="_blank" rel="noopener">三次握手</a></p>
+<p><img src="../images/9a807886-899e-4778-a7a8-82c70e0b3bb1.jpg" alt="三次握手" loading="lazy"></p>
 <p>我们来看一下三次握手的过程：</p>
 <ul>
 <li>一开始，客户端和服务端都处于 <code>CLOSED</code> 状态。客户端主动打开连接，服务端被动打卡连接，结束`<code>CLOSED</code><code> z状态，开始监听，进入 </code><code>LISTEN </code>`状态。</li>
@@ -55,14 +55,14 @@
 <p>如果没有第三次握手告诉服务器端客户端收的到服务器端传输的数据的话，服务器端是不知道客户端有没有接收到服务器端返回的信息的。服务端就认为这个连接是可用的，端口就一直开着，等到客户端因超时重新发出请求时，服务器就会重新开启一个端口连接。</p>
 <p>这样一来，就会有很多无效的连接端口白白地开着，导致资源的浪费。</p>
 <p>这个过程可理解为：</p>
-<p>!<a href="https://static.ecool.fun//article/fcfb9df2-a81a-456e-b57c-181dd857a834.jpeg" target="_blank" rel="noopener">非三次握手-有差错情况</a></p>
+<p><img src="../images/fcfb9df2-a81a-456e-b57c-181dd857a834.jpg" alt="非三次握手-有差错情况" loading="lazy"></p>
 <p>还有一种情况是已经失效的客户端发出的请求信息，由于某种原因传输到了服务器端，服务器端以为是客户端发出的有效请求，接收后产生错误。</p>
-<p>!<a href="https://static.ecool.fun//article/b130849f-e1c9-4201-8323-cef078e215ff.jpeg" target="_blank" rel="noopener">失效请求</a></p>
+<p><img src="../images/b130849f-e1c9-4201-8323-cef078e215ff.jpg" alt="失效请求" loading="lazy"></p>
 <p>所以我们需要“第三次握手”来确认这个过程：</p>
 <p>通过第三次握手的数据告诉服务端，客户端有没有收到服务器“第二次握手”时传过去的数据，以及这个连接的序号是不是有效的。若发送的这个数据是“`<code>收到且没有问题</code>`”的信息，接收后服务器就正常建立 TCP 连接，否则建立 TCP  连接失败，服务器关闭连接端口。由此减少服务器开销和接收到失效请求发生的错误。</p>
 <h2>四次挥手</h2>
 <p>还是先上图：</p>
-<p>!<a href="https://static.ecool.fun//article/c3a3573d-e43a-4357-b158-44d09f31cfba.jpeg" target="_blank" rel="noopener">四次挥手示意图</a></p>
+<p><img src="../images/c3a3573d-e43a-4357-b158-44d09f31cfba.jpg" alt="四次挥手示意图" loading="lazy"></p>
 <p>聚散终有时，TCP 断开连接是通过<strong>四次挥手</strong>方式。</p>
 <p>`<code>双方</code>`都可以主动断开连接，断开连接后主机中的「资源」将被释放。</p>
 <p>上图是客户端主动关闭连接 ：</p>

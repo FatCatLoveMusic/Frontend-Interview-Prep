@@ -32,7 +32,7 @@
 <li>Eval 函数执行上下文： 指的是运行在 <code>eval</code> 函数中的代码，很少用而且不建议使用</li>
 </ul>
 <p>下面给出全局上下文和函数上下文的例子：</p>
-<p> ![](https://static.ecool.fun//article/dd48614d-e230-48e1-9ad4-e8d985420fbf.png)</p>
+<p> <img src="../images/dd48614d-e230-48e1-9ad4-e8d985420fbf.png" alt="" loading="lazy"></p>
 <p>紫色框住的部分为全局上下文，蓝色和橘色框起来的是不同的函数上下文。只有全局上下文（的变量）能被其他任何上下文访问</p>
 <p>可以有任意多个函数上下文，每次调用函数创建一个新的上下文，会创建一个私有作用域，函数内部声明的任何变量都不能在当前函数作用域外部直接访问</p>
 <h3>二、生命周期</h3>
@@ -152,7 +152,7 @@ FunctionExectionContext = {
 <p>执行上下文出栈等待虚拟机回收执行上下文</p>
 <h3>二、执行栈</h3>
 <p>执行栈，也叫调用栈，具有 LIFO（后进先出）结构，用于存储在代码执行期间创建的所有执行上下文</p>
-<p> ![](https://static.ecool.fun//article/2c9b5dd1-450d-48fd-b22f-bfba63506111.png)</p>
+<p> <img src="../images/2c9b5dd1-450d-48fd-b22f-bfba63506111.png" alt="" loading="lazy"></p>
 <p>当<code>Javascript</code>引擎开始执行你第一行脚本代码的时候，它就会创建一个全局执行上下文然后将它压到执行栈中</p>
 <p>每当引擎碰到一个函数的时候，它就会创建一个函数执行上下文，然后将这个执行上下文压到执行栈中</p>
 <p>引擎会执行位于执行栈栈顶的执行上下文(一般是函数执行上下文)，当该函数执行结束后，对应的执行上下文就会被弹出，然后控制流程到达执行栈的下一个执行上下文</p>
@@ -169,7 +169,7 @@ function second() {
 first();
 console.log('Inside Global Execution Context');</code></pre>
 <p>转化成图的形式</p>
-<p> ![](https://static.ecool.fun//article/76b38335-fbef-4b39-b024-c8526b250dca.png)</p>
+<p> <img src="../images/76b38335-fbef-4b39-b024-c8526b250dca.png" alt="" loading="lazy"></p>
 <p>简单分析一下流程：</p>
 <ul>
 <li>创建全局上下文请压入执行栈</li>

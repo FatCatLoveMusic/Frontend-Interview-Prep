@@ -38,7 +38,7 @@
 <h5>分片上传</h5>
 <p>分片上传，就是将所要上传的文件，按照一定的大小，将整个文件分隔成多个数据块（Part）来进行分片上传</p>
 <p>如下图</p>
-<p> ![](https://static.ecool.fun//article/601be6fe-4b6e-420b-b88a-0e54be051d02.png)</p>
+<p> <img src="../images/601be6fe-4b6e-420b-b88a-0e54be051d02.png" alt="" loading="lazy"></p>
 <p>上传完之后再由服务端对所有上传的文件进行汇总整合成原始的文件</p>
 <p>大致流程如下：</p>
 <ol>
@@ -59,7 +59,7 @@
 <p>如果中途上传中断过，下次上传的时候根据当前临时文件大小，作为在客户端读取文件的偏移量，从此位置继续读取文件数据块，上传到服务器从此偏移量继续写入文件即可</p>
 <h3>二、实现思路</h3>
 <p>整体思路比较简单，拿到文件，保存文件唯一性标识，切割文件，分段上传，每次上传一段，根据唯一性标识判断文件上传进度，直到文件的全部片段上传完毕</p>
-<p>![](https://static.ecool.fun//article/a9b201e1-12dc-4598-a7a1-205a15d573f2.png)</p>
+<p><img src="../images/a9b201e1-12dc-4598-a7a1-205a15d573f2.png" alt="" loading="lazy"></p>
 <p>下面的内容都是伪代码</p>
 <p>读取文件内容：</p>
 <pre class="code-block"><code>const input = document.querySelector('input');

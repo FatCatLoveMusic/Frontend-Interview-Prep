@@ -186,7 +186,7 @@ Vue生命周期总共可以分为8个阶段：创建前后, 载入前后,更新�
 
 `Vue`生命周期流程图
 
- ![](https://static.ecool.fun//article/a3ce0701-cd4c-4486-9dfc-4aa32628b63a.png)
+ ![](../images/a3ce0701-cd4c-4486-9dfc-4aa32628b63a.png)
 
 #### 具体分析
 
@@ -994,7 +994,7 @@ function invokeInsertHook (vnode, queue, initial) {
 
 ## 总结
 
-![](https://static.ecool.fun//article/9f3602e1-b65b-4bc0-bdff-d226d4575634.png)
+![](../images/9f3602e1-b65b-4bc0-bdff-d226d4575634.png)
 
 初始化调用 `$mount` 挂载组件。
 
@@ -1561,12 +1561,12 @@ Vue 的适用面很广，你可以用它代替老项目中的JQuery。也可以�
 
 搭建一个简单的Vue项目测试一下：
 
-![](https://static.ecool.fun//article/a05b22d7-2657-486f-a20c-896b7f1b54b2.jpeg)
+![](../images/a05b22d7-2657-486f-a20c-896b7f1b54b2.jpg)
 
 给个目录结构吧，代码并不是我们讲解的重点，如果需要源码测试的话后续我放到github上去。  
 终端执行`npx webpack`输出dist目录，我们在浏览器打开index.html调试一下看看现象：
 
-![](https://static.ecool.fun//article/5150ea02-e887-4120-9e29-8a57fe9c0223.jpeg)
+![](../images/5150ea02-e887-4120-9e29-8a57fe9c0223.jpg)
 
 1. 每个组件都会拥有一个`[data-v-hash:8]`插入HTML标签，子组件标签上也具体父组件`[data-v-hash:8]`;
 2. 如果style标签加了`scoped属性`，里面的选择器都会变成`(Attribute Selector) [data-v-hash:8]`;
@@ -1576,13 +1576,13 @@ Vue 的适用面很广，你可以用它代替老项目中的JQuery。也可以�
 
 我们先看看在`webpack.config.js`中的配置：
 
-![](https://static.ecool.fun//article/7d7879fb-5772-4ede-b015-8bc9ccc832ee.jpeg)
+![](../images/7d7879fb-5772-4ede-b015-8bc9ccc832ee.jpg)
 
 ## vue-loader工作流
 
 以下就是vue-loader工作大致的处理流程：
 
-![](https://static.ecool.fun//article/1148995d-c04f-49bf-a353-f7090a0554ca.jpeg)
+![](../images/1148995d-c04f-49bf-a353-f7090a0554ca.jpg)
 
 开启`node调试模式`进行查看阅读，package.json中配置如下：
 
@@ -1761,7 +1761,7 @@ module.exports = function (source) {
 
 可以看到解析完vue文件的结果大概就是这样的：
 
-![](https://static.ecool.fun//article/27e47892-fad8-4f98-bfa2-899428688dbb.jpeg)
+![](../images/27e47892-fad8-4f98-bfa2-899428688dbb.jpg)
 
 ### 依赖解析
 
@@ -1839,7 +1839,7 @@ module.exports.pitch = function (remainingRequest) {
 
 可以看到解析带scoped属性的style的结果大概就是这样的：
 
-![](https://static.ecool.fun//article/67b0bf0e-cf0f-4d2b-bc90-89213de288e1.jpeg)
+![](../images/67b0bf0e-cf0f-4d2b-bc90-89213de288e1.jpg)
 
 ### 新的依赖解析
 
@@ -1915,7 +1915,7 @@ module.exports = function (source, inMap) {
 
 处理最终返回的code是这样的：
 
-![](https://static.ecool.fun//article/021f3c9e-2b42-4398-98e0-cffafaf70ce4.jpeg)
+![](../images/021f3c9e-2b42-4398-98e0-cffafaf70ce4.jpg)
 
 **要点**：
 在 Vue.js 中，使用 `scoped` 属性可以为组件的样式创建一个局部作用域。这意味着组件的样式只会应用于该组件内部，而不会泄漏到其他组件。
@@ -2398,7 +2398,7 @@ export default {
 
 先看一下在官网的生命周期里，关于模板编译的部分
 
-![](https://static.ecool.fun//article/0a8b7327-b0fd-4042-b4bc-526c05ab9c89.jpeg)
+![](../images/0a8b7327-b0fd-4042-b4bc-526c05ab9c89.jpg)
 
 如图可以知道，如果有 `template`，就不会管 `el` 了，所以 **template 比 el 的优先级更高**，比如
 
@@ -2848,7 +2848,7 @@ function useMouse(){
 
 `vue3`整个源码是通过 `monorepo `的方式维护的，根据功能将不同的模块拆分到`packages `目录下面不同的子目录中
 
- ![](https://static.ecool.fun//article/aeff110f-4dd5-4bf0-aaf4-4ad74f6a53ab.png)
+ ![](../images/aeff110f-4dd5-4bf0-aaf4-4ad74f6a53ab.png)
 
 这样使得模块拆分更细化，职责划分更明确，模块之间的依赖关系也更加明确，开发人员也更容易阅读、理解和更改所有模块源码，提高代码的可维护性
 
@@ -2922,7 +2922,7 @@ default {
 
 一张图，我们可以很直观地感受到 `Composition API `在逻辑组织方面的优势
 
- ![](https://static.ecool.fun//article/37d16502-5b20-4059-a321-09ac1201cd70.png)
+ ![](../images/37d16502-5b20-4059-a321-09ac1201cd70.png)
 
 
 
@@ -3349,7 +3349,7 @@ export default defineComponent({
 
 近些年前端工程化发展迅速，各种构建工具层出不穷，目前`Webpack`仍然占据统治地位，npm 每周下载量达到两千多万次。下面是我按 npm 发版时间线列出的开发者比较熟知的一些构建工具。
 
-![](https://static.ecool.fun//article/26d74f82-9f1b-4788-b290-c8c60d95829d.jpeg)
+![](../images/26d74f82-9f1b-4788-b290-c8c60d95829d.jpg)
 
 
 ### 当前工程化痛点
@@ -3385,11 +3385,11 @@ export default defineComponent({
 ### 处理流程对比
 `Webpack`通过先将整个应用打包，再将打包后代码提供给`dev server`，开发者才能开始开发。
 
-![](https://static.ecool.fun//article/c159b719-6035-40b8-87c9-c2fda4897e6d.jpeg)
+![](../images/c159b719-6035-40b8-87c9-c2fda4897e6d.jpg)
 
 
 `Vite`直接将源码交给浏览器，实现`dev server`秒开，浏览器显示页面需要相关模块时，再向`dev server`发起请求，服务器简单处理后，将该模块返回给浏览器，实现真正意义的按需加载。
-![](https://static.ecool.fun//article/7f76d868-8c12-4b0b-aca8-929cb4a6a4ca.jpeg)
+![](../images/7f76d868-8c12-4b0b-aca8-929cb4a6a4ca.jpg)
 
 ---
 # 基本用法
@@ -3427,7 +3427,7 @@ $ npm create vite@latest
 **服务器：“已经结束了。”**   
 **开发者：“好快，好喜欢！！”**
 
-![image.png](https://static.ecool.fun//article/f42c375f-9822-4c22-ba5b-ab3ac46b0045.jpeg)
+![image.png](../images/f42c375f-9822-4c22-ba5b-ab3ac46b0045.jpg)
 
 
 ### 依赖预构建
@@ -3664,7 +3664,7 @@ async function handleMessage(payload: HMRPayload) {
 由于`Vite`主打的是开发环境的极致体验，生产环境集成`Rollup`，这里的对比主要是`Webpack-dev-server`与`Vite-dev-server`的对比：
 
 - 到目前很长时间以来`Webpack`在前端工程领域占统治地位，`Vite`推出以来备受关注，社区活跃，GitHub star 数量激增，目前达到37.4K
-![image.png](https://static.ecool.fun//article/784d0787-a1ec-4b8e-b295-8a8e28ec4293.jpeg)
+![image.png](../images/784d0787-a1ec-4b8e-b295-8a8e28ec4293.jpg)
 - `Webpack`配置丰富使用极为灵活但上手成本高，`Vite`开箱即用配置高度集成
 - `Webpack`启动服务需打包构建，速度慢，`Vite`免编译可秒开
 - `Webpack`热更新需打包构建，速度慢，`Vite`毫秒响应
@@ -4180,7 +4180,7 @@ customElements.define('element-details',
 可以将其类比为插卡式的FC游戏机，游戏机暴露卡槽（插槽）让用户插入不同的游戏磁条（自定义内容）
 
 放张图感受一下
-![](https://static.ecool.fun//article/86be4e75-6050-44a1-8dbc-72e2d493834a.png)
+![](../images/86be4e75-6050-44a1-8dbc-72e2d493834a.png)
 
 
 
@@ -4468,7 +4468,7 @@ vm.$scopedSlots = normalizeScopedSlots(
 ### 关于计算首屏时间
 利用`performance.timing`提供的数据：
 
- ![image.png](https://static.ecool.fun//article/106a98b9-b2dd-402f-943a-810cdc7e8879.png)
+ ![image.png](../images/106a98b9-b2dd-402f-943a-810cdc7e8879.png)
 
 通过`DOMContentLoad`或者`performance`来计算出首屏时间
 
@@ -4519,7 +4519,7 @@ performance.getEntriesByName("first-contentful-paint")[0].startTime
 
 常用的手段是路由懒加载，把不同路由对应的组件分割成不同的代码块，待路由被请求的时候会单独打包路由，使得入口文件变小，加载速度大大增加
 
- ![image.png](https://static.ecool.fun//article/0145e724-3487-43df-b7da-1120b9a78120.png)
+ ![image.png](../images/0145e724-3487-43df-b7da-1120b9a78120.png)
 
 在`vue-router`配置路由的时候，采用动态加载路由的形式
 
@@ -4641,7 +4641,7 @@ SSR（Server side ），也就是服务端渲染，组件或页面通过服务�
 
 下图是更为全面的首屏优化的方案
 
- ![image.png](https://static.ecool.fun//article/b15bf9a4-d026-4942-8957-fcc52d74b3da.png)
+ ![image.png](../images/b15bf9a4-d026-4942-8957-fcc52d74b3da.png)
 
 
 大家可以根据自己项目的情况选择各种方式进行首屏渲染的优化
@@ -5234,13 +5234,13 @@ let arr = [1, 2, 3]
 observe(arr)
 ```
 
-![image-20210607020953993](https://static.ecool.fun//article/fd22ab50-39ad-4dc7-a638-b580e7fa7d58.jpeg)
+![image-20210607020953993](../images/fd22ab50-39ad-4dc7-a638-b580e7fa7d58.jpg)
 
 ### 测试说明
 
 通过索引改变arr[1]，我们发现触发了set，也就是Object.defineProperty是可以检测到通过索引改变数组的操作的，那Vue2.0为什么没有实现呢？是尤大能力不行？这肯定毋庸置疑。那他为什么不实现呢？
 
-![image-20210607021557820](https://static.ecool.fun//article/f05a63a5-0ff2-4336-b1d7-cc5414564ca8.jpeg)
+![image-20210607021557820](../images/f05a63a5-0ff2-4336-b1d7-cc5414564ca8.jpg)
 
 **小结**：是出于对性能原因的考虑，没有去实现它。而不是不能实现。
 
@@ -9441,7 +9441,7 @@ computed: {
 **注**：计算属性 fullName 不能在 data 中定义，而计算属性值的相关已知值在data中；  
 如果 fullName 在 data 中定义了会报错如下图：
 
-![image.png](https://static.ecool.fun//article/6900ccea-aa97-463e-ae1f-bd6682dcc000.png)
+![image.png](../images/6900ccea-aa97-463e-ae1f-bd6682dcc000.png)
 
 因为如果 computed 属性值是一个函数，那么默认会走 get 方法，必须要有一个返回值，函数的返回值就是属性的属性值。计算属性定义了 fullName 并返回对应的结果给这个变量，变量不可被重复定义和赋值。
 
@@ -9532,7 +9532,7 @@ watch: {
 
 以上打印结果：  
 
-![image.png](https://static.ecool.fun//article/24940fc3-0709-4fa1-8fec-b21eafef35c3.png)
+![image.png](../images/24940fc3-0709-4fa1-8fec-b21eafef35c3.png)
 
 打印出来的 newVal 和 oldVal 值是一样的，所以深度监听虽然可以监听到对象的变化，但是无法监听到对象里面哪个具体属性的变化。这是因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
 
@@ -10141,7 +10141,7 @@ childRef.value.$.isMounted
 
 如下图：
 
- ![](https://static.ecool.fun//article/0d90d923-095d-4458-bef6-a004d604e541.png)
+ ![](../images/0d90d923-095d-4458-bef6-a004d604e541.png)
 
 可以看到`Options`代码编写方式，如果是组件状态，则写在`data`属性上，如果是方法，则写在`methods`属性上...
 
@@ -10157,7 +10157,7 @@ childRef.value.$.isMounted
 即使项目很大，功能很多，我们都能快速的定位到这个功能所用到的所有 API
 
 
- ![](https://static.ecool.fun//article/5262c66c-648b-475e-b31e-8e114ff3ce6f.png)
+ ![](../images/5262c66c-648b-475e-b31e-8e114ff3ce6f.png)
 
 
 
@@ -10176,7 +10176,7 @@ childRef.value.$.isMounted
 
 假设一个组件是一个大型组件，其内部有很多处理逻辑关注点（对应下图不用颜色）
 
- ![](https://static.ecool.fun//article/870e1f09-36ad-4ad9-9045-d2d3d453f8c8.png)
+ ![](../images/870e1f09-36ad-4ad9-9045-d2d3d453f8c8.png)
 
 
 
@@ -10230,7 +10230,7 @@ export default defineComponent({
 
 再来一张图进行对比，可以很直观地感受到 `Composition API `在逻辑组织方面的优势，以后修改一个属性功能的时候，只需要跳到控制该属性的方法中即可
 
-![](https://static.ecool.fun//article/5f280222-fe00-4cda-8f88-32528e7c4d91.png)
+![](../images/5f280222-fe00-4cda-8f88-32528e7c4d91.png)
 
 
 
@@ -11955,7 +11955,7 @@ methods:{
 
 那么怎么调用子模块中的函数呢？假如我的子模块名字为todo.js。 函数名字就需要改成todo/函数名字。输出模块后的store实例如下图所示：
 
-![image.png](https://static.ecool.fun//article/00e48252-2d3b-4dd5-9a39-97112785b566.png)
+![image.png](../images/00e48252-2d3b-4dd5-9a39-97112785b566.png)
 
 可以看到模块化后，store实例的state属性的访问方式也改变了，`this.$store.state.todo.inputVal`
 
@@ -12305,7 +12305,7 @@ const app = new Vue({
 `DOM`是很慢的，其元素非常庞大，页面的性能问题，大部分都是由`DOM`操作引起的
 
 真实的`DOM`节点，哪怕一个最简单的`div`也包含着很多属性，可以打印出来直观感受一下：
- ![](https://static.ecool.fun//article/2967524b-26f4-44a1-ae01-818bd4283f23.png)
+ ![](../images/2967524b-26f4-44a1-ae01-818bd4283f23.png)
 
 由此可见，操作`DOM`的代价仍旧是昂贵的，频繁操作还是会出现页面卡顿，影响用户的体验
 
@@ -12754,41 +12754,41 @@ SSR 的优势包括：
 
 1. 比较只会在同层级进行, 不会跨层级比较
 
-![](https://static.ecool.fun//article/6366ea3c-b5f9-4add-a1d9-8fb1e7b6c726.png)
+![](../images/6366ea3c-b5f9-4add-a1d9-8fb1e7b6c726.png)
 
 2. 比较的过程中，循环从两边向中间收拢
 
-![](https://static.ecool.fun//article/66a1b47c-6fd5-4a1a-80a9-a7bbfdf30022.png)
+![](../images/66a1b47c-6fd5-4a1a-80a9-a7bbfdf30022.png)
 
 下面举个`vue`通过`diff`算法更新的例子：
 
 新旧`VNode`节点如下图所示：
 
-![](https://static.ecool.fun//article/d64ad3e5-4892-415d-92ce-e5556dd0548e.png)
+![](../images/d64ad3e5-4892-415d-92ce-e5556dd0548e.png)
 
 第一次循环后，发现旧节点D与新节点D相同，直接复用旧节点D作为`diff`后的第一个真实节点，同时旧节点`endIndex`移动到C，新节点的 `startIndex` 移动到了 C
 
-![](https://static.ecool.fun//article/5ff039e0-4bb9-49ee-9921-85a11476131b.png)
+![](../images/5ff039e0-4bb9-49ee-9921-85a11476131b.png)
 
 第二次循环后，同样是旧节点的末尾和新节点的开头(都是 C)相同，同理，`diff` 后创建了 C 的真实节点插入到第一次创建的 B 节点后面。同时旧节点的 `endIndex` 移动到了 B，新节点的 `startIndex` 移动到了 E
 
-![](https://static.ecool.fun//article/5d753795-ae75-441e-9f57-cc55a62a1a6d.png)
+![](../images/5d753795-ae75-441e-9f57-cc55a62a1a6d.png)
 
 第三次循环中，发现E没有找到，这时候只能直接创建新的真实节点 E，插入到第二次创建的 C 节点之后。同时新节点的 `startIndex` 移动到了 A。旧节点的 `startIndex` 和 `endIndex` 都保持不动
 
-![](https://static.ecool.fun//article/4b863487-0c0b-4993-9222-cc5ce85c4a7b.png)
+![](../images/4b863487-0c0b-4993-9222-cc5ce85c4a7b.png)
 
 第四次循环中，发现了新旧节点的开头(都是 A)相同，于是 `diff` 后创建了 A 的真实节点，插入到前一次创建的 E 节点后面。同时旧节点的 `startIndex` 移动到了 B，新节点的` startIndex` 移动到了 B
 
-![](https://static.ecool.fun//article/e88197ab-c05d-4e10-98e9-bf35d87e3ebc.png)
+![](../images/e88197ab-c05d-4e10-98e9-bf35d87e3ebc.png)
 
 第五次循环中，情形同第四次循环一样，因此 `diff` 后创建了 B 真实节点 插入到前一次创建的 A 节点后面。同时旧节点的 `startIndex `移动到了 C，新节点的 startIndex 移动到了 F
 
-![](https://static.ecool.fun//article/53b186bb-dde2-424b-b331-bfe72e63da8c.png)
+![](../images/53b186bb-dde2-424b-b331-bfe72e63da8c.png)
 
 新节点的 `startIndex` 已经大于 `endIndex` 了，需要创建 `newStartIdx` 和 `newEndIdx` 之间的所有节点，也就是节点F，直接创建 F 节点对应的真实节点放到 B 节点后面
 
-![](https://static.ecool.fun//article/08429a13-7804-4a75-a0e9-4073600676a4.png)
+![](../images/08429a13-7804-4a75-a0e9-4073600676a4.png)
 
 ## 三、原理分析
 
@@ -13098,11 +13098,11 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
 
 我们先从单向绑定切入单向绑定非常简单，就是把`Model`绑定到`View`，当我们用`JavaScript`代码更新`Model`时，`View`就会自动更新双向绑定就很容易联想到了，在单向绑定的基础上，用户更新了`View`，`Model`的数据也自动被更新了，这种情况就是双向绑定举个栗子
 
- ![](https://static.ecool.fun//article/129e9076-eae0-4f4c-87e5-3330cbb35e23.png)
+ ![](../images/129e9076-eae0-4f4c-87e5-3330cbb35e23.png)
 
 当用户填写表单时，`View`的状态就被更新了，如果此时可以自动更新`Model`的状态，那就相当于我们把`Model`和`View`做了双向绑定关系图如下
 
- ![](https://static.ecool.fun//article/042320e1-1cc9-4439-ac9d-bf6a7ababccf.png)
+ ![](../images/042320e1-1cc9-4439-ac9d-bf6a7ababccf.png)
 
 ## 二、双向绑定的原理是什么
 
@@ -13138,7 +13138,7 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
 
 流程图如下：
 
- ![](https://static.ecool.fun//article/7e2d907a-e80d-4e00-ab72-4f829010bd47.png)
+ ![](../images/7e2d907a-e80d-4e00-ab72-4f829010bd47.png)
 
 ### 实现
 
@@ -13189,7 +13189,7 @@ class Observer {
 
 对每个元素节点的指令进行扫描跟解析,根据指令模板替换数据,以及绑定相应的更新函数
 
- ![](https://static.ecool.fun//article/81fac2e4-25a8-4a51-adff-143803d0099a.png)
+ ![](../images/81fac2e4-25a8-4a51-adff-143803d0099a.png)
 
 ```
 class Compile {  
@@ -13227,7 +13227,7 @@ class Compile {
 
 视图中会用到`data`中某`key`，这称为依赖。同⼀个`key`可能出现多次，每次都需要收集出来用⼀个`Watcher`来维护它们，此过程称为依赖收集多个`Watcher`需要⼀个`Dep`来管理，需要更新时由`Dep`统⼀通知
 
- ![](https://static.ecool.fun//article/7a337c07-fe16-4da1-ba47-28c28a4a61c6.png)
+ ![](../images/7a337c07-fe16-4da1-ba47-28c28a4a61c6.png)
 
 实现思路
 
@@ -13496,7 +13496,7 @@ vue create vue-demo
 
 对项目进行打包，体积如下图
 
-![](https://static.ecool.fun//article/e298c1f6-7390-4d24-a25a-8d93cdb45fec.png)
+![](../images/e298c1f6-7390-4d24-a25a-8d93cdb45fec.png)
 
 为组件设置其他属性（`compted`、`watch`）
 
@@ -13520,7 +13520,7 @@ export default {
 
 再一次打包，发现打包出来的体积并没有变化
 
-![](https://static.ecool.fun//article/a6a130d6-001e-4ef4-b347-59cdeb6b2d63.png)
+![](../images/a6a130d6-001e-4ef4-b347-59cdeb6b2d63.png)
 
 
 
@@ -13544,7 +13544,7 @@ export default defineComponent({
 
 将项目进行打包
 
-![](https://static.ecool.fun//article/b8da6cec-2639-4cda-a399-920d0863ebe5.png)
+![](../images/b8da6cec-2639-4cda-a399-920d0863ebe5.png)
 
 在组件中引入`computed`和`watch`
 
@@ -13576,7 +13576,7 @@ export default defineComponent({
 
 再次对项目进行打包，可以看到在引入`computer`和`watch`之后，项目整体体积变大了
 
- ![](https://static.ecool.fun//article/fb53f810-4993-409a-b295-20ae93c11028.png)
+ ![](../images/fb53f810-4993-409a-b295-20ae93c11028.png)
 
 
 
@@ -16151,7 +16151,7 @@ app.mount('#app')  // ② 挂载 APP 实例
 ```
 
 通过创建 APP 实例和挂载 APP 实例即可，这时可以看到页面中分别显示对应数值：
-![image.png](https://static.ecool.fun//article/614ad328-3096-4f32-bbb7-8373f950ed1d.jpeg)
+![image.png](../images/614ad328-3096-4f32-bbb7-8373f950ed1d.jpg)
 
 当我们修改 `price` 或 `quantity` 值的时候，页面上引用它们的地方，内容也能正常展示变化后的结果。这时，我们会好奇为何数据发生变化后，相关的数据也会跟着变化，那么我们接着往下看。
 
@@ -16196,7 +16196,7 @@ console.log(`total: ${total}`); // total: 40
 ③ 创建 `trigger()` 函数，用来执行 `dep` 变量中的所有副作用；
 
 在每次修改 `price` 或 `quantity` 后，调用 `trigger()` 函数执行所有副作用后， `total` 值将自动更新为最新值。
-![image.png](https://static.ecool.fun//article/098e3ad6-2db4-440a-b0a6-7e20c36479c1.jpeg)
+![image.png](../images/098e3ad6-2db4-440a-b0a6-7e20c36479c1.jpg)
 
 （图片来源：Vue Mastery）
 
@@ -16210,7 +16210,7 @@ let product = { price: 10, quantity: 2 };
 
 从前面介绍我们知道，我们将所有副作用保存在一个 `Set` 集合中，而该集合不会有重复项，这里我们引入一个 `Map` 类型集合（即 `depsMap` ），其 `key` 为对象的属性（如： `price` 属性）， `value` 为前面保存副作用的 `Set` 集合（如： `dep` 对象），大致结构如下图：
 
-![image.png](https://static.ecool.fun//article/a658efdb-5daa-45ef-bcce-6647bc29021e.jpeg)
+![image.png](../images/a658efdb-5daa-45ef-bcce-6647bc29021e.jpg)
 （图片来源：Vue Mastery）
 
 实现代码：
@@ -16305,7 +16305,7 @@ console.log(`total: ${total}`); // total: 40
 
 大致流程如下图：
 
-![image.png](https://static.ecool.fun//article/4ca05d1f-3d74-4d3a-a716-1a54bc6c7ac4.jpeg)
+![image.png](../images/4ca05d1f-3d74-4d3a-a716-1a54bc6c7ac4.jpg)
 （图片来源：Vue Mastery）
 
 ## 二、Proxy 和 Reflect
@@ -16370,7 +16370,7 @@ console.log(proxiedProduct.price);
 
 这样就保证我们每次在读取 `proxiedProduct.price` 都会执行到其中代理的 get 处理函数。其过程如下：
 
-![image.png](https://static.ecool.fun//article/c65b6a63-6e61-44e0-a56f-04c4eb63bf3e.jpeg)
+![image.png](../images/c65b6a63-6e61-44e0-a56f-04c4eb63bf3e.jpg)
 （图片来源：Vue Mastery）
 
 然后结合 Reflect 使用，只需修改 get 函数：
@@ -16498,7 +16498,7 @@ console.log(total);
 // 40
 ```
 
-![image.png](https://static.ecool.fun//article/2a941233-fd37-4967-8ce3-3c14746580e2.jpeg)
+![image.png](../images/2a941233-fd37-4967-8ce3-3c14746580e2.jpg)
 （图片来源：Vue Mastery）
 
 ## 三、activeEffect 和 ref
@@ -16795,7 +16795,7 @@ const { reactive, computed, effect } = require("./reactivity.cjs.js");
 1. ref.ts：定义 reactive 的 ref 使用的对象访问器；
 1. computed.ts：定义计算属性的方法；
 
-![image.png](https://static.ecool.fun//article/53093dcc-fa06-464a-bb7c-72242bd868b0.jpeg)
+![image.png](../images/53093dcc-fa06-464a-bb7c-72242bd868b0.jpg)
 （图片来源：Vue Mastery）
 
 
@@ -16883,7 +16883,7 @@ function reactive(obj) {
 
 回顾`Vue2`，我们知道每个组件实例都对应一个 `watcher` 实例，它会在组件渲染的过程中把用到的数据`property`记录为依赖，当依赖发生改变，触发`setter`，则会通知`watcher`，从而使关联的组件重新渲染
 
- ![](https://static.ecool.fun//article/2ff51544-a944-4b18-a4fe-abbd3160888e.png)
+ ![](../images/2ff51544-a944-4b18-a4fe-abbd3160888e.png)
 
 试想一下，一个组件结构如下图
 
@@ -16919,7 +16919,7 @@ function reactive(obj) {
 
 下图这里，已经标记静态节点的`p`标签在`diff`过程中则不会比较，把性能进一步提高
 
- ![](https://static.ecool.fun//article/4d63cf01-fda3-4567-9779-2c0c519cea4e.png)
+ ![](../images/4d63cf01-fda3-4567-9779-2c0c519cea4e.png)
 
 关于静态类型枚举如下
 
@@ -18480,7 +18480,7 @@ Vue.component('component1',{
 则会得到警告信息
 
 
- ![image.png](https://static.ecool.fun//article/c401c122-b612-4693-bc1a-5d4744f89d8b.png)
+ ![image.png](../images/c401c122-b612-4693-bc1a-5d4744f89d8b.png)
 
 
 警告说明：返回的`data`应该是一个函数在每一个组件实例中
@@ -18659,7 +18659,7 @@ CORS （Cross-Origin Resource Sharing，跨域资源共享）是一个系统，�
 
 只要后端实现了 `CORS`，就实现了跨域
 
- ![](https://static.ecool.fun//article/1dab26ff-003d-49b3-ab94-f25032f40170.png)
+ ![](../images/1dab26ff-003d-49b3-ab94-f25032f40170.png)
 
 以` koa`框架举例
 
@@ -18864,7 +18864,7 @@ server {
 
 关系图:
 
- ![](https://static.ecool.fun//article/b2f13367-d035-4870-b2e0-779d5909620a.png)
+ ![](../images/b2f13367-d035-4870-b2e0-779d5909620a.png)
 
 ## 三、组件间通信的方案
 
@@ -18881,7 +18881,7 @@ server {
 
 ### props传递数据
 
- ![](https://static.ecool.fun//article/028189f8-0df1-4af0-b541-a6439f488209.png)
+ ![](../images/028189f8-0df1-4af0-b541-a6439f488209.png)
 
 - 适用场景：父组件传递数据给子组件
 - 子组件设置`props`属性，定义接收父组件传递过来的参数
@@ -19050,7 +19050,7 @@ inject:['foo'] // 获取到祖先组件传递过来的值
 
 - 适用场景: 复杂关系的组件数据传递
 - `Vuex`作用相当于一个用来存储共享变量的容器
- ![](https://static.ecool.fun//article/3073480a-ca41-4937-a711-5237a7c73506.png)
+ ![](../images/3073480a-ca41-4937-a711-5237a7c73506.png)
 
 - `state`用来存放共享变量的地方
 - `getter`，可以增加一个`getter`派生状态，\(相当于`store`中的计算属性），用来获得共享变量的值

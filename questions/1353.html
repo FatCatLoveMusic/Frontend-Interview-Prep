@@ -25,9 +25,9 @@
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><h3>一、什么是双向绑定</h3>
 <p>我们先从单向绑定切入单向绑定非常简单，就是把<code>Model</code>绑定到<code>View</code>，当我们用<code>JavaScript</code>代码更新<code>Model</code>时，<code>View</code>就会自动更新双向绑定就很容易联想到了，在单向绑定的基础上，用户更新了<code>View</code>，<code>Model</code>的数据也自动被更新了，这种情况就是双向绑定举个栗子</p>
-<p> ![](https://static.ecool.fun//article/129e9076-eae0-4f4c-87e5-3330cbb35e23.png)</p>
+<p> <img src="../images/129e9076-eae0-4f4c-87e5-3330cbb35e23.png" alt="" loading="lazy"></p>
 <p>当用户填写表单时，<code>View</code>的状态就被更新了，如果此时可以自动更新<code>Model</code>的状态，那就相当于我们把<code>Model</code>和<code>View</code>做了双向绑定关系图如下</p>
-<p> ![](https://static.ecool.fun//article/042320e1-1cc9-4439-ac9d-bf6a7ababccf.png)</p>
+<p> <img src="../images/042320e1-1cc9-4439-ac9d-bf6a7ababccf.png" alt="" loading="lazy"></p>
 <h3>二、双向绑定的原理是什么</h3>
 <p>我们都知道 <code>Vue</code> 是数据双向绑定的框架，双向绑定由三个重要部分构成</p>
 <ul>
@@ -57,7 +57,7 @@
 <li>将来data中数据⼀旦发生变化，会首先找到对应的<code>Dep</code>，通知所有<code>Watcher</code>执行更新函数</li>
 </ol>
 <p>流程图如下：</p>
-<p> ![](https://static.ecool.fun//article/7e2d907a-e80d-4e00-ab72-4f829010bd47.png)</p>
+<p> <img src="../images/7e2d907a-e80d-4e00-ab72-4f829010bd47.png" alt="" loading="lazy"></p>
 <h4>实现</h4>
 <p>先来一个构造函数：执行初始化，对<code>data</code>执行响应化处理</p>
 <pre class="code-block"><code>class Vue {  
@@ -96,7 +96,7 @@ class Observer {
 }  </code></pre>
 <h5>编译<code>Compile</code></h5>
 <p>对每个元素节点的指令进行扫描跟解析,根据指令模板替换数据,以及绑定相应的更新函数</p>
-<p> ![](https://static.ecool.fun//article/81fac2e4-25a8-4a51-adff-143803d0099a.png)</p>
+<p> <img src="../images/81fac2e4-25a8-4a51-adff-143803d0099a.png" alt="" loading="lazy"></p>
 <pre class="code-block"><code>class Compile {  
   constructor(el, vm) {  
     this.$vm = vm;  
@@ -128,7 +128,7 @@ class Observer {
   </code></pre>
 <h5>依赖收集</h5>
 <p>视图中会用到<code>data</code>中某<code>key</code>，这称为依赖。同⼀个<code>key</code>可能出现多次，每次都需要收集出来用⼀个<code>Watcher</code>来维护它们，此过程称为依赖收集多个<code>Watcher</code>需要⼀个<code>Dep</code>来管理，需要更新时由<code>Dep</code>统⼀通知</p>
-<p> ![](https://static.ecool.fun//article/7a337c07-fe16-4da1-ba47-28c28a4a61c6.png)</p>
+<p> <img src="../images/7a337c07-fe16-4da1-ba47-28c28a4a61c6.png" alt="" loading="lazy"></p>
 <p>实现思路</p>
 <ol>
 <li><code>defineReactive</code>时为每⼀个<code>key</code>创建⼀个<code>Dep</code>实例</li>

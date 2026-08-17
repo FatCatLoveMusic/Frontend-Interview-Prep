@@ -5,7 +5,8 @@ $kb = Split-Path $PSScriptRoot -Parent
 $rawDir = "$kb\_raw"
 $assetsDir = "$kb\assets"
 $catDir = "$kb\categories"
-$qDir = "$kb\questions"
+$qDir   = "$kb\questions"
+$imgDir = "$kb\images"
 
 $tags = @('JavaScript','CSS','HTML','React.js','Vue.js','算法','计算机网络','趣味题','Node.js','Typescript','性能优化','前端安全','小程序','ES6','编程题','设计模式','工程化','工具','计算机基础','leetcode','选择题','跨端技术','场景题','AI相关','Agent')
 
@@ -13,11 +14,66 @@ function Escape-Html([string]$s) {
     return $s.Replace('&','&amp;').Replace('<','&lt;').Replace('>','&gt;').Replace('"','&quot;')
 }
 
+function Get-LocalImageName([string]$url) {
+    # 返回 images/ 下本地文件名；不存在则下载；失败返回 $null
+    try {
+        $uri = [uri]$url
+        $path = $uri.AbsolutePath
+        $last = $path.Substring($path.LastIndexOf('/') + 1)
+        if ([string]::IsNullOrEmpty($last)) { $last = 'img' }
+        $last = $last -replace '[^\w.\-]', '_'
+        if (-not ($last -match '\.\w+$')) { $last = $last + '.img' }
+        $base = [System.IO.Path]::GetFileNameWithoutExtension($last)
+        $ext  = [System.IO.Path]::GetExtension($last).TrimStart('.').ToLower()
+        # 已存在（按 basename 匹配，兼容扩展名修正）
+        $existing = Get-ChildItem -Path $imgDir -Filter "$base.*" -File -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($existing) { return $existing.Name }
+        New-Item -ItemType Directory -Force -Path $imgDir | Out-Null
+        $ua = @{'User-Agent'='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36'}
+        $r = Invoke-WebRequest -Uri $url -UseBasicParsing -Headers $ua -TimeoutSec 40
+        $ct = [string]$r.Headers['Content-Type']
+        if ($ct -match '^image/(\w+)') {
+            $mime = @{ 'image/png'='png'; 'image/jpeg'='jpg'; 'image/gif'='gif'; 'image/webp'='webp'; 'image/svg+xml'='svg' }
+            if ($mime.ContainsKey($ct)) { $ext = $mime[$ct] }
+        }
+        $fname = "$base.$ext"
+        $n = 1
+        while (Test-Path (Join-Path $imgDir $fname)) { $fname = "$base`_$n.$ext"; $n++ }
+        if ($ext -eq 'svg') {
+            [System.IO.File]::WriteAllText((Join-Path $imgDir $fname), [string]$r.Content, $utf8nb)
+        } else {
+            [System.IO.File]::WriteAllBytes((Join-Path $imgDir $fname), $r.Content)
+        }
+        return $fname
+    } catch {
+        Write-Host ("WARN 图片下载失败: " + $url + " - " + $_.Exception.Message)
+        return $null
+    }
+}
+
 function Convert-Inline([string]$s) {
+    # 优先提取图片语法 ![alt](url) 为占位符（避免被链接规则吞成 !<a href>，也避免被 Escape-Html 转义）
+    $imgMap = @{}
+    $counter = @{ n = 0 }
+    $s = [regex]::Replace($s, '!\[([^\]]*)\]\(([^)\s]+)\)', {
+        param($m)
+        $counter.n++
+        $token = "[[IMG$($counter.n)]]"
+        $alt = $m.Groups[1].Value
+        $url = $m.Groups[2].Value
+        $local = Get-LocalImageName $url
+        if ($local) {
+            $imgMap[$token] = '<img src="../images/' + $local + '" alt="' + (Escape-Html $alt) + '" loading="lazy">'
+        } else {
+            $imgMap[$token] = '<img src="' + (Escape-Html $url) + '" alt="' + (Escape-Html $alt) + '" loading="lazy">'
+        }
+        return $token
+    })
     $t = Escape-Html $s
     $t = [regex]::Replace($t, '`([^`\n]+)`', '<code>$1</code>')
     $t = [regex]::Replace($t, '\*\*([^*]+)\*\*', '<strong>$1</strong>')
     $t = [regex]::Replace($t, '\[([^\]]+)\]\(([^)\s]+)\)', '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    foreach ($k in $imgMap.Keys) { $t = $t.Replace($k, $imgMap[$k]) }
     return $t
 }
 

@@ -569,7 +569,7 @@ if (isRealElement) {
 <p>在 <code>patch</code> 的最后就是调用 <code>invokeInsertHook</code> 方法，触发节点插入的钩子函数。</p>
 <p>至此整个页面渲染的流程完毕~</p>
 <h3>总结</h3>
-<p>![](https://static.ecool.fun//article/9f3602e1-b65b-4bc0-bdff-d226d4575634.png)</p>
+<p><img src="../images/9f3602e1-b65b-4bc0-bdff-d226d4575634.png" alt="" loading="lazy"></p>
 <p>初始化调用 <code>$mount</code> 挂载组件。</p>
 <p><code>_render</code> 开始构建 <code>VNode</code>，核心方法为 <code>createElement</code>，一般会创建普通的 <code>VNode</code> ，遇到组件就创建组件类型的 <code>VNode</code>，否则就是未知标签的 <code>VNode</code>，构建完成传递给 <code>_update</code>。</p>
 <p><code>patch</code> 阶段根据 <code>VNode</code> 创建真实节点树，核心方法为 <code>createElm</code>，首先遇到组件类型的 <code>VNode</code>，内部会执行 <code>$mount</code>，再走一遍相同的流程。普通节点类型则创建一个真实节点，如果它有子节点开始递归调用 <code>createElm</code>，使用 <code>insert</code> 插入子节点，直到没有子节点就填充内容节点。最后递归完成后，同样也是使用 <code>insert</code> 将整个节点树插入到页面中，再将旧的根节点移除。</p>

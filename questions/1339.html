@@ -36,26 +36,26 @@
 <ol>
 <li>比较只会在同层级进行, 不会跨层级比较</li>
 </ol>
-<p>![](https://static.ecool.fun//article/6366ea3c-b5f9-4add-a1d9-8fb1e7b6c726.png)</p>
+<p><img src="../images/6366ea3c-b5f9-4add-a1d9-8fb1e7b6c726.png" alt="" loading="lazy"></p>
 <ol>
 <li>比较的过程中，循环从两边向中间收拢</li>
 </ol>
-<p>![](https://static.ecool.fun//article/66a1b47c-6fd5-4a1a-80a9-a7bbfdf30022.png)</p>
+<p><img src="../images/66a1b47c-6fd5-4a1a-80a9-a7bbfdf30022.png" alt="" loading="lazy"></p>
 <p>下面举个<code>vue</code>通过<code>diff</code>算法更新的例子：</p>
 <p>新旧<code>VNode</code>节点如下图所示：</p>
-<p>![](https://static.ecool.fun//article/d64ad3e5-4892-415d-92ce-e5556dd0548e.png)</p>
+<p><img src="../images/d64ad3e5-4892-415d-92ce-e5556dd0548e.png" alt="" loading="lazy"></p>
 <p>第一次循环后，发现旧节点D与新节点D相同，直接复用旧节点D作为<code>diff</code>后的第一个真实节点，同时旧节点<code>endIndex</code>移动到C，新节点的 <code>startIndex</code> 移动到了 C</p>
-<p>![](https://static.ecool.fun//article/5ff039e0-4bb9-49ee-9921-85a11476131b.png)</p>
+<p><img src="../images/5ff039e0-4bb9-49ee-9921-85a11476131b.png" alt="" loading="lazy"></p>
 <p>第二次循环后，同样是旧节点的末尾和新节点的开头(都是 C)相同，同理，<code>diff</code> 后创建了 C 的真实节点插入到第一次创建的 B 节点后面。同时旧节点的 <code>endIndex</code> 移动到了 B，新节点的 <code>startIndex</code> 移动到了 E</p>
-<p>![](https://static.ecool.fun//article/5d753795-ae75-441e-9f57-cc55a62a1a6d.png)</p>
+<p><img src="../images/5d753795-ae75-441e-9f57-cc55a62a1a6d.png" alt="" loading="lazy"></p>
 <p>第三次循环中，发现E没有找到，这时候只能直接创建新的真实节点 E，插入到第二次创建的 C 节点之后。同时新节点的 <code>startIndex</code> 移动到了 A。旧节点的 <code>startIndex</code> 和 <code>endIndex</code> 都保持不动</p>
-<p>![](https://static.ecool.fun//article/4b863487-0c0b-4993-9222-cc5ce85c4a7b.png)</p>
+<p><img src="../images/4b863487-0c0b-4993-9222-cc5ce85c4a7b.png" alt="" loading="lazy"></p>
 <p>第四次循环中，发现了新旧节点的开头(都是 A)相同，于是 <code>diff</code> 后创建了 A 的真实节点，插入到前一次创建的 E 节点后面。同时旧节点的 <code>startIndex</code> 移动到了 B，新节点的<code> startIndex</code> 移动到了 B</p>
-<p>![](https://static.ecool.fun//article/e88197ab-c05d-4e10-98e9-bf35d87e3ebc.png)</p>
+<p><img src="../images/e88197ab-c05d-4e10-98e9-bf35d87e3ebc.png" alt="" loading="lazy"></p>
 <p>第五次循环中，情形同第四次循环一样，因此 <code>diff</code> 后创建了 B 真实节点 插入到前一次创建的 A 节点后面。同时旧节点的 <code>startIndex </code>移动到了 C，新节点的 startIndex 移动到了 F</p>
-<p>![](https://static.ecool.fun//article/53b186bb-dde2-424b-b331-bfe72e63da8c.png)</p>
+<p><img src="../images/53b186bb-dde2-424b-b331-bfe72e63da8c.png" alt="" loading="lazy"></p>
 <p>新节点的 <code>startIndex</code> 已经大于 <code>endIndex</code> 了，需要创建 <code>newStartIdx</code> 和 <code>newEndIdx</code> 之间的所有节点，也就是节点F，直接创建 F 节点对应的真实节点放到 B 节点后面</p>
-<p>![](https://static.ecool.fun//article/08429a13-7804-4a75-a0e9-4073600676a4.png)</p>
+<p><img src="../images/08429a13-7804-4a75-a0e9-4073600676a4.png" alt="" loading="lazy"></p>
 <h3>三、原理分析</h3>
 <p>当数据发生改变时，<code>set</code>方法会调用<code>Dep.notify</code>通知所有订阅者<code>Watcher</code>，订阅者就会调用<code>patch</code>给真实的<code>DOM</code>打补丁，更新相应的视图</p>
 <p>源码位置：src/core/vdom/patch.js</p>

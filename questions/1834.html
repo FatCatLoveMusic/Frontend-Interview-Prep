@@ -27,14 +27,14 @@
 <p>来自中国的张大胖和位于米国的 Bill 进行通信。</p>
 <p>由于张大胖和 Bill 都是使用 HTTP 进行通信，HTTP 是明文的，所以他们的聊天都是可被窥视的。于是，二人准备想要改变现状，所以 HTTPS 首先要解决的问题就是要保证传输的内容只有这两个人能看懂。</p>
 <h3>plan1：使用对称密钥</h3>
-<p>!<a href="https://static.ecool.fun//article/fd6b5f8a-b233-486b-a6a2-3159a77cb7ae.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/fd6b5f8a-b233-486b-a6a2-3159a77cb7ae.png" alt="image.png" loading="lazy"></p>
 <p>两人商量了一下，可以使用对称密钥进行加密。（对称密钥也就是加密和解密使用的是同一个密钥）</p>
 <p>但是问题又来了~既然网络是不安全的，那么最开始的时候怎么将这个对称密钥发送出去呢？如果对称密钥在发送的时候就已经被拦截，那么发送的信息还是会被篡改和窥视啊~~</p>
 <p>所以这种对称密钥的弊端就是，可能被中间人拦截，这样中间人就可以获取到了密钥，就可以对传输的信息就行窥视和篡改。</p>
 <h3>plan2：使用非对称密钥</h3>
-<p>!<a href="https://static.ecool.fun//article/38ae2865-9de4-457e-9b14-a499d784dc58.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/38ae2865-9de4-457e-9b14-a499d784dc58.png" alt="image.png" loading="lazy"></p>
 <p>RSA（非对称加密算法）：双方必须协商一对密钥，一个私钥一个公钥。用私钥加密的数据，只有对应的公钥才能解密，用公钥加密的数据， 只有对应的私钥才能解密。</p>
-<p>!<a href="https://static.ecool.fun//article/8e2f8088-f4da-4248-9e2d-94cd17600e2b.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/8e2f8088-f4da-4248-9e2d-94cd17600e2b.png" alt="image.png" loading="lazy"></p>
 <p>这样的话 Bill 将自己的公钥给张大胖，张大胖发送的信息使用 Bill 的公钥加密，这样，只有 Bill 使用自己的私钥才能获取</p>
 <p>但是这样有个弊端：</p>
 <p><strong>RSA 算法很慢</strong></p>
@@ -50,12 +50,12 @@
 <p>那怎么确认 Bill 给张大胖的公钥确实是 Bill 的呢？</p>
 <p>这个时候就需要公证处的存在了。也就是说我需要先将我的电话号码到公证处去公证一下，然后我将电话号码传给你之后，你在将你收到的电话号码和公证处的比对下，就知道是不是我的了。</p>
 <p>对应到计算机世界，那就是数字签名</p>
-<p>!<a href="https://static.ecool.fun//article/2df74fe1-73b8-4370-82ed-e24298c9d0a3.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/2df74fe1-73b8-4370-82ed-e24298c9d0a3.png" alt="image.png" loading="lazy"></p>
 <p>数字签名也就是相当于公证处在公证书上盖章。</p>
-<p>!<a href="https://static.ecool.fun//article/ab607ef0-558e-4def-9772-dec27415660a.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/ab607ef0-558e-4def-9772-dec27415660a.png" alt="image.png" loading="lazy"></p>
 <p>数字签名和原始信息合在一起称为数字证书，Bill 只需将数字证书发送给张大胖就可以了。</p>
 <p>在拿到数字证书之后，就用同样的Hash 算法， 再次生成消息摘要，然后用CA的公钥对数字签名解密， 得到CA创建的消息摘要， 两者一比，就知道有没有人篡改了！</p>
-<p>!<a href="https://static.ecool.fun//article/ceeedccb-77a0-43c6-ab00-a8d5c7942a51.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/ceeedccb-77a0-43c6-ab00-a8d5c7942a51.png" alt="image.png" loading="lazy"></p>
 <p>以上你全部看完并且理解了，那么对于 HTTPS 你也就大概有个了解了。</p>
 </div>
     </section>

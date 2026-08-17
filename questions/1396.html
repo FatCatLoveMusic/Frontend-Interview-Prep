@@ -23,7 +23,7 @@
     
     <section class="q-block q-block-answer">
       <h2 class="q-block-title">参考答案</h2>
-      <div class="q-block-body"><p>!<a href="https://static.ecool.fun//article/e0655cd1-91f2-4cdf-9460-0094bdf47830.png" target="_blank" rel="noopener">image.png</a></p>
+      <div class="q-block-body"><p><img src="../images/e0655cd1-91f2-4cdf-9460-0094bdf47830.png" alt="image.png" loading="lazy"></p>
 <blockquote>主线程从任务队列中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop。</blockquote>
 <p>setTimeout 并不能保证执行的时间，是否及时执行取决于 JavaScript 线程是拥挤还是空闲。</p>
 <p>浏览器的JS引擎遇到setTimeout，拿走之后不会立即放入异步队列，同步任务执行之后，timer模块会到设置时间之后放到异步队列中。js引擎发现同步队列中没有要执行的东西了，即运行栈空了就从异步队列中读取，然后放到运行栈中执行。所以setTimeout可能会多了等待线程的时间。</p>

@@ -40,7 +40,7 @@ computed: {
 }</code></pre>
 <p>在 computed 属性对象中定义计算属性的方法，和取data对象里的数据属性一样以<strong>属性访问</strong>的形式调用，即在页面中使用 {{ 方法名 }} 来显示计算的结果。</p>
 <p><strong>注</strong>：计算属性 fullName 不能在 data 中定义，而计算属性值的相关已知值在data中；  &lt;br&gt;如果 fullName 在 data 中定义了会报错如下图：</p>
-<p>!<a href="https://static.ecool.fun//article/6900ccea-aa97-463e-ae1f-bd6682dcc000.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/6900ccea-aa97-463e-ae1f-bd6682dcc000.png" alt="image.png" loading="lazy"></p>
 <p>因为如果 computed 属性值是一个函数，那么默认会走 get 方法，必须要有一个返回值，函数的返回值就是属性的属性值。计算属性定义了 fullName 并返回对应的结果给这个变量，变量不可被重复定义和赋值。</p>
 <p>在官方文档中，还强调了 computed 一个重要的特点，就是 <strong>computed 带有缓存功能</strong>。比如我在页面中多次显示 fullName：</p>
 <pre class="code-block"><code>&lt;p&gt;姓名：{{ fullName }}&lt;/p&gt;
@@ -104,7 +104,7 @@ watch: {
     }
 }</code></pre>
 <p>以上打印结果：  </p>
-<p>!<a href="https://static.ecool.fun//article/24940fc3-0709-4fa1-8fec-b21eafef35c3.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/24940fc3-0709-4fa1-8fec-b21eafef35c3.png" alt="image.png" loading="lazy"></p>
 <p>打印出来的 newVal 和 oldVal 值是一样的，所以深度监听虽然可以监听到对象的变化，但是无法监听到对象里面哪个具体属性的变化。这是因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。</p>
 <p>若果要监听对象的单个属性的变化，有两种方法：  &lt;br&gt;1.直接监听对象的属性</p>
 <pre class="code-block"><code>watch:{

@@ -75,9 +75,9 @@ ReactDOM.render(&lt;App /&gt;, rootElement);</code></pre>
 执行子组件1了 
 执行子组件2了 </code></pre>
 <p>跟想象中一样，render时先进入App函数，执行，发现里面的两个child函数，执行，创建虚拟dom，创建实体dom，最后将画面渲染到页面上。</p>
-<p>![](https://static.ecool.fun//article/0b7a9878-a44f-48eb-b9da-b647d4d56570.jpeg)</p>
+<p><img src="../images/0b7a9878-a44f-48eb-b9da-b647d4d56570.jpg" alt="" loading="lazy"></p>
 <h2>使用Memo优化</h2>
-<p>当我点击n+1按钮时，此时state里面的n必然+1，也会重新引发render渲染，并把新的n更新到视图中。&lt;br&gt;![](https://static.ecool.fun//article/8b79158a-ca60-4675-9939-c10d391cc5f0.jpeg)&lt;br&gt;我们再看控制台</p>
+<p>当我点击n+1按钮时，此时state里面的n必然+1，也会重新引发render渲染，并把新的n更新到视图中。&lt;br&gt;<img src="../images/8b79158a-ca60-4675-9939-c10d391cc5f0.jpg" alt="" loading="lazy">&lt;br&gt;我们再看控制台</p>
 <pre class="code-block"><code>执行最外层盒子了 
 执行子组件1了 
 执行子组件2了 

@@ -73,7 +73,7 @@
   queue: UpdateQueue&lt;any, any&gt; | null,
   next: Hook | null,
 };</code></pre>
-<p>最终形成了一个链表。&lt;br&gt;![](https://static.ecool.fun//article/7ca47e0d-4dad-4b07-86a4-5c399aec8b77.jpeg)</p>
+<p>最终形成了一个链表。&lt;br&gt;<img src="../images/7ca47e0d-4dad-4b07-86a4-5c399aec8b77.jpg" alt="" loading="lazy"></p>
 <p>这个对象的<code>memoizedState</code>属性就是用来存储组件上一次更新后的 <code>state</code>,<code>next</code>毫无疑问是指向下一个hook对象。在组件更新的过程中，hooks函数执行的顺序是不变的，就可以根据这个链表拿到当前hooks对应的<code>Hook</code>对象，函数式组件就是这样拥有了state的能力。当前，具体的实现肯定比这三言两语复杂很多。</p>
 <p>所以，知道为什么不能将hooks写到if else语句中了把？因为这样可能会导致顺序错乱，导致当前hooks拿到的不是自己对应的Hook对象。</p>
 <p><code>useEffect</code> 接收了两个参数，一个回调函数和一个数组。数组里面就是 <code>useEffect</code> 的依赖，当为 [] 的时候，回调函数只会在组件第一次渲染的时候执行一次。如果有依赖其他项，react 会判断其依赖是否改变，如果改变了就会执行回调函数。说回最初的场景：</p>

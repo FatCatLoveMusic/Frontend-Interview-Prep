@@ -82,7 +82,7 @@ var climbStairs = function(n) {
 <h4>思路</h4>
 <p>之前的方法我们已经讨论了 f(n) 是齐次线性递推，根据递推方程 <code>f(n) = f(n - 1) + f(n - 2)</code>，我们可以写出这样的特征方程：&lt;br&gt;<code>x^2=x+1</code></p>
 <p>我们得到了这个递推数列的通项公式：</p>
-<p>!<a href="https://static.ecool.fun//article/03dc37f9-0de5-4957-9d3d-bf5014c29c4a.png" target="_blank" rel="noopener">WX20220320-194804.png</a></p>
+<p><img src="../images/03dc37f9-0de5-4957-9d3d-bf5014c29c4a.png" alt="WX20220320-194804.png" loading="lazy"></p>
 <pre class="code-block"><code>var climbStairs = function(n) {
     const sqrt5 = Math.sqrt(5);
     const fibn = Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);

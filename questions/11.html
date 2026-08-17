@@ -25,13 +25,13 @@
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><h3>JSBridge是什么?</h3>
 <p>JSBridge：以 JavaScript 引擎或 Webview 容器作为媒介，通过协定协议进行通信，实现 Native 端和 Web 端双向通信的一种机制。</p>
-<p>![](https://static.ecool.fun//article/791ae46a-606e-4171-b6ad-535e7ef01058.png)</p>
+<p><img src="../images/791ae46a-606e-4171-b6ad-535e7ef01058.png" alt="" loading="lazy"></p>
 <p>所谓 <code>双向通信的通道</code>:</p>
 <ul>
 <li>JS 向 Native 发送消息 : 调用相关功能、通知 Native 当前 JS 的相关状态等。</li>
 <li>Native 向 JS 发送消息 : 回溯调用结果、消息推送、通知 JS 当前 Native 的状态等。</li>
 </ul>
-<p>![](https://static.ecool.fun//article/6b088e68-2151-405b-805d-add00abb4b1b.png)</p>
+<p><img src="../images/6b088e68-2151-405b-805d-add00abb4b1b.png" alt="" loading="lazy"></p>
 <p>JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。如此一来我们可以按照通常的 RPC 方式来进行设计和实现。</p>
 <h3>Webview 是什么？</h3>
 <p>WebView 是移动端提供的运行JavaScript的环境，是系统渲染 Web 网页的一个控件，可与页面JavaScript交互，实现混合开发。</p>
@@ -43,7 +43,7 @@
 <li>iOS 目前采用的是 <code>WKWebView</code>。</li>
 </ul>
 <p>WebView 可以对url请求、页面加载、渲染、页面交互进行强大的处理。</p>
-<p>![](https://static.ecool.fun//article/ea89dc1e-be83-4845-8a50-b5639ed37e53.png)</p>
+<p><img src="../images/ea89dc1e-be83-4845-8a50-b5639ed37e53.png" alt="" loading="lazy"></p>
 <p>webview 去加载 url 并不像是 浏览器加载 url 的过程，webview 存在一个初始化的过程。为了提升init 时间，通常做法是 app 启动时初始化一个隐藏的webview等待使用，当用户点击需要加载URL，直接使用这个webview 来加载，从而减少webview init 初始化时间。弊端就是带来了额外的内存开销。</p>
 <h2>JSBridge 如何实现？</h2>
 <p>目前主流的 JSBridge实现中，都是通过拦截 URL 请求来达到 native 端和 webview 端相互通信的效果。</p>
@@ -64,7 +64,7 @@
 <p> （3）继续判断，如果是 <code>isBridgeLoadedURL</code>，那么会执行 <code>injectJavascriptFile</code>方法，会向 webview 中再次注入一些逻辑，其中最重要的逻辑就是，在 window 对象上挂载一些全局变量和 <code>WebViewJavascriptBridge</code>属性。</p>
 <p> （4）继续判断，如果是 isQueueMessageURL，那么这就是个处理消息的回调，需要执行一些消息处理的方法</p>
 <h3>1\. webview 调用 native 能力</h3>
-<p>![](https://static.ecool.fun//article/8b269897-4791-4a2b-b3ba-7c0609a0788f.png)</p>
+<p><img src="../images/8b269897-4791-4a2b-b3ba-7c0609a0788f.png" alt="" loading="lazy"></p>
 <ol>
 <li>native 端注册 JsBridge。</li>
 <li>webview 侧创建 iframe，设置 src 为<code>__bridge_load__。</code></li>
@@ -75,7 +75,7 @@
 </ol>
 <h3>2 . native 调用 webview 能力</h3>
 <p>native 可以直接调用 webview 注册的 JsBridge 方法，不需要通过触发 iframe 的 src 触发执行：</p>
-<p>![](https://static.ecool.fun//article/a513b60b-f948-480b-956c-0ed3d4803a30.png)</p>
+<p><img src="../images/a513b60b-f948-480b-956c-0ed3d4803a30.png" alt="" loading="lazy"></p>
 <ol>
 <li>native 侧调用 <code>callHandler</code>方法，并在 <code>responseCallback</code>上添加 <code>callbackId: responseCallback。</code></li>
 <li>native 侧主动调用 <code>_handleMessageFromObjC </code>方法，在 webview 中执行对应的逻辑。</li>

@@ -162,12 +162,12 @@ const App = () =&gt; {
     // same
   )
 };</code></pre>
-<p>!<a href="https://static.ecool.fun//article/6f542a99-8ec2-4267-b67a-540fc3e627eb.jpeg" target="_blank" rel="noopener">image</a></p>
+<p><img src="../images/6f542a99-8ec2-4267-b67a-540fc3e627eb.jpg" alt="image" loading="lazy"></p>
 <p>结果如图所示，排序耗时仅用了 4 毫秒，而渲染图中的 List 组件（仅仅只是 button + 文字）却用了 20 毫秒，5倍的差距，代码详见 <a href="https://codesandbox.io/s/measure-without-memo-tnhggk?file=/src/page.tsx" target="_blank" rel="noopener">codesandbox.</a>。 大部分情况下，我们的计算量要比这个 250 个 item 的数组少，而组件渲染要比这个 List 组件复杂的多，所以真实程序中，计算和渲染的性能差距会更大。</p>
 <p>可见，组件渲染才是性能的瓶颈，应该把 useMemo 用在程序里渲染昂贵的组件上，而不是数值计算上。当然，除非这个计算真的很昂贵，比如阶乘计算。</p>
 <p>至于为什么不给所有的组件都使用 useMemo，上文已经解释了。useMemo 是有成本的，它会增加整体程序初始化的耗时，并不适合全局全面使用，它更适合做局部的优化。</p>
 <h3>为什么 React 没有把缓存组件作为默认配置？</h3>
-<p>关于这点 Dan Abramov 在<a href="https://twitter.com/dan_abramov/status/1083897065263034368" target="_blank" rel="noopener">推文</a>上也给出了解释（虽然是个类比 😅）：!<a href="https://static.ecool.fun//article/f5fb8d3c-b958-47ca-8ef4-92ece2e90570.jpeg" target="_blank" rel="noopener">image</a></p>
+<p>关于这点 Dan Abramov 在<a href="https://twitter.com/dan_abramov/status/1083897065263034368" target="_blank" rel="noopener">推文</a>上也给出了解释（虽然是个类比 😅）：<img src="../images/f5fb8d3c-b958-47ca-8ef4-92ece2e90570.jpg" alt="image" loading="lazy"></p>
 <p>评论区里 react 的另一位核心开发者 Christopher Chedeau 也参与了<a href="https://twitter.com/Vjeux/status/1083902075946205189" target="_blank" rel="noopener">讨论</a>。 简而言之，他们认为：</p>
 <ol>
 <li>缓存是有成本的，小的成本可能会累加过高。</li>

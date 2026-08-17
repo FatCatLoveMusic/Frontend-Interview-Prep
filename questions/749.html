@@ -32,7 +32,7 @@
 <li>编译构建流程：从 Entry 发出，针对每个 Module 串行调用对应的 Loader 去翻译文件内容，再找到该 Module 依赖的 Module，递归地进行编译处理</li>
 <li>输出流程：对编译后的 Module 组合成 Chunk，把 Chunk 转换成文件，输出到文件系统</li>
 </ul>
-<p> ![](https://static.ecool.fun//article/0fe21316-107b-41b2-aa21-400e6eac41e1.png)</p>
+<p> <img src="../images/0fe21316-107b-41b2-aa21-400e6eac41e1.png" alt="" loading="lazy"></p>
 <h4>初始化流程</h4>
 <p>从配置文件和 <code>Shell</code> 语句中读取与合并参数，得出最终的参数</p>
 <p>配置文件默认下为<code>webpack.config.js</code>，也或者通过命令的形式指定配置文件，主要作用是用于激活<code>webpack</code>的加载项和插件</p>
@@ -162,7 +162,7 @@ function webpack(options) {
 <p>在 <code>Compiler</code> 开始生成文件前，钩子 <code>emit</code> 会被执行，这是我们修改最终文件的最后一个机会</p>
 <p>从而<code>webpack</code>整个打包过程则结束了</p>
 <h4>小结</h4>
-<p> ![](https://static.ecool.fun//article/cf93171f-b8b3-4f27-ad4e-e9d8de01bce5.png)</p>
+<p> <img src="../images/cf93171f-b8b3-4f27-ad4e-e9d8de01bce5.png" alt="" loading="lazy"></p>
 </div>
     </section>
     

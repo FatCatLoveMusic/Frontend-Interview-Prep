@@ -27,10 +27,10 @@
 <h4>git reset</h4>
 <p><code>reset</code>用于回退版本，可以遗弃不再使用的提交</p>
 <p>执行遗弃时，需要根据影响的范围而指定不同的参数，可以指定是否复原索引或工作树内容</p>
-<p> ![](https://static.ecool.fun//article/2fabcf2c-c219-4a1d-9d33-e2a9d94db3ba.png)</p>
+<p> <img src="../images/2fabcf2c-c219-4a1d-9d33-e2a9d94db3ba.png" alt="" loading="lazy"></p>
 <h4>git revert</h4>
 <p>在当前提交后面，新增一次提交，抵消掉上一次提交导致的所有变化，不会改变过去的历史，主要是用于安全地取消过去发布的提交</p>
-<p> ![](https://static.ecool.fun//article/4c9d4308-2ced-4fdb-bbfc-5067162156da.png)</p>
+<p> <img src="../images/4c9d4308-2ced-4fdb-bbfc-5067162156da.png" alt="" loading="lazy"></p>
 <h3>二、如何用</h3>
 <h4>git reset</h4>
 <p>当没有指定<code>ID</code>的时候，默认使用<code>HEAD</code>，如果指定<code>ID</code>，那么就是基于指向<code>ID</code>去变动暂存区或工作区的内容</p>
@@ -61,7 +61,7 @@ Date:   Tue Aug 17 22:20:01 2021 +0800
 <ul>
 <li>--soft：如果使用 --soft 参数，那么暂存区和工作区都不会变化</li>
 </ul>
-<p> ![](https://static.ecool.fun//article/bb244dfd-d025-4088-82ef-b1a4096ff987.png)</p>
+<p> <img src="../images/bb244dfd-d025-4088-82ef-b1a4096ff987.png" alt="" loading="lazy"></p>
 <h4>git revert</h4>
 <p>跟<code>git reset</code>用法基本一致，<code>git revert</code> 撤销某次操作，此次操作之前和之后的 <code>commit</code>和<code>history</code>都会保留，并且把这次撤销，作为一次最新的提交，如下：</p>
 <pre class="code-block"><code>git revert &lt;commit_id&gt; </code></pre>

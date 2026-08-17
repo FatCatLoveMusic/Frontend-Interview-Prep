@@ -36,14 +36,14 @@
 <h4>一、Options Api</h4>
 <p><code>Options API</code>，即大家常说的选项API，即以<code>vue</code>为后缀的文件，通过定义<code>methods</code>，<code>computed</code>，<code>watch</code>，<code>data</code>等属性与方法，共同处理页面逻辑</p>
 <p>如下图：</p>
-<p> ![](https://static.ecool.fun//article/0d90d923-095d-4458-bef6-a004d604e541.png)</p>
+<p> <img src="../images/0d90d923-095d-4458-bef6-a004d604e541.png" alt="" loading="lazy"></p>
 <p>可以看到<code>Options</code>代码编写方式，如果是组件状态，则写在<code>data</code>属性上，如果是方法，则写在<code>methods</code>属性上...</p>
 <p>用组件的选项 (<code>data</code>、<code>computed</code>、<code>methods</code>、<code>watch</code>) 组织逻辑在大多数情况下都有效</p>
 <p>然而，当组件变得复杂，导致对应属性的列表也会增长，这可能会导致组件难以阅读和理解</p>
 <h4>二、Composition Api </h4>
 <p>在 Vue3 Composition API 中，组件根据逻辑功能来组织的，一个功能所定义的所有 API 会放在一起（更加的高内聚，低耦合）</p>
 <p>即使项目很大，功能很多，我们都能快速的定位到这个功能所用到的所有 API</p>
-<p> ![](https://static.ecool.fun//article/5262c66c-648b-475e-b31e-8e114ff3ce6f.png)</p>
+<p> <img src="../images/5262c66c-648b-475e-b31e-8e114ff3ce6f.png" alt="" loading="lazy"></p>
 <h4>三、对比</h4>
 <p>下面对<code>Composition Api </code>与<code>Options Api</code>进行两大方面的比较</p>
 <ul>
@@ -53,7 +53,7 @@
 <h5>逻辑组织</h5>
 <h6>Options API</h6>
 <p>假设一个组件是一个大型组件，其内部有很多处理逻辑关注点（对应下图不用颜色）</p>
-<p> ![](https://static.ecool.fun//article/870e1f09-36ad-4ad9-9045-d2d3d453f8c8.png)</p>
+<p> <img src="../images/870e1f09-36ad-4ad9-9045-d2d3d453f8c8.png" alt="" loading="lazy"></p>
 <p>可以看到，这种碎片化使得理解和维护复杂组件变得困难</p>
 <p>选项的分离掩盖了潜在的逻辑问题。此外，在处理单个逻辑关注点时，我们必须不断地“跳转”相关代码的选项块</p>
 <h6>Compostion API</h6>
@@ -89,7 +89,7 @@
     },
 });</code></pre>
 <p>再来一张图进行对比，可以很直观地感受到 <code>Composition API </code>在逻辑组织方面的优势，以后修改一个属性功能的时候，只需要跳到控制该属性的方法中即可</p>
-<p>![](https://static.ecool.fun//article/5f280222-fe00-4cda-8f88-32528e7c4d91.png)</p>
+<p><img src="../images/5f280222-fe00-4cda-8f88-32528e7c4d91.png" alt="" loading="lazy"></p>
 <h5>逻辑复用</h5>
 <p>在<code>Vue2</code>中，我们是用过<code>mixin</code>去复用相同的逻辑</p>
 <p>下面举个例子，我们会另起一个<code>mixin.js</code>文件</p>

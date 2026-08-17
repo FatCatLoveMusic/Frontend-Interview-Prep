@@ -32,11 +32,11 @@ console.log(members);</code></pre>
     <section class="q-block q-block-answer">
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><p>首先我们声明了一个拥有<code>name</code>属性的对象 <code>person</code>。</p>
-<p>![](https://static.ecool.fun//article/37365590-420d-4091-9a63-e6f097a7f75d.png)</p>
+<p><img src="../images/37365590-420d-4091-9a63-e6f097a7f75d.png" alt="" loading="lazy"></p>
 <p>然后我们又声明了一个变量<code>members</code>. 将首个元素赋值为变量<code>person</code>。 当设置两个对象彼此相等时，它们会通过 _引用_ 进行交互。但是当你将引用从一个变量分配至另一个变量时，其实只是执行了一个 _复制_ 操作。（注意一点，他们的引用 _并不相同_!）</p>
-<p>![](https://static.ecool.fun//article/bf3168b8-81d1-4876-82cb-0f79f171034d.png)</p>
+<p><img src="../images/bf3168b8-81d1-4876-82cb-0f79f171034d.png" alt="" loading="lazy"></p>
 <p>接下来我们让<code>person</code>等于<code>null</code>。</p>
-<p>![](https://static.ecool.fun//article/d5f3049b-322b-4933-b449-56019678cf7d.png)</p>
+<p><img src="../images/d5f3049b-322b-4933-b449-56019678cf7d.png" alt="" loading="lazy"></p>
 <p>我们没有修改数组第一个元素的值，而只是修改了变量<code>person</code>的值,因为元素（复制而来）的引用与<code>person</code>不同。<code>members</code>的第一个元素仍然保持着对原始对象的引用。当我们输出<code>members</code>数组时，第一个元素会将引用的对象打印出来。</p>
 </div>
     </section>

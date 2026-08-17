@@ -26,11 +26,11 @@
       <div class="q-block-body"><h3>一、是什么</h3>
 <p>在<a href="https://github.com/febobo/web-interview/issues/73" target="_blank" rel="noopener">浏览器事件循环</a>中，我们了解到<code>javascript</code>在浏览器中的事件循环机制，其是根据<code>HTML5</code>定义的规范来实现</p>
 <p>而在<code>NodeJS</code>中，事件循环是基于<code>libuv</code>实现，<code>libuv</code>是一个多平台的专注于异步IO的库，如下图最右侧所示：</p>
-<p> ![](https://static.ecool.fun//article/a3883f83-894a-475e-9352-2c6d5fe3dc2d.png)</p>
+<p> <img src="../images/a3883f83-894a-475e-9352-2c6d5fe3dc2d.png" alt="" loading="lazy"></p>
 <p>上图<code>EVENT_QUEUE</code> 给人看起来只有一个队列，但<code>EventLoop</code>存在6个阶段，每个阶段都有对应的一个先进先出的回调队列</p>
 <h3>二、流程</h3>
 <p>上节讲到事件循环分成了六个阶段，对应如下：</p>
-<p> ![](https://static.ecool.fun//article/b120f48a-402c-4784-a78b-366151217ed5.png)</p>
+<p> <img src="../images/b120f48a-402c-4784-a78b-366151217ed5.png" alt="" loading="lazy"></p>
 <ul>
 <li>timers阶段：这个阶段执行timer（setTimeout、setInterval）的回调</li>
 <li>定时器检测阶段(timers)：本阶段执行 timer 的回调，即 setTimeout、setInterval 里面的回调函数</li>
@@ -43,7 +43,7 @@
 <p>每个阶段对应一个队列，当事件循环进入某个阶段时, 将会在该阶段内执行回调，直到队列耗尽或者回调的最大数量已执行, 那么将进入下一个处理阶段</p>
 <p>除了上述6个阶段，还存在<code>process.nextTick</code>，其不属于事件循环的任何一个阶段，它属于该阶段与下阶段之间的过渡, 即本阶段执行结束, 进入下一个阶段前, 所要执行的回调，类似插队</p>
 <p>流程图如下所示：</p>
-<p> ![](https://static.ecool.fun//article/6ab9a805-9ff5-4a47-985f-e15c2e3442c2.png)</p>
+<p> <img src="../images/6ab9a805-9ff5-4a47-985f-e15c2e3442c2.png" alt="" loading="lazy"></p>
 <p>在<code>Node</code>中，同样存在宏任务和微任务，与浏览器中的事件循环相似</p>
 <p>微任务对应有：</p>
 <ul>

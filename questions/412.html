@@ -29,7 +29,7 @@
 <p>首屏加载可以说是用户体验中<strong>最重要</strong>的环节</p>
 <h4>关于计算首屏时间</h4>
 <p>利用<code>performance.timing</code>提供的数据：</p>
-<p> !<a href="https://static.ecool.fun//article/106a98b9-b2dd-402f-943a-810cdc7e8879.png" target="_blank" rel="noopener">image.png</a></p>
+<p> <img src="../images/106a98b9-b2dd-402f-943a-810cdc7e8879.png" alt="image.png" loading="lazy"></p>
 <p>通过<code>DOMContentLoad</code>或者<code>performance</code>来计算出首屏时间</p>
 <pre class="code-block"><code>// 方案一：
 document.addEventListener('DOMContentLoaded', (event) =&gt; {
@@ -67,7 +67,7 @@ performance.getEntriesByName(&quot;first-contentful-paint&quot;)[0].startTime
 </ul>
 <h4>减小入口文件体积</h4>
 <p>常用的手段是路由懒加载，把不同路由对应的组件分割成不同的代码块，待路由被请求的时候会单独打包路由，使得入口文件变小，加载速度大大增加</p>
-<p> !<a href="https://static.ecool.fun//article/0145e724-3487-43df-b7da-1120b9a78120.png" target="_blank" rel="noopener">image.png</a></p>
+<p> <img src="../images/0145e724-3487-43df-b7da-1120b9a78120.png" alt="image.png" loading="lazy"></p>
 <p>在<code>vue-router</code>配置路由的时候，采用动态加载路由的形式</p>
 <pre class="code-block"><code>routes:[ 
     path: 'Blogs',
@@ -129,7 +129,7 @@ app.use(compression())  // 在其他中间件使用之前调用</code></pre>
 <h4>小结：</h4>
 <p>减少首屏渲染时间的方法有很多，总的来讲可以分成两大部分 ：资源加载优化 和 页面渲染优化</p>
 <p>下图是更为全面的首屏优化的方案</p>
-<p> !<a href="https://static.ecool.fun//article/b15bf9a4-d026-4942-8957-fcc52d74b3da.png" target="_blank" rel="noopener">image.png</a></p>
+<p> <img src="../images/b15bf9a4-d026-4942-8957-fcc52d74b3da.png" alt="image.png" loading="lazy"></p>
 <p>大家可以根据自己项目的情况选择各种方式进行首屏渲染的优化</p>
 </div>
     </section>

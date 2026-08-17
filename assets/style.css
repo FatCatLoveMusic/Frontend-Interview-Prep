@@ -171,3 +171,5 @@ a.chip-tag:hover { text-decoration: none; filter: brightness(0.96); }
 @media (max-width: 480px) {
   .cat-grid { grid-template-columns: 1fr; }
 }
+.q-block-body img { max-width: 100%; height: auto; display: block; margin: 14px auto; border-radius: 8px; box-shadow: 0 2px 12px rgba(15,23,42,0.08); }
+.q-block-body p img { margin: 14px auto; }

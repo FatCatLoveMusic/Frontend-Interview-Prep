@@ -6,7 +6,7 @@
 
 将 https://fe.ecool.fun/topic-list（前端面试题宝典）的最新题目、答案重新抓取，并重新生成知识库网站（首页 + 分类页 + 题目详情页）。
 
-知识库位置：`C:\Users\22695\workpalce\myself\前端面试题知识库`
+知识库位置：`C:\Users\22695\workpalce\myself\Frontend-Interview-Prep`
 
 ## 执行步骤
 
@@ -15,7 +15,7 @@
 先调用 API 验证 `_config\cookies.json` 中的登录凭证（utoken 是 JWT，约 7 天过期）：
 
 ```powershell
-$cfg = Get-Content 'C:\Users\22695\workpalce\myself\前端面试题知识库\_config\cookies.json' -Raw -Encoding UTF8 | ConvertFrom-Json
+$cfg = Get-Content 'C:\Users\22695\workpalce\myself\Frontend-Interview-Prep\_config\cookies.json' -Raw -Encoding UTF8 | ConvertFrom-Json
 $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
 $session.Cookies.Add((New-Object System.Net.Cookie('utoken', $cfg.utoken, '/', 'fe.ecool.fun'))) | Out-Null
 $session.Cookies.Add((New-Object System.Net.Cookie('utoken.sig', $cfg.'utoken.sig', '/', 'fe.ecool.fun'))) | Out-Null
@@ -31,7 +31,7 @@ $r.code   # 0 表示有效
 ### 第 2 步：执行一键更新脚本
 
 ```powershell
-& 'C:\Users\22695\workpalce\myself\前端面试题知识库\update.ps1'
+& 'C:\Users\22695\workpalce\myself\Frontend-Interview-Prep\update.ps1'
 ```
 
 - 脚本为长任务（抓取约 400 个列表请求 + 1900 个详情请求 + 生成 1900 个页面），预计 **15-25 分钟**，应以后台非阻塞方式运行，期间定期检查输出。
@@ -73,6 +73,7 @@ $r.code   # 0 表示有效
 | `scripts/kb_common.ps1` | 公共模块：路径配置、Markdown→HTML 转换器、难度/分级工具、数据加载 |
 | `scripts/gen_assets.ps1` | 生成 `assets/`（样式、脚本、搜索索引）、`index.html` 首页、`categories/` 25 个分类列表页 |
 | `scripts/gen_details.ps1` | 生成 `questions/` 题目详情页（每题一页，含答案、选项高亮、上下题导航） |
+| `images/` 目录 | 题目图片已全部离线化，生成详情页时 `kb_common.ps1` 的转换器会自动下载题图到 `images/` 并按需引用（详见下文"图片机制"） |
 
 所有脚本从 `_config\cookies.json` 读取登录凭证，不硬编码。
 
@@ -83,3 +84,20 @@ $r.code   # 0 表示有效
 - **新分类处理**：网站若新增分类，需在 `scripts/fetch_list.ps1` 的 `$tags` 数组补充新分类的 `tagId` 和名称（tagId 通过网站点击分类标签观察 URL 参数获取），并在 `scripts/kb_common.ps1` 的 `$tags` 数组同步添加。update.ps1 的验证环节会提示是否存在未归类题目。
 - **详情抓取支持断点续传**：中途失败重跑即可，已下载的题目会自动跳过。
 - 本机没有 Node.js / Python，一切处理均基于 PowerShell 5.1。
+
+## 图片机制（图片已离线化）
+
+- 知识库所有题图已下载到仓库根目录 `images/`（552 张），HTML 详情页通过相对路径 `../images/<文件名>` 引用，**完全离线可用**，不依赖任何外网图床。
+- `scripts/kb_common.ps1` 的 Markdown→HTML 转换器已支持图片语法：生成详情页时遇到 `![alt](url)` 会自动调用 `Get-LocalImageName`，优先复用 `images/` 已有文件，否则自动下载到 `images/` 后引用；下载失败则退化为远程 URL 并打印 WARN。
+- 图片命名取自 URL 末段文件名；同名文件按 basename 复用（兼容扩展名修正）。
+- **注意**：`_config/` 目录（含 `cookies.json` 登录凭证）已被 `.gitignore` 排除，**切勿上传 GitHub**。
+- 分类 Markdown（`分类题库/`）中的图片引用同样已改为本地相对路径 `../images/<文件名>`。
+
+## GitHub 提交指引（内容有改动后）
+
+```powershell
+cd 'C:\Users\22695\workpalce\myself\Frontend-Interview-Prep'
+git add -A
+git commit -m '更新知识库内容'
+git push origin main
+```

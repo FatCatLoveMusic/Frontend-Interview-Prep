@@ -32,7 +32,7 @@
 <h5>来源</h5>
 <p>由于 HTTP 请求时是无状态的，服务端正常情况下无法得知请求发送者的身份。这个时候如果我们要记录状态，就需要在服务端创建会话，将相同客户端的请求都维护在各自的会话记录中，每当请求到达服务端时，先校验请求中的用户标识是否存在于 Session 中，如果有则表示已经认证成功，否则表示认证失败。</p>
 <h5>流程</h5>
-<p>![](https://static.ecool.fun//article/35b6368a-dbf9-45f6-b1ef-769968a635f6.png)</p>
+<p><img src="../images/35b6368a-dbf9-45f6-b1ef-769968a635f6.png" alt="" loading="lazy"></p>
 <h5>实践</h5>
 <p>boss（我们的一个产品） 这边 Session ID 存在数据库里面，在 Memcached 里面做缓存。客户端每次调用接口的时候会通过 response headers 里面的 Set-Cookie 更新过期时间（boss 这边设置的是 6 个小时），这样做的作用是防止你在做一些复杂操作的时候，cookie 突然过期。</p>
 <p>⚠️<strong>整个过程是比较重的，因为每次的接口调用都得更新过期时间。</strong></p>
@@ -47,7 +47,7 @@
 </ul>
 <h4>关于 Cookie 的安全问题</h4>
 <p>Cookie 属性：</p>
-<p>![](https://static.ecool.fun//article/540326e7-1c16-42af-adf5-42c791bf89a5.png)</p>
+<p><img src="../images/540326e7-1c16-42af-adf5-42c791bf89a5.png" alt="" loading="lazy"></p>
 <p>提高安全性的办法</p>
 <ul>
 <li>Expires/Max-Age 设置合理过期时间</li>
@@ -58,7 +58,7 @@
 <h5>来源</h5>
 <p>负载均衡多服务器的情况，不好确认当前用户是否登录，因为多服务器不共享 Session。这个问题也可以将 Session 存在一个服务器中来解决，但是就不能完全达到负载均衡的效果。  &lt;br&gt;Token 和 Session-Cookie 认证方式中的 Session ID 不同，并非只是一个标识符。Token 一般会包含用户的相关信息，通过验证 Token 不仅可以完成身份校验，还可以获取预设的信息。  &lt;br&gt;客户端可以将 token 存放于 localStroage 等容器中。客户端每次访问都传递 token，服务端解密 token，服务端就不需要存储 Session 占用存储空间，就很好的解决负载均衡多服务器的问题了。</p>
 <h5>流程</h5>
-<p>![](https://static.ecool.fun//article/979372f4-69c5-431d-8f15-d74c6e30115b.png)</p>
+<p><img src="../images/979372f4-69c5-431d-8f15-d74c6e30115b.png" alt="" loading="lazy"></p>
 <h5>实践</h5>
 <p>平常用的最多的就是 JSON Web Token（JWT），也是目前最流行的跨域身份验证解决方案。  </p>
 <p>JWT 组成：<strong>头部. 载荷. 签名</strong>  </p>
@@ -88,9 +88,9 @@
 <h5>来源</h5>
 <p>但当我们业务线越来越多，就会有更多业务系统分散到不同域名下，就需要「一次登录，全线通用」的能力，叫做「单点登录」。</p>
 <h5>流程</h5>
-<p>![](https://static.ecool.fun//article/277cd37f-f76b-445d-a252-ec2b2da47213.png)</p>
+<p><img src="../images/277cd37f-f76b-445d-a252-ec2b2da47213.png" alt="" loading="lazy"></p>
 <p>对浏览器来说，SSO 域下返回的数据要怎么存，才能在访问 A 的时候带上？这就需要也只能由 A 提供 A 域下存储凭证的能力。</p>
-<p>![](https://static.ecool.fun//article/2df38aa3-f502-4072-aaa2-effdcb9f84d5.png)</p>
+<p><img src="../images/2df38aa3-f502-4072-aaa2-effdcb9f84d5.png" alt="" loading="lazy"></p>
 <h5>实践</h5>
 <p>OIDC</p>
 <ol>
@@ -103,7 +103,7 @@
 <p>OIDC 是一个 OAuth2 上层的简单身份层协议。它允许客户端验证用户的身份并获取基本的用户配置信息。OIDC 使用 JSON Web Token（JWT）作为信息返回，通过符合 OAuth2 的流程来获取。</p>
 <h4>关于 OAuth2</h4>
 <p>OAuth2 最终目的是为第三方应用颁发一个有时效性的令牌 token。使得第三方应用能够通过该令牌获取相关的资源。当你想要登录某个论坛，但没有账号，而这个论坛接入了如 QQ、Facebook 等登录功能，在你使用 QQ 登录的过程中就使用的 OAuth 2.0 协议。</p>
-<p>![](https://static.ecool.fun//article/5381d9c7-4ff5-46c6-8997-c9d1b22d3cae.png)</p>
+<p><img src="../images/5381d9c7-4ff5-46c6-8997-c9d1b22d3cae.png" alt="" loading="lazy"></p>
 <ul>
 <li>Client 请求 Resource Owner 的授权。授权请求可以直接向 Resource Owner 请求，也可以通过 Authorization Server 间接的进行。</li>
 <li>Client 获得授权许可。</li>
@@ -118,7 +118,7 @@
 <h4>Others 认证方式</h4>
 <h5>2FA（双因素认证）</h5>
 <p>线上的 boss 必须开启二次认证，会生成一个二维码，那个二维码就是一个 SecretKey，通过 CryptoJS.HmacSHA1（默认算法），每次会计算出一个 6 位（默认长度）随机数。计算公式为</p>
-<p>![](https://static.ecool.fun//article/25a3c914-4696-4d90-9d58-dcda2543f8e9.png)</p>
+<p><img src="../images/25a3c914-4696-4d90-9d58-dcda2543f8e9.png" alt="" loading="lazy"></p>
 <p>⚠️因为默认是 30s 内有效，所以用户手机时间要比较准确</p>
 <h3>Google 验证器</h3>
 <p>谷歌身份验证器最早是谷歌为了减少 Gmail 邮箱遭受恶意攻击而推出的两步验证方式，后来被很多网站支持。使用谷歌身份验证器，可以避免比如不久前发生的 Coinbase 短信二次验证导致的安全事故。开启谷歌身份验证之后，登录账户，除了输入用户名和密码，还需要输入谷歌验证器上的动态密码。</p>

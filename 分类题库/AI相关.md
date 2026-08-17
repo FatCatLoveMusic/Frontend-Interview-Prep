@@ -3727,7 +3727,7 @@ AI 并不会削弱前端工程师的价值，但会明显改变关注重点：
 
 **参考答案**：
 ### 一、核心架构设计
-![](https://static.ecool.fun/others/6d992e33-d481-4c45-befa-c023527e707e.png)
+![](../images/6d992e33-d481-4c45-befa-c023527e707e.png)
 
 
 ### 二、编辑器实现方案
@@ -4318,7 +4318,7 @@ MCP 的设计灵感来源于语言服务器协议（LSP），但其目标更为�
 #### 1. **接口暴露风险**
 - **代理服务层**（关键方案）  
   前端不直接调用 AI 接口，而是通过自建代理服务中转：
-![image](https://static.ecool.fun/others/868a5cb3-8693-40b7-aaa5-ba2a1a54a391.png)
+![image](../images/868a5cb3-8693-40b7-aaa5-ba2a1a54a391.png)
 
   - **优势**：隐藏真实 endpoint、屏蔽 API Key  
   - **实现**：使用 Node.js/Nginx 反向代理，添加请求过滤

@@ -49,7 +49,7 @@
 <p>通过<code>VNode</code>，<code>vue</code>可以对这颗抽象树进行创建节点,删除节点以及修改节点的操作， 经过<code>diff</code>算法得出一些需要修改的最小单位,再更新视图，减少了<code>dom</code>操作，提高了性能</p>
 <h3>二、为什么需要虚拟DOM</h3>
 <p><code>DOM</code>是很慢的，其元素非常庞大，页面的性能问题，大部分都是由<code>DOM</code>操作引起的</p>
-<p>真实的<code>DOM</code>节点，哪怕一个最简单的<code>div</code>也包含着很多属性，可以打印出来直观感受一下：&lt;br&gt; ![](https://static.ecool.fun//article/2967524b-26f4-44a1-ae01-818bd4283f23.png)</p>
+<p>真实的<code>DOM</code>节点，哪怕一个最简单的<code>div</code>也包含着很多属性，可以打印出来直观感受一下：&lt;br&gt; <img src="../images/2967524b-26f4-44a1-ae01-818bd4283f23.png" alt="" loading="lazy"></p>
 <p>由此可见，操作<code>DOM</code>的代价仍旧是昂贵的，频繁操作还是会出现页面卡顿，影响用户的体验</p>
 <p><strong>举个例子：</strong></p>
 <p>你用传统的原生<code>api</code>或<code>jQuery</code>去操作<code>DOM</code>时，浏览器会从构建<code>DOM</code>树开始从头到尾执行一遍流程</p>

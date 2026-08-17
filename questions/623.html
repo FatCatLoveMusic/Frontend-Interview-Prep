@@ -171,7 +171,7 @@ module.exports = {
 }</code></pre>
 <p>使用之后，没被用上的代码在<code>webpack</code>打包中会加入<code>unused harmony export mul</code>注释，用来告知 <code>Terser</code> 在优化时，可以删除掉这段代码</p>
 <p> 如下面<code>sum</code>函数没被用到，<code>webpack</code>打包会添加注释，<code>terser</code>在优化时，则将该函数去掉</p>
-<p> ![](https://static.ecool.fun//article/f8754a88-bb08-4d81-9a12-e7621cd74abf.png)</p>
+<p> <img src="../images/f8754a88-bb08-4d81-9a12-e7621cd74abf.png" alt="" loading="lazy"></p>
 <h5>sideEffects</h5>
 <p><code>sideEffects</code>用于告知<code>webpack compiler</code>哪些模块时有副作用，配置方法是在<code>package.json</code>中设置<code>sideEffects</code>属性</p>
 <p>如果<code>sideEffects</code>设置为false，就是告知<code>webpack</code>可以安全的删除未用到的<code>exports</code></p>

@@ -42,7 +42,7 @@ console.log(new Person(&quot;战场&quot;, &quot;小包&quot;));
 // 当作普通函数调用
 console.log(Person(&quot;战场&quot;, &quot;小包&quot;))</code></pre>
 <p>输出结果: </p>
-<p>!<a href="https://static.ecool.fun//article/71273689-7fdd-408c-a846-a59497aa53ae.jpeg" target="_blank" rel="noopener">newFunc-Func.png</a></p>
+<p><img src="../images/71273689-7fdd-408c-a846-a59497aa53ae.jpg" alt="newFunc-Func.png" loading="lazy"></p>
 <p>通过输出结果可以发现，定义的构造函数被当作普通函数来调用，没有任何错误提示。</p>
 <h3>使用 instanceof 实现</h3>
 <h4>instanceof 基础知识</h4>
@@ -126,7 +126,7 @@ console.log(Person())</code></pre>
 }
 new Person()</code></pre>
 <p>输出结果:</p>
-<p>!<a href="https://static.ecool.fun//article/2f127a0c-478c-4d74-a795-df2656f32e43.jpeg" target="_blank" rel="noopener">new-target-class.png</a></p>
+<p><img src="../images/2f127a0c-478c-4d74-a795-df2656f32e43.jpg" alt="new-target-class.png" loading="lazy"></p>
 <p><code>Class</code> 内部调用 <code>new.target</code>，会返回当前 <code>Class</code>。</p>
 <p>《ECMAScript 6 入门》中又讲到: <strong>需要注意的是，子类继承父类时，<code>new.target</code>会返回子类</strong>。继承中的 <code>new.target</code> 好像有不一样的花样，我们来试一下。</p>
 <pre class="code-block"><code>class Animal {
@@ -145,7 +145,7 @@ class Dog extends Animal {
 }
 const dog = new Dog()</code></pre>
 <p>输出结果:</p>
-<p>!<a href="https://static.ecool.fun//article/36c17124-4ebb-41e9-8c13-918fe82805b9.jpeg" target="_blank" rel="noopener">new-target-extends.png</a></p>
+<p><img src="../images/36c17124-4ebb-41e9-8c13-918fe82805b9.jpg" alt="new-target-extends.png" loading="lazy"></p>
 <p>通过上面案例，我们可以发现子类调用和父类调用的返回结果是不同的，我们利用这个特性，就可以实现父类不可调用而子类可以调用的情况——面向对象中的<strong>抽象类</strong></p>
 <h4>抽象类实现</h4>
 <p>什么是抽象类那？我们以动物世界为例。</p>

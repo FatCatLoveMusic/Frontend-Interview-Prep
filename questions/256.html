@@ -29,7 +29,7 @@
 <p>(1) 首先说设备像素。举手机的例子来说，设备像素也就是在手机广告上经常会看到的1920*1080像素或1280*720像素，也就是常说的分辨率为1080p或720p。它所指的是设备上有多少个能够显示一种特定颜色的最小区域，在任何设备中这个数值都是不会变的。</p>
 <p>(2) 再说CSS像素，它的一种更广义的叫法是独立像素。CSS像素是为web开发者所打造的，是在CSS和JavaScript中使用的一个抽象的层，我们在CSS中定义的width: 100px;、font-size: 16px;等属性都是指CSS像素。而相对于CSS像素，设备像素这个概念在前端中几乎用不上（除了screen.width/height）。</p>
 <p>那么，从定义来看，dpr的意义就是：在一个设备（的每个方向）上，每个CSS像素会被多少个实际的物理像素来显示。</p>
-<p>!<a href="https://static.ecool.fun//article/893cb23b-5299-44ab-af90-f0585f94c298.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/893cb23b-5299-44ab-af90-f0585f94c298.png" alt="image.png" loading="lazy"></p>
 <p>上图中，一个蓝色方块代表一个设备像素，一个黄色方块代表一个CSS像素。我们可以通过这张图来理清dpr的概念：</p>
 <ul>
 <li>如图左，一个设备像素覆盖了多个CSS像素，dpr &lt; 1，对应用户的缩小操作；</li>

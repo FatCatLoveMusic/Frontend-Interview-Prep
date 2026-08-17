@@ -28,11 +28,11 @@
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><p>在es5中主要是通过构造函数方式和原型方式来定义一个类，在es6中我们可以通过class来定义类。</p>
 <h3>一、class类必须new调用，不能直接执行。</h3>
-<p>!<a href="https://static.ecool.fun//article/c1841b40-fce7-466c-9316-38c057419c40.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/c1841b40-fce7-466c-9316-38c057419c40.png" alt="image.png" loading="lazy"></p>
 <p>class类执行的话会报错，而es5中的类和普通函数并没有本质区别，执行肯定是ok的。</p>
 <h3>二、class类不存在变量提升</h3>
-<p>!<a href="https://static.ecool.fun//article/5378c86b-1d14-41d6-8661-e6bd762cd17a.png" target="_blank" rel="noopener">image.png</a></p>
-<p>!<a href="https://static.ecool.fun//article/43a43e47-2362-4f57-9b4c-0461033ed0a6.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/5378c86b-1d14-41d6-8661-e6bd762cd17a.png" alt="image.png" loading="lazy"></p>
+<p><img src="../images/43a43e47-2362-4f57-9b4c-0461033ed0a6.png" alt="image.png" loading="lazy"></p>
 <p>图2报错，说明class方式没有把类的定义提升到顶部。</p>
 <h3>三、class类无法遍历它实例原型链上的属性和方法</h3>
 <pre class="code-block"><code>function Foo (color) {

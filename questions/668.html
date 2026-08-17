@@ -36,24 +36,24 @@
 <p>操作系统不同，浏览器上跑的网页的代码确实同一份。浏览器就是一种历史悠久的跨平台方案。</p>
 <p>网页跨平台不意味着浏览器也是跨平台的，浏览器的可执行文件还是每个平台单独开发和编译的，但是他们支持的网页解析逻辑一样，这样上面跑的网页就是跨平台的。</p>
 <p>浏览器提供了一个容器，屏蔽了底层差异，提供了统一的 api（dom api），这样就可以实现同一份代码跑在不同平台的统一的容器里。这个容器叫做浏览器引擎，由 js 引擎、渲染引擎等构成。</p>
-<p>![](https://static.ecool.fun//article/1bcaaef7-eb68-435e-8a67-da969357b0e7.jpeg)</p>
+<p><img src="../images/1bcaaef7-eb68-435e-8a67-da969357b0e7.jpg" alt="" loading="lazy"></p>
 <h4>docker </h4>
 <p>docker 是一种虚拟化技术，可以在操作系统之上加一个虚拟层，在这层之上划分一到多个容器，容器里再去跑系统、app，这样可以实现硬件和软件的分离，动态分配硬件资源给容器，并且方便 app 运行环境的整体迁移（保存成镜像）。</p>
-<p>![](https://static.ecool.fun//article/1ca1a77a-1089-4782-b60b-e399afe42d17.jpeg)</p>
+<p><img src="../images/1ca1a77a-1089-4782-b60b-e399afe42d17.jpg" alt="" loading="lazy"></p>
 <p>docker 很明显也是一种跨平台技术，同一个镜像可以跑在任何操作系统的 docker 上。只要不同操作系统实现同样的容器即可。</p>
 <h4>jvm</h4>
 <p>java 是一门编译 + 解释的语言，java 源码编译成字节码，然后字节码直接在 vm 上解释执行。</p>
 <p>java 为什么这么火呢？主要是因为跨平台。</p>
 <p>c、c++ 这种语言写的代码需要编译成不同操作系统上的可执行文件来跑，而且每个平台的代码可能还不一样，需要写多份。</p>
 <p>java 因为提供了 jvm 容器，只要把源码编译成 jvm 能解释的字节码就行了，而且 jdk 提供了统一的 api，分别由不同操作系统的底层 api 来实现，这样对于 java 代码来说，不同操作系统的代码是一致的。</p>
-<p>![](https://static.ecool.fun//article/a2b85fca-6291-442d-9e72-494ab79c57ad.jpeg)</p>
+<p><img src="../images/a2b85fca-6291-442d-9e72-494ab79c57ad.jpg" alt="" loading="lazy"></p>
 <p>jvm 也是通过容器的技术实现了一份代码跑在多个平台，而且 jre 提供了统一的 api，屏蔽掉了底层的差异。</p>
 <h4>node、deno</h4>
 <p>node 和 deno 也是跨平台的技术，通过提供一套一致的 api，让其上的 js 代码可以跨平台。这些 api 也是不同平台各自实现的。</p>
-<p>![](https://static.ecool.fun//article/c92c1748-f61b-4429-b3dc-122a1896e61a.jpeg)</p>
+<p><img src="../images/c92c1748-f61b-4429-b3dc-122a1896e61a.jpg" alt="" loading="lazy"></p>
 <h3>electron</h3>
 <p>electron 内置了 chromium，并为其注入了 node 的 api 和一些 GUI 相关的 api，是基于两大跨平台技术综合而成的跨平台方案。基于这些方案的组合使得 electron 支持用前端技术开发桌面端。</p>
-<p>![](https://static.ecool.fun//article/0b68604b-1714-4e7e-9d17-e083cef954a6.jpeg)</p>
+<p><img src="../images/0b68604b-1714-4e7e-9d17-e083cef954a6.jpg" alt="" loading="lazy"></p>
 <h3>跨平台方案的优缺点</h3>
 <p>跨平台方案的优点很明显，就是一份代码跑在不同平台的同样的容器内，不用不同平台单独开发，节省成本。</p>
 <p>但是跨平台方案也有缺点：</p>

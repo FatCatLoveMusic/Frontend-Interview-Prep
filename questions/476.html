@@ -39,7 +39,7 @@
 <p>基于这三个方向，可以衍生出一些具有典型意义的子问题，这里我们逐个来看：</p>
 <p><strong>（1）预处理器：为什么要用预处理器？它的出现是为了解决什么问题？</strong></p>
 <p>预处理器，其实就是 CSS 世界的“轮子”。预处理器支持我们写一种类似 CSS、但实际并不是 CSS 的语言，然后把它编译成 CSS 代码：</p>
-<p>![](https://static.ecool.fun//article/3eaa8d72-1521-41ac-bb21-0f0032ee426b.jpeg)</p>
+<p><img src="../images/3eaa8d72-1521-41ac-bb21-0f0032ee426b.jpg" alt="" loading="lazy"></p>
 <p>那为什么写 CSS 代码写得好好的，偏偏要转去写“类 CSS”呢？这就和本来用 JS 也可以实现所有功能，但最后却写 React 的 jsx 或者 Vue 的模板语法一样。</p>
 <p>随着前端业务复杂度的提高，前端工程中对 CSS 提出了以下的诉求：</p>
 <ol>
@@ -57,7 +57,7 @@
 <li>支持将 CSS 文件模块化，实现复用。</li>
 </ul>
 <p><strong>（2）PostCss：PostCss 是如何工作的？我们在什么场景下会使用 PostCss？</strong></p>
-<p>![](https://static.ecool.fun//article/67cfdcba-5fe2-4b9c-84a9-a7adba836794.jpeg)</p>
+<p><img src="../images/67cfdcba-5fe2-4b9c-84a9-a7adba836794.jpg" alt="" loading="lazy"></p>
 <p>它和预处理器的不同就在于，预处理器处理的是 类CSS，而 PostCss 处理的就是 CSS 本身。Babel 可以将高版本的 JS 代码转换为低版本的 JS 代码。PostCss 做的是类似的事情：它可以编译尚未被浏览器广泛支持的先进的 CSS 语法，还可以自动为一些需要额外兼容的语法增加前缀。更强的是，由于 PostCss 有着强大的插件机制，支持各种各样的扩展，极大地强化了 CSS 的能力。</p>
 <p>PostCss 在业务中的使用场景非常多：</p>
 <ul>

@@ -48,7 +48,7 @@
 <h4>提升性能</h4>
 <h5>握手改进</h5>
 <p>流程如下:</p>
-<p>![](https://static.ecool.fun//article/af64754a-d7db-4c77-93de-3c2571c88265.jpeg)</p>
+<p><img src="../images/af64754a-d7db-4c77-93de-3c2571c88265.jpg" alt="" loading="lazy"></p>
 <p>大体的方式和 TLS1.2 差不多，不过和 TLS 1.2 相比少了一个 RTT， 服务端不必等待对方验证证书之后才拿到<code>client_params</code>，而是直接在第一次握手的时候就能够拿到, 拿到之后立即计算<code>secret</code>，节省了之前不必要的等待时间。同时，这也意味着在第一次握手的时候客户端需要传送更多的信息，一口气给传完。</p>
 <p>这种 TLS 1.3 握手方式也被叫做<code>1-RTT握手</code>。但其实这种<code>1-RTT</code>的握手方式还是有一些优化的空间的，接下来我们来一一介绍这些优化方式。</p>
 <h5>会话复用</h5>

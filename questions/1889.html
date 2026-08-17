@@ -34,7 +34,7 @@
 <p>CORS （Cross-Origin Resource Sharing，跨域资源共享）是一个系统，它由一系列传输的HTTP头组成，这些HTTP头决定浏览器是否阻止前端 JavaScript 代码获取跨域请求的响应</p>
 <p><code>CORS</code> 实现起来非常方便，只需要增加一些 <code>HTTP</code> 头，让服务器能声明允许的访问来源</p>
 <p>只要后端实现了 <code>CORS</code>，就实现了跨域</p>
-<p> ![](https://static.ecool.fun//article/1dab26ff-003d-49b3-ab94-f25032f40170.png)</p>
+<p> <img src="../images/1dab26ff-003d-49b3-ab94-f25032f40170.png" alt="" loading="lazy"></p>
 <p>以<code> koa</code>框架举例</p>
 <p>添加中间件，直接设置<code>Access-Control-Allow-Origin</code>请求头</p>
 <pre class="code-block"><code>app.use(async (ctx, next)=&gt; {

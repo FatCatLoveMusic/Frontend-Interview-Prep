@@ -88,7 +88,7 @@ async function readFile() {
 <p>分析 async、await 实现原理之前，先介绍下预备知识</p>
 <h3>1. generator</h3>
 <p>generator 函数是协程在 ES6 的实现。协程简单来说就是多个线程互相协作，完成异步任务。</p>
-<p>!<a href="https://static.ecool.fun//article/466ad367-1f3f-4f4c-8fa1-bd5dace7bbb7.jpeg" target="_blank" rel="noopener">image-1-1620701628067.png</a></p>
+<p><img src="../images/466ad367-1f3f-4f4c-8fa1-bd5dace7bbb7.jpg" alt="image-1-1620701628067.png" loading="lazy"></p>
 <p>整个 generator 函数就是一个封装的异步任务，异步操作需要暂停的地方，都用 yield 语句注明。generator 函数的执行方法如下：</p>
 <pre class="code-block"><code>function* gen(x) {
   console.log('start')

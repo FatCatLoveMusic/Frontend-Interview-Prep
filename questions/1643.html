@@ -25,7 +25,7 @@
       <h2 class="q-block-title">参考答案</h2>
       <div class="q-block-body"><h3>一、编译阶段</h3>
 <p>回顾<code>Vue2</code>，我们知道每个组件实例都对应一个 <code>watcher</code> 实例，它会在组件渲染的过程中把用到的数据<code>property</code>记录为依赖，当依赖发生改变，触发<code>setter</code>，则会通知<code>watcher</code>，从而使关联的组件重新渲染</p>
-<p> ![](https://static.ecool.fun//article/2ff51544-a944-4b18-a4fe-abbd3160888e.png)</p>
+<p> <img src="../images/2ff51544-a944-4b18-a4fe-abbd3160888e.png" alt="" loading="lazy"></p>
 <p>试想一下，一个组件结构如下图</p>
 <pre class="code-block"><code>&lt;template&gt;
     &lt;div id=&quot;content&quot;&gt;
@@ -49,7 +49,7 @@
 <p><code>vue3</code>在<code>diff</code>算法中相比<code>vue2</code>增加了静态标记</p>
 <p>关于这个静态标记，其作用是为了会发生变化的地方添加一个<code>flag</code>标记，下次发生变化的时候直接找该地方进行比较</p>
 <p>下图这里，已经标记静态节点的<code>p</code>标签在<code>diff</code>过程中则不会比较，把性能进一步提高</p>
-<p> ![](https://static.ecool.fun//article/4d63cf01-fda3-4567-9779-2c0c519cea4e.png)</p>
+<p> <img src="../images/4d63cf01-fda3-4567-9779-2c0c519cea4e.png" alt="" loading="lazy"></p>
 <p>关于静态类型枚举如下</p>
 <pre class="code-block"><code>export const enum PatchFlags {
   TEXT = 1,// 动态的文本节点

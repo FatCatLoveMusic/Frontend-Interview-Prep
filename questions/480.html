@@ -51,7 +51,7 @@
 <p>意思是 给你和你的团队、你的公司带来最好的开源库和依赖。 通过这句话,我们可以了解到 npm 最重要的一点就是安装和维护依赖。那么，让我们先来看一看<code>npm</code>的安装机制是怎样的呢？</p>
 <h4>npm的安装机制</h4>
 <p>下面我们会通过一个流程图来具体学习<code>npm install</code>的安装机制</p>
-<p>![](https://static.ecool.fun//article/e1fa04c2-4b9b-4b85-b5c6-5664b34587eb.png)</p>
+<p><img src="../images/e1fa04c2-4b9b-4b85-b5c6-5664b34587eb.png" alt="" loading="lazy"></p>
 <p><code>npm install</code>执行之后，首先会检查和获取 <code>npm的配置</code>，这里的优先级为：</p>
 <p><code>项目级的.npmrc文件 &gt; 用户级的 .npmrc文件 &gt; 全局级的 .npmrc &gt; npm内置的 .npmrc 文件</code></p>
 <p>然后检查项目中是否有 <code>package-lock.json</code>文件</p>
@@ -106,7 +106,7 @@
 <h4>yarn的安装机制</h4>
 <p>上面一小节我们对npm的安装机制有了一些基本的了解,现在让我们先来简单的看一下<code>Yarn</code>的安装理念。</p>
 <p>简单来说, <code>Yarn</code>的安装大致分为5个步骤：</p>
-<p>![](https://static.ecool.fun//article/b61c64fd-cd5f-4070-9e35-70ef063fe402.png)</p>
+<p><img src="../images/b61c64fd-cd5f-4070-9e35-70ef063fe402.png" alt="" loading="lazy"></p>
 <p>检测(checking) ---&gt; 解析包(Resolving Packages) ---&gt; 获取包(Fetching) ---&gt; 链接包(Linking Packages) ---&gt; 构建包(Building Packages)</p>
 <p>那么接下来我们要开始具体分析这些过程中都做了哪些事情:</p>
 <p><strong>检测包</strong></p>
@@ -120,16 +120,16 @@
 <li>如果在<code>yarn.lock</code>中没有找到包A， 则向<code>Registry</code>发起请求获取满足版本范围内的已知的最高版本的包信息,获取之后将该包标记为已解析。</li>
 </ul>
 <p>总之，经过解析包这一步之后呢,我们就已经确定了解析包的具体版本信息和包的下载地址。</p>
-<p>![](https://static.ecool.fun//article/9c89a175-22d2-4482-abda-44de697f3a1b.png)</p>
+<p><img src="../images/9c89a175-22d2-4482-abda-44de697f3a1b.png" alt="" loading="lazy"></p>
 <p><strong>获取包</strong></p>
 <p>这一步首先我们会检查缓存中是否有当前依赖的包,同时呢将缓存中不存在的包下载到缓存的目录中。但是这里有一个小问题需要大家思考一下:</p>
 <p>比如: 如何去判断缓存中有当前的依赖包呢？</p>
 <p><strong>其实呢,在Yarn中会根据 cacheFolder+slug+node_modules+pkg.name 生成一个路径;判断系统中是否存在该path,如果存在证明已经有缓存,不用重新下载。这个path也就是依赖包缓存的具体路径。</strong></p>
 <p>那么对于没有命中的缓存包呢？在 <code>Yarn</code> 中存在一个Fetch队列,按照具体的规则进行网络请求。如果下载的包是一个file协议,或者是相对路径,就说明指向一个本地目录,此时会调用Fetch From Local从离线缓存中获取包;否则调用 Fetch From External 获取包,最终获取的结果使用 fs.createWriteStream 写入到缓存目录。</p>
-<p>![](https://static.ecool.fun//article/2dd25d52-e152-4de8-9923-4dd6c37ecb83.png)</p>
+<p><img src="../images/2dd25d52-e152-4de8-9923-4dd6c37ecb83.png" alt="" loading="lazy"></p>
 <p><strong>链接包</strong></p>
 <p>我们上一步已经把依赖放到了缓存目录,那么下一步,我们应该要做什么事情呢？是不是应该把项目中的依赖复制到<code>node_modules</code>目录下呢,没错;只不过此时需要遵循一个扁平化的原则。复制依赖之前, <code>Yarn</code>会先解析 <code>peerDepdencies</code>，如果找不到符合要求的<code>peerDepdencies</code>的包,会有 <code>warning</code>提示，并最终拷贝依赖到项目中。</p>
-<p>!<a href="https://static.ecool.fun//article/c9436686-7577-4682-9354-0cdaa66a1091.png" target="_blank" rel="noopener">imagepng</a></p>
+<p><img src="../images/c9436686-7577-4682-9354-0cdaa66a1091.png" alt="imagepng" loading="lazy"></p>
 <p><strong>构建包</strong></p>
 <p>如果依赖包中存在二进制包需要进行编译，那么会在这一步进行。</p>
 </div>

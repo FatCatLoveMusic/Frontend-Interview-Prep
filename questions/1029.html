@@ -29,7 +29,7 @@
 <h3>二叉树</h3>
 <p>二叉树是一种特殊的树，表现在它的子节点个数不超过两个。且二叉树的子树有左右之分，其次序不能任意颠倒。</p>
 <p>在实现二叉树时，采用的存储结构为链式存储结构，链式结构的意思是采用一个链表来存储一颗二叉树，二叉树中每一个节点用链表的一个节点来存储，在二叉树中，节点结构至少有三个域：数据域data，左指针域left，右指针域right，如下图所示：</p>
-<p>![](https://static.ecool.fun//article/c2c927d0-7758-4e59-85ef-84a698e7c867.jpeg)</p>
+<p><img src="../images/c2c927d0-7758-4e59-85ef-84a698e7c867.jpg" alt="" loading="lazy"></p>
 <p>二叉链表的存储结构描述如下：</p>
 <pre class="code-block"><code>class Node{
     constructor(data, left, right){
@@ -244,7 +244,7 @@ myTree.insert(24);
 myTree.insert(57);
 </code></pre>
 <p>新建后的二叉排序树如下图所示：</p>
-<p>![](https://static.ecool.fun//article/fad63b51-599a-4113-a217-0c26201abf2a.jpeg)</p>
+<p><img src="../images/fad63b51-599a-4113-a217-0c26201abf2a.jpg" alt="" loading="lazy"></p>
 <p>获取最大值试一下：</p>
 <pre class="code-block"><code>console.log(myTree.getMaxNode());  // Node {data: 57, left: null, right: null, count: 1}
 </code></pre>

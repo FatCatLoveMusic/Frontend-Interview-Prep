@@ -35,12 +35,12 @@
 <li><code>HTTP</code>属于应用层协议，在传输层使用<code>TCP</code>协议，在网络层使用<code>IP</code>协议。<code>IP</code>协议主要解决网络路由和寻址问题，<code>TCP</code>协议主要解决如何在<code>IP</code>层之上可靠的传递数据包，使在网络上的另一端收到发端发出的所有包，并且顺序与发出顺序一致。<code>TCP</code>有可靠，面向连接的特点。</li>
 </ul>
 <p>HTTP消息信息是用<code>ASCII</code>编码的，每个<code>HTTP</code>请求消息均包含<code>HTTP</code>协议版本（<code>HTTP/1.1</code>，<code>HTTP/2</code>），<code>HTTP</code>方法（<code>GET</code>/<code>POST</code>等），<code>HTTP</code>标头（<code>Content-Type</code>，<code>Content-Length</code>），主机信息等。以及包含要传输到服务器的实际消息的正文（请求主体）。<code>HTTP</code>标头的大小从200字节到2<code>KB</code>不等，<code>HTTP</code>标头的常见大小是700-800字节。当<code>Web</code>应用程序在客户端使用更多<code>cookie</code>和其他工具扩展代理的存储功能时，它将减少<code>HTTP</code>标头的荷载。</p>
-<p>![](https://static.ecool.fun//article/39531e5e-0387-4a16-9d7b-84f36f6c5b1b.jpg)</p>
+<p><img src="../images/39531e5e-0387-4a16-9d7b-84f36f6c5b1b.jpg" alt="" loading="lazy"></p>
 <h4>WebSocket协议</h4>
 <p><code>WebSocket</code>是双向的，在客户端-服务器通信的场景中使用的全双工协议，与<code>HTTP</code>不同，它以<code>ws://</code>或<code>wss://</code>开头。它是一个有状态协议，这意味着客户端和服务器之间的连接将保持活动状态，直到被任何一方（客户端或服务器）终止。在通过客户端和服务器中的任何一方关闭连接之后，连接将从两端终止。</p>
 <p>让我们以客户端-服务器通信为例，每当我们启动客户端和服务器之间的连接时，客户端-服务器进行握手随后创建一个新的连接，该连接将保持活动状态，直到被他们中的任何一方终止。建立连接并保持活动状态后，客户端和服务器将使用相同的连接通道进行通信，直到连接终止。</p>
 <p>新建的连接被称为<code>WebSocket</code>。一旦通信链接建立和连接打开后，消息交换将以双向模式进行，客户端-服务器之间的连接会持续存在。如果其中任何一方（客户端服务器）宕掉或主动关闭连接，则双方均将关闭连接。套接字的工作方式与<code>HTTP</code>的工作方式略有不同，状态代码<code>101</code>表示<code>WebSocket</code>中的交换协议。</p>
-<p>![](https://static.ecool.fun//article/461bddef-84cf-4ae4-876b-481a77be011b.jpg)</p>
+<p><img src="../images/461bddef-84cf-4ae4-876b-481a77be011b.jpg" alt="" loading="lazy"></p>
 <h4>何时使用WebSocket</h4>
 <ul>
 <li>即时<code>Web</code>应用程序：即时<code>Web</code>应用程序使用一个<code>Web</code>套接字在客户端显示数据，这些数据由后端服务器连续发送。在<code>WebSocke</code>t中，数据被连续推送/传输到已经打开的同一连接中，这就是为什么<code>WebSocket</code>更快并提高了应用程序性能的原因。 例如在交易网站或比特币交易中，这是最不稳定的事情，它用于显示价格波动，数据被后端服务器使用Web套接字通道连续推送到客户端。</li>
@@ -51,7 +51,7 @@
 <p>如果我们需要通过网络传输的任何实时更新或连续数据流，则可以使用<code>WebSocket</code>。如果我们要获取旧数据，或者只想获取一次数据供应用程序使用，则应该使用<code>HTTP</code>协议，不需要很频繁或仅获取一次的数据可以通过简单的<code>HTTP</code>请求查询，因此在这种情况下最好不要使用<code>WebSocket</code>。</p>
 <p>注意：如果仅加载一次数据，则<code>RESTful</code> <code>Web</code>服务足以从服务器获取数据。</p>
 <h4>总结</h4>
-<p>![](https://static.ecool.fun//article/01ec9ccb-2403-4da7-8230-4ddbb404e442.jpg)</p>
+<p><img src="../images/01ec9ccb-2403-4da7-8230-4ddbb404e442.jpg" alt="" loading="lazy"></p>
 <blockquote>原文地址：https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/</blockquote>
 </div>
     </section>

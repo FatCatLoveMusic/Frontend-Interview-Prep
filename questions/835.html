@@ -26,7 +26,7 @@
       <div class="q-block-body"><h3>一、是什么</h3>
 <p><code>Grid</code> 布局即网格布局，是一个二维的布局方式，由纵横相交的两组网格线形成的框架性布局结构，能够同时处理行与列</p>
 <p>擅长将一个页面划分为几个主要区域，以及定义这些区域的大小、位置、层次等关系</p>
-<p> ![](https://static.ecool.fun//article/0714a4e2-e9bb-4ad1-a0f2-db2e7cd96c0e.png)</p>
+<p> <img src="../images/0714a4e2-e9bb-4ad1-a0f2-db2e7cd96c0e.png" alt="" loading="lazy"></p>
 <p>这与之前讲到的<code>flex</code>一维布局不相同</p>
 <p>设置<code>display:grid/inline-grid</code>的元素就是网格布局容器，这样就能出发浏览器渲染引擎的网格布局算法</p>
 <pre class="code-block"><code>&lt;div class=&quot;container&quot;&gt;
@@ -39,7 +39,7 @@
 <p>上述代码实例中，<code>.container</code>元素就是网格布局容器，<code>.item</code>元素就是网格的项目，由于网格元素只能是容器的顶层子元素，所以<code>p</code>元素并不是网格元素</p>
 <p>这里提一下，网格线概念，有助于下面对<code>grid-column</code>系列属性的理解</p>
 <p>网格线，即划分网格的线，如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/8d0c8f20-7cd8-48d0-9ee4-80854afd4c54.png)</p>
+<p> <img src="../images/8d0c8f20-7cd8-48d0-9ee4-80854afd4c54.png" alt="" loading="lazy"></p>
 <p>上图是一个 2 x 3 的网格，共有3根水平网格线和4根垂直网格线</p>
 <h3>二、属性</h3>
 <p>同样，<code>Grid</code> 布局属性可以分为两大类：</p>
@@ -119,9 +119,9 @@
 <h4>grid-auto-flow 属性</h4>
 <p>划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。</p>
 <p>顺序就是由<code>grid-auto-flow</code>决定，默认为行，代表&quot;先行后列&quot;，即先填满第一行，再开始放入第二行</p>
-<p> ![](https://static.ecool.fun//article/5b612385-00aa-44d6-8da1-f0ee389c67a4.png)</p>
+<p> <img src="../images/5b612385-00aa-44d6-8da1-f0ee389c67a4.png" alt="" loading="lazy"></p>
 <p>当修改成<code>column</code>后，放置变为如下：</p>
-<p>![](https://static.ecool.fun//article/7a9d326a-ac29-44a7-a054-fcdc00869e6b.png)</p>
+<p><img src="../images/7a9d326a-ac29-44a7-a054-fcdc00869e6b.png" alt="" loading="lazy"></p>
 <h4>justify-items 属性， align-items 属性， place-items 属性</h4>
 <p><code>justify-items</code> 属性设置单元格内容的水平位置（左中右），<code>align-items</code> 属性设置单元格的垂直位置（上中下）</p>
 <p>两者属性的值完成相同</p>
@@ -149,7 +149,7 @@
 <li>end - 对齐容器的结束边框</li>
 <li>center - 容器内部居中</li>
 </ul>
-<p> ![](https://static.ecool.fun//article/0b3d3683-95b8-41ea-9a96-2bf56e624dce.png)</p>
+<p> <img src="../images/0b3d3683-95b8-41ea-9a96-2bf56e624dce.png" alt="" loading="lazy"></p>
 <ul>
 <li>space-around - 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍</li>
 </ul>
@@ -162,7 +162,7 @@
 <ul>
 <li>stretch - 项目大小没有指定时，拉伸占据整个网格容器</li>
 </ul>
-<p> ![](https://static.ecool.fun//article/57d0cb19-b15b-4035-9a2e-fcdf95cead2b.png)</p>
+<p> <img src="../images/57d0cb19-b15b-4035-9a2e-fcdf95cead2b.png" alt="" loading="lazy"></p>
 <h4>grid-auto-columns 属性和 grid-auto-rows 属性</h4>
 <p>有时候，一些项目的指定位置，在现有网格的外部，就会产生显示网格和隐式网格</p>
 <p>比如网格只有3列，但是某一个项目指定在第5行。这时，浏览器会自动生成多余的网格，以便放置项目。超出的部分就是隐式网格</p>
@@ -195,7 +195,7 @@
     &lt;div class=&quot;item item-3&quot;&gt;3&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p>通过设置<code>grid-column</code>属性，指定1号项目的左边框是第二根垂直网格线，右边框是第四根垂直网格线</p>
-<p> ![](https://static.ecool.fun//article/93cbc15c-fd3c-490b-9648-7672bf742851.png)</p>
+<p> <img src="../images/93cbc15c-fd3c-490b-9648-7672bf742851.png" alt="" loading="lazy"></p>
 <h4>grid-area 属性</h4>
 <p><code>grid-area</code> 属性指定项目放在哪一个区域</p>
 <pre class="code-block"><code>.item-1 {
@@ -217,7 +217,7 @@
 <h3>三、应用场景</h3>
 <p>文章开头就讲到，<code>Grid</code>是一个强大的布局，如一些常见的 CSS 布局，如居中，两列布局，三列布局等等是很容易实现的，在以前的文章中，也有使用<code>Grid</code>布局完成对应的功能</p>
 <p>关于兼容性问题，结果如下：</p>
-<p> ![](https://static.ecool.fun//article/0d29d9de-8cf6-46bb-bf73-3f4de983722a.png)</p>
+<p> <img src="../images/0d29d9de-8cf6-46bb-bf73-3f4de983722a.png" alt="" loading="lazy"></p>
 <p>总体兼容性还不错，但在 IE 10 以下不支持</p>
 <p>目前，<code>Grid</code>布局在手机端支持还不算太友好</p>
 </div>

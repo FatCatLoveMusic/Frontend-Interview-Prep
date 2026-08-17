@@ -28,10 +28,10 @@
 <h3>QUIC概述</h3>
 <p>TCP、UDP是我们所熟悉的传输层协议，UDP比TCP相比效率更高但并不具备传输可靠性。而QUIC便是看中UDP传输效率这一特性，并结合了TCP、TLS、HTTP/2的优势，加以优化。  </p>
 <p>于是在QUIC上层的应用层所运行的HTTP协议也就被称为HTTP/3。  </p>
-<p><strong>HTTP over QUIC is HTTP/3</strong>  &lt;br&gt;![](https://static.ecool.fun//article/d397a74e-093c-4079-8102-e4364cf500b8.jpeg)</p>
+<p><strong>HTTP over QUIC is HTTP/3</strong>  &lt;br&gt;<img src="../images/d397a74e-093c-4079-8102-e4364cf500b8.jpg" alt="" loading="lazy"></p>
 <h3>HTTP/3新特性</h3>
 <h4>1. <strong>零RTT建立连接</strong>  </h4>
-<p>如下图，传统HTTP/2(所有HTTP/2的浏览器均基于HTTPS)传输数据前需要三次RTT，即使将第一次TLS握手的对称秘钥缓存也需要两次RTT才能传递数据。  &lt;br&gt;![](https://static.ecool.fun//article/47284cd9-afd5-4ef4-8dcd-6b7eca745aff.jpeg)  </p>
+<p>如下图，传统HTTP/2(所有HTTP/2的浏览器均基于HTTPS)传输数据前需要三次RTT，即使将第一次TLS握手的对称秘钥缓存也需要两次RTT才能传递数据。  &lt;br&gt;<img src="../images/47284cd9-afd5-4ef4-8dcd-6b7eca745aff.jpg" alt="" loading="lazy">  </p>
 <p>对于HTTP/3而言，仅仅需要一次RTT即可传递数据，如果将其缓存，就可将RTT减少至零。 </p>
 <p>其核心就是DH秘钥交换算法。  </p>
 <ul>
@@ -41,26 +41,26 @@
 <li>客户端再使用A、b、p生成秘钥K，用K<strong>加密HTTP数据</strong>并与B一同发送到服务端。  </li>
 <li>服务端再使用B、a、p得到相同秘钥K，并解密HTTP数据。</li>
 </ul>
-<p>![](https://static.ecool.fun//article/1dbffd73-cfd3-495a-a95e-ce5bad3caaf0.jpeg)  </p>
+<p><img src="../images/1dbffd73-cfd3-495a-a95e-ce5bad3caaf0.jpg" alt="" loading="lazy">  </p>
 <p><strong>至此即可完成一次RTT对连接的建立，当缓存Server Config后零RTT即可进行数据传递。</strong></p>
 <h4>2. <strong>连接迁移</strong>  </h4>
 <p>传统连接通过源IP、源端口、目的IP、目的端口进行连接，当网络发生更换后连接再次建立时延较长。  </p>
 <p>HTTP/3使用Connection ID对连接保持，只要Connection ID不改变，连接仍可维持。  </p>
-<p>![](https://static.ecool.fun//article/1c518a36-cf99-4a0f-bb01-4e0333dfeca0.jpeg)</p>
+<p><img src="../images/1c518a36-cf99-4a0f-bb01-4e0333dfeca0.jpg" alt="" loading="lazy"></p>
 <h4>3. <strong>队头阻塞/多路复用</strong>  </h4>
 <ul>
 <li>TCP作为面向连接的协议，对每次请求序等到ACK才可继续连接，一旦中间连接丢失将会产生队头阻塞。  </li>
 <li>HTTP/1.1中提出Pipelining的方式，单个TCP连接可多次发送请求，但依旧会有中间请求丢失产生阻塞的问题。  </li>
 </ul>
-<p>![](https://static.ecool.fun//article/468654bf-b409-48b2-9366-38a3d74dab28.jpeg)  </p>
+<p><img src="../images/468654bf-b409-48b2-9366-38a3d74dab28.jpg" alt="" loading="lazy">  </p>
 <ul>
 <li>HTTP/2中将请求粒度减小，通过Frame的方式进行请求的发送。但在TCP层Frame组合得到Stream进行传输，一旦出现Stream中的Frame丢失，其后方的Stream都将会被阻塞。  </li>
 </ul>
-<p>![](https://static.ecool.fun//article/dc9fd0e1-8c83-475a-be3e-f93af8f7a0a8.jpeg)  </p>
+<p><img src="../images/dc9fd0e1-8c83-475a-be3e-f93af8f7a0a8.jpg" alt="" loading="lazy">  </p>
 <ul>
 <li>对于HTTP/2而言，浏览器会默认采取TLS方式传输，TLS基于Record组织数据，每个Record包含16K，其中有12个TCP的包，一旦其中一个TCP包出现问题将会导致整个Record无法解密。这也是网络环境较差时HTTP/2的传输速度比HTTP/1.1更慢的原因。  </li>
 </ul>
-<p>![](https://static.ecool.fun//article/477f49a1-2ebf-4a82-aa35-a149e8d6719c.jpeg)  </p>
+<p><img src="../images/477f49a1-2ebf-4a82-aa35-a149e8d6719c.jpg" alt="" loading="lazy">  </p>
 <ul>
 <li>HTTP/3基于UDP的传输，不保证连接可靠性，也就没有对头阻塞的后果。同样传输单元与加密单元为Packet，在TLS下也可避免对头阻塞的问题。</li>
 </ul>
@@ -70,12 +70,12 @@
 <li>前向纠错(FEC)：将数据切割成包后可对每个包进行异或运算，将运算结果随数据发送。一旦丢失数据可据此推算。(带宽换时间)  </li>
 <li>单调递增的Packet Number：TCP在超时重传后的两次ACK接受情况并不支持的很好。导致RTT和RTO的计算有所偏差。HTTP/3对此进行改进，一旦重传后的Packet N会递增。  </li>
 </ul>
-<p>![](https://static.ecool.fun//article/5ca47054-7a73-4538-ac6d-ade633ce0969.jpeg)  </p>
+<p><img src="../images/5ca47054-7a73-4538-ac6d-ade633ce0969.jpg" alt="" loading="lazy">  </p>
 <ul>
 <li>ACK Delay  </li>
 </ul>
 <p>   HTTP/3在计算RTT时健壮的考虑了服务端的ACK处理时延。  </p>
-<p>![](https://static.ecool.fun//article/77e62abe-4d0f-41cb-b08b-a68955279d15.jpeg)  </p>
+<p><img src="../images/77e62abe-4d0f-41cb-b08b-a68955279d15.jpg" alt="" loading="lazy">  </p>
 <ul>
 <li>更多地ACK块  </li>
 </ul>

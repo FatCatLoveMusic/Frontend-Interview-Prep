@@ -64,10 +64,10 @@ function observe(data) {
  
 let arr = [1, 2, 3]
 observe(arr)</code></pre>
-<p>!<a href="https://static.ecool.fun//article/fd22ab50-39ad-4dc7-a638-b580e7fa7d58.jpeg" target="_blank" rel="noopener">image-20210607020953993</a></p>
+<p><img src="../images/fd22ab50-39ad-4dc7-a638-b580e7fa7d58.jpg" alt="image-20210607020953993" loading="lazy"></p>
 <h4>测试说明</h4>
 <p>通过索引改变arr[1]，我们发现触发了set，也就是Object.defineProperty是可以检测到通过索引改变数组的操作的，那Vue2.0为什么没有实现呢？是尤大能力不行？这肯定毋庸置疑。那他为什么不实现呢？</p>
-<p>!<a href="https://static.ecool.fun//article/f05a63a5-0ff2-4336-b1d7-cc5414564ca8.jpeg" target="_blank" rel="noopener">image-20210607021557820</a></p>
+<p><img src="../images/f05a63a5-0ff2-4336-b1d7-cc5414564ca8.jpg" alt="image-20210607021557820" loading="lazy"></p>
 <p><strong>小结</strong>：是出于对性能原因的考虑，没有去实现它。而不是不能实现。</p>
 <p>对于对象而言，每一次的数据变更都会对对象的属性进行一次枚举，一般对象本身的属性数量有限，所以对于遍历枚举等方式产生的性能损耗可以忽略不计，但是对于数组而言呢？数组包含的元素量是可能达到成千上万，假设对于每一次数组元素的更新都触发了枚举/遍历，其带来的性能损耗将与获得的用户体验不成正比，故vue无法检测数组的变动。</p>
 <p>不过Vue3.0用proxy代替了defineProperty之后就解决了这个问题。</p>

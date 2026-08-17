@@ -605,7 +605,7 @@ HTML 中的行内元素（inline elements）通常用于在一行内显示，不
 
 那么，从定义来看，dpr的意义就是：在一个设备（的每个方向）上，每个CSS像素会被多少个实际的物理像素来显示。
 
-![image.png](https://static.ecool.fun//article/893cb23b-5299-44ab-af90-f0585f94c298.png)
+![image.png](../images/893cb23b-5299-44ab-af90-f0585f94c298.png)
 
 上图中，一个蓝色方块代表一个设备像素，一个黄色方块代表一个CSS像素。我们可以通过这张图来理清dpr的概念：
 
@@ -1027,7 +1027,7 @@ TCP提供一种可靠的传输，这个过程涉及到三次握手，四次挥�
 
 ### 三次握手
 
-![三次握手示意图](https://static.ecool.fun//article/f3f07532-8a7f-48f8-8f9e-d68ac149f9a2.png)
+![三次握手示意图](../images/f3f07532-8a7f-48f8-8f9e-d68ac149f9a2.png)
 
 * 第一次握手：
 
@@ -1047,7 +1047,7 @@ TCP提供一种可靠的传输，这个过程涉及到三次握手，四次挥�
 
 数据传输完毕后，双方都可释放连接。最开始的时候，客户端和服务器都是处于ESTABLISHED状态，假设客户端主动关闭，服务器被动关闭。
 
-![四次挥手示意图](https://static.ecool.fun//article/dbf0912c-a6df-48d0-8981-7224eae4492f.png)
+![四次挥手示意图](../images/dbf0912c-a6df-48d0-8981-7224eae4492f.png)
 
 * 第一次挥手：
 
@@ -1087,7 +1087,7 @@ HTTP报文也分成三段：`状态码`，`响应报头`和`响应报文`。
 
 ## 浏览器解析渲染页面
 
-![渲染页面的过程](https://static.ecool.fun//article/d2f90949-ca68-4f27-aeea-aa10ac6ac664.png)
+![渲染页面的过程](../images/d2f90949-ca68-4f27-aeea-aa10ac6ac664.png)
 
 这个图就是Webkit解析渲染页面的过程。
 
@@ -2013,14 +2013,14 @@ SVG与上面图片不同的是它是矢量图，无论你怎么放大，它都�
 
 ## 如何选择图片的格式
 
-![image.png](https://static.ecool.fun//article/d0ab542b-20ea-4709-baab-54aed4e0e07b.png)
+![image.png](../images/d0ab542b-20ea-4709-baab-54aed4e0e07b.png)
 
 
 
 **要点**：
 ## 如何选择图片的格式
 
-![image.png](https://static.ecool.fun//article/d0ab542b-20ea-4709-baab-54aed4e0e07b.png)
+![image.png](../images/d0ab542b-20ea-4709-baab-54aed4e0e07b.png)
 
 
 ---
@@ -2337,13 +2337,13 @@ HTML 解析器（HTMLParser）： 负责将 HTML 字节流转换为 DOM 结构�
 
 那么网络进程是如何将数据传给HTML解析器的呢？
 
-![image.png](https://static.ecool.fun//article/415bb61f-4f46-42b2-a4bd-368330a35008.jpeg)
+![image.png](../images/415bb61f-4f46-42b2-a4bd-368330a35008.jpg)
 
 从图中我们可以知道，网络进程和渲染进程之间有一个共享数据通道，网络进程加载了多少数据， 就将数据传给HTML解析器进行解析。
 
 HTML解析器接收到数据（字节流）之后，字节流将转化成DOM，过程如下：
 
-![image.png](https://static.ecool.fun//article/6d45bc73-38cb-4dc2-aa61-3d235a6ffca1.jpeg)
+![image.png](../images/6d45bc73-38cb-4dc2-aa61-3d235a6ffca1.jpg)
 
 **有三个阶段**：
 

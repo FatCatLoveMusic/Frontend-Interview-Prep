@@ -109,7 +109,7 @@
 <li><code>namespace：true</code>在多人协作开发的时候，可能子模块和主模块中的函数名字会相同，这样在调用函数的时候，相同名字的函数都会被调用，就会发生问题。为了解决这个问题，导出模块的时候要加<code>namespace：true</code>.</li>
 </ul>
 <p>那么怎么调用子模块中的函数呢？假如我的子模块名字为todo.js。 函数名字就需要改成todo/函数名字。输出模块后的store实例如下图所示：</p>
-<p>!<a href="https://static.ecool.fun//article/00e48252-2d3b-4dd5-9a39-97112785b566.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/00e48252-2d3b-4dd5-9a39-97112785b566.png" alt="image.png" loading="lazy"></p>
 <p>可以看到模块化后，store实例的state属性的访问方式也改变了，<code>this.$store.state.todo.inputVal</code></p>
 <p>可以简单总结一下辅助函数通过vuex使用，比喻成映射关系为：</p>
 <ul>

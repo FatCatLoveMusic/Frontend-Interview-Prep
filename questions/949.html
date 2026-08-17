@@ -33,7 +33,7 @@
 </ul>
 <p>也就是使用旧数据创建新数据时，要保证旧数据同时可用且不变，同时为了避免 <code>deepCopy </code>把所有节点都复制一遍带来的性能损耗，<code>Immutable</code> 使用了 <code>Structural Sharing</code>（结构共享）</p>
 <p>如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享</p>
-<p>![](https://pic4.zhimg.com/80/2b4c801a7b40eefcd4ee6767fb984fdf_720w.gif)</p>
+<p><img src="../images/2b4c801a7b40eefcd4ee6767fb984fdf_720w.gif" alt="" loading="lazy"></p>
 <h3>二、如何使用</h3>
 <p>使用<code>Immutable</code>对象最主要的库是<code>immutable.js</code></p>
 <p>immutable.js 是一个完全独立的库，无论基于什么框架都可以用它</p>

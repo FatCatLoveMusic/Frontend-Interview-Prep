@@ -58,7 +58,7 @@ const first = () =&gt; {
 }
 first();
 复制代码</code></pre>
-<p>![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/011b00fb335040b998711518badef78e~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)</p>
+<p><img src="../images/011b00fb335040b998711518badef78e_tplv-k3u1fbpfcp-zoom-in-crop-mark_3024_0_0_0.awebp" alt="" loading="lazy"></p>
 <h5>这里发生了什么?</h5>
 <p>当执行此代码时，将创建一个全局执行上下文(由main()表示)并将其推到调用堆栈的顶部。当遇到对<code>first()</code>的调用时，它会被推送到堆栈的顶部。</p>
 <p>接下来,<code>console.log('Hi there!')</code>被推送到堆栈的顶部，当它完成时，它会从堆栈中弹出。之后，我们调用<code>second()</code>，因此<code>second()</code>函数被推到堆栈的顶部。</p>
@@ -104,7 +104,7 @@ networkRequest();
 复制代码</code></pre>
 <p>这里使用了<code>setTimeout</code>方法来模拟网络请求。请记住<code>setTimeout</code>不是<code>JS</code>引擎的一部分，它是<strong>Web Api</strong>的一部分。</p>
 <p>为了理解这段代码是如何执行的，咱们必须理解更多的概念，比如事件轮询和回调队列(或消息队列)。</p>
-<p>![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca51b8264d114d83b3a9f84940297056~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)</p>
+<p><img src="../images/ca51b8264d114d83b3a9f84940297056_tplv-k3u1fbpfcp-zoom-in-crop-mark_3024_0_0_0.awebp" alt="" loading="lazy"></p>
 <p>事件轮询、web api和消息队列不是<code>JavaScript</code>引擎的一部分，而是浏览器的<code>JavaScript</code>运行时环境或Nodejs JavaScript运行时环境的一部分(对于Nodejs)。在Nodejs中，web api被c/c++ api所替代。</p>
 <p>现在让我们回到上面的代码，看看它是如何异步执行的。</p>
 <pre class="code-block"><code>const networkRequest = () =&gt; {
@@ -119,7 +119,7 @@ networkRequest();
 
 console.log('The End');
 复制代码</code></pre>
-<p>![](//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf142df94784461eb8fcfefd3dded8bd~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp)</p>
+<p><img src="../images/cf142df94784461eb8fcfefd3dded8bd_tplv-k3u1fbpfcp-zoom-in-crop-mark_3024_0_0_0.awebp" alt="" loading="lazy"></p>
 <p>当上述代码在浏览器中加载时，<code>console.log(' Hello World ')</code> 被推送到堆栈中，并在完成后弹出堆栈。接下来，将遇到对 <code>networkRequest()</code> 的调用，因此将它推到堆栈的顶部。</p>
 <p>下一个 <code>setTimeout()</code> 函数被调用，因此它被推到堆栈的顶部。<code>setTimeout()</code>有两个参数:</p>
 <ul>

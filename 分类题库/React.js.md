@@ -903,7 +903,7 @@ function Foo() {
 
 所以，一旦执行了`setState`就会执行`render`方法，`useState` 会判断当前值有无发生改变确定是否执行`render`方法，一旦父组件发生渲染，子组件也会渲染
 
- ![](https://static.ecool.fun//article/b93f5616-6085-48da-b9fb-450660a41e4b.png)
+ ![](../images/b93f5616-6085-48da-b9fb-450660a41e4b.png)
 
 
 
@@ -2139,7 +2139,7 @@ const List = ({ countries }) => {
 };
 ```
 
-![image](https://static.ecool.fun//article/6f542a99-8ec2-4267-b67a-540fc3e627eb.jpeg)
+![image](../images/6f542a99-8ec2-4267-b67a-540fc3e627eb.jpg)
 
 结果如图所示，排序耗时仅用了 4 毫秒，而渲染图中的 List 组件（仅仅只是 button + 文字）却用了 20 毫秒，5倍的差距，代码详见 [codesandbox.](https://codesandbox.io/s/measure-without-memo-tnhggk?file=/src/page.tsx)。 大部分情况下，我们的计算量要比这个 250 个 item 的数组少，而组件渲染要比这个 List 组件复杂的多，所以真实程序中，计算和渲染的性能差距会更大。
 
@@ -2149,7 +2149,7 @@ const List = ({ countries }) => {
 
 ## 为什么 React 没有把缓存组件作为默认配置？
 
-关于这点 Dan Abramov 在[推文](https://twitter.com/dan_abramov/status/1083897065263034368)上也给出了解释（虽然是个类比 😅）：![image](https://static.ecool.fun//article/f5fb8d3c-b958-47ca-8ef4-92ece2e90570.jpeg)
+关于这点 Dan Abramov 在[推文](https://twitter.com/dan_abramov/status/1083897065263034368)上也给出了解释（虽然是个类比 😅）：![image](../images/f5fb8d3c-b958-47ca-8ef4-92ece2e90570.jpg)
 
 评论区里 react 的另一位核心开发者 Christopher Chedeau 也参与了[讨论](https://twitter.com/Vjeux/status/1083902075946205189)。 简而言之，他们认为：
 
@@ -2981,7 +2981,7 @@ useEffect(() => {
 **参考答案**：
 大家在使用 `useEffect` 的时候，假如回调函数中使用 `async...await...` 的时候，会报错如下。
 
-![](https://static.ecool.fun//article/80b204af-8c56-4a16-9f8e-9dcb668df746.jpeg)
+![](../images/80b204af-8c56-4a16-9f8e-9dcb668df746.jpg)
 
 
 看报错，我们知道 `effect function` 应该返回一个销毁函数（`return`返回的 `cleanup` 函数），如果 `useEffect` 第一个参数传入 `async`，返回值则变成了 `Promise`，会导致 `react` 在调用销毁函数的时候报错**。
@@ -3106,7 +3106,7 @@ function useAsyncEffect(effect: () => Promise<void | (() => void)>, dependencies
 
 这种做法在github上也有讨论，上面有个大神的说法我表示很赞同：
 
-![](https://static.ecool.fun//article/64a79134-5af9-4a55-9a84-4376a94d5149.jpeg)
+![](../images/64a79134-5af9-4a55-9a84-4376a94d5149.jpg)
 
 
 他认为这种**延迟清除机制**是不对的，应该是一种**取消机制**。否则，在钩子已经被取消之后，回调函数仍然有机会对外部状态产生影响。他的实现和例子我也贴一下，跟 `useAsyncEffect` 其实思路是一样的，如下：
@@ -3420,7 +3420,7 @@ function App(props) {
 ```
 
 上面的代码，我对一个数组进行渲染+删除操作，当点击按钮时，就会删除数组的对应index的数据，从而执行页面更新
-![](https://static.ecool.fun//article/ca13d1e7-2b9e-45d5-a785-2c979d22750f.jpeg)
+![](../images/ca13d1e7-2b9e-45d5-a785-2c979d22750f.jpg)
 
 ## 封装成Hook
 ```js
@@ -4248,7 +4248,7 @@ export default Foo;
 
 整体流程图大致如下所示：
 
- ![](https://static.ecool.fun//article/e4119eaa-94ff-4261-9334-d6f4248b55bf.png)
+ ![](../images/e4119eaa-94ff-4261-9334-d6f4248b55bf.png)
 
 
 
@@ -6997,7 +6997,7 @@ const Child = (props) => {
 ```
 拿到读写接口的组件就可以控制state数据
 
-![](https://static.ecool.fun//article/1d403884-7b95-4c31-a72e-6a864b9769bb.jpeg)
+![](../images/1d403884-7b95-4c31-a72e-6a864b9769bb.jpg)
 
 >tips：注意到最上层的变量a没？这是我用来测试的，我发现点击按钮后会触发App函数并更新页面，说明react下使用`context`来修改数据的时候，都会重新进行全局执行，而不是数据响应式的。
 
@@ -8578,7 +8578,7 @@ Immutable，不可改变的，在计算机中，即指一旦创建，就不能�
 
 如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享
 
-![](https://pic4.zhimg.com/80/2b4c801a7b40eefcd4ee6767fb984fdf_720w.gif)
+![](../images/2b4c801a7b40eefcd4ee6767fb984fdf_720w.gif)
 
 
 
@@ -9768,7 +9768,7 @@ useEffect(() => {
 
 
 **参考答案**：
-![生命周期示意图](https://static.ecool.fun//article/0cdd2ef9-dfc0-49b1-b5ff-e1bfa069c438.png)
+![生命周期示意图](../images/0cdd2ef9-dfc0-49b1-b5ff-e1bfa069c438.png)
 
 ## 挂载
 
@@ -11324,7 +11324,7 @@ React 的生态围绕组件化、状态管理、路由、数据请求、构建�
 
 `Redux`中，中间件就是放在就是在`dispatch`过程，在分发`action`进行拦截处理，如下图：
 
- ![](https://static.ecool.fun//article/dd0c2f66-095e-422b-bb79-0332e5d3a909.png)
+ ![](../images/dd0c2f66-095e-422b-bb79-0332e5d3a909.png)
 
 其本质上一个函数，对`store.dispatch`方法进行了改造，在发出 `Action `和执行 `Reducer `这两步之间，添加了其他功能
 
@@ -12148,7 +12148,7 @@ type Hook = {
 ```
 
 最终形成了一个链表。
-![](https://static.ecool.fun//article/7ca47e0d-4dad-4b07-86a4-5c399aec8b77.jpeg)
+![](../images/7ca47e0d-4dad-4b07-86a4-5c399aec8b77.jpg)
 
 这个对象的`memoizedState`属性就是用来存储组件上一次更新后的 `state`,`next`毫无疑问是指向下一个hook对象。在组件更新的过程中，hooks函数执行的顺序是不变的，就可以根据这个链表拿到当前hooks对应的`Hook`对象，函数式组件就是这样拥有了state的能力。当前，具体的实现肯定比这三言两语复杂很多。
 
@@ -12806,7 +12806,7 @@ class ErrorBoundary extends React.Component {
 
 除了错误信息和 JavaScript 栈外，React 16 还提供了组件栈追踪。现在你可以准确地查看发生在组件树内的错误信息：
 
- ![](https://static.ecool.fun//article/25f14d20-37c4-491a-84d8-64d76e60373c.png)
+ ![](../images/25f14d20-37c4-491a-84d8-64d76e60373c.png)
 
 可以看到在错误信息下方文字中存在一个组件栈，便于我们追踪错误
 
@@ -13071,7 +13071,7 @@ React 并不会把所有的处理函数直接绑定在真实的节点上。而�
 * `React`在`17`版本不再使用事件池了（网上很多说使用了对象池来管理合成事件对象的创建销毁，那是`16`版本及之前）；
 * 事件一旦在`id = root`的DOM元素中委托，其实是一直在触发的，只是没有绑定对应的回调函数；
 
-![image.png](https://static.ecool.fun//article/eeeadcee-a840-40f8-9a26-3f2f747b2ef6.jpeg) 
+![image.png](../images/eeeadcee-a840-40f8-9a26-3f2f747b2ef6.jpg) 
 
 盗用一张官方图，按官方解释，之所以会将事件委托从`document`中移到`id = root`的DOM元素，是为了**可以更加安全地进行新旧版本 React 树的嵌套**。
 
@@ -13185,11 +13185,11 @@ ReactDOM.render(<App />, rootElement);
 
 跟想象中一样，render时先进入App函数，执行，发现里面的两个child函数，执行，创建虚拟dom，创建实体dom，最后将画面渲染到页面上。
 
-![](https://static.ecool.fun//article/0b7a9878-a44f-48eb-b9da-b647d4d56570.jpeg)
+![](../images/0b7a9878-a44f-48eb-b9da-b647d4d56570.jpg)
 
 # 使用Memo优化
 当我点击n+1按钮时，此时state里面的n必然+1，也会重新引发render渲染，并把新的n更新到视图中。
-![](https://static.ecool.fun//article/8b79158a-ca60-4675-9939-c10d391cc5f0.jpeg)
+![](../images/8b79158a-ca60-4675-9939-c10d391cc5f0.jpg)
 我们再看控制台
 ```!
 执行最外层盒子了 
@@ -14648,7 +14648,7 @@ export default {
 
 在`react`源码中，虚拟`Dom`转化成真实`Dom`整体流程如下图所示：
 
- ![](https://static.ecool.fun//article/9331978c-279d-4074-bc08-053046a4faff.png)
+ ![](../images/9331978c-279d-4074-bc08-053046a4faff.png)
 
 其渲染流程如下所示：
 
@@ -14807,7 +14807,7 @@ export class UnControll extends Component {
 
 针对两者的区别，其应用场景如下图所示：
 
- ![](https://static.ecool.fun//article/4d7a43c4-500e-4637-80de-a9117c6d54c0.png)
+ ![](../images/4d7a43c4-500e-4637-80de-a9117c6d54c0.png)
 
 
 
@@ -15450,7 +15450,7 @@ Link 跳转做了三件事情：
 
 服务端渲染（`Server-Side Rendering` ，简称`SSR`），指由服务侧完成页面的 `HTML` 结构拼接的页面处理技术，发送到浏览器，然后为其绑定状态与事件，成为完全可交互页面的过程
 
- ![](https://static.ecool.fun//article/27578d0b-7e0c-445e-8dab-7e3b19c5b9e6.png)
+ ![](../images/27578d0b-7e0c-445e-8dab-7e3b19c5b9e6.png)
 
 其解决的问题主要有两个：
 
@@ -15629,7 +15629,7 @@ module.exports = {
 
 这种方法就能够简单实现首页的`react`服务端渲染，过程对应如下图：
 
- ![](https://static.ecool.fun//article/98837f11-c0c1-4ca8-9db9-4e742a146785.png)
+ ![](../images/98837f11-c0c1-4ca8-9db9-4e742a146785.png)
 
 在做完初始渲染的时候，一个应用会存在路由的情况，配置信息如下：
 
@@ -15904,7 +15904,7 @@ eventTarget.onclick = function () {}; // 第二个会把第一个覆盖
 当我们点击`span`标签的时候会经过这么三个过程，在路径内的元素绑定的事件都会进行触发
 > 捕获阶段 => 目标阶段 => 冒泡阶段
 > 
-![image.png](https://static.ecool.fun/article/82fffff2-46fa-4196-8552-4d7ecbca7e9a.jpeg)
+![image.png](../images/82fffff2-46fa-4196-8552-4d7ecbca7e9a.jpg)
 
 ### 合成事件
 在看之前先看一下这几个问题
@@ -15995,11 +15995,11 @@ export default function App() {
 
 会先执行原生事件事件流，当执行到`document`的冒泡阶段的时候做了个拦截，在这个阶段开始执行合成事件
 
-![image.png](https://static.ecool.fun/article/e4fbc614-6696-4e8d-871a-e144df6b5c8f.jpeg)
+![image.png](../images/e4fbc614-6696-4e8d-871a-e144df6b5c8f.jpg)
 
 我们用一个图简单描述一下
 
-![image.png](https://static.ecool.fun/article/d9f769d9-a375-4caa-81c3-b06bb400312e.jpeg)
+![image.png](../images/d9f769d9-a375-4caa-81c3-b06bb400312e.jpg)
 
 知道上面的概念，那我们回答开始阶段的后面两个问题
 
@@ -16015,13 +16015,13 @@ const divClickCapFunc = (e) => {
 // ...
 ```
 
-![image.png](https://static.ecool.fun//article/ca4890af-7c01-4071-970d-1ec5ce85f04c.jpeg)
+![image.png](../images/ca4890af-7c01-4071-970d-1ec5ce85f04c.jpg)
 
 我们可以看到，当阻止之后，我们点击`h1`，事件流运行到`div`的捕获阶段就不触发了，后续的所有的包括合成事件也都不会触发
 
 那当我们给合成事件的事件流中断了会发生什么呢？
 
-![image.png](https://static.ecool.fun//article/b8311107-7e7f-4678-80c4-b4bac281d381.jpeg)
+![image.png](../images/b8311107-7e7f-4678-80c4-b4bac281d381.jpg)
 
 可以看到运行到捕获阶段的`div`之后被阻止传播了，后续的所有合成事件都不会执行了，但是原生的`document`冒泡还是会执行完。
 
@@ -16092,7 +16092,7 @@ const divClickCapFunc = (e) => {
 ```
 点击`h1`可以看到一路上的注册的所有事件已经执行了
 
-![image.png](https://static.ecool.fun/article/a8d86c98-7501-41de-a462-ecf8286d4c3b.jpeg)
+![image.png](../images/a8d86c98-7501-41de-a462-ecf8286d4c3b.jpg)
 
 `React16`给`document`上加的统一的拦截判发事件会在一定情况下出问题，下面举个例子简单说明一下
 
@@ -16160,7 +16160,7 @@ export default App;
 
 用上面的`demo`的在线案例把版本改成17之后，可以发现事件的执行顺序变了
 
-![image.png](https://static.ecool.fun/article/b1affb78-f4b6-465f-99e6-705312b4ece6.jpeg)
+![image.png](../images/b1affb78-f4b6-465f-99e6-705312b4ece6.jpg)
 
 ### 模拟17版本
 ``` html
@@ -16237,7 +16237,7 @@ export default App;
 
 可以看到，效果已经和`17`版本的一样了
 
-![image.png](https://static.ecool.fun/article/32437d31-5387-4d09-8c31-0e08ef64877a.jpeg)
+![image.png](../images/32437d31-5387-4d09-8c31-0e08ef64877a.jpg)
 
 回看`16demo`，切换版本到`17`，当我们切换到`17`的时候，用`stopPropagation`就可以解决问题了,
 原因就是他在`root`节点上绑定的事件冒泡函数，`stopPropagation`切断了事件流，不会流向到`document`身上了
@@ -16305,7 +16305,7 @@ export default App;
 
 工作流程图如下所示：
 
- ![](https://static.ecool.fun//article/b78d9d31-20aa-4692-8d09-9bb2960bfd1d.png)
+ ![](../images/b78d9d31-20aa-4692-8d09-9bb2960bfd1d.png)
 
 根据流程图，可以想象，`React Components` 是借书的用户， `Action Creactor` 是借书时说的话(借什么书)， `Store` 是图书馆管理员，`Reducer` 是记录本(借什么书，还什么书，在哪儿，需要查一下)， `state` 是书籍信息
 
@@ -16594,7 +16594,7 @@ currentFiber 表示上次渲染构建的 Filber 树。在每一次更新完成�
 
 其实并不是每次更新都会走到提交阶段。当在调和过程中触发了新的更新，在执行下一个任务的时候，判断是否有优先级更高的执行任务，如果有就终止原来将要执行的任务，开始新的 workInProgressFiber 树构建过程，开始新的更新流程。这样可以避免重复更新操作。这也是在 React 16 以后生命周期函数 componentWillMount 有可能会执行多次的原因。
 
-![image.png](https://static.ecool.fun//article/a130fcb4-2a59-4298-82c0-999f80c01a51.png)
+![image.png](../images/a130fcb4-2a59-4298-82c0-999f80c01a51.png)
 
 ## 任务具备优先级
 
@@ -17215,19 +17215,19 @@ A1
 </div>
 </div>
 ```
-![image.png](https://static.ecool.fun//article/2c7f91e9-d79e-419c-90b1-40e7dbd62be2.png)
+![image.png](../images/2c7f91e9-d79e-419c-90b1-40e7dbd62be2.png)
 
 * 副作用单链表；
 
-![image.png](https://static.ecool.fun//article/974a02fc-c123-4fd4-992d-66202a73dc4d.png)
+![image.png](../images/974a02fc-c123-4fd4-992d-66202a73dc4d.png)
 
 * 状态更新单链表；
 
-![image.png](https://static.ecool.fun//article/aaa1e291-9ba6-4594-ad61-348920d47935.png)
+![image.png](../images/aaa1e291-9ba6-4594-ad61-348920d47935.png)
 
 链表是一种简单高效的数据结构，它在当前节点中保存着指向下一个节点的指针；遍历的时候，通过操作指针找到下一个元素。
 
-![image.png](https://static.ecool.fun//article/8611fc56-2341-482c-a089-57f2b0fdb8ec.png)
+![image.png](../images/8611fc56-2341-482c-a089-57f2b0fdb8ec.png)
 
 链表相比顺序结构数据格式的好处就是：
 

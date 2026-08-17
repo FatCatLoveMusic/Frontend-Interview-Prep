@@ -244,7 +244,7 @@ sendAjax(config){
 <p>这样就能够成功实现一个简易版<code>axios</code></p>
 <h3>三、源码分析</h3>
 <p>首先看看目录结构</p>
-<p> ![](https://static.ecool.fun//article/aa354d57-bb09-40c5-ba3e-cc5680443a28.png)</p>
+<p> <img src="../images/aa354d57-bb09-40c5-ba3e-cc5680443a28.png" alt="" loading="lazy"></p>
 <p><code>axios</code>发送请求有很多实现的方法，实现入口文件为<code>axios.js </code></p>
 <pre class="code-block"><code>function createInstance(defaultConfig) {
   var context = new Axios(defaultConfig);
@@ -555,7 +555,7 @@ CancelToken.source = function source() {
 }</code></pre>
 <p>巧妙的地方在 <code>CancelToken</code>中 <code>executor</code> 函数，通过<code>resolve</code>函数的传递与执行，控制<code>promise</code>的状态</p>
 <h4>小结</h4>
-<p> ![](https://static.ecool.fun//article/e785c66f-b0a5-4816-b303-a1f638eda1b8.png)</p>
+<p> <img src="../images/e785c66f-b0a5-4816-b303-a1f638eda1b8.png" alt="" loading="lazy"></p>
 <h3>参考文献</h3>
 <ul>
 <li>https://juejin.cn/post/6856706569263677447#heading-4</li>

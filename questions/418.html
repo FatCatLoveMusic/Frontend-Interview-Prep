@@ -92,7 +92,7 @@
 <p>这个值大家也不陌生，行内元素嘛，只要是个行内元素都是这个值，最典型的是<code>&lt;span&gt;</code>，还有<code>&lt;a&gt;</code>，<code>&lt;img&gt;</code>，以及古代<code>html</code>语言当中的<code>&lt;b&gt;</code>，<code>&lt;i&gt;</code>都属于这一类型。</p>
 <h4>display: run-in</h4>
 <p>这个值有点奇怪，通常没人用它，但你可以知道它。因为除了<code>IE</code>和<code>Opera</code>支持它以外，其他所有主流浏览器包括<code>Chrome</code>, <code>Safari</code>, <code>Firefox</code>全都对它置若罔闻。这东西说白了也没什么神秘，它的意思就是说如果我们命令一个元素<code>run-in</code>，中文意思就是『<code>闯入</code>』！那么这个元素就直接闯入下一行。比如说这样：</p>
-<p>!<a href="https://static.ecool.fun//article/2cbc365c-776e-4a81-86ec-702b74ef25d2.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/2cbc365c-776e-4a81-86ec-702b74ef25d2.png" alt="image.png" loading="lazy"></p>
 <p>写起来大概就是这样：</p>
 <pre class="code-block"><code>&lt;div class=&quot;a&quot;&gt;aaa&lt;/div&gt;
 &lt;div class=&quot;b&quot;&gt;bbb&lt;/div&gt;</code></pre>
@@ -108,7 +108,7 @@
 <blockquote>If its outer display type is inline or run-in, and it is participating in a block or inline formatting context, then it generates an inline box. Otherwise it generates a block container box.</blockquote>
 <h4>display: flow-root</h4>
 <p>不同于刚才谈到的<code>flow</code>，现在用<code>flow-root</code>的渐渐多起来了，因为它可以撑起被你<code>float</code>掉的块级元素的高度。外容器本来是有高度的，就像这样：</p>
-<p>!<a href="https://static.ecool.fun//article/bd08aa59-0327-44c7-be00-25fdd7de8062.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/bd08aa59-0327-44c7-be00-25fdd7de8062.png" alt="image.png" loading="lazy"></p>
 <pre class="code-block"><code>&lt;div class=&quot;container container1&quot;&gt;
   &lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
   Example one
@@ -128,9 +128,9 @@
   border-radius: 5px;
 }</code></pre>
 <p>结果因为你想让那一行字上去，于是你给<code>.item</code>加了一个<code>float: left;</code>结果就成这样了，外容器高度掉了，这不是很多人常犯的错误吗？</p>
-<p>!<a href="https://static.ecool.fun//article/9245b61d-9640-4541-af54-4e06977b0adc.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/9245b61d-9640-4541-af54-4e06977b0adc.png" alt="image.png" loading="lazy"></p>
 <p>现在我们给<code>.container</code>加上<code>display: flow-root;</code>再看一下：</p>
-<p>!<a href="https://static.ecool.fun//article/42f5d8fd-bdcf-44d7-94ac-5ace2d751cfa.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/42f5d8fd-bdcf-44d7-94ac-5ace2d751cfa.png" alt="image.png" loading="lazy"></p>
 <p>喏，外容器高度又回来了，这效果是不是杠杠的？</p>
 <p>可能就有同学要说了，我们用<code>clear: both;</code>不是一样可以达到这效果吗？</p>
 <pre class="code-block"><code>.container::after {
@@ -145,25 +145,25 @@
 <h4>display: flex</h4>
 <p>敲黑板，划重点！作为新一代的前端工程师，这个属性你必须烂熟于胸中。<code>display: flex;</code>以及与它相关联的一系列属性：<code>flex-direction</code>, <code>flex-wrap</code>, <code>flex-flow</code>, <code>justify-content</code>, <code>align-items</code>, <code>align-content</code>，并且包括所有这些属性的取值，都是你需要反复研磨的。<code>2009</code>年诞生的这个属性可以说是不亚于<code>css</code>界一场蒸汽机诞生一样的工业革命，它的诞生标志着马车一样的<code>float</code>被彻底抛进历史的垃圾堆。</p>
 <p>没有一张图能完整地展现<code>flex</code>的神韵，就放这张我比较喜欢的图片吧：</p>
-<p>!<a href="https://static.ecool.fun//article/7e891f54-161f-41af-add8-764106a90829.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/7e891f54-161f-41af-add8-764106a90829.png" alt="image.png" loading="lazy"></p>
 <h4>display: grid</h4>
 <p>会<code>flex</code>很吊吗？会<code>grid</code>更吊哦！也许这就是下次前端面试的重点哦！</p>
-<p>!<a href="https://static.ecool.fun//article/e8c17847-dc43-4584-a556-f54538e6e9d2.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/e8c17847-dc43-4584-a556-f54538e6e9d2.png" alt="image.png" loading="lazy"></p>
 <p><code>grid</code>布局，中文翻译为<code>网格布局</code>。学习<code>grid</code>布局有两个重点：一个重点是<code>grid</code>布局引入了一个全新的单位：<code>fr</code>，它是<code>fraction</code>（<code>分数</code>）的缩写，所以从此以后，你的兵器库里除了<code>px</code>, <code>em</code>, <code>rem</code>, <code>百分比</code>这些常见兵器以及<code>vw</code>, <code>vh</code>这些新式武器之外，又多了一样旁门暗器<code>fr</code>，要想用好<code>grid</code>，必须充分掌握<code>fr</code>。另一个重点是<code>斜杠操作符</code>，这可不是<code>分数</code>哦。它表示的是<code>起始位置</code>和<code>结束位置</code>。比如说<code>3 / 4</code>，这可不是<code>四分之三</code>的意思，这是指一个元素从第<code>3</code>行开始，到第<code>4</code>行结束，但又不包括第<code>4</code>行。</p>
 <p>同样，与<code>grid</code>相关联的也有一大堆旁门属性，是在学习<code>display: grid;</code>的同时必须掌握的。包括<code>grid</code>, <code>grid-column-start</code>, <code>grid-column-end</code>, <code>grid-row-start</code>, <code>grid-row-end</code>, <code>grid-template</code>, <code>grid-template-columns</code>, <code>grid-template-rows</code>, <code>grid-template-areas</code>, <code>grid-gap</code>, <code>grid-column-gap</code>, <code>grid-row-gap</code>, <code>grid-auto-columns</code>, <code>grid-auto-rows</code>, <code>grid-auto-flow</code>, <code>grid-column</code>, <code>grid-row</code>。不能详述，关于这个写起来又是一大篇文章。详情还是参考 csstrick 上<a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener">这篇文章</a>，讲得非常细致非常清楚。</p>
 <h4>display: ruby</h4>
 <p><code>ruby</code>这个取值对于我们亚洲人来说其实是非常有用的一个东西，但是目前除了<code>Firefox</code>以外其它浏览器对它的支持都不太好。简而言之，<code>display: ruby;</code>的作用就是可以做出下面这样的东西：</p>
-<p>!<a href="https://static.ecool.fun//article/035fde95-407c-4109-84e3-332f4a9220c3.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/035fde95-407c-4109-84e3-332f4a9220c3.png" alt="image.png" loading="lazy"></p>
 <p>很好的东西，对吧？如果可以用的话，对我国的小学教育可以有极大的促进。但可惜我们现在暂时还用不了。</p>
 <p><code>ruby</code>这个词在英语里的意思是<code>红宝石</code>，但在日语里是<code>ルビ</code>，翻译成中文是<code>旁注标记</code>的意思，我们中文的旁注标记就是汉语拼音。可以想见，这个标准的制定者肯定是日本人，如果是我们中国人的话，那这个标签就不是<code>ruby</code>，而是<code>pinyin</code>了。还有一个<code>ruby</code>语言，发明者也是一个日本人，和<code>html</code>里这个<code>ruby</code>是两码事，不要搞混了。</p>
 <p><code>ruby</code>的语法大致如下：</p>
-<p>!<a href="https://static.ecool.fun//article/65b43976-d8dd-43c3-964e-561d34a141b1.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/65b43976-d8dd-43c3-964e-561d34a141b1.png" alt="image.png" loading="lazy"></p>
 <h4>display: subgrid</h4>
 <p><code>subgrid</code>总的思想是说大网格里还可以套小网格，互相不影响。但如果<code>grid</code>里可以再套<code>subgrid</code>的话，那我<code>subgrid</code>里还想再套<code>subgrid</code>怎么办？<code>subsubgrid</code>吗？况且，到底是<code>grid: subgrid;</code>还是<code>display: subgrid;</code>这个也没有达成共识。</p>
 <h3>列表值</h3>
 <h4>display: list-item</h4>
 <p><code>display: list-item;</code>和<code>display: table;</code>一样，也是一帮痛恨各种<code>html</code>标签，而希望只使用<code>&lt;div&gt;</code>来写遍一切<code>html</code>的家伙搞出来的鬼东西，实际使用极少，效果就是这样：</p>
-<p>!<a href="https://static.ecool.fun//article/b3a1c0ba-7e65-4c5f-b040-b7a091725b4c.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/b3a1c0ba-7e65-4c5f-b040-b7a091725b4c.png" alt="image.png" loading="lazy"></p>
 <p>看，你用<code>&lt;ul&gt;&lt;li&gt;</code>能实现的效果，他可以用<code>&lt;div&gt;</code>实现出来，就是这个作用。</p>
 <h3>属性值</h3>
 <p>属性值一般是附属于主值的，比如主值里设置了<code>display: table;</code>，就可以在子元素里使用<code>display: table-row-group;</code>等等属性，不过并不绝对。关于它们的作用，主要参考主值就够了。</p>
@@ -177,7 +177,7 @@
 <p>详情参考<a href="#display-table" target="_blank" rel="noopener">display: table;</a>。</p>
 <h4>display: table-cell</h4>
 <p>详情参考<a href="#display-table" target="_blank" rel="noopener">display: table;</a>。这个属性有必要详细说说，因为它完全可以单独应用，用在高度不固定元素的垂直居中上。效果如下图所示：</p>
-<p>!<a href="https://static.ecool.fun//article/98de9407-e6be-4ec1-8b2e-6f2eb207bb30.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/98de9407-e6be-4ec1-8b2e-6f2eb207bb30.png" alt="image.png" loading="lazy"></p>
 <h4>display: table-column-group</h4>
 <p>详情参考<a href="#display-table" target="_blank" rel="noopener">display: table;</a>。</p>
 <h4>display: table-column</h4>
@@ -195,19 +195,19 @@
 <h3>显示值</h3>
 <p><code>MDN</code>里把它叫做<code>&lt;display-box&gt; values</code>（<code>盒子值</code>），我把它叫做<code>显示值</code>，主要是为了便于理解。</p>
 <h4>display: contents</h4>
-<p>!<a href="https://static.ecool.fun//article/b723d2a2-a13b-4cc4-bab7-8290d832a30b.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/b723d2a2-a13b-4cc4-bab7-8290d832a30b.png" alt="image.png" loading="lazy"></p>
 <p>你给中间那个<code>div</code>加上<code>display: contents;</code>之后，它就变成这样了：</p>
-<p>!<a href="https://static.ecool.fun//article/c6fcbe0c-ede3-4808-8505-b5af9d46cd51.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/c6fcbe0c-ede3-4808-8505-b5af9d46cd51.png" alt="image.png" loading="lazy"></p>
 <p>这就是<code>display: contents;</code>的作用，它让子元素拥有和父元素一样的布局方式，仅此而已。</p>
 <h4>display: none</h4>
 <p>这么著名的值还用多说吗？</p>
 <h3>混合值</h3>
 <h4>display: inline-block</h4>
 <p>关于<code>display: inline-block;</code>的作用恐怕只要做过<code>3</code>天以上前端的工程师都应该知道。什么也不说了，上一张著名的图片作总结吧：</p>
-<p>!<a href="https://static.ecool.fun//article/9581c1ef-bfda-46cd-9398-c7cf925eff8d.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/9581c1ef-bfda-46cd-9398-c7cf925eff8d.png" alt="image.png" loading="lazy"></p>
 <h4>display: inline-table</h4>
 <p>你要能理解<code>inline-block</code>，你就能理解<code>inline-table</code>。在行内显示一个表格，就像这样：</p>
-<p>!<a href="https://static.ecool.fun//article/80a56bc7-7d12-46d6-a629-a5cd7436b760.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/80a56bc7-7d12-46d6-a629-a5cd7436b760.png" alt="image.png" loading="lazy"></p>
 <h4>display: inline-flex</h4>
 <p>这个就不用多说了吧？跟上面一样，在行内进行弹性布局，参考<a href="#display-flex" target="_blank" rel="noopener">display: flex;</a>。</p>
 <h4>display: inline-grid</h4>
@@ -220,7 +220,7 @@
 <p>不管父元素怎么设定，恢复到浏览器最初始时的<code>display</code>属性。</p>
 <h4>display: unset</h4>
 <p><code>unset</code>混合了<code>inherit</code>和<code>initial</code>。如果父元素设值了，就用父元素的设定，如果父元素没设值，就用浏览器的缺省设定。直接看图最明白：</p>
-<p>!<a href="https://static.ecool.fun//article/4b1deb11-c35e-476c-b1e1-4eb9f0a4b16d.png" target="_blank" rel="noopener">image.png</a></p>
+<p><img src="../images/4b1deb11-c35e-476c-b1e1-4eb9f0a4b16d.png" alt="image.png" loading="lazy"></p>
 <h3>总结</h3>
 <p>以上就是在<code>css</code>里<code>display</code>的<code>32</code>种写法。谈了这么多，不知道你记住了多少呢？其实，单纯理解每一个<code>display</code>属性的取值都不难，难的是融会贯通，在恰当的地方运用恰当的值，毕竟我们的目的是为了把代码写短，而不是把代码写长。</p>
 </div>

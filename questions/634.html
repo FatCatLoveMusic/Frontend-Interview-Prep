@@ -28,7 +28,7 @@
 <p>并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，导致在释放该段内存之前就失去了对该段内存的控制，从而造成了内存的浪费</p>
 <p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时就必须供给内存</p>
 <p>对于持续运行的服务进程，必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃</p>
-<p> ![](https://static.ecool.fun//article/5f67faa9-e84b-4076-b416-bc5a49bf5638.png)</p>
+<p> <img src="../images/5f67faa9-e84b-4076-b416-bc5a49bf5638.png" alt="" loading="lazy"></p>
 <p>在<code>C</code>语言中，因为是手动管理内存，内存泄露是经常出现的事情。</p>
 <pre class="code-block"><code>char * buffer;
 buffer = (char*) malloc(42);

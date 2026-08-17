@@ -37,7 +37,7 @@
 <li><code>React</code>在<code>17</code>版本不再使用事件池了（网上很多说使用了对象池来管理合成事件对象的创建销毁，那是<code>16</code>版本及之前）；</li>
 <li>事件一旦在<code>id = root</code>的DOM元素中委托，其实是一直在触发的，只是没有绑定对应的回调函数；</li>
 </ul>
-<p>!<a href="https://static.ecool.fun//article/eeeadcee-a840-40f8-9a26-3f2f747b2ef6.jpeg" target="_blank" rel="noopener">image.png</a> </p>
+<p><img src="../images/eeeadcee-a840-40f8-9a26-3f2f747b2ef6.jpg" alt="image.png" loading="lazy"> </p>
 <p>盗用一张官方图，按官方解释，之所以会将事件委托从<code>document</code>中移到<code>id = root</code>的DOM元素，是为了<strong>可以更加安全地进行新旧版本 React 树的嵌套</strong>。</p>
 </div>
     </section>

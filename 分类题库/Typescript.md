@@ -1940,7 +1940,7 @@ const a = 1
 
 然后在另一个文件同样声明一个变量`a`，这时候会出现错误信息
 
- ![](https://static.ecool.fun//article/e164e76f-b731-4419-9e47-0098a9f00350.png)
+ ![](../images/e164e76f-b731-4419-9e47-0098a9f00350.png)
 
 提示重复声明`a`变量，但是所处的空间是全局的
 
@@ -2867,7 +2867,7 @@ export default {};
 
 > 超集，不得不说另外一个概念，子集，怎么理解这两个呢，举个例子，如果一个集合A里面的的所有元素集合B里面都存在，那么我们可以理解集合B是集合A的超集，集合A为集合B的子集
 
- ![](https://static.ecool.fun//article/f9a27d35-579d-44b5-abd6-7c82021934cc.png)
+ ![](../images/f9a27d35-579d-44b5-abd6-7c82021934cc.png)
 
 其是一种静态类型检查的语言，提供了类型注解，在代码编译阶段就可以检查出数据类型的错误
 
@@ -2960,7 +2960,7 @@ let tom: Person = {
 
 更多的区别如下图所示：
 
- ![](https://static.ecool.fun//article/3e1fec86-cc9a-435a-8fe7-a3906042df1b.png)
+ ![](../images/3e1fec86-cc9a-435a-8fe7-a3906042df1b.png)
 
 
 **要点**：
@@ -4120,7 +4120,7 @@ const stack = new Stacn<number>()
 
 如果上述只能传递 `string` 和 `number` 类型，这时候就可以使用 `<T extends xx>` 的方式猜实现**约束泛型**，如下所示：
 
- ![](https://static.ecool.fun//article/fab37f80-c8f9-48a9-ba72-2aa8c3af6b00.png)
+ ![](../images/fab37f80-c8f9-48a9-ba72-2aa8c3af6b00.png)
 
 
 
@@ -4146,7 +4146,7 @@ function getValue<T extends object, U extends keyof T>(obj: T, key: U) {
 
 使用如下图所示：
 
- ![](https://static.ecool.fun//article/19ea7bdd-176b-4db7-9bdb-72d1318c6fea.png)
+ ![](../images/19ea7bdd-176b-4db7-9bdb-72d1318c6fea.png)
 
 
 

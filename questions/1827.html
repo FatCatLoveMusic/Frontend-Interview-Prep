@@ -86,7 +86,7 @@ swap([7, 'seven']); // ['seven', 7]</code></pre>
 <p>使用方式如下：</p>
 <pre class="code-block"><code>const stack = new Stacn&lt;number&gt;()</code></pre>
 <p>如果上述只能传递 <code>string</code> 和 <code>number</code> 类型，这时候就可以使用 <code>&lt;T extends xx&gt;</code> 的方式猜实现<strong>约束泛型</strong>，如下所示：</p>
-<p> ![](https://static.ecool.fun//article/fab37f80-c8f9-48a9-ba72-2aa8c3af6b00.png)</p>
+<p> <img src="../images/fab37f80-c8f9-48a9-ba72-2aa8c3af6b00.png" alt="" loading="lazy"></p>
 <p>除了上述的形式，泛型更高级的使用如下：</p>
 <p>例如要设计一个函数，这个函数接受两个参数，一个参数为对象，另一个参数为对象上的属性，我们通过这两个参数返回这个属性的值</p>
 <p>这时候就设计到泛型的索引类型和约束类型共同实现</p>
@@ -97,7 +97,7 @@ swap([7, 'seven']); // ['seven', 7]</code></pre>
 }</code></pre>
 <p>上述为什么需要使用泛型约束，而不是直接定义第一个参数为 <code>object</code>类型，是因为默认情况 <code>object</code> 指的是<code>{}</code>，而我们接收的对象是各种各样的，一个泛型来表示传入的对象类型，比如 <code>T extends object</code></p>
 <p>使用如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/19ea7bdd-176b-4db7-9bdb-72d1318c6fea.png)</p>
+<p> <img src="../images/19ea7bdd-176b-4db7-9bdb-72d1318c6fea.png" alt="" loading="lazy"></p>
 <h4>多类型约束</h4>
 <p>例如如下需要实现两个接口的类型约束：</p>
 <pre class="code-block"><code>interface FirstInterface {

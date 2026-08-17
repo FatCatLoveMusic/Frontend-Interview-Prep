@@ -27,7 +27,7 @@
 <p>以下是 MDN 对于 source map 的解释：</p>
 <blockquote>调试原始源代码会比浏览器下载的转换后的代码更加容易。 <a href="https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/" target="_blank" rel="noopener">source map</a> 是从已转换的代码映射到原始源的文件，使浏览器能够重构原始源并在调试器中显示重建的原始源。</blockquote>
 <p>但是不知道大家有没有对 source map 的原理产生过疑问？先列出了四个疑问，不知道各位是不是也存在过这样的问题：</p>
-<p>!<a href="https://static.ecool.fun//article/05bdc382-77b5-4912-8dd4-bbe6452d1dac.jpeg" target="_blank" rel="noopener">Source map 四问</a></p>
+<p><img src="../images/05bdc382-77b5-4912-8dd4-bbe6452d1dac.jpg" alt="Source map 四问" loading="lazy"></p>
 <p>接下来的内容会逐步为读者解答这四问。</p>
 <h3>source map 文件是否影响网页性能</h3>
 <p>这个答案肯定是不会影响，否则构建相关的优化就肯定会涉及到对于 source map 的处理了，毕竟 source map 文件也不小。</p>
@@ -108,7 +108,7 @@ console.log(a);</code></pre>
 </ol>
 <p>通过以上的解析，我们就能知道 <code>console</code> 在源代码及压缩文件中的具体位置了。</p>
 <p>但是为什么 source map 会知道编译后的代码具体在什么位置呢？这里就要用到 AST 了。让我们打开<a href="https://astexplorer.net/" target="_blank" rel="noopener">网站</a>输入 <code>console.log(a)</code> 后观察右边的内容，你应该会发现如图所示的数据：</p>
-<p>!<a href="https://static.ecool.fun//article/c05dd7b5-8f4b-4984-b02e-0041c2190368.jpeg" target="_blank" rel="noopener">image-20210516214636867</a></p>
+<p><img src="../images/c05dd7b5-8f4b-4984-b02e-0041c2190368.jpg" alt="image-20210516214636867" loading="lazy"></p>
 <p>因为 source map 是由 AST 产出的，所以我们能用上 AST 中的这个数据。</p>
 <h3>source map 的应用</h3>
 <p>一般来说 source map 的应用都是在监控系统中，开发者构建完应用后，通过插件将源代码及 source map 上传至平台中。一旦客户端上报错误后，我们就可以通过<a href="https://github.com/mozilla/source-map" target="_blank" rel="noopener">该库</a>来还原源代码的报错位置（具体 API 看文档即可），方便开发者快速定位线上问题。</p>

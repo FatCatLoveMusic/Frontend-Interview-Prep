@@ -57,7 +57,7 @@ nextTick(() =&gt; {})</code></pre>
     };
 &lt;/script&gt;</code></pre>
 <p>对项目进行打包，体积如下图</p>
-<p>![](https://static.ecool.fun//article/e298c1f6-7390-4d24-a25a-8d93cdb45fec.png)</p>
+<p><img src="../images/e298c1f6-7390-4d24-a25a-8d93cdb45fec.png" alt="" loading="lazy"></p>
 <p>为组件设置其他属性（<code>compted</code>、<code>watch</code>）</p>
 <pre class="code-block"><code>export default {
     data: () =&gt; ({
@@ -75,7 +75,7 @@ nextTick(() =&gt; {})</code></pre>
         }
 };</code></pre>
 <p>再一次打包，发现打包出来的体积并没有变化</p>
-<p>![](https://static.ecool.fun//article/a6a130d6-001e-4ef4-b347-59cdeb6b2d63.png)</p>
+<p><img src="../images/a6a130d6-001e-4ef4-b347-59cdeb6b2d63.png" alt="" loading="lazy"></p>
 <h4>Vue3 项目</h4>
 <p>组件中简单使用</p>
 <pre class="code-block"><code>import { reactive, defineComponent } from &quot;vue&quot;;
@@ -90,7 +90,7 @@ export default defineComponent({
   },
 });</code></pre>
 <p>将项目进行打包</p>
-<p>![](https://static.ecool.fun//article/b8da6cec-2639-4cda-a399-920d0863ebe5.png)</p>
+<p><img src="../images/b8da6cec-2639-4cda-a399-920d0863ebe5.png" alt="" loading="lazy"></p>
 <p>在组件中引入<code>computed</code>和<code>watch</code></p>
 <pre class="code-block"><code>import { reactive, defineComponent, computed, watch } from &quot;vue&quot;;
 export default defineComponent({
@@ -116,7 +116,7 @@ export default defineComponent({
   },
 });</code></pre>
 <p>再次对项目进行打包，可以看到在引入<code>computer</code>和<code>watch</code>之后，项目整体体积变大了</p>
-<p> ![](https://static.ecool.fun//article/fb53f810-4993-409a-b295-20ae93c11028.png)</p>
+<p> <img src="../images/fb53f810-4993-409a-b295-20ae93c11028.png" alt="" loading="lazy"></p>
 <h3>三、作用</h3>
 <p>通过<code>Tree shaking</code>，<code>Vue3</code>给我们带来的好处是：</p>
 <ul>

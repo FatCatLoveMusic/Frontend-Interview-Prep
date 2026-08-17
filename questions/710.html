@@ -26,9 +26,9 @@
       <div class="q-block-body"><h3>一、是什么</h3>
 <h4>fork</h4>
 <p><code>fork</code>，英语翻译过来就是叉子，动词形式则是分叉，如下图，从左到右，一条直线变成多条直线</p>
-<p> ![](https://static.ecool.fun//article/4fe3359e-2dcc-4a2b-80f2-3073292e6cc2.png)</p>
+<p> <img src="../images/4fe3359e-2dcc-4a2b-80f2-3073292e6cc2.png" alt="" loading="lazy"></p>
 <p>转到<code>git</code>仓库中，<code>fork</code>则可以代表分叉、克隆 出一个（仓库的）新拷贝</p>
-<p> ![](https://static.ecool.fun//article/f222e835-3a8d-4261-80fb-7fbc64a05715.png)</p>
+<p> <img src="../images/f222e835-3a8d-4261-80fb-7fbc64a05715.png" alt="" loading="lazy"></p>
 <p>包含了原来的仓库（即upstream repository，上游仓库）所有内容，如分支、Tag、提交</p>
 <p>如果想将你的修改合并到原项目中时，可以通过的 Pull Request 把你的提交贡献回 原仓库</p>
 <h4>clone</h4>
@@ -39,25 +39,25 @@
 <p><code>branch</code>，译为分支，其作用简单而言就是开启另一个分支， 使用分支意味着你可以把你的工作从开发主线上分离开来，以免影响开发主线</p>
 <p><code> Git</code> 处理分支的方式十分轻量，创建新分支这一操作几乎能在瞬间完成，并且在不同分支之间的切换操作也是一样便捷</p>
 <p>在我们开发中，默认只有一条<code>master</code>分支，如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/ea681f52-ea9e-4f04-ac5f-8eca679c3fe4.png)</p>
+<p> <img src="../images/ea681f52-ea9e-4f04-ac5f-8eca679c3fe4.png" alt="" loading="lazy"></p>
 <p>通过<code>git branch </code>可以创建一个分支，但并不会自动切换到新分支中去</p>
-<p> ![](https://static.ecool.fun//article/7136eabd-cd91-46b7-bbb1-67e2827f1643.png)</p>
+<p> <img src="../images/7136eabd-cd91-46b7-bbb1-67e2827f1643.png" alt="" loading="lazy"></p>
 <p>通过<code>git checkout</code>可以切换到另一个<code>testing</code>分支</p>
-<p> ![](https://static.ecool.fun//article/9aa063be-35de-46ff-a56c-b1207b087c68.png)</p>
+<p> <img src="../images/9aa063be-35de-46ff-a56c-b1207b087c68.png" alt="" loading="lazy"></p>
 <h3>二、如何使用</h3>
 <h4>fork</h4>
 <p>当你在<code>github</code>发现感兴趣开源项目的时候，可以通过点击<code>github</code>仓库中右上角<code>fork</code>标识的按钮，如下图：</p>
-<p> ![](https://static.ecool.fun//article/26405d98-da33-43a9-ac7f-3b023e7e2bb8.png)</p>
+<p> <img src="../images/26405d98-da33-43a9-ac7f-3b023e7e2bb8.png" alt="" loading="lazy"></p>
 <p>点击这个操作后会将这个仓库的文件、提交历史、issues和其余东西的仓库复制到自己的<code>github</code>仓库中，而你本地仓库是不会存在任何更改</p>
 <p>然后你就可以通过<code>git clone</code>对你这个复制的远程仓库进行克隆</p>
 <p>后续更改任何东西都可以在本地完成，如<code>git add</code>、<code>git commit</code>一系列的操作，然后通过<code>push</code>命令推到自己的远程仓库</p>
 <p>如果希望对方接受你的修改，可以通过发送<code>pull requests</code>给对方，如果对方接受。则会将你的修改内容更新到仓库中</p>
-<p> ![](https://static.ecool.fun//article/10c74d3d-8552-48a8-a555-4712aee60531.png)</p>
+<p> <img src="../images/10c74d3d-8552-48a8-a555-4712aee60531.png" alt="" loading="lazy"></p>
 <p>整体流程如下图：</p>
-<p> ![](https://static.ecool.fun//article/b4c098fc-17cb-40ac-911f-b11b1f141ec3.png)</p>
+<p> <img src="../images/b4c098fc-17cb-40ac-911f-b11b1f141ec3.png" alt="" loading="lazy"></p>
 <h4>clone</h4>
 <p>在<code>github</code>中，开源项目右侧存在<code>code</code>按钮，点击后则会显示开源项目<code>url</code>信息，如下图所示：</p>
-<p> ![](https://static.ecool.fun//article/806d783b-8b76-4971-97e9-59a0f7b25076.png)</p>
+<p> <img src="../images/806d783b-8b76-4971-97e9-59a0f7b25076.png" alt="" loading="lazy"></p>
 <p>通过<code>git clone xxx</code>则能完成远程项目的下载</p>
 <h4>branch</h4>
 <p>可通过<code>git branch</code>进行查看当前的分支状态，</p>

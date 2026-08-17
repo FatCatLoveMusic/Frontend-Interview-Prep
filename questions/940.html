@@ -37,7 +37,7 @@
 <li>异步任务：异步执行的任务，比如<code>ajax</code>网络请求，<code>setTimeout </code>定时函数等</li>
 </ul>
 <p>同步任务与异步任务的运行流程图如下：</p>
-<p> ![](https://static.ecool.fun//article/85f7d058-08ee-4bb7-af03-610411a08581.png)</p>
+<p> <img src="../images/85f7d058-08ee-4bb7-af03-610411a08581.png" alt="" loading="lazy"></p>
 <p>从上面我们可以看到，同步任务进入主线程，即主执行栈，异步任务进入任务队列，主线程内的任务执行完毕为空，会去任务队列读取对应的任务，推入主线程执行。上述过程的不断重复就是事件循环</p>
 <h3>二、宏任务与微任务</h3>
 <p>如果将任务划分为同步任务和异步任务并不是那么的准确，举个例子：</p>
@@ -94,7 +94,7 @@ console.log(3)</code></pre>
 <li>setImmediate、I/O（Node.js）</li>
 </ul>
 <p>这时候，事件循环，宏任务，微任务的关系如图所示</p>
-<p> ![](https://static.ecool.fun//article/698f38dc-0399-4a3b-b38a-126c9f5c221e.png)</p>
+<p> <img src="../images/698f38dc-0399-4a3b-b38a-126c9f5c221e.png" alt="" loading="lazy"></p>
 <p>按照这个流程，它的执行机制是：</p>
 <ul>
 <li>执行一个宏任务，如果遇到微任务就将它放到微任务的事件队列中</li>
