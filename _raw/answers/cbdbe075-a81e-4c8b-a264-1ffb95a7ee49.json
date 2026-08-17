@@ -1,0 +1,21 @@
+﻿{
+    "id":  1800,
+    "exerciseKey":  "cbdbe075-a81e-4c8b-a264-1ffb95a7ee49",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "将数组的length设置为0，取第一个元素会返回什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "设置 `length = 0` 会清空数组，所以会返回 `undefined`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2022-05-11T14:38:05.000Z",
+    "updateAt":  "2022-05-11T22:38:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1009,
+    "filterTotalNum":  1907,
+    "prev":  "94c6d4eb-76c3-4756-956e-9cc277d9d93f",
+    "next":  "3e2c519b-9142-40e9-bef6-6b1d975be351"
+}

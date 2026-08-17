@@ -1,0 +1,21 @@
+﻿{
+    "id":  3044,
+    "exerciseKey":  "f63d5da4-7797-4a48-920a-54e983e33bf3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "async function 返回的 Promise 状态何时变为 resolved？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`async function` **返回的 Promise 会在函数体内的执行流程“正常结束”时变为 `resolved`**。\n\n更精确地说，可以从以下几种情况来理解。\n\n---\n\n## 一、基本结论（核心规则）\n\n\u003e **当 `async` 函数执行到 `return`，或函数体执行完且未抛出异常时，返回的 Promise 会被 `resolved`。**\n\n同时遵循两个映射规则：\n\n* `return value` → `Promise.resolve(value)`\n* `throw error` → `Promise.reject(error)`\n\n---\n\n## 二、几种常见场景拆解\n\n### 1. 显式 `return`（最常见）\n\n```js\nasync function foo() {\n  return 42;\n}\n\nfoo().then(res =\u003e console.log(res)); // 42\n```\n\n等价于：\n\n```js\nfunction foo() {\n  return Promise.resolve(42);\n}\n```\n\n**Promise 在 `return` 语句执行时变为 resolved。**\n\n---\n\n### 2. 没有 `return`（隐式返回 `undefined`）\n\n```js\nasync function foo() {}\n\nfoo().then(res =\u003e console.log(res)); // undefined\n```\n\n等价于：\n\n```js\nPromise.resolve(undefined);\n```\n\n**函数执行到末尾时，Promise resolved，值为 `undefined`。**\n\n---\n\n### 3. `return await xxx`\n\n```js\nasync function foo() {\n  return await Promise.resolve(10);\n}\n```\n\n这里要注意：\n\n* `await` 会“暂停”函数执行，等待 Promise settle\n* **只有在 `await` 的 Promise fulfilled 后，函数才会继续执行并 `return`**\n\n因此：\n\n\u003e Promise **在 `await` 的 Promise fulfilled 之后** 才会 resolved\n\n等价逻辑：\n\n```js\nPromise.resolve(10).then(v =\u003e Promise.resolve(v));\n```\n\n---\n\n### 4. 函数内部抛出异常\n\n```js\nasync function foo() {\n  throw new Error(\"err\");\n}\n\nfoo().catch(err =\u003e console.log(err.message));\n```\n\n此时：\n\n* Promise **不会 resolved**\n* 而是 **立即变为 rejected**\n\n---\n\n### 5. `await` 的 Promise 被 reject\n\n```js\nasync function foo() {\n  await Promise.reject(\"fail\");\n  return 1;\n}\n```\n\n执行流程：\n\n* `await` 等到 Promise reject\n* 抛出异常\n* 函数中断执行\n\n结果：\n\n```js\nfoo().catch(err =\u003e console.log(err)); // \"fail\"\n```\n\n**返回的 Promise 状态是 rejected，不是 resolved。**\n\n---\n\n## 三、时间点总结（一句话版）\n\n\u003e `async function` 返回的 Promise **在函数执行完毕且没有抛出异常时 resolved**，\n\u003e 如果函数中包含 `await`，则要等 **所有被 `await` 的 Promise fulfilled 后** 才会 resolved。\n\n---\n\n## 四、事件循环视角（进阶理解）\n\n```js\nasync function foo() {\n  return 1;\n}\n\nconsole.log(\"start\");\nfoo().then(console.log);\nconsole.log(\"end\");\n```\n\n输出顺序：\n\n```\nstart\nend\n1\n```\n\n说明：\n\n* `async` 函数是 **同步开始执行**\n* `resolved` 的回调（`.then`）**一定进入微任务队列**\n* 即使是 `return 1`，也不会同步触发 `.then`\n\n\n\n",
+    "pivot":  "1. **`async` 函数本身不一定是异步执行的**\n\n   * 只有 `await` 才会让出执行权\n\n2. `return await` ≠ `return`\n\n   * `return await` 会等待 Promise settle\n   * `return` 直接包装 Promise（但结果通常一致）\n3. resolved ≠ 同步\n\n   * resolved 的回调一定是异步（微任务）",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-02-01T14:58:17.000Z",
+    "updateAt":  "2026-02-01T14:58:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  161,
+    "filterTotalNum":  1907,
+    "prev":  "7d4e4120-8c99-4e2e-a2c7-98d186c57289",
+    "next":  "ad2e4aae-8548-476f-82cb-6960ed6b2b5c"
+}

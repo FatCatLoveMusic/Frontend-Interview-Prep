@@ -1,0 +1,21 @@
+﻿{
+    "id":  396,
+    "exerciseKey":  "8ba67b8e-c23a-4919-b645-2757fc1e8be4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "git pull 和 git fetch 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "git pull 命令从中央存储库中提取特定分支的新更改或提交，并更新本地存储库中的目标分支。\n\ngit fetch 也用于相同的目的，但它的工作方式略有不同。当你执行 git fetch 时，它会从所需的分支中提取所有新提交，并将其存储在本地存储库中的新分支中。如果要在目标分支中反映这些更改，必须在 git fetch 之后执行git merge。只有在对目标分支和获取的分支进行合并后才会更新目标分支。为了方便起见，请记住以下等式：\n\n\u003egit pull = git fetch + git merge",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T13:04:46.000Z",
+    "updateAt":  "2021-07-07T00:12:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  1524,
+    "filterTotalNum":  1907,
+    "prev":  "02ba022f-9a63-4a9b-a668-1e2f01ab3493",
+    "next":  "bfa42e01-30b6-4c60-9f2b-81b7495aaebe"
+}

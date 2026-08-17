@@ -1,0 +1,21 @@
+﻿{
+    "id":  92,
+    "exerciseKey":  "2e7f32d3-6c83-42f0-adbc-262e4dd53db1",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconsole.log(\"I want pizza\"[0])\n```",
+    "options":  "{\"options\":[\"\\\"\\\"\\\"\",\"\\\"I\\\"\",\"SyntaxError\",\"undefined\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "可以使用方括号表示法获取字符串中特定索引的字符，字符串中的第一个字符具有索引0，依此类推。 在这种情况下，我们想要得到索引为0的元素，字符`\u0027I\u0027`被记录。\n请注意，IE7及更低版本不支持此方法。 在这种情况下，应该使用`.charAt（）`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:25:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  1827,
+    "filterTotalNum":  1907,
+    "prev":  "8bfd0ee4-896b-4e7e-bf7f-234a54344dd7",
+    "next":  "0b4af1f7-d0bc-4a85-8c28-f620b5d6d23e"
+}

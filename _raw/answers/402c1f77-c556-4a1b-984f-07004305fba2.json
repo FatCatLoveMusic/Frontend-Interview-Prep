@@ -1,0 +1,21 @@
+﻿{
+    "id":  615,
+    "exerciseKey":  "402c1f77-c556-4a1b-984f-07004305fba2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "webpack treeShaking机制的原理是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003e Tree shaking 是一种通过清除多余代码方式来优化项目打包体积的技术，专业术语叫 Dead code elimination\n\n## tree shaking如何工作的呢?\n\n虽然 tree shaking 的概念在 1990 就提出了，但直到 ES6 的 ES6-style 模块出现后才真正被利用起来。\n\n在ES6以前，我们可以使用CommonJS引入模块：require()，这种引入是动态的，也意味着我们可以基于条件来导入需要的代码：\n\n```js\nlet dynamicModule;\n// 动态导入\nif (condition) {\n  myDynamicModule = require(\"foo\");\n} else {\n  myDynamicModule = require(\"bar\");\n}\n```\n\n但是CommonJS规范无法确定在实际运行前需要或者不需要某些模块，所以CommonJS不适合tree-shaking机制。在 ES6 中，引入了完全静态的导入语法：import。这也意味着下面的导入是不可行的：\n\n```js\n// 不可行，ES6 的import是完全静态的\nif (condition) {\n  myDynamicModule = require(\"foo\");\n} else {\n  myDynamicModule = require(\"bar\");\n}\n```\n\n我们只能通过导入所有的包后再进行条件获取。如下：\n\n```js\nimport foo from \"foo\";\nimport bar from \"bar\";\n\nif (condition) {\n  // foo.xxxx\n} else {\n  // bar.xxx\n}\n```\n\nES6的import语法可以完美使用tree shaking，因为可以在代码不运行的情况下就能分析出不需要的代码。\n\n看完上面的分析，你可能还是有点懵，这里我简单做下总结：因为tree shaking只能在静态modules下工作。ECMAScript 6 模块加载是静态的,因此整个依赖树可以被静态地推导出解析语法树。所以在 ES6 中使用 tree shaking 是非常容易的。\n\n## tree shaking的原理是什么?\n\n看完上面的分析，相信这里你可以很容易的得出题目的答案了：\n\n* ES6 Module引入进行静态分析，故而编译的时候正确判断到底加载了那些模块\n* 静态分析程序流，判断那些模块和变量未被使用或者引用，进而删除对应代码\n\n## common.js 和 es6 中模块引入的区别？\n\n从这道题目我们可以很容易的引申出来另外一道“明星”面试题：common.js 和 es6 中模块引入的区别？\n\nCommonJS 是一种模块规范，最初被应用于 Nodejs，成为 Nodejs 的模块规范。运行在浏览器端的 JavaScript 由于也缺少类似的规范，在 ES6 出来之前，前端也实现了一套相同的模块规范 (例如: AMD)，用来对前端模块进行管理。自 ES6 起，引入了一套新的 ES6 Module 规范，在语言标准的层面上实现了模块功能，而且实现得相当简单，有望成为浏览器和服务器通用的模块解决方案。但目前浏览器对 ES6 Module 兼容还不太好，我们平时在 Webpack 中使用的 export 和 import，会经过 Babel 转换为 CommonJS 规范。在使用上的差别主要有：\n\n1、CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。\n\n2、CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。\n\n3、CommonJs 是单个值导出，ES6 Module可以导出多个\n\n4、CommonJs 是动态语法可以写在判断里，ES6 Module 静态语法只能写在顶层\n\n5、CommonJs 的 this 是当前模块，ES6 Module的 this 是 undefined\n\n\n\n\n",
+    "pivot":  "- **Tree Shaking** 是一种优化技术，通过静态分析 ES6 模块来识别和去除未使用的代码。\n- **Webpack** 通过分析模块的依赖关系和导入/导出语句，标记未使用的代码，并在构建过程中移除这些死代码。\n- **前提条件**：需要使用 ES6 模块，并确保在生产模式下构建。\n\nTree Shaking 是现代 JavaScript 构建工具的重要特性，能够显著减少最终代码包的体积，提升应用性能。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-09-05T07:58:26.000Z",
+    "updateAt":  "2024-08-10T17:05:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  1306,
+    "filterTotalNum":  1907,
+    "prev":  "3dc3b575-dc56-47b6-87b3-e83315630812",
+    "next":  "3ae5a790-ccaf-468c-b829-e38dfd572582"
+}

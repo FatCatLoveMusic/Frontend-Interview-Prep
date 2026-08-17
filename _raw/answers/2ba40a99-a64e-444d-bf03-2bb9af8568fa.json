@@ -1,0 +1,21 @@
+﻿{
+    "id":  2117,
+    "exerciseKey":  "2ba40a99-a64e-444d-bf03-2bb9af8568fa",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "ajax 和 xhr 是什么关系？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### 一、概念定位差异\n| **维度**       | **AJAX**                          | **XMLHttpRequest (XHR)**            |\n|----------------|-----------------------------------|-------------------------------------|\n| **本质**       | 一种前端技术范式/方法论           | 浏览器提供的底层 API 对象           |\n| **层级**       | 应用层概念                        | 协议层实现                          |\n| **诞生时间**   | 2005年（Jesse James Garrett提出） | 1999年（IE5首次实现）               |\n\n\n### 二、技术实现关系\n#### 1. **AJAX 依赖 XHR 实现**\nAJAX 技术的核心是通过 **XHR 对象** 实现异步通信：\n```javascript\n// 经典 AJAX 实现（基于 XHR）\nfunction ajaxRequest(url, callback) {\n    const xhr = new XMLHttpRequest();\n    xhr.onreadystatechange = function() {\n        if (xhr.readyState === 4 \u0026\u0026 xhr.status === 200) {\n            callback(xhr.responseText); // 回调处理数据\n        }\n    };\n    xhr.open(\u0027GET\u0027, url, true); // 异步请求\n    xhr.send();\n}\n```\n\n#### 2. **XHR 不限于 AJAX**\nXHR 也可用于同步请求（尽管不推荐）：\n```javascript\n// 同步请求示例（阻塞主线程）\nxhr.open(\u0027GET\u0027, \u0027/api/data\u0027, false); // 第三个参数为 false\nxhr.send();\nconsole.log(xhr.responseText);\n```\n\n\n### 三、演进与替代方案\n#### 1. **现代 AJAX 的实现方式**\n| **技术**            | **特点**                          | **示例                          |\n|---------------------|-----------------------------------|---------------------------------|\n| Fetch API           | Promise-based，更现代的替代方案   | `fetch(url).then(res =\u003e res.json())` |\n| Axios              | 基于 XHR 的封装库                 | `axios.get(url).then(...)`      |\n| WebSocket          | 全双工通信                        | `new WebSocket(\u0027ws://...\u0027)`     |\n\n#### 2. **XHR 的扩展能力**\n即使在新标准下，XHR 仍保留独特功能：\n```javascript\n// 上传进度监控（Fetch API 需通过 ReadableStream 实现）\nxhr.upload.onprogress = (e) =\u003e {\n    console.log(`进度: ${(e.loaded / e.total) * 100}%`);\n};\n```\n\n\n### 四、关键特性对比\n| **特性**               | **AJAX 体系**                    | **原生 XHR**                     |\n|------------------------|----------------------------------|----------------------------------|\n| 异步支持               | 必须异步                         | 支持同步/异步                    |\n| 数据格式               | 任意（JSON/XML/Text等）          | 依赖手动设置 `responseType`      |\n| 跨域处理               | 依赖 CORS/JSONP                  | 需手动处理 `withCredentials`     |\n| 事件机制               | 由封装库决定（如 Axios 拦截器）  | 原生事件（onload/onerror等）     |\n\n\n### 五、工作流程图示\n```mermaid\nsequenceDiagram\n    participant Client\n    participant XHR\n    participant Server\n\n    Client-\u003e\u003eXHR: 创建 new XMLHttpRequest()\n    XHR-\u003e\u003eServer: 发送 HTTP 请求（异步）\n    Server--\u003e\u003eXHR: 返回响应数据\n    XHR-\u003e\u003eClient: 触发 onreadystatechange\n    Client-\u003e\u003eClient: 执行 AJAX 回调逻辑\n```\n\n\n### 六、历史演进\n1. **1999**：IE5 引入 XHR 对象\n2. **2005**：Google Maps/Gmail 应用 AJAX 技术\n3. **2006**：XHR 被 W3C 标准化\n4. **2015**：Fetch API 成为新标准",
+    "pivot":  "1. **包含关系**：AJAX 是技术理念，XHR 是其最初的底层实现工具  \n2. **发展关系**：现代 AJAX 应用可能使用 Fetch 或 WebSocket，但 XHR 仍是兼容性最广的方案  \n3. **能力边界**：XHR 提供更底层的控制（如进度监控），而 AJAX 更关注整体数据交互体验",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-07-17T01:34:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  703,
+    "filterTotalNum":  1907,
+    "prev":  "965b51c6-398a-4d51-978b-01ebbffd1ede",
+    "next":  "5ae6a85f-3dd6-49cd-bca9-7e400b936c9f"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1570,
+    "exerciseKey":  "ed7cbf26-e39b-4de5-82f6-c1a60ff7ee15",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Math.ceil 和 Math.floor 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Math.ceil() ： 向上取整，函数返回一个大于或等于给定数字的最小整数。\n\nMath.floor() ： 向下取整，函数返回一个小于或等于给定数字的最大整数。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:44:56.000Z",
+    "updateAt":  "2021-11-17T22:50:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  1220,
+    "filterTotalNum":  1907,
+    "prev":  "9792c9df-e258-4faf-a4a4-9b3358241db8",
+    "next":  "f7192fdf-cbfe-4b62-96af-a614e6a37055"
+}

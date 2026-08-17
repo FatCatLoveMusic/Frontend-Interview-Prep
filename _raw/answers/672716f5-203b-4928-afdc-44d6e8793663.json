@@ -1,0 +1,21 @@
+﻿{
+    "id":  1816,
+    "exerciseKey":  "672716f5-203b-4928-afdc-44d6e8793663",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么不能在循环、条件或嵌套函数中调用 Hooks？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "React 对 Hooks 的实现，本质上依赖 **调用顺序（call order）** 来完成状态与组件实例之间的绑定，而不是依赖变量名或函数标识。\n\n在函数组件执行时，React 会把组件当作一个普通函数重新执行一遍。每一次 render，React 内部都会维护一个指针（可以理解为当前 Hook 游标），按照代码执行顺序依次读取或创建 Hook 状态。例如第一次遇到 `useState`，就取 Hook 链表中的第一个节点；第二次遇到 `useEffect`，就取第二个节点，以此类推。\n\n换句话说，React 并不知道“这是哪个 useState”，它只知道“这是第几个 Hook”。\n\n如果 Hook 出现在条件、循环或嵌套函数中，就会破坏这种稳定的调用顺序。\n\n以条件语句为例：\n\n```js\nif (visible) {\n  useEffect(() =\u003e {});\n}\n```\n\n当 `visible = true` 时，这个 Hook 会被执行，占据某一个 Hook 位置；当下一次 render 变成 `false` 时，这个 Hook 不再执行，后面的 Hook 全部向前移动一位。此时 React 仍然按旧顺序读取状态，结果就是：\n\n* 状态错位（state mismatch）\n* effect 与错误的 state 绑定\n* 出现难以预测的 UI 行为\n\n循环中调用 Hooks 的问题本质相同。循环次数一旦变化，Hook 调用数量就变化，React 内部的 Hook 链表无法正确对齐。\n\n嵌套函数的问题则在于：Hooks 必须发生在组件 render 的同步执行路径中。嵌套函数可能不会在每次 render 被调用，或者调用次数不同，这同样会导致 Hook 注册顺序不稳定。\n\nReact 团队选择这种设计，并不是限制能力，而是为了获得三个关键收益：\n\n第一，避免为每个 Hook 建立复杂的标识系统，使 Hook 实现保持极低运行时成本。\n第二，让函数组件具备可预测的状态恢复能力，使 Fiber 在中断与恢复渲染时仍能正确关联状态。\n第三，使 Hook 调用在并发渲染（Concurrent Rendering）下仍然可重放（replayable）。\n\n因此官方提出了 **Rules of Hooks**：\n\n* Hook 只能在 React 函数组件或自定义 Hook 的顶层调用\n* Hook 调用顺序在每一次 render 中必须完全一致\n\nESLint 的 `react-hooks/rules-of-hooks` 本质上就是在静态分析阶段保证这一点。\n\n需要注意的是，条件逻辑并不是不能写，而是应该放在 Hook 内部：\n\n```js\nuseEffect(() =\u003e {\n  if (!visible) return;\n  // side effect\n}, [visible]);\n```\n\n这样 Hook 的调用顺序保持稳定，而执行逻辑仍然可以动态控制。",
+    "pivot":  "React 通过“调用顺序”而不是标识符来管理 Hook 状态；循环、条件或嵌套函数会导致 Hook 调用次数或顺序发生变化，从而破坏 React 内部 Hook 链表的映射关系，引发状态错位与不可预测行为。因此 Hooks 必须在组件顶层以固定顺序执行，这是 Hooks 能够高性能、可恢复并支持并发渲染的前提。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-05-29T12:58:22.000Z",
+    "updateAt":  "2026-02-28T02:19:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  993,
+    "filterTotalNum":  1907,
+    "prev":  "1b4bdc45-8a73-42b2-a304-872ddee851ab",
+    "next":  "7621c335-6645-4da0-bd71-cb81fe106f8f"
+}

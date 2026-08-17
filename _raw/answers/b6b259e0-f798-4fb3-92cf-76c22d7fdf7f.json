@@ -1,0 +1,21 @@
+﻿{
+    "id":  1938,
+    "exerciseKey":  "b6b259e0-f798-4fb3-92cf-76c22d7fdf7f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "环形链表",
+    "desc":  "给你一个链表的头节点 `head` ，判断链表中是否有环。\n\n如果链表中有某个节点，可以通过连续跟踪 `next` 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 `pos` 来表示链表尾连接到链表中的位置（索引从 0 开始）。**注意：`pos` 不作为参数进行传递** 。仅仅是为了标识链表的实际情况。\n\n_如果链表中存在环_ ，则返回 `true` 。 否则，返回 `false` 。\n\n**示例 1：**\n\n![](https://static.ecool.fun/article/aefe67d2-1969-41a6-acc9-0c03a901302f.png)\n\n**输入：** head = [3,2,0,-4], pos = 1\n**输出：** true\n**解释：** 链表中有一个环，其尾部连接到第二个节点。\n\n**示例 2：**\n\n![](https://static.ecool.fun/article/ba5d3f1b-fad9-4343-8caa-77624e0894d3.png)\n\n**输入：** head = [1,2], pos = 0\n**输出：** true\n**解释：** 链表中有一个环，其尾部连接到第一个节点。\n\n**示例 3：**\n\n![](https://static.ecool.fun/article/427b79ba-bc65-4e4e-aa35-30885de75b73.png)\n\n**输入：** head = [1], pos = -1\n**输出：** false\n**解释：** 链表中没有环。\n\n**提示：**\n\n* 链表中节点的数目范围是 `[0, 104]`\n* `-105 \u003c= Node.val \u003c= 105`\n* `pos` 为 `-1` 或者链表中的一个 **有效索引** 。\n\n**进阶：** 你能用 `O(1)`（即，常量）内存解决此问题吗？\n\n```js\n/**\n * Definition for singly-linked list.\n * function ListNode(val) {\n *     this.val = val;\n *     this.next = null;\n * }\n */\n\n/**\n * @param {ListNode} head\n * @return {boolean}\n */\nvar hasCycle = function(head) {\n    \n};\n```",
+    "options":  null,
+    "explanation":  "## 解法一：标志法\n\n给每个已遍历过的节点加标志位，遍历链表，当出现下一个节点已被标志时，则证明单链表有环\n\n```bash\nvar hasCycle = function(head) {\n    while(head) {\n        if(head.flag) return true\n        head.flag = true\n        head = head.next\n    }\n    return false\n};\n```\n\n时间复杂度：O(n) 空间复杂度：O(n)\n\n## 解法二：利用 JSON.stringify() 不能序列化含有循环引用的结构\n\n```javascript\nvar hasCycle = function(head) {\n    try{\n        JSON.stringify(head);\n        return false;\n    }\n    catch(err){\n        return true;\n    }\n};\n```\n\n时间复杂度：O(n) 空间复杂度：O(n)\n\n## 解法三：快慢指针（双指针法）\n\n设置快慢两个指针，遍历单链表，快指针一次走两步，慢指针一次走一步，如果单链表中存在环，则快慢指针终会指向同一个节点，否则直到快指针指向 null 时，快慢指针都不可能相遇\n\n```lua\nvar hasCycle = function(head) {\n    if(!head || !head.next) {\n        return false\n    }\n    let fast = head.next.next, slow = head\n    while(fast !== slow) {\n        if(!fast || !fast.next) return false\n        fast = fast.next.next\n        slow = slow.next\n    }\n    return true\n};\n```\n\n时间复杂度：O(n) 空间复杂度：O(1)\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-02-19T07:13:05.000Z",
+    "updateAt":  "2023-02-19T15:13:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  872,
+    "filterTotalNum":  1907,
+    "prev":  "b68ef5ec-9d4c-4702-b7f7-33917340b6eb",
+    "next":  "c00d61b8-2609-40b9-8deb-a4fdb686e7c7"
+}

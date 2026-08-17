@@ -1,0 +1,21 @@
+﻿{
+    "id":  345,
+    "exerciseKey":  "07cbacb7-1ff5-4840-8b10-0e59167ff407",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "最大的钻石",
+    "desc":  "1 楼到 n 楼的每层电梯门口都放着一颗钻石，钻石大小不一。你乘坐电梯从 1 楼到 n 楼，每层楼电梯门都会打开一次，只能拿一次钻石，问怎样才能拿到「最大」的一颗？",
+    "options":  null,
+    "explanation":  "题中包含一个隐藏条件：随机放置。所有的分析都是基于随机放置给出的。换句话说，如果放置钻石是人为干预大小，那么本题的所以分析则全部不成立。\n\n其实这个问题的原型叫做秘书问题，该类问题全部属于最佳停止问题。\n\n这类问题都有着统一的解法：\n\n![1.png](https://static.ecool.fun//article/c06d257d-5e46-455b-a847-84909da792ea.png)\n\n所以到我们的题目里，我们也是可以直接给出答案：我们要选择先放弃前 37%（就是1/e）的钻石，此后选择比前 37% 都大的第一颗钻石。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:37:23.000Z",
+    "updateAt":  "2024-07-22T15:42:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  1575,
+    "filterTotalNum":  1907,
+    "prev":  "e0e9a739-97c8-440b-b37b-41691095002f",
+    "next":  "c93c4f3d-e1ff-4fd0-844c-1e610e429532"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  408,
+    "exerciseKey":  "d86ffa19-714c-45a6-a7e0-81ebe2248972",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Array.prototype.map()",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nArray.prototype.map = function(callback, thisArg) {\n  if (this == undefined) {\n    throw new TypeError(\u0027this is null or not defined\u0027);\n  }\n  if (typeof callback !== \u0027function\u0027) {\n    throw new TypeError(callback + \u0027 is not a function\u0027);\n  }\n  const res = [];\n  // 同理\n  const O = Object(this);\n  const len = O.length \u003e\u003e\u003e 0;\n  for (let i = 0; i \u003c len; i++) {\n    if (i in O) {\n      // 调用回调函数并传入新数组\n      res[i] = callback.call(thisArg, O[i], i, this);\n    }\n  }\n  return res;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:00:25.000Z",
+    "updateAt":  "2021-07-07T00:12:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1512,
+    "filterTotalNum":  1907,
+    "prev":  "f1974383-8f98-4cd9-8a8e-f0c51e61b275",
+    "next":  "4af06e53-d9ca-4a28-8067-d4ffc3691827"
+}

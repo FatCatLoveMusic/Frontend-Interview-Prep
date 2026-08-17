@@ -1,0 +1,21 @@
+﻿{
+    "id":  93,
+    "exerciseKey":  "8bfd0ee4-896b-4e7e-bf7f-234a54344dd7",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nfunction sum(num1, num2 = num1) {\n  console.log(num1 + num2)\n}\n\nsum(10)\n```",
+    "options":  "{\"options\":[\"NaN\",\"20\",\"ReferenceError\",\"undefined\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "您可以将默认参数的值设置为函数的另一个参数，只要另一个参数定义在其之前即可。 我们将值`10`传递给`sum`函数。 如果`sum`函数只接收1个参数，则意味着没有传递`num2`的值，这种情况下，`num1`的值等于传递的值`10`。 `num2`的默认值是`num1`的值，即`10`。 ```num1 + num2```返回`20`。\n如果您尝试将默认参数的值设置为后面定义的参数，则可能导致参数的值尚未初始化，从而引发错误。比如：\n```js\nfunction test(m = n, n = 2) {\n\tconsole.log(m, n)\n}\ntest() // Uncaught ReferenceError: Cannot access \u0027n\u0027 before initialization\ntest(3) // 3 2\ntest(3, 4) // 3 4\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:26:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  1826,
+    "filterTotalNum":  1907,
+    "prev":  "e8cd42a6-0df3-4e16-b6dd-d294756b5c21",
+    "next":  "2e7f32d3-6c83-42f0-adbc-262e4dd53db1"
+}

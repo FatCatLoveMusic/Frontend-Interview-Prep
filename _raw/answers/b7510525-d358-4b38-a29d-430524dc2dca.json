@@ -1,0 +1,21 @@
+﻿{
+    "id":  2413,
+    "exerciseKey":  "b7510525-d358-4b38-a29d-430524dc2dca",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "onpopstate 可以监听到 pushstate 的事件吗？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`onpopstate` 事件无法直接监听到 `pushState` 或 `replaceState` 方法的调用。这是因为 `pushState` 和 `replaceState` 方法本身不会触发 `popstate` 事件，它们只是修改浏览器的历史记录和 URL。\n\n### **`popstate` 事件的触发条件**\n\n`popstate` 事件只会在以下情况下触发：\n\n- 用户通过浏览器的前进或后退按钮进行导航。\n- 用户点击浏览器的历史记录（例如，通过前进、后退按钮或键盘快捷键）。\n\n### **`pushState` 和 `replaceState` 的作用**\n\n- **`pushState`**：将一个新的状态推入历史记录栈，并更新 URL。这不会触发 `popstate` 事件。\n\n  ```javascript\n  history.pushState({ page: 1 }, \u0027Title 1\u0027, \u0027/page1\u0027);\n  ```\n\n- **`replaceState`**：修改当前历史记录项，并更新 URL。这也不会触发 `popstate` 事件。\n\n  ```javascript\n  history.replaceState({ page: 2 }, \u0027Title 2\u0027, \u0027/page2\u0027);\n  ```\n\n### **手动触发更新**\n\n如果你需要在调用 `pushState` 或 `replaceState` 时执行某些操作，可以在这些方法的调用后手动执行回调函数：\n\n```javascript\nfunction handleStateChange() {\n  console.log(\u0027State changed:\u0027, history.state);\n  // 更新页面内容或执行其他操作\n}\n\nfunction navigateTo(url, state = null) {\n  history.pushState(state, \u0027\u0027, url);\n  handleStateChange();\n}\n\nfunction replaceState(url, state = null) {\n  history.replaceState(state, \u0027\u0027, url);\n  handleStateChange();\n}\n\n// 使用示例\nnavigateTo(\u0027/page1\u0027, { page: 1 });\nreplaceState(\u0027/page2\u0027, { page: 2 });\n```",
+    "pivot":  "- `popstate` 事件只在用户通过浏览器的前进和后退按钮进行导航时触发。\n- `pushState` 和 `replaceState` 不会触发 `popstate` 事件。\n- 如果需要在调用 `pushState` 或 `replaceState` 后执行操作，必须手动调用相关的处理函数。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-09-03T01:22:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  539,
+    "filterTotalNum":  1907,
+    "prev":  "93c12e43-114e-41b0-9515-5c13e5bf3e0b",
+    "next":  "2b8e3ddf-b8cb-464b-8af4-0efed5b911b0"
+}

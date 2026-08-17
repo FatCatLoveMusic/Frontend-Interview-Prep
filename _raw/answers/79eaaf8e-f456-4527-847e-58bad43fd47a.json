@@ -1,0 +1,21 @@
+﻿{
+    "id":  139,
+    "exerciseKey":  "79eaaf8e-f456-4527-847e-58bad43fd47a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "怎样能在 index.js 中调用 sum.js 中的 sum 方法？",
+    "desc":  "```javascript\n// sum.js\nexport default function sum(x) {\n\treturn x + x;\n}\n\n// index.js\nimport * as sum from \"./sum\";\n```",
+    "options":  "{\"options\":[\"sum(4)\",\"sum.sum(4)\",\"sum.default(4)\",\"默认导出不用 * 来导入，只能具名导出\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "使用符号 `*`，我们引入文件中的所有值，包括默认和具名。如果我们有以下文件：\n```javascript\n// info.js\nexport const name = \"Lydia\";\nexport const age = 21;\nexport default \"I love JavaScript\";\n// index.js\nimport * as info from \"./info\";\nconsole.log(info);\n```\n将会输出以下内容：\n```javascript\n{\n  default: \"I love JavaScript\",\n  name: \"Lydia\",\n  age: 21\n}\n```\n以 `sum` 为例，相当于以下形式引入值 `sum`：\n```javascript\n{ default: function sum(x) { return x + x } }\n```\n我们可以通过调用 `sum.default` 来调用该函数",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:33:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  1780,
+    "filterTotalNum":  1907,
+    "prev":  "6a8b4695-3386-491a-8711-2dd53eba399e",
+    "next":  "3cfca707-0c28-403b-bf3a-c2b892010ade"
+}

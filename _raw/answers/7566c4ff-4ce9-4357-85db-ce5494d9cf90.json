@@ -1,0 +1,21 @@
+﻿{
+    "id":  537,
+    "exerciseKey":  "7566c4ff-4ce9-4357-85db-ce5494d9cf90",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "大数相加",
+    "desc":  "手写一个add方法，实现两个大数相加",
+    "options":  null,
+    "explanation":  "## 方案一\n\n思路：判断两个字符串长度，通过补0的方式，让他们长度相同，由于我们在学生时代，这种加减法都是从右往左，所以，我们对数组进行反转，这样就可以让计算机按照我们的想法去实现，做的过程中，一定要考虑满10进1的情况，全部算完后，再反转回来，通过join合并成字符串进行返回。\n\n```javascript\n// a 和 b 都为字符串，调用add后，返回一个相加的字符串\n// a = \u002712345678\u0027\n// b = \u0027456789\u0027\nfunction add(a,b){\n    // 获取各自长度\n    let i = a.length,j = b.length;\n    // 判断谁大一些\n    let len = i - j;\n    let sum,sumArr = [];\n    // 谁小，就在谁的前面补0，让两个长度相同\n    // a = \u002712345678\u0027 b = \u002700456789\u0027\n    if(len \u003e 0){\n        b = appendZero(b,len);\n    }else if(len\u003c0){\n        // 这个地方要把len变成正数\n        a = appendZero(a,Math.abs(len));\n        // 当b的长度比a大时，就把b的长度给i\n        i = j;\n    }\n    // 由于日常运算都是从右往左，所以，我们反转数组\n    let aArr = a.split(\u0027\u0027).reverse(), bArr = b.split(\u0027\u0027).reverse();\n    for(let m = 0;m \u003c i;m++){\n        // 数组长度相同，同一位置的两个元素相加\n        // 如果当前sumArr有值，说明可能是前面以为满10进了一个1\n        let c = parseInt(aArr[m])+parseInt(bArr[m]) + (sumArr[m] || 0);\n        if(c \u003e 9){\n            // 进10后，取余数\n            sumArr[m] = c%10;\n            // 如果进10了，则会往数组后一个元素放一个1\n            sumArr[m+1] = parseInt(sumArr[m+1] || 0)+1;\n        }else{\n            sumArr[m] = c;\n        }\n    }\n    // 最后数组反转，再合并成一个字符串\n    sum = sumArr.reverse().join(\u0027\u0027);\n    return sum;\n}\n\nfunction appendZero(str,len){\n    for(let i=0;i\u003clen;i++){\n        str=\u00270\u0027+str;\n    }\n    // 或者使用ES6的repeat\n    // str = \u00270\u0027.repeat(len) + str;\n    return str;\n}\n\n```\n\n## 方案二\n\n```javascript\nfunction add(a,b){\n  // 获取各自长度\n  a = a.split(\u0027\u0027), b = b.split(\u0027\u0027);\n  let sum=[],go=0;\n  while(a.length || b.length){\n    // 通过pop每次取一个\n    let num1 = parseInt(a.pop()) || 0;\n    let num2 = parseInt(b.pop()) || 0;\n    // 两值相加，如果有进位就 + go\n    let tmp = num1 + num2 + go;\n     if(tmp \u003e 9){\n         go = 1;\n         // 取余数\n         tmp %= 10;\n     }else{\n         go = 0;\n     }\n     // array.unshift(item)表示在数组array的最前面插入\n     sum.unshift(tmp)\n  }\n  if(go) sum.unshift(1);\n  return sum.join(\u0027\u0027);\n}\n```\n\n通过while循环，其实也是对长度不够的进行补0，通过pop巧妙的从最后取一个元素，跟前面的数组反转如出一辙.\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-19T14:09:51.000Z",
+    "updateAt":  "2021-07-25T10:31:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1383,
+    "filterTotalNum":  1907,
+    "prev":  "ccc4f906-dcd4-4eed-93b1-13ba4d853093",
+    "next":  "cfff7bf1-9ff0-4661-8e8e-2ddec4ed270a"
+}

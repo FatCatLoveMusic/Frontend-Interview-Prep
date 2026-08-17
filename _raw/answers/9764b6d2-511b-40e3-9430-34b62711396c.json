@@ -1,0 +1,21 @@
+﻿{
+    "id":  168,
+    "exerciseKey":  "9764b6d2-511b-40e3-9430-34b62711396c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说对 CSS 预编语言的理解，以及它们之间的区别",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "CSS 预编语言是一种基于 CSS 的扩展语言，可以更加方便和高效地编写 CSS 代码。其主要作用是为 CSS 提供了变量、函数、嵌套、继承、混合等功能，以及更加易于维护和组织的代码结构。\n\n常见的 CSS 预编语言有 Sass、Less 和 Stylus 等，它们之间的区别如下：\n\n1. 语法不同：Sass 和 Less 使用类似于 CSS 的语法规则，而 Stylus 则使用了更加简洁和灵活的缩进式语法。\n\n2. 变量定义方式不同：Sass 使用 `$` 符号来定义变量，Less 使用 `@` 符号，Stylus 则直接使用变量名即可。\n\n3. 操作符和函数库不同：Sass 和 Less 支持常见的操作符和函数库，例如运算符、颜色处理、字符串处理等，而 Stylus 的函数库更加强大，支持更多的特性和功能。\n\n4. 编译方式不同：Sass 和 Less 都需要通过编译器进行编译，可以将预编译的代码转换成标准的 CSS 代码。而 Stylus 则可以直接在浏览器中解析和执行，可以动态调整样式和布局。\n\n总之，CSS 预编语言是一种非常有用的工具，可以提高 CSS 开发的效率和可维护性。选择哪种预编语言取决于项目需求和个人喜好，需要根据具体情况来进行选择。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:24:55.000Z",
+    "updateAt":  "2024-07-22T09:53:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1751,
+    "filterTotalNum":  1907,
+    "prev":  "b54f7b5e-bac2-47bc-bc6a-0ec521a55a7f",
+    "next":  "dd65350c-9907-4d3a-a01c-baeebb3e963d"
+}

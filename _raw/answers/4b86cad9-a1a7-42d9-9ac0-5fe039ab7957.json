@@ -1,0 +1,21 @@
+﻿{
+    "id":  2935,
+    "exerciseKey":  "4b86cad9-a1a7-42d9-9ac0-5fe039ab7957",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何保障前端调用 AI 接口时的安全性与权限控制？你是否考虑过代理服务或签名机制？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " 保障前端调用 AI 接口的安全性和权限控制需要分层防御策略，结合技术方案和架构设计。\n\n以下是系统性解决方案：\n\n### 一、核心风险与应对措施\n#### 1. **接口暴露风险**\n- **代理服务层**（关键方案）  \n  前端不直接调用 AI 接口，而是通过自建代理服务中转：\n![image](https://static.ecool.fun/others/868a5cb3-8693-40b7-aaa5-ba2a1a54a391.png)\n\n  - **优势**：隐藏真实 endpoint、屏蔽 API Key  \n  - **实现**：使用 Node.js/Nginx 反向代理，添加请求过滤\n\n#### 2. **认证劫持风险**\n- **动态签名机制**  \n  替代静态 API Key 的方案：\n  ```javascript\n  // 前端生成签名（需配合时效控制）\n  const nonce = uuidv4();\n  const timestamp = Date.now();\n  const sign = crypto.createHmac(\u0027sha256\u0027, secret)\n    .update(`${apiPath}${nonce}${timestamp}`)\n    .digest(\u0027hex\u0027);\n  ```\n  - **服务端验证**：检查时间戳（防重放）、nonce 唯一性\n\n#### 3. **敏感数据泄露**\n- **最小化权限原则**  \n  - 使用 AI 厂商的临时令牌（如 AWS STS Token）  \n  - 按功能拆分不同 API Key（如对话/绘图分离）\n\n---\n\n### 二、技术实现方案\n#### 1. **代理服务增强设计**\n- **请求过滤**  \n  ```typescript\n  // Express 中间件示例\n  app.use(\u0027/ai-proxy\u0027, (req, res, next) =\u003e {\n    // 校验来源域名\n    if (!validOrigins.includes(req.get(\u0027origin\u0027))) return res.sendStatus(403);\n    \n    // 清洗敏感参数\n    const { query } = req.body;\n    if (containsSensitiveData(query)) {\n      return res.status(400).json({ error: \u0027Invalid input\u0027 });\n    }\n    next();\n  });\n  ```\n\n#### 2. **多层认证方案**\n| 层级       | 实现方式                          | 适用场景              |\n|------------|-----------------------------------|---------------------|\n| 用户认证   | JWT + OAuth 2.0                   | 前端用户身份确认     |\n| 服务认证   | HMAC 签名 + 时间窗口              | 代理服务到 AI 接口   |\n| 网络认证   | IP 白名单 + VPC 私有链路          | 生产环境高安全要求   |\n\n#### 3. **审计与监控**\n- **日志记录**：存储所有 AI 请求的元数据（用户 ID、时间、消耗 token 数）  \n- **实时检测**：对异常频次请求触发 CAPTCHA 验证\n\n---\n\n### 三、进阶防护策略\n#### 1. **请求内容安全**\n- **输入过滤**  \n  - 清理 Prompt 中的敏感词（如 PII 信息）  \n  - 使用正则表达式检测注入攻击模式  \n  ```javascript\n  const MALICIOUS_REGEX = /(?:sudo|rm|\\bdelete\\b)/i;\n  if (MALICIOUS_REGEX.test(userPrompt)) {\n    throw new Error(\"Invalid request\");\n  }\n  ```\n\n#### 2. **输出控制**\n- **内容审查**  \n  对 AI 返回结果进行扫描：\n  ```python\n  # 使用本地审查模型（如 transformers）\n  from transformers import pipeline\n  classifier = pipeline(\"text-classification\", model=\"Hate-speech-CNERG/dehatebert-mono-english\")\n  if classifier(ai_response)[0][\u0027label\u0027] == \u0027HATE\u0027:\n    return sanitized_response\n  ```\n\n#### 3. **限流保护**\n- **分层限流**  \n  ```nginx\n  # Nginx 限流配置\n  limit_req_zone $binary_remote_addr zone=ai_api:10m rate=5r/s;\n  location /ai-proxy {\n    limit_req zone=ai_api burst=10;\n    proxy_pass https://ai-service.com;\n  }\n  ```\n\n---\n\n### 四、架构选型建议\n1. **Serverless 代理**  \n   - 使用 Cloudflare Workers/AWS Lambda 实现无服务器代理  \n   - 优点：自动扩展、边缘节点缓存\n\n2. **API 网关集成**  \n   - 通过 Kong/Apigee 添加 JWT 验证、请求转换层\n\n3. **零信任方案**  \n   - 结合 BeyondCorp 模型，每次请求验证设备和用户上下文",
+    "pivot":  "- **必选方案**：代理服务隐藏真实接口 + 动态签名替代静态密钥  \n- **推荐组合**：JWT 用户认证 + HMAC 服务间认证 + 输入/输出过滤  \n- **高阶防护**：私有链路接入 + 本地内容审查模型  \n- **监控体系**：请求日志审计 + 异常行为实时阻断",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2025-04-14T02:03:53.000Z",
+    "updateAt":  "2025-07-16T14:50:08.000Z",
+    "isCollected":  false,
+    "currentIndex":  267,
+    "filterTotalNum":  1907,
+    "prev":  "fc324e39-07c5-404f-9489-d9f0900d8988",
+    "next":  "34c5397b-4818-4bfe-bbcb-9ead801ad56b"
+}

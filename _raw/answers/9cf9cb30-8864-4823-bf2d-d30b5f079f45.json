@@ -1,0 +1,21 @@
+﻿{
+    "id":  182,
+    "exerciseKey":  "9cf9cb30-8864-4823-bf2d-d30b5f079f45",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "ES6中函数新增了哪些扩展?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、参数\n\n`ES6`允许为函数的参数设置默认值\n\n```js\nfunction log(x, y = \u0027World\u0027) {\n  console.log(x, y);\n}\n\nconsole.log(\u0027Hello\u0027) // Hello World\nconsole.log(\u0027Hello\u0027, \u0027China\u0027) // Hello China\nconsole.log(\u0027Hello\u0027, \u0027\u0027) // Hello\n```\n\n函数的形参是默认声明的，不能使用`let`或`const`再次声明\n\n```js\nfunction foo(x = 5) {\n    let x = 1; // error\n    const x = 2; // error\n}\n```\n\n参数默认值可以与解构赋值的默认值结合起来使用\n\n```js\nfunction foo({x, y = 5}) {\n  console.log(x, y);\n}\n\nfoo({}) // undefined 5\nfoo({x: 1}) // 1 5\nfoo({x: 1, y: 2}) // 1 2\nfoo() // TypeError: Cannot read property \u0027x\u0027 of undefined\n```\n\n上面的`foo`函数，当参数为对象的时候才能进行解构，如果没有提供参数的时候，变量`x`和`y`就不会生成，从而报错，这里设置默认值避免\n\n```js\nfunction foo({x, y = 5} = {}) {\n  console.log(x, y);\n}\n\nfoo() // undefined 5\n```\n\n参数默认值应该是函数的尾参数，如果不是非尾部的参数设置默认值，实际上这个参数是没发省略的\n\n```javascript\nfunction f(x = 1, y) {\n  return [x, y];\n}\n\nf() // [1, undefined]\nf(2) // [2, undefined]\nf(, 1) // 报错\nf(undefined, 1) // [1, 1]\n```\n\n\n\n## 二、属性\n\n### 函数的length属性\n\n`length`将返回没有指定默认值的参数个数\n\n```js\n(function (a) {}).length // 1\n(function (a = 5) {}).length // 0\n(function (a, b, c = 5) {}).length // 2\n```\n\n`rest` 参数也不会计入`length`属性\n\n```js\n(function(...args) {}).length // 0\n```\n\n如果设置了默认值的参数不是尾参数，那么`length`属性也不再计入后面的参数了\n\n```js\n(function (a = 0, b, c) {}).length // 0\n(function (a, b = 1, c) {}).length // 1\n```\n\n\n\n### name属性\n\n返回该函数的函数名\n\n```js\nvar f = function () {};\n\n// ES5\nf.name // \"\"\n\n// ES6\nf.name // \"f\"\n```\n\n如果将一个具名函数赋值给一个变量，则 `name`属性都返回这个具名函数原本的名字\n\n```js\nconst bar = function baz() {};\nbar.name // \"baz\"\n```\n\n`Function`构造函数返回的函数实例，`name`属性的值为`anonymous`\n\n```javascript\n(new Function).name // \"anonymous\"\n```\n\n`bind`返回的函数，`name`属性值会加上`bound`前缀\n\n```javascript\nfunction foo() {};\nfoo.bind({}).name // \"bound foo\"\n\n(function(){}).bind({}).name // \"bound \"\n```\n\n\n\n## 三、作用域\n\n一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域\n\n等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的\n\n下面例子中，`y=x`会形成一个单独作用域，`x`没有被定义，所以指向全局变量`x`\n\n```js\nlet x = 1;\n\nfunction f(y = x) { \n  // 等同于 let y = x  \n  let x = 2; \n  console.log(y);\n}\n\nf() // 1\n```\n\n\n\n## 四、严格模式\n\n只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错\n\n```js\n// 报错\nfunction doSomething(a, b = a) {\n  \u0027use strict\u0027;\n  // code\n}\n\n// 报错\nconst doSomething = function ({a, b}) {\n  \u0027use strict\u0027;\n  // code\n};\n\n// 报错\nconst doSomething = (...a) =\u003e {\n  \u0027use strict\u0027;\n  // code\n};\n\nconst obj = {\n  // 报错\n  doSomething({a, b}) {\n    \u0027use strict\u0027;\n    // code\n  }\n};\n```\n\n\n\n## 五、箭头函数\n\n使用“箭头”（`=\u003e`）定义函数\n\n```js\nvar f = v =\u003e v;\n\n// 等同于\nvar f = function (v) {\n  return v;\n};\n```\n\n如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分\n\n```js\nvar f = () =\u003e 5;\n// 等同于\nvar f = function () { return 5 };\n\nvar sum = (num1, num2) =\u003e num1 + num2;\n// 等同于\nvar sum = function(num1, num2) {\n  return num1 + num2;\n};\n```\n\n如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用`return`语句返回\n\n```js\nvar sum = (num1, num2) =\u003e { return num1 + num2; }\n```\n\n如果返回对象，需要加括号将对象包裹\n\n```js\nlet getTempItem = id =\u003e ({ id: id, name: \"Temp\" });\n```\n\n注意点：\n\n- 函数体内的`this`对象，就是定义时所在的对象，而不是使用时所在的对象\n- 不可以当作构造函数，也就是说，不可以使用`new`命令，否则会抛出一个错误\n- 不可以使用`arguments`对象，该对象在函数体内不存在。如果要用，可以用 `rest` 参数代替\n- 不可以使用`yield`命令，因此箭头函数不能用作 Generator 函数\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:36:00.000Z",
+    "updateAt":  "2024-07-20T09:43:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  1737,
+    "filterTotalNum":  1907,
+    "prev":  "4232c372-316f-4a53-99b9-6d9299b7e91f",
+    "next":  "593b09fd-094f-44b7-a375-6ddc393113a5"
+}

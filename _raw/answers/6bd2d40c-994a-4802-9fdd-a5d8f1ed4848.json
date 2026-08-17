@@ -1,0 +1,21 @@
+﻿{
+    "id":  3233,
+    "exerciseKey":  "6bd2d40c-994a-4802-9fdd-a5d8f1ed4848",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "谈谈 LangChain 的核心设计思想。",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "LangChain 的核心设计思想，是把大模型应用从“单次模型调用”抽象成“可组合、可编排、可观测的应用流程”。\n\nLLM 本身只是一个概率模型，真实业务里还需要提示词管理、上下文注入、外部知识检索、工具调用、结构化输出、状态记忆、异常重试、链路追踪等能力。LangChain 的价值就在于把这些环节拆成标准组件，再通过统一接口组合起来。\n\n它最重要的设计是**组件化和可组合性**。Prompt、Model、Retriever、Tool、OutputParser、Memory 等都可以作为独立模块存在，然后通过 Chain 或 Runnable 串联。这样做的好处是，开发者可以像搭积木一样构建应用流程，例如先根据用户问题检索知识库，再把检索结果注入 Prompt，调用模型生成答案，最后用 Parser 转成结构化结果。\n\n第二个核心思想是**模型无关和生态集成**。LangChain 不希望业务代码强绑定某一个模型厂商，所以它对 OpenAI、Anthropic、Google、本地模型、向量数据库、搜索工具、数据库工具等做了适配。业务层关心的是“调用一个 ChatModel”或者“调用一个 Retriever”，而不是底层供应商的具体协议。\n\n第三个设计重点是**Agent 和 Tool Calling**。传统 Chain 更适合固定流程，而 Agent 更适合动态决策。Agent 会根据用户输入和中间结果决定下一步调用哪个工具，比如搜索、查数据库、执行代码、调用业务 API。这个设计本质上是把 LLM 从“文本生成器”提升为“任务规划和工具调度器”。不过在工程实践中，Agent 的不确定性更高，所以复杂业务通常需要边界约束、状态机、权限控制和可观测能力配合使用。\n\n第四个思想是**围绕上下文构建应用**。很多 LLM 应用不是模型能力不够，而是上下文组织不好。LangChain 通过 Retriever、Document Loader、Text Splitter、VectorStore 等模块支持 RAG，把外部知识转换成模型可消费的上下文。这也是 LangChain 在知识库问答、客服助手、文档分析中常用的原因。\n\n现代 LangChain 还强调 `Runnable` 和 LCEL 这种声明式编排方式。它让链路可以更清晰地表达为数据流，并支持并行、分支、流式输出、回调追踪等能力。对于更复杂、带状态和循环的 Agent 流程，通常会结合 LangGraph 来做更强的流程控制。",
+    "pivot":  "LangChain 的核心不是简单封装模型 API，而是把 LLM 应用拆成标准组件，并通过可组合的流程组织起来。它强调组件化、模型无关、上下文增强、工具调用、链路编排和可观测性。固定流程适合 Chain 或 Runnable，动态决策适合 Agent，但 Agent 需要更强的工程约束，不能只依赖模型自由发挥。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T07:55:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  55,
+    "filterTotalNum":  1907,
+    "prev":  "9e1ef83c-0b0a-4ec0-8a3b-6bd414215a24",
+    "next":  "40566000-df63-4235-8fb7-01f24a055c22"
+}

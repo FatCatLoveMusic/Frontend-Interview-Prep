@@ -1,0 +1,21 @@
+﻿{
+    "id":  1559,
+    "exerciseKey":  "af8d6439-598f-4317-8063-93349b83f2d3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Js 动画与 CSS 动画区别及相应实现",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* CSS3 的动画的优点\n\t* 在性能上会稍微好一些，浏览器会对 CSS3 的动画做一些优化\n\t* 代码相对简单\n* 缺点\n\t* 在动画控制上不够灵活\n\t* 兼容性不好\n\nJavaScript 的动画正好弥补了这两个缺点，控制能力很强，可以单帧的控制、变换，同时写得好完全可以兼容 IE6，并且功能强大。对于一些复杂控制的动画，使用 javascript 会比较靠谱。而在实现一些小的交互动效的时候，就多考虑考虑 CSS 吧",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:36:50.000Z",
+    "updateAt":  "2024-07-19T16:00:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  1230,
+    "filterTotalNum":  1907,
+    "prev":  "bddd2a34-2ccf-44ba-9cca-4213619b4e8e",
+    "next":  "59d7f771-83c9-4e85-a9a6-f348e6a547c9"
+}

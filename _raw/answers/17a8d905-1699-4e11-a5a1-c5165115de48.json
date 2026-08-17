@@ -1,0 +1,21 @@
+﻿{
+    "id":  376,
+    "exerciseKey":  "17a8d905-1699-4e11-a5a1-c5165115de48",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "Webpack中 loader的作用是什么，以及常用loader有哪些",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e\u003cstrong\u003eloader作用\u003c/strong\u003e：\u003c/p\u003e\u003cp style=\"text-align:start;text-indent:2em;\"\u003e\u003c/p\u003e\u003cp style=\"text-align:start;text-indent:2em;\"\u003e（1）实现对不同格式文件的处理，比如将Scss转换为CSS，或将 TypeScript转化为Javascript。\u003c/p\u003e\u003cp style=\"text-align:start;text-indent:2em;\"\u003e（2）可以编译文件，从而使其能够添加到依赖关系中。loader是 WebPack最重要的部分之一。通过使用不同的 loader，我们能够调用外部的脚本或者工具，实现对不同格式文件的处理。loader需要在 webpack.config.js里单独用 module进行配置。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e常用的 loader如下\u003c/strong\u003e：\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003efile-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件\u003cbr/\u003e url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去\u003cbr/\u003e source-map-loader：加载额外的 Source Map 文件，以方便断点调试\u003cbr/\u003e image-loader：加载并且压缩图片文件\u003cbr/\u003e babel-loader：把 ES6 转换成 ES5\u003cbr/\u003e css-loader：加载 CSS，支持模块化、压缩、文件导入等特性\u003cbr/\u003e style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。\u003cbr/\u003e eslint-loader：通过 ESLint 检查 JavaScript 代码\u003cbr/\u003e\u003cbr/\u003e\u003c/p\u003e",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-05T14:50:44.000Z",
+    "updateAt":  "2021-07-07T00:10:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  1544,
+    "filterTotalNum":  1907,
+    "prev":  "9dc34a20-34be-4c0f-a401-71d936cf4958",
+    "next":  "fcdd893d-e614-47c9-9876-1d2a21af556d"
+}

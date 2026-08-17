@@ -1,0 +1,21 @@
+﻿{
+    "id":  2120,
+    "exerciseKey":  "897c54a4-7dfb-4692-bbd9-4d29d7a125b4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何减少项目里的 if-else",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "#### 1. **多态与策略模式**\n**适用场景**：根据不同类型执行不同行为  \n```typescript\n// 优化前\nif (user.role === \u0027admin\u0027) {\n    showAdminPanel();\n} else if (user.role === \u0027editor\u0027) {\n    showEditorTools();\n} else {\n    showGuestView();\n}\n\n// 优化后\nconst roleHandlers = {\n    admin: () =\u003e showAdminPanel(),\n    editor: () =\u003e showEditorTools(),\n    default: () =\u003e showGuestView()\n};\nroleHandlers[user.role]?.() || roleHandlers.default();\n```\n\n#### 2. **查表法（Lookup Table）**\n**适用场景**：状态/错误码映射  \n```javascript\n// 优化前\nif (status === 200) return \u0027Success\u0027;\nif (status === 404) return \u0027Not Found\u0027;\nif (status === 500) return \u0027Server Error\u0027;\n\n// 优化后\nconst statusMap = {\n    200: \u0027Success\u0027,\n    404: \u0027Not Found\u0027,\n    500: \u0027Server Error\u0027\n};\nreturn statusMap[status] || \u0027Unknown\u0027;\n```\n\n#### 3. **提前返回（Early Return）**\n**适用场景**：参数校验/前置条件检查  \n```typescript\n// 优化前\nfunction process(data) {\n    if (data) {\n        if (data.valid) {\n            // 主要逻辑...\n            return result;\n        } else {\n            throw Error(\u0027Invalid data\u0027);\n        }\n    } else {\n        throw Error(\u0027No data\u0027);\n    }\n}\n\n// 优化后\nfunction process(data) {\n    if (!data) throw Error(\u0027No data\u0027);\n    if (!data.valid) throw Error(\u0027Invalid data\u0027);\n    \n    // 主要逻辑...\n    return result;\n}\n```\n\n#### 4. **责任链模式**\n**适用场景**：多条件顺序处理  \n```javascript\n// 处理器链\nconst validators = [\n    { check: (input) =\u003e !input, error: \u0027Input required\u0027 },\n    { check: (input) =\u003e input.length \u003c 6, error: \u0027Too short\u0027 },\n    { check: (input) =\u003e !/\\d/.test(input), error: \u0027Need number\u0027 }\n];\n\nfunction validate(input) {\n    const failure = validators.find(v =\u003e v.check(input));\n    return failure ? failure.error : null;\n}\n```\n\n#### 5. **逻辑运算符简化**\n**适用场景**：简单条件赋值  \n```javascript\n// 优化前\nlet value;\nif (input !== null) {\n    value = input;\n} else {\n    value = defaultValue;\n}\n\n// 优化后\nconst value = input ?? defaultValue; // 或 input || defaultValue\n```\n\n#### 6. **状态模式/状态机**\n**适用场景**：复杂状态流转  \n```typescript\n// 订单状态处理\nclass Order {\n    state: OrderState = new PendingState();\n\n    nextState() {\n        this.state = this.state.next();\n    }\n}\n\ninterface OrderState {\n    next(): OrderState;\n}\n\nclass ShippedState implements OrderState {\n    next() { return new DeliveredState(); }\n}\n```\n\n#### 7. **函数式编程**\n**适用场景**：条件数据转换  \n```javascript\n// 优化前\nconst results = data.map(item =\u003e {\n    if (item.score \u003e 90) return \u0027A\u0027;\n    if (item.score \u003e 80) return \u0027B\u0027;\n    return \u0027C\u0027;\n});\n\n// 优化后\nconst gradeRules = [\n    [score =\u003e score \u003e 90, \u0027A\u0027],\n    [score =\u003e score \u003e 80, \u0027B\u0027],\n    [() =\u003e true, \u0027C\u0027] // 默认值\n];\n\nconst getGrade = (score) =\u003e \n    gradeRules.find(([rule]) =\u003e rule(score))[1];\n\nconst results = data.map(item =\u003e getGrade(item.score));\n```\n\n#### 8. **配置化规则**\n**适用场景**：动态业务规则  \n```javascript\n// rules.config.js\nexport const DISCOUNT_RULES = [\n    { condition: user =\u003e user.isVIP, discount: 0.3 },\n    { condition: order =\u003e order.total \u003e 1000, discount: 0.2 },\n    { condition: () =\u003e true, discount: 0 } // 默认\n];\n\n// 业务逻辑\nfunction getDiscount(user, order) {\n    const rule = DISCOUNT_RULES.find(r =\u003e r.condition(user, order));\n    return rule.discount;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-07-16T15:14:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  701,
+    "filterTotalNum":  1907,
+    "prev":  "ea5086ef-c685-499f-b0eb-14bae30eafac",
+    "next":  "965b51c6-398a-4d51-978b-01ebbffd1ede"
+}

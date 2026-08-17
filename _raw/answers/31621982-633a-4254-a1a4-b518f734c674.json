@@ -1,0 +1,21 @@
+﻿{
+    "id":  1606,
+    "exerciseKey":  "31621982-633a-4254-a1a4-b518f734c674",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第14题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = new Promise((resolve, reject) =\u003e {\n  reject(\"error\");\n  resolve(\"success2\");\n});\npromise\n.then(res =\u003e {\n    console.log(\"then1: \", res);\n  }).then(res =\u003e {\n    console.log(\"then2: \", res);\n  }).catch(err =\u003e {\n    console.log(\"catch: \", err);\n  }).then(res =\u003e {\n    console.log(\"then3: \", res);\n  })\n```",
+    "options":  null,
+    "explanation":  "## 解析\ncatch不管被连接到哪里，都能捕获上层未捕捉过的错误。\n\n至于then3也会被执行，那是因为catch()也会返回一个Promise，且由于这个Promise没有返回值，所以打印出来的是undefined。\n\n## 结果\n```\n\"catch: \" \"error\"\n\"then3: \" undefined\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:41:27.000Z",
+    "updateAt":  "2022-01-09T23:01:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  1184,
+    "filterTotalNum":  1907,
+    "prev":  "1b41e9cc-194a-4e0c-8bc5-17a83af9abad",
+    "next":  "f6f14b00-ae3f-43a9-9085-12333dd0cb8c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3034,
+    "exerciseKey":  "87822042-2e08-4f8d-915c-941541d0158d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么根据当前滚动位置，实现目录中对应节点自动高亮？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "“目录中自动高亮”（TOC Active）本质是 **根据当前滚动位置，判断用户正在阅读的标题节点，并同步更新目录状态**。这是文档类产品、Markdown 阅读器中非常常见的能力。\n\n下面从 **设计思路 → 常见实现方案 → 工程细节与坑** 三个层次说明。\n\n---\n\n## 一、核心设计思路\n\n\u003e **滚动驱动状态，状态驱动目录高亮**\n\n关键问题只有两个：\n\n1. **如何判断当前“激活”的标题？**\n2. **如何高效监听滚动并更新状态？**\n\n---\n\n## 二、实现方案一（推荐）：IntersectionObserver\n\n### 适用场景\n\n* 现代浏览器\n* 标题是标准 DOM（h1–h6）\n\n### 实现思路\n\n* 监听所有标题元素\n* 哪个标题进入视口上方区域，即认为是当前阅读位置\n\n---\n\n### 基本实现示例\n\n```js\nconst headings = document.querySelectorAll(\u0027h1, h2, h3\u0027);\n\nconst observer = new IntersectionObserver(\n  (entries) =\u003e {\n    entries.forEach(entry =\u003e {\n      if (entry.isIntersecting) {\n        setActiveId(entry.target.id);\n      }\n    });\n  },\n  {\n    rootMargin: \u00270px 0px -70% 0px\u0027,\n    threshold: 0\n  }\n);\n\nheadings.forEach(h =\u003e observer.observe(h));\n```\n\n### 原理说明\n\n* `rootMargin: -70%`：让标题进入页面上半部分就触发\n* `isIntersecting` 表示元素进入“有效阅读区”\n* activeId 用于目录高亮\n\n---\n\n### 优点\n\n* 性能好（浏览器原生）\n* 不依赖 scroll 事件\n* 不需要手动计算高度\n\n### 缺点\n\n* 老浏览器需 polyfill\n\n---\n\n## 三、实现方案二：scroll + getBoundingClientRect（传统方案）\n\n### 实现思路\n\n1. 监听 scroll\n2. 找到**距离顶部最近但未超出的标题**\n\n---\n\n### 示例代码\n\n```js\nconst headings = [...document.querySelectorAll(\u0027h1,h2,h3\u0027)];\n\nwindow.addEventListener(\u0027scroll\u0027, () =\u003e {\n  let active = null;\n\n  for (const h of headings) {\n    const { top } = h.getBoundingClientRect();\n    if (top \u003c= 100) {\n      active = h;\n    } else {\n      break;\n    }\n  }\n\n  if (active) {\n    setActiveId(active.id);\n  }\n});\n```\n\n### 优化点\n\n* `requestAnimationFrame` 节流\n* 提前缓存 headings\n* 滚动事件加 passive\n\n---\n\n### 优缺点\n\n| 优点   | 缺点    |\n| ---- | ----- |\n| 兼容性好 | 性能较差  |\n| 易理解  | 手写逻辑多 |\n\n---\n\n## 四、实现方案三：基于文档模型（编辑器场景）\n\n如果你是：\n\n* 使用 **markdown-it**\n* 或 **Slate / ProseMirror**\n\n可以直接从 AST / Node 结构获取标题位置\n\n### 思路\n\n* 渲染时记录 `headingId → offsetTop`\n* 滚动时用 `scrollTop` + 二分查找\n\n---\n\n## 五、目录点击与滚动同步（反向联动）\n\n### 点击目录 → 滚动正文\n\n```js\nfunction scrollToHeading(id) {\n  document.getElementById(id)?.scrollIntoView({\n    behavior: \u0027smooth\u0027,\n    block: \u0027start\u0027\n  });\n}\n```\n\n### 注意点\n\n* 固定头部高度（navbar）\n\n```js\nwindow.scrollTo({\n  top: el.offsetTop - headerHeight,\n  behavior: \u0027smooth\u0027\n});\n```\n\n---\n\n## 六、工程级细节 \u0026 常见坑\n\n### 多个标题同时可见怎么办？\n\n**规则：**\n\n* 取「最靠上的一个」\n* 或 IntersectionObserver 中按 `boundingClientRect.top` 排序\n\n---\n\n### 页面初始加载未触发 scroll？\n\n* 首次执行一次计算\n* 或 IntersectionObserver 自动触发\n\n---\n\n### 高亮抖动？\n\n* 增加缓冲区（rootMargin）\n* 或 debounce 状态更新\n\n---\n\n### 锚点重复？\n\n* 渲染 markdown 时生成 **唯一 id**\n* `title + index` 或 hash\n\n---\n\n## 七、React / Vue 实战建议\n\n### React\n\n* useEffect 注册 observer\n* activeId 放在 useState\n* 组件卸载时 disconnect\n\n### Vue\n\n* onMounted 注册\n* onUnmounted 清理\n* activeId 用 ref\n\n---\n\n## 八、推荐方案总结\n\n| 场景   | 推荐方案                 |\n| ---- | -------------------- |\n| 普通文档 | IntersectionObserver |\n| 老浏览器 | scroll + rect        |\n| 编辑器  | AST + offset         |\n",
+    "pivot":  "目录自动高亮的本质是监听正文滚动位置，判断当前阅读的标题节点。我通常优先使用 **IntersectionObserver** 监听标题进入视口，在性能和实现复杂度之间取得最佳平衡，同时配合锚点滚动和状态同步，保证目录与正文的双向联动。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-01-31T15:02:04.000Z",
+    "updateAt":  "2026-02-27T14:56:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  171,
+    "filterTotalNum":  1907,
+    "prev":  "8b689a20-951d-4e11-a5de-0d66e6fa108a",
+    "next":  "e4e723c1-b069-4500-8a3d-3d6866e00c9d"
+}

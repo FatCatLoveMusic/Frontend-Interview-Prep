@@ -1,0 +1,21 @@
+﻿{
+    "id":  2856,
+    "exerciseKey":  "51259019-fe69-4400-84d8-c31902875be9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "ajax如何获取下载进度?",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在使用 AJAX 进行文件下载时，可以通过 XMLHttpRequest 的 `progress` 事件来获取下载进度。以下是如何实现这一过程的详细步骤：\n\n### **1. 使用 XMLHttpRequest 监控下载进度**\n\n**1.1 创建 XMLHttpRequest 实例**\n\n```javascript\nconst xhr = new XMLHttpRequest();\n```\n\n**1.2 配置请求**\n\n设置请求的 URL 和方法（如 `GET`），并配置相关的事件监听器。\n\n```javascript\nxhr.open(\u0027GET\u0027, \u0027https://example.com/large-file\u0027, true);\nxhr.responseType = \u0027blob\u0027; // 如果下载的是二进制文件，可以设置为 \u0027blob\u0027\n```\n\n**1.3 监听 `progress` 事件**\n\n使用 `progress` 事件来获取下载进度。该事件会在文件下载过程中被触发。\n\n```javascript\nxhr.onprogress = function(event) {\n  if (event.lengthComputable) {\n    const percentComplete = (event.loaded / event.total) * 100;\n    console.log(`Download progress: ${percentComplete.toFixed(2)}%`);\n  } else {\n    // 下载进度不可计算\n    console.log(\u0027Download progress: unknown\u0027);\n  }\n};\n```\n\n**1.4 处理请求完成**\n\n在请求完成后，处理下载的数据或执行其他操作。\n\n```javascript\nxhr.onload = function() {\n  if (xhr.status === 200) {\n    // 处理成功的响应，例如保存文件\n    const blob = xhr.response;\n    const url = URL.createObjectURL(blob);\n    const a = document.createElement(\u0027a\u0027);\n    a.href = url;\n    a.download = \u0027filename.ext\u0027; // 设置下载文件名\n    document.body.appendChild(a);\n    a.click();\n    URL.revokeObjectURL(url); // 释放 URL 对象\n  } else {\n    console.error(\u0027Download failed\u0027);\n  }\n};\n```\n\n**1.5 处理错误**\n\n监听 `error` 和 `abort` 事件来处理可能的错误情况。\n\n```javascript\nxhr.onerror = function() {\n  console.error(\u0027Download error\u0027);\n};\n\nxhr.onabort = function() {\n  console.log(\u0027Download aborted\u0027);\n};\n```\n\n**1.6 发送请求**\n\n```javascript\nxhr.send();\n```\n\n### **2. 示例代码**\n\n```javascript\nconst xhr = new XMLHttpRequest();\nxhr.open(\u0027GET\u0027, \u0027https://example.com/large-file\u0027, true);\nxhr.responseType = \u0027blob\u0027;\n\nxhr.onprogress = function(event) {\n  if (event.lengthComputable) {\n    const percentComplete = (event.loaded / event.total) * 100;\n    console.log(`Download progress: ${percentComplete.toFixed(2)}%`);\n  } else {\n    console.log(\u0027Download progress: unknown\u0027);\n  }\n};\n\nxhr.onload = function() {\n  if (xhr.status === 200) {\n    const blob = xhr.response;\n    const url = URL.createObjectURL(blob);\n    const a = document.createElement(\u0027a\u0027);\n    a.href = url;\n    a.download = \u0027filename.ext\u0027;\n    document.body.appendChild(a);\n    a.click();\n    URL.revokeObjectURL(url);\n  } else {\n    console.error(\u0027Download failed\u0027);\n  }\n};\n\nxhr.onerror = function() {\n  console.error(\u0027Download error\u0027);\n};\n\nxhr.onabort = function() {\n  console.log(\u0027Download aborted\u0027);\n};\n\nxhr.send();\n```",
+    "pivot":  "通过 `XMLHttpRequest` 的 `progress` 事件，可以实时获取文件下载的进度。设置 `responseType` 为 `blob` 可以处理二进制数据，确保下载文件的正确处理。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T12:19:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  336,
+    "filterTotalNum":  1907,
+    "prev":  "20f1385d-4442-43c5-bb20-2a53a9bfc6c6",
+    "next":  "f433ce42-7095-4c20-8461-dc71f39bea39"
+}

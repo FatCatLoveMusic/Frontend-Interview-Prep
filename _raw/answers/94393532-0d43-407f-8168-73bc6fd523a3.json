@@ -1,0 +1,21 @@
+﻿{
+    "id":  1810,
+    "exerciseKey":  "94393532-0d43-407f-8168-73bc6fd523a3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "cookie 的有效时间设置为 0 会怎么样",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Cookie过期时间设置为0，表示跟随系统默认，其销毁与Session销毁时间相同，会在浏览器关闭后删除。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-05-16T05:08:54.000Z",
+    "updateAt":  "2023-09-10T19:17:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  999,
+    "filterTotalNum":  1907,
+    "prev":  "d545f64f-073b-4e71-bc08-59a5aea4d269",
+    "next":  "9eebcbe5-2c34-482e-9198-36f750aa3555"
+}

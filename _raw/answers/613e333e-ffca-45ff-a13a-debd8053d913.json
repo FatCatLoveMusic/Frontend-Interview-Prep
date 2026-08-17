@@ -1,0 +1,21 @@
+﻿{
+    "id":  1618,
+    "exerciseKey":  "613e333e-ffca-45ff-a13a-debd8053d913",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第26题】下面代码的输出是什么？",
+    "desc":  "```js\nfunction runAsync (x) {\n  const p = new Promise(r =\u003e setTimeout(() =\u003e r(x, console.log(x)), 1000))\n  return p\n}\nfunction runReject (x) {\n  const p = new Promise((res, rej) =\u003e setTimeout(() =\u003e rej(`Error: ${x}`, console.log(x)), 1000 * x))\n  return p\n}\nPromise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])\n  .then(res =\u003e console.log(res))\n  .catch(err =\u003e console.log(err))\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n.catch是会捕获最先的那个异常，在这道题目中最先的异常就是runReject(2)的结果。\n\n## 结果\n```\n// 1s后输出\n1\n3\n// 2s后输出\n2\nError: 2\n// 4s后输出\n4\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:03:46.000Z",
+    "updateAt":  "2022-01-09T23:14:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1172,
+    "filterTotalNum":  1907,
+    "prev":  "44b5f8c5-1d8c-4294-b668-7f7f096cd44c",
+    "next":  "3489b960-4172-47f8-9ae2-93616d85009f"
+}

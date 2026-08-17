@@ -1,0 +1,21 @@
+﻿{
+    "id":  1954,
+    "exerciseKey":  "b9ca2e1f-d720-4b6a-ab77-acc5edd03c99",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "树转数组",
+    "desc":  "将以下结构的数据转成数组。\n\n```js\nconst listTree = [\n  {\n    id: 1,\n    name: \u0027部门1\u0027,\n    pid: 0,\n    children: [\n      {\n        id: 2,\n        name: \u0027部门1-1\u0027,\n        pid: 1,\n        children: [\n          {\n            id: 4, \n            name: \u0027部门1-1-1\u0027, \n            pid: 2,\n            children: []\n          }\n        ]\n      },\n      {\n        id: 3,\n        name: \u0027部门1-2\u0027,\n        pid: 1,\n        children: [\n          {\n            id: 5, \n            name: \u0027部门1-2-1\u0027, \n            pid: 3,\n            children: []\n          }\n        ]\n      }\n    ]\n  },\n  {\n    id: 6,\n    name: \u0027部门2\u0027,\n    pid: 0,\n    children: [\n      {\n        id: 7, \n        name: \u0027部门2-1\u0027, \n        pid: 6,\n        children: []\n      }\n    ]\n  },\n  {\n    id: 8,\n    name: \u0027部门3\u0027,\n    pid: 0,\n    children: []\n  }\n]\n```\n\n期望结果：\n\n```js\nconst list = [\n  {id: 1, name: \u0027部门1\u0027, pid: 0},\n  {id: 2, name: \u0027部门1-1\u0027, pid: 1},\n  {id: 3, name: \u0027部门1-2\u0027, pid: 1},\n  {id: 4, name: \u0027部门1-1-1\u0027, pid: 2},\n  {id: 5, name: \u0027部门1-2-1\u0027, pid: 3},\n  {id: 6, name: \u0027部门2\u0027, pid: 0},\n  {id: 7, name: \u0027部门2-1\u0027, pid: 6},\n  {id: 8, name: \u0027部门3\u0027, pid: 0},\n]\n```",
+    "options":  null,
+    "explanation":  "## reduce取树行数据的所有子集\n```js\nfunction treeTransList(tree, key) {\n  return tree.reduce(function(con, item) {\n    var callee = arguments.callee;\n    con.push(item);\n    if (item[key] \u0026\u0026 item[key].length \u003e0)\n      item[key].reduce(callee, con);\n    return con;\n  }, []).map(function(item){\n    item[key] = [];\n    return item;\n  })\n}\ntreeTransList(listTree, \u0027children\u0027)\n```\n## 递归实现\n```js\nfunction getItem(tree, result) {\n  for (let i = 0; i \u003c tree.length; i++) {\n    if(tree[i].children) {\n      getItem(tree[i].children, result)\n      delete tree[i].children;\n    }\n    result.push(tree[i])\n  }\n  return result;\n}\n\nfunction treeToList(tree) {\n  const result = [];\n  getItem(tree, result);\n  return result;\n}\ntreeToList(listTree)\n```\n\n## 广度优先遍历法\n```js\nfunction treeToList(tree, childName = \u0027children\u0027) {\n  // 设置临时数组，用来存放队列\n  let queen = [];\n  // 设置输出数组，用来存放要输出的一维数组\n  const result = [];\n  queen = queen.concat(tree);\n  // 对树对象进行广度优先的遍历\n  while(queen.length) {\n    const first = queen.shift();\n    if (first[childName]) {\n      queen = queen.concat(first[childName]);\n      delete first[childName]\n    }\n    result.push(first);\n  }\n  return result;\n}  \ntreeToList(listTree, \u0027children\u0027)\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-03-27T01:41:55.000Z",
+    "updateAt":  "2023-08-20T21:21:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  856,
+    "filterTotalNum":  1907,
+    "prev":  "77778585-d890-4a84-9d69-4a9042f571d7",
+    "next":  "b773eb98-1739-43a4-b0fc-4c0deed6cb13"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1647,
+    "exerciseKey":  "800f499d-75d2-4f3b-9bb3-542cf21721a5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "谈谈你对Vue中keep-alive的理解",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 什么是 keep-alive\n\n在平常开发中，有部分组件没有必要多次初始化，这时，我们需要将组件进行持久化，使组件的状态维持不变，在下一次展示时，也不会进行重新初始化组件。\n\n也就是说，keepalive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染，也就是所谓的组件缓存。\n\n\u003ckeep-alive\u003e是Vue的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。\n\n\u003e \u003ckeep-alive\u003e 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 \u003ctransition\u003e 相似，\u003ckeep-alive\u003e 是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中。\n\n## include和exclude指定是否缓存某些组件\n\n* include属性\n\ninclude 包含的意思。值为字符串或正则表达式或数组。只有组件的名称与include的值相同的才会被缓存，即指定哪些被缓存，可以指定多个被缓存。这里以字符串为例，指定多个组件缓存，语法是用逗号隔开。如下：\n\n```js\n// 指定home组件和about组件被缓存\n\u003ckeep-alive include=\"home,about\" \u003e\n    \u003crouter-view\u003e\u003c/router-view\u003e\n\u003c/keep-alive\u003e\n```\n\n* exclude属性\n\nexclude相当于include的反义词，就是除了的意思，指定哪些组件不被缓存，用法和include类似，如下：\n\n```js\n// 除了home组件和about组件别的都缓存，本例中就是只缓存detail组件\n\u003ckeep-alive exclude=\"home,about\" \u003e\n    \u003crouter-view\u003e\u003c/router-view\u003e\n\u003c/keep-alive\u003e\n```\n\n## 使用keep-alive的钩子函数执行顺序问题\n\n首先使用了keep-alive的组件以后，组件上就会自动加上了`activated`钩子和`deactivated`钩子。\n\n* `activated` 当组件被激活（使用）的时候触发 可以简单理解为进入这个页面的时候触发\n* `deactivated` 当组件不被使用（inactive状态）的时候触发 可以简单理解为离开这个页面的时候触发\n\n假设我们只缓存home组件，我们先看一下代码，再在钩子中打印出对应的顺序。就知道钩子执行的顺序了，自己动手印象深刻\n\n```js\n\u003ctemplate\u003e\n\u003cdiv\u003e\n  \u003cel-checkbox v-model=\"checked\"\u003e备选项\u003c/el-checkbox\u003e\n\u003c/div\u003e\n\u003c/template\u003e\n\u003cscript\u003e\nexport default {\nname: \"home\",\ndata() { return { checked: false } },\ncreated() {\n  console.log(\"我是created钩子\");\n},\nmounted() {\n  console.log(\"我是mounted钩子\");\n},\nactivated() {\n  console.log(\"我是activated钩子\");\n},\ndeactivated() {\n  console.log(\"我是deactivated钩子\");\n},\nbeforeDestroy() {\n  console.log(\"我是beforeDestroy钩子\");所以我们可以得出结论：\n},\n};\n\u003c/script\u003e\n```\n\n进入组件打印结果如下：\n\n```\n我是created钩子\n我是mounted钩子\n我是activated钩子\n```\n\n离开组件打印结果如下：\n\n```\n我是deactivated钩子\n```\n\n得出结论：\n\n```\n初始进入和离开 created ---\u003e mounted ---\u003e activated --\u003e deactivated\n后续进入和离开 activated --\u003e deactivated\n```\n\n## keep-alive的应用场景举例\n\n* 查看表格某条数据详情页，返回还是之前的状态，比如还是之前的筛选结果，还是之前的页数等\n* 填写的表单的内容路由跳转返回还在，比如input框、下选择拉框、开关切换等用户输入了一大把东西，跳转再回来不能清空啊，不用让用户再写一遍\n",
+    "pivot":  "`\u003ckeep-alive\u003e` 是 Vue 提供的内置组件，用于缓存那些不需要频繁创建和销毁的组件实例。这样，当这些组件再次被需要时，可以避免重新创建和渲染，从而提高性能。\n\n- **include** 和 **exclude** 属性用于指定哪些组件需要被缓存或排除在外。\n- **activated** 和 **deactivated** 钩子函数会在组件被激活或失活时触发。\n\n`\u003ckeep-alive\u003e` 常用于以下场景：\n\n- 详情页：当用户查看表格中的某条数据详情时，返回时希望保持之前的筛选结果或页面状态。\n- 表单：用户填写了表单内容后，如果路由跳转，返回时希望表单内容仍然保持，无需用户重新填写。\n\n原理上，`\u003ckeep-alive\u003e` 内部维护了一个包含组件实例的列表。当一个组件被切换到时，它会将该组件的实例添加到列表中，并记录下组件的名称。当该组件再次被切换到时，它会检查组件名称是否已经在列表中，如果是，则直接使用缓存的组件实例，而不是重新创建一个新的组件实例。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-01-16T15:26:07.000Z",
+    "updateAt":  "2024-08-10T17:06:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  1143,
+    "filterTotalNum":  1907,
+    "prev":  "0064be83-03d7-4e0c-a6e4-595b74a4ef3e",
+    "next":  "321f6c36-eff4-4fc4-8a86-c989bb1a2779"
+}

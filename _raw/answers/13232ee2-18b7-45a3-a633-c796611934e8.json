@@ -1,0 +1,21 @@
+﻿{
+    "id":  127,
+    "exerciseKey":  "13232ee2-18b7-45a3-a633-c796611934e8",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst name = \"Lydia Hallie\";\n\nconsole.log(!typeof name === \"object\");\nconsole.log(!typeof name === \"string\");\n```",
+    "options":  "{\"options\":[\"false true\",\"true false\",\"false false\",\"true true\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "`typeof name` 返回 `\"string\"`。字符串 `\"string\"` 是一个 truthy 的值，因此 `!typeof name` 返回一个布尔值 `false`。 `false === \"object\"` 和 `false === \"string\"` 都返回 `false`。\n（如果我们想检测一个值的类型，我们应该用 `!==` 而不是 `!typeof`）",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:31:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1792,
+    "filterTotalNum":  1907,
+    "prev":  "a8d808be-7214-4540-bb33-594b23a5a9d3",
+    "next":  "8b42c23f-1293-425d-87c2-c662a33b4f70"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1712,
+    "exerciseKey":  "bc918d0d-ecea-459c-930c-3c502708a997",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面这段代码中，class为content的元素，实际高度是100px吗？",
+    "desc":  "```html\n\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n  \u003chead\u003e\n    \u003cmeta charset=\"UTF-8\" /\u003e\n    \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /\u003e\n    \u003cmeta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" /\u003e\n    \u003ctitle\u003eStatic Template\u003c/title\u003e\n\n    \u003cstyle\u003e\n      .parent {\n        display: flex;\n        flex-direction: column;\n        height: 600px;\n        width: 300px;\n        background: yellow;\n      }\n      div {\n        width: 100%;\n      }\n      .header {\n        height: 200px;\n        background: red;\n      }\n      .content {\n        height: 100%;\n        background: blue;\n      }\n      .footer {\n        height: 200px;\n        background: black;\n      }\n    \u003c/style\u003e\n  \u003c/head\u003e\n  \u003cbody\u003e\n    \u003cdiv class=\"parent\"\u003e\n      \u003cdiv class=\"header\"\u003e\u003c/div\u003e\n      \u003cdiv class=\"content\"\u003e\u003c/div\u003e\n      \u003cdiv class=\"footer\"\u003e\u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/body\u003e\n\u003c/html\u003e\n```",
+    "options":  null,
+    "explanation":  "答案： 不是\n\n首先，content元素的 height 设置为 “100%”，在父级的高度为固定值时，直接继承该高度，也就是600px。\n\n但父级设置了 display:flex ，在高度固定的前提下，子元素的高度会按比例进行缩放，所以content元素最后的高度应该是 600 * (600/(200+600+200)) = 360px\n\n在线demo可访问查看： https://codesandbox.io/s/strange-curran-3kci7i?file=/index.html\n\n\u003e 本题目答案由“前端面试题宝典”整理，PC端可访问 https://fe.ecool.fun/ ",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-03-24T02:51:54.000Z",
+    "updateAt":  "2024-07-19T15:42:08.000Z",
+    "isCollected":  false,
+    "currentIndex":  1078,
+    "filterTotalNum":  1907,
+    "prev":  "d30220bd-9c6c-4e4d-bb4f-11e780c82d94",
+    "next":  "ffd21d04-15d9-4f94-9167-5edf63a42741"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3274,
+    "exerciseKey":  "a65fb630-3570-43ff-ac3a-cf92d51ce101",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vibe Coding 与 Spec Coding 有什么区别？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Vibe Coding 更像是“凭感觉和反馈来驱动 AI 写代码”。开发者给出一个相对宽泛的目标，比如“做一个看起来高级一点的后台首页”“帮这个表单优化一下交互”，然后根据 AI 生成的结果不断调整。它的优势是快，特别适合探索想法、做原型、验证 UI 方向，或者在需求还不清晰时快速看到一个可运行结果。\n\nSpec Coding 则是“用明确规格来驱动 AI 写代码”。在写代码之前，会先定义清楚功能边界、接口协议、组件输入输出、交互状态、异常处理、验收标准、测试方式等。AI Coding Agent 在这种模式下不是自由发挥，而是按照规格执行，实现完成后也可以根据规格检查结果是否正确。\n\n两者最大的区别在于：Vibe Coding 依赖 AI 对意图的理解，开发过程更像边看边调；Spec Coding 依赖可验证的约束，开发过程更像按工程合同交付。\n\n放到前端场景里，一个典型的 Vibe Coding 提示可能是：\n\n```text\n帮这个页面做得更现代一点，交互更流畅。\n```\n\n而 Spec Coding 会更接近：\n\n```text\n实现一个用户列表页：\n1. 支持分页、搜索、状态筛选\n2. 接口使用 GET /api/users\n3. 搜索框 300ms 防抖\n4. loading、empty、error 三种状态都要处理\n5. 表格列包含姓名、邮箱、角色、状态、创建时间\n6. 状态筛选变化后重置到第一页\n7. 补充关键逻辑的单元测试\n```\n\n前者更适合“找方向”，后者更适合“交付生产代码”。Vibe Coding 不一定低级，它在早期探索阶段很有价值；但如果进入真实业务开发，尤其涉及多人协作、复杂状态、接口契约、权限、安全、性能和可维护性，就必须逐步切到 Spec Coding。否则 AI 生成的代码可能表面能跑，但边界条件、长期维护和工程一致性都很难保证。\n\n成熟的用法通常不是二选一，而是分阶段结合：先用 Vibe Coding 快速探索界面和思路，再把确定下来的方案沉淀成 Spec，用 Spec Coding 约束 AI 完成稳定实现，最后通过测试、代码审查和验收标准闭环。",
+    "pivot":  "- Vibe Coding 偏探索，靠感觉、反馈和迭代推进，速度快但可控性弱。\n- Spec Coding 偏工程交付，靠明确规格、边界、验收标准和测试约束 AI。\n- Vibe Coding 适合原型、创意和需求不清晰阶段；Spec Coding 适合生产代码、复杂业务和团队协作。\n- 更成熟的方式是先 Vibe 后 Spec，把探索结果转化为可验证的工程规格。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T03:37:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  14,
+    "filterTotalNum":  1907,
+    "prev":  "3ebc2391-11b8-4c9c-8672-d9681bc94ce9",
+    "next":  "4af01084-f0ce-4201-b8e3-c96cfb842031"
+}

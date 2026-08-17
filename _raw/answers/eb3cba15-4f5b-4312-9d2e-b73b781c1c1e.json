@@ -1,0 +1,21 @@
+﻿{
+    "id":  3250,
+    "exerciseKey":  "eb3cba15-4f5b-4312-9d2e-b73b781c1c1e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Agent 如何实现流式输出？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Agent 的流式输出本质上是把一次“长任务”拆成一串可消费的事件，而不是等整个 Agent 执行完再返回完整结果。工程上通常会把链路拆成四层：模型流、Agent 编排流、传输层流、前端渲染流。\n\n模型侧一般使用大模型 API 的 streaming 能力，持续拿到 token delta。Agent 编排层不能只把 token 原样透传，因为 Agent 执行过程中可能会经历多轮推理、工具调用、工具结果返回、继续生成最终答案。因此更合理的做法是把输出抽象成结构化事件，例如：\n\n```ts\ntype AgentStreamEvent =\n  | { type: \u0027message_delta\u0027; content: string }\n  | { type: \u0027tool_call_start\u0027; toolName: string; callId: string }\n  | { type: \u0027tool_call_result\u0027; callId: string; result: unknown }\n  | { type: \u0027message_done\u0027; messageId: string }\n  | { type: \u0027error\u0027; message: string };\n```\n\n这样前端拿到的不是一段不可解释的字符串，而是一条可驱动 UI 状态机的事件流。比如 `message_delta` 用来追加文本，`tool_call_start` 用来展示“正在检索资料”或“正在调用工具”，`tool_call_result` 可以展示工具执行结果，`error` 用来终止当前会话并给出错误状态。\n\n传输层常见选择是 SSE 或 WebSocket。  \n如果只是服务端持续向浏览器推送文本和状态，SSE 更简单，天然支持 HTTP、断线重连、文本事件，适合大多数 Agent 对话场景。后端可以通过 `text/event-stream` 持续写入事件：\n\n```ts\nres.setHeader(\u0027Content-Type\u0027, \u0027text/event-stream\u0027);\nres.setHeader(\u0027Cache-Control\u0027, \u0027no-cache\u0027);\nres.setHeader(\u0027Connection\u0027, \u0027keep-alive\u0027);\n\nfor await (const event of agent.runStream(input)) {\n  res.write(`event: ${event.type}\\n`);\n  res.write(`data: ${JSON.stringify(event)}\\n\\n`);\n}\n\nres.write(`event: done\\ndata: {}\\n\\n`);\nres.end();\n```\n\nWebSocket 更适合双向高频交互，比如用户中途补充指令、实时语音、多人协作、复杂任务控制等场景。但如果只是问答流式返回，用 WebSocket 反而会增加连接管理、心跳、鉴权和重连成本。\n\n前端消费时，一般用 `EventSource` 或 `fetch + ReadableStream`。`EventSource` 写法简单，但只支持 GET，请求体和自定义 Header 受限；如果需要 POST、复杂鉴权、AbortController 取消请求，通常会选择 `fetch` 读取流。\n\n前端渲染时要注意不要每个 token 都触发重渲染，否则长回答会造成性能抖动。更稳妥的方式是把 delta 先放入缓冲区，用 `requestAnimationFrame` 或固定节流间隔批量更新。同时要维护消息状态，比如 `streaming`、`toolRunning`、`done`、`error`，这样 UI 不会因为事件顺序变化而混乱。\n\nAgent 流式输出还有一个重要边界：不要把模型内部的完整推理链路直接流给用户。生产环境更适合输出可解释的阶段性状态，比如“正在分析问题”“正在查询知识库”“正在整理答案”，而不是暴露原始 chain-of-thought。这样既保护系统提示和内部推理，也能给用户足够的进度感。\n\n可靠性上，需要处理取消、超时、异常、断线和幂等。用户点击停止时，前端通过 `AbortController` 关闭请求，后端要停止模型流和工具调用；如果工具调用耗时过长，需要有超时控制；如果连接中断，最好通过 `conversationId`、`messageId`、`eventId` 做续传或至少保证不会重复生成混乱内容。",
+    "pivot":  "Agent 流式输出不是简单的 token 透传，而是一个结构化事件流。后端通过模型 streaming 能力拿到增量内容，再由 Agent 编排层把模型输出、工具调用、工具结果、错误和完成状态统一封装成事件。传输层通常优先使用 SSE，复杂双向交互再考虑 WebSocket。前端负责按事件类型更新 UI，并通过缓冲、节流、取消和错误处理保证体验稳定。生产实现中还要避免暴露内部推理链路，只输出用户可见、可解释、可控的过程状态。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T05:12:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  38,
+    "filterTotalNum":  1907,
+    "prev":  "4a44862a-cde6-48e7-855f-c162e3c77823",
+    "next":  "b9972d26-b961-45ba-a3d9-a752241db484"
+}

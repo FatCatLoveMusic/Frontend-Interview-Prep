@@ -1,0 +1,21 @@
+﻿{
+    "id":  624,
+    "exerciseKey":  "fc324726-dc8d-4495-9da8-72fc70470b07",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是内存泄漏？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 什么是内存泄漏？\n\n程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。\n\n对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。\n\n不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。\n\n有些语言（比如 C 语言）必须手动释放内存，程序员负责内存管理。\n\n```c\nchar * buffer;\nbuffer = (char*) malloc(42);\n\n// Do something with buffer\n\nfree(buffer);\n```\n\n上面是 C 语言代码，malloc方法用来申请内存，使用完毕之后，必须自己用free方法释放内存。\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-09-25T02:08:57.000Z",
+    "updateAt":  "2021-09-25T19:05:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1297,
+    "filterTotalNum":  1907,
+    "prev":  "594f4864-1932-4020-aec6-a2ae0fb16765",
+    "next":  "9dc542a0-b323-4c7a-9199-f1f2678714cf"
+}

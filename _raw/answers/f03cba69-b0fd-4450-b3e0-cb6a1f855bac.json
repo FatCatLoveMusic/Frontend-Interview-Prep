@@ -1,0 +1,21 @@
+﻿{
+    "id":  58,
+    "exerciseKey":  "f03cba69-b0fd-4450-b3e0-cb6a1f855bac",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nfunction Car() {\n  this.make = \"Lamborghini\";\n  return { make: \"Maserati\" };\n}\n\nconst myCar = new Car();\nconsole.log(myCar.make);\n```",
+    "options":  "{\"options\":[\"\\\"Lamborghini\\\"\",\"\\\"Maserati\\\"\",\"ReferenceError\",\"TypeError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "返回属性的时候，属性的值等于 _返回的_ 值，而不是构造函数中设定的值。我们返回了字符串 `\"Maserati\"`，所以 `myCar.make`等于`\"Maserati\"`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:13:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1861,
+    "filterTotalNum":  1907,
+    "prev":  "30a6a5e1-fc54-4f16-b102-5a174ae023dd",
+    "next":  "78f63a99-87f9-4162-b932-3bdb38e4b166"
+}

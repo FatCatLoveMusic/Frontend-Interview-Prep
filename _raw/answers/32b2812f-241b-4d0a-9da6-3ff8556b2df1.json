@@ -1,0 +1,21 @@
+﻿{
+    "id":  3055,
+    "exerciseKey":  "32b2812f-241b-4d0a-9da6-3ff8556b2df1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "你了解 Git 的 Worktree 吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Git Worktree 是 Git 提供的一种 **在同一个仓库中同时检出多个工作目录（working directory）** 的机制，本质目的是解决“一个仓库只能对应一个当前分支”的限制。\n\n在传统 Git 使用方式下，一个仓库目录只能 checkout 一个分支。如果正在开发 feature 分支，此时需要紧急修复线上 bug，就必须经历：\n\n* stash 当前修改\n* 切换分支\n* 修复问题\n* 再切回原分支恢复现场\n\n这个过程不仅低效，而且容易产生冲突或遗漏。Worktree 的出现，就是为了避免这种上下文切换成本。\n\n---\n\n### 一、Worktree 的核心原理\n\nGit 仓库实际上由两部分组成：\n\n* `.git`：对象数据库（commit、tree、blob、refs）\n* working directory：当前检出的文件\n\nWorktree 允许 **多个 working directory 共享同一个 `.git` 对象库**。\n\n也就是说：\n\n* commit history 只有一份\n* objects 只有一份\n* 但可以有多个独立的代码目录，每个目录对应不同分支\n\nGit 内部会在 `.git/worktrees/` 下维护额外工作区的元信息，每个 worktree 都拥有自己的 HEAD、index 和 checkout 状态。\n\n因此它不是复制仓库，而是“多视图”。\n\n---\n\n### 二、基本使用方式\n\n创建一个新的工作目录并检出分支：\n\n```bash\ngit worktree add ../project-hotfix hotfix-branch\n```\n\n执行后会发生：\n\n* 在 `../project-hotfix` 创建新目录\n* 自动 checkout `hotfix-branch`\n* 两个目录同时存在且互不影响\n\n查看当前 worktree：\n\n```bash\ngit worktree list\n```\n\n删除工作区：\n\n```bash\ngit worktree remove ../project-hotfix\n```\n\n---\n\n### 三、为什么它比 clone 更有价值\n\n很多人第一反应是：重新 clone 一个仓库不就行了吗？\n\n区别在于底层成本模型不同。\n\nclone：\n\n* 会复制完整 objects 数据\n* 占用大量磁盘\n* fetch 需要重复下载\n\nworktree：\n\n* 所有工作区共享 object database\n* 几乎瞬时创建\n* 磁盘占用极小\n* fetch 一次，全部 worktree 可见\n\n对于大型 monorepo 或包含大量历史记录的仓库，差异非常明显。\n\n---\n\n### 四、典型工程场景\n\n在真实开发中，Worktree 的价值主要体现在并行上下文。\n\n**1）并行开发多个分支**\n\n一个目录开发 feature，另一个目录运行 release 分支调试问题，不需要频繁切换。\n\n**2）紧急 hotfix**\n\n线上 bug 修复可以直接开一个独立目录处理，不污染当前开发环境。\n\n**3）多版本调试**\n\n例如需要同时运行 v1 与 v2 服务进行对比测试。\n\n**4）CI 或自动化脚本**\n\n构建系统可以为不同分支创建临时 worktree，而无需重复 clone。\n\n---\n\n### 五、一些容易踩的点\n\nWorktree 对分支存在“占用关系”。\n\n一个分支不能同时被多个 worktree checkout，否则 Git 无法确定 HEAD 所属。因此删除 worktree 前要确保没有未提交修改。\n\n另外，删除目录不能直接用 `rm -rf`，否则 Git 会留下 dangling worktree 记录，需要执行：\n\n```bash\ngit worktree prune\n```\n\n进行清理。\n\n---\n\n### 六、设计层面的理解\n\nWorktree 实际上体现的是 Git 的核心设计思想：\n\nGit 管理的是 **内容数据库（content-addressable storage）**，工作目录只是数据库的一种投影。Worktree 让一个数据库可以同时投影出多个状态视图。\n\n这也是为什么它几乎没有额外性能成本。\n",
+    "pivot":  "Git Worktree 允许多个工作目录共享同一个仓库对象库，从而同时检出多个分支，避免频繁 checkout 带来的上下文切换问题。其核心依赖 Git 的对象数据库与工作区分离设计，相比 clone 具有更低的磁盘与网络成本，适用于并行开发、hotfix、版本对比和 CI 场景，本质是同一仓库的多工作视图机制。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-02-28T09:04:43.000Z",
+    "updateAt":  "2026-02-28T09:04:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  150,
+    "filterTotalNum":  1907,
+    "prev":  "c2a29dec-432f-46eb-a149-d37278017e31",
+    "next":  "b44c5715-9bea-4e9b-913d-99d356538aab"
+}

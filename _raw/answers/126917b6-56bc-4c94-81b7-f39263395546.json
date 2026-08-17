@@ -1,0 +1,21 @@
+﻿{
+    "id":  2099,
+    "exerciseKey":  "126917b6-56bc-4c94-81b7-f39263395546",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue3 中父组件怎么监听到子组件的生命周期？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 **Vue3** 中，父组件**不能直接“监听”子组件生命周期钩子**（不像 DOM 事件那样天然可监听），但可以通过几种设计模式间接感知或控制子组件生命周期阶段。\n\n本质上，这是一个 **组件通信 + 生命周期暴露策略** 的问题。\n\n## 一、子组件主动通知（emit 事件）\n\n### 思想\n\n生命周期属于子组件内部行为，因此应由 **子组件在生命周期中主动向父组件发送事件**。\n\n### 子组件\n\n```vue\n\u003cscript setup\u003e\nimport { onMounted, onUnmounted } from \u0027vue\u0027\n\nconst emit = defineEmits([\u0027mounted\u0027, \u0027unmounted\u0027])\n\nonMounted(() =\u003e {\n  emit(\u0027mounted\u0027)\n})\n\nonUnmounted(() =\u003e {\n  emit(\u0027unmounted\u0027)\n})\n\u003c/script\u003e\n```\n\n---\n\n### 父组件\n\n```vue\n\u003cChild\n  @mounted=\"handleChildMounted\"\n  @unmounted=\"handleChildUnmounted\"\n/\u003e\n```\n\n```js\nfunction handleChildMounted() {\n  console.log(\u0027子组件已挂载\u0027)\n}\n```\n\n---\n\n### 优点\n\n* 符合 Vue 单向数据流\n* 解耦\n* 可维护性强\n* 最符合组件设计哲学\n\n这是 **生产环境标准方案**。\n\n---\n\n## 二、通过 `ref` + `expose` 访问子组件状态\n\n如果父组件需要在某些时机判断子组件是否已经初始化，可以让子组件暴露状态。\n\n---\n\n### 子组件\n\n```vue\n\u003cscript setup\u003e\nimport { ref, onMounted } from \u0027vue\u0027\n\nconst ready = ref(false)\n\nonMounted(() =\u003e {\n  ready.value = true\n})\n\ndefineExpose({\n  ready\n})\n\u003c/script\u003e\n```\n\n---\n\n### 父组件\n\n```vue\n\u003cChild ref=\"childRef\" /\u003e\n```\n\n```js\nconst childRef = ref(null)\n\nwatchEffect(() =\u003e {\n  if (childRef.value?.ready) {\n    console.log(\u0027子组件 mounted 完成\u0027)\n  }\n})\n```\n\n---\n\n### 适用场景\n\n* 父组件需要调用子组件方法\n* 类似 imperative 控制（例如播放器、图表实例）\n\n---\n\n## 三、利用组件 VNode 生命周期（底层方式）\n\nVue 内部其实支持 vnode hook：\n\n```vue\n\u003cChild\n  @vue:mounted=\"onMounted\"\n  @vue:unmounted=\"onUnmounted\"\n/\u003e\n```\n\n---\n\n### 示例\n\n```vue\n\u003cChild @vue:mounted=\"handleMounted\" /\u003e\n```\n\n---\n\n### 注意\n\n这是 **Vue3 提供的 vnode 生命周期监听**，很多人不知道。\n\n可监听：\n\n| 事件               | 含义      |\n| ---------------- | ------- |\n| `@vue:mounted`   | 子组件挂载完成 |\n| `@vue:updated`   | 子组件更新   |\n| `@vue:unmounted` | 子组件卸载   |\n\n---\n\n### 优点\n\n* 无需改子组件代码\n* 父组件直接监听\n\n### 缺点\n\n* 偏底层 API\n* 可读性较弱\n* 不适合复杂业务通信\n\n---\n\n## 四、Provide / Inject（跨层级监听）\n\n当组件层级很深时：\n\n子组件生命周期中修改 provide 的状态：\n\n```js\nonMounted(() =\u003e {\n  injectedStore.childReady = true\n})\n```\n\n父组件监听该响应式状态。\n\n适用于：\n\n* 表单系统\n* 编辑器\n* 插件架构\n\n---\n\n## 五、不推荐方案（了解即可）\n\n### 1️⃣ 直接访问内部实例\n\n```js\nchildRef.value.$.isMounted\n```\n\n问题：\n\n* 依赖内部实现\n* 非稳定 API\n* 升级可能失效\n\n",
+    "pivot":  "父组件监听子组件生命周期通常有三种方式：\n\n1. **子组件 emit 生命周期事件（推荐）**\n\n   * 最符合组件通信设计\n2. **Vue3 vnode 生命周期事件 `@vue:mounted`**\n\n   * 无侵入监听\n3. **ref + defineExpose**\n\n   * 父组件主动查询子组件状态\n\n核心原则：\n\n\u003e 生命周期属于组件内部行为，应由子组件主动暴露，而不是父组件强行探测。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-06-06T01:29:50.000Z",
+    "updateAt":  "2026-02-24T02:58:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  715,
+    "filterTotalNum":  1907,
+    "prev":  "eb80a3e8-2384-4a8b-ad8f-e3ea159a9317",
+    "next":  "0f2dd6c7-8484-4b6c-b081-f241376cef77"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1988,
+    "exerciseKey":  "e47771cd-99ca-4650-96ce-66087c1418a4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说下面代码执行后的输出是什么？",
+    "desc":  "```js\nvar b = 10;\n(function b(){\n    b = 20;\n    console.log(b);\n})();\n```",
+    "options":  null,
+    "explanation":  "先看浏览器中的执行结果：\n\n![](https://static.ecool.fun/others/619e2a00-4b97-4c4b-b4be-e8c847cc5dcb.png)\n\n## 解析\n\n* 代码预解析时，会将var b进行变量提升，此时b没有被赋值(b=undefined) (这里有人会说这里明明有个函数表达式呀，为什么没有进入变量提升，因为IIFE自带有词法作用域(我们常理解得作用域))\n* 发现没有可以变量提升得时候将b赋值为10，此时会将b 赋值为10(b=10)\n* 碰到了立即执行函数，会执行其内边的函数 function b()\n* IIFE作用域中定义b = function b(){}\n* 碰到了b = 20，会顺着作用域链寻找是否存在b，发现IIFE作用域中存在b，将IIFE作用域中的b赋值为20(b=20)(因为函数表达式特性，标识符无法被修改，所以这里执行失败)\n* 执行console.log(b)，此时的b会找IIFE中的作用域看看是否存在b，发现其内边存在，将其返回\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-05-15T13:41:10.000Z",
+    "updateAt":  "2024-07-20T11:00:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  822,
+    "filterTotalNum":  1907,
+    "prev":  "f1502312-3ac7-4089-b306-f64c301b7dd4",
+    "next":  "1ea3a239-c8a8-4922-83a6-00e311bb6df3"
+}

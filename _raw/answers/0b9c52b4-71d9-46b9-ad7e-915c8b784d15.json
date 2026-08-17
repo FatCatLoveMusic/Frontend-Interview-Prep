@@ -1,0 +1,21 @@
+﻿{
+    "id":  1685,
+    "exerciseKey":  "0b9c52b4-71d9-46b9-ad7e-915c8b784d15",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "全排列",
+    "desc":  "给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 **按任意顺序** 返回答案。\n\n示例 1：\n\n```\n输入：nums = [1,2,3]\n输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]\n```\n\n示例 2：\n\n```\n输入：nums = [0,1]\n输出：[[0,1],[1,0]]\n```\n\n示例 3：\n```\n输入：nums = [1]\n输出：[[1]]\n```\n\n提示：\n\n* 1 \u003c= nums.length \u003c= 6\n* -10 \u003c= nums[i] \u003c= 10\n* nums 中的所有整数 互不相同\n\n```js\n/**\n * @param {number[]} nums\n * @return {number[][]}\n */\nvar permute = function(nums) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "## 回溯 + DFS 思想\n\n### 例子解析\n\n先用 (1, 2, 3) 进行举例：\n\n* 以 1 开头的全排列，它们是：[1, 2, 3], [1, 3, 2]，即 1 + [2, 3] 的全排列；\n* 以 2 开头的全排列，它们是：[2, 1, 3], [2, 3, 1]，即 2 + [1, 3] 的全排列；\n* 以 3 开头的全排列，它们是：[3, 1, 2], [3, 2, 1]，即 3 + [1, 2] 的全排列。\n\n### 思路解析\n\n* 按顺序枚举每一位可能出现的情况，已经选择的数字在 当前 要选择的数字中不能出现（设置一个 visited 数组）。\n\n* 这样的思路，可以用一个树形结构表示。而树上的每一个结点表示了求解全排列问题的不同的阶段，这些阶段通过变量的「不同的值」体现，这些变量的不同的值，称之为「状态」；\n\n* 使用深度优先遍历有「回头」的过程，在「回头」以后， 状态变量需要设置成为和先前一样 ，因此在回到上一层结点的过程中，需要撤销上一次的选择，这个操作称之为「状态重置」；\n\n使用编程的方法得到全排列，就是在这样的一个树形结构中完成 遍历，从树的根结点到叶子结点形成的路径就是其中一个全排列。\n\n### 要注意的地方\n\n* 要注意遍历到相应的结点的时候，状态变量的值是正确的，具体的做法是：往下走一层的时候，path 变量在尾部追加，而往回走的时候，需要撤销上一次的选择，也是在尾部操作，因此 path 变量是一个栈；\n* 深度优先遍历通过「回溯」操作，实现了全局使用一份状态变量的效果(因此，在每次遍历到叶子结点要将 path 数组拷贝到 result 返回数组，即 new 一个，或 [...push])\n\n### 代码解释\n\n* 首先这棵树除了根结点和叶子结点以外，每一个结点做的事情其实是一样的，即：在已经选择了一些数的前提下，在剩下的还没有选择的数中，依次选择一个数，这显然是一个 递归 结构；\n* 递归的终止条件是： 一个排列中的数字已经选够了 ，因此我们需要一个变量来表示当前程序递归到第几层，我们把这个变量叫做 depth。\n* 布尔数组 visited，初始化的时候都为 false 表示这些数还没有被选择，当我们选定一个数的时候，就将这个数组的相应位置设置为 true ，这样在进行下一层递归时，就能够以 O(1) 的时间复杂度判断这个数是否被选择过，这是一种「以空间换时间」的思想。\n* 这些变量称为「状态变量」，它们表示了在求解一个问题的时候所处的阶段。需要根据问题的场景设计合适的状态变量。\n\n```js\n/**\n * @param {number[]} nums\n * @return {number[][]}\n */\nvar permute = function(nums) {\n    let len = nums.length, result = [], visited = new Array(len).fill(false);\n\n    const dfs = (nums, len, depth, path, visited) =\u003e {\n        // 遍历到叶子结点了，可以返回了\n        if(depth === len) {\n            result.push([...path]);\n        }\n\n        for(let i = 0; i \u003c len; i++) {\n            // 如果没遍历过\n            if(!visited[i]) {\n                // 压入 path 数组，然后是否遍历过的数组此下标处变为 true\n                path.push(nums[i]);\n                visited[i] = true;\n                // 继续 dfs，直到最后一层\n                dfs(nums, len, depth + 1, path, visited);\n                // 进行回溯，还原，以便下一次使用\n                visited[i] = false;\n                path.pop();\n            }\n        }\n    }\n\n    dfs(nums, len, 0, [], visited);\n    return result;\n};\n```",
+    "pivot":  "为了解决这个问题，我们可以使用回溯法（backtracking）来生成数组的所有排列。回溯法是一种通过探索所有可能的候选解来找出所有解的算法。如果候选解被确认不是一个解（或者至少不是最后一个解），回溯算法会通过在上一步进行一些变化来撤销上一步或上几步的计算，来获得新的候选解。\n\n```javascript\n/**\n * @param {number[]} nums\n * @return {number[][]}\n */\nvar permute = function(nums) {\n    const result = [];\n    const used = new Array(nums.length).fill(false); // 用于标记某个数字是否已经被使用\n\n    // 递归函数，用于生成排列\n    const backtrack = (path) =\u003e {\n        // 如果路径长度等于数组长度，说明找到了一组排列，加入到结果中\n        if (path.length === nums.length) {\n            result.push([...path]);\n            return;\n        }\n\n        // 遍历数组中的每个数字\n        for (let i = 0; i \u003c nums.length; i++) {\n            // 如果该数字已经被使用过，则跳过\n            if (used[i]) continue;\n\n            // 标记该数字为已使用\n            used[i] = true;\n\n            // 将该数字加入到当前路径中\n            path.push(nums[i]);\n\n            // 递归调用，继续寻找下一个数字\n            backtrack(path);\n\n            // 回溯，撤销上一步操作\n            path.pop();\n            used[i] = false;\n        }\n    };\n\n    // 调用递归函数，从空路径开始\n    backtrack([]);\n\n    return result;\n};\n```\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-03-08T15:01:52.000Z",
+    "updateAt":  "2024-08-10T17:06:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  1105,
+    "filterTotalNum":  1907,
+    "prev":  "d7bda93c-f848-4818-a1b5-31a063ab15f7",
+    "next":  "5e131c75-d26e-4527-8f51-29d842f3c829"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2248,
+    "exerciseKey":  "05964151-1414-425a-b3a0-43cce2c45348",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "对于分页的列表，怎么解决快速翻页场景下的竞态问题？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在分页列表中，快速翻页可能导致**竞态问题**（race condition），即较早发起的请求返回数据覆盖了后发起请求的数据，导致页面显示错误的内容。\n\n### **竞态问题的产生场景**\n\n1. 用户快速翻页，比如从第 1 页直接跳到第 10 页。\n2. 第 1 页的请求先发起，但第 10 页的请求后发起。\n3. 如果第 1 页的请求响应比第 10 页的请求响应更快，页面可能会显示第 1 页的数据，而非用户期望的第 10 页。\n\n---\n\n### **解决竞态问题的方案**\n\n#### 1. **通过唯一标识取消过时的请求**\n使用请求的唯一标识（如页码）来取消过时的请求，避免页面加载不需要的数据。\n\n##### **实现方法**\n借助 `axios` 提供的 `CancelToken` 或 Fetch 的 AbortController：\n```javascript\nlet cancelToken;\n\nfunction fetchPage(pageNumber) {\n  if (cancelToken) {\n    cancelToken.cancel(\"Request canceled due to new request.\");\n  }\n  cancelToken = axios.CancelToken.source();\n\n  return axios.get(`/api/data?page=${pageNumber}`, {\n    cancelToken: cancelToken.token,\n  });\n}\n```\n\n---\n\n#### 2. **仅渲染最后一次请求的数据**\n通过记录当前的有效请求标识，仅允许最后一次请求返回的数据更新页面。\n\n##### **实现方法**\n在发送请求时生成标识，并在请求返回时比对：\n```javascript\nlet currentRequestId = 0;\n\nfunction fetchPage(pageNumber) {\n  const requestId = ++currentRequestId;\n\n  return axios.get(`/api/data?page=${pageNumber}`).then((response) =\u003e {\n    if (requestId === currentRequestId) {\n      // 只处理最后一次请求的响应\n      renderData(response.data);\n    }\n  });\n}\n```\n\n---\n\n#### 3. **缓存请求结果**\n对于快速翻页场景，可能存在页码反复访问的情况。通过缓存请求结果，可以直接使用已有数据，而不是重复发送请求。\n\n##### **实现方法**\n使用一个 Map 存储页码和对应数据：\n```javascript\nconst cache = new Map();\n\nasync function fetchPage(pageNumber) {\n  if (cache.has(pageNumber)) {\n    return renderData(cache.get(pageNumber));\n  }\n\n  const response = await axios.get(`/api/data?page=${pageNumber}`);\n  cache.set(pageNumber, response.data);\n  renderData(response.data);\n}\n```\n\n---\n\n#### 4. **限制请求频率**\n使用防抖或节流机制，减少过于频繁的请求发起。\n\n##### **实现方法**\n使用防抖函数控制请求触发：\n```javascript\nfunction debounce(fn, delay) {\n  let timer = null;\n  return function (...args) {\n    clearTimeout(timer);\n    timer = setTimeout(() =\u003e fn.apply(this, args), delay);\n  };\n}\n\nconst fetchPageDebounced = debounce(fetchPage, 300);\n```\n\n---\n\n#### 5. **后端支持分页请求的取消或优先级控制**\n如果后端能够识别请求的优先级，可以通过返回特定状态码（如 409 Conflict）告知前端忽略掉过时的请求。\n",
+    "pivot":  "解决分页列表快速翻页场景下的竞态问题，需要根据项目需求选择合适的方案：\n\n- 如果需要实时性强且无需保存历史请求结果，优先使用**唯一标识控制（方案 2）**。\n- 如果页面频繁访问同一页，优先使用**请求缓存（方案 3）**。\n- 如果用户交互频繁，建议结合 **防抖机制（方案 4）** 减少无效请求。\n- 如果需要更精细的控制，可以结合后端能力实现优先级处理。\n\n通过这些方案，可以确保分页列表在快速翻页场景下始终显示用户期望的数据。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-17T01:50:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  637,
+    "filterTotalNum":  1907,
+    "prev":  "db3a56f2-6e91-4ce0-bbff-f62cb11fe74f",
+    "next":  "782eb4eb-d0d0-4f72-a141-90167bab6cff"
+}

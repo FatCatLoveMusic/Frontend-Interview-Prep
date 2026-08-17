@@ -1,0 +1,21 @@
+﻿{
+    "id":  2400,
+    "exerciseKey":  "ea84f54a-0aec-444f-b417-2887cb4f0199",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "infer 关键字是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 TypeScript 中，**`infer`** 关键字用于在条件类型中推断类型。它允许你在条件类型中声明一个类型变量并推断它的类型，通常用来提取或推断复杂类型的内部结构。\n\n### **使用 `infer` 关键字**\n\n`infer` 关键字只能在条件类型中使用，并用于声明一个局部的类型变量，该变量的类型由条件类型的条件部分推断得出。它主要用于提取和操作类型的内部细节。\n\n### **基本语法**\n\n```typescript\ntype ConditionalType\u003cT\u003e = T extends SomeType\u003cinfer U\u003e ? U : FallbackType;\n```\n\n- **`SomeType\u003cinfer U\u003e`**：在条件类型的条件部分，`SomeType` 是一个带有类型参数的类型，`U` 是我们要推断的类型变量。\n- **`U`**：被推断的类型变量，可以在条件为 `true` 时使用。\n- **`FallbackType`**：当条件为 `false` 时的备用类型。\n\n### **示例**\n\n**示例 1：推断数组的元素类型**\n\n```typescript\ntype ElementType\u003cT\u003e = T extends (infer U)[] ? U : never;\n\ntype NumberArray = ElementType\u003cnumber[]\u003e;  // number\ntype StringArray = ElementType\u003cstring[]\u003e;  // string\ntype NotArray = ElementType\u003cnumber\u003e;       // never\n```\n\n在这个例子中：\n- `ElementType` 用于提取数组类型中的元素类型。\n- 对于 `number[]` 类型，`ElementType\u003cnumber[]\u003e` 推断出元素类型是 `number`。\n- 对于 `string[]` 类型，`ElementType\u003cstring[]\u003e` 推断出元素类型是 `string`。\n- 对于非数组类型，`ElementType\u003cnumber\u003e` 的结果是 `never`。\n\n**示例 2：推断函数的返回类型**\n\n```typescript\ntype ReturnType\u003cT\u003e = T extends (...args: any[]) =\u003e infer R ? R : never;\n\ntype Func = () =\u003e string;\ntype Result = ReturnType\u003cFunc\u003e;  // string\n```\n\n在这个例子中：\n- `ReturnType` 用于推断函数类型的返回值类型。\n- 对于函数 `() =\u003e string`，`ReturnType\u003cFunc\u003e` 推断出返回值类型是 `string`。\n\n**示例 3：推断 Promise 的解析类型**\n\n```typescript\ntype PromiseType\u003cT\u003e = T extends Promise\u003cinfer U\u003e ? U : never;\n\ntype StringPromise = PromiseType\u003cPromise\u003cstring\u003e\u003e;  // string\ntype NumberPromise = PromiseType\u003cPromise\u003cnumber\u003e\u003e;  // number\ntype NotPromise = PromiseType\u003cnumber\u003e;              // never\n```\n\n在这个例子中：\n- `PromiseType` 用于提取 `Promise` 的解析类型。\n- 对于 `Promise\u003cstring\u003e`，`PromiseType\u003cPromise\u003cstring\u003e\u003e` 推断出解析类型是 `string`。\n- 对于非 `Promise` 类型，`PromiseType\u003cnumber\u003e` 的结果是 `never`。",
+    "pivot":  "- **`infer` 关键字**：用于在条件类型中声明和推断类型变量。它能提取或操作复杂类型的内部结构。\n- **使用场景**：适用于需要从类型中提取子类型或进行类型转换的情况，例如提取数组元素类型、函数返回类型或 `Promise` 的解析类型。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-05T01:20:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  550,
+    "filterTotalNum":  1907,
+    "prev":  "c39fb3f7-c3c7-4b17-aea5-655fb363bfd9",
+    "next":  "bbe72a8a-02b6-43bc-96ce-d3d98109cd0b"
+}

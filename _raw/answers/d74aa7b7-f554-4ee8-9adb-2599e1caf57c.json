@@ -1,0 +1,21 @@
+﻿{
+    "id":  2821,
+    "exerciseKey":  "d74aa7b7-f554-4ee8-9adb-2599e1caf57c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "process.nextTick, setTimeout 以及 setImmediate 三者的执行顺序？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 Node.js 中，`process.nextTick`、`setTimeout` 和 `setImmediate` 是三种用于在事件循环的不同阶段执行回调函数的方法。它们的执行顺序遵循特定的规则，这取决于事件循环的阶段。以下是这三者的执行顺序和细节：\n\n### **1. `process.nextTick`**\n\n- **描述**：`process.nextTick` 的回调函数会在当前操作完成后、事件循环的下一轮开始前立即执行。\n- **执行时机**：在当前执行栈中的所有代码运行完后，`process.nextTick` 队列中的回调函数会被执行。它的优先级高于 `setTimeout` 和 `setImmediate`。\n\n### **2. `setTimeout`**\n\n- **描述**：`setTimeout` 用于设置一个定时器，在指定的延迟时间后执行回调函数。\n- **执行时机**：`setTimeout` 的回调函数在指定的延迟时间后执行，具体的执行时间取决于事件循环的空闲状态和系统定时器的精度。即使延迟时间是 0，`setTimeout` 也不会立即执行，而是会等到当前操作结束并进入下一轮事件循环后执行。\n\n### **3. `setImmediate`**\n\n- **描述**：`setImmediate` 用于在当前事件循环的剩余部分执行回调函数。它在 I/O 事件之后执行回调。\n- **执行时机**：`setImmediate` 的回调函数会在当前事件循环的所有 `poll` 阶段处理完成后执行。如果在事件循环的 `poll` 阶段没有其他 I/O 事件，它会尽快执行。\n\n### **执行顺序示例**\n\n```javascript\nconsole.log(\u0027Start\u0027);\n\nprocess.nextTick(() =\u003e {\n  console.log(\u0027process.nextTick\u0027);\n});\n\nsetTimeout(() =\u003e {\n  console.log(\u0027setTimeout\u0027);\n}, 0);\n\nsetImmediate(() =\u003e {\n  console.log(\u0027setImmediate\u0027);\n});\n\nconsole.log(\u0027End\u0027);\n```\n\n### **输出顺序**\n\n1. **`Start`** - `console.log` 执行\n2. **`End`** - `console.log` 执行\n3. **`process.nextTick`** - `process.nextTick` 回调执行\n4. **`setTimeout`** - `setTimeout` 回调执行\n5. **`setImmediate`** - `setImmediate` 回调执行",
+    "pivot":  "1. **`process.nextTick`**：在当前操作完成后、事件循环的下一轮开始前立即执行，优先级最高。\n2. **`setTimeout`**：在指定的延迟时间后执行，但可能会延迟到下一轮事件循环。\n3. **`setImmediate`**：在当前事件循环的 `poll` 阶段结束后执行，优先级低于 `process.nextTick` 但高于 `setTimeout`（对于 0 延迟的 `setTimeout`）。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T14:17:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  349,
+    "filterTotalNum":  1907,
+    "prev":  "a2036088-aba0-48f4-b81b-b2bc0c632efc",
+    "next":  "2e201752-ecd3-4420-9d6e-df58b43e25ee"
+}

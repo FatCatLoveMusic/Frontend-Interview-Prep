@@ -1,0 +1,21 @@
+﻿{
+    "id":  2827,
+    "exerciseKey":  "a2036088-aba0-48f4-b81b-b2bc0c632efc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现银行卡号每隔四位加一个空格， 例如：6222023100014763381 --\u003e6222 0231 0001 4763 381",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### **1. 使用正则表达式**\n\n```javascript\nfunction formatCardNumber(cardNumber) {\n  // 移除非数字字符（如果有的话）\n  const cleaned = cardNumber.replace(/\\D/g, \u0027\u0027);\n\n  // 使用正则表达式在每四位后插入一个空格\n  const formatted = cleaned.replace(/(.{4})/g, \u0027$1 \u0027).trim();\n\n  return formatted;\n}\n\n// 示例\nconst cardNumber = \u00276222023100014763381\u0027;\nconsole.log(formatCardNumber(cardNumber)); // 输出: \"6222 0231 0001 4763 381\"\n```\n\n### **2. 使用字符串操作**\n\n```javascript\nfunction formatCardNumber(cardNumber) {\n  // 移除非数字字符（如果有的话）\n  const cleaned = cardNumber.replace(/\\D/g, \u0027\u0027);\n\n  let formatted = \u0027\u0027;\n  for (let i = 0; i \u003c cleaned.length; i += 4) {\n    if (i \u003e 0) {\n      formatted += \u0027 \u0027;\n    }\n    formatted += cleaned.substring(i, i + 4);\n  }\n\n  return formatted;\n}\n\n// 示例\nconst cardNumber = \u00276222023100014763381\u0027;\nconsole.log(formatCardNumber(cardNumber)); // 输出: \"6222 0231 0001 4763 381\"\n```\n\n### **3. 使用 Array 的 `reduce` 方法**\n\n```javascript\nfunction formatCardNumber(cardNumber) {\n  // 移除非数字字符（如果有的话）\n  const cleaned = cardNumber.replace(/\\D/g, \u0027\u0027);\n\n  return cleaned.split(\u0027\u0027)\n    .reduce((acc, digit, index) =\u003e {\n      if (index \u003e 0 \u0026\u0026 index % 4 === 0) {\n        acc += \u0027 \u0027;\n      }\n      return acc + digit;\n    }, \u0027\u0027);\n}\n\n// 示例\nconst cardNumber = \u00276222023100014763381\u0027;\nconsole.log(formatCardNumber(cardNumber)); // 输出: \"6222 0231 0001 4763 381\"\n```",
+    "pivot":  "- **正则表达式** 方法简洁且易于理解，适用于大多数情况。\n- **字符串操作** 方法更直观，对于处理自定义逻辑非常有用。\n- **`reduce` 方法** 适合喜欢函数式编程的开发者，处理起来可能更灵活。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T14:14:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  348,
+    "filterTotalNum":  1907,
+    "prev":  "596703db-a53c-43bd-8d22-0cfb21fcd059",
+    "next":  "d74aa7b7-f554-4ee8-9adb-2599e1caf57c"
+}

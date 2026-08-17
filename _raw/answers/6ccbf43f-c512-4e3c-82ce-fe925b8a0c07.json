@@ -1,0 +1,21 @@
+﻿{
+    "id":  379,
+    "exerciseKey":  "6ccbf43f-c512-4e3c-82ce-fe925b8a0c07",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "webpack的Loader和Plugin的不同",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e\u003cstrong\u003e不同的作用:\u003c/strong\u003e\u003cbr/\u003e \u003c/p\u003e\u003cul\u003e\u003cli\u003e \u003cstrong\u003eLoader\u003c/strong\u003e直译为\u0026quot;加载器\u0026quot;。Webpack将一切文件视为模块，但是webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到\u003ccode\u003eloader\u003c/code\u003e。 所以Loader的作用是让webpack拥有了加载和解析\u003cem\u003e非JavaScript文件\u003c/em\u003e的能力。\u003c/li\u003e\u003cli\u003e \u003cstrong\u003ePlugin\u003c/strong\u003e直译为\u0026quot;插件\u0026quot;。Plugin可以扩展webpack的功能，让webpack具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e \u003cstrong\u003e不同的用法:\u003c/strong\u003e\u003cbr/\u003e \u003c/p\u003e\u003cul\u003e\u003cli\u003e \u003cstrong\u003eLoader\u003c/strong\u003e在\u003ccode\u003emodule.rules\u003c/code\u003e中配置，也就是说他作为模块的解析规则而存在。 类型为数组，每一项都是一个\u003ccode\u003eObject\u003c/code\u003e，里面描述了对于什么类型的文件（\u003ccode\u003etest\u003c/code\u003e），使用什么加载(\u003ccode\u003eloader\u003c/code\u003e)和使用的参数（\u003ccode\u003eoptions\u003c/code\u003e）\u003c/li\u003e\u003cli\u003e \u003cstrong\u003ePlugin\u003c/strong\u003e在\u003ccode\u003eplugins\u003c/code\u003e中单独配置。 类型为数组，每一项是一个\u003ccode\u003eplugin\u003c/code\u003e的实例，参数都通过构造函数传入。\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cbr/\u003e\u003c/p\u003e",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-05T14:56:11.000Z",
+    "updateAt":  "2021-07-07T00:10:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  1541,
+    "filterTotalNum":  1907,
+    "prev":  "fe099894-7e1f-4b13-bc0a-8f065b7b4616",
+    "next":  "9caf3dd4-c7a3-44a1-98ee-37566a737c58"
+}

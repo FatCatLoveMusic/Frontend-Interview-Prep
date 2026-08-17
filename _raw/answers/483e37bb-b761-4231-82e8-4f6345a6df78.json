@@ -1,0 +1,21 @@
+﻿{
+    "id":  210,
+    "exerciseKey":  "483e37bb-b761-4231-82e8-4f6345a6df78",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对BOM的理解，以及常见的BOM对象有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、是什么\n\n`BOM` (Browser Object Model)，浏览器对象模型，提供了独立于内容与浏览器窗口进行交互的对象\n\n其作用就是跟浏览器做一些交互效果,比如如何进行页面的后退，前进，刷新，浏览器的窗口发生变化，滚动条的滚动，以及获取客户的一些信息如：浏览器品牌版本，屏幕分辨率\n\n浏览器的全部内容可以看成`DOM`，整个浏览器可以看成`BOM`。区别如下：\n\n![](https://static.ecool.fun//article/cb0c5ea4-db38-4753-812e-297289372881.png)\n## 二、window\n\n`Bom`的核心对象是`window`，它表示浏览器的一个实例\n\n在浏览器中，`window`对象有双重角色，即是浏览器窗口的一个接口，又是全局对象\n\n因此所有在全局作用域中声明的变量、函数都会变成`window`对象的属性和方法\n\n```js\nvar name = \u0027js每日一题\u0027;\nfunction lookName(){\n  alert(this.name);\n}\n\nconsole.log(window.name);  //js每日一题\nlookName();                //js每日一题\nwindow.lookName();         //js每日一题\n```\n\n关于窗口控制方法如下：\n\n- `moveBy(x,y)`：从当前位置水平移动窗体x个像素，垂直移动窗体y个像素，x为负数，将向左移动窗体，y为负数，将向上移动窗体\n- `moveTo(x,y)`：移动窗体左上角到相对于屏幕左上角的(x,y)点\n- `resizeBy(w,h)`：相对窗体当前的大小，宽度调整w个像素，高度调整h个像素。如果参数为负值，将缩小窗体，反之扩大窗体\n- `resizeTo(w,h)`：把窗体宽度调整为w个像素，高度调整为h个像素\n- `scrollTo(x,y)`：如果有滚动条，将横向滚动条移动到相对于窗体宽度为x个像素的位置，将纵向滚动条移动到相对于窗体高度为y个像素的位置\n- `scrollBy(x,y)`： 如果有滚动条，将横向滚动条向左移动x个像素，将纵向滚动条向下移动y个像素\n\n `window.open()` 既可以导航到一个特定的`url`，也可以打开一个新的浏览器窗口\n\n如果 `window.open()` 传递了第二个参数，且该参数是已有窗口或者框架的名称，那么就会在目标窗口加载第一个参数指定的URL\n\n```js\nwindow.open(\u0027htttp://www.vue3js.cn\u0027,\u0027topFrame\u0027)\n==\u003e \u003c a href=\" \" target=\"topFrame\"\u003e\u003c/ a\u003e\n```\n\n`window.open()` 会返回新窗口的引用，也就是新窗口的 `window` 对象\n\n```js\nconst myWin = window.open(\u0027http://www.vue3js.cn\u0027,\u0027myWin\u0027)\n```\n\n`window.close()` 仅用于通过 `window.open()` 打开的窗口\n\n新创建的 `window` 对象有一个 `opener` 属性，该属性指向打开他的原始窗口对象\n\n\n## 三、location\n\n`url`地址如下：\n\n```js\nhttp://foouser:barpassword@www.wrox.com:80/WileyCDA/?q=javascript#contents\n```\n\n`location`属性描述如下：\n\n| 属性名   | 例子                                                   | 说明                                |\n| -------- | ------------------------------------------------------ | ----------------------------------- |\n| hash     | \"#contents\"                                            | utl中#后面的字符，没有则返回空串    |\n| host     | www.wrox.com:80                                        | 服务器名称和端口号                  |\n| hostname | www.wrox.com                                           | 域名，不带端口号                    |\n| href     | http://www.wrox.com:80/WileyCDA/?q=javascript#contents | 完整url                             |\n| pathname | \"/WileyCDA/\"                                           | 服务器下面的文件路径                |\n| port     | 80                                                     | url的端口号，没有则为空             |\n| protocol | http:                                                  | 使用的协议                          |\n| search   | ?q=javascript                                          | url的查询字符串，通常为？后面的内容 |\n\n除了 `hash `之外，只要修改` location `的一个属性，就会导致页面重新加载新` URL`\n\n`location.reload()`，此方法可以重新刷新当前页面。这个方法会根据最有效的方式刷新页面，如果页面自上一次请求以来没有改变过，页面就会从浏览器缓存中重新加载\n\n如果要强制从服务器中重新加载，传递一个参数`true`即可\n\n## 四、navigator\n\n`navigator` 对象主要用来获取浏览器的属性，区分浏览器类型。属性较多，且兼容性比较复杂\n\n下表列出了`navigator`对象接口定义的属性和方法：\n\n ![](https://static.ecool.fun//article/546c5d88-2583-44b4-9d98-189cf23f3f42.png)\n\n ![](https://static.ecool.fun//article/89452e1d-6aba-4b51-9587-5da493a116db.png)\n\n\n\n## 五、screen\n\n保存的纯粹是客户端能力信息，也就是浏览器窗口外面的客户端显示器的信息，比如像素宽度和像素高度\n\n ![](https://static.ecool.fun//article/edcda89c-e6e1-4cb3-97e3-95478c640f59.png)\n\n\n\n## 六、history\n\n`history`对象主要用来操作浏览器`URL`的历史记录，可以通过参数向前，向后，或者向指定`URL`跳转\n\n常用的属性如下：\n\n- `history.go()`\n\n接收一个整数数字或者字符串参数：向最近的一个记录中包含指定字符串的页面跳转，\n\n```js\nhistory.go(\u0027maixaofei.com\u0027)\n```\n\n当参数为整数数字的时候，正数表示向前跳转指定的页面，负数为向后跳转指定的页面\n\n```js\nhistory.go(3) //向前跳转三个记录\nhistory.go(-1) //向后跳转一个记录\n```\n\n- `history.forward()`：向前跳转一个页面\n- `history.back()`：向后跳转一个页面\n- `history.length`：获取历史记录数\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:58:46.000Z",
+    "updateAt":  "2024-07-22T11:19:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1709,
+    "filterTotalNum":  1907,
+    "prev":  "564a3475-d774-4956-9ea6-024e0e05062d",
+    "next":  "138cc142-490a-4ca9-8221-5f13429c807f"
+}

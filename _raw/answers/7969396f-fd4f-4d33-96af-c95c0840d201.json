@@ -1,0 +1,21 @@
+﻿{
+    "id":  2577,
+    "exerciseKey":  "7969396f-fd4f-4d33-96af-c95c0840d201",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 React render 阶段的执行过程",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "React 的 render 阶段本质上是 **一次可中断、可恢复的虚拟树计算过程**，目标不是直接更新 DOM，而是**计算出下一次 UI 应该长什么样，并生成变更描述**。真正的 DOM 操作发生在后续的 commit 阶段。\n\n理解 render 阶段，需要从 Fiber 架构、调度机制以及 diff 过程三个层面来看。\n\n---\n\n## 一、整体定位：render 阶段在 React 更新流程中的位置\n\n一次 React 更新大致分为两个阶段：\n\n```text\nTrigger Update\n   ↓\nRender Phase（可中断，纯计算）\n   ↓\nCommit Phase（不可中断，真实 DOM 更新）\n```\n\nrender 阶段的职责只有一个：\n\n\u003e 根据新的 state / props，计算新的 Fiber 树，并找出需要变更的节点。\n\n它不会：\n\n* 操作 DOM\n* 执行 layout\n* 触发副作用（effect 在 commit 执行）\n\n---\n\n## 二、更新触发后的入口\n\n当发生以下行为时：\n\n* `setState`\n* `dispatch`\n* 父组件重新 render\n* context 更新\n\nReact 会：\n\n1. 创建一个 Update 对象\n2. 放入对应 Fiber 的 updateQueue\n3. 调度调和流程（scheduleUpdateOnFiber）\n\n随后进入 render 工作循环。\n\n---\n\n## 三、Fiber：render 阶段的核心数据结构\n\nReact 不再直接递归组件树，而是构建 **Fiber Tree**。\n\n每个 Fiber 可以理解为：\n\n```text\n组件的一次渲染任务单元\n```\n\n包含：\n\n* 组件类型\n* props / state\n* hooks 状态\n* 子节点、兄弟节点、父节点\n* effect 标记（Placement / Update / Deletion）\n\nReact 同时维护两棵树：\n\n```text\ncurrent tree（当前页面）\nworkInProgress tree（正在计算的新树）\n```\n\nrender 阶段就是构建 workInProgress。\n\n---\n\n## 四、render 阶段的执行循环（核心）\n\nrender 阶段由一个循环驱动：\n\n```text\nworkLoop → performUnitOfWork\n```\n\nReact 会逐个处理 Fiber 节点，而不是一次递归到底。\n\n### 每个 Fiber 的执行流程：\n\n```text\nbeginWork → reconcile children → completeWork\n```\n\n---\n\n### 1. beginWork（向下阶段）\n\n职责：\n\n* 执行函数组件\n* 读取 hooks\n* 计算 JSX\n* 生成子 Fiber\n\n例如函数组件：\n\n```js\nfunction App() {\n  const [count] = useState(0);\n  return \u003cChild count={count} /\u003e;\n}\n```\n\n在 beginWork 中：\n\n* 调用组件函数\n* 执行 hooks\n* 得到 React Element\n* 与旧 children 做 diff\n\n---\n\n### 2. Diff / Reconciliation（子节点协调）\n\nReact 会比较：\n\n```text\n旧 Fiber children\nVS\n新 React elements\n```\n\n并决定：\n\n* 复用节点（Update）\n* 新增节点（Placement）\n* 删除节点（Deletion）\n\n这里采用：\n\n\u003e 同层比较 + key 优化\n\n避免跨层复杂度爆炸。\n\n---\n\n### 3. completeWork（向上阶段）\n\n当子节点处理完成后，进入回溯阶段：\n\n* 创建 DOM（但不挂载）\n* 收集 effect 标记\n* 构建 effect list\n\n此阶段逐层向父节点返回。\n\n---\n\n## 五、为什么 render 阶段可以被中断\n\nFiber 的核心优势在于：\n\n```text\n每个 Fiber 是一个可暂停的工作单元\n```\n\nReact Scheduler 会：\n\n* 判断当前是否需要让出主线程\n* 如果时间片耗尽 → 暂停 render\n* 浏览器空闲后继续\n\n这就是 Concurrent Rendering 的基础。\n\n因此 render 阶段具有：\n\n* 可中断\n* 可恢复\n* 可丢弃（高优先级更新可打断低优先级）\n\n---\n\n## 六、render 阶段不会执行的事情\n\n这是面试高频误区：\n\nrender 阶段 **不会执行副作用**：\n\n* `useEffect`\n* DOM 操作\n* ref 回调\n* layout 读取\n\n原因是 render 可能被重复执行或丢弃。\n\nReact 必须保证 render 是：\n\n```text\nPure + Side-effect free\n```\n\n---\n\n## 七、render 阶段的产物\n\nrender 完成后得到：\n\n1. 一棵新的 workInProgress Fiber Tree\n2. effect list（需要执行的变更）\n\n随后进入 commit 阶段：\n\n```text\nbefore mutation\nmutation（DOM 更新）\nlayout effects\npassive effects\n```\n\n---\n\n## 八、一次完整 render 的时间线（总结视角）\n\n```text\nsetState\n  ↓\n创建 update\n  ↓\n调度 scheduler\n  ↓\n构建 workInProgress Fiber\n  ↓\nbeginWork（执行组件）\n  ↓\ndiff children\n  ↓\ncompleteWork（收集 effect）\n  ↓\n生成 effect list\n  ↓\n进入 commit 阶段\n```\n\n",
+    "pivot":  "React 的 render 阶段是基于 Fiber 架构的可中断计算过程，其核心目标是根据最新状态构建 workInProgress Fiber 树并完成节点 diff；执行流程由 beginWork 向下遍历生成子 Fiber，再由 completeWork 向上回溯收集 effect 标记；该阶段只进行虚拟树计算，不执行 DOM 操作或副作用，从而支持时间切片、优先级调度以及并发渲染能力，最终为 commit 阶段提供精确的更新描述。",
+    "vipLimit":  1,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2026-02-24T02:55:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  463,
+    "filterTotalNum":  1907,
+    "prev":  "2e8431e4-baf7-4b7e-bb9a-5960433e4fa2",
+    "next":  "adaef090-b8ea-4696-bc9b-313156f6b460"
+}

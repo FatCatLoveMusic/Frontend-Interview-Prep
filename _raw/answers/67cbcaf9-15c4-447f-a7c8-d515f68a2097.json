@@ -1,0 +1,21 @@
+﻿{
+    "id":  2389,
+    "exerciseKey":  "67cbcaf9-15c4-447f-a7c8-d515f68a2097",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个可以用 for...of 遍历的对象",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "要实现一个可以使用 `for...of` 遍历的对象，你需要使该对象符合 JavaScript 的迭代协议。这意味着对象必须有一个 `[Symbol.iterator]` 方法，该方法返回一个迭代器。迭代器需要实现 `next` 方法，该方法返回一个对象，包含两个属性：`value`（当前值）和 `done`（布尔值，表示是否遍历结束）。\n\n下面是一个简单的示例，展示了如何实现一个可以使用 `for...of` 遍历的对象：\n\n### **实现示例**\n\n```javascript\n// 创建一个可以被 for...of 遍历的对象\nclass IterableObject {\n  constructor(elements) {\n    this.elements = elements;\n  }\n\n  // 实现 [Symbol.iterator] 方法，返回一个迭代器\n  [Symbol.iterator]() {\n    let index = 0;\n    const elements = this.elements;\n\n    // 返回一个迭代器\n    return {\n      next() {\n        if (index \u003c elements.length) {\n          // 返回一个对象，包含 value 和 done 属性\n          return { value: elements[index++], done: false };\n        } else {\n          // 遍历结束\n          return { value: undefined, done: true };\n        }\n      }\n    };\n  }\n}\n\n// 使用示例\nconst obj = new IterableObject([1, 2, 3, 4, 5]);\n\nfor (const value of obj) {\n  console.log(value); // 输出 1, 2, 3, 4, 5\n}\n```\n\n### **解释**\n\n1. **`IterableObject` 类**：\n   - 这个类包含一个构造函数，用于初始化要迭代的元素。\n   - 实现了 `Symbol.iterator` 方法，该方法返回一个迭代器对象。\n\n2. **`Symbol.iterator` 方法**：\n   - 返回一个对象，该对象具有 `next` 方法。\n   - `next` 方法用于逐个返回元素。每次调用 `next` 返回一个包含 `value` 和 `done` 属性的对象。\n   - `done` 为 `true` 时表示迭代完成，`value` 为 `undefined`。\n\n3. **`for...of` 循环**：\n   - 使用 `for...of` 遍历 `IterableObject` 实例时，实际上调用了 `Symbol.iterator` 方法，获取迭代器并逐个获取值直到 `done` 为 `true`。\n\n通过实现这些方法，你可以让对象与 JavaScript 的迭代协议兼容，从而可以使用 `for...of` 遍历该对象的元素。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T01:27:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  558,
+    "filterTotalNum":  1907,
+    "prev":  "849cda15-e60a-43ed-984c-f873afdd174f",
+    "next":  "3bf0b33f-0adf-4943-a109-13302d58c13e"
+}

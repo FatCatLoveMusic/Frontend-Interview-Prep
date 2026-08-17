@@ -1,0 +1,21 @@
+﻿{
+    "id":  84,
+    "exerciseKey":  "6dd078d0-5728-4901-acab-bda0f365347d",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst myLifeSummedUp = [\"☕\", \"💻\", \"🍷\", \"🍫\"]\n\nfor (let item in myLifeSummedUp) {\n  console.log(item)\n}\n\nfor (let item of myLifeSummedUp) {\n  console.log(item)\n}\n```",
+    "options":  "{\"options\":[\"0 1 2 3 and \\\"☕\\\"  \\\"💻\\\" \\\"🍷\\\" \\\"🍫\\\"\",\"\\\"☕\\\"  \\\"💻\\\" \\\"🍷\\\" \\\"🍫\\\" and \\\"☕\\\"  \\\"💻\\\" \\\"🍷\\\" \\\"🍫\\\"\",\"\\\"☕\\\"  \\\"💻\\\" \\\"🍷\\\" \\\"🍫\\\" and 0 1 2 3\",\"0 1 2 3 and {0: \\\"☕\\\", 1: \\\"💻\\\", 2: \\\"🍷\\\", 3: \\\"🍫\\\"}\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "通过`for-in`循环，我们可以遍历一个对象**自有的**、**继承的**、**可枚举的**、**非Symbol的**属性。 在数组中，可枚举属性是数组元素的“键”， 即它们的索引。 类似于下面这个对象：\n`{0: \"☕\", 1: \"💻\", 2: \"🍷\", 3: \"🍫\"}`\n其中键则是可枚举属性，因此 `0`，`1`，`2`，`3`被记录。\n通过`for-of`循环，我们可以迭代**可迭代对象**（包括 `Array`，`Map`，`Set`，`String`，`arguments`等）。当我们迭代数组时，在每次迭代中，不同属性的值将被分配给变量`item`, 因此`“☕”`，`“💻”`，`“🍷”`，`“🍫”`被打印。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:24:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1835,
+    "filterTotalNum":  1907,
+    "prev":  "37918a0a-0874-45e3-b510-4579e5941845",
+    "next":  "56056900-f049-488c-a973-9788cc708e7b"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  148,
+    "exerciseKey":  "5c7d7b86-addd-4e6c-92c7-5cf7bd0a6092",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "哪一个选项会导致报错？",
+    "desc":  "```javascript\nconst emojis = [\"🎄\", \"🎅🏼\", \"🎁\", \"⭐\"];\n\n/* 1 */ emojis.push(\"🦌\");\n/* 2 */ emojis.splice(0, 2);\n/* 3 */ emojis = [...emojis, \"🥂\"];\n/* 4 */ emojis.length = 0;\n```",
+    "options":  "{\"options\":[\"1\",\"1 and 2\",\"3 and 4\",\"3\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`const` 关键字意味着我们不能 _重定义_ 变量中的值，它 _仅可读_。而然，值本身不可修改。数组 `emojis` 中的值可被修改，如 push 新的值, 拼接，又或者将数组的长度设置为0。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:34:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  1771,
+    "filterTotalNum":  1907,
+    "prev":  "8313f0e7-db8e-4ecd-bf57-099dca7656fb",
+    "next":  "a7afe475-998a-4be3-97a0-c8c7ccabd6e6"
+}

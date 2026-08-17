@@ -1,0 +1,21 @@
+﻿{
+    "id":  2704,
+    "exerciseKey":  "acb3cda6-40de-4685-a765-874fea38016b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "http3 中的 QUIC 是什么协议？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "#### **定义**\n\n- **QUIC**：QUIC 是一个基于 UDP 的传输层协议，旨在减少网络延迟和提高性能。最初由 Google 开发，现在已经成为 IETF 的标准化项目。\n- **主要目标**：提高传输效率，减少连接建立和数据传输的延迟，解决传统 TCP 和 HTTP/2 中的一些性能瓶颈。\n\n#### **特点**\n\n- **无连接的传输**：QUIC 使用 UDP 进行数据传输，不同于 TCP 的面向连接特性。这使得 QUIC 可以更灵活地管理数据流和连接。\n- **多路复用**：类似于 HTTP/2，QUIC 支持多路复用，允许在一个连接上并发地传输多个数据流，从而避免队头阻塞。\n- **内置加密**：QUIC 集成了 TLS（传输层安全性），在数据传输时提供加密和安全性，消除了额外的握手过程。\n- **0-RTT 数据传输**：QUIC 支持 0-RTT 数据传输，使得在建立连接时可以立即开始数据传输，减少延迟。\n",
+    "pivot":  "QUIC：一个基于 UDP 的传输协议，旨在提高传输效率，减少延迟，并集成了加密。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-14T23:30:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  396,
+    "filterTotalNum":  1907,
+    "prev":  "5c0a3c99-09e5-407e-b351-0f5219ff1fed",
+    "next":  "ffb769d7-2e7d-4c6d-b44b-e341d209a922"
+}

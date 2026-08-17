@@ -1,0 +1,21 @@
+﻿{
+    "id":  2637,
+    "exerciseKey":  "c7265055-7375-4e20-b425-14d97fc27f9c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么普通 for 循环的性能高于 forEach ？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "普通 `for` 循环通常在性能上优于 `forEach` 的原因有以下几点：\n\n### **1. 函数调用开销**\n\n- **`forEach`**：在每次迭代时，`forEach` 需要调用回调函数。这意味着每次迭代都会发生额外的函数调用开销，包括创建函数上下文、传递参数等。\n\n- **`for`**：普通的 `for` 循环直接在循环体内执行代码，没有函数调用开销。\n\n### **2. 函数创建和管理**\n\n- **`forEach`**：`forEach` 需要创建一个回调函数并管理它。对于大量数据，创建和销毁函数会带来一定的性能开销。\n\n- **`for`**：在普通的 `for` 循环中，不需要额外的函数创建和销毁，只需要简单的循环控制。\n\n### **3. 函数闭包**\n\n- **`forEach`**：`forEach` 的回调函数可能会涉及闭包，闭包的使用会引入额外的内存开销。\n\n- **`for`**：普通的 `for` 循环没有这种闭包开销，代码直接在循环体内执行。\n\n### **4. 编译优化**\n\n- **`for`**：现代 JavaScript 引擎对普通 `for` 循环进行了高度优化，特别是可以进行更多的编译优化，如内联循环变量和减少循环体的计算量。\n\n- **`forEach`**：回调函数的复杂性使得优化更具挑战，可能不如 `for` 循环容易优化。\n\n### **5. 可控性**\n\n- **`for`**：可以精确控制循环的行为，包括提前退出（使用 `break`）、跳过迭代（使用 `continue`），以及根据需要修改循环变量。\n\n- **`forEach`**：`forEach` 无法直接提前退出或跳过迭代，尽管可以通过其他方式（如抛出异常）来间接实现，但这种方式较为繁琐和不直观。\n\n### **性能对比示例**\n\n以下是一个简单的性能对比示例：\n\n```javascript\nconst array = new Array(1000000).fill(0);\n\n// `for` loop\nconsole.time(\u0027for\u0027);\nfor (let i = 0; i \u003c array.length; i++) {\n  array[i] = i;\n}\nconsole.timeEnd(\u0027for\u0027);\n\n// `forEach` loop\nconsole.time(\u0027forEach\u0027);\narray.forEach((value, index) =\u003e {\n  array[index] = index;\n});\nconsole.timeEnd(\u0027forEach\u0027);\n```\n\n在这个例子中，普通的 `for` 循环通常会比 `forEach` 更快。",
+    "pivot":  "- **性能差异**：普通的 `for` 循环通常比 `forEach` 更高效，因为它没有额外的函数调用开销和闭包管理。\n- **可用性**：`forEach` 提供了更简洁的语法和函数式编程的便利，但对于性能要求较高的场景，普通的 `for` 循环通常是更好的选择。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T13:55:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  432,
+    "filterTotalNum":  1907,
+    "prev":  "5f0627e5-a8f1-471a-b988-60169bd11e12",
+    "next":  "c740c88b-fe1b-426f-ab9c-23f43c7fe62d"
+}

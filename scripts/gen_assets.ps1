@@ -1,0 +1,342 @@
+﻿# ============ 生成共享资源 + 首页 + 分类页 ============
+. (Join-Path $PSScriptRoot 'kb_common.ps1')
+
+# ---------- style.css ----------
+Write-Host 'writing style.css...'
+$css = @'
+/* ===== 前端面试题知识库 样式 ===== */
+:root {
+  --bg: #f6f7f9;
+  --bg2: #ffffff;
+  --ink: #1b1f24;
+  --muted: #69707d;
+  --rule: #e4e7ec;
+  --accent: #2f6fed;
+  --accent2: #8b5cf6;
+  --accent-soft: rgba(47, 111, 237, 0.08);
+  --code-bg: #0f172a;
+  --code-ink: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(16, 24, 40, 0.06), 0 8px 24px -12px rgba(16, 24, 40, 0.12);
+}
+@font-face { font-family: 'Outfit'; src: url('../_shared/fonts/Outfit-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Outfit'; src: url('../_shared/fonts/Outfit-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'JetBrainsMono'; src: url('../_shared/fonts/JetBrainsMono-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'JetBrainsMono'; src: url('../_shared/fonts/JetBrainsMono-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Outfit', -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 15.5px; line-height: 1.7; color: var(--ink); background: var(--bg);
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== 顶栏 ===== */
+.topbar { background: var(--bg2); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 50; }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+.brand { font-weight: 700; font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap; }
+.brand em { font-style: normal; color: var(--accent); }
+.crumbs { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); min-width: 0; }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--accent); text-decoration: none; }
+.crumbs .now { color: var(--ink); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ===== 首页 Hero ===== */
+.hero { background: linear-gradient(180deg, #eef3fe 0%, var(--bg) 100%); padding: 56px 0 40px; text-align: center; }
+.hero-badge { display: inline-block; font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; color: var(--accent); background: var(--accent-soft); border: 1px solid rgba(47,111,237,0.2); padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
+.hero h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+.hero-sub { color: var(--muted); margin-top: 8px; font-size: 15px; }
+.search-box { max-width: 640px; margin: 26px auto 0; position: relative; }
+.search-box input {
+  width: 100%; padding: 13px 18px; font-size: 15px; font-family: inherit;
+  border: 1px solid var(--rule); border-radius: 999px; background: var(--bg2);
+  box-shadow: var(--shadow); outline: none; transition: border-color 0.15s;
+}
+.search-box input:focus { border-color: var(--accent); }
+.search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: var(--bg2); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); max-height: 420px; overflow-y: auto; text-align: left; z-index: 100; display: none; }
+.search-results.has-results { display: block; }
+.search-item { display: block; padding: 10px 16px; border-bottom: 1px solid var(--rule); }
+.search-item:last-child { border-bottom: none; }
+.search-item:hover { background: var(--accent-soft); text-decoration: none; }
+.search-t { display: block; font-size: 14px; color: var(--ink); }
+.search-c { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.search-empty { padding: 14px 16px; font-size: 13.5px; color: var(--muted); }
+
+/* ===== 分类卡片 ===== */
+.section-title { font-size: 19px; font-weight: 700; margin: 40px 0 18px; }
+.section-title::after { content: ''; display: block; width: 40px; height: 3px; border-radius: 2px; margin-top: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.cat-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: var(--bg2); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 16px 18px; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.cat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: rgba(47,111,237,0.35); text-decoration: none; }
+.cat-name { font-size: 15.5px; font-weight: 600; color: var(--ink); }
+.cat-count { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.cat-count b { color: var(--accent); font-weight: 700; }
+
+/* ===== 分类页头部 ===== */
+.cat-head { padding: 34px 0 6px; }
+.cat-head h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; }
+.cat-head h1 span { color: var(--accent); }
+.cat-count-line { color: var(--muted); margin-top: 4px; font-size: 14px; }
+.cat-count-line strong { color: var(--accent); }
+.q-filter {
+  width: 100%; max-width: 480px; margin-top: 18px; padding: 11px 16px; font-size: 14.5px; font-family: inherit;
+  border: 1px solid var(--rule); border-radius: 10px; background: var(--bg2); outline: none;
+}
+.q-filter:focus { border-color: var(--accent); }
+
+/* ===== 题目列表 ===== */
+.q-list { padding: 20px 0 40px; }
+.q-row {
+  display: flex; align-items: center; gap: 14px; background: var(--bg2);
+  border: 1px solid var(--rule); border-radius: 10px; padding: 13px 18px; margin-bottom: 9px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.q-row:hover { border-color: rgba(47,111,237,0.4); box-shadow: var(--shadow); text-decoration: none; }
+.q-no { flex: none; width: 44px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; }
+.q-name { flex: 1; min-width: 0; font-size: 14.5px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.q-diff { flex: none; font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+
+/* ===== 详情页 ===== */
+.q-detail { background: var(--bg2); border: 1px solid var(--rule); border-radius: var(--radius); padding: 30px 34px; margin: 26px 0; box-shadow: var(--shadow); }
+.q-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip { display: inline-block; font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); background: var(--bg); }
+.chip-cat { color: var(--accent2); border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.07); }
+.chip-diff { color: #b45309; border-color: rgba(180,83,9,0.3); background: rgba(180,83,9,0.07); }
+a.chip-tag { color: var(--accent); border-color: rgba(47,111,237,0.3); background: var(--accent-soft); }
+a.chip-tag:hover { text-decoration: none; filter: brightness(0.96); }
+.q-title { font-size: 22px; font-weight: 700; line-height: 1.45; letter-spacing: -0.01em; margin-bottom: 6px; }
+.q-block { margin-top: 26px; }
+.q-block-title { font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 10px; padding-left: 10px; border-left: 3px solid var(--accent); }
+.q-block-body { font-size: 15px; color: var(--ink); }
+.q-block-body > * + * { margin-top: 12px; }
+.q-block-answer { background: #fbfcfe; border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px; }
+.q-block-answer .q-block-title { margin-bottom: 12px; }
+.q-pivot { margin-top: 22px; background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.22); border-radius: 10px; padding: 14px 18px; font-size: 14px; }
+.q-pivot b { color: var(--accent2); }
+
+/* 选择题选项 */
+.q-options { margin-top: 6px; }
+.opt { display: flex; align-items: flex-start; gap: 10px; padding: 9px 14px; margin: 7px 0; border: 1px solid var(--rule); border-radius: 9px; background: var(--bg2); }
+.opt-label { flex: none; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--muted); background: var(--bg); border: 1px solid var(--rule); border-radius: 50%; }
+.opt-text { flex: 1; font-size: 14px; }
+.opt-mark { flex: none; color: #059669; font-weight: 700; font-size: 15px; }
+.opt-ans { border-color: rgba(5,150,105,0.45); background: rgba(5,150,105,0.05); }
+.opt-ans .opt-label { background: #059669; border-color: #059669; color: #fff; }
+
+/* Markdown 渲染 */
+.q-block-body h3, .q-block-body h4, .q-block-body h5 { font-weight: 700; margin-top: 22px; margin-bottom: 10px; font-size: 17px; }
+.q-block-body h4 { font-size: 15.5px; }
+.q-block-body h5 { font-size: 14.5px; }
+.q-block-body ul, .q-block-body ol { padding-left: 22px; }
+.q-block-body li { margin: 4px 0; }
+.q-block-body p code, .q-block-body li code, .q-block-body td code, .q-block-body th code {
+  font-family: 'JetBrainsMono', Consolas, monospace; font-size: 0.88em;
+  background: var(--accent-soft); color: #1d4ed8; padding: 1px 6px; border-radius: 5px;
+}
+.q-block-body code { font-family: 'JetBrainsMono', Consolas, monospace; }
+.code-block { background: var(--code-bg); color: var(--code-ink); border-radius: 10px; padding: 16px 18px; overflow-x: auto; font-size: 13.5px; line-height: 1.65; }
+.code-block code { font-family: 'JetBrainsMono', Consolas, monospace; color: inherit; }
+.q-block-body blockquote { border-left: 3px solid var(--accent2); background: rgba(139,92,246,0.05); padding: 10px 16px; border-radius: 0 8px 8px 0; color: var(--muted); }
+.q-block-body hr { border: none; border-top: 1px solid var(--rule); margin: 18px 0; }
+.table-wrap { overflow-x: auto; }
+.q-block-body table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.q-block-body th { background: var(--accent-soft); font-weight: 600; text-align: left; }
+.q-block-body th, .q-block-body td { border: 1px solid var(--rule); padding: 7px 11px; }
+.q-block-body strong { font-weight: 700; }
+
+/* ===== 上一题/下一题 ===== */
+.q-nav { display: flex; justify-content: space-between; gap: 14px; margin: 0 0 44px; }
+.q-nav a { flex: 1; background: var(--bg2); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; font-size: 13.5px; color: var(--ink); transition: border-color 0.15s, box-shadow 0.15s; min-width: 0; }
+.q-nav a:hover { border-color: rgba(47,111,237,0.4); box-shadow: var(--shadow); text-decoration: none; }
+.q-nav .dir { display: block; font-size: 12px; color: var(--muted); }
+.q-nav .tt { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px; }
+.q-nav .next { text-align: right; }
+
+/* ===== 页脚 ===== */
+.site-footer { border-top: 1px solid var(--rule); background: var(--bg2); padding: 22px 0; margin-top: 10px; }
+.site-footer p { font-size: 13px; color: var(--muted); text-align: center; }
+.site-footer a { color: var(--muted); text-decoration: underline; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 26px; }
+  .q-detail { padding: 22px 18px; }
+  .q-title { font-size: 19px; }
+  .topbar-inner { flex-direction: column; height: auto; padding: 10px 0; align-items: flex-start; }
+  .crumbs { font-size: 12.5px; }
+  .q-nav { flex-direction: column; }
+}
+@media (max-width: 480px) {
+  .cat-grid { grid-template-columns: 1fr; }
+}
+'@
+Write-Utf8 "$assetsDir\style.css" $css
+
+# ---------- site.js ----------
+Write-Host 'writing site.js...'
+$js = @'
+(function () {
+  // 首页搜索
+  var box = document.getElementById('hsearch');
+  if (box && window.TOPIC_INDEX) {
+    var res = document.getElementById('hresults');
+    box.addEventListener('input', function () {
+      var kw = box.value.trim().toLowerCase();
+      res.innerHTML = '';
+      res.classList.remove('has-results');
+      if (!kw) { return; }
+      var hits = window.TOPIC_INDEX.filter(function (it) {
+        return it.t.toLowerCase().indexOf(kw) >= 0 || it.c.some(function (c) { return c.toLowerCase().indexOf(kw) >= 0; });
+      });
+      if (hits.length === 0) {
+        var empty = document.createElement('div');
+        empty.className = 'search-empty';
+        empty.textContent = '未找到匹配的题目';
+        res.appendChild(empty);
+        res.classList.add('has-results');
+        return;
+      }
+      hits.slice(0, 50).forEach(function (it) {
+        var a = document.createElement('a');
+        a.className = 'search-item';
+        a.href = 'questions/' + it.n + '.html';
+        var s = document.createElement('span');
+        s.className = 'search-t';
+        s.textContent = it.t;
+        var c = document.createElement('span');
+        c.className = 'search-c';
+        c.textContent = it.c.join(' / ');
+        a.appendChild(s); a.appendChild(c);
+        res.appendChild(a);
+      });
+      res.classList.add('has-results');
+    });
+    document.addEventListener('click', function (e) {
+      if (!res.contains(e.target) && e.target !== box) { res.classList.remove('has-results'); }
+    });
+  }
+  // 分类页过滤
+  var filter = document.getElementById('qfilter');
+  if (filter) {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.q-row'));
+    filter.addEventListener('input', function () {
+      var kw = filter.value.trim().toLowerCase();
+      var count = 0;
+      rows.forEach(function (r) {
+        var show = !kw || (r.getAttribute('data-t') || '').toLowerCase().indexOf(kw) >= 0;
+        r.style.display = show ? '' : 'none';
+        if (show) { count++; }
+      });
+      var tip = document.getElementById('filter-tip');
+      if (tip) { tip.textContent = kw ? ('匹配 ' + count + ' 题') : ''; }
+    });
+  }
+})();
+'@
+Write-Utf8 "$assetsDir\site.js" $js
+
+# ---------- search-index.js ----------
+Write-Host 'writing search-index.js...'
+$idxArr = @()
+foreach ($t in $topicSeq) {
+    $idxArr += (ConvertTo-Json @{ n = $t.n; t = $t.title; c = $t.tags } -Compress -Depth 3)
+}
+$idxJs = 'window.TOPIC_INDEX = [' + ($idxArr -join ',') + '];'
+Write-Utf8 "$assetsDir\search-index.js" $idxJs
+
+# ---------- index.html ----------
+Write-Host 'writing index.html...'
+$catCards = New-Object System.Collections.ArrayList
+foreach ($t in $tags) {
+    [void]$catCards.Add("<a class=""cat-card"" href=""categories/$t.html""><span class=""cat-name"">$t</span><span class=""cat-count""><b>$($catCount[$t])</b> 题</span></a>")
+}
+$indexHtml = @"
+<!-- Generated by Trae Work -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前端面试题知识库</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="hero-badge">前端面试题宝典 · 全量摘录</div>
+  <h1>前端面试题知识库</h1>
+  <p class="hero-sub">共 <strong>$total</strong> 道题 · $($tags.Count) 个分类 · 含完整参考答案</p>
+  <div class="search-box">
+    <input id="hsearch" type="search" placeholder="搜索题目关键词，如 Promise、闭包、flex…">
+    <div id="hresults" class="search-results"></div>
+  </div>
+</div></header>
+<main class="wrap">
+  <h2 class="section-title">分类导航</h2>
+  <div class="cat-grid">
+$($catCards -join "`n")
+  </div>
+</main>
+$(Get-FooterHtml)
+<script src="assets/search-index.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
+"@
+Write-Utf8 "$kb\index.html" $indexHtml
+
+# ---------- 分类页 ----------
+Write-Host 'writing category pages...'
+foreach ($t in $tags) {
+    $rows = New-Object System.Collections.ArrayList
+    $localNo = 0
+    foreach ($key in $catItems[$t]) {
+        $localNo++
+        $info = $topicSeq | Where-Object { $_.key -eq $key }
+        $d = $details[$key]
+        $lv = 0
+        if ($d -and $d.level) { $lv = [double]$d.level }
+        $safeTitle = ($info.title -replace '"', '&quot;')
+        [void]$rows.Add("<a class=""q-row"" href=""../questions/$($info.n).html"" data-t=""$safeTitle"" title=""全局第 $($info.n) 题""><span class=""q-no"">$localNo</span><span class=""q-name"">$($info.title)</span><span class=""q-diff"">$(Get-LevelStr $lv)</span></a>")
+    }
+    $catHtml = @"
+<!-- Generated by Trae Work -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$t 分类题库 - 前端面试题知识库</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="../index.html">前端面试题<em>知识库</em></a>
+  <nav class="crumbs"><a href="../index.html">首页</a><span>/</span><span class="now">$t</span></nav>
+</div></header>
+<main class="wrap">
+  <div class="cat-head">
+    <h1><span>$t</span> 分类题库</h1>
+    <p class="cat-count-line">共 <strong>$($catCount[$t])</strong> 题 <span id="filter-tip" style="color:var(--accent);margin-left:8px;"></span></p>
+    <input id="qfilter" class="q-filter" type="search" placeholder="在此分类中搜索题目…">
+  </div>
+  <div class="q-list">
+$($rows -join "`n")
+  </div>
+</main>
+$(Get-FooterHtml)
+<script src="../assets/site.js"></script>
+</body>
+</html>
+"@
+    Write-Utf8 "$catDir\$t.html" $catHtml
+}
+Write-Host "category pages done: $($tags.Count)"
+Write-Host 'GEN-ASSETS COMPLETE'

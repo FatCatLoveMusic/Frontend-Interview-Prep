@@ -1,0 +1,21 @@
+﻿{
+    "id":  406,
+    "exerciseKey":  "f56b93a9-52df-49ae-8d63-d7ee4f816f8b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "数组去重",
+    "desc":  "```js\nconst arr = [1, 1, \u00271\u0027, 17, true, true, false, false, \u0027true\u0027, \u0027a\u0027, {}, {}];\n// =\u003e [1, \u00271\u0027, 17, true, false, \u0027true\u0027, \u0027a\u0027, {}, {}]\n```\n",
+    "options":  null,
+    "explanation":  "* 方法一：利用Set\n```js\nconst res1 = Array.from(new Set(arr));\n```\n\n* 方法二：两层for循环+splice\n```js\nconst unique1 = arr =\u003e {\n  let len = arr.length;\n  for (let i = 0; i \u003c len; i++) {\n    for (let j = i + 1; j \u003c len; j++) {\n      if (arr[i] === arr[j]) {\n        arr.splice(j, 1);\n        // 每删除一个树，j--保证j的值经过自加后不变。同时，len--，减少循环次数提升性能\n        len--;\n        j--;\n      }\n    }\n  }\n  return arr;\n}\n```\n\n* 方法三：利用indexOf\n```js\nconst unique2 = arr =\u003e {\n  const res = [];\n  for (let i = 0; i \u003c arr.length; i++) {\n    if (res.indexOf(arr[i]) === -1) res.push(arr[i]);\n  }\n  return res;\n}\n```\n\n当然也可以用include、filter，思路大同小异。\n\n* 方法四：利用include\n```js\nconst unique3 = arr =\u003e {\n  const res = [];\n  for (let i = 0; i \u003c arr.length; i++) {\n    if (!res.includes(arr[i])) res.push(arr[i]);\n  }\n  return res;\n}\n```\n\n* 方法五：利用filter\n```js\nconst unique4 = arr =\u003e {\n  return arr.filter((item, index) =\u003e {\n    return arr.indexOf(item) === index;\n  });\n}\n```\n\n* 方法六：利用Map\n```js\nconst unique5 = arr =\u003e {\n  const map = new Map();\n  const res = [];\n  for (let i = 0; i \u003c arr.length; i++) {\n    if (!map.has(arr[i])) {\n      map.set(arr[i], true)\n      res.push(arr[i]);\n    }\n  }\n  return res;\n}\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T14:57:47.000Z",
+    "updateAt":  "2021-07-07T00:12:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  1514,
+    "filterTotalNum":  1907,
+    "prev":  "4af06e53-d9ca-4a28-8067-d4ffc3691827",
+    "next":  "d2396e88-33d5-4374-ba81-b41609a57289"
+}

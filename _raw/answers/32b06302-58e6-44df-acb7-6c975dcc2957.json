@@ -1,0 +1,21 @@
+﻿{
+    "id":  1628,
+    "exerciseKey":  "32b06302-58e6-44df-acb7-6c975dcc2957",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第36题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function async1 () {\n  await async2();\n  console.log(\u0027async1\u0027);\n  return \u0027async1 success\u0027\n}\nasync function async2 () {\n  return new Promise((resolve, reject) =\u003e {\n    console.log(\u0027async2\u0027)\n    reject(\u0027error\u0027)\n  })\n}\nasync1().then(res =\u003e console.log(res))\n```",
+    "options":  null,
+    "explanation":  "```\n\u0027async2\u0027\nUncaught (in promise) error\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:17:31.000Z",
+    "updateAt":  "2022-01-09T23:23:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  1162,
+    "filterTotalNum":  1907,
+    "prev":  "59b71384-0a0a-4d2e-a63a-f4fb75650b60",
+    "next":  "26bf47fe-07e4-4014-b3ea-8a745f70d718"
+}

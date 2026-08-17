@@ -1,0 +1,21 @@
+﻿{
+    "id":  491,
+    "exerciseKey":  "22408f82-1fd7-4d7d-a24d-7bb9cad2aee3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "babel 和 babel ployfill 有什么关系？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 先来理解下 babel 到底是做什么的？\n\n简单来讲，babel解决语法层面的问题。用于将ES6+的高级语法转为ES5。\n\n* babel polyfill 又是做什么的？\n\n如果要解决API层面的问题，需要使用垫片。比如常见的有babel-polyfill、babel-runtime 和 babel-plugin-transform-runtime。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T04:22:08.000Z",
+    "updateAt":  "2021-07-11T14:57:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  1429,
+    "filterTotalNum":  1907,
+    "prev":  "ffbc34ea-c928-4f17-b469-322b3c8be7be",
+    "next":  "918f3f51-70e0-4dc7-8865-558be6abd388"
+}

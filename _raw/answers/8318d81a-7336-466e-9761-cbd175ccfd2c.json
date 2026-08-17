@@ -1,0 +1,21 @@
+﻿{
+    "id":  108,
+    "exerciseKey":  "8318d81a-7336-466e-9761-cbd175ccfd2c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst set = new Set()\n\nset.add(1)\nset.add(\"Lydia\")\nset.add({ name: \"Lydia\" })\n\nfor (let item of set) {\n  console.log(item + 2)\n}\n```",
+    "options":  "{\"options\":[\"3, NaN, NaN\",\"3, 7, NaN\",\"3, Lydia2, [object Object]2\",\"\\\"12\\\", Lydia2, [object Object]2\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "这个JavaScript代码片段创建了一个 Set ，并将三个不同类型的元素添加到其中：数字1，字符串\"Lydia\"和一个包含属性`name`的对象 `{ name: \"Lydia\" }`。然后，使用`for...of`循环遍历Set中的每个元素，并将每个元素的值与2相加后打印出来。\n\n让我们一步一步来看代码：\n\n1. `const set = new Set()`: 创建了一个名为`set`的空Set。\n\n2. `set.add(1)`: 将数字1添加到Set中。\n\n3. `set.add(\"Lydia\")`: 将字符串\"Lydia\"添加到Set中。\n\n4. `set.add({ name: \"Lydia\" })`: 将包含属性`name`的对象 `{ name: \"Lydia\" }` 添加到Set中。\n\n5. `for (let item of set) { ... }`: 这是一个`for...of`循环，用于遍历Set中的每个元素。它将遍历所有三个元素：数字1，字符串\"Lydia\"和对象 `{ name: \"Lydia\" }`。\n\n6. `console.log(item + 2)`: 此行将在循环中打印每个元素（1，\"Lydia\"和 `{ name: \"Lydia\" }`），并在它们的值上加上2。\n\n然而，由于Set中包含不同的数据类型（数字、字符串和对象），`+`运算符在不同类型的元素上的行为也不同：\n\n1. 对于数字1：`1 + 2` 将得到 `3`。\n2. 对于字符串\"Lydia\"：`\"Lydia\" + 2` 将把字符串和数字连接起来，结果是 `\"Lydia2\"`。\n3. 对于对象 `{ name: \"Lydia\" }`：对象没有定义`+`运算符的行为，所以 `\"[object Object]\" + 2` 将被打印。\n\n循环的输出结果将是：\n\n```\n3\nLydia2\n[object Object]2\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-07-20T09:29:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1811,
+    "filterTotalNum":  1907,
+    "prev":  "be757fef-dbff-48f4-b401-d7f04238cc81",
+    "next":  "fe86322b-4990-4f6b-a473-d37a8e3ecb2d"
+}

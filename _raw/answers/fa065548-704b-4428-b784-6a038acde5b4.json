@@ -1,0 +1,21 @@
+﻿{
+    "id":  2921,
+    "exerciseKey":  "fa065548-704b-4428-b784-6a038acde5b4",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "对以下代码说法正确的是？",
+    "desc":  "```js\nlet arr = [1,2,3,4,5];\nlet arr2 = [1, , 3];\n```",
+    "options":  "{\"options\":[\"执行 arr.length = 3，此时数组为 [1,2,3]\",\"执行 arr[10] = 11，此时 arr.length 为 6\",\"执行 delete arr[2]，此时 arr.length 为 4，数组为 [1,2,4,5]\",\"arr2.length 的长度为 2\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "考察的是数组的length属性：\n\n- 设置数组的length值为小于当前值的非负整数n，则任何索引大于或等于n的数组元素都会从数组中被删除\n- 如果给一个索引为i​的数组元素赋值，而i大于或等于数组当前的length，则数组的length属性会被设 置为i+1​\n- 对数组元素使用delete操作符不会修改length属性，使用splice()​会\n- 如果省略数组字面量中的一个值，被省略的元素是不存在的，但它的索引是存在的",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2025-04-07T01:32:30.000Z",
+    "updateAt":  "2025-04-07T01:32:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  280,
+    "filterTotalNum":  1907,
+    "prev":  "630b7016-1eb0-4bc9-b35b-a74aefc74c65",
+    "next":  "96eb9035-e189-4403-a370-eccca4a16345"
+}

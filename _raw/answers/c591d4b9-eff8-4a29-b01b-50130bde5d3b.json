@@ -1,0 +1,21 @@
+﻿{
+    "id":  71,
+    "exerciseKey":  "c591d4b9-eff8-4a29-b01b-50130bde5d3b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "使用哪个构造函数可以成功继承 Dog 类?",
+    "desc":  "```javascript\nclass Dog {\n  constructor(name) {\n    this.name = name;\n  }\n};\n\nclass Labrador extends Dog {\n  // 1 \n  constructor(name, size) {\n    this.size = size;\n  }\n  // 2\n  constructor(name, size) {\n    super(name);\n    this.size = size;\n  }\n  // 3\n  constructor(size) {\n    super(name);\n    this.size = size;\n  }\n  // 4 \n  constructor(name, size) {\n    this.name = name;\n    this.size = size;\n  }\n\n};\n```",
+    "options":  "{\"options\":[\"1\",\"2\",\"3\",\"4\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "在子类中，在调用`super`之前不能访问到`this`关键字。 如果这样做，它将抛出一个`ReferenceError`：1和4将引发一个引用错误。\n使用`super`关键字，需要用给定的参数来调用父类的构造函数。 父类的构造函数接收`name`参数，因此我们需要将`name`传递给`super`。\n`Labrador`类接收两个参数，`name`参数是由于它继承了`Dog`，`size`作为`Labrador`类的额外属性，它们都需要传递给`Labrador`的构造函数，因此使用构造函数2正确完成。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2024-08-03T21:05:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1848,
+    "filterTotalNum":  1907,
+    "prev":  "10cbc287-0f93-4fc0-8dde-a57ad1ec9208",
+    "next":  "30ae1cd5-9a7f-409b-9839-181f42fa6a15"
+}

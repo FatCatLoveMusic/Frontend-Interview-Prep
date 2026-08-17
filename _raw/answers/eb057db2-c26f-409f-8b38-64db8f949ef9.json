@@ -1,0 +1,21 @@
+﻿{
+    "id":  2137,
+    "exerciseKey":  "eb057db2-c26f-409f-8b38-64db8f949ef9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请使用 css 实现卡片翻转的动画",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "可以使用 **3D 变换（transform: rotateY）** + **过渡动画（transition）**实现。\n\n下面的例子，可以通过 hover 实现控制水平翻转：\n\n```html\n\u003cdiv class=\"card\"\u003e\n  \u003cdiv class=\"card-inner\"\u003e\n    \u003cdiv class=\"card-front\"\u003eFront\u003c/div\u003e\n    \u003cdiv class=\"card-back\"\u003eBack\u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n```\n\n```css\n.card {\n  width: 200px;\n  height: 300px;\n  perspective: 1000px; /* 创建 3D 视角 */\n}\n\n.card-inner {\n  width: 100%;\n  height: 100%;\n  transition: transform 0.6s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n\n/* 触发翻转效果 */\n.card:hover .card-inner {\n  transform: rotateY(180deg);\n}\n\n.card-front,\n.card-back {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  backface-visibility: hidden;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 24px;\n}\n\n.card-front {\n  background: #fff;\n  color: #000;\n}\n\n.card-back {\n  background: #333;\n  color: #fff;\n  transform: rotateY(180deg);\n}\n```\n\n如果需要 **上下翻转**，只需将 `rotateY` 改为 `rotateX` 即可。",
+    "pivot":  "- 使用 `perspective` 实现 3D 效果  \n- `card-inner` 设置 `transform-style: preserve-3d` 和 `transition`  \n- 正反两面通过 `backface-visibility: hidden` 隐藏背面  \n- 背面需要额外 `rotateY(180deg)` 对齐",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:09:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  688,
+    "filterTotalNum":  1907,
+    "prev":  "6f4723ca-870c-4d43-b461-5dcdcec428af",
+    "next":  "b6c3496a-d62e-4b85-a8fd-b56ce74911cf"
+}

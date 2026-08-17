@@ -1,0 +1,21 @@
+﻿{
+    "id":  2405,
+    "exerciseKey":  "9f306b9d-fac9-4355-8be9-8558150e4733",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 中，怎么给 children 添加额外的属性？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 React 中，`children` 是一个特殊的 prop，用于传递子组件或元素。虽然直接给 `children` 添加属性是不可能的，但可以使用一些方法来为子组件传递额外的属性。\n\n### **方法一：使用 React.cloneElement**\n\n`React.cloneElement` 是 React 提供的一个 API，用于克隆一个元素并添加额外的属性。这种方法适用于在渲染过程中动态地为 `children` 添加属性。\n\n**示例**：\n\n```javascript\nimport React from \u0027react\u0027;\n\nfunction ParentComponent({ children }) {\n  // 为每个子元素添加额外的属性\n  const childrenWithProps = React.Children.map(children, child =\u003e\n    React.cloneElement(child, { extraProp: \u0027value\u0027 })\n  );\n\n  return \u003cdiv\u003e{childrenWithProps}\u003c/div\u003e;\n}\n\nfunction ChildComponent(props) {\n  return \u003cdiv\u003e{props.extraProp}\u003c/div\u003e;\n}\n\n// 使用示例\nexport default function App() {\n  return (\n    \u003cParentComponent\u003e\n      \u003cChildComponent /\u003e\n      \u003cChildComponent /\u003e\n    \u003c/ParentComponent\u003e\n  );\n}\n```\n\n**说明**：\n- `React.Children.map` 遍历 `children` 并应用 `React.cloneElement`。\n- `React.cloneElement` 克隆每个子元素，并添加 `extraProp` 属性。\n\n### **方法二：使用 Context API**\n\n另一种方法是使用 React 的 Context API 传递额外的属性。这种方法适用于全局传递数据或配置，尤其是当有多个嵌套组件时。\n\n**示例**：\n\n```javascript\nimport React, { createContext, useContext } from \u0027react\u0027;\n\n// 创建一个 Context\nconst ExtraPropsContext = createContext({ extraProp: \u0027default\u0027 });\n\nfunction ParentComponent({ children }) {\n  const extraProps = { extraProp: \u0027value\u0027 };\n\n  return (\n    \u003cExtraPropsContext.Provider value={extraProps}\u003e\n      {children}\n    \u003c/ExtraPropsContext.Provider\u003e\n  );\n}\n\nfunction ChildComponent() {\n  const { extraProp } = useContext(ExtraPropsContext);\n\n  return \u003cdiv\u003e{extraProp}\u003c/div\u003e;\n}\n\n// 使用示例\nexport default function App() {\n  return (\n    \u003cParentComponent\u003e\n      \u003cChildComponent /\u003e\n      \u003cChildComponent /\u003e\n    \u003c/ParentComponent\u003e\n  );\n}\n```\n\n**说明**：\n- 使用 `createContext` 和 `Provider` 传递额外的属性。\n- 使用 `useContext` 在子组件中获取这些属性。\n\n### **方法三：通过 Props 传递**\n\n直接将额外的属性作为普通的 prop 传递给子组件，这种方法适用于显式传递和少量的属性。\n\n**示例**：\n\n```javascript\nimport React from \u0027react\u0027;\n\nfunction ParentComponent({ children }) {\n  const extraProp = \u0027value\u0027;\n\n  return (\n    \u003cdiv\u003e\n      {React.Children.map(children, child =\u003e\n        React.isValidElement(child) ? React.cloneElement(child, { extraProp }) : child\n      )}\n    \u003c/div\u003e\n  );\n}\n\nfunction ChildComponent(props) {\n  return \u003cdiv\u003e{props.extraProp}\u003c/div\u003e;\n}\n\n// 使用示例\nexport default function App() {\n  return (\n    \u003cParentComponent\u003e\n      \u003cChildComponent /\u003e\n      \u003cChildComponent /\u003e\n    \u003c/ParentComponent\u003e\n  );\n}\n```\n\n**说明**：\n- 在父组件中为子组件添加额外的 prop。",
+    "pivot":  "- **React.cloneElement**：用于在渲染过程中动态地为 `children` 添加属性。\n- **Context API**：用于全局传递数据或配置，适合多个嵌套组件。\n- **通过 Props 传递**：显式地将额外的属性作为 prop 传递给子组件。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-04T01:23:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  545,
+    "filterTotalNum":  1907,
+    "prev":  "467f7aeb-e452-421e-9404-da26f158adee",
+    "next":  "a38952da-3035-4553-95f6-1e2688ffeadc"
+}

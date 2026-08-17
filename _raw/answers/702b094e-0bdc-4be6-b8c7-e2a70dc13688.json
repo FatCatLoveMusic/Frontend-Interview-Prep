@@ -1,0 +1,21 @@
+﻿{
+    "id":  301,
+    "exerciseKey":  "702b094e-0bdc-4be6-b8c7-e2a70dc13688",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React中的类组件和函数组件之间有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n## 类组件（Class components）\n\n* 无论是使用函数或是类来声明一个组件，它决不能修改它自己的 props。\n\t* 所有 React 组件都必须是纯函数，并禁止修改其自身 props。\n* React是单项数据流，父组件改变了属性，那么子组件视图会更新。\n\t* 属性 props是外界传递过来的，状态 state是组件本身的，状态可以在组件中任意修改\n\t* 组件的属性和状态改变都会更新视图。\n    \n```react.js\nclass Welcome extends React.Component {\n  render() {\n    return (\n      \u003ch1\u003eWelcome { this.props.name }\u003c/h1\u003e\n    );\n  }\n}\nReactDOM.render(\u003cWelcome name=\u0027react\u0027 /\u003e, document.getElementById(\u0027root\u0027));\n```\n\n## 函数组件（functional component）\n\n函数组件接收一个单一的 props 对象并返回了一个React元素\n\n```react.js\nfunction Welcome (props) {\n  return \u003ch1\u003eWelcome {props.name}\u003c/h1\u003e\n}\nReactDOM.render(\u003cWelcome name=\u0027react\u0027 /\u003e, document.getElementById(\u0027root\u0027));\n```\n\n## 区别\n\n* 语法上\n\n两者最明显的不同就是在语法上，函数组件是一个纯函数，它接收一个props对象返回一个react元素。而类组件需要去继承React.Component并且创建render函数返回react元素，这将会要更多的代码，虽然它们实现的效果相同。\n\n* 状态管理\n\n因为函数组件是一个纯函数，你不能在组件中使用setState()，这也是为什么把函数组件称作为无状态组件。\n\n如果你需要在你的组件中使用state，你可以选择创建一个类组件或者将state提升到你的父组件中，然后通过props对象传递到子组件。\n\n* 生命周期钩子\n\n你不能在函数组件中使用生命周期钩子，原因和不能使用state一样，所有的生命周期钩子都来自于继承的React.Component中。\n\n因此，如果你想使用生命周期钩子，那么需要使用类组件。\n\n**注意**：在react16.8版本中添加了hooks，使得我们可以在函数组件中使用useState钩子去管理state，使用useEffect钩子去使用生命周期函数。因此，2、3两点就不是它们的区别点。从这个改版中我们可以看出作者更加看重函数组件，而且react团队曾提及到在react之后的版本将会对函数组件的性能方面进行提升。\n\n* 调用方式\n\n如果SayHi是一个函数，React需要调用它：\n\n```react.js\n// 你的代码 \nfunction SayHi() { \n    return \u003cp\u003eHello, React\u003c/p\u003e \n} \n// React内部 \nconst result = SayHi(props) // » \u003cp\u003eHello, React\u003c/p\u003e\n```\n\n如果SayHi是一个类，React需要先用new操作符将其实例化，然后调用刚才生成实例的render方法：\n\n```react.js\n// 你的代码 \nclass SayHi extends React.Component { \n    render() { \n        return \u003cp\u003eHello, React\u003c/p\u003e \n    } \n} \n// React内部 \nconst instance = new SayHi(props) // » SayHi {} \nconst result = instance.render() // » \u003cp\u003eHello, React\u003c/p\u003e\n```\n\n可想而知，函数组件重新渲染将重新调用组件方法返回新的react元素，类组件重新渲染将new一个新的组件实例，然后调用render类方法返回react元素，这也说明为什么类组件中this是可变的。\n\n\n\n",
+    "pivot":  "- **类组件**：使用 ES6 类定义，具有状态和生命周期方法，适用于需要管理复杂状态和副作用的场景。\n- **函数组件**：使用函数定义，通过 Hooks 管理状态和副作用，语法简洁，推荐用于大多数组件。\n\n在 React 生态中，函数组件与 Hooks 已成为主流的编写组件方式，因其简洁性和灵活性被广泛推荐和使用。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:42:25.000Z",
+    "updateAt":  "2024-08-10T17:04:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  1619,
+    "filterTotalNum":  1907,
+    "prev":  "dcb3eab5-6a15-43e1-90bb-b6bb2a17697c",
+    "next":  "6db4a7aa-877e-4ec6-966f-3ada571e2fbf"
+}

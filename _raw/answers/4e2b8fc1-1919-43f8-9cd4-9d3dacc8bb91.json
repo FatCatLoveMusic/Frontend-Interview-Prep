@@ -1,0 +1,21 @@
+﻿{
+    "id":  338,
+    "exerciseKey":  "4e2b8fc1-1919-43f8-9cd4-9d3dacc8bb91",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么React的 VM 可以提高性能？\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "因为 VM 并不是真实的操作 DOM，通过 diff 算法可以避免一些不变要的 DOM 操作，从而提高了性能。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:14:25.000Z",
+    "updateAt":  "2021-07-04T21:30:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1582,
+    "filterTotalNum":  1907,
+    "prev":  "99fc6f13-b239-4697-8b20-5fdb03702be6",
+    "next":  "b19c5c77-658d-4004-a9c5-028fd81b3a9e"
+}

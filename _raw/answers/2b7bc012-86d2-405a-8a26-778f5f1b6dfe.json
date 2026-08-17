@@ -1,0 +1,21 @@
+﻿{
+    "id":  1620,
+    "exerciseKey":  "2b7bc012-86d2-405a-8a26-778f5f1b6dfe",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第28题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function async1() {\n  console.log(\"async1 start\");\n  await async2();\n  console.log(\"async1 end\");\n}\nasync function async2() {\n  console.log(\"async2\");\n}\nasync1();\nconsole.log(\u0027start\u0027)\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n* 首先一进来是创建了两个函数的，我们先不看函数的创建位置，而是看它的调用位置\n* 发现async1函数被调用了，然后去看看调用的内容\n* 执行函数中的同步代码async1 start，之后碰到了await，它会阻塞async1后面代码的执行，因此会先去执行async2中的同步代码async2，然后跳出async1\n* 跳出async1函数后，执行同步代码start\n* 在一轮宏任务全部执行完之后，再来执行刚刚await后面的内容async1 end。\n\n在这里，你可以理解为「紧跟着await后面的语句相当于放到了new Promise中，下一行及之后的语句相当于放在Promise.then中」。\n\n## 结果\n```\n\u0027async1 start\u0027\n\u0027async2\u0027\n\u0027start\u0027\n\u0027async1 end\u0027\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:06:40.000Z",
+    "updateAt":  "2024-07-20T11:01:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1170,
+    "filterTotalNum":  1907,
+    "prev":  "96feb2bc-cdd7-4b16-be8a-e9d5af64a27b",
+    "next":  "44b5f8c5-1d8c-4294-b668-7f7f096cd44c"
+}

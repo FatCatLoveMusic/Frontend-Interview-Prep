@@ -1,0 +1,21 @@
+﻿{
+    "id":  1602,
+    "exerciseKey":  "fa6c1ad8-274c-4830-aee9-6799d6a7fdc1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第10题】下面代码的输出是什么？",
+    "desc":  "```js\nPromise.resolve().then(() =\u003e {\n  console.log(\u0027promise1\u0027);\n  const timer2 = setTimeout(() =\u003e {\n    console.log(\u0027timer2\u0027)\n  }, 0)\n});\nconst timer1 = setTimeout(() =\u003e {\n  console.log(\u0027timer1\u0027)\n  Promise.resolve().then(() =\u003e {\n    console.log(\u0027promise2\u0027)\n  })\n}, 0)\nconsole.log(\u0027start\u0027);\n\n```",
+    "options":  null,
+    "explanation":  "## 过程分析\n\n* 刚开始整个脚本作为第一次宏任务来执行，我们将它标记为宏1，从上至下执行\n* 遇到Promise.resolve().then这个微任务，将then中的内容加入第一次的微任务队列标记为微1\n* 遇到定时器timer1，将它加入下一次宏任务的延迟列表，标记为宏2，等待执行(先不管里面是什么内容)\n* 执行宏1中的同步代码start\n* 第一次宏任务(宏1)执行完毕，检查第一次的微任务队列(微1)，发现有一个promise.then这个微任务需要执行\n* 执行打印出微1中同步代码promise1，然后发现定时器timer2，将它加入宏2的后面，标记为宏3\n* 第一次微任务队列(微1)执行完毕，执行第二次宏任务(宏2)，首先执行同步代码timer1\n* 然后遇到了promise2这个微任务，将它加入此次循环的微任务队列，标记为微2\n* 宏2中没有同步代码可执行了，查找本次循环的微任务队列(微2)，发现了promise2，执行它\n* 第二轮执行完毕，执行宏3，打印出timer2\n\n## 结果\n\n```\n\u0027start\u0027\n\u0027promise1\u0027\n\u0027timer1\u0027\n\u0027promise2\u0027\n\u0027timer2\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:37:00.000Z",
+    "updateAt":  "2024-07-20T11:01:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  1188,
+    "filterTotalNum":  1907,
+    "prev":  "d9a36bb7-972c-4afb-abb6-fcbaa30612cf",
+    "next":  "a2c0b41f-1a7e-478b-9e0f-eba7e31a0b2c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2436,
+    "exerciseKey":  "f672cd2e-5419-4157-8f71-b2ce317c3b9c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "package.json 里面 sideEffects 属性的作用是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`package.json` 中的 `sideEffects` 属性主要用于优化 JavaScript 打包工具（如 Webpack）的 tree shaking 过程。`tree shaking` 是一种优化技术，它会移除未使用的代码，以减小打包后的文件体积。\n\n### `sideEffects` 属性的作用\n\n- **标记模块是否有副作用**：`sideEffects` 属性告诉打包工具，模块中的代码是否有副作用（side effects）。副作用指的是在模块被导入时，会影响全局状态或其他模块的情况，例如修改全局变量、运行脚本、导入 CSS 文件等。\n\n- **优化代码打包**：\n  - **`\"sideEffects\": false`**：表示该包中的所有模块都没有副作用，意味着如果某个模块没有被引用，打包工具可以安全地删除它。这种情况下，打包工具会更积极地进行 tree shaking，从而移除未使用的代码。\n  - **`\"sideEffects\": true`**：表示该包中的所有模块都有副作用，打包工具不会移除未使用的模块。\n  - **数组形式**：你可以使用一个数组来指定哪些文件有副作用。例如，`\"sideEffects\": [\"*.css\", \"*.scss\"]` 表示 `.css` 和 `.scss` 文件有副作用，打包工具在进行 tree shaking 时不会移除它们，而对于其他文件，打包工具会根据导入情况决定是否移除。\n\n### 示例\n\n```json\n{\n  \"name\": \"my-package\",\n  \"version\": \"1.0.0\",\n  \"sideEffects\": false\n}\n```\n\n- 在上面的例子中，`sideEffects: false` 表示 `my-package` 中的所有模块都没有副作用，因此未被使用的模块将会被移除。\n\n### 使用场景\n\n- **无副作用的库**：例如纯函数库（如 lodash），它们没有副作用，适合使用 `sideEffects: false`。\n- **有副作用的模块**：例如导入 CSS、Polyfill、或一些修改全局对象的代码，可以通过 `\"sideEffects\": [\"*.css\"]` 这样的配置指定副作用文件。  ",
+    "pivot":  "- **优化打包**：通过准确配置 `sideEffects`，可以显著减少打包后的代码体积，提高加载性能。\n- **灵活性**：提供了细粒度控制，以便开发者根据模块的副作用情况进行配置。\n\n在配置 `sideEffects` 时，需要谨慎考虑模块的行为，以确保打包工具不会误删有用的代码。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-28T01:18:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  529,
+    "filterTotalNum":  1907,
+    "prev":  "a5cf7265-2943-4222-a99d-e6b79b310d86",
+    "next":  "3cadb842-10f6-4c2f-887d-ae4b6cb24aea"
+}

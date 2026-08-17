@@ -1,0 +1,21 @@
+﻿{
+    "id":  472,
+    "exerciseKey":  "614de7f3-ce19-4359-aeb5-e63f64c8b48e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是TypeScript映射文件？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* TypeScript Map文件是一个源映射文件，其中包含有关我们原始文件的信息。\n* .map文件是源映射文件，可让工具在发出的JavaScript代码和创建它的TypeScript源文件之间进行映射。\n* 许多调试器可以使用这些文件，因此我们可以调试TypeScript文件而不是JavaScript文件。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-08T15:09:12.000Z",
+    "updateAt":  "2021-07-11T11:20:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  1448,
+    "filterTotalNum":  1907,
+    "prev":  "6f210355-da14-479e-86bc-7602839e7f42",
+    "next":  "01011a04-509e-4f6f-89d5-aa348d76ae2b"
+}

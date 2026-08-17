@@ -1,0 +1,21 @@
+﻿{
+    "id":  2331,
+    "exerciseKey":  "72fbff08-b2d4-4e13-bada-3b7b01f9041a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 中，构建组件的方式有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 React 中，构建组件的方式主要有以下几种：\n\n### **1. 函数组件 (Function Components)**\n\n函数组件是最常用的组件形式，使用 JavaScript 函数来定义。自 React Hooks 引入以来，函数组件得到了广泛使用。\n\n```jsx\nimport React from \u0027react\u0027;\n\nconst MyComponent = () =\u003e {\n  return \u003cdiv\u003eHello, Function Component!\u003c/div\u003e;\n};\n\nexport default MyComponent;\n```\n\n### **2. 类组件 (Class Components)**\n\n类组件是通过 ES6 的类语法定义的，适合需要使用生命周期方法的场景。虽然现在推荐使用函数组件和 Hooks，但类组件依然在一些老旧代码中存在。\n\n```jsx\nimport React, { Component } from \u0027react\u0027;\n\nclass MyClassComponent extends Component {\n  render() {\n    return \u003cdiv\u003eHello, Class Component!\u003c/div\u003e;\n  }\n}\n\nexport default MyClassComponent;\n```\n\n### **3. 高阶组件 (Higher-Order Components, HOCs)**\n\n高阶组件是接受一个组件作为参数并返回一个新的组件的函数。这种模式用于代码复用和逻辑封装。\n\n```jsx\nimport React from \u0027react\u0027;\n\nconst withExtraInfo = (WrappedComponent) =\u003e {\n  return (props) =\u003e {\n    return (\n      \u003cdiv\u003e\n        \u003cWrappedComponent {...props} /\u003e\n        \u003cp\u003eAdditional Info\u003c/p\u003e\n      \u003c/div\u003e\n    );\n  };\n};\n\nexport default withExtraInfo;\n```\n\n### **4. 组合组件 (Composition Components)**\n\n通过组合多个小组件来构建复杂组件。使用组合的方式可以提高组件的复用性和可维护性。\n\n```jsx\nconst ParentComponent = () =\u003e (\n  \u003cdiv\u003e\n    \u003cChildComponentA /\u003e\n    \u003cChildComponentB /\u003e\n  \u003c/div\u003e\n);\n```\n\n### **5. Render Props**\n\n通过将一个函数作为 props 传递给组件，允许调用该函数来控制组件的渲染。这种模式用于实现复杂的逻辑和状态共享。\n\n```jsx\nconst DataProvider = ({ render }) =\u003e {\n  const data = { /* some data */ };\n  return render(data);\n};\n\n// 使用\n\u003cDataProvider render={(data) =\u003e \u003cMyComponent data={data} /\u003e} /\u003e\n```\n\n### **6. 自定义 Hook**\n\n虽然不直接构建组件，但自定义 Hook 是一种封装逻辑和状态的方式，可以在函数组件中复用。\n\n```jsx\nimport { useState, useEffect } from \u0027react\u0027;\n\nconst useFetchData = (url) =\u003e {\n  const [data, setData] = useState(null);\n\n  useEffect(() =\u003e {\n    fetch(url)\n      .then((response) =\u003e response.json())\n      .then((data) =\u003e setData(data));\n  }, [url]);\n\n  return data;\n};\n```",
+    "pivot":  "在 React 中，组件可以通过函数组件、类组件、高阶组件、组合组件、Render Props 和自定义 Hook 等多种方式构建。选择合适的组件构建方式，可以提高代码的可读性、复用性和维护性。函数组件与 Hooks 是现代 React 推荐的主要开发方式。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-19T01:24:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  585,
+    "filterTotalNum":  1907,
+    "prev":  "41d27d78-a7fd-4c87-a1a4-99a96d7dedb9",
+    "next":  "3be464fd-88db-4533-b10b-c8accc872e50"
+}

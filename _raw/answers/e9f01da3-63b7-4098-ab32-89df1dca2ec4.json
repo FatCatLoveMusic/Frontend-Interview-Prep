@@ -1,0 +1,21 @@
+﻿{
+    "id":  540,
+    "exerciseKey":  "e9f01da3-63b7-4098-ab32-89df1dca2ec4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  " 反转链表",
+    "desc":  "给你单链表的头节点 `head` ，请你反转链表，并返回反转后的链表。\n\n示例 1：\n\n```\n输入：head = [1,2,3,4,5]\n输出：[5,4,3,2,1]\n```\n\n示例 2：\n```\n输入：head = [1,2]\n输出：[2,1]\n```\n\n示例 3：\n\n```\n输入：head = []\n输出：[]\n```\n\n提示：\n\n* 链表中节点的数目范围是 [0, 5000]\n* -5000 \u003c= Node.val \u003c= 5000\n \n```\n\n/**\n * Definition for singly-linked list.\n * function ListNode(val, next) {\n *     this.val = (val===undefined ? 0 : val)\n *     this.next = (next===undefined ? null : next)\n * }\n */\n/**\n * @param {ListNode} head\n * @return {ListNode}\n */\nvar reverseList = function(head) {\n\n};",
+    "options":  null,
+    "explanation":  "```javascript\n/**\n * Definition for singly-linked list.\n * function ListNode(val) {\n *     this.val = val;\n *     this.next = null;\n * }\n */\n/**\n * @param {ListNode} head\n * @return {ListNode}\n */\nvar reverseList = function(head) {\n    if (head == null || head.next == null) return head;\n    let last = reverseList(head.next);\n    head.next.next = head;\n    head.next = null;\n    return last;\n};\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-19T14:26:43.000Z",
+    "updateAt":  "2021-07-25T10:32:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1380,
+    "filterTotalNum":  1907,
+    "prev":  "4c911fbf-c243-476a-ad8d-09a7868b304e",
+    "next":  "8ee26123-8081-423b-bb77-b45b500facbf"
+}

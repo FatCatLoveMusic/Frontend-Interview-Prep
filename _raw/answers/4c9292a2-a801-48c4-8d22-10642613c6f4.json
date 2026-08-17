@@ -1,0 +1,21 @@
+﻿{
+    "id":  421,
+    "exerciseKey":  "4c9292a2-a801-48c4-8d22-10642613c6f4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现JSONP",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nconst jsonp = ({ url, params, callbackName }) =\u003e {\n  const generateUrl = () =\u003e {\n    let dataSrc = \u0027\u0027;\n    for (let key in params) {\n      if (Object.prototype.hasOwnProperty.call(params, key)) {\n        dataSrc += `${key}=${params[key]}\u0026`;\n      }\n    }\n    dataSrc += `callback=${callbackName}`;\n    return `${url}?${dataSrc}`;\n  }\n  return new Promise((resolve, reject) =\u003e {\n    const scriptEle = document.createElement(\u0027script\u0027);\n    scriptEle.src = generateUrl();\n    document.body.appendChild(scriptEle);\n    window[callbackName] = data =\u003e {\n      resolve(data);\n      document.removeChild(scriptEle);\n    }\n  })\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:10:06.000Z",
+    "updateAt":  "2021-07-07T00:13:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  1499,
+    "filterTotalNum":  1907,
+    "prev":  "19448048-9bd0-46ba-9cf4-3946003a83df",
+    "next":  "f8787bfb-ca4c-4b0f-98d9-4ad5e0a3774d"
+}

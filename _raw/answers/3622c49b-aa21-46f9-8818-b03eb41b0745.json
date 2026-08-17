@@ -1,0 +1,21 @@
+﻿{
+    "id":  2101,
+    "exerciseKey":  "3622c49b-aa21-46f9-8818-b03eb41b0745",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说一下 vm.$set 原理\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`vm.$set` 是 Vue 中用于在对象上设置属性并确保新属性是响应式的方法。其实现原理可以简化为以下几个步骤：\n\n1. **处理数组情况**：\n   如果目标是数组，并且键是有效的数组索引，使用 `splice` 方法添加新元素以保持响应性。\n\n2. **处理已有属性**：\n   如果属性已经存在于对象中，直接赋值。\n\n3. **处理新属性**：\n   如果目标对象不是响应式对象，直接赋值新属性。\n\n4. **添加响应式新属性**：\n   如果目标对象是响应式的，通过 `defineReactive` 方法将新属性定义为响应式。这包括定义 getter 和 setter。\n\n5. **通知依赖更新**：\n   调用 `ob.dep.notify()` 通知所有依赖于该对象的 watchers 执行更新。\n\n### `defineReactive` 简要实现\n\n`defineReactive` 方法定义对象属性为响应式，主要步骤：\n\n- **依赖管理**：\n  创建一个 `Dep` 实例管理依赖。\n- **递归观察**：\n  使用 `observe` 递归地将属性值转化为响应式。\n- **定义 getter 和 setter**：\n  使用 `Object.defineProperty` 定义属性的 getter 和 setter。在 getter 中收集依赖，在 setter 中通知依赖更新。\n\n### 总结\n\n`vm.$set` 使得在运行时动态添加的新属性能够响应数据变化，从而保持 Vue 的响应式特性。",
+    "pivot":  "`vm.$set` 是 Vue.js 提供的一个方法，用于向 Vue 实例中添加新的响应式属性。其原理如下：\n\n1. **响应式系统**：Vue 的响应式系统是通过 `Object.defineProperty`（Vue 2.x）或 `Proxy`（Vue 3.x）来实现的。它使得对象的属性变化能够被 Vue 监控，从而自动更新视图。\n\n2. **动态添加属性**：在 Vue 中，直接向一个已经创建的对象中添加新属性时，这些新属性不会自动成为响应式的。`vm.$set` 通过 `Object.defineProperty` 将新属性添加到对象中，并确保这个新属性也是响应式的。\n\n3. **更新视图**：`vm.$set` 不仅添加了新的响应式属性，还会触发 Vue 的视图更新机制，确保视图与数据保持同步。\n\n`vm.$set` 通过以下步骤工作：\n1. 使用 `Object.defineProperty` 将 `newProperty` 添加到 `someObject` 中，并将其设置为响应式。\n2. 触发视图的更新，确保新属性的变化能够反映在界面上。\n\n在 Vue 3.x 中，`vm.$set` 不再使用，取而代之的是 `reactive` 和 `ref` API 来处理响应式数据。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-06-06T01:33:39.000Z",
+    "updateAt":  "2024-08-10T19:09:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  713,
+    "filterTotalNum":  1907,
+    "prev":  "b5d40614-89d3-42c7-823a-2102ef8006b1",
+    "next":  "eb80a3e8-2384-4a8b-ad8f-e3ea159a9317"
+}

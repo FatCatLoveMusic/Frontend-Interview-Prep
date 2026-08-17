@@ -1,0 +1,21 @@
+﻿{
+    "id":  3215,
+    "exerciseKey":  "d33aadbf-d49d-439e-9cde-bd64b9349c89",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "MCP 与 Function Calling 的关系是什么？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "MCP 和 Function Calling 不是替代关系，而是上下层协作关系。\n\nFunction Calling 更像是模型侧的“调用工具能力”：开发者把函数名、参数 schema、描述交给模型，模型在需要时输出结构化调用意图，比如调用 `searchDocs({ keyword })`。它重点解决的是：模型如何用结构化 JSON 表达“要调用哪个工具、传什么参数”。\n\nMCP 更像是应用侧和工具侧之间的标准协议。它不只描述一个函数，还定义了工具如何被发现、如何暴露能力、如何读取资源、如何提供 prompt、客户端如何连接 MCP Server、如何统一调用外部系统。也就是说，MCP 解决的是“AI 应用如何以标准方式接入各种上下文和工具”。\n\n实际落地时，常见链路是：\n\n```text\nLLM\n  ↓ Function Calling / Tool Calling\nAI Host / Agent\n  ↓ MCP Client\nMCP Server\n  ↓\n外部系统、数据库、文件、浏览器、业务服务\n```\n\n也就是说，MCP Server 暴露的 `tools` 可以被 Host 转换成模型可理解的 Function Calling schema；模型决定调用某个工具后，Host 再通过 MCP 协议真正调用对应 MCP Server，并把结果返回给模型继续推理。\n\n所以可以理解为：Function Calling 是模型和编排层之间的工具调用表达方式；MCP 是编排层和工具提供方之间的标准连接协议。Function Calling 偏“模型怎么发起调用”，MCP 偏“工具怎么标准化接入”。",
+    "pivot":  "- Function Calling 是模型侧能力，负责生成结构化工具调用。\n- MCP 是工具接入协议，负责标准化连接工具、资源和上下文。\n- MCP 可以把工具暴露给 Host，Host 再映射成 Function Calling 给模型使用。\n- 二者不是竞争关系，MCP 通常运行在 Function Calling 的下游。\n- Function Calling 解决“怎么调用”，MCP 解决“工具从哪里来、如何统一接入”。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:59:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  73,
+    "filterTotalNum":  1907,
+    "prev":  "cd88942e-62a5-4ff5-9392-cd3f39ceaf29",
+    "next":  "f224392f-4821-42b0-b143-30fc5a07bff9"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1540,
+    "exerciseKey":  "01c20a11-d5c8-4e32-bbb2-a8d3a5da1961",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何将 unknown 类型指定为一个更具体的类型？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 使用 typeof 进行类型判断（这些缩小类型范围的技术都有助于TS基于控制流程下的类型分析）\n```ts\n  function unknownToString(value: unknown): string {\n    if (typeof value === \"string\") {\n     return value;\n    }\n  \n    return String(value);\n  }\n```\n\n* 对 unknown 类型使用类型断言\n\n要强制编译器信任类型为 unknown 的值为给定类型，则可以使用类型断言：\n\n```ts\n  const value: unknown = \"Hello World\";\n  const foo: string = value; // Error\n  const bar: string = value as string; // OK\n```\n\n断言错了时语法能通过检测，但是运行的时候就会报错了！\n\n```ts\n  const value: unknown = \"Hello World\";\n\n  const bar: number = value as number; // runtime Error\n```",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，可以将`unknown`类型指定为一个更具体的类型，通过类型断言（Type Assertion）或类型保护（Type Guard）来实现。\n\n1. **类型断言**：\n\n   ```typescript\n   let value: unknown;\n   if (typeof value === \u0027string\u0027) {\n     value = \u0027hello\u0027;\n   }\n   ```\n\n2. **类型保护**：\n\n   ```typescript\n   let value: unknown;\n   if (typeof value === \u0027string\u0027) {\n     value = \u0027hello\u0027;\n   } else if (typeof value === \u0027number\u0027) {\n     value = 42;\n   }\n   ```\n\n**考察要点**：\n\n1. **类型断言**：理解如何使用类型断言将`unknown`类型指定为一个更具体的类型。\n2. **类型保护**：理解如何使用类型保护来安全地处理`unknown`类型。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-11-17T11:05:58.000Z",
+    "updateAt":  "2024-08-10T17:05:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1249,
+    "filterTotalNum":  1907,
+    "prev":  "cdeec2cc-5772-4c63-b7f0-34f864ea886d",
+    "next":  "ae4d3995-6e26-443a-9f42-a07e594a9bff"
+}

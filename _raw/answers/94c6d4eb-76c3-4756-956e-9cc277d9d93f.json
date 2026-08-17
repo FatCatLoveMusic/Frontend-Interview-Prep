@@ -1,0 +1,21 @@
+﻿{
+    "id":  1801,
+    "exerciseKey":  "94c6d4eb-76c3-4756-956e-9cc277d9d93f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "字符串相加",
+    "desc":  "给定两个字符串形式的非负整数 `num1` 和`num2` ，计算它们的和并同样以字符串形式返回。\n\n你不能使用任何內建的用于处理大整数的库（比如 `BigInteger`）， 也不能直接将输入的字符串转换为整数形式。\n\n**示例 1：**\n\n\n**输入：** num1 = \"11\", num2 = \"123\"\n\n**输出：** \"134\"\n\n**示例 2：**\n\n**输入：** num1 = \"456\", num2 = \"77\"\n\n**输出：** \"533\"\n\n**示例 3：**\n\n**输入：** num1 = \"0\", num2 = \"0\"\n\n**输出：** \"0\"\n\n**提示：**\n\n* `1 \u003c= num1.length, num2.length \u003c= 104`\n* `num1` 和`num2` 都只包含数字 `0-9`\n* `num1` 和`num2` 都不包含任何前导零\n\n```js\n/**\n * @param {string} num1\n * @param {string} num2\n * @return {string}\n */\nvar addStrings = function(num1, num2) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "**思路与算法**\n\n本题我们只需要对两个大整数模拟「竖式加法」的过程。竖式加法就是我们平常学习生活中常用的对两个整数相加的方法，回想一下我们在纸上对两个整数相加的操作，是不是如下图将相同数位对齐，从低到高逐位相加，如果当前位和超过 $10$，则向高位进一位？因此我们只要将这个过程用代码写出来即可。\n\n![fig1](https://static.ecool.fun//article/eb044344-8910-4cc7-918a-28e8dab4061d.png)\n\n具体实现也不复杂，我们定义两个指针 `i` 和 `j` 分别指向 `num1` 和 `num2` 的末尾，即最低位，同时定义一个变量 `add` 维护当前是否有进位，然后从末尾到开头逐位相加即可。你可能会想两个数字位数不同怎么处理，这里我们统一在指针当前下标处于负数的时候返回 `0`，等价于 **对位数较短的数字进行了补零操作**，这样就可以除去两个数字位数不同情况的处理，具体可以看下面的代码。\n\n```JavaScript\nvar addStrings = function(num1, num2) {\n    let i = num1.length - 1, j = num2.length - 1, add = 0;\n    const ans = [];\n    while (i \u003e= 0 || j \u003e= 0 || add != 0) {\n        const x = i \u003e= 0 ? num1.charAt(i) - \u00270\u0027 : 0;\n        const y = j \u003e= 0 ? num2.charAt(j) - \u00270\u0027 : 0;\n        const result = x + y + add;\n        ans.push(result % 10);\n        add = Math.floor(result / 10);\n        i -= 1;\n        j -= 1;\n    }\n    return ans.reverse().join(\u0027\u0027);\n};\n```\n\n**复杂度分析**\n\n- 时间复杂度：`O(max(len1,len2))`，其中 `len1=num1.length`，`len2=num2.length`。竖式加法的次数取决于较大数的位数。\n- 空间复杂度：`O(1)`。除答案外我们只需要常数空间存放若干变量。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-05-11T14:46:04.000Z",
+    "updateAt":  "2024-01-24T17:25:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1008,
+    "filterTotalNum":  1907,
+    "prev":  "0932f958-6b14-4aac-b469-4ed62242c65f",
+    "next":  "cbdbe075-a81e-4c8b-a264-1ffb95a7ee49"
+}

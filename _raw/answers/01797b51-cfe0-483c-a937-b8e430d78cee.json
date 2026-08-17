@@ -1,0 +1,21 @@
+﻿{
+    "id":  594,
+    "exerciseKey":  "01797b51-cfe0-483c-a937-b8e430d78cee",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用ts实现一个判断入参是否是数组类型的方法？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "unknown 用于变量类型不确定，但肯定可以确定的情形下，比如下面这个示例中，入参总归会有个值，根据这个值的类型进行不同的处理，这里使用 unknown 替代 any 则会更加类型安全。\n\n```ts\nfunction isArray(x: unknown): boolean {\n  if (Array.isArray(x)) {\n    return true;\n  }\n  return false;\n}\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-08-22T10:07:18.000Z",
+    "updateAt":  "2021-08-22T18:37:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  1327,
+    "filterTotalNum":  1907,
+    "prev":  "8200a6ae-94f7-4056-bdb8-6bd84b383500",
+    "next":  "de0467f1-fe29-442c-8122-3373f20c32fa"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2895,
+    "exerciseKey":  "b46834a5-d407-419d-a068-af002028d71d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "gap 属性是用来设置什么的？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`gap` 属性用于设置在网格布局（`grid`）或弹性布局（`flex`）中，子元素（项目）之间的间距。它可以同时设置行间距和列间距，或者分别通过 `row-gap` 和 `column-gap` 单独设置。\n\n- 适用于：`grid` 和 `flex` 布局\n- 示例：\n  ```css\n  .container {\n    display: flex;\n    gap: 10px;\n  }\n  ```",
+    "pivot":  "`gap` 是用于设置 `grid` 和 `flex` 布局中元素之间的间距属性，简化了元素间距的管理。",
+    "vipLimit":  1,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2024-10-22T08:14:07.000Z",
+    "updateAt":  "2025-04-17T01:17:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  306,
+    "filterTotalNum":  1907,
+    "prev":  "e0bdad20-aa88-44d9-a9aa-c0bb90100ac9",
+    "next":  "fc3721e1-2f24-48f4-ab08-b370d9fc6d26"
+}

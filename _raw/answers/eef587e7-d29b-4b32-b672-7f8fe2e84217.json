@@ -1,0 +1,21 @@
+﻿{
+    "id":  324,
+    "exerciseKey":  "eef587e7-d29b-4b32-b672-7f8fe2e84217",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React中，能否直接将 props 的值复制给 state？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "应该避免这种写法：\n\n```react.js\nconstructor(props) {\n super(props);\n // 不要这样做\n this.state = { color: props.color };\n}\n```\n\n因为这样做毫无必要（你可以直接使用 this.props.color），同时还产生了 bug（更新 prop 中的 color 时，并不会影响 state）。\n\n只有在你刻意忽略 prop 更新的情况下使用。\n\n此时，应将 prop 重命名为 initialColor 或 defaultColor。必要时，你可以修改它的 key，以强制 **重置** 其内部 state。",
+    "pivot":  "在 React 中，直接将 `props` 的值复制给 `state` 是一种不推荐的做法。虽然技术上可以实现，但这样做可能会导致一些潜在的问题。\n\n这里是为什么以及如何处理这个情况的详细说明：\n\n### 为什么不推荐直接将 `props` 的值复制给 `state`？\n\n1. **状态同步问题**：\n   - **描述**：如果你将 `props` 直接复制到 `state`，当 `props` 发生变化时，`state` 不会自动更新。这可能导致 UI 显示的内容与实际的 `props` 不一致。\n   - **示例**：\n\n     ```javascript\n     import React, { Component } from \u0027react\u0027;\n\n     class MyComponent extends Component {\n       constructor(props) {\n         super(props);\n         this.state = {\n           value: props.value // 直接将 props 复制到 state\n         };\n       }\n\n       render() {\n         return \u003cdiv\u003e{this.state.value}\u003c/div\u003e;\n       }\n     }\n     ```\n\n     在这个例子中，如果 `props.value` 发生变化，`state.value` 不会自动更新，因此 UI 中的内容不会同步变化。\n\n2. **数据源不一致**：\n   - **描述**：组件的 `state` 和 `props` 应该有明确的职责。`props` 应该用于传递数据和事件处理程序，而 `state` 用于组件内部的局部状态。将 `props` 直接复制到 `state` 会混淆这两个概念，使得状态管理更加复杂。\n\n### 推荐的做法\n\n1. **使用 `props` 直接渲染**：\n   - **描述**：如果组件只依赖于 `props` 的值来渲染 UI，可以直接在 `render` 方法中使用 `props`。\n   - **示例**：\n\n     ```javascript\n     import React from \u0027react\u0027;\n\n     function MyComponent({ value }) {\n       return \u003cdiv\u003e{value}\u003c/div\u003e;\n     }\n     ```\n\n2. **如果需要在 `state` 中存储初始值**：\n   - **描述**：如果你确实需要在 `state` 中存储 `props` 的初始值，并且希望在后续更新中手动处理 `props` 变化，可以使用 `componentDidUpdate` 或 `useEffect` 来同步 `props` 和 `state`。\n   - **示例（类组件）**：\n\n     ```javascript\n     import React, { Component } from \u0027react\u0027;\n\n     class MyComponent extends Component {\n       constructor(props) {\n         super(props);\n         this.state = {\n           value: props.value\n         };\n       }\n\n       componentDidUpdate(prevProps) {\n         if (prevProps.value !== this.props.value) {\n           this.setState({ value: this.props.value });\n         }\n       }\n\n       render() {\n         return \u003cdiv\u003e{this.state.value}\u003c/div\u003e;\n       }\n     }\n     ```\n\n   - **示例（函数组件）**：\n\n     ```javascript\n     import React, { useState, useEffect } from \u0027react\u0027;\n\n     function MyComponent({ value }) {\n       const [internalValue, setInternalValue] = useState(value);\n\n       useEffect(() =\u003e {\n         setInternalValue(value);\n       }, [value]);\n\n       return \u003cdiv\u003e{internalValue}\u003c/div\u003e;\n     }\n     ```\n\n### 结论\n\n- **直接将 `props` 的值复制到 `state`**：不推荐，因为它可能导致 `state` 和 `props` 不一致，并增加了状态管理的复杂性。\n- **推荐做法**：直接使用 `props` 渲染 UI，或在需要时同步 `props` 到 `state`，确保在 `props` 更新时适当地更新 `state`。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T11:45:40.000Z",
+    "updateAt":  "2024-08-10T17:04:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1596,
+    "filterTotalNum":  1907,
+    "prev":  "212673c7-7ea1-460a-b44f-2e3fe20f3397",
+    "next":  "f59d29a2-7ff8-41ca-8176-a24f1ca6d0f5"
+}

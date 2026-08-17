@@ -1,0 +1,21 @@
+﻿{
+    "id":  1947,
+    "exerciseKey":  "a27dcf10-1b97-4bb5-926e-b32c2e24ba67",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 mergeArray 方法",
+    "desc":  "```ts\n/**\n * @file 合并两个有序数组\n */\n\nfunction merge(arr: number[], arr2: number[]): number[] {\n    // 补全此处代码\n    throw new Error(\u0027功能待实现\u0027);\n}\n\n// 参数数组从小到大排列\nconsole.log(merge([1, 2, 3], [2, 5, 6])) // [ 1, 2, 2, 3, 5, 6 ]\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 合并两个有序数组\n */\n\nfunction merge(arr: number[], arr2: number[]): number[] {\n  // 参考答案\n  return arr.concat(arr2).sort((a: number, b: number) =\u003e a - b);\n}\n\n// 参数数组从小到大排列\nconsole.log(merge([1, 2, 3], [2, 5, 6])); // [ 1, 2, 2, 3, 5, 6 ]\n\nexport default {};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:24:22.000Z",
+    "updateAt":  "2023-03-12T23:24:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  863,
+    "filterTotalNum":  1907,
+    "prev":  "75022926-8fe3-4f93-bab2-4e3c8e31c170",
+    "next":  "2f9c699c-f7be-4f31-8b1b-5d6271bc075e"
+}

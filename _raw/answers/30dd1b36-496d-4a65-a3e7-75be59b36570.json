@@ -1,0 +1,21 @@
+﻿{
+    "id":  1609,
+    "exerciseKey":  "30dd1b36-496d-4a65-a3e7-75be59b36570",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第17题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = new Promise((resolve, reject) =\u003e {\n  setTimeout(() =\u003e {\n    console.log(\u0027timer\u0027)\n    resolve(\u0027success\u0027)\n  }, 1000)\n})\nconst start = Date.now();\npromise.then(res =\u003e {\n  console.log(res, Date.now() - start)\n})\npromise.then(res =\u003e {\n  console.log(res, Date.now() - start)\n})\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n如果执行足够快的话，也可能两个都是1001。\n\nPromise 的 .then 或者 .catch 可以被调用多次，但这里 Promise 构造函数只执行一次。或者说 promise 内部状态一经改变，并且有了一个值，那么后续每次调用 .then 或者 .catch 都会直接拿到该值。\n\n## 结果\n\n```\n\u0027timer\u0027\n\u0027success\u0027 1001\n\u0027success\u0027 1002\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:45:20.000Z",
+    "updateAt":  "2022-01-09T23:01:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  1181,
+    "filterTotalNum":  1907,
+    "prev":  "e0e3dbcd-2e8a-4756-9241-bbb23af9c2e8",
+    "next":  "58350841-57d6-4b0a-9e31-57f5f0e16357"
+}

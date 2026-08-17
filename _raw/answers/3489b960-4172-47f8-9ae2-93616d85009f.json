@@ -1,0 +1,21 @@
+﻿{
+    "id":  1617,
+    "exerciseKey":  "3489b960-4172-47f8-9ae2-93616d85009f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第25题】下面代码的输出是什么？",
+    "desc":  "```js\nfunction runAsync (x) {\n    const p = new Promise(r =\u003e setTimeout(() =\u003e r(x, console.log(x)), 1000))\n    return p\n}\nPromise.all([runAsync(1), runAsync(2), runAsync(3)])\n  .then(res =\u003e console.log(res))\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n.all()的作用是接收一组异步任务，然后并行执行异步任务，并且在所有异步操作执行完后才执行回调。\n\n## 答案\n\n```\n1\n2\n3\n[1, 2, 3]\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:00:26.000Z",
+    "updateAt":  "2022-01-09T23:02:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  1173,
+    "filterTotalNum":  1907,
+    "prev":  "613e333e-ffca-45ff-a13a-debd8053d913",
+    "next":  "fa9e9946-de5b-4998-a224-8d512d3ccac2"
+}

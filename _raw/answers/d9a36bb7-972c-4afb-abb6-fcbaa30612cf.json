@@ -1,0 +1,21 @@
+﻿{
+    "id":  1603,
+    "exerciseKey":  "d9a36bb7-972c-4afb-abb6-fcbaa30612cf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第11题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise1 = new Promise((resolve, reject) =\u003e {\n  setTimeout(() =\u003e {\n    resolve(\u0027success\u0027)\n  }, 1000)\n})\nconst promise2 = promise1.then(() =\u003e {\n  throw new Error(\u0027error!!!\u0027)\n})\nconsole.log(\u0027promise1\u0027, promise1)\nconsole.log(\u0027promise2\u0027, promise2)\nsetTimeout(() =\u003e {\n  console.log(\u0027promise1\u0027, promise1)\n  console.log(\u0027promise2\u0027, promise2)\n}, 2000)\n```",
+    "options":  null,
+    "explanation":  "## 过程分析\n\n* 从上至下，先执行第一个new Promise中的函数，碰到setTimeout将它加入下一个宏任务列表\n* 跳出new Promise，碰到promise1.then这个微任务，但其状态还是为pending，这里理解为先不执行\n* promise2是一个新的状态为pending的Promise\n* 执行同步代码console.log(\u0027promise1\u0027)，且打印出的promise1的状态为pending\n* 执行同步代码console.log(\u0027promise2\u0027)，且打印出的promise2的状态为pending\n* 碰到第二个定时器，将其放入下一个宏任务列表\n* 第一轮宏任务执行结束，并且没有微任务需要执行，因此执行第二轮宏任务\n* 先执行第一个定时器里的内容，将promise1的状态改为resolved且保存结果并将之前的promise1.then推入微任务队列\n* 该定时器中没有其它的同步代码可执行，因此执行本轮的微任务队列，也就是promise1.then，它抛出了一个错误，且将promise2的状态设置为了rejected\n* 第一个定时器执行完毕，开始执行第二个定时器中的内容\n* 打印出\u0027promise1\u0027，且此时promise1的状态为resolved\n* 打印出\u0027promise2\u0027，且此时promise2的状态为rejected\n\n## 结果\n\n```\n\u0027promise1\u0027 Promise{\u003cpending\u003e}\n\u0027promise2\u0027 Promise{\u003cpending\u003e}\ntest5.html:102 Uncaught (in promise) Error: error!!! at test.html:102\n\u0027promise1\u0027 Promise{\u003cresolved\u003e: \"success\"}\n\u0027promise2\u0027 Promise{\u003crejected\u003e: Error: error!!!}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:38:08.000Z",
+    "updateAt":  "2024-07-20T11:01:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  1187,
+    "filterTotalNum":  1907,
+    "prev":  "37a4ad10-3819-4ab3-bb5f-26a6bf1ca07a",
+    "next":  "fa6c1ad8-274c-4830-aee9-6799d6a7fdc1"
+}

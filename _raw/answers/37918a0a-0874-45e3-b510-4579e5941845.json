@@ -1,0 +1,21 @@
+﻿{
+    "id":  85,
+    "exerciseKey":  "37918a0a-0874-45e3-b510-4579e5941845",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst list = [1 + 2, 1 * 2, 1 / 2]\nconsole.log(list)\n```",
+    "options":  "{\"options\":[\"[\\\"1 + 2\\\", \\\"1 * 2\\\", \\\"1 / 2\\\"]\",\"[\\\"12\\\", 2, 0.5]\",\"[3, 2, 0.5]\",\"[1, 1, 1]\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "数组元素可以包含任何值。 数字，字符串，布尔值，对象，数组，`null`，`undeifned`, 以及其他表达式，如日期，函数和计算。\n元素将等于返回的值。 `1 + 2`返回`3`，`1 * 2`返回\u00272`，\u00271 / 2`返回`0.5`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:24:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1834,
+    "filterTotalNum":  1907,
+    "prev":  "50a3f8fb-9e65-4a24-b4e4-60c02bb26cdc",
+    "next":  "6dd078d0-5728-4901-acab-bda0f365347d"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  261,
+    "exerciseKey":  "2acd6447-af1d-4430-837f-a468b6c76ffe",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "script 标签中， async 和 defer 两个属性有什么用途和区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 HTML 中会遇到以下三类 script：\n\n```\n\u003cscript src=\u0027xxx\u0027\u003e\u003c/script\u003e\n\u003cscript src=\u0027xxx\u0027 async\u003e\u003c/script\u003e\n\u003cscript src=\u0027xxx\u0027 defer\u003e\u003c/script\u003e\n```\n\nscript标签用于加载脚本与执行脚本，直接使用script脚本时，html会按照顺序来加载并执行脚本，在脚本加载\u0026执行的过程中，会阻塞后续的DOM渲染。\n\n比如现在大家习惯于在页面中引用各种第三方脚本，但如果第三方服务商出现了一些小问题，比如延迟之类的，就会使得页面白屏。\n\n针对上述情况，script标签提供了两种方式来解决问题，就是加入属性async以及defer，这两个属性使得script标签加载都不会阻塞DOM的渲染。\n\n```\ndefer：此布尔属性被设置为向浏览器指示脚本在文档被解析后执行。\nasync：设置此布尔属性，以指示浏览器如果可能的话，应异步执行脚本。\n```\n\n## defer\n\n如果script标签设置了defer属性，则浏览器会异步下载该文件并且不会影响后续DOM的渲染。\n\n如果有多个设置了defer属性的script标签存在，则会按照顺序执行所有的script，defer脚本会在文档渲染完毕后，DOMContentLoaded事件调用前执行。\n\n## async\n\nasync属性会使得script脚本异步的加载并在允许的情况下执行，而async的执行并不会按照script标签在页面中的顺序来执行，而是谁先加载完谁先执行。",
+    "pivot":  "**答题思路**：\n\n在HTML的`\u003cscript\u003e`标签中，`async`和`defer`两个属性都用于控制脚本的异步加载，但它们之间存在关键的区别，主要体现在脚本加载和执行顺序上。\n\nasync属性\n\n- **用途**：`async`属性用于指定脚本应该异步执行，即脚本的加载和解析不会阻塞HTML文档的解析，并且脚本一旦加载完成就会立即执行，不等待DOMContentLoaded事件触发。\n- **特点**：`async`脚本的加载和执行是独立的，不会按照在HTML文档中出现的顺序执行。如果页面中有多个`async`脚本，它们的执行顺序是不确定的。\n\n defer属性\n\n- **用途**：`defer`属性也用于指定脚本的异步加载，但与`async`不同的是，`defer`脚本会等到整个文档被解析完成后，才会执行。这意呀着，脚本的执行会按照在HTML文档中出现的顺序进行。\n- **特点**：使用`defer`属性的脚本不会阻塞HTML文档的解析，同时保证了脚本的执行顺序，这对于依赖DOM元素或顺序执行的脚本非常有用。\n\n区别\n\n- **执行时机**：`async`脚本一旦加载完成就会立即执行，不等待其他脚本或DOM的加载完成；而`defer`脚本会等待整个文档解析完成后，按照在HTML文档中出现的顺序执行。\n- **执行顺序**：`async`脚本的执行顺序是不确定的，多个`async`脚本可能会乱序执行；而`defer`脚本会按照在HTML文档中出现的顺序执行。\n\n**考察要点**：\n\n- **对HTML脚本加载机制的理解**：面试者需要了解HTML中脚本的加载和执行机制，以及它们如何影响页面的性能和功能。\n- **对async和defer属性的掌握**：面试者需要准确理解`async`和`defer`属性的用途和区别，并能够根据实际需求选择合适的属性。\n- **实际应用能力**：面试者需要能够将理论知识应用于实际开发中，解决与脚本加载和执行相关的问题。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:25:30.000Z",
+    "updateAt":  "2024-08-10T17:04:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  1658,
+    "filterTotalNum":  1907,
+    "prev":  "a75b1e9d-9359-47b0-8614-1088eee4b085",
+    "next":  "c849aa25-0dae-49aa-8148-b1c410a7aa1e"
+}

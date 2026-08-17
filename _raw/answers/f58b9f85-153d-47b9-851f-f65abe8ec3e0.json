@@ -1,0 +1,21 @@
+﻿{
+    "id":  3277,
+    "exerciseKey":  "f58b9f85-153d-47b9-851f-f65abe8ec3e0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何实现 ChatGPT 类似的流式输出？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "类似 ChatGPT 的流式输出，本质是：服务端不要等完整答案生成后再返回，而是把模型生成的 token 或文本片段持续写入 HTTP 响应；前端边读边渲染，并在完成、取消、异常时维护好状态。\n\n实际项目里最常见的是 `SSE` 或 `fetch + ReadableStream`。如果只是服务端向前端单向推送，`SSE` 足够稳定；如果需要双向实时交互，比如语音、多人协作、实时 Agent 控制，可以用 `WebSocket`。在 ChatGPT 这类文本生成场景中，`fetch` 读取流也很常用，因为它支持 `POST`、请求体、鉴权、`AbortController`，控制能力比原生 `EventSource` 更强。\n\n前端核心代码大致是这样：\n\n```ts\nasync function streamChat(messages: any[], onDelta: (text: string) =\u003e void) {\n  const controller = new AbortController();\n\n  const response = await fetch(\u0027/api/chat/stream\u0027, {\n    method: \u0027POST\u0027,\n    headers: {\n      \u0027Content-Type\u0027: \u0027application/json\u0027,\n    },\n    body: JSON.stringify({ messages }),\n    signal: controller.signal,\n  });\n\n  if (!response.ok || !response.body) {\n    throw new Error(\u0027stream request failed\u0027);\n  }\n\n  const reader = response.body.getReader();\n  const decoder = new TextDecoder(\u0027utf-8\u0027);\n\n  let buffer = \u0027\u0027;\n\n  while (true) {\n    const { value, done } = await reader.read();\n\n    if (done) break;\n\n    buffer += decoder.decode(value, { stream: true });\n\n    const events = buffer.split(\u0027\\n\\n\u0027);\n    buffer = events.pop() || \u0027\u0027;\n\n    for (const event of events) {\n      const line = event\n        .split(\u0027\\n\u0027)\n        .find((item) =\u003e item.startsWith(\u0027data:\u0027));\n\n      if (!line) continue;\n\n      const data = line.replace(/^data:\\s*/, \u0027\u0027);\n\n      if (data === \u0027[DONE]\u0027) {\n        return;\n      }\n\n      const payload = JSON.parse(data);\n\n      if (payload.type === \u0027delta\u0027) {\n        onDelta(payload.content);\n      }\n    }\n  }\n\n  controller.abort();\n}\n```\n\n服务端返回时通常使用类似这样的协议：\n\n```txt\ndata: {\"type\":\"delta\",\"content\":\"你好\"}\n\ndata: {\"type\":\"delta\",\"content\":\"，这是流式输出\"}\n\ndata: {\"type\":\"done\"}\n\n```\n\n前端不要直接假设每个 chunk 都是完整 JSON，因为网络分片可能把一个 JSON 拆开，也可能把多个事件合在一起。所以需要 `buffer`，按约定分隔符，比如 `\\n\\n`，拆成完整事件再解析。\n\n渲染层需要注意两点。第一，状态更新不能过于频繁，否则 React 会因为每个 token 都 `setState` 而出现卡顿。更稳的做法是先把增量内容追加到临时变量里，再用 `requestAnimationFrame` 或节流批量刷新 UI。第二，如果内容需要 Markdown 渲染，流式阶段可以渲染一个“尽量正确”的中间态，最终完成后再做一次完整 Markdown 渲染，避免代码块、表格、链接在半截状态下解析异常。\n\n在 Agent 场景里，协议最好不要只传纯文本，而是传结构化事件。例如：\n\n```ts\ntype StreamEvent =\n  | { type: \u0027message_delta\u0027; content: string }\n  | { type: \u0027tool_start\u0027; toolName: string; input: unknown }\n  | { type: \u0027tool_result\u0027; toolName: string; output: unknown }\n  | { type: \u0027status\u0027; message: string }\n  | { type: \u0027error\u0027; message: string }\n  | { type: \u0027done\u0027 };\n```\n\n这样前端可以把“模型正在思考”“调用工具”“工具返回结果”“继续生成回答”这些状态分开展示，而不是把所有内容混成一段字符串。ChatGPT 类产品的体验重点不只是逐字输出，还包括中断、重试、滚动跟随、错误恢复、消息状态、工具调用状态这些细节。\n\n还要处理取消请求。用户点击停止生成时，前端用 `AbortController.abort()` 取消请求，后端也需要监听连接关闭，停止模型调用和工具执行，避免资源继续消耗。\n\n```ts\nconst controller = new AbortController();\n\nfetch(\u0027/api/chat/stream\u0027, {\n  method: \u0027POST\u0027,\n  signal: controller.signal,\n});\n\n// 点击停止\ncontroller.abort();\n```",
+    "pivot":  "流式输出的核心是服务端通过 `SSE`、`fetch stream` 或 `WebSocket` 持续返回增量内容，前端通过 `ReadableStream` 边读边渲染。实现时要注意网络 chunk 不等于完整消息，需要做缓冲和协议解析。前端渲染要做节流，避免频繁状态更新导致卡顿。Agent 场景下建议使用结构化事件协议，把文本增量、工具调用、状态、错误、完成信号分开处理。最后还要支持取消、错误恢复、最终 Markdown 校正和滚动体验，才能达到接近 ChatGPT 的交互质量。",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T03:10:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  11,
+    "filterTotalNum":  1907,
+    "prev":  "9397cb70-e49a-4b33-9f66-5d609137adb2",
+    "next":  "9f8fd942-c3e5-4f2e-ab13-d3a60c55c762"
+}

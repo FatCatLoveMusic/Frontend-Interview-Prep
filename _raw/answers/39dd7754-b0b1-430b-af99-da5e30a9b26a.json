@@ -1,0 +1,21 @@
+﻿{
+    "id":  2521,
+    "exerciseKey":  "39dd7754-b0b1-430b-af99-da5e30a9b26a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说对 node 子进程的了解",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "Node.js 的子进程模块允许你创建和管理子进程，以便执行系统命令、运行脚本或处理后台任务。子进程的使用场景包括处理大量计算任务、执行外部命令、并行处理等。Node.js 提供了 `child_process` 模块来支持这些功能。以下是对 Node.js 子进程的详细了解：\n\n### **1. 子进程模块（`child_process`）**\n\nNode.js 的 `child_process` 模块提供了几种创建子进程的方法：\n\n- `exec(command[, options], callback)`：运行一个命令，并且缓冲整个命令的输出，适合处理小型任务。\n- `execFile(file[, args][, options], callback)`：直接运行一个可执行文件，不会先启动一个 shell。适合执行外部程序。\n- `spawn(command[, args][, options])`：启动一个新进程来执行指定的命令，可以流式处理数据。适合处理长时间运行的任务。\n- `fork(modulePath[, args][, options])`：创建一个新的 Node.js 子进程来执行指定的模块，并且自动为子进程建立通信通道。适合在 Node.js 环境中处理并行任务。\n\n### **2. 使用示例**\n\n#### **2.1 exec**\n\n`exec` 适合用于执行简单的系统命令并获取结果：\n\n```javascript\nconst { exec } = require(\u0027child_process\u0027);\n\nexec(\u0027ls -l\u0027, (error, stdout, stderr) =\u003e {\n  if (error) {\n    console.error(`exec error: ${error}`);\n    return;\n  }\n  console.log(`stdout: ${stdout}`);\n  console.error(`stderr: ${stderr}`);\n});\n```\n\n#### **2.2 execFile**\n\n`execFile` 直接运行指定的文件：\n\n```javascript\nconst { execFile } = require(\u0027child_process\u0027);\n\nexecFile(\u0027node\u0027, [\u0027--version\u0027], (error, stdout, stderr) =\u003e {\n  if (error) {\n    console.error(`execFile error: ${error}`);\n    return;\n  }\n  console.log(`stdout: ${stdout}`);\n  console.error(`stderr: ${stderr}`);\n});\n```\n\n#### **2.3 spawn**\n\n`spawn` 启动一个新进程，并且可以处理流数据：\n\n```javascript\nconst { spawn } = require(\u0027child_process\u0027);\n\nconst ls = spawn(\u0027ls\u0027, [\u0027-l\u0027]);\n\nls.stdout.on(\u0027data\u0027, (data) =\u003e {\n  console.log(`stdout: ${data}`);\n});\n\nls.stderr.on(\u0027data\u0027, (data) =\u003e {\n  console.error(`stderr: ${data}`);\n});\n\nls.on(\u0027close\u0027, (code) =\u003e {\n  console.log(`child process exited with code ${code}`);\n});\n```\n\n#### **2.4 fork**\n\n`fork` 创建一个新的 Node.js 子进程，并且可以通过 IPC 通信：\n\n**父进程（parent.js）**：\n\n```javascript\nconst { fork } = require(\u0027child_process\u0027);\n\nconst child = fork(\u0027./child.js\u0027);\n\nchild.on(\u0027message\u0027, (message) =\u003e {\n  console.log(`Received message from child: ${message}`);\n});\n\nchild.send(\u0027Hello from parent\u0027);\n```\n\n**子进程（child.js）**：\n\n```javascript\nprocess.on(\u0027message\u0027, (message) =\u003e {\n  console.log(`Received message from parent: ${message}`);\n  process.send(\u0027Hello from child\u0027);\n});\n```\n\n### **3. 子进程与父进程的通信**\n\n- **标准输入/输出**：子进程可以通过 `stdin`、`stdout` 和 `stderr` 流与父进程通信。\n- **IPC（Inter-Process Communication）**：通过 `fork` 创建的子进程可以使用 `process.send()` 和 `process.on(\u0027message\u0027, callback)` 进行通信。\n\n### **4. 注意事项**\n\n- **资源管理**：需要适当管理子进程的资源，确保子进程在完成任务后正确退出。\n- **错误处理**：应处理子进程中的错误，以防止未处理的异常导致程序崩溃。\n- **性能影响**：创建和管理大量子进程可能会影响性能，通常需要根据具体场景选择合适的进程管理策略。\n\n通过以上功能，Node.js 的子进程模块能够帮助开发者在 Node.js 环境中实现并行处理和系统命令执行等功能，从而提升应用的处理能力和性能。",
+    "pivot":  "子进程的使用场景包括处理大量计算任务、执行外部命令、并行处理等。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2024-08-16T12:21:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  491,
+    "filterTotalNum":  1907,
+    "prev":  "b4e5ffc9-9149-42bc-859c-8f179695eb9a",
+    "next":  "ad8f7b3b-4a22-4759-8d86-f4dc7575485b"
+}

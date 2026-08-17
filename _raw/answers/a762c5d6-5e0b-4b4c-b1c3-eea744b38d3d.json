@@ -1,0 +1,21 @@
+﻿{
+    "id":  46,
+    "exerciseKey":  "a762c5d6-5e0b-4b4c-b1c3-eea744b38d3d",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\n!!null\n!!\u0027\u0027\n!!1\n```",
+    "options":  "{\"options\":[\"false true false\",\"false false true\",\"false true true\",\"true true false\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`null` 是 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy)。 `!null` 的值是 `true`。 `!true` 的值是 `false`。\n`\"\"` 是 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy)。 `!\"\"` 的值是 `true`。  `!true` 的值是 `false`。\n`1` 是 [truthy](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)。 `!1` 的值是 `false`。 `!false` 的值是 `true`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:11:33.000Z",
+    "isCollected":  false,
+    "currentIndex":  1873,
+    "filterTotalNum":  1907,
+    "prev":  "343c64fa-f996-4d17-a20f-dec32f7b256b",
+    "next":  "e4de3d64-0a56-4bdc-b07f-d310987218e9"
+}

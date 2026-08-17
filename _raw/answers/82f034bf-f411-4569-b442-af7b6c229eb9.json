@@ -1,0 +1,21 @@
+﻿{
+    "id":  1888,
+    "exerciseKey":  "82f034bf-f411-4569-b442-af7b6c229eb9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么实现“点击回到顶部”的功能？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " 下面介绍5种方法进行实现。\n \n## 1、锚点\n\n使用锚点链接是一种简单的返回顶部的功能实现。\n\n该实现主要在页面顶部放置一个指定名称的锚点链接，然后在页面下方放置一个返回到该锚点的链接，用户点击该链接即可返回到该锚点所在的顶部位置。\n\n```html\n\u003cbody style=\"height:2000px;\"\u003e\n    \u003cdiv id=\"topAnchor\"\u003e\u003c/div\u003e\n    \u003ca href=\"#topAnchor\" style=\"position:fixed;right:0;bottom:0\"\u003e回到顶部\u003c/a\u003e\n\u003c/body\u003e\n```\n\n## 2、scrollTop\n\nscrollTop属性表示被隐藏在内容区域上方的像素数。\n\n元素未滚动时，scrollTop的值为0，如果元素被垂直滚动了，scrollTop的值大于0，且表示元素上方不可见内容的像素宽度\n\n由于scrollTop是可写的，可以利用scrollTop来实现回到顶部的功能\n\n```html\n\u003cbody style=\"height:2000px;\"\u003e\n    \u003cbutton id=\"test\" style=\"position:fixed;right:0;bottom:0\"\u003e回到顶部\u003c/button\u003e\n    \u003cscript\u003e\n        test.onclick = function(){\n            document.body.scrollTop = document.documentElement.scrollTop = 0;\n        }\n    \u003c/script\u003e\n\u003c/body\u003e\n```\n\n## 3、scrollTo\n\nscrollTo(x,y)方法滚动当前window中显示的文档，让文档中由坐标x和y指定的点位于显示区域的左上角\n\n设置scrollTo(0,0)可以实现回到顶部的效果\n\n```html\n\u003cbody style=\"height:2000px;\"\u003e\n    \u003cbutton id=\"test\" style=\"position:fixed;right:0;bottom:0\"\u003e回到顶部\u003c/button\u003e\n    \u003cscript\u003e\n        test.onclick = function(){\n            scrollTo(0,0);\n        }\n    \u003c/script\u003e\n\u003c/body\u003e\n```\n\n## 4、scrollBy()\n\nscrollBy(x,y)方法滚动当前window中显示的文档，x和y指定滚动的相对量\n\n只要把当前页面的滚动长度作为参数，逆向滚动，则可以实现回到顶部的效果\n\n```html\n\u003cbody style=\"height:2000px;\"\u003e\n    \u003cbutton id=\"test\" style=\"position:fixed;right:0;bottom:0\"\u003e回到顶部\u003c/button\u003e\n    \u003cscript\u003e\n        test.onclick = function(){\n            var top = document.body.scrollTop || document.documentElement.scrollTop\n            scrollBy(0,-top);\n        }\n    \u003c/script\u003e\n\u003c/body\u003e\n```\n\n## 5、scrollIntoView()\n\nElement.scrollIntoView方法滚动当前元素，进入浏览器的可见区域　\n\n该方法可以接受一个布尔值作为参数。如果为true，表示元素的顶部与当前区域的可见部分的顶部对齐（前提是当前区域可滚动）；如果为false，表示元素的底部与当前区域的可见部分的尾部对齐（前提是当前区域可滚动）。如果没有提供该参数，默认为true\n\n使用该方法的原理与使用锚点的原理类似，在页面最上方设置目标元素，当页面滚动时，目标元素被滚动到页面区域以外，点击回到顶部按钮，使目标元素重新回到原来位置，则达到预期效果\n\n```html\n\u003cbody style=\"height:2000px;\"\u003e\n    \u003cdiv id=\"target\"\u003e\u003c/div\u003e\n    \u003cbutton id=\"test\" style=\"position:fixed;right:0;bottom:0\"\u003e回到顶部\u003c/button\u003e\n    \u003cscript\u003e\n        test.onclick = function(){\n            target.scrollIntoView();\n        }\n    \u003c/script\u003e\n\u003c/body\u003e\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2022-08-23T04:35:15.000Z",
+    "updateAt":  "2024-07-22T10:05:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  922,
+    "filterTotalNum":  1907,
+    "prev":  "6bea229f-8bae-4472-bedb-1260ec4aea47",
+    "next":  "54940522-41b4-42f5-ae3e-83d520d1cff5"
+}

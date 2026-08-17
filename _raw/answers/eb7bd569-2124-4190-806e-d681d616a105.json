@@ -1,0 +1,21 @@
+﻿{
+    "id":  2130,
+    "exerciseKey":  "eb7bd569-2124-4190-806e-d681d616a105",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "cookie 可以实现在不同域名下共享吗？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "**cookie 无法在不同主域之间直接共享**，浏览器的同源策略限制了跨域访问 cookie 的能力。\n\n---\n\n### 具体规则如下：\n\n#### 1. **子域之间可以共享（设置 `Domain` 属性）**\n```http\nSet-Cookie: key=value; Domain=.example.com\n```\n此时 `a.example.com` 与 `b.example.com` 可共享该 cookie。\n\n#### 2. **不同主域（如 a.com 与 b.com）无法共享**\n浏览器会隔离 cookie，只能在当前主域及其子域下访问。不能通过设置 `Domain` 来突破这一限制。\n\n---\n\n### 替代方案（不同域 cookie 共享）：\n\n1. **通过后端中转**\n   - 使用统一的认证服务器或中间页进行跳转登录，实现服务端的 cookie 写入。\n\n2. **使用前端跨域通信（如 postMessage）**\n   - 在两个页面之间通过 iframe + `postMessage` 交换身份信息，但无法直接共享 cookie，只能传 token。\n\n3. **使用统一的顶级域名 + 子域部署系统**\n   - 例如统一为 `app.example.com`，再挂多个子路径（推荐方式）",
+    "pivot":  "- cookie **不能在不同主域之间共享**  \n- 子域之间可以通过设置 `Domain` 属性共享  \n- 跨主域可考虑 token + 中转登录 等方案实现身份同步",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:30:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  693,
+    "filterTotalNum":  1907,
+    "prev":  "6012756d-09e0-48b3-9722-79bb30529dc8",
+    "next":  "b18e3951-44d8-4347-b429-805ede23b706"
+}

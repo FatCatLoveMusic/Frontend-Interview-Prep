@@ -1,0 +1,21 @@
+﻿{
+    "id":  621,
+    "exerciseKey":  "b4137265-8ebe-4fc8-be75-8dfaf125af6c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用原生js给一个按钮绑定两个onclick事件",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```javascript\n//事件监听 绑定多个事件\nvar btn = document.getElementById(\"btn\");\n\nbtn.addEventListener(\"click\",hello1);\nbtn.addEventListener(\"click\",hello2);\n\nfunction hello1(){\n alert(\"hello 1\");\n}\nfunction hello2(){\n alert(\"hello 2\");\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-09-25T01:58:17.000Z",
+    "updateAt":  "2021-09-25T19:05:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  1300,
+    "filterTotalNum":  1907,
+    "prev":  "1b0c8f90-9f1a-42bf-bd5a-d9efaf0d74eb",
+    "next":  "144bb888-936e-42c8-bdcb-445b5c4dc774"
+}

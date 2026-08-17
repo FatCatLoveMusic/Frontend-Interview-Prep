@@ -1,0 +1,21 @@
+﻿{
+    "id":  2694,
+    "exerciseKey":  "f1c73b17-109f-45e6-a4ad-8cee1bef2c8b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "介绍下深度优先遍历和广度优先遍历，如何实现？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "深度优先遍历（DFS）和广度优先遍历（BFS）是两种常见的图或树的遍历算法。它们用于遍历和搜索图或树的数据结构。下面是对这两种遍历算法的详细介绍和实现方法。\n\n### **深度优先遍历（DFS）**\n\n**描述**：\n- **深度优先遍历** 是一种优先深入到树或图的深层节点的遍历策略。它尽可能深入到每一个分支的末端，然后回溯到上一层继续遍历。\n\n**实现方式**：\n1. **递归实现**：\n   - 使用递归函数遍历每个节点。\n2. **栈实现**：\n   - 使用栈来模拟递归过程，手动维护节点的遍历状态。\n\n**递归实现示例**（以树为例）：\n```javascript\nfunction dfsRecursive(node, visited = new Set()) {\n  if (!node || visited.has(node.value)) return;\n\n  // 访问当前节点\n  console.log(node.value);\n  visited.add(node.value);\n\n  // 遍历所有子节点\n  for (let child of node.children) {\n    dfsRecursive(child, visited);\n  }\n}\n```\n\n**栈实现示例**（以树为例）：\n```javascript\nfunction dfsStack(root) {\n  const stack = [root];\n  const visited = new Set();\n\n  while (stack.length \u003e 0) {\n    const node = stack.pop();\n    if (!node || visited.has(node.value)) continue;\n\n    // 访问当前节点\n    console.log(node.value);\n    visited.add(node.value);\n\n    // 将子节点加入栈\n    for (let child of node.children) {\n      stack.push(child);\n    }\n  }\n}\n```\n\n### **广度优先遍历（BFS）**\n\n**描述**：\n- **广度优先遍历** 是一种优先遍历树或图的所有相邻节点的遍历策略。它从根节点开始，逐层向外扩展，访问所有同一层的节点，然后再向下一层扩展。\n\n**实现方式**：\n- 使用队列来存储待访问的节点，保证节点按照层次的顺序被访问。\n\n**实现示例**（以树为例）：\n```javascript\nfunction bfs(root) {\n  const queue = [root];\n  const visited = new Set();\n\n  while (queue.length \u003e 0) {\n    const node = queue.shift();\n    if (!node || visited.has(node.value)) continue;\n\n    // 访问当前节点\n    console.log(node.value);\n    visited.add(node.value);\n\n    // 将子节点加入队列\n    for (let child of node.children) {\n      queue.push(child);\n    }\n  }\n}\n```\n",
+    "pivot":  "- **深度优先遍历（DFS）**：\n  - **策略**：尽可能深入到每个分支的末端。\n  - **实现**：递归或栈。\n  - **适用场景**：适用于需要处理深层嵌套的场景，如解决迷宫问题。\n\n- **广度优先遍历（BFS）**：\n  - **策略**：逐层遍历，优先访问同一层的节点。\n  - **实现**：队列。\n  - **适用场景**：适用于找到最短路径或处理层次结构的场景，如寻找最短路径问题。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-14T23:40:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  402,
+    "filterTotalNum":  1907,
+    "prev":  "de043b5a-d621-4278-abb8-b467310306a9",
+    "next":  "1bdd3e29-f9b2-4f1d-a8b2-6a8b14320779"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  38,
+    "exerciseKey":  "c3f69ef3-ab4e-456f-869f-3e6ef470d0f3",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nconst foo = () =\u003e console.log(\u0027First\u0027)\nconst bar = () =\u003e setTimeout(() =\u003e console.log(\u0027Second\u0027))\nconst baz = () =\u003e console.log(\u0027Third\u0027)\n\nbar()\nfoo()\nbaz()\n```",
+    "options":  "{\"options\":[\"First Second Third\",\"First Third Second\",\"Second First Third\",\"Second Third First\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "输出的顺序将会是：\n\n```\nFirst\nThird\nSecond\n```\n\n这是因为在这段代码中，`bar()` 函数包含了一个 `setTimeout`，它会在一定时间后执行回调函数。而在这段代码中，`setTimeout` 的回调函数是异步执行的。\n\n以下是代码执行的详细步骤：\n\n1. 调用 `bar()`，它启动了一个计时器，并注册了一个在计时结束后执行的回调函数。\n2. 然后调用 `foo()`，它会立即打印出 `\u0027First\u0027`。\n3. 接着调用 `baz()`，它会立即打印出 `\u0027Third\u0027`。\n4. 当计时器结束后，回调函数被执行，打印出 `\u0027Second\u0027`。\n\n由于 `setTimeout` 是异步的，所以在执行完 `foo()` 和 `baz()` 后，会先打印出它们的输出，然后再执行 `setTimeout` 的回调函数并打印出 `\u0027Second\u0027`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-12-18T20:40:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  1881,
+    "filterTotalNum":  1907,
+    "prev":  "e39e2c86-5e5d-4412-907b-e40d98fbfb4c",
+    "next":  "3928ae37-e2f5-49ba-bfc1-7076ebc049f3"
+}

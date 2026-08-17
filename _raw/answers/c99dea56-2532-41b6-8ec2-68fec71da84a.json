@@ -1,0 +1,21 @@
+﻿{
+    "id":  49,
+    "exerciseKey":  "c99dea56-2532-41b6-8ec2-68fec71da84a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nfunction* generator(i) {\n  yield i;\n  yield i * 2;\n}\n\nconst gen = generator(10);\n\nconsole.log(gen.next().value);\nconsole.log(gen.next().value);\n```",
+    "options":  "{\"options\":[\"[0, 10], [10, 20]\",\"20, 20\",\"10, 20\",\"0, 10 and 10, 20\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "一般的函数在执行之后是不能中途停下的。但是，生成器函数却可以中途“停下”，之后可以再从停下的地方继续。当生成器遇到`yield`关键字的时候，会生成`yield`后面的值。注意，生成器在这种情况下不 _返回_ (_return_ )值，而是 _生成_ (_yield_)值。\n首先，我们用`10`作为参数`i`来初始化生成器函数。然后使用`next()`方法一步步执行生成器。第一次执行生成器的时候，`i`的值为`10`，遇到第一个`yield`关键字，它要生成`i`的值。此时，生成器“暂停”，生成了`10`。\n然后，我们再执行`next()`方法。生成器会从刚才暂停的地方继续，这个时候`i`还是`10`。于是我们走到了第二个`yield`关键字处，这时候需要生成的值是`i*2`，`i`为`10`，那么此时生成的值便是`20`。所以这道题的最终结果是`10,20`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:11:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1870,
+    "filterTotalNum":  1907,
+    "prev":  "322d4cf7-d372-4963-87d3-173a058c4099",
+    "next":  "d0fd0142-dd09-4d9a-9465-012c30cd921e"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2268,
+    "exerciseKey":  "3f9c98d1-28f5-46fe-ba4b-ee7d9f6107cf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在域名 A 的网站上，跨域请求域名 B 上的接口，怎么在跨域请求中携带域名 B 的 Cookie 呢？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "要在跨域请求中携带其他域名下的 Cookie，通常需要确保以下几点：\n\n### 1. **服务器允许跨域请求带上 Cookie**\n   - 服务器端设置 `Access-Control-Allow-Origin` 为指定的域或 `*`（但带 Cookie 时不能使用 `*`），例如：\n     ```http\n     Access-Control-Allow-Origin: https://example.com\n     ```\n   - 服务器需要设置 `Access-Control-Allow-Credentials` 为 `true`，允许发送凭证（如 Cookie、HTTP 认证信息）：\n     ```http\n     Access-Control-Allow-Credentials: true\n     ```\n   - 确保服务器设置的 Cookie `Domain` 属性符合你要共享的域范围。对于 `.example.com` 的 Cookie，`sub.example.com` 和 `another-sub.example.com` 下的请求都可以使用该 Cookie。\n\n### 2. **客户端请求设置**\n   - 客户端请求中需要设置 `withCredentials` 为 `true`，允许在跨域请求中发送 Cookie：\n     ```javascript\n     axios.get(\u0027https://api.example.com/data\u0027, {\n       withCredentials: true\n     });\n     ```\n   - 如果使用 `fetch`，也可以设置 `credentials` 为 `\"include\"`：\n     ```javascript\n     fetch(\u0027https://api.example.com/data\u0027, {\n       credentials: \u0027include\u0027\n     });\n     ```\n\n### 3. **Cookie 属性的正确配置**\n   - Cookie 必须设置 `SameSite=None`，允许跨站点发送，并且设置 `Secure` 属性确保只有在 HTTPS 连接下才发送该 Cookie。示例：\n     ```http\n     Set-Cookie: sessionId=abc123; SameSite=None; Secure\n     ```\n   - 确保 Cookie 的 `Domain` 属性被设置为共享的父域名或适合的子域名。这样，API 请求才会自动携带该域的 Cookie。\n\n### 4. **前端和服务端的协议匹配**\n   - 确保前端和服务端都通过 HTTPS 访问，`SameSite=None` Cookie 只能在 HTTPS 下使用。",
+    "pivot":  "在跨域请求中带 Cookie 需要服务端和客户端的共同支持，包括配置 `Access-Control-Allow-Credentials`、`SameSite=None` 等，并在前端请求中启用凭证携带的设置。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-30T01:37:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  621,
+    "filterTotalNum":  1907,
+    "prev":  "499b7dea-d215-42a1-9c08-44fa8f65e1ee",
+    "next":  "8bee1f99-3c46-474a-8495-8d88c35bf480"
+}

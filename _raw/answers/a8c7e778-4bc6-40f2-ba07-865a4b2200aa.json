@@ -1,0 +1,21 @@
+﻿{
+    "id":  1768,
+    "exerciseKey":  "a8c7e778-4bc6-40f2-ba07-865a4b2200aa",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现lodash中的get方法",
+    "desc":  "使用 lodash 中的 get 函数可避免长链的 key 时获取不到属性而出现问题，此时进行异常避免时及其服务，如 `o.a \u0026\u0026 o.a.b \u0026\u0026 o.a.b.c \u0026\u0026 o.a.b.c.d`\n\n实现类似 `lodash.get` ，有以下测试用例:\n\n```\nvar object = { \u0027a\u0027: [{ \u0027b\u0027: { \u0027c\u0027: 3 } }] };\n \nget(object, \u0027a[0].b.c\u0027);\n// =\u003e 3\n \nget(object, [\u0027a\u0027, \u00270\u0027, \u0027b\u0027, \u0027c\u0027]);\n// =\u003e 3\n \nget(object, \u0027a.b.c\u0027, \u0027default\u0027);\n// =\u003e \u0027default\u0027\n```",
+    "options":  null,
+    "explanation":  "```js\n/**\n* object: 对象\n* path: 输入的路径\n* defaultVal: 默认值\n**/\n \nfunction get(object, path, defaultVal=\u0027undefined\u0027) {\n    // 先将path处理成统一格式\n    let newPath = [];\n    if (Array.isArray(path)) {\n        newPath = path;\n    } else {\n        // 先将字符串中的\u0027[\u0027、\u0027]\u0027去除替换为\u0027.\u0027，split分割成数组形式\n        newPath = path.replace(/\\[/g,\u0027.\u0027).replace(/\\]/g,\u0027\u0027).split(\u0027.\u0027);\n    }\n \n    // 递归处理，返回最后结果\n    return newPath.reduce((o, k) =\u003e {\n        console.log(o, k); // 此处o初始值为下边传入的 object，后续值为每次取的内部值\n        return (o || {})[k]\n    }, object) || defaultVal;   \n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-04-10T08:08:26.000Z",
+    "updateAt":  "2022-04-10T16:08:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1041,
+    "filterTotalNum":  1907,
+    "prev":  "80e34587-60c8-4788-af46-96eec6f5f887",
+    "next":  "5cb7ee1c-c527-40f9-b00b-eb65bde48657"
+}

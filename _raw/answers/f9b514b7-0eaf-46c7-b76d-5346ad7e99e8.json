@@ -1,0 +1,21 @@
+﻿{
+    "id":  2954,
+    "exerciseKey":  "f9b514b7-0eaf-46c7-b76d-5346ad7e99e8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面代码的输出是什么？",
+    "desc":  "```js\nconst numbers = [1, 2, 3, 4, 5, 6];\n\nnumbers.forEach((num, index) =\u003e {\n  if (num === 3) {\n    console.log(`遇到数字 3，使用 return 跳过`);\n    return; \n  }\n  if (num === 5) {\n    console.log(`遇到数字 5，使用 return 跳过`);\n    return;\n  }\n  console.log(`处理数字: ${num}, 索引: ${index}`);\n});\n```",
+    "options":  null,
+    "explanation":  "```\n处理数字: 1, 索引: 0\n处理数字: 2, 索引: 1\n遇到数字 3，使用 return 跳过\n处理数字: 4, 索引: 3\n遇到数字 5，使用 return 跳过\n处理数字: 6, 索引: 5\n```\n\n在 JavaScript 的 forEach 方法中使用 return 语句不会终止循环，它只是跳过当前迭代，继续执行下一次迭代。\n\n",
+    "pivot":  "forEach 中的 return 只相当于 continue，不是 break",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2025-08-25T06:51:18.000Z",
+    "updateAt":  "2025-08-25T06:51:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  248,
+    "filterTotalNum":  1907,
+    "prev":  "dabf3a5e-f0a0-4215-9248-ec012b3b722b",
+    "next":  "d2128d55-6549-40d4-9e45-55c020437b8c"
+}

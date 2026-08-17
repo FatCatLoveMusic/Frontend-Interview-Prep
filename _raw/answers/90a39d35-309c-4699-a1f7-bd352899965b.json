@@ -1,0 +1,21 @@
+﻿{
+    "id":  22,
+    "exerciseKey":  "90a39d35-309c-4699-a1f7-bd352899965b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction Person(firstName, lastName) {\n  this.firstName = firstName;\n  this.lastName = lastName;\n}\n\nconst member = new Person(\"Lydia\", \"Hallie\");\nPerson.getFullName = function () {\n  return `${this.firstName} ${this.lastName}`;\n}\n\nconsole.log(member.getFullName());\n```",
+    "options":  "{\"options\":[\"TypeError\",\"SyntaxError\",\"Lydia Hallie\",\"undefined undefined\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "你不能像常规对象那样，给构造函数添加属性。如果你想一次性给所有实例添加特性，你应该使用原型。因此本例中，使用如下方式：\n```js\nPerson.prototype.getFullName = function () {\n  return `${this.firstName} ${this.lastName}`;\n}\n```\n这才会使 `member.getFullName()` 起作用。为什么这么做有益的？假设我们将这个方法添加到构造函数本身里。也许不是每个 `Person` 实例都需要这个方法。这将浪费大量内存空间，因为它们仍然具有该属性，这将占用每个实例的内存空间。相反，如果我们只将它添加到原型中，那么它只存在于内存中的一个位置，但是所有实例都可以访问它！",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:08:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1897,
+    "filterTotalNum":  1907,
+    "prev":  "a58a7800-e751-4664-9c9c-b342b21c701a",
+    "next":  "2def1d2a-3f39-4d07-b61d-1ae6f0f66e7c"
+}

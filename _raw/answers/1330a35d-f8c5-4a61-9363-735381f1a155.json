@@ -1,0 +1,21 @@
+﻿{
+    "id":  3213,
+    "exerciseKey":  "1330a35d-f8c5-4a61-9363-735381f1a155",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "MCP Client 与 MCP Server 的职责分别是什么？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "MCP 可以理解为给大模型接入外部能力的一套标准协议。这里的 **Client** 和 **Server** 不是传统 Web 前后端的概念，而是围绕“模型如何安全、标准化地使用外部工具和上下文”来分工。\n\n**MCP Client** 通常运行在宿主应用里，比如 IDE、Agent 框架、桌面客户端或对话产品中。它的核心职责是代表宿主应用和 MCP Server 建立连接，完成协议握手、能力发现、请求转发和结果接收。比如它会询问 Server 支持哪些 tools、resources、prompts，然后把这些能力提供给模型使用。当模型决定调用某个工具时，Client 负责把调用参数按 MCP 协议发送给对应的 Server，并把返回结果再交给模型。\n\nClient 还承担一层非常重要的控制职责：它更接近用户和宿主环境，所以通常负责权限确认、调用审批、连接生命周期管理、错误处理、超时控制、取消请求、日志记录等。也就是说，Client 不应该真正实现业务能力，而是负责“协调模型、用户、宿主应用和外部能力之间的交互”。\n\n**MCP Server** 则是能力提供方。它负责把某个外部系统、数据源或工具封装成 MCP 标准接口。比如一个 GitHub MCP Server 可以暴露读取 issue、创建 PR、查询仓库文件等工具；一个数据库 MCP Server 可以暴露查询 schema、执行只读 SQL 等能力；一个文件系统 MCP Server 可以暴露读取目录、读取文件等资源。\n\nServer 的重点是定义并实现能力：声明自己有哪些 tools、resources、prompts，描述每个工具的参数 schema，接收 Client 发来的调用请求，执行真实逻辑，然后返回结构化结果。它更关心“某项能力如何被执行”，而不是“模型为什么要调用它”或“用户界面如何展示”。\n\n一个比较清晰的边界是：**MCP Client 负责连接、调度、权限与上下文流转；MCP Server 负责能力暴露、协议适配与实际执行**。Client 更像宿主应用里的协议协调器，Server 更像标准化的工具提供者。",
+    "pivot":  "- MCP Client 面向宿主应用和模型，负责连接 Server、发现能力、转发调用、处理权限和生命周期。\n- MCP Server 面向外部系统和工具，负责暴露 tools、resources、prompts，并执行具体能力。\n- 两者通过 MCP 协议解耦，使模型可以用统一方式访问不同的数据源和工具。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:57:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  75,
+    "filterTotalNum":  1907,
+    "prev":  "f224392f-4821-42b0-b143-30fc5a07bff9",
+    "next":  "634ebf30-1fee-4dd9-afb1-b376faa977c6"
+}

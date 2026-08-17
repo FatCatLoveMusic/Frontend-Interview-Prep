@@ -1,0 +1,21 @@
+﻿{
+    "id":  55,
+    "exerciseKey":  "ff764705-09da-45ff-8678-56ab75fce6de",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\n[1, 2, 3].map(num =\u003e {\n  if (typeof num === \"number\") return;\n  return num * 2;\n});\n```",
+    "options":  "{\"options\":[\"[]\",\"[null, null, null]\",\"[undefined, undefined, undefined]\",\"[ 3 x empty ]\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "对数组进行映射的时候,`num`就是当前循环到的元素. 在这个例子中，所有的映射都是number类型，所以if中的判断`typeof num === \"number\"`结果都是`true`.map函数创建了新数组并且将函数的返回值插入数组。\n但是，没有任何值返回。当函数没有返回任何值时，即默认返回`undefined`.对数组中的每一个元素来说，函数块都得到了这个返回值，所以结果中每一个元素都是`undefined`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:13:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  1864,
+    "filterTotalNum":  1907,
+    "prev":  "19bf40bd-7685-4eba-bd6e-9c7d00e0ec55",
+    "next":  "90fb24f5-8333-44a9-b3b7-ef199eeaaaeb"
+}

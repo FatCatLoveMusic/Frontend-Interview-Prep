@@ -1,0 +1,21 @@
+﻿{
+    "id":  264,
+    "exerciseKey":  "d6a65597-0522-4127-bbe1-68eb9da818ee",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "HTML 中的行内元素（inline elements）通常用于在一行内显示，不会独占一行的空间。常见的行内元素有：\n\n- `\u003cspan\u003e`：用于对文本或其他内联元素进行分组或添加样式。\n- `\u003cstrong\u003e`：表示强调的文本。\n- `\u003cem\u003e`：表示斜体强调的文本。\n- `\u003ca\u003e`：用于创建超链接。\n- `\u003cimg\u003e`：用于插入图像。\n- `\u003cinput\u003e`：用于创建用户输入字段。\n\n块级元素（block-level elements）通常会独占一行的空间，并且会在前后创建换行。常见的块级元素有：\n\n- `\u003cdiv\u003e`：用于将内容分组。\n- `\u003cp\u003e`：用于段落。\n- `\u003ch1\u003e`-`\u003ch6\u003e`：用于标题。\n- `\u003cul\u003e` 和 `\u003col\u003e`：用于无序和有序列表。\n- `\u003cli\u003e`：用于列表项。\n- `\u003ctable\u003e`：用于创建表格。\n\n空元素（void elements）是指没有闭合标签的元素。它们在 HTML 中没有内容，只有一个开启标签。常见的空元素有：\n\n- `\u003cbr\u003e`：用于插入换行符。\n- `\u003cimg\u003e`：用于插入图像。\n- `\u003cinput\u003e`：用于创建用户输入字段。\n- `\u003cmeta\u003e`：用于指定页面元数据。\n- `\u003clink\u003e`：用于引入外部资源。\n- `\u003chr\u003e`：用于创建水平分隔线。\n\n注意，HTML5 中的空元素可以使用自闭合的格式，例如 `\u003cbr /\u003e`、`\u003cimg src=\"...\" alt=\"...\" /\u003e`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:36:54.000Z",
+    "updateAt":  "2024-07-22T10:10:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1655,
+    "filterTotalNum":  1907,
+    "prev":  "65fa7d0f-fd68-4c2d-9c2b-4f98d7a4f9e3",
+    "next":  "76a7ac01-6de6-4391-976d-b703da5b78ec"
+}

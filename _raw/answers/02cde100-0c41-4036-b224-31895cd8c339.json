@@ -1,0 +1,21 @@
+﻿{
+    "id":  1961,
+    "exerciseKey":  "02cde100-0c41-4036-b224-31895cd8c339",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么在代码中判断一个 React 组件是 class component 还是 function component？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以使用JavaScript的`typeof`运算符和React的`Component`类来进行判断。\n\n下面是一个示例的判断方法：\n\n```javascript\nfunction isClassComponent(component) {\n  return (\n    typeof component === \u0027function\u0027 \u0026\u0026\n    !!component.prototype.isReactComponent\n  );\n}\n\n// 示例用法\nconst MyComponent = () =\u003e \u003cdiv\u003eHello, I\u0027m a function component!\u003c/div\u003e;\nconst MyClassComponent = class extends React.Component {\n  render() {\n    return \u003cdiv\u003eHello, I\u0027m a class component!\u003c/div\u003e;\n  }\n};\n\nconsole.log(isClassComponent(MyComponent)); // false\nconsole.log(isClassComponent(MyClassComponent)); // true\n```\n\n上面定义了一个名为`isClassComponent`的函数，它接受一个组件作为参数。函数内部使用`typeof`运算符来判断该组件是否为函数类型，并通过检查`component.prototype.isReactComponent`属性来确定是否为Class组件。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-04-26T07:45:16.000Z",
+    "updateAt":  "2024-07-23T09:49:08.000Z",
+    "isCollected":  false,
+    "currentIndex":  849,
+    "filterTotalNum":  1907,
+    "prev":  "fe737e1d-6ee1-4344-9ab7-7d3dafb749f6",
+    "next":  "8555928b-fc6d-48dd-967f-dab7e44d2744"
+}

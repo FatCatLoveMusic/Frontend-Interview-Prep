@@ -1,0 +1,21 @@
+﻿{
+    "id":  585,
+    "exerciseKey":  "4c33c24c-2e00-49a8-9f70-14c9ed80bf32",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "协商缓存中，有了 Last-Modified，为什么还会出现 ETag？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "ETag的出现，主要是为了解决 Last-Modified 无法解决的一些问题：\n\n* 某些服务器不能精确得到文件的最后修改时间， 这样就无法通过最后修改时间来判断文件是否更新了。\n\n* 某些文件的修改非常频繁，在秒以下的时间内进行修改. Last-Modified只能精确到秒。\n\n* 一些文件的最后修改时间改变了，但是内容并未改变。 我们不希望客户端认为这个文件修改了。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-08-11T07:34:31.000Z",
+    "updateAt":  "2021-08-15T15:28:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1335,
+    "filterTotalNum":  1907,
+    "prev":  "e84bcf8c-1ee4-4c28-8e64-875b485369b5",
+    "next":  "0e7888d9-d8a4-41f8-a052-f94350ee0c15"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  270,
+    "exerciseKey":  "ba6327df-ba59-4870-921c-36b8516c4451",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "\u003c!DOCTYPE html\u003e 标签有什么用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`\u003c!DOCTYPE html\u003e` 是 HTML 文档的文档类型声明（DOCTYPE），用于告知浏览器该文档使用的 HTML 版本和标准。它的主要作用如下：\n\n### 作用\n\n1. **指定文档类型**：\n   - `\u003c!DOCTYPE html\u003e` 声明告知浏览器该文档遵循 HTML5 标准。这有助于浏览器正确解析和渲染网页内容。\n\n2. **触发标准模式**：\n   - 在浏览器中，`\u003c!DOCTYPE html\u003e` 会触发标准模式（Standards Mode），使浏览器以最严格的方式按照 HTML5 标准来渲染页面。没有 DOCTYPE 或者不正确的 DOCTYPE 可能会导致浏览器进入混杂模式（Quirks Mode），这种模式下的渲染可能不符合标准规范。\n\n3. **确保一致的渲染**： \n   - 通过声明 DOCTYPE，可以减少不同浏览器之间的渲染差异。标准模式确保所有浏览器以一致的方式呈现 HTML 内容。\n\n### 示例\n\n```html\n\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"UTF-8\"\u003e\n    \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003e\n    \u003ctitle\u003eDocument\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n    \u003ch1\u003eHello, World!\u003c/h1\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\n### 历史背景\n\n- **HTML4 和 XHTML**：\n  - 对于 HTML4 和 XHTML，DOCTYPE 声明较为复杂，需要指定具体的 DTD（Document Type Definition）。例如，HTML4 的 DOCTYPE 是这样的：`\u003c!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"\u003e`。\n  - HTML5 简化了 DOCTYPE 声明为 `\u003c!DOCTYPE html\u003e`，使其更简洁且易于使用。",
+    "pivot":  "`\u003c!DOCTYPE html\u003e` 是 HTML5 文档的标准声明，用于告知浏览器当前页面遵循 HTML5 标准。它帮助浏览器以标准模式渲染网页，确保一致的用户体验和网页表现。",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:54:53.000Z",
+    "updateAt":  "2024-08-22T04:01:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1649,
+    "filterTotalNum":  1907,
+    "prev":  "362a44f0-8be1-4e5b-abfc-f3ddadc4aa2e",
+    "next":  "6f693f1d-67f6-4b01-aae8-dfeb47a444b5"
+}

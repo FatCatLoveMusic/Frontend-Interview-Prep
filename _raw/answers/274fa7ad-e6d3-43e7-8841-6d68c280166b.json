@@ -1,0 +1,21 @@
+﻿{
+    "id":  133,
+    "exerciseKey":  "274fa7ad-e6d3-43e7-8841-6d68c280166b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst name = \"Lydia Hallie\";\nconst age = 21;\n\nconsole.log(Number.isNaN(name));\nconsole.log(Number.isNaN(age));\n\nconsole.log(isNaN(name));\nconsole.log(isNaN(age));\n```",
+    "options":  "{\"options\":[\"true false true false\",\"true false false false\",\"false false true false\",\"false true false true\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "## 1\\. isNaN()\n\n`isNaN`函数是用来确定一个值是否是`NaN`，可以在全局直接使用，返回值是一个布尔值`true`或`false`：\n\n```js\n// 基础用法\nisNaN(1)     // false\nisNaN(NaN)   // true \n```\n\n但是`isNaN`方法有一些怪异的行为，不然也不会有`Number.isNaN`函数什么事了：\n\n```js\nisNaN(undefined); // true\nisNaN({});        // true\nisNaN(\"37,5\")     // true\nisNaN(\"123ABC\")   // true\nisNaN(\"abc\")      // true\n```\n\n可以看到，以上的这些`isNaN`函数的参数都不是`NaN`,怎么还返回`true`呢？ MDN的解释是这样的：**如果`isNaN`函数的参数不是`Number`类型， `isNaN`函数会首先尝试将这个参数转换为数值，然后才会对转换后的结果是否是`NaN`进行判断**, 也就是说，`isNaN`的参数首先会执行`Number()`进行强制转换，然后再去判断是否是`NaN`:\n\n```js\nisNaN(true)       // false 因为Number(true)值为1，而1不是NaN, 所以返回false\nisNaN(undefined); // true  因为Number(undefined)值为NaN, 所以返回true\nisNaN({});        // true  因为Number({})值为NaN, 所以返回true\nisNaN(\u0027abc\u0027);     // true  因为Number(abc)值为NaN, 所以返回true\nisNaN(\u0027\u0027);        // false 因为Number(\u0027\u0027)值为0, 所以返回false\n复制代码\n```\n\n## 2\\. Number.isNaN()\n\n**`Number.isNaN()`** 方法确定传递的值是否为 `NaN`，并且检查其类型是否为 `Number`,它的返回值是布尔类型。它是原来的全局 `isNaN()`的更稳妥的版本（注意：`ECMAScript 2015`版本才有`Number.isNaN()`）。\n\n也就是说，`Number.isNaN`函数会先检查参数是不是`Number`类型，如果不是，直接会返回`false`,只有参数是`Number`类型才会去判断是不是`NaN`,我们用`Number.isNaN`再验证下之前的例子：\n\n```js\n// 基本使用\nNumber.isNaN(NaN)    // true\nNumber.isNaN(1)      // false\n\n// 特殊情况\nNumber.isNaN(true)        // false 因为true不是Number类型\nNumber.isNaN(undefined)   // false 因为undefined不是Number类型\nNumber.isNaN({})          // false 因为{}不是Number类型\nNumber.isNaN(\"abc\")       // false 因为\"abc\"不是Number类型\nNumber.isNaN(\"\")          // false 因为\"\"不是Number类型\n```\n\n## 3\\. 推荐使用Number.isNaN()\n\n通过上述的几个例子可以看到，`Number.isNaN`用来判断某个值是否是NaN更像是我们理想型用法，不会产生一些比较怪异的行为，使我们的代码更加的严谨，防止出现bug, 所以在写代码的时候更推荐使用`Number.isNaN`这个方法来确定一个值是否是`NaN`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-02-02T11:41:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  1786,
+    "filterTotalNum":  1907,
+    "prev":  "462a3a5d-0364-41c1-b437-d8f63587ae1c",
+    "next":  "e9b3318a-4d50-437b-8a59-532532cd7dc3"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1537,
+    "exerciseKey":  "32a7006f-143a-4490-baf1-c903f98d826b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用 useState （const [test, setTest] = useState([])）时，为什么连续调用 setTest({...test, newValue}) 会出现值的丢失？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "useState是异步执行的，也就是执行 setTest 后，不会立即更新 test 的结果，多次调用时，出现了值覆盖的情况。\n\n如果本次的状态更新依赖于上一次最近的状态更新，那么我们可以给 setTest 传递一个函数进去，函数的参数即为最后一次更新的状态的值：\n\n```react\nsetTest(prevState =\u003e ([\n\t...prevState,\n    newValue\n]))\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T08:18:17.000Z",
+    "updateAt":  "2023-03-26T08:34:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1252,
+    "filterTotalNum":  1907,
+    "prev":  "01149afa-e389-4a9f-a534-204db829188b",
+    "next":  "b1d982b1-a2fc-44b7-9124-7f47ba2a4707"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3168,
+    "exerciseKey":  "afd1fe7c-51e7-410a-b648-c7a961f48f78",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Tool Calling 与 Function Calling 有什么区别？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Function Calling 可以理解为 Tool Calling 的一个子集。\n\nFunction Calling 更强调“模型调用一个开发者定义的函数”。开发者提前声明函数名、参数 JSON Schema、用途说明，模型在需要时输出结构化参数，例如：\n\n```ts\ngetUserProfile({ userId: \"123\" })\n```\n\n但模型本身不会真的执行函数，真正的执行发生在业务系统里。也就是说，Function Calling 的核心价值是让模型把自然语言意图转成稳定、可校验的结构化调用。\n\nTool Calling 的范围更大。它不只包括开发者定义的函数，还可以包括搜索、代码执行、文件检索、浏览器操作、数据库查询、API 请求等各种工具。在 Agent 场景里，模型会根据任务目标选择工具、生成参数、拿到结果后继续推理，甚至多轮调用多个工具。因此 Tool Calling 更像是“模型使用外部能力完成任务”的统一机制。\n\n从 API 演进角度看，很多平台早期叫 Function Calling，后来抽象成 Tool Calling。比如函数会被包装成一种 tool：\n\n```json\n{\n  \"type\": \"function\",\n  \"function\": {\n    \"name\": \"getUserProfile\",\n    \"parameters\": {}\n  }\n}\n```\n\n这说明二者不是完全割裂的概念，而是抽象层级不同：Function Calling 关注函数调用本身，Tool Calling 关注更通用的工具调用体系。\n\n在前端或业务系统落地时，Function Calling 更适合做表单参数提取、业务 API 调用、数据查询条件生成；Tool Calling 更适合做复杂任务编排，比如“分析文档、查数据、生成报告、再调用接口提交结果”。\n",
+    "pivot":  "Function Calling 是让模型生成结构化函数调用参数，通常面向开发者自定义函数。Tool Calling 是更泛化的能力，函数只是其中一种工具。两者的本质差异在抽象范围：Function Calling 偏单点函数接口，Tool Calling 偏 Agent 任务执行与多工具协作。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-30T14:14:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  120,
+    "filterTotalNum":  1907,
+    "prev":  "7b0bfdf8-416d-404c-b97c-d3a713121cbd",
+    "next":  "81174c76-5f20-499d-9da9-76aeb34fd585"
+}

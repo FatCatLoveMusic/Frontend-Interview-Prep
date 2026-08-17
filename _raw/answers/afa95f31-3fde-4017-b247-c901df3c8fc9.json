@@ -1,0 +1,21 @@
+﻿{
+    "id":  2728,
+    "exerciseKey":  "afa95f31-3fde-4017-b247-c901df3c8fc9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何监控前端页面的崩溃？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "监控前端页面的崩溃通常涉及捕获和报告 JavaScript 错误、性能问题以及页面状态。\n\n以下是一些常见的方法和工具来实现这些监控：\n\n### **1. 使用 `window.onerror`**\n\n- **定义**：`window.onerror` 是一个全局事件处理程序，用于捕获 JavaScript 执行时的错误。\n- **实现**：\n  ```javascript\n  window.onerror = function(message, source, lineno, colno, error) {\n    // 处理错误信息，例如发送到服务器\n    console.error(\u0027Error captured:\u0027, { message, source, lineno, colno, error });\n    // 可以通过 HTTP 请求将错误信息发送到日志服务器\n  };\n  ```\n\n### **2. 使用 `window.addEventListener(\u0027unhandledrejection\u0027)`**\n\n- **定义**：捕获未处理的 Promise 拒绝（rejections）。\n- **实现**：\n  ```javascript\n  window.addEventListener(\u0027unhandledrejection\u0027, function(event) {\n    // 处理 Promise 拒绝，例如发送到服务器\n    console.error(\u0027Unhandled rejection:\u0027, event.reason);\n    // 可以通过 HTTP 请求将错误信息发送到日志服务器\n  });\n  ```\n\n### **3. 使用 `try...catch`**\n\n- **定义**：在可能出现错误的代码块中使用 `try...catch` 捕获异常。\n- **实现**：\n  ```javascript\n  try {\n    // 可能会抛出错误的代码\n  } catch (error) {\n    // 处理错误，例如发送到服务器\n    console.error(\u0027Caught error:\u0027, error);\n    // 可以通过 HTTP 请求将错误信息发送到日志服务器\n  }\n  ```\n\n### **4. 使用错误监控工具**\n\n- **Sentry**：捕获前端错误并提供详细的堆栈跟踪和上下文信息。\n- **New Relic**：提供全面的前端性能监控和错误捕获。\n- **Rollbar**：实时捕获和报告 JavaScript 错误和异常。\n- **LogRocket**：记录用户会话并捕获前端错误。\n\n### **5. 性能监控和日志**\n\n- **浏览器开发者工具**：使用 DevTools 监控网络请求、性能和资源使用。\n- **Web Vitals**：跟踪核心 Web Vitals 指标（如 LCP、FID、CLS）来发现性能问题。\n- **Custom Logging**：自定义日志记录功能，将应用程序状态和错误发送到日志服务器。\n\n### **6. 网络请求监控**\n\n- **自定义错误日志**：在 JavaScript 错误处理程序中，通过 HTTP 请求将错误信息发送到远程服务器进行存储和分析。\n- **日志服务器**：维护一个后端日志服务器，用于存储和分析前端错误和崩溃数据。",
+    "pivot":  "通过结合使用 `window.onerror`、`unhandledrejection`、`try...catch` 和各种错误监控工具，可以有效地捕获和报告前端页面的崩溃和错误。这些方法帮助开发者及时发现和解决问题，提高用户体验。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T20:32:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  383,
+    "filterTotalNum":  1907,
+    "prev":  "88f3b671-5906-4aa8-9f68-8df711d582f3",
+    "next":  "3c436b0a-3f53-4b66-a5cf-3ce6aef339c8"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2961,
+    "exerciseKey":  "2446e942-5af4-4e38-98b5-5bb96b968a2c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue3中v-model的改进是什么？如何用defineModel简化代码？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue 3 中，`v-model` 做了显著改进，相比 Vue 2，更加灵活和可配置，同时减少了模板中重复代码。\n\n## 1. Vue 3 中 v-model 的改进\n\n### 1.1 支持 **多 v-model**\n\n* Vue 2 组件只能通过单个 `v-model` 绑定 `value` + `input`。\n* Vue 3 支持给组件定义多个 `v-model`，可以绑定不同的属性和事件。\n\n```vue\n\u003cMyComponent \n  v-model:title=\"pageTitle\" \n  v-model:count=\"itemCount\" \n/\u003e\n```\n\n对应组件内部：\n\n```vue\ndefineProps([\u0027title\u0027, \u0027count\u0027])\nconst emit = defineEmits([\u0027update:title\u0027, \u0027update:count\u0027])\n\nfunction updateTitle(newTitle) {\n  emit(\u0027update:title\u0027, newTitle)\n}\n```\n\n### 1.2 指定绑定的 **prop 名称**\n\n* Vue 3 不再固定 `value` 属性，`v-model:propName` 可以绑定任意 prop，并生成 `update:propName` 事件。\n* 语法更直观，避免只能用 `value` 的局限。\n\n---\n\n## 2. v-model 的原理变化\n\n* Vue 3 不再依赖 `Object.defineProperty`，而是用 **Proxy** 实现响应式。\n* `v-model` 的双向绑定原理依然是：\n\n  1. **数据 → 视图**：绑定 prop\n  2. **视图 → 数据**：通过触发 `update:propName` 事件，父组件更新数据\n\n```vue\n\u003c!-- 父组件 --\u003e\n\u003cMyInput v-model=\"msg\" /\u003e\n\n\u003c!-- 子组件 --\u003e\n\u003cscript setup\u003e\ndefineProps([\u0027modelValue\u0027])\nconst emit = defineEmits([\u0027update:modelValue\u0027])\nfunction onInput(e) {\n  emit(\u0027update:modelValue\u0027, e.target.value)\n}\n\u003c/script\u003e\n```\n\n---\n\n## 3. 使用 `defineModel` 简化代码\n\n`defineModel` 是 Vue 3.3+ 提供的 **组合式 API**，用于在 `\u003cscript setup\u003e` 中声明 `v-model` 绑定属性和事件，减少手动编写 `defineProps` + `defineEmits` 的模板。\n\n### 示例\n\n#### 传统方式\n\n```vue\n\u003cscript setup\u003e\ndefineProps([\u0027modelValue\u0027])\nconst emit = defineEmits([\u0027update:modelValue\u0027])\n\nfunction onInput(e) {\n  emit(\u0027update:modelValue\u0027, e.target.value)\n}\n\u003c/script\u003e\n```\n\n#### 使用 `defineModel`\n\n```vue\n\u003cscript setup\u003e\nconst modelValue = defineModel() // 自动生成 props + emits\n\nfunction onInput(e) {\n  modelValue.value = e.target.value // 自动触发 update:modelValue\n}\n\u003c/script\u003e\n```\n\n### 特点\n\n1. 自动生成 `props` + `emits`，简化模板和代码\n2. 可直接使用 `ref` 风格修改值，内部会触发 `update:modelValue`\n3. 支持默认值、类型声明和验证\n",
+    "pivot":  "* **Vue 3 改进点**：\n\n  1. 支持多 `v-model`（`v-model:propName`）\n  2. 不再固定 `value`，绑定任意 prop\n  3. 基于 Proxy 的响应式系统\n\n* **defineModel 优势**：\n\n  * 减少重复代码（无需手动定义 props/emits）\n  * 直接操作变量即可触发双向绑定\n  * 与 `\u003cscript setup\u003e` 组合式 API 自然结合",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-08-28T08:57:05.000Z",
+    "updateAt":  "2025-08-28T08:57:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  241,
+    "filterTotalNum":  1907,
+    "prev":  "d6a85a95-95f9-4606-a98d-280bd6c82c9b",
+    "next":  "e8f52755-fec1-4489-9163-a7fb4216b0b2"
+}

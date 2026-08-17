@@ -1,0 +1,21 @@
+﻿{
+    "id":  527,
+    "exerciseKey":  "c81eed52-f021-4483-8b61-c815eb03ae18",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "砝码称重问题（三）",
+    "desc":  "现在有质量分别为1g、2g、3g、4g、8g的砝码各一枚.用这些砝码在天平上共可称出多少种不同的质量?",
+    "options":  null,
+    "explanation":  "1g-18g都可以称出来，也就是18种\n\n```\n1=1\n2=2\n3=3\n4=4\n5=1+4\n6=2+4\n7=3+7\n8=8\n9=1+8\n10=2+8\n11=3+8\n12=4+8\n13=1+4+8\n14=2+4+8\n15=3+4+8\n16=1+3+4+8\n17=2+3+4+8\n18+1+2+3+4+8\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-17T13:03:51.000Z",
+    "updateAt":  "2021-07-17T21:27:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  1393,
+    "filterTotalNum":  1907,
+    "prev":  "e00b6fcb-fb55-435f-ac74-687734871111",
+    "next":  "430d4c5c-fe72-45c2-b34e-edaae7786685"
+}

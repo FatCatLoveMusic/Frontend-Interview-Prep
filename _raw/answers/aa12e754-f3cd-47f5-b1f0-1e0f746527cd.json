@@ -1,0 +1,21 @@
+﻿{
+    "id":  40,
+    "exerciseKey":  "aa12e754-f3cd-47f5-b1f0-1e0f746527cd",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction sayHi() {\n  return (() =\u003e 0)()\n}\n\nconsole.log(typeof sayHi());\n```",
+    "options":  "{\"options\":[\"\\\"object\\\"\",\"\\\"number\\\"\",\"\\\"function\\\"\",\"\\\"undefined\\\"\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`sayHi` 方法返回的是立即执行函数(IIFE)的返回值。此立即执行函数的返回值是 `0`， 类型是 `number`。\n\n其他参考资料：\n\n`typeof` 运算符返回一个字符串，表示操作数的类型。\n\n下表总结了 `typeof` 可能的返回值\n\n|类型|结果|\n|--|--|\n|Undefined|\t\"undefined\"|\n|Null|\t\"object\"|\n|Boolean\t|\"boolean\"|\n|Number\t|\"number\"|\n|BigInt\t|\"bigint\"|\n|String\t|\"string\"|\n|Symbol\t|\"symbol\"|\n|Function|\t\"function\"|\n|其他任何对象| \"object\"|",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-03-04T22:22:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1879,
+    "filterTotalNum":  1907,
+    "prev":  "f6b74eb2-442e-4a56-904f-bee79587138c",
+    "next":  "e39e2c86-5e5d-4412-907b-e40d98fbfb4c"
+}

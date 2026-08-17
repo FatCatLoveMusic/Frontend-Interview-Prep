@@ -1,0 +1,21 @@
+﻿{
+    "id":  548,
+    "exerciseKey":  "b32040b5-50a0-40a8-931d-82738916e4ee",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说对 Node 中的 Buffer 的理解？应用场景？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n## 一、是什么\n\n在`Node`应用中，需要处理网络协议、操作数据库、处理图片、接收上传文件等，在网络流和文件的操作中，要处理大量二进制数据，而`Buffer`就是在内存中开辟一片区域（初次初始化为8KB），用来存放二进制数据\n\n在上述操作中都会存在数据流动，每个数据流动的过程中，都会有一个最小或最大数据量\n\n如果数据到达的速度比进程消耗的速度快，那么少数早到达的数据会处于等待区等候被处理。反之，如果数据到达的速度比进程消耗的数据慢，那么早先到达的数据需要等待一定量的数据到达之后才能被处理\n\n这里的等待区就指的缓冲区（Buffer），它是计算机中的一个小物理单位，通常位于计算机的 `RAM` 中\n\n简单来讲，`Nodejs`不能控制数据传输的速度和到达时间，只能决定何时发送数据，如果还没到发送时间，则将数据放在`Buffer`中，即在`RAM`中，直至将它们发送完毕\n\n上面讲到了`Buffer`是用来存储二进制数据，其的形式可以理解成一个数组，数组中的每一项，都可以保存8位二进制：`00000000`，也就是一个字节\n\n例如：\n\n```js\nconst buffer = Buffer.from(\"why\")\n```\n\n其存储过程如下图所示：\n\n ![](https://static.ecool.fun//article/e3147a80-c494-4d9b-b9f1-1798213fd233.png)\n\n\n## 二、使用方法\n\n`Buffer` 类在全局作用域中，无须`require`导入\n\n创建`Buffer`的方法有很多种，我们讲讲下面的两种常见的形式：\n\n- Buffer.from()\n\n- Buffer.alloc() \n\n### Buffer.from()\n\n```js\nconst b1 = Buffer.from(\u002710\u0027);\nconst b2 = Buffer.from(\u002710\u0027, \u0027utf8\u0027);\nconst b3 = Buffer.from([10]);\nconst b4 = Buffer.from(b3);\n\nconsole.log(b1, b2, b3, b4); // \u003cBuffer 31 30\u003e \u003cBuffer 31 30\u003e \u003cBuffer 0a\u003e \u003cBuffer 0a\u003e\n```\n\n### Buffer.alloc() \n\n```js\nconst bAlloc1 = Buffer.alloc(10); // 创建一个大小为 10 个字节的缓冲区\nconst bAlloc2 = Buffer.alloc(10, 1); // 建一个长度为 10 的 Buffer,其中全部填充了值为 `1` 的字节\nconsole.log(bAlloc1); // \u003cBuffer 00 00 00 00 00 00 00 00 00 00\u003e\nconsole.log(bAlloc2); // \u003cBuffer 01 01 01 01 01 01 01 01 01 01\u003e\n```\n\n在上面创建`buffer`后，则能够`toString`的形式进行交互，默认情况下采取`utf8`字符编码形式，如下\n\n```js\nconst buffer = Buffer.from(\"你好\");\nconsole.log(buffer);\n// \u003cBuffer e4 bd a0 e5 a5 bd\u003e\nconst str = buffer.toString();\nconsole.log(str);\n// 你好\n```\n\n如果编码与解码不是相同的格式则会出现乱码的情况，如下：\n\n```js\nconst buffer = Buffer.from(\"你好\",\"utf-8 \");\nconsole.log(buffer);\n// \u003cBuffer e4 bd a0 e5 a5 bd\u003e\nconst str = buffer.toString(\"ascii\");\nconsole.log(str); \n// d= e%=\n```\n\n当设定的范围导致字符串被截断的时候，也会存在乱码情况，如下：\n\n```js\nconst buf = Buffer.from(\u0027Node.js 技术栈\u0027, \u0027UTF-8\u0027);\n\nconsole.log(buf)          // \u003cBuffer 4e 6f 64 65 2e 6a 73 20 e6 8a 80 e6 9c af e6 a0 88\u003e\nconsole.log(buf.length)   // 17\n\nconsole.log(buf.toString(\u0027UTF-8\u0027, 0, 9))  // Node.js �\nconsole.log(buf.toString(\u0027UTF-8\u0027, 0, 11)) // Node.js 技\n```\n\n所支持的字符集有如下：\n\n- ascii：仅支持 7 位 ASCII 数据，如果设置去掉高位的话，这种编码是非常快的\n- utf8：多字节编码的 Unicode 字符，许多网页和其他文档格式都使用 UTF-8\n- utf16le：2 或 4 个字节，小字节序编码的 Unicode 字符，支持代理对（U+10000至 U+10FFFF）\n- ucs2，utf16le 的别名\n- base64：Base64 编码\n- latin：一种把 Buffer 编码成一字节编码的字符串的方式\n- binary：latin1 的别名，\n- hex：将每个字节编码为两个十六进制字符\n\n\n\n## 三、应用场景\n\n`Buffer`的应用场景常常与流的概念联系在一起，例如有如下：\n\n- I/O操作\n- 加密解密\n- zlib.js\n\n\n\n### I/O操作\n\n通过流的形式，将一个文件的内容读取到另外一个文件\n\n```js\nconst fs = require(\u0027fs\u0027);\n\nconst inputStream = fs.createReadStream(\u0027input.txt\u0027); // 创建可读流\nconst outputStream = fs.createWriteStream(\u0027output.txt\u0027); // 创建可写流\n\ninputStream.pipe(outputStream); // 管道读写\n```\n\n\n\n### 加解密\n\n在一些加解密算法中会遇到使用 `Buffer`，例如 `crypto.createCipheriv` 的第二个参数 `key` 为 `string` 或 `Buffer` 类型\n\n\n\n### zlib.js\n\n`zlib.js` 为 `Node.js` 的核心库之一，其利用了缓冲区（`Buffer`）的功能来操作二进制数据流，提供了压缩或解压功能\n",
+    "pivot":  "**作答思路**：\n\n在Node.js中，Buffer是一个用于操作二进制数据的类，它提供了一种高效的方法来处理原始的内存块。Buffer类是JavaScript的一个原生实现，允许JavaScript代码以二进制形式操作数据。\n\n应用场景：\n\n1. **文件读写**：在处理文件时，Buffer可以用来读取或写入二进制数据。\n2. **网络通信**：在处理TCP流、文件流或DOM结构时，Buffer可以用来处理二进制数据。\n3. **图片和音频处理**：在处理图片、音频或其他媒体文件时，Buffer可以用来操作原始的二进制数据。\n4. **加密和解密**：在执行加密或解密操作时，Buffer可以用来处理加密后的二进制数据。\n\n**考察要点**：\n\n1. **Buffer概念**：理解Buffer的基本原理和用途。\n2. **应用场景**：了解Buffer在Node.js中的典型应用场景。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-25T02:16:37.000Z",
+    "updateAt":  "2024-08-10T17:05:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1372,
+    "filterTotalNum":  1907,
+    "prev":  "b96ba5f2-383d-4a6a-9be9-be18b2a20a6e",
+    "next":  "b415a52e-4220-4fb5-83fd-fef21e3cfbff"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2920,
+    "exerciseKey":  "96eb9035-e189-4403-a370-eccca4a16345",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "下列哪些不可以实现浏览器存储数据？",
+    "desc":  null,
+    "options":  "{\"options\":[\"cookie\",\"localStorage\",\"session\",\"sessionStorage\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "session 不是浏览器端 API，指的是服务端会话机制，不能直接用于浏览器存储",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2025-04-07T01:30:52.000Z",
+    "updateAt":  "2025-04-07T01:32:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  281,
+    "filterTotalNum":  1907,
+    "prev":  "fa065548-704b-4428-b784-6a038acde5b4",
+    "next":  "ae19c36b-5312-4299-b371-8c61e96cbb8d"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2202,
+    "exerciseKey":  "441e5115-ec9e-4839-bc2c-f1ebaa262af6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个函数， 通过 id 来查找 tree 数据结构对应的节点",
+    "desc":  "```js\n// 数据如下：\nconst tree = [\n  {\n    name: \"数据1\",\n    id: 1,\n    children: [\n      {\n        name: \"数据2\",\n        id: 2,\n        children: [\n          {\n            name: \"数据3\",\n            id: 3,\n            children:\n              {\n                name: \"数据4\",\n                id: 4,\n                children: [],\n              },\n            ],\n          },\n        ],\n      },\n    ],\n  },\n];\n\nfunction findNodeById(tree, id) {\n  // ....\n}\n\nconst res = findNodeById(tree, 3);\n// res 的结果为\n//           {\n//             name: \"数据3\",\n//             id: 3,\n//             children: [\n//               {\n//                 name: \"数据4\",\n//                 id: 4,\n//                 children: [],\n//               },\n//             ],\n//           }\n```\n",
+    "options":  "",
+    "explanation":  "参考答案：\n\n```js\nfunction findNodeById(tree, id) {\n  if (!tree.length) return null; // 如果树是空的，则返回 null\n\n  const search = (node) =\u003e {\n    if (node.id === id) {\n      // 如果找到一个匹配的节点，返回它\n      return node;\n    } else if (node.children) {\n      // 否则，如果它有子节点，递归地搜索子节点\n      for (const child of node.children) {\n        const result = search(child);\n        if (result) {\n          return result; // 如果递归找到了一个匹配的节点，返回它\n        }\n      }\n    }\n    return null; // 如果什么都没找到，返回 null\n  };\n\n  for (const root of tree) {\n    const result = search(root);\n    if (result) {\n      return result; // 如果在根节点中找到了一个匹配的节点，返回它\n    }\n  }\n\n  // 如果循环遍历整个树完成后没有找到，返回 null\n  return null;\n}\n\n// 使用\nconst foundNode = findNodeById(tree, 3);\nconsole.log(foundNode); // 将打印出 id 为 3 的节点\n```\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-01-03T01:23:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  668,
+    "filterTotalNum":  1907,
+    "prev":  "a3c245eb-38d5-4f9d-a0f9-fea6836c292b",
+    "next":  "16ab8f97-8f58-4588-8bb6-c168bc830a01"
+}

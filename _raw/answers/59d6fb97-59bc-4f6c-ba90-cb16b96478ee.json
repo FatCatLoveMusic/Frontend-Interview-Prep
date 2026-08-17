@@ -1,0 +1,21 @@
+﻿{
+    "id":  89,
+    "exerciseKey":  "59d6fb97-59bc-4f6c-ba90-cb16b96478ee",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nfunction checkAge(age) {\n  if (age \u003c 18) {\n    const message = \"Sorry, you\u0027re too young.\"\n  } else {\n    const message = \"Yay! You\u0027re old enough!\"\n  }\n\n  return message\n}\n\nconsole.log(checkAge(21))\n```",
+    "options":  "{\"options\":[\"\\\"Sorry, you\u0027re too young.\\\"\",\"\\\"Yay! You\u0027re old enough!\\\"\",\"ReferenceError\",\"undefined\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "`const`和`let`声明的变量是具有**块级作用域**的，块是大括号（`{}`）之间的任何东西, 即上述情况`if / else`语句的花括号。 由于块级作用域，我们无法在声明的块之外引用变量，因此抛出`ReferenceError`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:24:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1830,
+    "filterTotalNum":  1907,
+    "prev":  "0180cac7-51ae-4cc6-afe2-bfecf5448123",
+    "next":  "ca78ecad-b7a0-4d2c-ac4e-650f86800a77"
+}

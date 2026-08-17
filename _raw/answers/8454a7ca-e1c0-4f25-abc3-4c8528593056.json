@@ -1,0 +1,21 @@
+﻿{
+    "id":  96,
+    "exerciseKey":  "8454a7ca-e1c0-4f25-abc3-4c8528593056",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nlet newList = [1, 2, 3].push(4)\n\nconsole.log(newList.push(5))\n```",
+    "options":  "{\"options\":[\"[1, 2, 3, 4, 5]\",\"[1, 2, 3, 5]\",\"[1, 2, 3, 4]\",\"Error\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`.push`方法返回数组的长度，而不是数组本身！ 通过将`newList`设置为`[1,2,3].push(4)`，实际上`newList`等于数组的新长度：`4`。\n然后，尝试在`newList`上使用`.push`方法。 由于`newList`是数值`4`，抛出TypeError。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:26:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1823,
+    "filterTotalNum":  1907,
+    "prev":  "dd7273e3-f9be-4cde-a77a-693a02fc967a",
+    "next":  "29c67c75-924b-461b-9a71-c5e0fd5e42ef"
+}

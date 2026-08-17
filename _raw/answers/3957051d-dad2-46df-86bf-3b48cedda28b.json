@@ -1,0 +1,21 @@
+﻿{
+    "id":  2948,
+    "exerciseKey":  "3957051d-dad2-46df-86bf-3b48cedda28b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JavaScript 中循环有哪些常见方法？它们在遍历不同数据结构时的适用情况如何？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 JavaScript 中，循环方式非常多，不同的数据结构和场景适合使用不同的循环。常见方法主要可以分为 **传统循环**、**for-in / for-of**、**数组专用遍历方法** 三类。\n\n---\n\n## 1. 传统循环\n\n### `for` 循环\n\n```js\nfor (let i = 0; i \u003c arr.length; i++) {\n  console.log(arr[i]);\n}\n```\n\n* **适用场景**：数组、类数组对象，需要索引值或自定义迭代规则时。\n* **特点**：灵活，可以随时 `break`、`continue`，可控制起始、步长。\n\n### `while` 循环\n\n```js\nlet i = 0;\nwhile (i \u003c arr.length) {\n  console.log(arr[i]);\n  i++;\n}\n```\n\n* **适用场景**：适合不确定循环次数，只根据条件执行。\n* **特点**：写法简洁，可能出现死循环风险。\n\n### `do...while`\n\n```js\nlet i = 0;\ndo {\n  console.log(arr[i]);\n  i++;\n} while (i \u003c arr.length);\n```\n\n* **适用场景**：至少要执行一次的场景。\n\n---\n\n## 2. `for...in` 和 `for...of`\n\n### `for...in`\n\n```js\nconst obj = { a: 1, b: 2 };\nfor (let key in obj) {\n  console.log(key, obj[key]);\n}\n```\n\n* **适用场景**：遍历对象的 **可枚举属性**（含原型链上的）。\n* **注意**：不推荐用于数组（顺序不可控，还会遍历自定义属性）。\n\n### `for...of`\n\n```js\nconst arr = [10, 20, 30];\nfor (let value of arr) {\n  console.log(value);\n}\n```\n\n* **适用场景**：遍历 **可迭代对象**（数组、字符串、Set、Map、NodeList 等）。\n* **特点**：直接拿到值，比 `for...in` 更适合数组。\n* **局限**：不能直接遍历普通对象（对象默认不可迭代）。\n\n---\n\n## 3. 数组专用方法\n\n### `forEach`\n\n```js\narr.forEach((value, index) =\u003e console.log(index, value));\n```\n\n* **适用场景**：数组遍历。\n* **特点**：简洁、可读性好。\n* **局限**：不能 `break` 或 `return` 提前退出（只能用 `throw` hack）。\n\n### `map`\n\n```js\nconst doubled = arr.map(v =\u003e v * 2);\n```\n\n* **适用场景**：需要生成一个新数组时。\n* **特点**：返回新数组，不改变原数组。\n\n### `filter`\n\n```js\nconst evens = arr.filter(v =\u003e v % 2 === 0);\n```\n\n* **适用场景**：筛选数据。\n\n### `reduce`\n\n```js\nconst sum = arr.reduce((acc, cur) =\u003e acc + cur, 0);\n```\n\n* **适用场景**：聚合操作（求和、对象统计、数组扁平化等）。\n\n### `some` / `every`\n\n```js\narr.some(v =\u003e v \u003e 10);  // 是否存在大于10的元素\narr.every(v =\u003e v \u003e 0);  // 是否所有元素都大于0\n```\n\n* **适用场景**：条件判断。\n\n### `find` / `findIndex`\n\n```js\narr.find(v =\u003e v \u003e 10);      // 返回第一个符合条件的值\narr.findIndex(v =\u003e v \u003e 10); // 返回下标\n```\n\n---\n\n## 4. 特殊结构\n\n### `forEach` + `Map` / `Set`\n\n```js\nconst set = new Set([1, 2, 3]);\nset.forEach(v =\u003e console.log(v));\n\nconst map = new Map([[\"a\", 1], [\"b\", 2]]);\nmap.forEach((value, key) =\u003e console.log(key, value));\n```\n\n### `for...of` 遍历 Map / Set\n\n```js\nfor (let [key, value] of map) {\n  console.log(key, value);\n}\n```\n",
+    "pivot":  "| 方法                          | 适用数据结构                | 是否可提前退出    | 是否返回新值 | 特点            |\n| --------------------------- | --------------------- | ---------- | ------ | ------------- |\n| `for` / `while`             | 数组、类数组、任意             | ✅          | ❌      | 灵活、可控，效率高     |\n| `for...in`                  | 对象（属性遍历）              | ✅          | ❌      | 包含原型链属性，数组不推荐 |\n| `for...of`                  | 可迭代对象（数组、Set、Map、字符串） | ✅          | ❌      | 直接拿值，简洁       |\n| `forEach`                   | 数组、Set、Map            | ❌          | ❌      | 不能中断，简洁       |\n| `map` / `filter` / `reduce` | 数组                    | ❌          | ✅      | 函数式编程，链式调用    |\n| `some` / `every`            | 数组                    | ✅（条件满足即退出） | ✅（布尔值） | 条件判断方便        |\n\n要点：\n* **操作对象属性** → 用 `for...in`。\n* **操作可迭代对象** → 用 `for...of`。\n* **数组处理** → 优先用数组方法（`map`、`filter`、`reduce`）。\n* **需要最大灵活性** → 用 `for` 或 `while`。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2025-08-21T15:27:42.000Z",
+    "updateAt":  "2025-08-21T15:27:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  254,
+    "filterTotalNum":  1907,
+    "prev":  "e1378bae-d0ab-4272-b381-6fe399b7f751",
+    "next":  "0c2e2466-54ef-47b7-99f1-1064ea325a0b"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2913,
+    "exerciseKey":  "48e5bdb2-c2b7-4863-9387-34076c499059",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "你了解 ts 工具类型 Exclude 与 Omit 的使用吗？及它们两个的区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`Exclude` 和 `Omit` 都是 TypeScript 中的 **工具类型**（Utility Types），它们的作用是处理和转换类型的集合，在实际开发中高效地操作类型。\n\n### 1. **`Exclude` 类型**\n`Exclude` 是 TypeScript 提供的一个工具类型，它的作用是从联合类型中排除指定的类型。\n\n#### 语法：\n```typescript\nExclude\u003cT, U\u003e\n```\n- `T` 是目标类型。\n- `U` 是要排除的类型。\n\n`Exclude\u003cT, U\u003e` 的作用是构建一个新的类型，它是从 `T` 中排除掉所有在 `U` 中的类型。\n\n#### 示例：\n```typescript\ntype A = string | number | boolean;\ntype B = string | boolean;\n\ntype Result = Exclude\u003cA, B\u003e; // Result 类型为: number\n```\n在这个例子中，`Exclude\u003cA, B\u003e` 表示从 `A` 类型中排除掉了 `string` 和 `boolean`，因此 `Result` 的类型就是 `number`。\n\n### 2. **`Omit` 类型**\n`Omit` 是 TypeScript 中的另一个工具类型，它用于从一个类型中排除指定的键（属性）。\n\n#### 语法：\n```typescript\nOmit\u003cT, K\u003e\n```\n- `T` 是目标类型。\n- `K` 是要排除的属性键。\n\n`Omit\u003cT, K\u003e` 会构建一个新的类型，它是从 `T` 中排除掉了 `K` 中的所有属性。\n\n#### 示例：\n```typescript\ninterface Person {\n  name: string;\n  age: number;\n  address: string;\n}\n\ntype OmittedPerson = Omit\u003cPerson, \u0027address\u0027\u003e;\n// OmittedPerson 类型为: { name: string; age: number; }\n```\n在这个例子中，`Omit\u003cPerson, \u0027address\u0027\u003e` 表示从 `Person` 类型中排除了 `address` 属性，最终结果是一个不包含 `address` 属性的新类型 `{ name: string; age: number; }`。\n\n### `Exclude` 和 `Omit` 的区别\n- **`Exclude`**：用于处理联合类型，排除某些类型（通常是值类型）以产生一个新的联合类型。它关注的是类型的**值**，而不是对象的**属性**。\n  \n- **`Omit`**：用于处理对象类型，从对象中排除掉指定的属性，生成一个新的对象类型。它关注的是类型的**属性**，而非值。\n\n#### 例子对比：\n- **`Exclude`**：从联合类型中移除指定的值类型。\n  \n  ```typescript\n  type A = string | number | boolean;\n  type B = string | boolean;\n\n  type Result = Exclude\u003cA, B\u003e; // Result 是 number\n  ```\n\n- **`Omit`**：从对象类型中移除指定的属性。\n  \n  ```typescript\n  interface Person {\n    name: string;\n    age: number;\n    address: string;\n  }\n\n  type OmittedPerson = Omit\u003cPerson, \u0027address\u0027\u003e; // OmittedPerson 是 { name: string; age: number }\n  ```",
+    "pivot":  "- **`Exclude`** 用于联合类型，移除指定的类型元素。\n- **`Omit`** 用于对象类型，移除指定的属性。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-02-25T07:18:40.000Z",
+    "updateAt":  "2025-02-25T07:18:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  288,
+    "filterTotalNum":  1907,
+    "prev":  "7aad6bf7-246a-4725-a614-cfcc5945cb96",
+    "next":  "4b939198-1e6c-488b-a4e7-7b609a4638bb"
+}

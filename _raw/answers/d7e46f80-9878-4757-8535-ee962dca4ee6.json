@@ -1,0 +1,21 @@
+﻿{
+    "id":  277,
+    "exerciseKey":  "d7e46f80-9878-4757-8535-ee962dca4ee6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "页面导入样式时，使用link和@import有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "link属于HTML标签，而@import是css提供的；\n\n页面被加载时，link会同时被加载，而@import引用的css会等到页面被加载完再加载；\n\n@import只在IE5以上才能识别，而link是XHTML标签，无兼容问题；\n\nlink方式的样式的权重高于@import的权重。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T07:33:26.000Z",
+    "updateAt":  "2021-07-04T16:03:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1642,
+    "filterTotalNum":  1907,
+    "prev":  "a82eaabe-70e6-47ed-b29d-d036e80e0815",
+    "next":  "3e5ade06-6338-4949-b642-47f09bcff045"
+}

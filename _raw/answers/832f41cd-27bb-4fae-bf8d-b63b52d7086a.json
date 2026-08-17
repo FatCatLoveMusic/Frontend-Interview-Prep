@@ -1,0 +1,21 @@
+﻿{
+    "id":  2665,
+    "exerciseKey":  "832f41cd-27bb-4fae-bf8d-b63b52d7086a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "介绍下如何实现 token 加密？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在身份认证中，Token 加密是确保用户身份验证信息安全的一种方法。常见的实现包括 JWT（JSON Web Token）和加密算法。下面是实现 Token 加密的基本步骤：\n\n### **1. 生成 Token**\n\n1. **选择加密算法**：\n   - 常见的算法包括对称加密（如 HMAC SHA256）和非对称加密（如 RSA、ECMAScript）。\n\n2. **创建 Token**：\n   - **Payload**：包含用户信息和其他声明。\n   - **Header**：指定加密算法。\n   - **Signature**：将 Header 和 Payload 使用密钥或公私钥对进行签名。\n\n#### **JWT 示例**\n\n```javascript\nconst jwt = require(\u0027jsonwebtoken\u0027);\n\n// 生成 Token\nfunction generateToken(user) {\n  const payload = { userId: user.id, username: user.username };\n  const secretKey = \u0027your_secret_key\u0027; // 对称加密密钥\n  const token = jwt.sign(payload, secretKey, { expiresIn: \u00271h\u0027 });\n  return token;\n}\n```\n\n### **2. 验证 Token**\n\n1. **解析 Token**：\n   - **Header**：从 Token 中提取算法和加密方式。\n   - **Payload**：解析并获取用户信息。\n   - **Signature**：验证签名是否有效，确保 Token 未被篡改。\n\n2. **验证过程**：\n\n```javascript\n// 验证 Token\nfunction verifyToken(token) {\n  const secretKey = \u0027your_secret_key\u0027;\n  try {\n    const decoded = jwt.verify(token, secretKey);\n    return decoded; // 验证通过，返回解码后的用户信息\n  } catch (err) {\n    throw new Error(\u0027Invalid token\u0027);\n  }\n}\n```\n\n### **3. 常见的加密算法**\n\n- **对称加密**：使用相同的密钥进行加密和解密，如 HMAC SHA256。\n- **非对称加密**：使用一对公钥和私钥进行加密和解密，如 RSA。\n\n### **4. Token 的安全管理**\n\n- **存储**：Token 通常存储在客户端的 Cookie 或 Local Storage 中。确保存储位置的安全性，以防 XSS 攻击。\n- **过期时间**：设置合理的过期时间，并使用刷新 Token 机制以维持用户会话。\n- **传输**：使用 HTTPS 确保 Token 在传输过程中加密。",
+    "pivot":  "Token 加密的关键是确保数据的机密性和完整性。通过选择合适的加密算法、正确生成和验证 Token，可以有效保护用户身份信息和系统的安全性。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T00:00:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  414,
+    "filterTotalNum":  1907,
+    "prev":  "6cbf1c8b-1af1-41e4-a2c1-577021781057",
+    "next":  "ecfdaa1a-2747-4fc1-8b33-6bd338c84097"
+}

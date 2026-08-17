@@ -1,0 +1,21 @@
+﻿{
+    "id":  1661,
+    "exerciseKey":  "d131bd64-4531-4903-bb82-76aa277c7cb8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "圆环转圈问题",
+    "desc":  "两个圆环，半径分别是1和2，小圆在大圆内部绕大圆圆周一周，问小圆自身转了几周？如果在大圆的外部，小圆自身转几周呢？\n",
+    "options":  null,
+    "explanation":  "小圆所转动的路程便是小圆圆心走过的距离\n\n所以在大圆外部转动，小圆圆心饶半径为3的大圆心转动，走了三圈\n\n所以在大圆内部转动，小圆圆心饶半径为1的大圆心转动，走了一圈",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-02-06T12:56:04.000Z",
+    "updateAt":  "2022-02-06T20:58:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1129,
+    "filterTotalNum":  1907,
+    "prev":  "482d976d-6697-4456-b0f5-8af4dd060dfc",
+    "next":  "4f3611dc-0446-4d49-95ae-1798d1194c9b"
+}

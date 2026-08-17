@@ -1,0 +1,21 @@
+﻿{
+    "id":  2512,
+    "exerciseKey":  "514f2a2f-5707-4068-8b2d-baf16af8c489",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用 react-router 跳转时，如何将参数传递给下一个页面？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 `react-router` 中实现页面跳转并传递参数，可以通过以下几种方式来完成：\n\n### 1. **通过 URL 参数传递**\n\n**定义路由时：**\n\n在定义路由时，可以使用 URL 参数。例如：\n\n```jsx\n\u003cRoute path=\"/user/:id\" component={User} /\u003e\n```\n\n**跳转时：**\n\n使用 `useHistory` 或 `useNavigate`（在 React Router v6 中）进行跳转时，可以将参数添加到 URL 中：\n\n```jsx\nimport { useHistory } from \u0027react-router-dom\u0027; // React Router v5\n\nfunction RedirectToUser() {\n  const history = useHistory();\n\n  const handleClick = () =\u003e {\n    history.push(`/user/123`); // 跳转到 /user/123\n  };\n\n  return \u003cbutton onClick={handleClick}\u003eGo to User 123\u003c/button\u003e;\n}\n```\n\n```jsx\nimport { useNavigate } from \u0027react-router-dom\u0027; // React Router v6\n\nfunction RedirectToUser() {\n  const navigate = useNavigate();\n\n  const handleClick = () =\u003e {\n    navigate(`/user/123`); // 跳转到 /user/123\n  };\n\n  return \u003cbutton onClick={handleClick}\u003eGo to User 123\u003c/button\u003e;\n}\n```\n\n**接收参数：**\n\n在目标组件中，可以使用 `useParams` 钩子（在 React Router v6 中也是 `useParams`）来接收 URL 参数：\n\n```jsx\nimport { useParams } from \u0027react-router-dom\u0027;\n\nfunction User() {\n  const { id } = useParams();\n  return \u003cdiv\u003eUser ID: {id}\u003c/div\u003e;\n}\n```\n\n### 2. **通过查询字符串传递**\n\n**跳转时：**\n\n可以将参数作为查询字符串添加到 URL 中：\n\n```jsx\nimport { useHistory } from \u0027react-router-dom\u0027; // React Router v5\n\nfunction RedirectToUser() {\n  const history = useHistory();\n\n  const handleClick = () =\u003e {\n    history.push(`/user?id=123`); // 跳转到 /user?id=123\n  };\n\n  return \u003cbutton onClick={handleClick}\u003eGo to User\u003c/button\u003e;\n}\n```\n\n```jsx\nimport { useNavigate } from \u0027react-router-dom\u0027; // React Router v6\n\nfunction RedirectToUser() {\n  const navigate = useNavigate();\n\n  const handleClick = () =\u003e {\n    navigate(`/user?id=123`); // 跳转到 /user?id=123\n  };\n\n  return \u003cbutton onClick={handleClick}\u003eGo to User\u003c/button\u003e;\n}\n```\n\n**接收查询参数：**\n\n可以使用 `URLSearchParams` 来获取查询参数：\n\n```jsx\nimport { useLocation } from \u0027react-router-dom\u0027;\n\nfunction User() {\n  const { search } = useLocation();\n  const params = new URLSearchParams(search);\n  const id = params.get(\u0027id\u0027);\n  return \u003cdiv\u003eUser ID: {id}\u003c/div\u003e;\n}\n```\n\n### 3. **通过状态传递**\n\n**跳转时：**\n\n可以将参数作为状态传递：\n\n```jsx\nimport { useHistory } from \u0027react-router-dom\u0027; // React Router v5\n\nfunction RedirectToUser() {\n  const history = useHistory();\n\n  const handleClick = () =\u003e {\n    history.push({\n      pathname: \u0027/user\u0027,\n      state: { id: 123 }\n    });\n  };\n\n  return \u003cbutton onClick={handleClick}\u003eGo to User\u003c/button\u003e;\n}\n```\n\n```jsx\nimport { useNavigate } from \u0027react-router-dom\u0027; // React Router v6\n\nfunction RedirectToUser() {\n  const navigate = useNavigate();\n\n  const handleClick = () =\u003e {\n    navigate(\u0027/user\u0027, { state: { id: 123 } });\n  };\n\n  return \u003cbutton onClick={handleClick}\u003eGo to User\u003c/button\u003e;\n}\n```\n\n**接收状态：**\n\n在目标组件中，可以通过 `useLocation` 钩子获取传递的状态：\n\n```jsx\nimport { useLocation } from \u0027react-router-dom\u0027;\n\nfunction User() {\n  const location = useLocation();\n  const id = location.state?.id;\n  return \u003cdiv\u003eUser ID: {id}\u003c/div\u003e;\n}\n```",
+    "pivot":  "- **URL 参数**：用于路径中的动态数据，例如用户 ID。\n- **查询字符串**：适用于非必需的、可选的参数。\n- **状态**：适用于一次性数据传递，不显示在 URL 中。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2024-08-20T11:24:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  494,
+    "filterTotalNum":  1907,
+    "prev":  "72fbbb97-d04c-48b4-b40e-26a645d28789",
+    "next":  "9fd648c4-daf6-48a2-94f2-11249191597e"
+}

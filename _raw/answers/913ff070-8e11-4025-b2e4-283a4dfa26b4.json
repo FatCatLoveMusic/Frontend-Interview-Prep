@@ -1,0 +1,21 @@
+﻿{
+    "id":  2973,
+    "exerciseKey":  "913ff070-8e11-4025-b2e4-283a4dfa26b4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 package.json 中 dependencies、devDependencies、peerDependencies 有哪些不同，分别适合什么场景",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "本质在于**依赖在不同运行阶段的作用范围和安装策略不同**。\n\n理解它们的差异，关键是要区分：\n\n* 当前包是一个「应用」还是一个「库」\n* 依赖是否在**运行时（runtime）** 或 **开发/构建时（build-time）** 被使用\n\n---\n\n### 一、dependencies —— 运行时依赖\n\n`dependencies` 是**项目在运行时所需的依赖**。\n当项目被打包部署或发布为 npm 包后，这部分依赖仍然是必须的。\n\n常见场景：\n\n* 在 Vue / React 项目中，`vue`、`react`、`axios`、`vue-router` 这类会直接被打包进入生产代码的库。\n* 在 Node.js 服务中，`express`、`koa`、`mysql` 等在代码运行时会被直接 `require/import`。\n\n这部分依赖在执行 `npm install` 或 `pnpm install` 时会自动安装，且在生产环境下部署时依然存在。\n\n---\n\n### 二、devDependencies —— 开发时依赖\n\n`devDependencies` 是**仅在开发和构建阶段使用**的依赖。\n这类依赖不会出现在最终的生产代码中，也不会在项目打包后的运行环境中被使用。\n\n典型场景包括：\n\n* 构建工具类依赖：`vite`、`webpack`、`rollup`、`esbuild`\n* 编译/转译依赖：`typescript`、`babel`、`sass`\n* 测试工具：`jest`、`vitest`\n* 代码检查工具：`eslint`、`prettier`\n\n比如：\n当项目部署时，构建完成后这些依赖已不再需要，因此它们仅作为开发阶段依赖存在。\n\n---\n\n### 三、peerDependencies —— 共享运行环境依赖\n\n`peerDependencies` 用于**声明当前库所依赖的外部包，但不直接安装，而是由使用方（宿主项目）来提供**。\n\n这种机制通常出现在组件库或插件开发中。\n例如，一个基于 Vue 3 封装的组件库需要使用 Vue，但希望宿主项目能自行决定 Vue 的版本。\n此时组件库可以这样声明：\n\n```json\n{\n  \"peerDependencies\": {\n    \"vue\": \"^3.3.0\"\n  }\n}\n```\n\n这样，当用户在项目中安装该组件库时，如果没有安装 Vue 或版本不兼容，npm/yarn/pnpm 会发出警告提示。\n\n典型使用场景：\n\n* 插件依赖主框架：Vue 插件依赖 Vue、React Hook 库依赖 React\n* UI 组件库避免重复打包宿主框架\n* 第三方库扩展主框架功能（如 `eslint-plugin-*`、`vite-plugin-*`）\n\n---\n\n### 四、区别总结\n\n| 类型                   | 由谁安装      | 在生产环境是否需要 | 典型用途         |\n| -------------------- | --------- | --------- | ------------ |\n| **dependencies**     | 当前项目      | 是         | 运行时依赖        |\n| **devDependencies**  | 当前项目      | 否         | 开发、构建、测试依赖   |\n| **peerDependencies** | 使用者（宿主项目） | 取决于宿主项目   | 声明对外部依赖的兼容关系 |\n\n---\n\n### 五、实际使用建议\n\n* **前端应用项目**：\n  大多数依赖放在 `dependencies`，构建工具、测试工具放在 `devDependencies`。\n\n* **组件库或 npm 包项目**：\n  运行时真正打包进去的依赖放在 `dependencies`，\n  构建工具放在 `devDependencies`，\n  外部宿主框架（如 Vue、React）声明在 `peerDependencies`。\n\n例如，一个基于 Element Plus 封装的业务组件库：\n\n```json\n{\n  \"dependencies\": {\n    \"lodash-es\": \"^4.17.21\"\n  },\n  \"devDependencies\": {\n    \"vite\": \"^5.0.0\",\n    \"typescript\": \"^5.3.0\"\n  },\n  \"peerDependencies\": {\n    \"element-plus\": \"^2.5.0\",\n    \"vue\": \"^3.3.0\"\n  }\n}\n```\n ",
+    "pivot":  "1. `dependencies`：运行时必须依赖。\n2. `devDependencies`：仅开发、构建阶段使用。\n3. `peerDependencies`：由宿主项目提供的共享依赖，用于库开发。\n4. 在应用中重点区分运行与构建环境，在组件库中重点区分内部依赖与外部宿主框架。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2025-10-30T03:17:19.000Z",
+    "updateAt":  "2025-10-30T03:17:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  229,
+    "filterTotalNum":  1907,
+    "prev":  "1b03eb29-4d2b-4075-b919-262882691392",
+    "next":  "064f60ae-a57b-4a78-bba1-36b2138ff704"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3276,
+    "exerciseKey":  "9f8fd942-c3e5-4f2e-ab13-d3a60c55c762",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "SSE 与 WebSocket 在 Agent 应用中如何选择？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "在 Agent 应用里，SSE 和 WebSocket 的选择核心不在于“谁更先进”，而在于这条链路是不是需要真正的双向实时通信。\n\n大多数文本类 Agent 场景更适合优先使用 SSE。比如用户发起一次对话、服务端持续返回模型 token、工具调用状态、思考步骤、引用来源、最终答案，这本质上是“客户端发起请求，服务端持续推送结果”。SSE 基于 HTTP，接入成本低，天然适合流式文本输出，也更容易穿过网关、CDN、反向代理和企业网络。浏览器的 `EventSource` 还自带断线重连能力，服务端可以通过 `event`、`id`、`data` 区分 token、tool_call、progress、done、error 等事件，整体协议简单、可观测性也比较好。\n\nWebSocket 更适合双向、高频、低延迟的 Agent 交互。比如语音 Agent 需要客户端持续上传音频流，同时服务端返回识别结果和模型响应；又比如多人协作编辑、实时控制 Agent 执行、终端型 Agent、浏览器自动化接管、游戏或仿真环境中的 Agent，这些场景不仅是服务端推送，还要求客户端随时发送中断、确认、补充上下文、鼠标键盘事件或实时控制信号。此时 WebSocket 的全双工模型更自然。\n\n工程上还要考虑复杂度。SSE 是 HTTP 长连接，和现有鉴权、日志、链路追踪、限流体系更容易融合；服务端扩缩容也相对简单。缺点是它主要是单向文本流，浏览器原生 `EventSource` 通常使用 GET，请求体和自定义头能力有限，复杂场景可能要配合普通 HTTP 接口或使用 fetch-based SSE 实现。反向代理还要关闭缓冲，否则 token 可能被攒成一批才返回。\n\nWebSocket 的能力更强，但也带来更多工程责任：需要自行设计消息协议、心跳、重连、会话恢复、背压、鉴权续期、负载均衡粘性、连接数治理和异常清理。对于只做 LLM 文本流式输出的应用，用 WebSocket 往往会把问题复杂化。\n\n比较常见的落地方案是：用户提交消息用 HTTP POST，服务端响应流用 SSE；取消任务、重新生成、反馈、上传文件等动作走普通 HTTP；只有当客户端和 Agent 之间存在持续双向实时交互时，才升级为 WebSocket。这样既能保持文本 Agent 的架构简单，又不会限制更复杂的实时 Agent 场景。",
+    "pivot":  "SSE 适合服务端向客户端持续推送，尤其适合 LLM token 流、工具调用进度、任务状态和最终结果。\n\nWebSocket 适合真正的双向实时通信，比如语音、协作、远程控制、终端交互和高频事件同步。\n\n普通文本 Agent 优先选 SSE，复杂实时 Agent 再选 WebSocket。\n\n技术选型要同时看通信方向、实时性、基础设施复杂度、重连恢复、鉴权、扩缩容和可观测性。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T03:10:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  12,
+    "filterTotalNum":  1907,
+    "prev":  "f58b9f85-153d-47b9-851f-f65abe8ec3e0",
+    "next":  "3ebc2391-11b8-4c9c-8672-d9681bc94ce9"
+}

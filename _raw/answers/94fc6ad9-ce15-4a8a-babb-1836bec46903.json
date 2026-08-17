@@ -1,0 +1,21 @@
+﻿{
+    "id":  2958,
+    "exerciseKey":  "94fc6ad9-ce15-4a8a-babb-1836bec46903",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何通过bind或箭头函数固定this指向？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、问题背景\n\n在 JavaScript 中，`this` 的指向不是在函数定义时确定的，而是 **在函数执行时，由调用方式决定**。\n因此，很多情况下我们需要“固定”`this`，保证函数执行时内部的 `this` 始终指向期望的对象。\n\n## 二、使用 **bind** 固定 `this`\n\n`Function.prototype.bind` 会返回一个新的函数，**无论后续如何调用，内部的 `this` 都会固定为指定对象**。\n\n### 示例\n\n```js\nconst obj = {\n  name: \"Alice\",\n  sayHi: function() {\n    console.log(\"Hi, I am \" + this.name);\n  }\n};\n\nconst fn = obj.sayHi;\nfn(); // 输出: Hi, I am undefined (this丢失)\n\nconst boundFn = obj.sayHi.bind(obj);\nboundFn(); // 输出: Hi, I am Alice\n```\n\n### 特点\n\n1. `bind` 返回一个新的函数，不会立即执行。\n2. 绑定的 `this` 一旦确定，无法再被更改。\n3. 还可以 **预设参数**，形成偏函数。\n\n   ```js\n   function add(a, b) {\n     return a + b;\n   }\n   const add5 = add.bind(null, 5);\n   console.log(add5(3)); // 8\n   ```\n\n---\n\n## 三、使用 **箭头函数** 固定 `this`\n\n箭头函数没有自己的 `this`，**它的 `this` 来自定义时所在的词法作用域**。\n\n### 示例\n\n```js\nconst obj = {\n  name: \"Alice\",\n  sayHi: function() {\n    const inner = () =\u003e {\n      console.log(\"Hi, I am \" + this.name);\n    };\n    inner();\n  }\n};\n\nobj.sayHi(); // 输出: Hi, I am Alice\n```\n\n### 特点\n\n1. 箭头函数不会创建自己的 `this`，直接用外层函数的 `this`。\n2. 不能用作构造函数（不能 `new`）。\n3. 常用于 **回调函数** 或 **事件监听器**，避免丢失 `this`。",
+    "pivot":  "| 特点        | `bind`              | 箭头函数              |\n| --------- | ------------------- | ----------------- |\n| 绑定时机      | 调用 `bind` 时固定       | 定义时词法绑定           |\n| 返回结果      | 返回一个新的函数            | 不生成新的 `this`      |\n| 使用场景      | 需要显式传递 `this` 或预设参数 | 需要保持外层作用域的 `this` |\n| 是否可作为构造函数 | 可以                  | 不可以               |",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-08-28T08:44:35.000Z",
+    "updateAt":  "2025-08-28T08:44:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  244,
+    "filterTotalNum":  1907,
+    "prev":  "965437c7-3f6d-4855-94f7-fa62c3e73196",
+    "next":  "a363afe0-ce04-4c69-8221-a0b8e01c9452"
+}

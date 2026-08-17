@@ -1,0 +1,21 @@
+﻿{
+    "id":  2251,
+    "exerciseKey":  "83f4766f-9498-4a02-9fe1-0aa86c105371",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "http 协议中的 CSP 是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### **什么是 CSP？**\n\nCSP (Content Security Policy) 是 HTTP 协议中的一种安全功能，全称为 **内容安全策略**。它用于帮助浏览器检测和阻止某些类型的安全威胁，例如 **跨站脚本攻击（XSS）** 和 **数据注入攻击**。通过限制页面加载的内容来源，CSP 能够有效减少攻击面，提高 Web 应用的安全性。\n\n---\n\n### **CSP 的工作原理**\n1. **定义策略**：服务器通过 HTTP 响应头 `Content-Security-Policy`，或 `\u003cmeta\u003e` 标签来定义 CSP 策略。\n2. **策略作用**：浏览器根据定义的策略控制页面中可加载的资源（如脚本、样式、图片等）的来源。\n3. **检测与阻止**：\n   - 如果资源或行为不符合策略，浏览器会阻止加载。\n   - 可通过策略开启“报告模式”，将违反策略的行为报告到指定的 URL。\n\n---\n\n### **CSP 的常见指令**\nCSP 策略由一组指令组成，每条指令控制特定类型资源的加载规则：\n\n| 指令名           | 功能描述                                                                                  | 示例                                  |\n|------------------|-------------------------------------------------------------------------------------------|---------------------------------------|\n| `default-src`    | 默认资源加载策略，应用于未指定的其他类型资源                                               | `default-src \u0027self\u0027`                 |\n| `script-src`     | 控制脚本的加载来源，防止恶意脚本注入                                                      | `script-src \u0027self\u0027 \u0027unsafe-inline\u0027`  |\n| `style-src`      | 控制样式的加载来源                                                                        | `style-src \u0027self\u0027 \u0027unsafe-inline\u0027`   |\n| `img-src`        | 控制图片的加载来源                                                                        | `img-src \u0027self\u0027 data:`               |\n| `font-src`       | 控制字体文件的加载来源                                                                    | `font-src \u0027self\u0027`                    |\n| `connect-src`    | 限制通过 `fetch`、`XHR` 等方式发起的网络请求                                              | `connect-src api.example.com`        |\n| `frame-src`      | 控制可嵌入框架（iframe）的来源                                                            | `frame-src \u0027self\u0027`                   |\n| `report-uri`     | 指定报告 CSP 违规的 URL                                                                   | `report-uri /csp-report`             |\n| `object-src`     | 限制 `\u003cobject\u003e`、`\u003cembed\u003e` 或 `\u003capplet\u003e` 的资源加载                                        | `object-src \u0027none\u0027`                  |\n\n---\n\n### **CSP 策略示例**\n#### **1. 防止加载外部脚本**\n仅允许从当前域名加载脚本资源：\n```http\nContent-Security-Policy: script-src \u0027self\u0027;\n```\n\n#### **2. 允许可信的第三方资源**\n允许加载 Google Analytics 脚本，但阻止其他外部脚本：\n```http\nContent-Security-Policy: script-src \u0027self\u0027 https://www.google-analytics.com;\n```\n\n#### **3. 开启报告模式**\n仅报告违反 CSP 的行为，而不阻止加载：\n```http\nContent-Security-Policy: default-src \u0027self\u0027; report-uri /csp-report;\n```\n\n---\n\n### **CSP 的作用**\n1. **防止 XSS 攻击**：  \n   - 阻止执行未授权的脚本。\n   - 限制恶意代码通过注入攻击运行。\n\n2. **限制恶意内容加载**：  \n   - 防止加载来自未信任来源的资源（如图片、脚本、iframe）。\n\n3. **减少数据泄露风险**：  \n   - 限制可以发起网络请求的目标域名。\n\n---\n\n### **CSP 的不足**\n1. **配置复杂**：对于大型 Web 应用，CSP 的配置可能较为繁琐。\n2. **兼容性问题**：老旧浏览器可能不支持某些 CSP 功能。\n3. **灵活性受限**：严格的 CSP 策略可能会影响某些合法的动态功能（如内联脚本）。",
+    "pivot":  "CSP 是一种强大的 Web 安全机制，能有效抵御 XSS 和资源注入攻击。然而，CSP 的正确配置需要根据实际业务场景权衡安全性与灵活性。通过合理使用 CSP，可以显著提高 Web 应用的安全性，同时为开发者提供实时的安全问题报告。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-17T01:45:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  634,
+    "filterTotalNum":  1907,
+    "prev":  "fb13c516-f611-42db-9b72-27d9730be3b6",
+    "next":  "2618838c-e2a5-425a-9f34-6d52dbe54277"
+}

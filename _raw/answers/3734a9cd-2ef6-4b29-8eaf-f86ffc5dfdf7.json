@@ -1,0 +1,21 @@
+﻿{
+    "id":  2006,
+    "exerciseKey":  "3734a9cd-2ef6-4b29-8eaf-f86ffc5dfdf7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面代码的输出是什么？",
+    "desc":  "```js\nvar name = \u0027123\u0027;\n\nvar obj = {\n name: \u0027456\u0027,\n print: function() {\n  function a() {\n    console.log(this.name);\n  }\n  a();\n }\n}\n\nobj.print();\n```",
+    "options":  null,
+    "explanation":  "上述代码输出结果为 \"123\"。解释如下：\n\n1. 在全局作用域中声明了变量 name，值为字符串 \"123\"。\n2. 声明一个对象 obj，包含属性 name 和方法 print，其中 name 属性的值为字符串 \"456\"，print 方法中定义了函数 a。\n3. 当执行 obj.print() 时，会调用 print 方法，并在其中定义了函数 a。\n4. 函数 a 中调用 console.log(this.name) 方法。由于此时 this 指向全局对象（即 window 对象），因此执行 this.name 等价于执行 window.name。\n5. 根据步骤1，window.name 的值为字符串 \"123\"，因此最终输出结果为 \"123\"。\n\n需要注意的是，在JavaScript中，this 的值取决于函数在何处被调用。如果该函数是作为对象的方法进行调用的，则 this 指向该对象；否则，this 指向全局对象。在本例中，虽然函数 a 被定义在 print 方法中，但是它并没有作为 obj 的方法进行调用，因此 this 指向全局对象。",
+    "pivot":  "在JavaScript中，`this`指向通常是初中级前端面试的常考题目，这类题的变形点很多，但是大家只要抓住最本质的东西，就能轻松拿捏。\n\n只记住一条：**JavaScript中，函数中的`this`指向，只和函数调用时所属的对象有关系。如果函数调用时前面没有任何对象，那么`this`就指向全局的（window或者global）；如果函数调用时前面有对象，比如 obj.foo() ，那么这时候 `this`就指向的是 `obj`这个对象**。当然也有特例，我们可以使用 *箭头函数* 或者 `bind()` ，在函数创建时就显示绑定了 `this`，这种情况就要分析 *函数创建时* 绑定的 `this`是谁了\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-05-28T02:38:13.000Z",
+    "updateAt":  "2024-08-10T17:07:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  804,
+    "filterTotalNum":  1907,
+    "prev":  "684fd560-4d1b-4c3f-ac15-1e1bff86c443",
+    "next":  "6ff491bd-f4a7-4172-86f9-8530e89bfbb2"
+}

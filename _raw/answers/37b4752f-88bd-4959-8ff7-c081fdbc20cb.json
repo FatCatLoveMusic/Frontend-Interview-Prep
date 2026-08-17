@@ -1,0 +1,21 @@
+﻿{
+    "id":  2022,
+    "exerciseKey":  "37b4752f-88bd-4959-8ff7-c081fdbc20cb",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用 js 实现有序数组原地去重",
+    "desc":  " ",
+    "options":  null,
+    "explanation":  "原地去重有序数组，也就是在不创建新数组的情况下修改原始数组。\n\n可以使用双指针的方法，以下是一个示例的实现：\n\n```javascript\nfunction removeDuplicates(nums) {\n  if (nums.length === 0) {\n    return 0;\n  }\n  \n  let slow = 0;\n  \n  for (let fast = 1; fast \u003c nums.length; fast++) {\n    if (nums[fast] !== nums[slow]) {\n      slow++;\n      nums[slow] = nums[fast];\n    }\n  }\n  \n  return slow + 1;\n}\n\n// 示例用法\nconst nums = [1, 1, 2, 2, 2, 3, 4, 4, 5];\nconst length = removeDuplicates(nums);\n\nconsole.log(\"去重后的数组：\", nums.slice(0, length));\nconsole.log(\"数组长度：\", length);\n```\n\n在上面的代码中，我们定义了一个 `removeDuplicates` 函数，它接受一个有序数组 `nums` 作为参数。通过使用双指针来遍历数组，其中 `slow` 表示慢指针，用于记录当前不重复元素的位置。\n\n我们从数组的第二个元素（即下标为1的元素）开始遍历，将其与慢指针指向的元素进行比较。如果它们不相等，说明遇到了一个新的不重复元素，将慢指针后移一位，并将新的元素放入该位置。如果它们相等，则跳过该元素，继续向后遍历。\n\n最后，返回慢指针的位置加1，即为去重后的数组长度。可以通过 `nums.slice(0, length)` 来获取去重后的数组。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:14:00.000Z",
+    "updateAt":  "2023-06-26T08:53:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  789,
+    "filterTotalNum":  1907,
+    "prev":  "be0412b7-6af9-4ab5-9c7f-4a06cc8cc80d",
+    "next":  "a9854cb2-406f-4837-a57f-947f818e5731"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  545,
+    "exerciseKey":  "f0b0654a-fd77-4423-963f-0465661f3d71",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Node. js 有哪些全局对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、是什么\n\n在浏览器 `JavaScript` 中，通常` window` 是全局对象， 而 `Nodejs `中的全局对象是 `global`\n\n在`NodeJS`里，是不可能在最外层定义一个变量，因为所有的用户代码都是当前模块的，只在当前模块里可用，但可以通过`exports`对象的使用将其传递给模块外部\n\n所以，在`NodeJS`中，用`var`声明的变量并不属于全局的变量，只在当前模块生效\n\n像上述的`global`全局对象则在全局作用域中，任何全局变量、函数、对象都是该对象的一个属性值\n\n\n\n## 二、有哪些\n\n将全局对象分成两类：\n\n- 真正的全局对象\n\n- 模块级别的全局变量\n\n\n\n### 真正的全局对象\n\n下面给出一些常见的全局对象：\n\n- Class:Buffer\n- process\n\n- console\n- clearInterval、setInterval\n- clearTimeout、setTimeout\n\n- global\n\n\n\n#### Class:Buffer\n\n可以处理二进制以及非`Unicode`编码的数据\n\n在`Buffer`类实例化中存储了原始数据。`Buffer`类似于一个整数数组，在V8堆原始存储空间给它分配了内存\n\n一旦创建了`Buffer`实例，则无法改变大小\n\n\n\n#### process\n\n进程对象，提供有关当前过程的信息和控制\n\n包括在执行`node`程序的过程中，如果需要传递参数，我们想要获取这个参数需要在`process`内置对象中\n\n启动进程：\n\n```cmd\n node index.js 参数1 参数2 参数3\n```\n\nindex.js文件如下：\n\n```js\nprocess.argv.forEach((val, index) =\u003e {\n  console.log(`${index}: ${val}`);\n});\n```\n\n输出如下：\n\n```js\n/usr/local/bin/node\n/Users/mjr/work/node/process-args.js\n参数1\n参数2\n参数3\n```\n\n除此之外，还包括一些其他信息如版本、操作系统等\n\n![](https://static.ecool.fun//article/a53d9f6d-8997-4c67-930f-cfa38a46a9e1.png)\n\n\n\n#### console\n\n用来打印`stdout`和`stderr`\n\n最常用的输入内容的方式：console.log\n\n```js\nconsole.log(\"hello\");\n```\n\n清空控制台：console.clear\n\n```js\nconsole.clear\n```\n\n打印函数的调用栈：console.trace\n\n```js\nfunction test() {\n    demo();\n}\n\nfunction demo() {\n    foo();\n}\n\nfunction foo() {\n    console.trace();\n}\n\ntest();\n```\n\n ![](https://static.ecool.fun//article/2cc42369-79af-4022-9ece-995837b4dd11.png)\n\n\n\n#### clearInterval、setInterval\n\n设置定时器与清除定时器\n\n```js\nsetInterval(callback, delay[, ...args])\n```\n\n`callback`每`delay`毫秒重复执行一次\n\n`clearInterval`则为对应发取消定时器的方法\n\n\n\n#### clearTimeout、setTimeout\n\n设置延时器与清除延时器\n\n```js\nsetTimeout(callback,delay[,...args])\n```\n\n`callback`在`delay`毫秒后执行一次\n\n`clearTimeout`则为对应取消延时器的方法\n\n\n\n#### global\n\n全局命名空间对象，墙面讲到的`process`、`console`、`setTimeout`等都有放到`global`中\n\n```js\nconsole.log(process === global.process) // true\n```\n\n\n\n\n\n### 模块级别的全局对象\n\n这些全局对象是模块中的变量，只是每个模块都有，看起来就像全局变量，像在命令交互中是不可以使用，包括：\n\n- __dirname\n- __filename\n- exports\n- module\n- require\n\n\n\n#### __dirname\n\n获取当前文件所在的路径，不包括后面的文件名\n\n从 `/Users/mjr` 运行 `node example.js`：\n\n```js\nconsole.log(__dirname);// 打印: /Users/mjr\n```\n\n\n\n#### __filename\n\n获取当前文件所在的路径和文件名称，包括后面的文件名称\n\n从 `/Users/mjr` 运行 `node example.js`：\n\n```js\nconsole.log(__filename);// 打印: /Users/mjr/example.js\n```\n\n\n\n#### exports\n\n`module.exports` 用于指定一个模块所导出的内容，即可以通过 `require()` 访问的内容\n\n```js\nexports.name = name;exports.age = age;exports.sayHello = sayHello;\n```\n\n\n\n#### module\n\n对当前模块的引用，通过`module.exports` 用于指定一个模块所导出的内容，即可以通过 `require()` 访问的内容\n\n\n\n#### require\n\n用于引入模块、 `JSON`、或本地文件。 可以从 `node_modules` 引入模块。\n\n可以使用相对路径引入本地模块或` JSON `文件，路径会根据`__dirname`定义的目录名或当前工作目录进行处理\n",
+    "pivot":  "**作答思路**：\n\n在Node.js中，全局对象是所有代码都可以访问的对象，它们在Node.js启动时被创建。以下是一些重要的全局对象：\n\n1. **global**：代表当前的全局对象。\n2. **module**：代表当前模块。\n3. **exports**：代表模块的导出对象。\n4. **require**：用于加载模块。\n5. **process**：代表当前Node.js进程。\n6. **console**：用于输出信息到控制台。\n7. **Buffer**：用于操作二进制数据的类。\n8. **setTimeout**、`setInterval`、`clearTimeout`、`clearInterval`：用于设置和清除定时器。\n9. **setImmediate**、`clearImmediate`：用于异步执行回调函数。\n10. **setImmediate**、`clearImmediate`：用于异步执行回调函数。\n\n**考察要点：**\n\n1. **全局对象概念**：理解全局对象的作用和用途。\n2. **常用全局对象**：了解Node.js中常用的全局对象及其功能。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-25T02:14:58.000Z",
+    "updateAt":  "2024-08-10T17:05:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1375,
+    "filterTotalNum":  1907,
+    "prev":  "3805f290-f20b-4ded-8805-e963ed7f243e",
+    "next":  "f2005269-95e7-4d83-acbf-673a7bba78f9"
+}

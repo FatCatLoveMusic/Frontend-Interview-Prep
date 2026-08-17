@@ -1,0 +1,21 @@
+﻿{
+    "id":  1597,
+    "exerciseKey":  "db6857d7-1559-4abe-816d-545b9be4e05e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第四题】下面代码的输出是什么？",
+    "desc":  "```javascript\nconst promise1 = new Promise((resolve, reject) =\u003e {\n  console.log(\u0027promise1\u0027)\n  resolve(\u0027resolve1\u0027)\n})\nconst promise2 = promise1.then(res =\u003e {\n  console.log(res)\n})\nconsole.log(\u00271\u0027, promise1);\nconsole.log(\u00272\u0027, promise2);\n```",
+    "options":  null,
+    "explanation":  "## 过程分析\n\n* 从上至下，先遇到new Promise，执行该构造函数中的代码promise1\n* 碰到resolve函数, 将promise1的状态改变为resolved, 并将结果保存下来\n* 碰到promise1.then这个微任务，将它放入微任务队列\n* promise2是一个新的状态为pending的Promise\n* 执行同步代码1， 同时打印出promise1的状态是resolved\n* 执行同步代码2，同时打印出promise2的状态是pending\n* 宏任务执行完毕，查找微任务队列，发现promise1.then这个微任务且状态为resolved，执行它。\n\n## 结果\n\n```\n\u0027promise1\u0027\n\u00271\u0027 Promise{\u003cresolved\u003e: \u0027resolve1\u0027}\n\u00272\u0027 Promise{\u003cpending\u003e}\n\u0027resolve1\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:22:13.000Z",
+    "updateAt":  "2024-07-20T11:01:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  1193,
+    "filterTotalNum":  1907,
+    "prev":  "1b7efa22-c54d-4dc9-a54e-7faa69f5b821",
+    "next":  "3c969c35-6d25-4932-977e-d9ba31000ccd"
+}

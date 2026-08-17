@@ -1,0 +1,21 @@
+﻿{
+    "id":  73,
+    "exerciseKey":  "7f433ba8-03d7-4cab-b94b-535819249561",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconsole.log(Number(2) === Number(2))\nconsole.log(Boolean(false) === Boolean(false))\nconsole.log(Symbol(\u0027foo\u0027) === Symbol(\u0027foo\u0027))\n```",
+    "options":  "{\"options\":[\"true, true, false\",\"false, true, false\",\"true, false, true\",\"true, true, true\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "每个`Symbol`都是完全唯一的。传递给`Symbol`的参数只是给`Symbol`的一个描述。 `Symbol`的值不依赖于传递的参数。 当我们测试相等时，我们创建了两个全新的符号：第一个`Symbol（\u0027foo\u0027）`，第二个`Symbol（\u0027foo\u0027）`, 这两个值是唯一的，彼此不相等，因此返回`false`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:21:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  1846,
+    "filterTotalNum":  1907,
+    "prev":  "1915f55c-162b-46ee-bf06-11194d67730c",
+    "next":  "10cbc287-0f93-4fc0-8dde-a57ad1ec9208"
+}

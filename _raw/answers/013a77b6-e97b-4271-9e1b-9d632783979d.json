@@ -1,0 +1,21 @@
+﻿{
+    "id":  373,
+    "exerciseKey":  "013a77b6-e97b-4271-9e1b-9d632783979d",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "介绍下WebSocket",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003ch3 style=\"text-align:left;text-indent:2em;\" data-id=\"heading-82\"\u003e1. WebSocket 是什么\u003c/h3\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003eWebSocket是HTML5提供的一种浏览器与服务器进行\u003cstrong\u003e全双工通讯\u003c/strong\u003e的网络技术，属于应用层协议。它基于TCP传输协议，并复用HTTP的握手通道。浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接， 并进行双向数据传输。\u003c/p\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003eWebSocket 的出现就解决了半双工通信的弊端。它最大的特点是：\u003cstrong\u003e服务器可以向客户端主动推动消息，客户端也可以主动向服务器推送消息。\u003c/strong\u003e\u003c/p\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003e\u003cstrong\u003eWebSocket原理\u003c/strong\u003e ：客户端向 WebSocket 服务器通知（notify）一个带有所有接收者ID（recipients IDs）的事件（event），服务器接收后立即通知所有活跃的（active）客户端，只有ID在接收者ID序列中的客户端才会处理这个事件。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003ch3 style=\"text-align:left;text-indent:2em;\" data-id=\"heading-83\"\u003e2. WebSocket 特点\u003c/h3\u003e\u003cul\u003e\u003cli\u003e支持双向通信，实时性更强\u003c/li\u003e\u003cli\u003e可以发送文本，也可以发送二进制数据‘’\u003c/li\u003e\u003cli\u003e建立在TCP协议之上，服务端的实现比较容易\u003c/li\u003e\u003cli\u003e数据格式比较轻量，性能开销小，通信高效\u003c/li\u003e\u003cli\u003e没有同源限制，客户端可以与任意服务器通信\u003c/li\u003e\u003cli\u003e协议标识符是ws（如果加密，则为wss），服务器网址就是 URL\u003c/li\u003e\u003cli\u003e与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。\u003c/li\u003e\u003c/ul\u003e",
+    "pivot":  "\u003cp\u003e\u003c/p\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003eWebSocket是一种HTML5提供的网络技术，它允许浏览器和服务器之间进行全双工通信，即可以同时进行双向数据传输。WebSocket基于TCP传输协议，并且使用HTTP的握手通道来建立连接。一旦握手完成，客户端和服务器之间就可以直接通信，无需再次建立连接。\u003c/p\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003eWebSocket的特点包括：\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e双向通信\u003c/strong\u003e：客户端和服务器可以相互发送消息，增强了实时性。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e支持多种数据格式\u003c/strong\u003e：可以发送文本数据和二进制数据。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e简单易实现\u003c/strong\u003e：建立在TCP协议之上，服务端的实现相对简单。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e高效性能\u003c/strong\u003e：数据格式轻量，通信高效，性能开销小。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e无同源限制\u003c/strong\u003e：客户端可以与任意服务器通信，不受同源策略的限制。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e协议标识符\u003c/strong\u003e：默认使用ws（未加密）和wss（加密）作为协议标识符。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e兼容性\u003c/strong\u003e：与HTTP协议兼容，可以通过各种HTTP代理服务器。\u003c/li\u003e\u003c/ul\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003eWebSocket的工作原理是客户端通知服务器一个事件，服务器接收到事件后，立即通知所有活跃的客户端。只有接收者ID在事件中指定的客户端才会处理这个事件。这种方式使得WebSocket能够有效地实现事件驱动的通信模式。\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T15:59:38.000Z",
+    "updateAt":  "2024-07-19T18:02:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1547,
+    "filterTotalNum":  1907,
+    "prev":  "a951563c-7c0f-47bd-9a32-f46a8cfe4585",
+    "next":  "bc7a4856-3f5e-4b7d-8380-bae505e9ee35"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  88,
+    "exerciseKey":  "ca78ecad-b7a0-4d2c-ac4e-650f86800a77",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst person = {\n  name: \"Lydia\",\n  age: 21\n}\n\nlet city = person.city\ncity = \"Amsterdam\"\n\nconsole.log(person)\n```",
+    "options":  "{\"options\":[\"{ name: \\\"Lydia\\\", age: 21 }\",\"{ name: \\\"Lydia\\\", age: 21, city: \\\"Amsterdam\\\" }\",\"{ name: \\\"Lydia\\\", age: 21, city: undefined }\",\"\\\"Amsterdam\\\"\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "我们将变量`city`设置为等于`person`对象上名为`city`的属性的值。 这个对象上没有名为`city`的属性，因此变量`city`的值为`undefined`。\n请注意，我们没有引用`person`对象本身，只是将变量`city`设置为等于`person`对象上`city`属性的当前值。\n然后，我们将`city`设置为等于字符串`“Amsterdam”`。 这不会更改person对象：没有对该对象的引用。\n因此打印`person`对象时，会返回未修改的对象。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:24:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1831,
+    "filterTotalNum":  1907,
+    "prev":  "59d6fb97-59bc-4f6c-ba90-cb16b96478ee",
+    "next":  "62b96cb2-ea9a-489f-9547-7bc8832a5913"
+}

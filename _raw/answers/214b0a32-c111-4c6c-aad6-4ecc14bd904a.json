@@ -1,0 +1,21 @@
+﻿{
+    "id":  1576,
+    "exerciseKey":  "214b0a32-c111-4c6c-aad6-4ecc14bd904a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第三题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = new Promise((resolve, reject) =\u003e {\n  console.log(1);\n  console.log(2);\n});\npromise.then(() =\u003e {\n  console.log(3);\n});\nconsole.log(4);\n\n```",
+    "options":  null,
+    "explanation":  "## 过程分析\n\n* 和【Promise第二题】相似，只不过在promise中并没有resolve或者reject\n* 因此promise.then并不会执行，它只有在被改变了状态之后才会执行。\n\n## 结果：\n\n```\n1 2 4\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:17:13.000Z",
+    "updateAt":  "2022-01-09T22:20:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1214,
+    "filterTotalNum":  1907,
+    "prev":  "44ee4b87-a54c-4bcf-89c3-0467c6170dff",
+    "next":  "c363d879-8557-486c-89ef-2a0e02d2164e"
+}

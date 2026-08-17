@@ -1,0 +1,21 @@
+﻿{
+    "id":  2005,
+    "exerciseKey":  "6ff491bd-f4a7-4172-86f9-8530e89bfbb2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面代码的输出是什么？",
+    "desc":  "```js\nconsole.log(typeof typeof typeof null);\nconsole.log(typeof console.log(1));\n```",
+    "options":  null,
+    "explanation":  "第一行代码输出结果为 \"string\"。解释如下：\n\n1. typeof null 返回 \"object\"，因为在JavaScript中，null 被认为是一个空对象引用。\n2. typeof \"object\" 返回 \"string\"。\n3. typeof \"string\" 返回 \"string\"。\n\n因此，最终结果为 \"string\"。\n\n第二行代码先输出 1，然后输出结果为 \"undefined\"。解释如下：\n\n1. console.log(1) 输出 1。\n2. console.log 函数没有返回值，因此返回 undefined。\n3. typeof undefined 返回 \"undefined\"。\n\n因此，最终结果为：\n\n```\nstring\n1\nundefined\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-05-28T02:36:25.000Z",
+    "updateAt":  "2024-07-20T11:00:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  805,
+    "filterTotalNum":  1907,
+    "prev":  "3734a9cd-2ef6-4b29-8eaf-f86ffc5dfdf7",
+    "next":  "be1dfffb-1f1b-43b1-9223-4a57efd1d978"
+}

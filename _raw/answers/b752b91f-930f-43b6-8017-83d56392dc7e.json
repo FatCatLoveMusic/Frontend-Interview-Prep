@@ -1,0 +1,21 @@
+﻿{
+    "id":  137,
+    "exerciseKey":  "b752b91f-930f-43b6-8017-83d56392dc7e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nclass Counter {\n\tconstructor() {\n\t\tthis.count = 0;\n\t}\n\n\tincrement() {\n\t\tthis.count++;\n\t}\n}\n\nconst counterOne = new Counter();\ncounterOne.increment();\ncounterOne.increment();\n\nconst counterTwo = counterOne;\ncounterTwo.increment();\n\nconsole.log(counterOne.count);\n```",
+    "options":  "{\"options\":[\"0\",\"1\",\"2\",\"3\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "输出是 `3`。\n\n在这段代码中，我们定义了一个名为 `Counter` 的类，它具有一个 `count` 属性和一个 `increment` 方法。当我们创建一个 `counterOne` 实例时，它的 `count` 属性被初始化为 `0`。\n\n然后，我们通过调用 `counterOne.increment()` 两次来增加 `counterOne` 对象的 `count` 值，使其变为 `2`。\n\n接下来，我们将 `counterOne` 赋值给 `counterTwo`，这实际上是将对同一个对象的引用赋值给了另一个变量。因此，`counterTwo` 和 `counterOne` 引用相同的对象。\n\n然后，我们调用 `counterTwo.increment()`，这会导致 `count` 属性再次增加 `1`，所以最终 `counterOne.count` 的值为 `3`。\n\n由于 `counterOne` 和 `counterTwo` 都引用同一个对象，因此无论通过哪个引用来修改属性，都会反映在该对象上。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-12-18T20:43:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  1782,
+    "filterTotalNum":  1907,
+    "prev":  "3cfca707-0c28-403b-bf3a-c2b892010ade",
+    "next":  "524c782b-11d8-4be0-9ba6-6fcfd487ace0"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  64,
+    "exerciseKey":  "a44172d8-ec2b-42f2-9efe-52af96e97ef8",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nconst numbers = [1, 2, 3, 4, 5];\nconst [y] = numbers;\n\nconsole.log(y);\n```",
+    "options":  "{\"options\":[\"[[1, 2, 3, 4, 5]]\",\"[1, 2, 3, 4, 5]\",\"1\",\"[1]\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "输出是 `1`。\n\n在这段代码中，我们定义了一个名为 `numbers` 的数组，并使用解构赋值从 `numbers` 中提取第一个元素。解构赋值 `[y]` 将数组的第一个元素赋值给变量 `y`。\n\n因此，当我们打印 `y` 时，它的值为 `1`，表示数组中的第一个元素。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-12-18T20:42:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  1855,
+    "filterTotalNum":  1907,
+    "prev":  "43fc5697-d7c8-4d68-9ac7-f074d8a7b185",
+    "next":  "5fd03a9b-274c-4ea1-be11-e9b042022693"
+}

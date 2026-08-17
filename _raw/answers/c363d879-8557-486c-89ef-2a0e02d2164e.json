@@ -1,0 +1,21 @@
+﻿{
+    "id":  1575,
+    "exerciseKey":  "c363d879-8557-486c-89ef-2a0e02d2164e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第五题】下面代码的输出是什么？",
+    "desc":  "```js\nconst fn = () =\u003e (new Promise((resolve, reject) =\u003e {\n  console.log(1);\n  resolve(\u0027success\u0027)\n}))\nfn().then(res =\u003e {\n  console.log(res)\n})\nconsole.log(\u0027start\u0027)\n```",
+    "options":  null,
+    "explanation":  "## 分析\n\nfn函数直接返回了一个new Promise的，而且fn函数的调用是在start之前，所以它里面的内容应该会先执行。\n\n## 结果\n\n```\n1\n\u0027start\u0027\n\u0027success\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-11-20T09:47:37.000Z",
+    "updateAt":  "2022-01-09T22:24:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  1215,
+    "filterTotalNum":  1907,
+    "prev":  "214b0a32-c111-4c6c-aad6-4ecc14bd904a",
+    "next":  "602703b0-63fc-4725-b5b1-e223b86a8443"
+}

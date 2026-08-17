@@ -1,0 +1,21 @@
+﻿{
+    "id":  83,
+    "exerciseKey":  "56056900-f049-488c-a973-9788cc708e7b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst add = () =\u003e {\n  const cache = {};\n  return num =\u003e {\n    if (num in cache) {\n      return `From cache! ${cache[num]}`;\n    } else {\n      const result = num + 10;\n      cache[num] = result;\n      return `Calculated! ${result}`;\n    }\n  };\n};\n\nconst addFunction = add();\nconsole.log(addFunction(10));\nconsole.log(addFunction(10));\nconsole.log(addFunction(5 * 2));\n```",
+    "options":  "{\"options\":[\"Calculated! 20 Calculated! 20 Calculated! 20\",\"Calculated! 20 From cache! 20 Calculated! 20\",\"Calculated! 20 From cache! 20 From cache! 20\",\"Calculated! 20 From cache! 20 Error\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "`add`函数是一个记忆函数。 通过记忆化，我们可以缓存函数的结果，以加快其执行速度。上述情况，我们创建一个`cache`对象，用于存储先前返回过的值。\n\n如果我们使用相同的参数多次调用`addFunction`函数，它首先检查缓存中是否已有该值，如果有，则返回缓存值，这将节省执行时间。如果没有，那么它将计算该值，并存储在缓存中。\n\n我们用相同的值三次调用了`addFunction`函数：\n\n* 在第一次调用，`num`等于`10`时函数的值尚未缓存，if语句`num in cache`返回`false`，else块的代码被执行：`Calculated! 20`，并且其结果被添加到缓存对象，`cache`现在看起来像`{10：20}`。\n* 第二次，`cache`对象包含`10`的返回值。 if语句 `num in cache` 返回`true`，`From cache! 20`被打印。\n* 第三次，我们将`5 * 2`(值为10)传递给函数。 `cache`对象包含`10`的返回值。 if语句 `num in cache` 返回`true`，`From cache! 20`被打印。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2022-10-30T10:56:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  1836,
+    "filterTotalNum":  1907,
+    "prev":  "6dd078d0-5728-4901-acab-bda0f365347d",
+    "next":  "3172f055-5f37-4a60-9940-bb15c6a7d4b6"
+}

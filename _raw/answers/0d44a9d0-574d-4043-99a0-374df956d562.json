@@ -1,0 +1,21 @@
+﻿{
+    "id":  36,
+    "exerciseKey":  "0d44a9d0-574d-4043-99a0-374df956d562",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nString.prototype.giveLydiaPizza = () =\u003e {\n  return \u0027Just give Lydia pizza already!\u0027\n}\n\nconst name = \u0027Lydia\u0027\n\nname.giveLydiaPizza()\n```",
+    "options":  "{\"options\":[\"\\\"Just give Lydia pizza already!\\\"\",\"TypeError: not a function\",\"SyntaxError\",\"undefined\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "`String` 是内置的构造函数，我们可以向它添加属性。我只是在它的原型中添加了一个方法。基本类型字符串被自动转换为字符串对象，由字符串原型函数生成。因此，所有 string(string 对象)都可以访问该方法！",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:10:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1883,
+    "filterTotalNum":  1907,
+    "prev":  "3928ae37-e2f5-49ba-bfc1-7076ebc049f3",
+    "next":  "643af0aa-f567-45df-89ac-aaa8b4d8f927"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  513,
+    "exerciseKey":  "dc0b6bc1-71a9-4dec-a1df-a63d08f1c888",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现柯里化",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "柯里化是什么：是指这样一个函数，它接收函数 A，并且能返回一个新的函数，这个新的函数能够处理函数 A 的剩余参数\n\n```js\nfunction createCurry(func, args) {\n  var argity = func.length;\n  var args = args || [];\n  \n  return function () {\n    var _args = [].slice.apply(arguments);\n    args.push(..._args);\n    \n    if (args.length \u003c argity) {\n      return createCurry.call(this, func, args);\n    }\n    \n    return func.apply(this, args);\n  }\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T08:05:50.000Z",
+    "updateAt":  "2021-07-11T16:10:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1407,
+    "filterTotalNum":  1907,
+    "prev":  "769ab8fd-1070-42d3-817e-48d9b37374ff",
+    "next":  "c6027c9d-6c64-4765-9358-5d01c37149c4"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1605,
+    "exerciseKey":  "f6f14b00-ae3f-43a9-9085-12333dd0cb8c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第13题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = new Promise((resolve, reject) =\u003e {\n  resolve(\"success1\");\n  reject(\"error\");\n  resolve(\"success2\");\n});\npromise\n.then(res =\u003e {\n    console.log(\"then: \", res);\n  }).catch(err =\u003e {\n    console.log(\"catch: \", err);\n  })\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n构造函数中的 resolve 或 reject 只有第一次执行有效，多次调用没有任何作用 ，Promise的状态一经改变就不能再改变。\n\n## 结果\n\n```\n\"then: success1\"\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:40:25.000Z",
+    "updateAt":  "2022-01-09T23:01:23.000Z",
+    "isCollected":  false,
+    "currentIndex":  1185,
+    "filterTotalNum":  1907,
+    "prev":  "31621982-633a-4254-a1a4-b518f734c674",
+    "next":  "37a4ad10-3819-4ab3-bb5f-26a6bf1ca07a"
+}

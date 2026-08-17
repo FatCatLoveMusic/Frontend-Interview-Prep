@@ -1,0 +1,21 @@
+﻿{
+    "id":  3211,
+    "exerciseKey":  "3406f28e-cd4c-40da-8d62-c15041ed6c7c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "MCP 出现之前 Agent 是如何接入工具的？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "在 MCP 出现之前，Agent 接入工具主要靠“定制化集成”。\n\n通常做法是：在 Agent 外面写一层执行器或编排层，把可用工具包装成函数、插件、API 调用或脚本。开发者需要手动定义工具名称、参数结构、描述信息和调用逻辑，然后把这些信息放进 Prompt、函数调用 schema，或框架提供的 Tool 抽象里。模型决定要调用哪个工具后，Agent Runtime 解析模型输出，执行对应代码，再把执行结果追加回上下文，让模型继续推理。\n\n例如，一个前端研发场景里的 Agent 想接入 GitHub、Jira、Figma、数据库、浏览器自动化工具，通常会这样做：\n\n```ts\nconst tools = {\n  searchIssue: async (params) =\u003e jiraClient.search(params),\n  getFigmaFile: async (params) =\u003e figmaClient.getFile(params.fileKey),\n  runCommand: async (params) =\u003e exec(params.command),\n};\n```\n\n再把这些工具的说明提供给模型，让模型输出类似：\n\n```json\n{\n  \"tool\": \"searchIssue\",\n  \"params\": {\n    \"keyword\": \"login bug\"\n  }\n}\n```\n\nAgent 框架拿到这个结构后，找到对应函数执行，并把结果返回给模型。\n\n这种方式在早期已经能工作，像 OpenAI Function Calling、LangChain Tools、LlamaIndex Tools、IDE 插件、企业内部 Bot 平台，本质上都是类似思路：模型负责决策，宿主程序负责工具注册、权限控制、执行和结果回填。\n\n但问题也很明显。每个平台都有自己的工具定义方式、通信方式和权限模型。一个 GitHub 工具如果接入了某个 Agent 框架，换到另一个 IDE、另一个模型供应商或另一个 Agent Runtime，往往要重新适配。工具发现、参数描述、错误处理、鉴权、日志、资源访问、上下文注入都没有统一规范，最终导致集成成本高、复用性差，也不利于企业级治理。\n\nMCP 解决的正是这类问题。它把工具、资源、提示词等能力抽象成统一协议，让 Agent Client 可以通过标准方式连接 MCP Server。这样工具提供方不需要为每个 Agent 单独写适配，Agent 也不需要为每种工具维护一套私有接入逻辑。",
+    "pivot":  "MCP 出现之前，Agent 接入工具主要依赖定制代码、插件机制、Function Calling 或框架内置 Tool 抽象。核心流程是：手动注册工具描述，模型输出调用意图，Agent Runtime 执行函数/API/脚本，再把结果回填给模型。它能满足基本工具调用，但缺少统一协议，导致工具复用、权限治理、跨平台接入和维护成本都比较差。MCP 的价值在于把这套能力标准化。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:57:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  77,
+    "filterTotalNum":  1907,
+    "prev":  "634ebf30-1fee-4dd9-afb1-b376faa977c6",
+    "next":  "36aaf63e-ff27-44df-b9bb-73a568d0e77f"
+}

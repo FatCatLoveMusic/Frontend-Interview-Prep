@@ -1,0 +1,21 @@
+﻿{
+    "id":  1622,
+    "exerciseKey":  "2c14e603-0e2b-4a05-89b7-d5c45804527a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第30题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function async1() {\n  console.log(\"async1 start\");\n  await async2();\n  console.log(\"async1 end\");\n  setTimeout(() =\u003e {\n    console.log(\u0027timer1\u0027)\n  }, 0)\n}\nasync function async2() {\n  setTimeout(() =\u003e {\n    console.log(\u0027timer2\u0027)\n  }, 0)\n  console.log(\"async2\");\n}\nasync1();\nsetTimeout(() =\u003e {\n  console.log(\u0027timer3\u0027)\n}, 0)\nconsole.log(\"start\")\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n定时器谁先执行，你只需要关注谁先被调用的以及延迟时间是多少，这道题中延迟时间都是0，所以只要关注谁先被调用的。\n\n## 结果\n\n```\n\u0027async1 start\u0027\n\u0027async2\u0027\n\u0027start\u0027\n\u0027async1 end\u0027\n\u0027timer2\u0027\n\u0027timer3\u0027\n\u0027timer1\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:08:47.000Z",
+    "updateAt":  "2022-01-09T23:15:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1168,
+    "filterTotalNum":  1907,
+    "prev":  "ced16bc7-215d-47a2-9bef-7e6ab67f303c",
+    "next":  "96feb2bc-cdd7-4b16-be8a-e9d5af64a27b"
+}

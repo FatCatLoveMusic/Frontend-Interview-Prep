@@ -1,0 +1,21 @@
+﻿{
+    "id":  2608,
+    "exerciseKey":  "848cb975-f2e8-4a46-bf55-d36acd6a1a38",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "promise 是否可以取消？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "JavaScript 中的原生 Promise 不直接支持取消操作。Promise 的设计理念是一次性且不可变的，创建后就不可取消。\n\n实现 Promise 取消的常见方法有：\n\n### **1. 使用标志位**\n\n可以在 Promise 内部设置一个取消标志，手动检查这个标志来决定是否继续执行操作。\n\n```javascript\nfunction cancellablePromise(executor) {\n  let cancelled = false;\n\n  const promise = new Promise((resolve, reject) =\u003e {\n    executor(\n      (value) =\u003e {\n        if (!cancelled) resolve(value);\n      },\n      (error) =\u003e {\n        if (!cancelled) reject(error);\n      }\n    );\n  });\n\n  return {\n    promise,\n    cancel() {\n      cancelled = true;\n    }\n  };\n}\n```\n\n### **2. 使用 `AbortController`**\n\n对于 Fetch API 或类似支持 AbortController 的操作，可以利用 AbortController 取消网络请求。\n\n```javascript\nconst controller = new AbortController();\nconst signal = controller.signal;\n\nfetch(\u0027url\u0027, { signal })\n  .then(response =\u003e response.json())\n  .then(data =\u003e console.log(data))\n  .catch(err =\u003e {\n    if (err.name === \u0027AbortError\u0027) {\n      console.log(\u0027Fetch aborted\u0027);\n    } else {\n      console.error(\u0027Fetch error:\u0027, err);\n    }\n  });\n\n// 取消请求\ncontroller.abort();\n```\n\n### **3. 自定义取消的 Promise 机制**\n\n通过自定义机制来处理 Promise 的取消逻辑，可以封装 Promise 和取消逻辑。\n\n```javascript\nclass CancelablePromise {\n  constructor(executor) {\n    this._isCanceled = false;\n    this._promise = new Promise((resolve, reject) =\u003e {\n      executor(\n        value =\u003e !this._isCanceled \u0026\u0026 resolve(value),\n        error =\u003e !this._isCanceled \u0026\u0026 reject(error)\n      );\n    });\n  }\n\n  cancel() {\n    this._isCanceled = true;\n  }\n\n  then(onFulfilled, onRejected) {\n    return this._promise.then(onFulfilled, onRejected);\n  }\n\n  catch(onRejected) {\n    return this._promise.catch(onRejected);\n  }\n}\n```\n\n### **4. 使用第三方库**\n\n有些第三方库（如 [Bluebird](http://bluebirdjs.com/) 和 [rxjs](https://rxjs.dev/)）提供了对 Promise 取消的支持或替代方案。",
+    "pivot":  "原生 Promise 本身不支持取消，但可以通过一些变通的方式实现类似功能，如使用标志位、自定义类、AbortController 或第三方库。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T18:38:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  445,
+    "filterTotalNum":  1907,
+    "prev":  "b8dde1bf-f45f-4266-b6a2-6cbfabf6ec43",
+    "next":  "10f7d3d8-9639-4b55-91b0-d3569abd7faa"
+}

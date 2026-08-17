@@ -1,0 +1,21 @@
+﻿{
+    "id":  2634,
+    "exerciseKey":  "9ba9d7cb-840a-4910-8596-88c6349ead1e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "数组里面有10万个数据，取第一个元素和第10万个元素的时间相差多少？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 JavaScript 中，访问数组的任意元素（如第一个或第十万个元素）是常数时间操作，即 O(1) 时间复杂度。这意味着不论数组的大小如何，访问数组的某个元素的时间复杂度都是固定的。\n\n具体来说：\n\n- **访问第一个元素**：`array[0]`\n- **访问第十万个元素**：`array[99999]`\n\n这两种访问方式的时间复杂度都是 O(1)。\n\n在实际操作中，现代浏览器和 JavaScript 引擎对数组的随机访问优化得非常好，因此访问任何一个数组元素的时间差异通常非常微小，不会因数组大小的不同而显著变化。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T13:58:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  434,
+    "filterTotalNum":  1907,
+    "prev":  "c740c88b-fe1b-426f-ab9c-23f43c7fe62d",
+    "next":  "11339761-1a8f-4b74-a3ba-47f384669fc4"
+}

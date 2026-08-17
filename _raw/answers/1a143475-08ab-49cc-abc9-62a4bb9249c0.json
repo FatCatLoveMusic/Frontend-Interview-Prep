@@ -1,0 +1,21 @@
+﻿{
+    "id":  1738,
+    "exerciseKey":  "1a143475-08ab-49cc-abc9-62a4bb9249c0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何获取到一个实例对象的原型对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 从 `构造函数` 获得 原型对象：\n\n```\n构造函数.prototype\n```\n\n* 从 `对象实例` 获得 `父级原型对象`：\n\n```\n方法一： 对象实例.__proto__        【 有兼容性问题，不建议使用】\n方法二：Object.getPrototypeOf( 对象实例 )\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2022-04-05T09:28:08.000Z",
+    "updateAt":  "2022-04-05T17:28:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  1064,
+    "filterTotalNum":  1907,
+    "prev":  "2572a1d9-4018-49c3-9934-1fe1be0889b2",
+    "next":  "7625104a-b9e7-4cab-915a-d1cccfa31d5c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2398,
+    "exerciseKey":  "bbe72a8a-02b6-43bc-96ce-d3d98109cd0b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "in 运算符作用是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 TypeScript 中，`in` 运算符用于检查一个对象是否具有特定的属性。它的基本语法是：\n\n```typescript\nproperty in object\n```\n\n- **`property`**：要检查的属性名，可以是字符串字面量或符号。\n- **`object`**：要检查的对象。\n\n### **用途**\n\n1. **检查对象是否包含某个属性**\n\n   `in` 运算符用于检查某个对象是否拥有指定的属性。它会返回一个布尔值，表示属性是否存在。\n\n   **示例**：\n\n   ```typescript\n   const person = { name: \"Alice\", age: 30 };\n\n   console.log(\"name\" in person); // true\n   console.log(\"gender\" in person); // false\n   ```\n\n   在这个示例中，`\"name\" in person` 返回 `true`，因为 `person` 对象具有 `name` 属性。`\"gender\" in person` 返回 `false`，因为 `person` 对象没有 `gender` 属性。\n\n2. **类型保护**\n\n   `in` 运算符也可以用作类型保护，用于在条件判断中检查对象是否具有特定的属性，从而确定对象的具体类型。\n\n   **示例**：\n\n   ```typescript\n   type Cat = { type: \u0027cat\u0027; meow: () =\u003e void };\n   type Dog = { type: \u0027dog\u0027; bark: () =\u003e void };\n\n   function handleAnimal(animal: Cat | Dog) {\n     if (\"meow\" in animal) {\n       animal.meow(); // 类型保护确保 animal 是 Cat\n     } else {\n       animal.bark(); // 类型保护确保 animal 是 Dog\n     }\n   }\n   ```\n\n   在这个示例中，通过检查 `animal` 对象是否具有 `meow` 属性来判断它是 `Cat` 还是 `Dog`。`\"meow\" in animal` 和 `\"bark\" in animal` 用于确定对象的具体类型，并执行相应的方法。",
+    "pivot":  "- **`in` 运算符**：用于检查一个对象是否具有特定的属性。\n- **语法**：`property in object`，返回布尔值。\n- **类型保护**：在条件判断中用于确定对象的具体类型，增强类型安全性。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-05T01:22:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  551,
+    "filterTotalNum":  1907,
+    "prev":  "ea84f54a-0aec-444f-b417-2887cb4f0199",
+    "next":  "d4cff3fa-0488-47d6-a488-705ea93e174c"
+}

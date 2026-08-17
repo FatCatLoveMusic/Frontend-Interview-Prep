@@ -1,0 +1,21 @@
+﻿{
+    "id":  3049,
+    "exerciseKey":  "e82c31fa-cae7-499a-90a5-2fa56a7c3f59",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "`setup`函数中同步修改响应式数据，会触发子组件的`onBeforeUpdate`吗？为什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "**结论先行：不会。**\n在 `setup` 函数中**同步修改响应式数据，不会触发子组件的 `onBeforeUpdate`**。原因在于：**此时组件尚未完成首次渲染，更新还没有进入“更新阶段”**。\n\n下面从 Vue 3 的真实执行链路解释这个结论。\n\n---\n\n## 一、先明确 `onBeforeUpdate` 的触发前提\n\n`onBeforeUpdate` 的语义是：\n\n\u003e **组件已经完成过一次挂载（mount），因为响应式状态变更，即将触发一次“更新渲染”之前**\n\n因此，它有一个隐含前提：\n\n* 组件 **已经 mounted**\n* 当前这次 render 属于 **update，而不是 initial render**\n\n如果组件还没完成首次渲染，就不存在“更新”，也就不存在 `beforeUpdate`。\n\n---\n\n## 二、`setup` 所处的生命周期位置\n\nVue 3 中，组件初始化的大致流程是：\n\n```text\ncreateComponentInstance\n→ setup()\n→ render effect 创建\n→ 首次 render\n→ patch\n→ mounted\n```\n\n关键点在于：\n\n\u003e **`setup` 执行时，组件还没有开始渲染，更不可能已经 mounted**\n\n此时：\n\n* render effect 还没真正执行\n* 子组件实例甚至可能尚未创建\n* 更新调度系统（scheduler）还未介入\n\n---\n\n## 三、为什么同步修改不会触发更新\n\n来看一个典型场景：\n\n```js\nsetup() {\n  const count = ref(0)\n  count.value++\n  return { count }\n}\n```\n\n这里发生的事情是：\n\n1. `setup` 中创建响应式数据\n2. 同步修改 `count.value`\n3. **此修改发生在首次 render 之前**\n4. render effect 第一次执行时，直接读取的是**最终值**\n\n也就是说：\n\n\u003e **这次修改被“吸收”进了首次渲染，而不是一次更新**\n\n从 Vue 的角度看：\n\n* 没有“旧 VNode”\n* 没有 diff\n* 没有 update 阶段\n* 自然也不会触发 `onBeforeUpdate`\n\n---\n\n## 四、对子组件的影响\n\n子组件的 `onBeforeUpdate` 触发条件更严格：\n\n* 父组件已经 mounted\n* 父组件更新导致子组件进入 update 流程\n* 子组件的 props 或依赖发生变化\n\n而在 `setup` 阶段：\n\n* 父组件尚未 mounted\n* 子组件通常尚未完成创建\n* 不存在一次“父 → 子”的更新传播\n\n因此：\n\n\u003e **`setup` 中的同步修改，不可能触发子组件的 `onBeforeUpdate`**\n\n---\n\n## 五、对比：什么情况下会触发 `onBeforeUpdate`\n\n```js\nsetup() {\n  const count = ref(0)\n\n  onMounted(() =\u003e {\n    count.value++\n  })\n\n  return { count }\n}\n```\n\n这时链路是：\n\n1. 首次 render 完成\n2. 组件 mounted\n3. `count` 在 mounted 后被修改\n4. 触发更新调度\n5. 父组件 `onBeforeUpdate`\n6. 子组件 `onBeforeUpdate`\n7. render → diff → patch\n\n这才是一个完整的 **update 生命周期**。\n\n---\n\n## 六、工程化视角的总结\n\nVue 对生命周期的区分本质是：\n\n* **initial render**：状态准备阶段\n* **update render**：响应式变更驱动阶段\n\n`setup` 属于前者，而 `onBeforeUpdate` 属于后者，两者不会交叉。\n",
+    "pivot":  "`setup` 执行时组件尚未完成首次渲染，所有同步的响应式修改都会被合并进初始 render，而不是触发一次更新；`onBeforeUpdate` 只会在组件已经 mounted 且即将进行一次更新渲染时触发；因此，在 `setup` 中同步修改响应式数据，不会触发子组件的 `onBeforeUpdate`，因为更新阶段尚未开始。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-02-01T15:18:04.000Z",
+    "updateAt":  "2026-02-01T15:18:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  156,
+    "filterTotalNum":  1907,
+    "prev":  "8102159f-f373-4b08-8597-7220e4afc36c",
+    "next":  "efa108f0-e78a-48e7-b722-e6b67c32a494"
+}

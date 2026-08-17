@@ -1,0 +1,21 @@
+﻿{
+    "id":  2804,
+    "exerciseKey":  "fac9701b-e86e-499a-b1eb-8ba6a79dd146",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "前端怎么做错误监控？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "前端错误监控是确保应用稳定性和用户体验的重要手段。以下是一些常见的前端错误监控方法：\n\n### **1. 捕获 JavaScript 错误**\n\n**方法**：\n- **使用 `window.onerror` 事件**：捕获全局 JavaScript 错误。\n- **使用 `window.addEventListener(\u0027error\u0027)`**：捕获未处理的错误和资源加载错误。\n- **使用 `window.addEventListener(\u0027unhandledrejection\u0027)`**：捕获未处理的 Promise 拒绝错误。\n\n**示例代码**：\n\n```javascript\n// 捕获 JavaScript 错误\nwindow.onerror = function (message, source, lineno, colno, error) {\n    console.log(\u0027Error captured:\u0027, { message, source, lineno, colno, error });\n    // 发送错误信息到服务器\n    sendErrorToServer({ message, source, lineno, colno, error });\n    return true; // 防止浏览器默认处理\n};\n\n// 捕获未处理的 Promise 拒绝\nwindow.addEventListener(\u0027unhandledrejection\u0027, function (event) {\n    console.log(\u0027Unhandled rejection:\u0027, event.reason);\n    // 发送错误信息到服务器\n    sendErrorToServer({ reason: event.reason });\n});\n\n// 发送错误信息到服务器\nfunction sendErrorToServer(error) {\n    fetch(\u0027/log-error\u0027, {\n        method: \u0027POST\u0027,\n        headers: {\n            \u0027Content-Type\u0027: \u0027application/json\u0027\n        },\n        body: JSON.stringify(error)\n    });\n}\n```\n\n### **2. 使用监控工具**\n\n集成专业的前端错误监控工具可以提供更多功能，如自动错误捕获、用户上下文、异常堆栈跟踪等。\n\n**常用工具**：\n- **Sentry**：提供 JavaScript 错误捕获、性能监控、用户上下文等功能。\n- **Rollbar**：实时错误监控和日志记录，支持自定义错误报告。\n- **LogRocket**：记录用户会话、错误和性能数据。\n- **New Relic**：性能监控和错误捕获，集成各种前端和后端数据。\n\n**示例代码（以 Sentry 为例）**：\n\n```html\n\u003cscript src=\"https://browser.sentry-cdn.com/7.7.0/bundle.tracking.min.js\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  Sentry.init({ dsn: \u0027https://your-dsn@sentry.io/your-project-id\u0027 });\n\n  // 捕获 JavaScript 错误\n  try {\n    // 可能抛出错误的代码\n  } catch (error) {\n    Sentry.captureException(error);\n  }\n\n  // 捕获 Promise 拒绝\n  window.addEventListener(\u0027unhandledrejection\u0027, event =\u003e {\n    Sentry.captureException(event.reason);\n  });\n\u003c/script\u003e\n```\n\n### **3. 监控 AJAX 请求错误**\n\n**方法**：\n- **拦截 AJAX 请求和响应**：在发起请求前和收到响应后处理错误。\n\n**示例代码**：\n\n```javascript\n// XMLHttpRequest\nconst originalOpen = XMLHttpRequest.prototype.open;\nXMLHttpRequest.prototype.open = function (method, url, async, user, password) {\n    this.addEventListener(\u0027error\u0027, function () {\n        console.log(\u0027XHR error:\u0027, url);\n        // 发送错误信息到服务器\n        sendErrorToServer({ type: \u0027XHR\u0027, url, status: this.status });\n    });\n    return originalOpen.apply(this, arguments);\n};\n\n// Fetch API\nconst originalFetch = window.fetch;\nwindow.fetch = function (url, options) {\n    return originalFetch(url, options).catch(error =\u003e {\n        console.log(\u0027Fetch error:\u0027, url, error);\n        // 发送错误信息到服务器\n        sendErrorToServer({ type: \u0027Fetch\u0027, url, error });\n        throw error; // 继续抛出错误\n    });\n};\n```\n\n### **4. 记录用户行为和上下文**\n\n**方法**：\n- **记录用户操作**：在发生错误时记录用户的操作历史和上下文，以便进行故障排查。\n- **集成工具**：使用用户行为分析工具，如 LogRocket，提供用户会话回放和上下文信息。\n\n**示例代码**：\n\n```javascript\n// 示例：记录用户行为\ndocument.addEventListener(\u0027click\u0027, function (event) {\n    console.log(\u0027User clicked:\u0027, event.target);\n    // 发送行为数据到服务器\n    sendUserActionToServer({ type: \u0027click\u0027, target: event.target.tagName });\n});\n```",
+    "pivot":  "- **捕获 JavaScript 错误**：使用 `window.onerror` 和 `window.addEventListener` 进行全局错误捕获。\n- **使用专业工具**：集成 Sentry、Rollbar、LogRocket 等工具提供丰富的监控功能。\n- **监控 AJAX 请求错误**：拦截 `XMLHttpRequest` 和 `fetch` 请求以捕获网络请求错误。\n- **记录用户行为**：记录用户操作和上下文，辅助排查问题。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T19:41:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  354,
+    "filterTotalNum":  1907,
+    "prev":  "b0b29463-196e-433f-a727-3bf26ea622c9",
+    "next":  "3d4f17ec-2091-4826-8e11-d79363a9cb89"
+}

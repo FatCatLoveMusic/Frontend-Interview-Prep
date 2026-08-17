@@ -1,0 +1,21 @@
+﻿{
+    "id":  2947,
+    "exerciseKey":  "0c2e2466-54ef-47b7-99f1-1064ea325a0b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "不重复最大子串",
+    "desc":  "给定一个字符串，请实现一个函数来找到其中的不重复最大子串。例如，对于字符串\"abcabcbb\"，不重复最大子串是\"abc\"，长度为3。\n\n* 请写出实现该功能的代码，并说明其时间复杂度。\n* 考虑到性能优化，你认为还有哪些改进空间？请提出优化思路并实现优化后的代码。",
+    "options":  null,
+    "explanation":  "## 一、滑动窗口实现\n\n```js\nfunction lengthOfLongestSubstring(s) {\n  let set = new Set();\n  let left = 0, maxLen = 0;\n  \n  for (let right = 0; right \u003c s.length; right++) {\n    while (set.has(s[right])) {\n      set.delete(s[left]);\n      left++;\n    }\n    set.add(s[right]);\n    maxLen = Math.max(maxLen, right - left + 1);\n  }\n  \n  return maxLen;\n}\n\n// 测试\nconsole.log(lengthOfLongestSubstring(\"abcabcbb\")); // 输出 3\n```\n\n### 思路\n\n* 使用 **滑动窗口** `[left, right]` 遍历字符串。\n* 用 `Set` 存储当前窗口内字符。\n* 当遇到重复字符时，移动左指针，直到窗口内无重复字符。\n* 每次窗口扩大时更新最大长度。\n\n### 时间复杂度\n\n* 每个字符 **最多进出窗口一次** → O(n)\n* 空间复杂度：O(min(n, Σ))，Σ 是字符集大小。\n\n---\n\n## 二、性能优化\n\n上面方法每遇到重复字符，需要 **逐个删除左边字符**。可以进一步优化为 **直接跳过重复字符的索引**，使用 **Map 存储字符上次出现的索引**。\n\n### 优化实现（使用 Map）\n\n```js\nfunction lengthOfLongestSubstringOptimized(s) {\n  const map = new Map();\n  let maxLen = 0, left = 0;\n\n  for (let right = 0; right \u003c s.length; right++) {\n    if (map.has(s[right]) \u0026\u0026 map.get(s[right]) \u003e= left) {\n      left = map.get(s[right]) + 1; // 直接跳过重复字符\n    }\n    map.set(s[right], right);\n    maxLen = Math.max(maxLen, right - left + 1);\n  }\n\n  return maxLen;\n}\n\n// 测试\nconsole.log(lengthOfLongestSubstringOptimized(\"abcabcbb\")); // 输出 3\n```\n\n### 优化说明\n\n* **直接跳过重复字符**，减少了删除操作。\n* 对比 `Set` 方法，尤其在遇到长重复序列时性能更好。\n* 时间复杂度仍然是 O(n)，但常数时间更低。\n* 空间复杂度 O(min(n, Σ))，Σ 是字符集大小。\n",
+    "pivot":  "1. **滑动窗口** 是解决最长不重复子串问题的核心思想。\n2. **Set 方法**简单直观，但每遇到重复字符可能多次移动左指针。\n3. **Map 优化**通过记录字符索引，**直接跳过重复区域**，减少不必要操作。\n4. 时间复杂度 O(n)，空间复杂度 O(Σ)。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-08-20T14:54:24.000Z",
+    "updateAt":  "2025-08-20T14:54:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  255,
+    "filterTotalNum":  1907,
+    "prev":  "3957051d-dad2-46df-86bf-3b48cedda28b",
+    "next":  "9cf927ac-d134-4590-9a2a-0cb73bc3e2c8"
+}

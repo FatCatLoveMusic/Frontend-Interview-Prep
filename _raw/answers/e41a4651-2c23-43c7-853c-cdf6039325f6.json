@@ -1,0 +1,21 @@
+﻿{
+    "id":  1854,
+    "exerciseKey":  "e41a4651-2c23-43c7-853c-cdf6039325f6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "跨域时怎么处理 cookie？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在默认情况下，跨域请求是不会携带 Cookie 的，这是为了保护用户隐私和安全考虑。然而，如果确实需要在跨域请求中携带 Cookie，可以通过以下方式进行处理：\n\n1. **设置 withCredentials 属性**：在发送跨域请求的客户端代码中，将 `withCredentials` 属性设置为 `true`。例如，在使用 XMLHttpRequest 或 Fetch API 发起请求时，可以添加如下配置：\n\n   ```javascript\n   // XMLHttpRequest\n   const xhr = new XMLHttpRequest();\n   xhr.withCredentials = true;\n   xhr.open(\u0027GET\u0027, \u0027https://example.com\u0027, true);\n   xhr.send();\n\n   // Fetch API\n   fetch(\u0027https://example.com\u0027, { credentials: \u0027include\u0027 })\n     .then(response =\u003e response.json())\n     .then(data =\u003e console.log(data))\n     .catch(error =\u003e console.log(error));\n   ```\n\n2. **服务端处理 CORS（跨域资源共享）请求**：在服务器端，需要对来自其他域的请求进行特殊的处理，以允许跨域请求携带 Cookie。具体的方法取决于所使用的后端技术。\n\n   - 对于 Express 框架，可以使用 `cors` 中间件，并将 `credentials` 设置为 `true`：\n\n     ```javascript\n     const express = require(\u0027express\u0027);\n     const cors = require(\u0027cors\u0027);\n\n     const app = express();\n     app.use(cors({ origin: \u0027http://example.com\u0027, credentials: true }));\n     ```\n\n   - 对于其他后端框架或原生 Node.js，需要在响应头中设置适当的 CORS 头部：\n\n     ```javascript\n     response.setHeader(\u0027Access-Control-Allow-Origin\u0027, \u0027http://example.com\u0027);\n     response.setHeader(\u0027Access-Control-Allow-Credentials\u0027, \u0027true\u0027);\n     ```\n\n需要注意，启用跨域请求携带 Cookie 的设置需谨慎，确保服务端和客户端都进行了适当的安全措施，以防止潜在的安全风险。此外，还要注意遵循同源策略，并只允许受信任的域名访问和携带 Cookie。",
+    "pivot":  "跨域请求默认不携带Cookie，但若需携带，可采取以下措施：\n\n1. **客户端设置**：在发起跨域请求时，将`withCredentials`属性设为`true`。\n   - XMLHttpRequest示例：`xhr.withCredentials = true;`\n   - Fetch API示例：`fetch(url, { credentials: \u0027include\u0027 });`\n2. **服务端处理CORS**：服务器端需配置允许跨域请求携带Cookie。\n   - Express框架使用`cors`中间件，并设置`credentials: true`。\n   - 其他后端或原生Node.js需设置响应头：\n\n     ```javascript\n     response.setHeader(\u0027Access-Control-Allow-Origin\u0027, \u0027http://example.com\u0027);\n     response.setHeader(\u0027Access-Control-Allow-Credentials\u0027, \u0027true\u0027);\n     ```\n\n需谨慎处理跨域携带Cookie的设置，确保安全措施得当，防止安全风险，并遵循同源策略，只允许信任的域名访问。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-07-17T11:34:09.000Z",
+    "updateAt":  "2024-08-10T17:06:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  956,
+    "filterTotalNum":  1907,
+    "prev":  "6ed21b1e-7f81-422b-94b4-0d2250b39ed9",
+    "next":  "6e2ce014-4783-4e8d-ba0a-e655a8b687cd"
+}

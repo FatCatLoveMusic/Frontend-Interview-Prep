@@ -1,0 +1,21 @@
+﻿{
+    "id":  70,
+    "exerciseKey":  "30ae1cd5-9a7f-409b-9839-181f42fa6a15",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\n[1, 2, 3, 4].reduce((x, y) =\u003e console.log(x, y));\n```",
+    "options":  "{\"options\":[\"1 2 and 3 3 and 6 4\",\"1 2 and 2 3 and 3 4\",\"1 undefined and 2 undefined and 3 undefined and 4 undefined\",\"1 2 and undefined 3 and undefined 4\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`reducer` 函数接收4个参数:\n1. Accumulator (acc) (累计器)\n2. Current Value (cur) (当前值)\n3. Current Index (idx) (当前索引)\n4. Source Array (src) (源数组)\n`reducer` 函数的返回值将会分配给累计器，该返回值在数组的每个迭代中被记住，并最后成为最终的单个结果值。\n`reducer` 函数还有一个可选参数`initialValue`, 该参数将作为第一次调用回调函数时的第一个参数的值。如果没有提供`initialValue`，则将使用数组中的第一个元素。\n在上述例子，`reduce`方法接收的第一个参数(Accumulator)是`x`, 第二个参数(Current Value)是`y`。\n在第一次调用时，累加器`x`为`1`，当前值`“y”`为`2`，打印出累加器和当前值：`1`和`2`。\n例子中我们的回调函数没有返回任何值，只是打印累加器的值和当前值。如果函数没有返回值，则默认返回`undefined`。 在下一次调用时，累加器为`undefined`，当前值为“3”, 因此`undefined`和`3`被打印出。\n在第四次调用时，回调函数依然没有返回值。 累加器再次为 `undefined` ，当前值为“4”。 `undefined`和`4`被打印出。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2024-08-03T21:05:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1849,
+    "filterTotalNum":  1907,
+    "prev":  "c591d4b9-eff8-4a29-b01b-50130bde5d3b",
+    "next":  "16a99f71-99b2-4611-8d11-07e6b294660e"
+}

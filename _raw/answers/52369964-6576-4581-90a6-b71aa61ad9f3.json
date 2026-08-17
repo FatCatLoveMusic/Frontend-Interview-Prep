@@ -1,0 +1,21 @@
+﻿{
+    "id":  2706,
+    "exerciseKey":  "52369964-6576-4581-90a6-b71aa61ad9f3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "HTTP协议的不同版本的主要特点有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "HTTP协议的不同版本的主要特点如下表所示：\n\n|版本|发布时间|主要特点|\n|---|---|---|\n|HTTP/0.9|1991年|只支持GET方法，没有Header和Body|\n|HTTP/1.0|1996年|引入Header、POST方法、响应码、缓存等特性|\n|HTTP/1.1|1999年|引入持久连接、管道化请求、分块传输编码、Host头、缓存控制等特性|\n|HTTP/2|2015年|引入二进制分帧、头部压缩、流量控制、多路复用等特性|\n|HTTP/3|2021年|引入QUIC协议，改进网络传输性能|\n\n\n需要注意的是，HTTP/1.x和HTTP/2都支持TLS加密传输，即HTTPS协议。HTTP/3则是基于QUIC协议的，使用TLS 1.3进行加密传输。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-14T23:27:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  394,
+    "filterTotalNum":  1907,
+    "prev":  "1ce33773-0c5d-42c2-a34f-482fd0edae0f",
+    "next":  "5c0a3c99-09e5-407e-b351-0f5219ff1fed"
+}

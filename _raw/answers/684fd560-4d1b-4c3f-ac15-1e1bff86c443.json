@@ -1,0 +1,21 @@
+﻿{
+    "id":  2007,
+    "exerciseKey":  "684fd560-4d1b-4c3f-ac15-1e1bff86c443",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个函数, 可以间隔输出",
+    "desc":  "```js\nfunction createRepeat(fn, repeat, interval) {}\n\nconst fn = createRepeat(console.log, 3, 4);\n\nfn(\u0027helloWorld\u0027); // 每4秒输出一次helloWorld, 输出3次\n```",
+    "options":  null,
+    "explanation":  "可以使用 JavaScript 中的定时器函数 setInterval 来实现，具体如下： \n\n```js\nfunction createRepeat(fn, repeat, interval) {\n\tlet count = 0;\n\n\treturn (param) =\u003e {\n\t\tconst timer = setInterval(() =\u003e {\n\t\t    fn(param)\n\t\t    count++;\n\t\t    if (count \u003e= repeat) {\n\t\t      clearInterval(timer);\n\t\t    }\n\t    }, interval * 1000);\n\t}\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2023-05-28T02:40:27.000Z",
+    "updateAt":  "2023-05-31T19:55:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  803,
+    "filterTotalNum":  1907,
+    "prev":  "5c91b3fc-775e-4782-a262-7684487d5196",
+    "next":  "3734a9cd-2ef6-4b29-8eaf-f86ffc5dfdf7"
+}

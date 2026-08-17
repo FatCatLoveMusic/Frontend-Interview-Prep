@@ -1,0 +1,21 @@
+﻿{
+    "id":  25,
+    "exerciseKey":  "ffb601c8-7b57-4a0b-892a-f1935cfb528e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nlet number = 0\nconsole.log(number++)\nconsole.log(++number)\nconsole.log(number)\n```",
+    "options":  "{\"options\":[\"1 1 2\",\"1 2 2\",\"0 2 2\",\"0 1 2\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "一元**后自增**运算符 `++`：\n1. 返回值（返回 `0`）\n2. 值自增（number 现在是 `1`）\n一元**前自增**运算符 `++`：\n1. 值自增（number 现在是 `2`）\n2. 返回值（返回 `2`）\n结果是 `0 2 2`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:09:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  1894,
+    "filterTotalNum":  1907,
+    "prev":  "2f15c826-8011-46de-9c27-864728b75432",
+    "next":  "9be3e346-ff10-44b3-b98d-057669a266c4"
+}

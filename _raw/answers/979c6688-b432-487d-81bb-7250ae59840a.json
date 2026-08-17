@@ -1,0 +1,21 @@
+﻿{
+    "id":  33,
+    "exerciseKey":  "979c6688-b432-487d-81bb-7250ae59840a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nconst obj = { 1: \u0027a\u0027, 2: \u0027b\u0027, 3: \u0027c\u0027 }\nconst set = new Set([1, 2, 3, 4, 5])\n\nobj.hasOwnProperty(\u00271\u0027)\nobj.hasOwnProperty(1)\nset.has(\u00271\u0027)\nset.has(1)\n```",
+    "options":  "{\"options\":[\"false true false true\",\"false true true true\",\"true true false true\",\"true true true true\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "所有对象的键（不包括 Symbol）在底层都是字符串，即使你自己没有将其作为字符串输入。这就是为什么 `obj.hasOwnProperty(\u00271\u0027)` 也返回 `true`。\n对于集合，它不是这样工作的。在我们的集合中没有 `\u00271\u0027`：`set.has(\u00271\u0027)` 返回 `false`。它有数字类型为 `1`，`set.has(1)` 返回 `true`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:10:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  1886,
+    "filterTotalNum":  1907,
+    "prev":  "ecb779c3-a28f-45c8-bcdc-25b8d7948e1a",
+    "next":  "368a4fdc-4c5f-4a97-81a8-eab34a3fcb7c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1945,
+    "exerciseKey":  "d1c0644f-24d4-4f5f-b599-bb3b34f2d10e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现下面的 reverseWord 方法",
+    "desc":  "```ts\n/**\n * @file 反转句子\n * \n * 同时满足以下条件：1、去除首尾空格，2、单词间隔中多个空格变成一个；\n * 注意console示例运行结果\n */\n\nfunction reverseWord(str: string) {\n    // 补全此处代码\n    throw new Error(\u0027功能待实现\u0027);\n}\n\nconsole.log(reverseWord(\u0027the sky is blue\u0027)); // blue is sky the\n// 去除首尾空格\nconsole.log(reverseWord(\"  hello world  \")); // world hello\n// 单词间隔中多个空格变成一个\nconsole.log(reverseWord(\"a good   example\")); // example good a\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 反转句子\n * \n * 同时满足以下条件：1、去除首尾空格，2、单词间隔中多个空格变成一个；\n * 注意console示例运行结果\n */\n\nfunction reverseWord(str: string):string {\n    // 参考答案\n    return (\u003cstring[]\u003estr.match(/\\S+/g)).reverse().join(\" \");\n}\n\nconsole.log(reverseWord(\u0027the sky is blue\u0027)); // blue is sky the\n// 去除首尾空格\nconsole.log(reverseWord(\"  hello world  \")); // world hello\n// 单词间隔中多个空格变成一个\nconsole.log(reverseWord(\"a good   example\")); // example good a\n\nexport default {}\n```",
+    "pivot":  "**作答思路：**\n\n反转句子中的单词顺序，并处理句子中的空格问题。\n\n1. **正则表达式匹配**：使用正则表达式`/\\S+/g`来匹配句子中的所有单词。`\\S`匹配任何非空白字符，`+`表示匹配一个或多个这样的字符，`g`表示全局匹配，即匹配所有这样的字符串。\n2. **数组反序**：将匹配到的单词数组`str.match(/\\S+/g)`通过`.reverse()`方法进行反序。\n3. **空格处理**：将反序后的单词数组通过`.join(\" \")`方法连接成一个字符串，其中每个单词之间用一个空格分隔。这样处理后，句子中的多个空格会被合并成一个空格。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:22:46.000Z",
+    "updateAt":  "2024-08-10T17:07:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  865,
+    "filterTotalNum":  1907,
+    "prev":  "2f9c699c-f7be-4f31-8b1b-5d6271bc075e",
+    "next":  "6cfd4286-3c93-45a3-9b63-a67ab7ddd6e6"
+}

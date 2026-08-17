@@ -1,0 +1,21 @@
+﻿{
+    "id":  265,
+    "exerciseKey":  "65fa7d0f-fd68-4c2d-9c2b-4f98d7a4f9e3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何禁用a标签跳转页面或定位链接?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "当页面中a标签不需要任何跳转时，从原理上来讲，可分如下两种方法：\n\n* 标签属性href，使其指向空或不返回任何内容。如：\n\n```html\n\u003ca href=\"javascript:void(0);\" \u003e点此无反应javascript:void(0)\u003c/a\u003e\n\n\u003ca href=\"javascript:;\" \u003e点此无反应javascript:\u003c/a\u003e\n```\n\n* 从标签事件入手，阻止其默认行为。如：\n\nhtml方法：\n\n```html\n\u003ca href=\"\" onclick=\"return false;\"\u003ereturn false;\u003c/a\u003e\n\u003ca href=\"#\" onclick=\"return false;\"\u003ereturn false;\u003c/a\u003e\n``` \n\n或者在js文件中阻止默认点击事件：\n\n```javascript\nEvent.preventDefault()\n```\n\n还可以在css文件中处理点击，不响应任何鼠标事件：\n```css\npointer-events: none;\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:40:55.000Z",
+    "updateAt":  "2024-07-22T10:09:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1654,
+    "filterTotalNum":  1907,
+    "prev":  "5570174b-5bd1-4e00-a9cf-49f6ae227758",
+    "next":  "d6a65597-0522-4127-bbe1-68eb9da818ee"
+}

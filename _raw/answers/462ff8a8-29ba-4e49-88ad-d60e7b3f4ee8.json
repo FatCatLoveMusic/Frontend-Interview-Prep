@@ -1,0 +1,21 @@
+﻿{
+    "id":  1636,
+    "exerciseKey":  "462ff8a8-29ba-4e49-88ad-d60e7b3f4ee8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用Promise实现：限制异步操作的并发个数，并尽可能快的完成全部",
+    "desc":  "有8个图片资源的url，已经存储在数组urls中。\n\nurls类似于`[\u0027https://image1.png\u0027, \u0027https://image2.png\u0027, ....]`\n\n而且已经有一个函数`function loadImg`，输入一个url链接，返回一个Promise，该Promise在图片下载完成的时候resolve，下载失败则reject。\n\n但有一个要求，任何时刻同时下载的链接数量不可以超过3个。\n\n请写一段代码实现这个需求，要求尽可能快速地将所有图片下载完成。\n\n```js\nvar urls = [\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/AboutMe-painting1.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/AboutMe-painting2.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/AboutMe-painting3.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/AboutMe-painting4.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/AboutMe-painting5.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/bpmn6.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/bpmn7.png\",\n  \"https://hexo-blog-1256114407.cos.ap-shenzhen-fsi.myqcloud.com/bpmn8.png\",\n];\nfunction loadImg(url) {\n  return new Promise((resolve, reject) =\u003e {\n    const img = new Image();\n    img.onload = function() {\n      console.log(\"一张图片加载完成\");\n      resolve(img);\n    };\n    img.onerror = function() {\n    \treject(new Error(\u0027Could not load image at\u0027 + url));\n    };\n    img.src = url;\n  });\n}\n```\n",
+    "options":  null,
+    "explanation":  "既然题目的要求是保证每次并发请求的数量为3，那么我们可以先请求urls中的前面三个(下标为0,1,2)，并且请求的时候使用`Promise.race()`来同时请求，三个中有一个先完成了，我们就把这个当前数组中已经完成的那一项(第1项)换成还没有请求的那一项(urls中下标为3)。\n\n直到urls已经遍历完了，然后将最后三个没有完成的请求(也就是状态没有改变的Promise)用`Promise.all()`来加载它们。\n\n```js\nfunction limitLoad(urls, handler, limit) {\n  let sequence = [].concat(urls); // 复制urls\n  // 这一步是为了初始化 promises 这个\"容器\"\n  let promises = sequence.splice(0, limit).map((url, index) =\u003e {\n    return handler(url).then(() =\u003e {\n      // 返回下标是为了知道数组中是哪一项最先完成\n      return index;\n    });\n  });\n  // 注意这里要将整个变量过程返回，这样得到的就是一个Promise，可以在外面链式调用\n  return sequence\n    .reduce((pCollect, url) =\u003e {\n      return pCollect\n        .then(() =\u003e {\n          return Promise.race(promises); // 返回已经完成的下标\n        })\n        .then(fastestIndex =\u003e { // 获取到已经完成的下标\n        \t// 将\"容器\"内已经完成的那一项替换\n          promises[fastestIndex] = handler(url).then(\n            () =\u003e {\n              return fastestIndex; // 要继续将这个下标返回，以便下一次变量\n            }\n          );\n        })\n        .catch(err =\u003e {\n          console.error(err);\n        });\n    }, Promise.resolve()) // 初始化传入\n    .then(() =\u003e { // 最后三个用.all来调用\n      return Promise.all(promises);\n    });\n}\nlimitLoad(urls, loadImg, 3)\n  .then(res =\u003e {\n    console.log(\"图片全部加载完毕\");\n    console.log(res);\n  })\n  .catch(err =\u003e {\n    console.error(err);\n  });\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:31:28.000Z",
+    "updateAt":  "2025-07-18T02:20:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1154,
+    "filterTotalNum":  1907,
+    "prev":  "977b3a64-29e7-4085-a05a-26e78bdefcea",
+    "next":  "584f7b53-5e4b-48b9-ad7b-ae4789647ada"
+}

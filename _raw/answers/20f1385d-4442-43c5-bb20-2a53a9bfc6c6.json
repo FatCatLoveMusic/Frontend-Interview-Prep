@@ -1,0 +1,21 @@
+﻿{
+    "id":  2858,
+    "exerciseKey":  "20f1385d-4442-43c5-bb20-2a53a9bfc6c6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JSONP 是如何实现跨域的?",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "## JSONP\n\nJSONP 的实现原理是通过添加一个 script 标签，指定 src 属性为跨域请求的 URL，而这个 URL 返回的不是 JSON 数据，而是一段可执行的 JavaScript 代码，这段代码会调用一个指定的函数，并且将 JSON 数据作为参数传入函数中。\n\n例如，假设我们从 `http://example.com` 域名下请求数据，我们可以通过在 `http://example.com` 中添加如下代码实现 JSONP 请求：\n\n```js\nfunction handleData(data) {\n  // 处理获取到的数据\n}\n\nconst script = document.createElement(\u0027script\u0027);\nscript.src = \u0027http://example.org/api/data?callback=handleData\u0027;\ndocument.head.appendChild(script);\n```\n\n其中，我们指定了一个名为 `handleData` 的回调函数，并将这个函数名作为参数传递给了跨域请求的 URL 中的 callback 参数。服务器端返回的数据将会被包装在这个回调函数中，例如：\n```js\nhandleData({\"name\": \"John\", \"age\": 30});\n```\n\n在这个例子中，我们可以在 handleData 函数中处理获取到的数据。需要注意的是，在使用 JSONP 时，**需要保证服务器端返回的数据是一个可执行的 JavaScript 代码，并且必须使用指定的回调函数名来包装数据，否则无法正确处理数据。**\n\n### 如何获取 jsonp 的相应参数\n\n获取 JSONP 响应结果的方法有两种，**一种是通过回调函数参数获取**，**另一种是通过 script 标签加载完成后解析全局变量获取**。\n\n假设服务器返回以下 JSONP 响应：\n\n```js\ncallback({\"name\": \"Alice\", \"age\": 20});\n```\n\n其中 callback 是客户端定义的回调函数名，用于指定返回数据的处理方式。\n\n我们可以使用以下两种方式获取响应结果：\n\n**1. 通过回调函数参数获取**\n在客户端定义一个全局函数作为回调函数，服务器返回的数据会作为回调函数的参数传入，这个参数可以在回调函数中处理。\n```js\nfunction handleResponse(data) {\n  console.log(data.name); // Alice\n  console.log(data.age); // 20\n}\n\n// 创建 script 标签\nconst script = document.createElement(\u0027script\u0027);\nscript.src = \u0027http://example.com/api?callback=handleResponse\u0027;\n\n// 插入到文档中开始加载数据\ndocument.body.appendChild(script);\n```\n\n**2. 通过全局变量获取**\n在客户端定义一个全局函数作为回调函数，服务器返回的数据会作为一个全局变量赋值给该函数所在的对象，我们可以在 script 标签加载完成后解析全局变量获取响应结果。\n```js\nfunction handleResponse() {\n  console.log(myData.name); // Alice\n  console.log(myData.age); // 20\n}\n\n// 创建 script 标签\nconst script = document.createElement(\u0027script\u0027);\nscript.src = \u0027http://example.com/api?callback=handleResponse\u0027;\n\n// 插入到文档中开始加载数据\ndocument.body.appendChild(script);\n\n// script 标签加载完成后解析全局变量\nwindow.myData = {};\nscript.onload = () =\u003e {\n  delete window.myData; // 删除全局变量\n};\n```\n\n注意，使用 JSONP 时要注意安全问题，应该对返回的数据进行验证，避免接收到恶意代码。此外，JSONP **只能发送 GET 请求**，无法发送 POST 请求，**也无法使用 HTTP 请求头和请求体传递数据**。\n\n",
+    "pivot":  "JSONP 通过利用 `\u003cscript\u003e` 标签的跨域特性和回调函数的方式实现跨域数据请求。尽管它在某些场景下有效，但由于安全和功能限制，现代开发中更多地推荐使用 CORS 作为跨域解决方案。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T12:17:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  335,
+    "filterTotalNum":  1907,
+    "prev":  "ce6357ce-cce3-4ccc-90d8-7fe7704f3312",
+    "next":  "51259019-fe69-4400-84d8-c31902875be9"
+}

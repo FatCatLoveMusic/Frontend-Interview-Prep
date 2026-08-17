@@ -1,0 +1,21 @@
+﻿{
+    "id":  3214,
+    "exerciseKey":  "f224392f-4821-42b0-b143-30fc5a07bff9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "MCP 的通信流程是什么？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "MCP 的通信本质上是一个基于 JSON-RPC 2.0 的有状态会话流程，结构上通常是：\n\nAI 应用作为 Host，Host 内部为每个 MCP Server 创建一个 MCP Client。模型本身不会直接访问外部系统，而是通过 Host 控制的 Client 和 Server 通信。Server 负责暴露能力，比如 tools、resources、prompts；Host 负责用户交互、权限控制、模型调用和结果编排。\n\n一次典型通信流程可以这样理解：\n\n首先是建立传输通道。MCP 支持本地 `stdio` 方式，也支持远程 `Streamable HTTP`。无论底层传输是什么，协议层传递的都是 JSON-RPC 消息，包括 request、response 和 notification。官方文档也把 MCP 分成传输层和数据层，数据层负责生命周期、能力和核心原语，传输层只负责把消息可靠送达。\n\n连接建立后进入初始化阶段。Client 会向 Server 发送 `initialize` 请求，里面包含协议版本、客户端信息和客户端能力。Server 返回它支持的协议版本、服务端信息以及服务端能力。随后 Client 发送 `initialized` 通知，表示会话正式可用。这个阶段的核心是协议版本确认和能力协商，避免客户端调用服务端不支持的能力。\n\n初始化完成后，Client 会按需发现 Server 暴露的能力。例如通过 `tools/list` 获取可调用工具，通过 `resources/list` 获取可读资源，通过 `prompts/list` 获取可复用提示模板。Server 返回的不只是名称，通常还会包含描述、参数 schema、资源 URI 等元信息，这些信息会被 Host 用来决定如何向模型呈现上下文。\n\n当用户问题需要外部能力时，Host 会结合模型推理结果和安全策略发起具体调用。例如调用工具时，Client 发送 `tools/call`，携带工具名和参数；读取资源时，发送 `resources/read`；获取提示模板时，发送 `prompts/get`。Server 执行业务逻辑后返回结构化结果，Host 再把结果交给模型继续生成回答。\n\n通信过程中还会有 notification。比如 Server 的工具列表发生变化，可以通知 Client 重新拉取；某些长任务也可以通过进度通知反馈状态。notification 没有 `id`，不需要对端响应，这和 JSON-RPC 的语义一致。\n\n最后是会话维护和关闭。MCP 可以通过 `ping` 检测连接是否存活；如果传输断开、超时或 Host 决定关闭某个 Server，Client 会结束对应连接。对于本地 `stdio` Server，通常意味着子进程退出；对于 HTTP 远程 Server，则是结束对应会话或连接。\n\n简单说，MCP 的通信流程不是“模型直接调用插件”，而是：\n\n`Host 创建 Client -\u003e Client 连接 Server -\u003e initialize 能力协商 -\u003e list 发现能力 -\u003e call/read/get 执行能力 -\u003e response/notification 返回结果 -\u003e Host 交给模型继续处理`",
+    "pivot":  "MCP 采用 Host、Client、Server 架构；协议层基于 JSON-RPC 2.0；通信先建立传输，再初始化和能力协商，然后发现 tools/resources/prompts，之后按需调用并返回结构化结果；notification 用于无响应事件通知，ping 和连接关闭用于会话维护。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:58:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  74,
+    "filterTotalNum":  1907,
+    "prev":  "d33aadbf-d49d-439e-9cde-bd64b9349c89",
+    "next":  "1330a35d-f8c5-4a61-9363-735381f1a155"
+}

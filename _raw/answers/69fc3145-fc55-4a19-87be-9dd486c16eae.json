@@ -1,0 +1,21 @@
+﻿{
+    "id":  77,
+    "exerciseKey":  "69fc3145-fc55-4a19-87be-9dd486c16eae",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconsole.log(String.raw`Hello\\nworld`);\n```",
+    "options":  "{\"options\":[\"Hello world!\",\"Hello \u003cbr /\u003e\u0026nbsp; \u0026nbsp; \u0026nbsp;world\",\"Hello\\\\nworld\",\"Hello\\\\n \u003cbr /\u003e \u0026nbsp; \u0026nbsp; \u0026nbsp;world\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "`String.raw`函数是用来获取一个模板字符串的原始字符串的，它返回一个字符串，其中忽略了转义符（`\\n`，`\\v`，`\\t`等）。但反斜杠可能造成问题，因为你可能会遇到下面这种类似情况：\n```javascript\nconst path = `C:\\Documents\\Projects\\table.html`\nString.raw`${path}`\n```\n这将导致：\n`\"C:DocumentsProjects able.html\"`\n直接使用`String.raw`\n```javascript\nString.raw`C:\\Documents\\Projects\\table.html`\n```\n它会忽略转义字符并打印：`C:\\Documents\\Projects\\table.html`\n上述情况，字符串是`Hello\\nworld`被打印出。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:23:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  1842,
+    "filterTotalNum":  1907,
+    "prev":  "fa5c044e-7c3c-4995-b929-09b950d82a16",
+    "next":  "3476a4fe-f6a3-4a70-a364-edef0bb45fa8"
+}

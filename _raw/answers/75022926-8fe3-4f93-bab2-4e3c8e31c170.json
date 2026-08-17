@@ -1,0 +1,21 @@
+﻿{
+    "id":  1948,
+    "exerciseKey":  "75022926-8fe3-4f93-bab2-4e3c8e31c170",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 myMap 方法",
+    "desc":  "```ts\n/**\n * @file 实现数组 map 方法\n */\n\nfunction myMap\u003cT, R\u003e(arr: T[], callbackFn: (v: T) =\u003e R): R[] {\n    // 补全此处代码，可以使用除数组 map 以外的其他任何函数\n    throw new Error(\u0027功能待实现\u0027);\n}\n// 测试\nconsole.log(myMap([1, 2, 3], v =\u003e v * 2)) // [2, 4, 6]\n\nexport default {};\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 实现数组 map 方法\n */\n\nfunction myMap\u003cT, R\u003e(arr: T[], callbackFn: (v: T) =\u003e R): R[] {\n  // 参考答案\n  var arr1: R[] = [];\n  for (var i = 0; i \u003c arr.length; i++) {\n    arr1[i] = callbackFn(arr[i]);\n  }\n  return arr1;\n}\n// 测试\nconsole.log(myMap([1, 2, 3], (v) =\u003e v * 2)); // [2, 4, 6]\n\nexport default {};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:25:38.000Z",
+    "updateAt":  "2023-03-26T08:43:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  862,
+    "filterTotalNum":  1907,
+    "prev":  "0da5c58e-1299-477f-95f1-9e05ebf8aa2e",
+    "next":  "a27dcf10-1b97-4bb5-926e-b32c2e24ba67"
+}

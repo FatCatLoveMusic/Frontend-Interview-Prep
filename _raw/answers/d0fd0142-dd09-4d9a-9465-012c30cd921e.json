@@ -1,0 +1,21 @@
+﻿{
+    "id":  48,
+    "exerciseKey":  "d0fd0142-dd09-4d9a-9465-012c30cd921e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\n[...\u0027Lydia\u0027]\n```",
+    "options":  "{\"options\":[\"[\\\"L\\\", \\\"y\\\", \\\"d\\\", \\\"i\\\", \\\"a\\\"]\",\"[\\\"Lydia\\\"]\",\"[[], \\\"Lydia\\\"]\",\"[[\\\"L\\\", \\\"y\\\", \\\"d\\\", \\\"i\\\", \\\"a\\\"]]\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "string 类型是可迭代的。扩展运算符将迭代的每个字符映射成一个元素。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:11:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1871,
+    "filterTotalNum":  1907,
+    "prev":  "c99dea56-2532-41b6-8ec2-68fec71da84a",
+    "next":  "343c64fa-f996-4d17-a20f-dec32f7b256b"
+}

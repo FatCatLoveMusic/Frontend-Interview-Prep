@@ -1,0 +1,21 @@
+﻿{
+    "id":  1944,
+    "exerciseKey":  "6cfd4286-3c93-45a3-9b63-a67ab7ddd6e6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请补充 objToArray 函数",
+    "desc":  "```typescript\n/**\n * @file objToArray\n *\n * 将对象按照要求转为数组\n * 注意console示例运行结果\n */\ntype Obj = Record\u003cstring, string\u003e;\ninterface FormatItem {\n  key: string;\n  op: string;\n  value: string;\n}\n\nfunction objToArray(obj: Record\u003cstring, Obj\u003e): FormatItem[] {\n  // 补全此处代码\n  throw new Error(\"功能待实现\");\n}\n\nconsole.log(\n  objToArray({\n    key1: {\n      op1: \"value1\",\n    },\n    key2: {\n      op2: \"value2\",\n    },\n  })\n);\n// result示例\n// [\n//     {key: \u0027key1\u0027, op: \u0027op1\u0027, value: \u0027value1\u0027},\n//     {key: \u0027key2\u0027, op: \u0027op2\u0027, value: \u0027value2\u0027}\n// ]\n\nexport default {};\n```",
+    "options":  null,
+    "explanation":  "参考答案：\n\n```ts\n/**\n * @file objToArray\n *\n * 将对象按照要求转为数组\n * 注意console示例运行结果\n */\ntype Obj = Record\u003cstring, string\u003e;\ninterface FormatItem {\n  key: string;\n  op: string;\n  value: string;\n}\n\nfunction objToArray(obj: Record\u003cstring, Obj\u003e): FormatItem[] {\n  return Object.keys(obj).reduce((value: Array\u003cFormatItem\u003e, key: string) =\u003e {\n    var op: string = Object.keys(obj[key])[0];\n    value.push({ key: key, op: op, value: obj[key][op] });\n    return value;\n  }, []);\n}\n\nconsole.log(\n  objToArray({\n    key1: {\n      op1: \"value1\",\n    },\n    key2: {\n      op2: \"value2\",\n    },\n  })\n);\n// result示例\n// [\n//     {key: \u0027key1\u0027, op: \u0027op1\u0027, value: \u0027value1\u0027},\n//     {key: \u0027key2\u0027, op: \u0027op2\u0027, value: \u0027value2\u0027}\n// ]\n\nexport default {};\n```",
+    "pivot":  "**作答思路：**\n\n将一个对象转换为数组，其中每个数组元素都是一个格式化的对象，包含了对象的键、操作和值。\n\n1. **定义类型**：首先，定义了两个类型：`Obj`用于表示对象中的键值对，`FormatItem`用于表示数组中的每个元素，它包含了键、操作和值。\n2. **创建函数**：创建一个函数`objToArray`，它接受一个`Record\u003cstring, Obj\u003e`类型的对象作为参数。\n3. **使用reduce方法**：在`objToArray`函数内部，使用`Object.keys(obj)`获取对象的所有键，然后使用`reduce`方法遍历这些键。\n4. **提取操作和值**：在`reduce`方法中，对于每个键，使用`Object.keys(obj[key])[0]`来获取键对应的操作（由于每个键对应的值只有一个操作，所以取第一个键即可），并使用`obj[key][op]`来获取操作对应的值。\n5. **添加到数组中**：将提取出的键、操作和值添加到`value`数组中，作为新的`FormatItem`对象。\n6. **返回数组**：`reduce`方法遍历完成后，返回包含所有`FormatItem`对象的数组。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:10:49.000Z",
+    "updateAt":  "2024-08-10T17:07:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  866,
+    "filterTotalNum":  1907,
+    "prev":  "d1c0644f-24d4-4f5f-b599-bb3b34f2d10e",
+    "next":  "f2732eb3-de42-47be-949e-35219071fdc4"
+}

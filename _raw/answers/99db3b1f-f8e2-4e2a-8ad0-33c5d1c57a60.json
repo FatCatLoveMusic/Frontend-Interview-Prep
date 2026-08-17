@@ -1,0 +1,21 @@
+﻿{
+    "id":  2305,
+    "exerciseKey":  "99db3b1f-f8e2-4e2a-8ad0-33c5d1c57a60",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Webpack 有哪些常见配置？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "Webpack 的配置文件（通常为 `webpack.config.js`）中包含多种常见配置项，以下是一些主要的配置选项：\n\n### **1. Entry**\n\n- **入口**：定义应用的入口点，可以是单个文件或多个文件。\n  ```javascript\n  entry: \u0027./src/index.js\u0027,\n  ```\n\n### **2. Output**\n\n- **输出**：配置打包后文件的输出位置和文件名。\n  ```javascript\n  output: {\n    filename: \u0027bundle.js\u0027,\n    path: path.resolve(__dirname, \u0027dist\u0027),\n  },\n  ```\n\n### **3. Loaders**\n\n- **文件处理**：使用 loaders 处理非 JavaScript 文件（如 CSS、图片、字体等）。\n  ```javascript\n  module: {\n    rules: [\n      {\n        test: /\\.css$/,\n        use: [\u0027style-loader\u0027, \u0027css-loader\u0027],\n      },\n      {\n        test: /\\.(png|jpg|gif)$/,\n        use: [\u0027file-loader\u0027],\n      },\n    ],\n  },\n  ```\n\n### **4. Plugins**\n\n- **插件**：用于扩展 Webpack 的功能，执行各种任务（如压缩、优化等）。\n  ```javascript\n  plugins: [\n    new HtmlWebpackPlugin({\n      template: \u0027./src/index.html\u0027,\n    }),\n    new CleanWebpackPlugin(),\n  ],\n  ```\n\n### **5. Mode**\n\n- **模式**：指定构建模式（`development` 或 `production`），影响默认的优化设置。\n  ```javascript\n  mode: \u0027development\u0027, // or \u0027production\u0027\n  ```\n\n### **6. DevServer**\n\n- **开发服务器**：配置 Webpack Dev Server，用于本地开发时的实时刷新和热模块替换。\n  ```javascript\n  devServer: {\n    contentBase: \u0027./dist\u0027,\n    hot: true,\n  },\n  ```\n\n### **7. Resolve**\n\n- **模块解析**：配置模块解析的选项，包括别名和文件扩展名。\n  ```javascript\n  resolve: {\n    extensions: [\u0027.js\u0027, \u0027.jsx\u0027],\n    alias: {\n      \u0027@\u0027: path.resolve(__dirname, \u0027src\u0027),\n    },\n  },\n  ```\n\n### **8. Optimization**\n\n- **优化设置**：配置打包优化选项，如代码分割和压缩。\n  ```javascript\n  optimization: {\n    splitChunks: {\n      chunks: \u0027all\u0027,\n    },\n    minimize: true,\n  },\n  ```\n\n### **9. Devtool**\n\n- **源映射**：配置调试源映射，帮助开发者调试代码。\n  ```javascript\n  devtool: \u0027source-map\u0027,\n  ```\n\n### **10. Performance**\n\n- **性能提示**：配置性能提示，帮助识别打包后的文件大小。\n  ```javascript\n  performance: {\n    hints: \u0027warning\u0027,\n    maxAssetSize: 100000, // 100kb\n  },\n  ```",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-09-21T02:09:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  599,
+    "filterTotalNum":  1907,
+    "prev":  "3b556627-805c-44e0-b70f-a309666281ab",
+    "next":  "a99d191c-9540-425a-9d72-49e49db569db"
+}

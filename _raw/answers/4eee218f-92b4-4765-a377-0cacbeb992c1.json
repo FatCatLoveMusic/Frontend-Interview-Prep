@@ -1,0 +1,21 @@
+﻿{
+    "id":  1885,
+    "exerciseKey":  "4eee218f-92b4-4765-a377-0cacbeb992c1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "单行文本怎么实现两端对齐？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "说起两端对齐，大家首先想到的可能是 `text-align: justify;`，但justify对最后一行无效。\n\n通常这样的排版对整段文字是极好的，我们并不希望当最后一行只有两个字时也两端对齐，毕竟这是不便于阅读的，那么当我们只有一行文本，但要实现单行文本两端对齐怎么解决？\n\n## 方法一：添加一行\n\n根据justify对最后一行无效，我们可以新增一行，使该行文本不是最后一行，实现如下：\n\n```html\n//html\n\u003cdiv class=\"item\"\u003e\n    \u003cspan class=\"label\" \u003e{{item.label}}\u003c/span\u003e：\n    \u003cspan class=\"value\"\u003e{{item.value}}\u003c/span\u003e\n\u003c/div\u003e\n```\n\n```css\n//scss\n.item {\n    height: 32px;\n    line-height: 32px;\n    margin-bottom: 8px;\n    .label {\n        display: inline-block;\n        height: 100%;\n        width: 100px;\n        text-align: justify;\n        vertical-align: top;\n        \u0026::after {\n            display: inline-block;\n            width: 100%;\n            content: \u0027\u0027;\n            height: 0;\n        }\n    }\n    .value {\n        padding-right: 10px;\n    }\n}\n```\n\n## 方法二： text-align-last\n\ntext-align-last，该属性定义的是一段文本中最后一行在被强制换行之前的对齐规则。\n\n```css\n//scss\n.item {\n    margin-bottom: 8px;\n    .label {\n        display: inline-block;\n        height: 100%;\n        min-width: 100px;\n        text-align: justify;\n        text-align-last: justify;\n    }\n    .value {\n        padding-right: 10px;\n    }\n}\n```\n\n现在的浏览器基本都支持该属性。\n\n![](https://static.ecool.fun//article/da3bafad-51c3-482b-a953-955e08bd220c.png)\n\n",
+    "pivot":  "在 CSS 中，可以通过设置 `text-align` 属性为 `justify` 来实现单行文本的两端对齐，但这种方法通常用于多行文本。对于单行文本，可以使用以下技巧：\n\n#### 方法 1: `text-align: justify` 和 `hyphens`\n\n```css\n.single-line-text {\n  text-align: justify;\n  hyphens: auto;\n}\n.single-line-text::after {\n  content: \u0027\u0027;\n  display: inline-block;\n  width: 100%;\n}\n```\n\n这种方法利用 justify 对齐文本，并使用 hyphens 自动断字，然后在文本后添加一个空的 ::after 伪元素来填充剩余空间。\n\n#### 方法 2: text-align: justify 和 text-justify\n\n```css\n.single-line-text {\n  text-align: justify;\n  text-justify: inter-word; /* 仅在 WebKit 浏览器中有效 */\n}\n```\n\n这种方法在 WebKit 浏览器中通过 text-justify 属性实现单行文本的两端对齐。\n\n#### 方法 3: 使用 CSS Grid\n\n```css\n.single-line-text {\n  display: grid;\n  grid-template-columns: auto 1fr;\n  justify-content: end;\n}\n.single-line-text::before,\n.single-line-text::after {\n  content: \u0027\u0027;\n}\n```\n\n这种方法通过将文本包裹在一个 CSS Grid 容器中，并使用 justify-content 属性将文本推到容器的末端，实现两端对齐。\n\n#### 考察重点\n\n- 理解：不同浏览器对 text-align: justify 的支持和行为。\n- 应用：选择合适的方法实现单行文本的两端对齐。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-08-20T12:43:46.000Z",
+    "updateAt":  "2024-08-10T17:06:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  925,
+    "filterTotalNum":  1907,
+    "prev":  "4f82e436-764e-401e-933d-e46f05512720",
+    "next":  "c14803df-f552-4a23-b50d-fd8e3f77f17e"
+}

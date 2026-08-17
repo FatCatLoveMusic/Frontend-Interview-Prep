@@ -1,0 +1,21 @@
+﻿{
+    "id":  413,
+    "exerciseKey":  "c6c4c722-bd37-41dd-b736-e836260b7863",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Function.prototype.bind",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nFunction.prototype.bind = function(context, ...args) {\n  if (typeof this !== \u0027function\u0027) {\n    throw new Error(\"Type Error\");\n  }\n  // 保存this的值\n  var self = this;\n\n  return function F() {\n    // 考虑new的情况\n    if(this instanceof F) {\n      return new self(...args, ...arguments)\n    }\n    return self.apply(context, [...args, ...arguments])\n  }\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:03:00.000Z",
+    "updateAt":  "2021-07-07T00:13:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  1507,
+    "filterTotalNum":  1907,
+    "prev":  "c77b5c6f-9fcc-40a6-bbf0-9f412d6ce94c",
+    "next":  "827a8f47-1144-4ab1-9d6c-b7d3b3d6aebf"
+}

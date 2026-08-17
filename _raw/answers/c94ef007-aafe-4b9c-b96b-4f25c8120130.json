@@ -1,0 +1,21 @@
+﻿{
+    "id":  2806,
+    "exerciseKey":  "c94ef007-aafe-4b9c-b96b-4f25c8120130",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何避免重绘或者重排？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "## 如何触发重排和重绘\n任何改变用来构建渲染树的信息都会导致一次重排或重绘：\n\n- 添加、删除、更新DOM节点\n- 通过display: none隐藏一个DOM节点-触发重排和重绘\n- 通过visibility: hidden隐藏一个DOM节点-只触发重绘，因为没有几何变化\n- 移动或者给页面中的DOM节点添加动画\n- 添加一个样式表，调整样式属性\n- 用户行为，例如调整窗口大小，改变字号，或者滚动。\n\n## 如何避免重绘或者重排\n\n### 集中改变样式\n我们往往通过改变class的方式来集中改变样式\n```js\n// 判断是否是黑色系样式\nconst theme = isDark ? \u0027dark\u0027 : \u0027light\u0027;\n\n// 根据判断来设置不同的class\nele.setAttribute(\u0027className\u0027, theme);\n```\n\n### 使用DocumentFragment\n我们可以通过createDocumentFragment创建一个游离于DOM树之外的节点，然后在此节点上批量操作，最后插入DOM树中，因此只触发一次重排\n```js\nvar fragment = document.createDocumentFragment();\n\nfor (let i = 0;i\u003c10;i++){\n  let node = document.createElement(\"p\");\n  node.innerHTML = i;\n  fragment.appendChild(node);\n}\n\ndocument.body.appendChild(fragment);\n```\n\n### 提升为合成层\n元素提升为合成层有以下优点：\n\n- 合成层的位图，会交由 GPU 合成，比 CPU 处理要快\n- 当需要 repaint 时，只需要 repaint 本身，不会影响到其他的层\n- 对于 transform 和 opacity 效果，不会触发 layout 和 paint\n\n提升合成层的最好方式是使用 CSS 的 will-change 属性：\n```css\n#target {\n  will-change: transform;\n}\n```\n",
+    "pivot":  "- **批量更新 DOM**、**避免频繁访问布局属性** 和 **使用 `transform` 和 `opacity`** 等方法可以有效减少重绘和重排，提升页面性能。\n- **简化选择器** 和 **减少 DOM 元素数量** 有助于提高 CSS 渲染效率。\n- **使用现代框架** 和 **CSS 动画** 可以进一步优化渲染性能。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T19:37:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  352,
+    "filterTotalNum":  1907,
+    "prev":  "4ad4e434-9883-480e-a403-f54614a41293",
+    "next":  "b0b29463-196e-433f-a727-3bf26ea622c9"
+}

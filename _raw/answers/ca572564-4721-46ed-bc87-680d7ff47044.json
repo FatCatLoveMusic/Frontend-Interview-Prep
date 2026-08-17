@@ -1,0 +1,21 @@
+﻿{
+    "id":  2557,
+    "exerciseKey":  "ca572564-4721-46ed-bc87-680d7ff47044",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对 eval 的理解",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`eval` 是 JavaScript 的一个内置函数，用于将字符串作为 JavaScript 代码进行执行。它接受一个字符串作为参数，并在当前的作用域中执行这段代码。\n\n### **基本用法**\n\n```javascript\neval(\"console.log(\u0027Hello, world!\u0027);\");  // 输出: Hello, world!\n```\n\n### **特性和影响**\n\n1. **动态代码执行**：\n   - `eval` 允许在运行时动态地执行代码。这对于一些需要动态生成和执行代码的场景可能有用。\n\n2. **作用域**：\n   - 在 `eval` 执行的代码中声明的变量会影响到 `eval` 外部的作用域。这意味着在 `eval` 中定义的变量和函数可以在外部作用域中访问，反之亦然。\n\n3. **性能问题**：\n   - 使用 `eval` 会使得 JavaScript 引擎的优化变得困难，因为它不能对动态生成的代码做出优化。结果可能会导致性能下降。\n\n4. **安全风险**：\n   - `eval` 会执行传入的任意代码，这可能导致严重的安全问题，例如代码注入攻击。如果 `eval` 执行了来自不可信来源的代码，可能会导致恶意代码的执行。\n\n5. **替代方案**：\n   - 通常，避免使用 `eval` 是一种更好的实践。可以使用 `Function` 构造函数、`JSON.parse`（用于解析 JSON 字符串），或其他更安全的动态代码执行方法。\n\n### **示例**\n\n```javascript\nlet x = 10;\neval(\"console.log(x);\");  // 输出: 10\neval(\"let y = 20; console.log(y);\");  // 输出: 20，y 在外部作用域也能访问\n```\n",
+    "pivot":  "- **功能**：`eval` 用于执行动态生成的 JavaScript 代码。\n- **安全性**：由于其安全风险，通常不推荐使用。\n- **性能**：会影响 JavaScript 引擎的优化，可能导致性能问题。\n- **替代方案**：使用更安全的替代方法，如 `Function` 构造函数或 JSON 解析。\n\n在绝大多数情况下，尽量避免使用 `eval`，以确保代码的安全性和可维护性。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2024-08-15T23:10:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  475,
+    "filterTotalNum":  1907,
+    "prev":  "3b6458bc-88e6-4c91-a81d-0b14e5464332",
+    "next":  "af29b30f-fe4e-4cbf-99cc-c1886badda2a"
+}

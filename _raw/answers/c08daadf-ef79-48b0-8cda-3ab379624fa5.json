@@ -1,0 +1,21 @@
+﻿{
+    "id":  158,
+    "exerciseKey":  "c08daadf-ef79-48b0-8cda-3ab379624fa5",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "method 的值选择哪个时，会输出 { name: \"Lydia\", age: 22 } ?",
+    "desc":  "```javascript\nconst keys = [\"name\", \"age\"]\nconst values = [\"Lydia\", 22]\n\nconst method = /* ?? */\nObject[method](keys.map((_, i) =\u003e {\n\treturn [keys[i], values[i]]\n})) // { name: \"Lydia\", age: 22 }\n```",
+    "options":  "{\"options\":[\"entries\",\"values\",\"fromEntries\",\"forEach\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  " `fromEntries` 方法可以将二维数组转换为对象。在每个子数组的第一个元素是key，在每个子数组的第二个元素是value。在这个例子中，我们映射了 `keys` 数组，它返回了一个数组，数组的第一个元素为keys数组当前索引的值，第二个元素为values数组当前索引的值。\n这样就创建了一个包含正确keys和values的子数组的数组，因此结果为`{ name: \"Lydia\", age: 22 }`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:36:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  1761,
+    "filterTotalNum":  1907,
+    "prev":  "a84229a5-810b-463d-9d53-d22fc59fc528",
+    "next":  "849fda3c-2d6b-4192-8ea3-d8bc23541599"
+}

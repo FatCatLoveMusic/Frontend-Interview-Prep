@@ -1,0 +1,21 @@
+﻿{
+    "id":  424,
+    "exerciseKey":  "7375c380-9dd8-497e-9b74-e4cc0779532c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "字符串解析问题\n",
+    "desc":  "实现函数使得将str字符串中的{}内的变量替换，如果属性不存在保持原样（比如{a.d}）\n\n```js\nvar a = {\n\tb: 123,\n\tc: \u0027456\u0027,\n\te: \u0027789\u0027,\n}\nvar str=`a{a.b}aa{a.c}aa {a.d}aaaa`;\n// =\u003e \u0027a123aa456aa {a.d}aaaa\u0027\n```",
+    "options":  null,
+    "explanation":  "```js\nconst fn1 = (str, obj) =\u003e {\n\tlet res = \u0027\u0027;\n    // 标志位，标志前面是否有{\n\tlet flag = false;\n\tlet start;\n\tfor (let i = 0; i \u003c str.length; i++) {\n\t\tif (str[i] === \u0027{\u0027) {\n\t\t\tflag = true;\n\t\t\tstart = i + 1;\n\t\t\tcontinue;\n\t\t}\n\t\tif (!flag) res += str[i];\n\t\telse {\n\t\t\tif (str[i] === \u0027}\u0027) {\n\t\t\t\tflag = false;\n\t\t\t\tres += match(str.slice(start, i), obj);\n\t\t\t}\n\t\t}\n\t}\n\treturn res;\n}\n// 对象匹配操作\nconst match = (str, obj) =\u003e {\n\tconst keys = str.split(\u0027.\u0027).slice(1);\n\tlet index = 0;\n\tlet o = obj;\n\twhile (index \u003c keys.length) {\n\t\tconst key = keys[index];\n\t\tif (!o[key]) {\n\t\t\treturn `{${str}}`;\n\t\t} else {\n\t\t\to = o[key];\n\t\t}\n\t\tindex++;\n\t}\n\treturn o;\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:13:03.000Z",
+    "updateAt":  "2021-07-07T00:13:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1496,
+    "filterTotalNum":  1907,
+    "prev":  "f1dfb420-8c92-4210-98af-130b79133d82",
+    "next":  "3d3c752d-f969-44ce-acaf-18e43d52f069"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  542,
+    "exerciseKey":  "d9e5d51b-5b8d-4b80-8011-6766a0323bb3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "解析url",
+    "desc":  "/**\n * 解析一个url，并生成window.location对象包含的域\n * location:\n * {\n *      href: \u0027包含完整的url\u0027,\n *      origin: \u0027包含协议到pathname之前的内容\u0027,\n *      protocol: \u0027url使用的协议，包含末尾的:\u0027,\n *      username: \u0027用户名\u0027, // 暂时不支持\n *      password: \u0027密码\u0027,  // 暂时不支持\n *      host: \u0027完整主机名，包含:和端口\u0027,\n *      hostname: \u0027主机名，不包含端口\u0027\n *      port: \u0027端口号\u0027,\n *      pathname: \u0027服务器上访问资源的路径/开头\u0027,\n *      search: \u0027query string，?开头\u0027,\n *      hash: \u0027#开头的fragment identifier\u0027\n * }\n *\n * @param {string} url 需要解析的url\n * @return {Object} 包含url信息的对象\n */\n",
+    "options":  null,
+    "explanation":  "## 方案一\n```javascript\nfunction parseUrl(url) {\n    var result = {};\n    var keys = [\u0027href\u0027, \u0027origin\u0027, \u0027protocol\u0027, \u0027host\u0027,\n                \u0027hostname\u0027, \u0027port\u0027, \u0027pathname\u0027, \u0027search\u0027, \u0027hash\u0027];\n    var i, len;\n    var regexp = /(([^:]+:)\\/\\/(([^:\\/\\?#]+)(:\\d+)?))(\\/[^?#]*)?(\\?[^#]*)?(#.*)?/;\n\n    var match = regexp.exec(url);\n\t console.info(\u0027match=\u0027, match);\n\t \n    if (match) {\n        for (i = keys.length - 1; i \u003e= 0; --i) {\n            result[keys[i]] = match[i] ? match[i] : \u0027\u0027;\n        }\n    }\n\t console.info(\u0027result=\u0027, result);\n    return result;\n}\n```\n\n## 方案二\n\n```javascript\nfunction parseURL(url) {\n  //创建一个 a 标签，并将 url 赋值给标签的 href 属性。\n  const a = document.createElement(\u0027a\u0027)\n  a.href = url\n  return {\n    source: url,\n    protocol: a.protocol.replace(\u0027:\u0027, \u0027\u0027), // 协议\n    host: a.hostname,   // 主机名称\n    port: a.port,   // 端口号\n    query: a.search,  // 查询字符串\n    params: (function () {  // 查询参数\n      let ret = {},\n        seg = a.search.replace(/^\\?/, \u0027\u0027).split(\u0027\u0026\u0027),\n        len = seg.length, i = 0, s\n      for (; i \u003c len; i++) {\n        if (!seg[i]) {\n          continue\n        }\n        s = seg[i].split(\u0027=\u0027)\n        ret[s[0]] = decodeURIComponent(s[1])\n      }\n      return ret\n    })(),\n    file: (a.pathname.match(/\\/([^\\/?#]+)$/i) || [, \u0027\u0027])[1], // 文件名\n    hash: a.hash.replace(\u0027#\u0027, \u0027\u0027), // 哈希参数\n    path: a.pathname.replace(/^([^\\/])/, \u0027/$1\u0027), // 路径\n    relative: (a.href.match(/tps?:\\/\\/[^\\/]+(.+)/) || [, \u0027\u0027])[1],  // 相对路径\n    segments: a.pathname.replace(/^\\//, \u0027\u0027).split(\u0027/\u0027) // 路径片段\n  }\n}\n\nparseUrl(\"http://test.com:8080?name=1\u0026password=2#page1\");\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-19T14:42:45.000Z",
+    "updateAt":  "2021-07-25T10:32:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1378,
+    "filterTotalNum":  1907,
+    "prev":  "0e5e7b73-c27f-4e4f-a8ff-c39927175a55",
+    "next":  "4c911fbf-c243-476a-ad8d-09a7868b304e"
+}

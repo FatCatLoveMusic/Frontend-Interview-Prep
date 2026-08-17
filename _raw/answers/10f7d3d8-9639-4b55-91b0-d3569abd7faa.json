@@ -1,0 +1,21 @@
+﻿{
+    "id":  2606,
+    "exerciseKey":  "10f7d3d8-9639-4b55-91b0-d3569abd7faa",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "站点一键换肤的实现方式有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "实现站点一键换肤功能，可以通过以下几种方式：\n\n### **1. 切换 CSS 样式表**\n\n**方式：**\n\n- 通过 JavaScript 动态切换不同的 CSS 样式表文件。\n\n**实现步骤：**\n\n1. 在 `\u003chead\u003e` 标签中引入多个样式表，使用不同的 `id` 来标识。\n\n   ```html\n   \u003clink id=\"theme-style\" rel=\"stylesheet\" href=\"default-theme.css\"\u003e\n   ```\n\n2. 使用 JavaScript 动态更改 `href` 属性来切换样式表。\n\n   ```javascript\n   function changeTheme(theme) {\n     const linkElement = document.getElementById(\u0027theme-style\u0027);\n     linkElement.href = theme + \u0027-theme.css\u0027;\n   }\n   ```\n\n### **2. 使用 CSS 变量**\n\n**方式：**\n\n- 定义 CSS 变量来控制主题样式，通过 JavaScript 动态修改这些变量的值。\n\n**实现步骤：**\n\n1. 在 CSS 文件中定义主题变量。\n\n   ```css\n   :root {\n     --primary-color: #3498db;\n     --background-color: #ecf0f1;\n   }\n\n   .dark-theme {\n     --primary-color: #2c3e50;\n     --background-color: #34495e;\n   }\n   ```\n\n2. 使用 JavaScript 动态切换主题类。\n\n   ```javascript\n   function changeTheme(theme) {\n     document.documentElement.className = theme;\n   }\n   ```\n\n### **3. 动态加载样式**\n\n**方式：**\n\n- 利用 JavaScript 动态加载不同的样式文件或 CSS 规则。\n\n**实现步骤：**\n\n1. 创建多个样式文件，并使用 JavaScript 动态加载。\n\n   ```javascript\n   function loadTheme(theme) {\n     const link = document.createElement(\u0027link\u0027);\n     link.rel = \u0027stylesheet\u0027;\n     link.href = theme + \u0027-theme.css\u0027;\n     document.head.appendChild(link);\n   }\n   ```\n\n2. 移除当前样式以避免重复加载。\n\n   ```javascript\n   function changeTheme(theme) {\n     const existingLink = document.querySelector(\u0027link[href*=\"-theme.css\"]\u0027);\n     if (existingLink) {\n       existingLink.remove();\n     }\n     loadTheme(theme);\n   }\n   ```\n\n### **4. 使用 JavaScript 插件**\n\n**方式：**\n\n- 利用现成的 JavaScript 插件或库来实现换肤功能。\n\n**实现步骤：**\n\n1. 使用插件，例如 [ThemeSwitcher](https://github.com/tony19/jquery.themeswitcher) 或类似的工具，根据插件文档进行配置。\n\n2. 插件通常提供了简单的 API 来更换主题。\n\n   ```javascript\n   $(\u0027#theme-switcher\u0027).on(\u0027change\u0027, function() {\n     const selectedTheme = $(this).val();\n     themeSwitcher.change(selectedTheme);\n   });\n   ```\n\n### **5. 存储用户设置**\n\n**方式：**\n\n- 保存用户选择的主题，并在用户重新访问时应用相同的主题。\n\n**实现步骤：**\n\n1. 在用户选择主题时，将其存储到 `localStorage` 或 `sessionStorage`。\n\n   ```javascript\n   function setTheme(theme) {\n     localStorage.setItem(\u0027theme\u0027, theme);\n     changeTheme(theme);\n   }\n   ```\n\n2. 在页面加载时，读取存储的主题并应用。\n\n   ```javascript\n   document.addEventListener(\u0027DOMContentLoaded\u0027, function() {\n     const savedTheme = localStorage.getItem(\u0027theme\u0027) || \u0027default\u0027;\n     changeTheme(savedTheme);\n   });\n   ```",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2024-08-15T18:40:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  446,
+    "filterTotalNum":  1907,
+    "prev":  "848cb975-f2e8-4a46-bf55-d36acd6a1a38",
+    "next":  "3cd5964c-8b82-4bba-9ce2-116c2707b83f"
+}

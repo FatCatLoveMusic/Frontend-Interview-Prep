@@ -1,0 +1,21 @@
+﻿{
+    "id":  1547,
+    "exerciseKey":  "eb451be3-dc88-481c-b8a8-da6c8d278e95",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是点击穿透，怎么解决？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在发生触摸动作约300ms之后，移动端会模拟产生click动作，它底下的具有点击特性的元素也会被触发，这种现象称为点击穿透。\n\n**常见场景**\n\n1. 情景一：蒙层点击穿透问题，点击蒙层（mask）上的关闭按钮，蒙层消失后发现触发了按钮下面元素的click事件。\n2. 情景二：跨页面点击穿透问题：如果按钮下面恰好是一个有href属性的a标签，那么页面就会发生跳转。\n3. 情景三：另一种跨页面点击穿透问题：这次没有mask了，直接点击页内按钮跳转至新页，然后发现新页面中对应位置元素的click事件被触发了。\n4. 情景四：不过概率很低，就是新页面中对应位置元素恰好是a标签，然后就发生连续跳转了。\n\n**发生的条件**\n* 上层元素监听了触摸事件，触摸之后该层元素消失\n* 下层元素具有点击特性（监听了click事件或默认的特性（a标签、input、button标签））\n\n**解决点击穿透的方法**\n1. 方法一：书写规范问题，不要混用touch和click。既然touch之后300ms会触发click，只用touch或者只用click就自然不会存在问题了。\n2. 方法二：吃掉（或者说是消费掉）touch之后的click，依旧用tap，只是在可能发生点击穿透的情形做额外的处理，拿个东西来挡住、或者tap后延迟350毫秒再隐藏mask、pointer-events、在下面元素的事件处理器里做检测（配合全局flag）等。\n\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:20:39.000Z",
+    "updateAt":  "2024-07-20T11:30:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  1242,
+    "filterTotalNum":  1907,
+    "prev":  "6b910440-48ae-49f9-8659-8aa880d239fb",
+    "next":  "b43082e8-2312-4594-ac1c-4f0d2d5da81c"
+}

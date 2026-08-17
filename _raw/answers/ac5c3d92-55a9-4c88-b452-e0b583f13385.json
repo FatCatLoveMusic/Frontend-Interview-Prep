@@ -1,0 +1,21 @@
+﻿{
+    "id":  52,
+    "exerciseKey":  "ac5c3d92-55a9-4c88-b452-e0b583f13385",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nconst person = {\n  name: \"Lydia\",\n  age: 21\n};\n\nfor (const item in person) {\n  console.log(item);\n}\n```",
+    "options":  "{\"options\":[\"{ name: \\\"Lydia\\\" }, { age: 21 }\",\"\\\"name\\\", \\\"age\\\"\",\"\\\"Lydia\\\", 21\",\"[\\\"name\\\", \\\"Lydia\\\"], [\\\"age\\\", 21]\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "在`for-in`循环中,我们可以通过对象的key来进行迭代,也就是这里的`name`和`age`。在底层，对象的key都是字符串（如果他们不是Symbol的话）。在每次循环中，我们将`item`设定为当前遍历到的key.所以一开始，`item`是`name`，之后 `item`输出的则是`age`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:13:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1867,
+    "filterTotalNum":  1907,
+    "prev":  "32bf429e-2cda-408b-905c-f6149bbb972b",
+    "next":  "e110762f-dcc0-41a2-bd28-866b0c798cc5"
+}

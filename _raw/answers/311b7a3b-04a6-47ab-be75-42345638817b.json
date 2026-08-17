@@ -1,0 +1,21 @@
+﻿{
+    "id":  2024,
+    "exerciseKey":  "311b7a3b-04a6-47ab-be75-42345638817b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "链表中，环的入口节点",
+    "desc":  "给定一个链表的头节点 `head` ，返回链表开始入环的第一个节点。 _如果链表无环，则返回 `null`。_\n\n如果链表中有某个节点，可以通过连续跟踪 `next` 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 `pos` 来表示链表尾连接到链表中的位置（**索引从 0 开始**）。如果 `pos` 是 `-1`，则在该链表中没有环。**注意：`pos` 不作为参数进行传递**，仅仅是为了标识链表的实际情况。\n\n**不允许修改** 链表。\n\n**示例 1：**\n\n![](https://static.ecool.fun/article/24c9b539-ba1a-4d60-9f62-f0e760f616c5.png)\n\n\n**输入：** head = [3,2,0,-4], pos = 1\n**输出：** 返回索引为 1 的链表节点\n**解释：** 链表中有一个环，其尾部连接到第二个节点。\n\n**示例 2：**\n\n![](https://static.ecool.fun/article/e03a7c40-9b60-40af-a0cd-33c51644b208.png)\n\n\n**输入：**head = [1,2], pos = 0\n\n**输出：**返回索引为 0 的链表节点\n\n**解释：**链表中有一个环，其尾部连接到第一个节点。\n\n**示例 3：**\n\n![](https://static.ecool.fun/article/f611c26a-2858-4794-8815-a2a2c55fe5a8.png)\n\n\n**输入：** head = [1], pos = -1\n\n**输出：** 返回 null\n\n**解释：** 链表中没有环。\n\n**提示：**\n\n* 链表中节点的数目范围在范围 `[0, 104]` 内\n* `-105 \u003c= Node.val \u003c= 105`\n* `pos` 的值为 `-1` 或者链表中的一个有效索引\n\n**进阶：** 你是否可以使用 `O(1)` 空间解决此题？\n\n```javascript\n/**\n * Definition for singly-linked list.\n * function ListNode(val) {\n *     this.val = val;\n *     this.next = null;\n * }\n */\n\n/**\n * @param {ListNode} head\n * @return {ListNode}\n */\nvar detectCycle = function(head) {\n    \n};\n```",
+    "options":  null,
+    "explanation":  "解题思路：\n\n- 使用快慢指针，每次快指针走两步，慢指针走一步。\n- 假设表头到入环点是距离为 D，D 到第一次快慢指针相遇的点为 S1 ，S1 到入环点距离为 S2\n- 到第一次相遇点，慢指针走的距离为 D + S1；快指针走的距离为 D + S1 + S2 + S1\n- 快指针走的距离是慢指针的两倍，所以 2 * (D + S1) = D + S1 + S2 + S1，得出：D = S2\n- 所以，两个点分别从表头和第一次相遇点出发，每次走一步，相遇的地方就是入环点\n\n示例代码\n\n```javascript\nvar detectCycle = function(head) {\n\n    // 找出第一次相遇的点\n    let fast = head, slow = head, fistMeet = null\n    while(slow \u0026\u0026 fast \u0026\u0026 fast.next) {\n        slow = slow.next\n        fast = fast.next.next\n        if(slow === fast) {\n            fistMeet = slow\n            break\n        }\n    }\n\n    if(!fistMeet) {\n        return null\n    }\n\n    while(fistMeet \u0026\u0026 head) {\n        if(fistMeet === head) {\n            return head\n        }\n        fistMeet = fistMeet.next\n        head = head.next\n    }\n    return null\n}\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:15:55.000Z",
+    "updateAt":  "2023-07-08T15:51:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  787,
+    "filterTotalNum":  1907,
+    "prev":  "e808ed13-2162-44ac-a70d-54d915cf901b",
+    "next":  "be0412b7-6af9-4ab5-9c7f-4a06cc8cc80d"
+}

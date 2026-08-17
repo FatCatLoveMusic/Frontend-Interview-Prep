@@ -1,0 +1,21 @@
+﻿{
+    "id":  156,
+    "exerciseKey":  "b77c84b0-6353-4eaa-ad71-6b75df79b94c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst user = {\n\temail: \"my@email.com\",\n\tupdateEmail: email =\u003e {\n\t\tthis.email = email\n\t}\n}\n\nuser.updateEmail(\"new@email.com\")\nconsole.log(user.email)\n```",
+    "options":  "{\"options\":[\"my@email.com\",\"new@email.com\",\"undefined\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "`updateEmail` 函数是一个箭头函数，它没有和 `user` 对象绑定。这就意味着 `this` 关键字不会引用到 `user` 对象，但是会引用到全局对象。 `user` 对象内部的 `email` 的值不会更新。当打印 `user.email` 的时候， 原始值 `my@email.com` 被返回。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  1763,
+    "filterTotalNum":  1907,
+    "prev":  "849fda3c-2d6b-4192-8ea3-d8bc23541599",
+    "next":  "321642db-58ca-47ab-9d2a-9cebc24a9bb1"
+}

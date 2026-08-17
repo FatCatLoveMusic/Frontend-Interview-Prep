@@ -1,0 +1,21 @@
+﻿{
+    "id":  1910,
+    "exerciseKey":  "f5f2f81e-c0c8-409e-ba00-3f3428ae535b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对模块化方案的理解，比如 CommonJS、AMD、CMD、ES Module 分别是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " `时间轴：CommonJS --\u003e AMD --\u003e CMD --\u003e ES Module`\n\n### CommonJS\n\n* 常用于：`服务器端`，`node`，`webpack`\n* 特点：`同步/运行时加载`，`磁盘读取速度快`\n* 语法：  \n\n```js\n// 1. 导出：通过module.exports或exports来暴露模块  \nmodule.exports = {  \n  attr1,  \n  attr2  \n}  \nexports.attr = xx  \n```\n\n**注意**  \n不可以`exports = xxx`，这样写会无效，因为更改了exports的地址，而 `exports` 是 `module.exports` 的引用指向的是同一个内存，模块最后导出的是 `module.exports`  \n\n```js\n// 2. 引用：require(\u0027x\u0027)  \nconst xx = require(\u0027xx\u0027) // 整体重命名  \nconst { attr } = require(\u0027xx\u0027) // 解构某一个导出\n```\n\n### AMD\n\n* 常用于：不常用，`CommonJs的浏览器端实现`\n* 特点：  \n   * `异步加载`：因为面向浏览器端，为了不影响渲染肯定是异步加载  \n   * `依赖前置`：所有的依赖必须写在最初的依赖数组中，速度快，但是会浪费资源，预先加载了所有依赖不管你是否用到\n* 语法：  \n\n```js\n// 1. 导出：通过define来定义模块  \n// 如果该模块还依赖其他模块，则将模块的路径填入第一个参数的数组中  \ndefine([\u0027x\u0027], function(x){  \n  function foo(){  \n      return x.fn() + 1  \n  }  \n  return {  \n      foo: foo  \n  };  \n});  \n// 2. 引用  \nrequire([\u0027a\u0027], function (a){  \n  a.foo()  \n});\n```\n\n### CMD\n\n* 常用于：不常用，`根据CommonJs和AMD实现，优化了加载方式`\n* 特点：  \n   * `异步加载`  \n   * `按需加载/依赖就近`：用到了再引用依赖，方便了开发，缺点是速度和性能较差\n* 语法：  \n\n```js\n// 1. 导出：通过define来定义模块  \n// 如果该模块还依赖其他模块，在用到的地方引用即可  \ndefine(function(){  \n  function foo(){  \n      var x = require(\u0027x\u0027)  \n      return x.fn() + 1  \n  }  \n  return {  \n      foo: foo  \n  };  \n});  \n// 2. 引用  \nvar x = require(\u0027a\u0027);  \na.foo();\n```\n\n### ES module\n\n* 常用于：`目前浏览器端的默认标准`\n* 特点：`静态编译：` 在编译的时候就能确定依赖关系，以及输入和输出的变量\n* 语法：  \n\n```js\n// 1. 导出：通过export 或 export default 输出模块  \n// 写法1: 边声明，边导出  \nexport var m = 1;  \nexport function m() {};  \nexport class M {};  \n\n// 写法2：导出一个接口 export {}，形似导出对象但不是, 本质上是引用集合，最常用的导出方法  \n\nexport {  \n  attr1,  \n  attr2  \n}  \n\n// 写法3：默认导出  \n\nexport default fn  \n\n// 2. 引用  \nimport { x } from \u0027test.js\u0027 // 导出模块中对应的值，必须知道值在模块中导出时的名字  \nimport { x as myx } from \u0027test.js\u0027 // 改名字  \nimport x from \u0027test.js\u0027 // 默认导出的引用方式  \n```\n\n**注意**  \n\n 1. `export default`在同一个文件中只可存在一个（一个模块只能有一个默认输出）  \n 2. 一个模块中可以同时使用export default 和 export  \n \n ```js\n // 模块 test.js\n var info = {  \n   name: \u0027name\u0027,  \n   age: 18  \n }  \n export default info  \n export var name= \u0027海洋饼干\u0027  \n export var age = 18  \n \n // 引用  \n import person, {name, age as myAge} from \u0027test.js\u0027  \n console.log(person); // { name: \u0027name\u0027, age: 18 }  \n console.log(name+ \u0027=\u0027 + myAge); // 海洋饼干=18\n ```",
+    "pivot":  "时间轴上，JavaScript 模块系统经历了几个阶段的发展：CommonJS、AMD、CMD 和 ES Module。\n\n以下是每个阶段的简要总结：\n\n#### CommonJS\n\n- **用途**：主要用于服务器端 JavaScript（Node.js），也被 webpack 等工具用于浏览器端的模块打包。\n- **特点**：同步或运行时加载，磁盘读取速度快。\n- **语法**：\n  - 导出：通过 `module.exports` 或 `exports` 暴露模块。\n  - 引用：使用 `require(\u0027x\u0027)`。\n\n#### AMD (Asynchronous Module Definition)\n\n- **用途**：虽然不常用，但它是 CommonJS 在浏览器端的实现。\n- **特点**：异步加载，依赖前置。\n- **语法**：\n  - 导出：通过 `define` 定义模块，并可以指定依赖的其他模块。\n  - 引用：使用 `require([\u0027a\u0027], function (a){ a.foo() });`。\n\n#### CMD (Common Module Definition)\n\n- **用途**：根据 CommonJS 和 AMD 实现，优化了加载方式。\n- **特点**：异步加载，按需加载/依赖就近。\n- **语法**：\n  - 导出：通过 `define` 定义模块，并在用到的地方引用依赖。\n  - 引用：使用 `var x = require(\u0027a\u0027); a.foo();`。\n\n#### ES Module\n\n- **用途**：目前浏览器端的默认标准。\n- **特点**：静态编译，编译时就能确定依赖关系，以及输入和输出的变量。\n- **语法**：\n  - 导出：通过 `export` 或 `export default` 输出模块。\n  - 引用：使用 `import`。\n\n#### 注意\n\n- `export default` 在同一个文件中只能存在一个。\n- 一个模块中可以同时使用 `export default` 和 `export`。\n\n这些模块系统各有特点，适用于不同的场景。ES Module 作为现代浏览器端的标准，提供了一种更简洁、更易于管理的模块系统。\n",
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2022-10-10T12:42:00.000Z",
+    "updateAt":  "2024-08-10T17:07:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  900,
+    "filterTotalNum":  1907,
+    "prev":  "1199c5d8-034c-4cb0-a3c7-55ef5f6ec56f",
+    "next":  "6100dbed-3600-470f-90b1-b1c6ef213a52"
+}

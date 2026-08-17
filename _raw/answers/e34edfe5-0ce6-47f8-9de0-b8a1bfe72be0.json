@@ -1,0 +1,21 @@
+﻿{
+    "id":  1790,
+    "exerciseKey":  "e34edfe5-0ce6-47f8-9de0-b8a1bfe72be0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面代码中，p标签的背景色是什么？",
+    "desc":  "```html\n\u003cstyle type=\"text/css\"\u003e\n     #parent p { background-color: red;  }\n      div .a.b.c.d.e.f.g.h.i.j.k p{ background-color: green;  \n\u003c/style\u003e\n......\n\u003cdiv id=\"parent\"\u003e\n     \u003cdiv class=\"a b c d e f g h i j k\"\u003e\n         \u003cp\u003exxxx\u003c/p\u003e\n     \u003c/div\u003e\n\u003c/div\u003e\n\n```",
+    "options":  null,
+    "explanation":  "大家需要注意，权重是按优先级进行比较的，而不是相加规则。\n\n答案是 `red`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-05-08T13:35:14.000Z",
+    "updateAt":  "2022-05-08T21:35:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1019,
+    "filterTotalNum":  1907,
+    "prev":  "8b516cb7-fa94-4d68-929f-d3c628d1b7a2",
+    "next":  "ed616567-30f4-45d4-b910-04bd4a92f53e"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2636,
+    "exerciseKey":  "c740c88b-fe1b-426f-ab9c-23f43c7fe62d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说下 css 中的 BFC、IFC、GFC 和 FFC 分别指什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 CSS 中，BFC（Block Formatting Context）、IFC（Inline Formatting Context）、GFC（Grid Formatting Context）和 FFC（Flex Formatting Context）是几种格式化上下文，它们定义了元素如何在布局中被格式化和渲染。\n\n### **1. Block Formatting Context (BFC)**\n\n- **定义**：BFC 是一个独立的渲染区域，所有的块级盒子都在这个上下文中进行布局。它定义了块级元素的布局和定位规则。\n- **特性**：\n  - **清除浮动**：BFC 可以用于清除浮动元素带来的影响，因为 BFC 形成的区域不会被浮动元素影响。\n  - **自适应高度**：BFC 会计算自身的高度以包裹包含的内容，确保包含块的高度能根据内容变化而调整。\n  - **边距折叠**：垂直方向上，BFC 中相邻的块级元素的边距不会折叠到 BFC 的外部。\n- **触发 BFC 的情况**：\n  - 根元素\n  - `display: flow-root`（用于创建新的 BFC）\n  - `position: absolute` 或 `position: fixed`\n  - `float`（左或右）\n  - `overflow` 的值为 `hidden`, `auto`, 或 `scroll`\n  - `display: table`（table, inline-table）\n\n### **2. Inline Formatting Context (IFC)**\n\n- **定义**：IFC 是处理内联元素（如 `\u003cspan\u003e`、`\u003ca\u003e`）的上下文。它定义了这些元素如何在一行中进行布局。\n- **特性**：\n  - **水平排列**：在 IFC 中，内联元素按水平顺序排列，直到当前行的宽度被填满。\n  - **高度自适应**：内联元素的高度由内容决定，不会影响周围元素的高度。\n  - **不影响其他行**：内联元素不会影响其他行的布局，行内元素会在行中水平排列。\n\n### **3. Grid Formatting Context (GFC)**\n\n- **定义**：GFC 是在使用 CSS Grid 布局时创建的上下文。它定义了如何在网格容器内布局网格项。\n- **特性**：\n  - **网格布局**：在 GFC 中，元素会按照定义的网格行和列进行布局。\n  - **完全控制**：通过 CSS Grid，开发者可以完全控制网格项的位置和大小。\n  - **网格线**：GFC 允许开发者定义网格线，从而精确控制布局。\n\n### **4. Flex Formatting Context (FFC)**\n\n- **定义**：FFC 是在使用 CSS Flexbox 布局时创建的上下文。它定义了如何在弹性容器内布局弹性项。\n- **特性**：\n  - **弹性布局**：在 FFC 中，元素会根据 Flexbox 属性（如 `flex-direction`, `justify-content`, `align-items`）进行弹性布局。\n  - **方向控制**：开发者可以控制主轴和交叉轴上的对齐方式。\n  - **自适应布局**：FPC 允许弹性项根据容器大小自动调整自身的大小和排列方式。",
+    "pivot":  "- **BFC**：用于块级元素的布局和清除浮动。\n- **IFC**：用于内联元素的水平排列。\n- **GFC**：用于 CSS Grid 布局中的网格项布局。\n- **FFC**：用于 CSS Flexbox 布局中的弹性项布局。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T13:57:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  433,
+    "filterTotalNum":  1907,
+    "prev":  "c7265055-7375-4e20-b425-14d97fc27f9c",
+    "next":  "9ba9d7cb-840a-4910-8596-88c6349ead1e"
+}

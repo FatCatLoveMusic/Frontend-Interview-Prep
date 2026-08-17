@@ -1,0 +1,21 @@
+﻿{
+    "id":  3036,
+    "exerciseKey":  "fddd5411-dbe6-4d5a-9991-8cefc8208788",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个支持撤销/重做功能的React Hook，并说明设计思路",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "实现“撤销 / 重做”的核心是**状态历史的建模方式**。\n\n下面从 **设计思路 → 数据结构 → Hook 实现 → 使用与边界** 四个层次说明。\n\n---\n\n## 一、核心设计思路\n\n撤销 / 重做问题，本质是对**状态时间线**的管理：\n\n* 撤销：回到上一个状态\n* 重做：回到下一个状态\n* 新操作发生时：未来状态失效\n\n因此不能只保存“当前值”，而需要显式维护**过去、现在、未来**三段。\n\n一个成熟的设计目标通常包括：\n\n* 操作是纯同步、可预测的\n* 撤销 / 重做是 O(1)\n* 不依赖具体业务数据结构\n* 与 React 更新模型天然契合\n\n---\n\n## 二、状态模型设计\n\n最常见、也是最稳定的模型是三段式结构：\n\n```ts\n{\n  past: T[]        // 历史状态\n  present: T       // 当前状态\n  future: T[]      // 可重做状态\n}\n```\n\n### 状态流转规则\n\n* **set**\n\n  * past += present\n  * present = newState\n  * future 清空\n* **undo**\n\n  * future.unshift(present)\n  * present = past.pop()\n* **redo**\n\n  * past.push(present)\n  * present = future.shift()\n\n这是 Redux Undo/Redo、编辑器、协同系统中最常见的模型。\n\n---\n\n## 三、Hook 的实现\n\n```ts\nimport { useCallback, useState } from \u0027react\u0027;\n\ninterface HistoryState\u003cT\u003e {\n  past: T[];\n  present: T;\n  future: T[];\n}\n\nexport function useUndoRedo\u003cT\u003e(initialValue: T) {\n  const [state, setState] = useState\u003cHistoryState\u003cT\u003e\u003e({\n    past: [],\n    present: initialValue,\n    future: [],\n  });\n\n  const set = useCallback((value: T) =\u003e {\n    setState(prev =\u003e ({\n      past: [...prev.past, prev.present],\n      present: value,\n      future: [],\n    }));\n  }, []);\n\n  const undo = useCallback(() =\u003e {\n    setState(prev =\u003e {\n      if (prev.past.length === 0) return prev;\n\n      const previous = prev.past[prev.past.length - 1];\n      const newPast = prev.past.slice(0, -1);\n\n      return {\n        past: newPast,\n        present: previous,\n        future: [prev.present, ...prev.future],\n      };\n    });\n  }, []);\n\n  const redo = useCallback(() =\u003e {\n    setState(prev =\u003e {\n      if (prev.future.length === 0) return prev;\n\n      const next = prev.future[0];\n      const newFuture = prev.future.slice(1);\n\n      return {\n        past: [...prev.past, prev.present],\n        present: next,\n        future: newFuture,\n      };\n    });\n  }, []);\n\n  return {\n    state: state.present,\n    set,\n    undo,\n    redo,\n    canUndo: state.past.length \u003e 0,\n    canRedo: state.future.length \u003e 0,\n  };\n}\n```\n\n---\n\n## 四、使用示例\n\n```tsx\nconst {\n  state,\n  set,\n  undo,\n  redo,\n  canUndo,\n  canRedo\n} = useUndoRedo(\u0027\u0027);\n\n\u003cinput\n  value={state}\n  onChange={e =\u003e set(e.target.value)}\n/\u003e\n\n\u003cbutton disabled={!canUndo} onClick={undo}\u003e撤销\u003c/button\u003e\n\u003cbutton disabled={!canRedo} onClick={redo}\u003e重做\u003c/button\u003e\n```\n\n---\n\n## 五、关键设计点说明（面试重点）\n\n### 为什么不用数组直接存所有历史？\n\n因为撤销 / 重做不是线性回放，而是“时间分叉”问题。\n三段式模型能明确区分“已发生”和“可重做”。\n\n---\n\n### 为什么新 set 要清空 future？\n\n因为一旦产生新操作，原本的“未来时间线”已经不再成立，这是编辑器领域的基本约定。\n\n---\n\n### 为什么用函数式 setState？\n\n确保在高频更新、并发渲染（Concurrent Mode）下状态是安全的，避免闭包读取旧 state。\n\n---\n\n## 六、工程级优化点（进阶）\n\n### 限制历史长度（防止内存增长）\n\n```ts\nconst MAX = 50;\n\npast: [...prev.past, prev.present].slice(-MAX)\n```\n\n---\n\n### 支持函数式更新（类似 setState）\n\n```ts\nconst set = (updater: T | ((prev: T) =\u003e T)) =\u003e {\n  setState(prev =\u003e {\n    const next =\n      typeof updater === \u0027function\u0027\n        ? (updater as any)(prev.present)\n        : updater;\n\n    return {\n      past: [...prev.past, prev.present],\n      present: next,\n      future: [],\n    };\n  });\n};\n```\n\n---\n\n### 支持批量合并（如输入法、拖拽）\n\n* debounce set\n* 或提供 `commit()` API\n\n---\n\n## 七、适用与不适用场景\n\n适用：\n\n* 表单编辑\n* 富文本 / 画布\n* 配置面板\n* 低频但可回退的用户操作\n\n不适用：\n\n* 高频实时数据（如动画帧）\n* 大对象深拷贝成本极高的场景（需结构共享）\n",
+    "pivot":  "撤销 / 重做的本质是对状态时间线的管理；通过 past / present / future 的三段式模型，可以用 O(1) 的方式完成撤销和重做；在 React 中用自定义 Hook 封装这一模型，结合函数式 setState，既保证了可预测性，也便于在复杂编辑场景中复用和扩展。",
+    "vipLimit":  1,
+    "level":  4.5,
+    "appId":  7,
+    "createAt":  "2026-01-31T15:06:40.000Z",
+    "updateAt":  "2026-01-31T15:06:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  169,
+    "filterTotalNum":  1907,
+    "prev":  "93ace4ab-cf3b-44ce-a51e-be4e51bd7157",
+    "next":  "8b689a20-951d-4e11-a5de-0d66e6fa108a"
+}

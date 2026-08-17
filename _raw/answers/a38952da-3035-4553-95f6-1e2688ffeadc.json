@@ -1,0 +1,21 @@
+﻿{
+    "id":  2404,
+    "exerciseKey":  "a38952da-3035-4553-95f6-1e2688ffeadc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "never 是什么类型，详细讲一下",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 TypeScript 中，`never` 是一个特殊的类型，它表示“从不”发生的值。换句话说，`never` 类型用于表示那些不可能存在的值或永远不会完成的情况。它通常用于以下几种场景：\n\n### **1. 不可能的返回值**\n\n`never` 类型常用于函数的返回类型，表示该函数不会正常返回。通常这种情况发生在函数抛出错误或者函数进入无限循环时。\n\n**示例**：\n\n```typescript\nfunction throwError(message: string): never {\n  throw new Error(message);  // 函数抛出错误，不会返回任何值\n}\n\nfunction infiniteLoop(): never {\n  while (true) {\n    // 永远不会退出循环\n  }\n}\n```\n\n在上述示例中，`throwError` 函数会抛出一个错误，因此它不会正常返回到调用者，`infiniteLoop` 函数则会一直无限循环，也不会返回任何值。\n\n### **2. 类型保护中的 `never`**\n\n`never` 类型也可以用于类型保护来确保所有可能的情况都被处理。常用于 `switch` 语句或其他条件语句中，确保每个分支都已被处理。\n\n**示例**：\n\n```typescript\ntype Animal = \"dog\" | \"cat\";\n\nfunction getAnimalSound(animal: Animal): string {\n  switch (animal) {\n    case \"dog\":\n      return \"Woof!\";\n    case \"cat\":\n      return \"Meow!\";\n    default:\n      // 确保所有可能的值都已处理\n      const _exhaustiveCheck: never = animal;\n      throw new Error(`Unhandled case: ${_exhaustiveCheck}`);\n  }\n}\n```\n\n在这个示例中，`_exhaustiveCheck` 被赋值为 `animal`，这是为了确保 `switch` 语句中的每个可能的分支都被处理。如果有遗漏，TypeScript 编译器将会报错。\n\n### **3. 作为函数参数**\n\n`never` 类型也可以用于函数参数中，表示函数参数类型应该从不出现这种情况。例如，某些类型保护函数可以返回 `never` 来表示某种类型的不存在。\n\n**示例**：\n\n```typescript\nfunction assertNever(x: never): never {\n  throw new Error(`Unexpected value: ${x}`);\n}\n\nfunction handle(value: \"a\" | \"b\") {\n  switch (value) {\n    case \"a\":\n      console.log(\"Handling \u0027a\u0027\");\n      break;\n    case \"b\":\n      console.log(\"Handling \u0027b\u0027\");\n      break;\n    default:\n      assertNever(value);  // 如果 value 不是 \"a\" 或 \"b\"，将会触发类型错误\n  }\n}\n```\n",
+    "pivot":  "- **`never` 类型**：表示不可能发生的值，适用于不会返回值的函数或不可能到达的代码路径。\n- **应用场景**：\n  - **函数**：函数不会正常返回（例如抛出错误或无限循环）。\n  - **类型保护**：确保所有分支都处理完毕。\n  - **函数参数**：表示函数参数的值从不出现。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-04T01:27:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  546,
+    "filterTotalNum":  1907,
+    "prev":  "9f306b9d-fac9-4355-8be9-8558150e4733",
+    "next":  "bf8ce811-717a-4486-98c0-61726f5bf9d9"
+}

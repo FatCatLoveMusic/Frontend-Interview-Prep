@@ -1,0 +1,21 @@
+﻿{
+    "id":  152,
+    "exerciseKey":  "1e8328ad-0ecd-428e-862c-a75c50e1a205",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nclass Calc {\n\tconstructor() {\n\t\tthis.count = 0 \n\t}\n\n\tincrease() {\n\t\tthis.count ++\n\t}\n}\n\nconst calc = new Calc()\nnew Calc().increase()\n\nconsole.log(calc.count)\n```",
+    "options":  "{\"options\":[\"0\",\"1\",\"undefined\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "我们设置 `calc` 变量为 `Calc` 类的一个新实例。 然后，我们初始化一个 `Calc` 的新实例，而且调用了这个实例的 `increase` 方法。因为count属性是在 `Calc` class的constructor内部的，所以count属性不会在 `Calc` 的原型链上共享出去。这就意味着calc实例的count值不会被更新，count仍然是 `0`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1767,
+    "filterTotalNum":  1907,
+    "prev":  "7483f06b-131e-43cd-b01b-96e3621a59f8",
+    "next":  "91d69ce5-0958-4c4c-b181-ef99c58aa053"
+}

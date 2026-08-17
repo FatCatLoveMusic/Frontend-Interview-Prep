@@ -1,0 +1,21 @@
+﻿{
+    "id":  1871,
+    "exerciseKey":  "45f892d7-8da0-4fd9-8550-8a7865cfcd43",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "react是否支持给标签设置自定义的属性，比如给video标签设置webkit-playsinline？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "如果你在react中这么样写：\n\n```js\n// Your code:\n\u003cdiv mycustomattribute=\"something\" /\u003e\n```\n\n在react 15中将被渲染成：\n\n```js\n// React 15 output:\n\u003cdiv /\u003e\n```\n\n在react 16及之后的版本中将被渲染成：\n\n```js\n// React 16 output:\n\u003cdiv mycustomattribute=\"something\" /\u003e\n```\n\n但这个会有限制，如果自定义的属性不是 `string`, `number` 或者 `object`，该属性依然会被忽略。\n\n所以目前可以这样添加 webkit-playsinline 属性：\n\n```js\n\u003cvideo width=\"750\" height=\"500\" controls webkit-playsinline=\"true\"\u003e\n\t\u003csource src=\"https://media.w3.org/2010/05/sintel/trailer.mp4\" type=\"video/mp4\"/\u003e\n\u003c/video\u003e\n```\n\n另外，还可以通过 `setAttribute` 进行设置，比如：\n\n```js\nimport * as React from \u0027react\u0027;\nimport { Component } from \u0027react\u0027;\n\nexport class VideoComponent extends Component {\n  videoContainer: HTMLDivElement;\n  componentDidMount() {\n    const video = document.createElement(\u0027video\u0027);\n    video.autoplay = true;\n    video.loop = true;\n    video.muted = true; // fixes autoplay in chrome\n    video.setAttribute(\u0027playsinline\u0027, \u0027true\u0027); // fixes autoplay in webkit (ie. mobile safari)\n\n    const source = document.createElement(\u0027source\u0027);\n    source.src = \u0027/path/to/your/video.mp4\u0027;\n    source.type = \u0027video/mp4\u0027;\n    video.appendChild(source);\n\n    this.videoContainer.appendChild(video);\n  }\n  render() {\n    return (\n      \u003cdiv ref={(ref) =\u003e { this.videoContainer = ref; }} /\u003e\n    );\n  }\n}\n\n```\n\n",
+    "pivot":  "React 确实支持给标签设置自定义属性,包括 `webkit-playsinline` 这样的非标准属性。\n\n在 React 中,您可以通过标准的 JSX 语法直接将自定义属性添加到元素上:\n\n```jsx\n\u003cvideo webkit-playsinline /\u003e\n```\n\n或者使用动态属性的语法:\n\n```jsx\n\u003cvideo {...{ \u0027webkit-playsinline\u0027: true }} /\u003e\n```\n\nReact 会将这些自定义属性原样渲染到 DOM 元素上。这意味着您可以使用任何合法的 HTML 属性,包括非标准的供应商前缀属性,如 `webkit-playsinline`。\n\n需要注意的是,虽然 React 支持自定义属性,但并不意味着所有浏览器都会识别和处理这些属性。一些非标准属性可能只在特定的浏览器环境下有效,所以在使用时需要谨慎,并做好跨浏览器的兼容性测试。\n",
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:42:46.000Z",
+    "updateAt":  "2024-08-10T17:06:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  939,
+    "filterTotalNum":  1907,
+    "prev":  "38114327-a110-4a75-8745-534924338657",
+    "next":  "c7b08d95-edf0-4d08-ac73-ce0b87c08e85"
+}

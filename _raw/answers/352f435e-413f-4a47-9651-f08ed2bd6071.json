@@ -1,0 +1,21 @@
+﻿{
+    "id":  2496,
+    "exerciseKey":  "352f435e-413f-4a47-9651-f08ed2bd6071",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "token过期后，页面如何实现无感刷新？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "当用户的身份验证 `token` 过期时，可以通过以下方法实现页面的无感刷新（即用户无感知的情况下自动刷新 `token` 并继续操作），通常是针对基于 `JWT`（JSON Web Token）的身份验证流程。\n\n### 实现步骤\n\n1. **设置刷新 `token` 机制**：\n   - **短生命周期的访问 `token`**：访问 `token` 应该有较短的有效期，以确保较高的安全性。\n   - **长生命周期的刷新 `token`**：刷新 `token` 有较长的有效期，用于在访问 `token` 过期后获取新的访问 `token`。\n\n2. **拦截请求**：\n   - 使用拦截器（如 Axios 拦截器）来监控所有的 HTTP 请求。每次请求时，检查 `token` 是否存在且有效。\n   - 在拦截器中处理 401 Unauthorized 响应，这是 `token` 过期的常见标志。\n\n3. **尝试获取新 `token`**：\n   - 当收到 401 响应时，拦截器会自动发起刷新 `token` 的请求。使用保存的刷新 `token` 通过专门的 API 来获取新的访问 `token`。\n   - 如果刷新成功，更新存储中的 `token`（如 `localStorage` 或 `sessionStorage`），并重试原来的请求。\n\n4. **无感刷新 `token` 并重发请求**：\n   - 如果刷新 `token` 成功，则将新的访问 `token` 附加到原始请求的头部，然后重新发起该请求。用户在这个过程中不会感知到 `token` 的刷新和请求的重试。\n\n5. **处理刷新失败**：\n   - 如果刷新 `token` 失败（如刷新 `token` 也过期了），则通常需要让用户重新登录。此时可以重定向到登录页面或显示提示信息。\n\n### 示例代码（使用 Axios 拦截器）\n\n```javascript\nimport axios from \u0027axios\u0027;\n\nconst apiClient = axios.create({\n  baseURL: \u0027https://api.example.com\u0027,\n  headers: {\n    \u0027Content-Type\u0027: \u0027application/json\u0027,\n  },\n});\n\n// 请求拦截器，添加 token\napiClient.interceptors.request.use(config =\u003e {\n  const token = localStorage.getItem(\u0027accessToken\u0027);\n  if (token) {\n    config.headers[\u0027Authorization\u0027] = `Bearer ${token}`;\n  }\n  return config;\n}, error =\u003e {\n  return Promise.reject(error);\n});\n\n// 响应拦截器，处理 401 错误并尝试刷新 token\napiClient.interceptors.response.use(response =\u003e {\n  return response;\n}, async error =\u003e {\n  const originalRequest = error.config;\n  if (error.response.status === 401 \u0026\u0026 !originalRequest._retry) {\n    originalRequest._retry = true;\n    try {\n      const refreshToken = localStorage.getItem(\u0027refreshToken\u0027);\n      const response = await axios.post(\u0027https://api.example.com/refresh-token\u0027, {\n        refreshToken: refreshToken,\n      });\n      const newToken = response.data.accessToken;\n      localStorage.setItem(\u0027accessToken\u0027, newToken);\n      originalRequest.headers[\u0027Authorization\u0027] = `Bearer ${newToken}`;\n      return apiClient(originalRequest); // 重试原来的请求\n    } catch (refreshError) {\n      // 刷新 token 失败，可能需要重新登录\n      console.log(\u0027Refresh token failed:\u0027, refreshError);\n      // 可以在这里重定向到登录页面\n    }\n  }\n  return Promise.reject(error);\n});\n\nexport default apiClient;\n```",
+    "pivot":  "通过使用刷新 `token` 机制和请求拦截器，可以实现 `token` 过期后的无感刷新，确保用户体验不受影响。如果刷新 `token` 失败，则通常需要用户重新登录。整个过程对用户是透明的，最大限度地提升了用户体验。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-21T01:16:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  501,
+    "filterTotalNum":  1907,
+    "prev":  "71a38c25-6756-4e1c-8710-bd5b7ee74772",
+    "next":  "8620e64e-4051-46a8-bef3-3b1031a29872"
+}

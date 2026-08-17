@@ -1,0 +1,21 @@
+﻿{
+    "id":  2021,
+    "exerciseKey":  "a9854cb2-406f-4837-a57f-947f818e5731",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS3 中 transition 和 animation 的属性分别有哪些？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "在 CSS3 中，`transition` 和 `animation` 是两种用于实现动画效果的属性。它们分别用于不同的动画需求和实现方式。\n\n### Transition 属性：\n\n`transition` 属性用于定义元素在状态改变时从一个样式转换到另一个样式的过渡效果。它包含以下几个属性：\n\n- `transition-property`：指定过渡效果应用的 CSS 属性名称，多个属性可以用逗号分隔。\n- `transition-duration`：指定过渡效果的持续时间，单位可以是秒(s)或毫秒(ms)。\n- `transition-timing-function`：指定过渡效果的时间曲线，也就是过渡的速度变化函数。\n- `transition-delay`：指定过渡效果开始之前的延迟时间，单位可以是秒(s)或毫秒(ms)。\n\n示例：\n```css\n/* 定义一个简单的过渡效果 */\n.box {\n  width: 100px;\n  height: 100px;\n  background-color: red;\n  transition: width 1s ease-in-out;\n}\n\n.box:hover {\n  width: 200px;\n}\n```\n\n在上面的示例中，当鼠标悬停在 `.box` 元素上时，宽度从 100px 过渡到 200px，过渡持续时间为 1 秒，过渡速度为 ease-in-out。\n\n### Animation 属性：\n\n`animation` 属性用于定义复杂的动画效果，可以自定义关键帧（keyframes）来实现更复杂的动画效果。它包含以下几个属性：\n\n- `animation-name`：指定定义动画的关键帧名称。\n- `animation-duration`：指定动画的持续时间，单位可以是秒(s)或毫秒(ms)。\n- `animation-timing-function`：指定动画的时间曲线，也就是动画的速度变化函数。\n- `animation-delay`：指定动画开始之前的延迟时间，单位可以是秒(s)或毫秒(ms)。\n- `animation-iteration-count`：指定动画的重复次数，可以使用一个整数值或 `infinite`（表示无限循环）。\n- `animation-direction`：指定动画的播放方向，可以是 `normal`（默认），`reverse`（反向播放），`alternate`（正向再反向循环），或 `alternate-reverse`（反向再正向循环）。\n- `animation-fill-mode`：指定动画在非运行时的样式，可以是 `none`（默认），`forwards`（保持最后一帧的样式），`backwards`（应用第一帧的样式），或 `both`（同时应用第一帧和最后一帧的样式）。\n- `animation-play-state`：指定动画的播放状态，可以是 `running`（默认，动画正在播放）或 `paused`（动画暂停）。\n\n示例：\n```css\n/* 定义一个简单的动画 */\n@keyframes slide-in {\n  0% {\n    transform: translateX(-100%);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n\n.box {\n  width: 100px;\n  height: 100px;\n  background-color: red;\n  animation: slide-in 1s ease-in-out infinite alternate;\n}\n```\n\n在上面的示例中，`.box` 元素会应用一个名为 `slide-in` 的动画，从左侧滑动进入容器，动画持续时间为 1 秒，以 ease-in-out 时间曲线播放，无限循环，并且往返运动。",
+    "pivot":  "#### `transition` 属性\n\n- **`transition-property`**: 指定哪些 CSS 属性需要过渡效果。\n- **`transition-duration`**: 过渡效果持续的时间。\n- **`transition-timing-function`**: 过渡效果的速度曲线。\n- **`transition-delay`**: 过渡效果开始前的延迟时间。\n\n#### `animation` 属性\n\n- **`animation-name`**: 指定关键帧名称，定义动画效果。\n- **`animation-duration`**: 动画持续的时间。\n- **`animation-timing-function`**: 动画的速度曲线。\n- **`animation-delay`**: 动画开始前的延迟时间。\n- **`animation-iteration-count`**: 动画播放的次数。\n- **`animation-direction`**: 动画播放的方向（正向、反向、交替）。\n- **`animation-fill-mode`**: 动画在开始和结束时的样式。\n\n#### 考察重点\n\n- 理解：transition 和 animation 属性及其作用。\n- 应用：根据需求选择合适的属性，实现平滑的过渡效果和复杂的动画效果。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:13:26.000Z",
+    "updateAt":  "2024-08-10T17:07:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  790,
+    "filterTotalNum":  1907,
+    "prev":  "37b4752f-88bd-4959-8ff7-c081fdbc20cb",
+    "next":  "94b843ea-1ede-4fa4-81ae-a92e612b4439"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  213,
+    "exerciseKey":  "74cf701d-95e7-428a-a7c1-d746c6c0877c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Javascript本地存储的方式有哪些，有什么区别，及有哪些应用场景？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、方式\n\n`javaScript`本地缓存的方法我们主要讲述以下四种：\n\n- cookie\n- sessionStorage\n- localStorage\n- indexedDB\n\n\n### cookie\n\n`Cookie`，类型为「小型文本文件」，指某些网站为了辨别用户身份而储存在用户本地终端上的数据。是为了解决 `HTTP `无状态导致的问题\n\n作为一段一般不超过 4KB 的小型文本数据，它由一个名称（Name）、一个值（Value）和其它几个用于控制 `cookie `有效期、安全性、使用范围的可选属性组成\n\n但是`cookie`在每次请求中都会被发送，如果不使用 `HTTPS `并对其加密，其保存的信息很容易被窃取，导致安全风险。举个例子，在一些使用 `cookie `保持登录态的网站上，如果 `cookie `被窃取，他人很容易利用你的 `cookie `来假扮成你登录网站\n\n关于`cookie`常用的属性如下：\n\n- Expires 用于设置 Cookie 的过期时间\n\n```js\nExpires=Wed, 21 Oct 2015 07:28:00 GMT\n```\n\n- Max-Age 用于设置在 Cookie 失效之前需要经过的秒数（优先级比`Expires`高）\n\n```js\nMax-Age=604800\n```\n\n- `Domain `指定了 `Cookie` 可以送达的主机名\n- `Path `指定了一个 `URL `路径，这个路径必须出现在要请求的资源的路径中才可以发送 `Cookie` 首部\n\n```js\nPath=/docs   # /docs/Web/ 下的资源会带 Cookie 首部\n```\n\n- 标记为 `Secure `的 `Cookie `只应通过被`HTTPS`协议加密过的请求发送给服务端\n\n通过上述，我们可以看到`cookie`又开始的作用并不是为了缓存而设计出来，只是借用了`cookie`的特性实现缓存\n\n关于`cookie`的使用如下：\n\n```js\ndocument.cookie = \u0027名字=值\u0027;\n```\n\n关于`cookie`的修改，首先要确定`domain`和`path`属性都是相同的才可以，其中有一个不同得时候都会创建出一个新的`cookie`\n\n```js\nSet-Cookie:name=aa; domain=aa.net; path=/  # 服务端设置\ndocument.cookie =name=bb; domain=aa.net; path=/  # 客户端设置\n```\n\n最后`cookie`的删除，最常用的方法就是给`cookie`设置一个过期的事件，这样`cookie`过期后会被浏览器删除\n\n\n\n### localStorage\n\n`HTML5`新方法，IE8及以上浏览器都兼容\n\n### 特点\n\n- 生命周期：持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的\n- 存储的信息在同一域中是共享的\n- 当本页操作（新增、修改、删除）了`localStorage`的时候，本页面不会触发`storage`事件,但是别的页面会触发`storage`事件。\n- 大小：5M（跟浏览器厂商有关系）\n- `localStorage`本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡\n- 受同源策略的限制\n\n下面再看看关于`localStorage`的使用\n\n设置\n\n```js\nlocalStorage.setItem(\u0027username\u0027,\u0027cfangxu\u0027);\n```\n\n获取\n\n```js\nlocalStorage.getItem(\u0027username\u0027)\n```\n\n获取键名\n\n```js\nlocalStorage.key(0) //获取第一个键名\n```\n\n删除\n\n```js\nlocalStorage.removeItem(\u0027username\u0027)\n```\n\n一次性清除所有存储\n\n```js\nlocalStorage.clear()\n```\n\n`localStorage` 也不是完美的，它有两个缺点：\n\n- 无法像` Cookie `一样设置过期时间\n- 只能存入字符串，无法直接存对象\n\n```js\nlocalStorage.setItem(\u0027key\u0027, {name: \u0027value\u0027});\nconsole.log(localStorage.getItem(\u0027key\u0027)); // \u0027[object, Object]\u0027\n```\n\n\n\n### sessionStorage\n\n`sessionStorage `和 `localStorage `使用方法基本一致，唯一不同的是生命周期，一旦页面（会话）关闭，`sessionStorage` 将会删除数据\n\n\n\n### 扩展的前端存储方式\n\n`indexedDB `是一种低级API，用于客户端存储大量结构化数据(包括, 文件/ blobs)。该API使用索引来实现对该数据的高性能搜索\n\n虽然 `Web Storage `对于存储较少量的数据很有用，但对于存储更大量的结构化数据来说，这种方法不太有用。`IndexedDB`提供了一个解决方案\n\n#### 优点：\n\n- 储存量理论上没有上限\n- 所有操作都是异步的，相比 `LocalStorage` 同步操作性能更高，尤其是数据量较大时\n- 原生支持储存` JS `的对象\n- 是个正经的数据库，意味着数据库能干的事它都能干\n\n#### 缺点：\n\n- 操作非常繁琐\n- 本身有一定门槛\n\n关于`indexedDB`的使用基本使用步骤如下：\n\n- 打开数据库并且开始一个事务\n\n- 创建一个 `object store`\n- 构建一个请求来执行一些数据库操作，像增加或提取数据等。\n- 通过监听正确类型的 `DOM` 事件以等待操作完成。\n- 在操作结果上进行一些操作（可以在 `request `对象中找到）\n\n关于使用`indexdb`的使用会比较繁琐，大家可以通过使用`Godb.js`库进行缓存，最大化的降低操作难度\n\n\n\n\n## 二、区别\n\n关于`cookie`、`sessionStorage`、`localStorage`三者的区别主要如下：\n\n- 存储大小：` cookie`数据大小不能超过`4k`，`sessionStorage`和`localStorage `虽然也有存储大小的限制，但比`cookie`大得多，可以达到5M或更大\n\n- 有效时间：` localStorage   `存储持久数据，浏览器关闭后数据不丢失除非主动删除数据； `sessionStorage  `数据在当前浏览器窗口关闭后自动删除；` cookie `设置的`cookie`过期时间之前一直有效，即使窗口或浏览器关闭\n\n- 数据与服务器之间的交互方式，`  cookie`的数据会自动的传递到服务器，服务器端也可以写`cookie`到客户端； `sessionStorage`和`localStorage`不会自动把数据发给服务器，仅在本地保存\n\n\n\n## 三、应用场景\n\n在了解了上述的前端的缓存方式后，我们可以看看针对不对场景的使用选择：\n\n- 标记用户与跟踪用户行为的情况，推荐使用`cookie`\n- 适合长期保存在本地的数据（令牌），推荐使用`localStorage`\n- 敏感账号一次性登录，推荐使用`sessionStorage`\n- 存储大量数据的情况、在线文档（富文本编辑器）保存编辑历史的情况，推荐使用`indexedDB`\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-03T14:00:56.000Z",
+    "updateAt":  "2024-07-22T11:14:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  1706,
+    "filterTotalNum":  1907,
+    "prev":  "a30c0639-0784-4326-85b5-0fd73e90b988",
+    "next":  "cecf2aa7-4281-4255-95c9-e8ae487760f1"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  100,
+    "exerciseKey":  "73f2cb7c-2613-4f06-8777-f72b1778a28b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nfunction nums(a, b) {\n  if\n  (a \u003e b)\n  console.log(\u0027a is bigger\u0027)\n  else \n  console.log(\u0027b is bigger\u0027)\n  return \n  a + b\n}\n\nconsole.log(nums(4, 2))\nconsole.log(nums(1, 2))\n```",
+    "options":  "{\"options\":[\"a is bigger, 6 and b is bigger, 3\",\"a is bigger, undefined and b is bigger, undefined\",\"undefined and undefined\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "在JavaScript中，我们不必显式地编写分号(`;`)，但是JavaScript引擎仍然在语句之后自动添加分号。这称为**自动分号插入**。例如，一个语句可以是变量，或者像`throw`、`return`、`break`这样的关键字。\n在这里，我们在新的一行上写了一个`return`语句和另一个值`a + b `。然而，由于它是一个新行，引擎并不知道它实际上是我们想要返回的值。相反，它会在`return`后面自动添加分号。你可以这样看:\n```javascript\n  return;\n  a + b\n```\n这意味着永远不会到达`a + b`，因为函数在`return`关键字之后停止运行。如果没有返回值，就像这里，函数返回`undefined`。注意，在`if/else`语句之后没有自动插入!",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:27:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  1819,
+    "filterTotalNum":  1907,
+    "prev":  "3f8c30d2-789e-4108-80c2-30bc0f4ed50c",
+    "next":  "37021e43-c8e8-4664-afa2-0c16eee6e4b2"
+}

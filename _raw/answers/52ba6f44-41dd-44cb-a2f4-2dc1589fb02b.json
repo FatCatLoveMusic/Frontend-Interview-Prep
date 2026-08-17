@@ -1,0 +1,21 @@
+﻿{
+    "id":  1624,
+    "exerciseKey":  "52ba6f44-41dd-44cb-a2f4-2dc1589fb02b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第32题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function async1 () {\n  console.log(\u0027async1 start\u0027);\n  await new Promise(resolve =\u003e {\n    console.log(\u0027promise1\u0027)\n  })\n  console.log(\u0027async1 success\u0027);\n  return \u0027async1 end\u0027\n}\nconsole.log(\u0027srcipt start\u0027)\nasync1().then(res =\u003e console.log(res))\nconsole.log(\u0027srcipt end\u0027)\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n在async1中await后面的Promise是没有返回值的，也就是它的状态始终是pending状态，因此相当于一直在await，await，await却始终没有响应...\n\n所以在await之后的内容是不会执行的，也包括async1后面的 .then。\n\n## 结果\n\n```\n\u0027script start\u0027\n\u0027async1 start\u0027\n\u0027promise1\u0027\n\u0027script end\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:10:45.000Z",
+    "updateAt":  "2022-01-09T23:15:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  1166,
+    "filterTotalNum":  1907,
+    "prev":  "a1902422-cbf4-4551-9f88-891eb1777e8d",
+    "next":  "ced16bc7-215d-47a2-9bef-7e6ab67f303c"
+}

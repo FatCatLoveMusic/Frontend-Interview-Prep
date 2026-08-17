@@ -1,0 +1,21 @@
+﻿{
+    "id":  2284,
+    "exerciseKey":  "d8631cf2-0f88-42a2-a4d7-0de26d611201",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 jwt 中的 token，是怎么进行身份验证的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "JWT（JSON Web Token）是一种用于 **身份验证** 和 **授权** 的开源标准。它是一种将用户身份信息 **编码为一个 Token** 的形式进行身份验证的机制。JWT 是基于 **JSON** 格式的令牌，并且是自包含的，即它包含了验证用户身份和权限所需的所有信息。通过 JWT，前后端可以进行无状态的认证。\n\n### 1. **JWT 的结构**\n\nJWT 的结构是由三个部分组成的，使用点 `.` 分隔：\n```\nHeader.Payload.Signature\n```\n这三个部分分别是：\n\n- **Header（头部）**：包含算法和令牌类型的元数据。\n- **Payload（负载）**：包含用户的身份信息（比如用户 ID、角色）以及其他自定义数据。\n- **Signature（签名）**：用于确保 Token 在传输过程中没有被篡改。\n\n#### 示例：\n```\neyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\n```\n- **Header** 部分内容：\n  ```json\n  {\n    \"alg\": \"HS256\",  // 签名算法 HMAC-SHA256\n    \"typ\": \"JWT\"     // Token 类型为 JWT\n  }\n  ```\n- **Payload** 部分内容：\n  ```json\n  {\n    \"sub\": \"1234567890\", // 用户 ID\n    \"name\": \"John Doe\",  // 用户名称\n    \"iat\": 1516239022    // Token 的签发时间\n  }\n  ```\n- **Signature** 是用指定的算法和密钥加密生成的：\n  ```\n  HMACSHA256(\n    base64UrlEncode(header) + \".\" + base64UrlEncode(payload),\n    secret\n  )\n  ```\n\n### 2. **JWT 身份验证的流程**\n\n身份验证流程通过以下几个步骤来完成：\n\n#### 1. **用户登录**：\n用户通过登录页面提交用户名和密码，后端服务器验证用户的身份信息。\n\n#### 2. **生成 JWT Token**：\n一旦用户通过身份验证，服务器会生成一个 JWT Token。生成的 Token 包含了用户身份相关的信息（例如用户 ID 或角色），这些信息被编码在 **Payload** 中。然后服务器使用 **私钥**（或预定义的密钥）对 Token 进行签名。\n\n#### 3. **前端存储 Token**：\n服务器将生成的 JWT 返回给前端。前端通常会将 JWT 存储在 **LocalStorage** 或 **SessionStorage** 中，或者作为 Cookie 存储在客户端。\n\n#### 4. **携带 Token 发起请求**：\n在用户登录后，前端每次请求需要认证的资源时，将 JWT 放入 **HTTP 请求头的 Authorization 字段** 中（通常是 `Bearer Token` 形式），例如：\n```http\nAuthorization: Bearer \u003cJWT_Token\u003e\n```\n\n#### 5. **后端验证 JWT**：\n服务器接收到前端携带的 JWT 后，会对其进行验证：\n- **验证签名**：服务器使用预先定义的密钥（私钥）对 JWT 的签名部分进行解密，验证它没有被篡改。\n- **验证有效性**：服务器检查 Token 是否过期（通过 `exp` 字段）或是否具备访问资源的权限（通过角色或权限字段）。\n\n如果 Token 验证通过，服务器就会返回用户请求的数据，否则返回 **401 Unauthorized** 或 **403 Forbidden** 的错误。\n\n#### 6. **续签或刷新 Token**：\n如果 Token 过期，通常会提供 **刷新 Token** 的机制，允许用户使用一个短时效的 Refresh Token 来获取新的 JWT。\n\n### 3. **JWT 的优势**\n- **无状态认证**：JWT 是无状态的，不需要在服务器端存储 Token，因此服务器可以扩展得更好。服务器不需要保存用户的会话状态，所有信息都在 Token 中自包含。\n- **跨域认证**：JWT 可以在多个不同的域中使用，因此特别适合在微服务架构中使用。\n- **减少数据库查询**：由于 JWT 包含了用户的信息，服务器在每次请求时不需要查询数据库来获取用户信息。\n\n### 4. **JWT 的安全性考量**\n虽然 JWT 自带签名以防篡改，但它并不自带加密，所有的信息都是 **明文** 存在于 Token 的 Payload 中。因此，以下是一些安全性考量：\n\n- **不要在 Payload 中存放敏感数据**：由于 JWT 的 Payload 是可解码的，不能将敏感信息（如密码）直接存入 Payload。\n- **Token 过期机制**：JWT 应该设置 **过期时间** (`exp`)，确保 Token 不会被长期使用。一旦 Token 过期，用户需要重新登录或使用刷新 Token 获取新 Token。\n- **HTTPS 传输**：在传输 Token 时，应该使用 **HTTPS** 确保通信的安全，防止 Token 被窃取。\n- **刷新 Token 机制**：可以设计一个更短时效的 Refresh Token，用户可以使用它在 Token 过期后获取新的 Token。\n  \n### 5. **JWT 的局限性**\n- **Token 无法撤销**：JWT 是无状态的，因此在 Token 发出后，服务器无法主动撤销它。如果用户登出或者 Token 泄漏，服务器无法使其失效，除非等待 Token 过期。\n- **Token 体积较大**：由于 JWT 是自包含的，它可能比传统的会话 Token 体积要大，传输频繁时可能会影响性能。\n\n### 总结\nJWT 是一种轻量级的身份验证机制，适用于无状态的应用场景，尤其在微服务架构和跨域场景下十分有用。通过对 JWT 的签名机制，可以保证 Token 的完整性和可靠性，但需要注意不能将敏感数据放在 JWT 中，并确保 Token 的安全传输和使用。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-18T01:29:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  610,
+    "filterTotalNum":  1907,
+    "prev":  "431ed9b6-fb2d-47a9-966d-77e8b771492a",
+    "next":  "c2b65646-1817-4fcf-8ac5-f98f4fa2d184"
+}

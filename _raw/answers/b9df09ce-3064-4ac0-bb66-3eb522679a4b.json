@@ -1,0 +1,21 @@
+﻿{
+    "id":  447,
+    "exerciseKey":  "b9df09ce-3064-4ac0-bb66-3eb522679a4b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个方法，清除字符串前后的空格。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在JavaScript中，我们可以通过多种方式实现清除字符串前后空格的功能。\n\n以下是几种常见的实现方法：\n\n## 1. 使用原生String.trim()方法（最简单）\n\n```javascript\nfunction trim(str) {\n  return str.trim();\n}\n\n// 示例\nconsole.log(trim(\u0027  hello world  \u0027)); // 输出: \"hello world\"\n```\n\n## 2. 使用正则表达式实现\n\n```javascript\nfunction trim(str) {\n  return str.replace(/^\\s+|\\s+$/g, \u0027\u0027);\n}\n\n// 示例\nconsole.log(trim(\u0027  hello world  \u0027)); // 输出: \"hello world\"\n```\n\n## 3. 手动实现（不使用trim或正则）\n\n```javascript\nfunction trim(str) {\n  let start = 0;\n  let end = str.length - 1;\n  \n  // 找到前面第一个非空格字符的位置\n  while (start \u003c= end \u0026\u0026 str[start] === \u0027 \u0027) {\n    start++;\n  }\n  \n  // 找到后面第一个非空格字符的位置\n  while (end \u003e= start \u0026\u0026 str[end] === \u0027 \u0027) {\n    end--;\n  }\n  \n  // 返回去除空格后的子字符串\n  return str.substring(start, end + 1);\n}\n\n// 示例\nconsole.log(trim(\u0027  hello world  \u0027)); // 输出: \"hello world\"\n```\n\n## 4. 兼容旧浏览器的实现（ES5之前）\n\n```javascript\nfunction trim(str) {\n  if (String.prototype.trim) {\n    return str.trim();\n  }\n  return str.replace(/^\\s+|\\s+$/g, \u0027\u0027);\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:08:54.000Z",
+    "updateAt":  "2025-07-16T11:48:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1473,
+    "filterTotalNum":  1907,
+    "prev":  "66ee2368-475e-403c-afb2-2c3fd693a843",
+    "next":  "0356a1c0-f9a2-4fb1-98a5-fa409247fa8f"
+}

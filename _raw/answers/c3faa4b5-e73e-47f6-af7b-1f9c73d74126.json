@@ -1,0 +1,21 @@
+﻿{
+    "id":  1682,
+    "exerciseKey":  "c3faa4b5-e73e-47f6-af7b-1f9c73d74126",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用原生js实现以下效果：点击容器内的图标，图标边框变成border:1px solid red，点击空白处重置",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " ```js\n \nconst box = document.getElementById(\u0027box\u0027);\n\nfunction isIcon(target) {\n  return target.className.includes(\u0027icon\u0027);\n}\n\nbox.onclick = function(e) {\n  e.stopPropagation();\n  const target = e.target;\n  if (isIcon(target)) {\n    target.style.border = \u00271px solid red\u0027;\n  }\n}\n\nconst doc = document;\n\ndoc.onclick = function(e) {\n  const children = box.children;\n  for(let i = 0; i \u003c children.length; i++) {\n    if (isIcon(children[i])) {\n      children[i].style.border = \u0027none\u0027;\n    }\n  }\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-03-07T04:44:33.000Z",
+    "updateAt":  "2022-10-30T11:13:33.000Z",
+    "isCollected":  false,
+    "currentIndex":  1108,
+    "filterTotalNum":  1907,
+    "prev":  "95cb0844-3e54-45c3-8809-1121bafc57ba",
+    "next":  "1d338445-7c02-4ffa-9541-1f7a00896244"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  132,
+    "exerciseKey":  "e9b3318a-4d50-437b-8a59-532532cd7dc3",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst spookyItems = [\"👻\", \"🎃\", \"🕸\"];\n({ item: spookyItems[3] } = { item: \"💀\" });\n\nconsole.log(spookyItems);\n```",
+    "options":  "{\"options\":[\"[\\\"👻\\\", \\\"🎃\\\", \\\"🕸\\\"]\",\"[\\\"👻\\\", \\\"🎃\\\", \\\"🕸\\\", \\\"💀\\\"]\",\"[\\\"👻\\\", \\\"🎃\\\", \\\"🕸\\\", { item: \\\"💀\\\" }]\",\"[\\\"👻\\\", \\\"🎃\\\", \\\"🕸\\\", \\\"[object Object]\\\"]\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "通过解构对象们，我们可以从右手边的对象中拆出值，并且将拆出的值分配给左手边对象同名的属性。在这种情况下，我们将值 \"💀\" 分配给 `spookyItems[3]`。相当于我们正在篡改数组 `spookyItems`，我们给它添加了值 \"💀\"。当输出 `spookyItems` 时，结果为 `[\"👻\", \"🎃\", \"🕸\", \"💀\"]`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:31:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  1787,
+    "filterTotalNum":  1907,
+    "prev":  "274fa7ad-e6d3-43e7-8841-6d68c280166b",
+    "next":  "f7527bab-1200-4c68-86d9-bab157c66156"
+}

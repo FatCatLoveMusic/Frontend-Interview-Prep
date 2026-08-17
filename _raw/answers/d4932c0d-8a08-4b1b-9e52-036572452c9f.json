@@ -1,0 +1,21 @@
+﻿{
+    "id":  2875,
+    "exerciseKey":  "d4932c0d-8a08-4b1b-9e52-036572452c9f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么处理微信小程序里的静默授权异步问题？",
+    "desc":  "在微信小程序中，静默授权(`wx.login`)是异步的。假设我们系统是通过微信静默授权，拿到用户的 `openid` 作为唯一标志。\n\n我们在页面 `onLoad` 里需要等授权完成，拿到openid才能继续后续接口调用。由于静默授权的异步性，我们怎么能保证，在全局能够知调用 `wx.login` 一次，而不会每个页面都去重复调用 `wx.login` ？",
+    "options":  null,
+    "explanation":  "在微信小程序里，通常我们会在 `app.js` 里的 `onLaunch` 方法里，执行微信静默授权，即调用 `wx.login` 。但是，由于静默授权是异步的，我们不能保证，在页面的 `onLoad` 里，静默授权流程已经完成了。如果再次发起 `wx.login`，又会重复执行静默授权，增加页面渲染时间。\n\n通常在这种情况下，我们都实现一个全局的授权方法，比如叫`wxAuthSingleton()`，内部维护一个唯一的静默授权 `Promise` 对象，当这个对象已经存在之后，直接返回这个 `Promise`，如果不存在，才生成一个 `Promise`。每个页面，都去调用这个全局授权方法`wxAuthSingleton()`，得到全局相同的授权 `Promise`。\n\n下面是简略代码：\n\n```javascript\nconst wxAuthSingleton = (function (){\n    let promise = null;\n    return async function wxAuthSingletonInner(){\n    if (promise) {\n        // 已经调用过了，可能正在执行中，或者已经执行结束\n        return promise;\n    }\n    promise = new Promise((resolve, reject) =\u003e{\n    try {\n        wx.login({\n            // 注意：这里只是伪代码，需要参考官方文档修改\n            async success(res){\n                // 拿到code，调用后端接口\n                // 这里加上异常处理\n                await silentAuthLogin(res.code);\n                resolve();\n            },\n            fail(){\n                reject(new Error(\u0027静默授权失败\u0027));\n            },\n        });\n    } catch (err) {\n        reject(err);\n    }\n});\n};\n})();\n```",
+    "pivot":  "## 关键点\n\n- 理解 `wx.login` 的异步特性\n- 理解 `app.js` 里的 `onLaunch` 方法，不会阻塞页面渲染\n- 知道怎么样把某个异步流程（比如这里的微信静默授权+可能的后端登录逻辑），封装成全局唯一的 `Promise` 对象",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-09-03T12:50:43.000Z",
+    "updateAt":  "2024-09-03T13:00:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  326,
+    "filterTotalNum":  1907,
+    "prev":  "14482912-0586-436e-b1b9-4cf030c79faa",
+    "next":  "24d0a905-35d4-407c-8852-f3d0ba41d214"
+}

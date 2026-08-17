@@ -1,0 +1,21 @@
+﻿{
+    "id":  1946,
+    "exerciseKey":  "2f9c699c-f7be-4f31-8b1b-5d6271bc075e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现下面的 firstSingleChar 方法",
+    "desc":  "```ts\n/**\n * @file 找出字符串中第一个只出现一次的字符\n */\n\nfunction firstSingleChar(str: string) {\n    // 补全此处代码\n    throw new Error(\u0027功能待实现\u0027);\n}\n\n// a 和 b 都出现了两次，只有 c 出现了一次，返回 c\nconsole.log(firstSingleChar(\u0027abcba\u0027)) // c\n// b c d 都出现了一次，返回第一个\nconsole.log(firstSingleChar(\u0027aabcdee\u0027)) // b\n// a 和 b 都出现了多次，没有只出现一次的元素，返回 undefined\nconsole.log(firstSingleChar(\u0027aaaabbbb\u0027)) // undefined\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 找出字符串中第一个只出现一次的字符\n */\n\nfunction firstSingleChar(str: string) {\n  // 参考答案\n  return str.split(\"\").filter((item: string, index: number, arr: string[]) =\u003e {\n    arr.splice(index, 1);\n    return !arr.includes(item);\n  })[0];\n}\n\n// a 和 b 都出现了两次，只有 c 出现了一次，返回 c\nconsole.log(firstSingleChar(\"abcba\")); // c\n// b c d 都出现了一次，返回第一个\nconsole.log(firstSingleChar(\"aabcdee\")); // b\n// a 和 b 都出现了多次，没有只出现一次的元素，返回 undefined\nconsole.log(firstSingleChar(\"aaaabbbb\")); // undefined\nconsole.log(firstSingleChar(\"dabvb\"));\n\nexport default {};\n```",
+    "pivot":  "**作答思路**：\n\n实现思路是遍历字符串中的每个字符，并检查该字符是否只出现一次。\n\n1. **字符串分割**：首先，使用`split(\"\")`方法将输入的字符串`str`分割成一个字符数组。\n2. **过滤条件**：定义一个过滤函数，它接受三个参数：当前字符`item`、当前字符的索引`index`和字符数组`arr`。\n3. **移除当前字符**：在过滤函数内部，使用`splice`方法从字符数组中移除当前字符及其索引。\n4. **检查字符唯一性**：在过滤函数内部，使用`includes`方法检查移除当前字符后，字符数组中是否仍然包含该字符。如果不包含，则说明该字符只出现了一次。\n5. **返回结果**：在`filter`函数的外部，使用`[0]`索引来获取第一个满足过滤条件的字符。如果没有任何字符满足条件，则返回`undefined`。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:23:32.000Z",
+    "updateAt":  "2024-08-10T17:07:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  864,
+    "filterTotalNum":  1907,
+    "prev":  "a27dcf10-1b97-4bb5-926e-b32c2e24ba67",
+    "next":  "d1c0644f-24d4-4f5f-b599-bb3b34f2d10e"
+}

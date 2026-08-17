@@ -1,0 +1,21 @@
+﻿{
+    "id":  3054,
+    "exerciseKey":  "b44c5715-9bea-4e9b-913d-99d356538aab",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现函数parallelRequests(urls, maxConcurrent)",
+    "desc":  "```javascript\n// 要求：\n// 1. 最多同时执行maxConcurrent个请求\n// 2. 请求完成（无论成功/失败）后立即补位新请求\n// 3. 返回Promise，结果为所有请求响应数组（顺序需与urls一致）\nfunction parallelRequests(urls, maxConcurrent) {\n  // 请补充实现\n}\n```",
+    "options":  null,
+    "explanation":  "## 实现代码\n\n```javascript\nfunction parallelRequests(urls, maxConcurrent) {\n  return new Promise((resolve, reject) =\u003e {\n    const results = new Array(urls.length); // 保证结果顺序\n    let nextIndex = 0;                      // 下一个要发起请求的索引\n    let activeCount = 0;                    // 当前并发中的请求数\n    let finishedCount = 0;                  // 已完成的请求数\n\n    function runNext() {\n      // 所有请求完成\n      if (finishedCount === urls.length) {\n        resolve(results);\n        return;\n      }\n\n      // 启动新请求（补位）\n      while (activeCount \u003c maxConcurrent \u0026\u0026 nextIndex \u003c urls.length) {\n        const current = nextIndex;\n        const url = urls[nextIndex];\n        nextIndex++;\n        activeCount++;\n\n        // 这里假设请求方式是 fetch，可替换为任意返回 Promise 的请求函数\n        Promise.resolve(fetch(url))\n          .then(res =\u003e res)\n          .catch(err =\u003e err) // 失败也记录结果，不中断整体流程\n          .then(result =\u003e {\n            results[current] = result;\n          })\n          .finally(() =\u003e {\n            activeCount--;\n            finishedCount++;\n            runNext(); // 请求完成后立即补位\n          });\n      }\n    }\n\n    runNext();\n  });\n}\n```\n\n---\n\n## 设计思路说明\n\n### 1. 并发控制的核心\n\n* 使用 `activeCount` 记录**当前正在执行的请求数量**\n* 通过 `while (activeCount \u003c maxConcurrent)` 启动新请求\n* 请求完成后在 `finally` 中 **立即补位**\n\n这是一个典型的**请求池（request pool）/并发调度器**模型。\n\n---\n\n### 2. 如何保证结果顺序\n\n* 结果数组 `results` 预先按 `urls.length` 创建\n* 每个请求在启动时保存自己的索引 `current`\n* 无论请求完成顺序如何，始终写入 `results[current]`\n\n这样可以做到：\n\n\u003e **执行顺序无序，结果顺序有序**\n\n---\n\n### 3. 为什么用 `finally`\n\n```js\n.finally(() =\u003e {\n  activeCount--;\n  finishedCount++;\n  runNext();\n});\n```\n\n* **成功 / 失败都会执行**\n* 满足题目要求：\n\n  \u003e 请求完成（无论成功/失败）后立即补位新请求\n* 避免因异常导致并发池“卡死”\n\n---\n\n### 4. 返回整体 Promise 的时机\n\n```js\nif (finishedCount === urls.length) {\n  resolve(results);\n}\n```\n\n* 所有请求都完成后，统一 resolve\n* 不因单个请求失败 reject（更符合“批量请求”的实际业务需求）\n* 如果你希望“只要有一个失败就 reject”，可以在 `catch` 中直接 `reject(err)`\n\n---\n\n## 时间与空间复杂度\n\n* **时间复杂度**：O(n)（调度本身）\n* **空间复杂度**：O(n)（结果数组）",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2026-02-01T15:29:27.000Z",
+    "updateAt":  "2026-02-01T15:29:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  151,
+    "filterTotalNum":  1907,
+    "prev":  "32b2812f-241b-4d0a-9da6-3ff8556b2df1",
+    "next":  "0eb08245-5227-41ee-8dc4-f35a8e3b3748"
+}

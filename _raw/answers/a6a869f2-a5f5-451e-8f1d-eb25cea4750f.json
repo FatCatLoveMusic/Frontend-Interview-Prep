@@ -1,0 +1,21 @@
+﻿{
+    "id":  419,
+    "exerciseKey":  "a6a869f2-a5f5-451e-8f1d-eb25cea4750f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现深拷贝",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nconst cloneDeep1 = (target, hash = new WeakMap()) =\u003e {\n  // 对于传入参数处理\n  if (typeof target !== \u0027object\u0027 || target === null) {\n    return target;\n  }\n  // 哈希表中存在直接返回\n  if (hash.has(target)) return hash.get(target);\n\n  const cloneTarget = Array.isArray(target) ? [] : {};\n  hash.set(target, cloneTarget);\n\n  // 针对Symbol属性\n  const symKeys = Object.getOwnPropertySymbols(target);\n  if (symKeys.length) {\n    symKeys.forEach(symKey =\u003e {\n      if (typeof target[symKey] === \u0027object\u0027 \u0026\u0026 target[symKey] !== null) {\n        cloneTarget[symKey] = cloneDeep1(target[symKey]);\n      } else {\n        cloneTarget[symKey] = target[symKey];\n      }\n    })\n  }\n\n  for (const i in target) {\n    if (Object.prototype.hasOwnProperty.call(target, i)) {\n      cloneTarget[i] =\n        typeof target[i] === \u0027object\u0027 \u0026\u0026 target[i] !== null\n        ? cloneDeep1(target[i], hash)\n        : target[i];\n    }\n  }\n  return cloneTarget;\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:09:05.000Z",
+    "updateAt":  "2021-07-07T00:13:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1501,
+    "filterTotalNum":  1907,
+    "prev":  "f8787bfb-ca4c-4b0f-98d9-4ad5e0a3774d",
+    "next":  "665b5487-848c-424b-b6a5-800169ee8fd5"
+}

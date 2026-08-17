@@ -1,0 +1,21 @@
+﻿{
+    "id":  470,
+    "exerciseKey":  "59af70f8-871d-4358-aac1-e5dc4a0ca6df",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何检查TypeScript中的null和undefined ？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "通过使用一个缓冲检查，我们可以检查空和未定义:\n```\nif (x == null) {  \n}  \n```\n如果我们使用严格的检查，它将总是对设置为null的值为真，而对未定义的变量不为真。\n\n例子\n```\nvar a: number;  \nvar b: number = null;  \nfunction check(x, name) {  \n    if (x == null) {  \n        console.log(name + \u0027 == null\u0027);  \n    }  \n    if (x === null) {  \n        console.log(name + \u0027 === null\u0027);  \n    }  \n    if (typeof x === \u0027undefined\u0027) {  \n        console.log(name + \u0027 is undefined\u0027);  \n    }  \n}  \ncheck(a, \u0027a\u0027);  \ncheck(b, \u0027b\u0027);  \n```\n输出\n```\n\"a == null\"  \n\"a is undefined\"  \n\"b == null\"  \n\"b === null\"  \n```\n",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，可以通过类型保护（Type Guard）来检查`null`和`undefined`。以下是几种检查`null`和`undefined`的方法：\n\n1. **使用typeof和===操作符**：\n\n   ```typescript\n   if (typeof value === \u0027undefined\u0027 || value === null) {\n     // 处理null或undefined\n   }\n   ```\n\n3. **使用`!`操作符进行强制类型转换**：\n\n   ```typescript\n   if (value !== null \u0026\u0026 value !== undefined) {\n     // 确保value不是null或undefined\n   }\n   ```\n\n4. **使用联合类型**：\n\n   ```typescript\n   function check(value: string | null | undefined): boolean {\n     return value !== null \u0026\u0026 value !== undefined;\n   }\n   ```\n\n5. **使用类型断言**：\n\n   ```typescript\n   if (value as string !== undefined) {\n     // 假设value是string类型，并且不为undefined\n   }\n   ```\n\n**考察要点**：\n\n1. **类型保护**：理解如何使用类型保护来检查`null`和`undefined`。\n2. **强制类型转换**：了解如何使用`!`操作符进行强制类型转换。\n",
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2021-07-08T15:07:28.000Z",
+    "updateAt":  "2024-08-10T17:05:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1450,
+    "filterTotalNum":  1907,
+    "prev":  "01011a04-509e-4f6f-89d5-aa348d76ae2b",
+    "next":  "290f820a-5d60-466a-aa8c-c51ee79a8f2a"
+}

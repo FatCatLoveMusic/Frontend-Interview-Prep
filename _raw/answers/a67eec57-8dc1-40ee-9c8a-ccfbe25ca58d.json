@@ -1,0 +1,21 @@
+﻿{
+    "id":  303,
+    "exerciseKey":  "a67eec57-8dc1-40ee-9c8a-ccfbe25ca58d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "constructor中super与props参数一起使用的目的是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在调用方法之前，子类构造函数无法使用this引用super()。\n\n在ES6中，在子类的constructor中必须先调用super才能引用this。\n\n在constructor中可以使用this.props\n\n* 使用props：\n\n```react.js\nclass MyComponent extends React.Component {\n    constructor(props) {\n        super(props);\n        console.log(this.props);  // Prints { name: \u0027sudheer\u0027,age: 30 }\n    }\n}\n```\n\n* 不使用props：\n\n```react.js\nclass MyComponent extends React.Component {\n    constructor(props) {\n        super();\n        console.log(this.props); // Prints undefined\n        // But Props parameter is still available\n        console.log(props); // Prints { name: \u0027sudheer\u0027,age: 30 }\n    }\n\n    render() {\n        // No difference outside constructor\n        console.log(this.props) // Prints { name: \u0027sudheer\u0027,age: 30 }\n    }\n}\n```\n\n上面的代码片段揭示了this.props行为仅在构造函数中有所不同。外部构造函数相同。",
+    "pivot":  "- **`super(props)`**：确保在构造函数中正确初始化 `this.props`。\n- **初始化 `state` 和绑定事件处理程序**：可以在构造函数中使用 `this.props` 来初始化组件状态和绑定事件处理程序。\n- **必须调用**：如果在构造函数中使用 `this.props`，需要调用 `super(props)`。\n\n通过正确使用 `super(props)`，可以确保 React 组件在构造函数中能够正常工作，并访问到 `props`。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:44:18.000Z",
+    "updateAt":  "2024-08-10T17:04:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  1617,
+    "filterTotalNum":  1907,
+    "prev":  "d184edae-f95e-494b-8944-86e713028816",
+    "next":  "dcb3eab5-6a15-43e1-90bb-b6bb2a17697c"
+}

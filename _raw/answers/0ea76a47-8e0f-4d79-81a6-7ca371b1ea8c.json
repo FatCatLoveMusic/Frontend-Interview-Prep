@@ -1,0 +1,21 @@
+﻿{
+    "id":  1897,
+    "exerciseKey":  "0ea76a47-8e0f-4d79-81a6-7ca371b1ea8c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么把十进制的 0.2 转换成二进制？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "进制转换是比较基础的，如果大家熟悉 js 的 API ，那么会首先想到这两个方法：\n\n\n* 十进制转二进制：num.toString(2)\n* 二进制转十进制：parseInt(num, 2)\n\n所以答案就是 `(0.2).toString(2)`，可以简写为 `0.2.toString(2)`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-10-09T11:57:04.000Z",
+    "updateAt":  "2022-10-09T19:57:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  913,
+    "filterTotalNum":  1907,
+    "prev":  "495d46ca-f2ed-4b5c-a34a-1fa80709f0f5",
+    "next":  "2a46f54f-7445-44fa-90ec-0ce0d2b44711"
+}

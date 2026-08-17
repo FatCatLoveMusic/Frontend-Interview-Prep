@@ -1,0 +1,21 @@
+﻿{
+    "id":  400,
+    "exerciseKey":  "d7d29afc-ce7b-480d-aab0-66f70b25ce46",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "进程间有哪些通信方式？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 管道通信\n* 消息队列通信\n* 信号量通信\n* 共享内存通信\n* 套接字通信",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T13:37:28.000Z",
+    "updateAt":  "2021-07-07T00:12:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1520,
+    "filterTotalNum":  1907,
+    "prev":  "f1e6c221-11b8-4e5d-8e8b-f4c70d698291",
+    "next":  "6c221f8f-6a86-45f9-8141-59c21388c073"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1998,
+    "exerciseKey":  "109fce53-20a7-420d-9231-681a35016a6d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "websocket 中的 Handshaking 是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 **WebSocket** 协议中，**Handshaking（握手）** 是指客户端和服务器在建立 WebSocket 连接之前进行的一次 **升级请求与确认过程**。\n\n它的作用是：\n\n1. **确认双方是否支持 WebSocket 协议**；\n2. **将原本的 HTTP/1.1 长连接升级为 WebSocket 专用的全双工连接**；\n3. **协商必要的协议参数**（例如子协议 `Sec-WebSocket-Protocol`、扩展 `Sec-WebSocket-Extensions` 等）。\n\n---\n\n### 握手流程\n\n1. **客户端发起请求（HTTP Upgrade 请求）**\n   客户端首先通过 **HTTP 协议** 发起请求，请求头中带有一些特殊字段，表明希望将 HTTP 连接升级为 WebSocket：\n\n   ```http\n   GET /chat HTTP/1.1\n   Host: example.com:80\n   Upgrade: websocket\n   Connection: Upgrade\n   Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\n   Sec-WebSocket-Version: 13\n   ```\n\n   * `Upgrade: websocket` 表示想升级协议\n   * `Connection: Upgrade` 表示连接类型支持升级\n   * `Sec-WebSocket-Key` 是客户端随机生成的一个 Base64 编码字符串，用于校验\n   * `Sec-WebSocket-Version` 指定 WebSocket 版本（通常是 13）\n\n2. **服务器响应（HTTP 101 Switching Protocols）**\n   如果服务器支持 WebSocket，它会返回 **101 状态码**，并在响应头中确认升级：\n\n   ```http\n   HTTP/1.1 101 Switching Protocols\n   Upgrade: websocket\n   Connection: Upgrade\n   Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=\n   ```\n\n   * `101 Switching Protocols` 表示协议成功切换\n   * `Sec-WebSocket-Accept` 是服务端根据客户端 `Sec-WebSocket-Key` 计算出的校验值，保证握手合法\n\n3. **连接建立成功**\n   当握手完成后，HTTP 连接会升级为 WebSocket 通道，接下来就进入真正的 **双向全双工通信** 阶段，消息将以 WebSocket 帧的格式进行传输，而不是 HTTP。\n",
+    "pivot":  "* **Handshaking** 就是 WebSocket 连接建立前的 **HTTP 升级握手过程**。\n* 其核心是：客户端发起 **HTTP Upgrade 请求** → 服务端返回 **101 Switching Protocols** 响应 → 双方协议切换 → 进入 WebSocket 通信阶段。",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-05-24T01:25:01.000Z",
+    "updateAt":  "2025-08-28T08:14:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  812,
+    "filterTotalNum":  1907,
+    "prev":  "76826682-df0e-4dad-a50f-d500a09065cb",
+    "next":  "95185ca6-291f-4160-b65d-f291dfdf8a4f"
+}

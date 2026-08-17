@@ -1,0 +1,21 @@
+﻿{
+    "id":  2764,
+    "exerciseKey":  "82d187ea-2abe-4ad5-bffc-429098f18d25",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Proxy 和 Object.defineProperty 的区别是啥？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`Proxy` 和 `Object.defineProperty` 都可以用来拦截和操作对象的属性访问，但它们在功能、灵活性和适用场景上有显著的区别。\n\n### **1. `Object.defineProperty`**\n\n#### **功能**\n- 用于定义或修改对象的属性，包括属性的值、可写性、可枚举性、可配置性等。\n- 主要用于对单个属性进行细粒度的控制。\n\n#### **使用场景**\n- 对象属性的拦截和修改，例如：\n  - 定义 getter 和 setter。\n  - 修改属性的配置。\n  \n#### **示例代码**\n\n```javascript\nconst obj = {};\nObject.defineProperty(obj, \u0027name\u0027, {\n  value: \u0027Alice\u0027,\n  writable: true,\n  enumerable: true,\n  configurable: true,\n});\n\nconsole.log(obj.name); // Alice\n\nObject.defineProperty(obj, \u0027name\u0027, {\n  get() {\n    return \u0027Bob\u0027;\n  }\n});\n\nconsole.log(obj.name); // Bob\n```\n\n#### **限制**\n- 只对定义的属性有效，不能拦截对对象的整体访问或操作。\n- 需要针对每个属性分别进行定义，无法一次性处理多个属性或整个对象。\n\n### **2. `Proxy`**\n\n#### **功能**\n- 用于创建一个代理对象，该对象可以拦截并自定义对目标对象的基本操作（如属性访问、赋值、删除等）。\n- 提供了更多的拦截能力和灵活性，支持对整个对象的操作。\n\n#### **使用场景**\n- 可以用来拦截和修改对象的所有操作，例如：\n  - 属性的读取、赋值、删除。\n  - 函数调用。\n  - 目标对象的创建和扩展。\n  \n#### **示例代码**\n\n```javascript\nconst target = {\n  name: \u0027Alice\u0027\n};\n\nconst handler = {\n  get(target, property) {\n    return property in target ? target[property] : \u0027Default\u0027;\n  },\n  set(target, property, value) {\n    target[property] = value.toUpperCase();\n    return true;\n  }\n};\n\nconst proxy = new Proxy(target, handler);\n\nconsole.log(proxy.name); // Alice\nproxy.name = \u0027Bob\u0027;\nconsole.log(proxy.name); // BOB\nconsole.log(proxy.age); // Default\n```\n\n#### **优点**\n- 可以拦截对象的所有操作，提供更全面的控制。\n- 可以动态地应用拦截逻辑，不需要修改原始对象的定义。",
+    "pivot":  "- **`Object.defineProperty`**：\n  - **作用**：用于设置或修改对象的单个属性的详细特性。\n  - **限制**：只对指定的属性生效，无法处理对象的其他操作。\n\n- **`Proxy`**：\n  - **作用**：用于创建代理对象，拦截并自定义对目标对象的各种操作。\n  - **优点**：提供了全面的拦截功能和更灵活的操作方式，适合复杂的拦截需求。\n\n选择使用 `Proxy` 还是 `Object.defineProperty` 主要取决于需求的复杂性和需要拦截的操作范围。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T20:08:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  373,
+    "filterTotalNum":  1907,
+    "prev":  "197d354c-bc4c-4715-bf47-7af0c347f997",
+    "next":  "e33db22c-e826-41f0-b5a9-33b9a03091bc"
+}

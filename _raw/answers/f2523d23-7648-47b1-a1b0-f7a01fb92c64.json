@@ -1,0 +1,21 @@
+﻿{
+    "id":  1969,
+    "exerciseKey":  "f2523d23-7648-47b1-a1b0-f7a01fb92c64",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个方法，从某个数值数组中，获取最小正数（非零非负数）的索引值",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nfunction findNonZeroMinIndex(arr) {\n  let min = Infinity;\n  let index = -1;\n  for (let i = 0; i \u003c arr.length; i++) {\n    if (arr[i] \u003e 0 \u0026\u0026 arr[i] \u003c min) {\n      min = arr[i];\n      index = i;\n    }\n  }\n  return index;\n}\n```\n\n使用循环和条件判断来遍历数组，查找满足条件（即非零非负数）并且值最小的元素，并返回其索引。\n\n如果数组中没有满足条件的元素，则返回 -1。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2023-04-27T11:34:29.000Z",
+    "updateAt":  "2023-04-28T10:32:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  841,
+    "filterTotalNum":  1907,
+    "prev":  "f56eac8e-a286-4971-a9c4-77df60335d0c",
+    "next":  "dc78e2f9-568a-445d-988c-594092179848"
+}

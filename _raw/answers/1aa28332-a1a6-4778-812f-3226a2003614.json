@@ -1,0 +1,21 @@
+﻿{
+    "id":  1874,
+    "exerciseKey":  "1aa28332-a1a6-4778-812f-3226a2003614",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何实现SEO优化",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "SEO主要分为内部和外部两个方向。\n\n## 一、内部优化\n\n* META 标签优化：例如：TITLE，KEYWORDS，DESCRIPTION （TDK）等的优化\n* 内部链接的优化，包括相关性链接（Tag 标签），锚文本链接，各导航链接，及图片链接\n* 网站内容更新：每天保持站内的更新(主要是文章的更新等)\n* 服务器端渲染（SSR）\n\n## 二、外部优化\n\n* 外部链接类别：博客、论坛、B2B、新闻、分类信息、贴吧、知道、百科、相关信息网等尽量保持链接的多样性\n* 外链运营：每天添加一定数量的外部链接，使关键词排名稳定提升。\n* 外链选择：与一些和你网站相关性比较高,整体质量比较好的网站交换友情链接,巩固稳定关键词排名\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:44:59.000Z",
+    "updateAt":  "2024-07-22T10:06:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  936,
+    "filterTotalNum":  1907,
+    "prev":  "bae25a07-be25-4857-ae96-9f9e1130286e",
+    "next":  "3526fff1-d92d-4568-b6dd-549bc6c2a92e"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2344,
+    "exerciseKey":  "9e75bdd5-d3aa-4840-8842-9d4dcf7b1c24",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现日期格式化 format 函数",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "\n\n```ts\n// js 实现日期的  format 函数\n//\n// YYYY 对应年\n// MM 对应月\n// DD 对应日\n//\n// HH 对应 24 小时制度\n// hh 对应 12 小时制度\n// mm 对应分钟\n// ss 对应秒\n\nconst date = new Date();\nconst formattedDate = date.format(\u0027YYYY-MM-DD HH:mm:ss\u0027);\nconsole.log(formattedDate); // 输出结果为当前日期和时间的格式化字符串\n```\n\n以下是使用JavaScript实现日期格式化的`format`函数：\n\n```javascript\n// 挂载到Date对象原型上\nDate.prototype.format = function (format) {\n  const date = this;\n\n  const year = date.getFullYear();\n  const month = date.getMonth() + 1;\n  const day = date.getDate();\n  const hours = date.getHours();\n  const minutes = date.getMinutes();\n  const seconds = date.getSeconds();\n\n  format = format.replace(\u0027YYYY\u0027, year);\n  format = format.replace(\u0027MM\u0027, month.toString().padStart(2, \u00270\u0027));\n  format = format.replace(\u0027DD\u0027, day.toString().padStart(2, \u00270\u0027));\n  format = format.replace(\u0027HH\u0027, hours.toString().padStart(2, \u00270\u0027));\n  format = format.replace(\u0027hh\u0027, (hours % 12).toString().padStart(2, \u00270\u0027));\n  format = format.replace(\u0027mm\u0027, minutes.toString().padStart(2, \u00270\u0027));\n  format = format.replace(\u0027ss\u0027, seconds.toString().padStart(2, \u00270\u0027));\n\n  return format;\n};\n\n// 示例用法\nconst date = new Date();\nconst formattedDate = date.format(\u0027YYYY-MM-DD HH:mm:ss\u0027);\nconsole.log(formattedDate); // 输出结果为当前日期和时间的格式化字符串\n```\n\n上述代码中，我们通过在`Date`对象的原型上定义`format`函数，使得所有的`Date`对象都可以调用`format`函数进行日期格式化。在函数内部，我们使用`getFullYear`、`getMonth`、`getDate`等方法获取日期的年、月、日、时、分、秒的值，并将其替换到传入的`format`字符串中对应的占位符。最后返回格式化后的字符串。\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T14:17:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  578,
+    "filterTotalNum":  1907,
+    "prev":  "5794f8b9-0953-450d-9035-1a1b2575d7d8",
+    "next":  "10e5f89d-fd0e-4064-8b41-951b25692c9c"
+}

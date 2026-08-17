@@ -1,0 +1,21 @@
+﻿{
+    "id":  441,
+    "exerciseKey":  "1d87535d-c1c8-4c6e-b6f5-583c80193217",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "instanceof能否判断基本数据类型？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "能。比如下面这种方式:\n\n```js\nclass PrimitiveNumber {\n    static [Symbol.hasInstance](x) {\n        return typeof x === \u0027number\u0027\n    }\n}\nconsole.log(111 instanceof PrimitiveNumber) // true\n\n```\n\n其实就是自定义instanceof行为的一种方式，这里将原有的instanceof方法重定义，换成了typeof，因此能够判断基本数据类型。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:00:48.000Z",
+    "updateAt":  "2021-07-07T00:14:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1479,
+    "filterTotalNum":  1907,
+    "prev":  "7e7da360-d6e1-4f9f-b987-7e740b8d8d7e",
+    "next":  "a24f7d09-79df-4468-af94-654e8cfd3288"
+}

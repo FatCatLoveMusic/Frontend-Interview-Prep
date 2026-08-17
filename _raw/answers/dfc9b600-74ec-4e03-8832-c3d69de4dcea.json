@@ -1,0 +1,21 @@
+﻿{
+    "id":  316,
+    "exerciseKey":  "dfc9b600-74ec-4e03-8832-c3d69de4dcea",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么不能用数组下标来作为react组件中的key？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "react 使用diff算法，使用key来做同级比对。如果使用数组下标作为key，有以下情况：\n\n* 在数组头部或中部插入或删除元素： 所有key对应的节点的值发生更改，进行重新渲染。造成性能损耗\n* 而如果使用数组中唯一值来作为key：不管是在何处插入或删除节点，其他key对应的节点的值未发生更改，只需插入或删除操作的数组节点。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T11:02:02.000Z",
+    "updateAt":  "2021-07-04T21:30:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1604,
+    "filterTotalNum":  1907,
+    "prev":  "475b72b6-3c41-4509-afe3-abaaff8fc651",
+    "next":  "f4198437-3b03-4a26-83ae-7b820a23b85d"
+}

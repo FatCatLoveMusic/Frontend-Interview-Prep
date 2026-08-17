@@ -1,0 +1,21 @@
+﻿{
+    "id":  51,
+    "exerciseKey":  "e110762f-dcc0-41a2-bd28-866b0c798cc5",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nlet person = { name: \"Lydia\" };\nconst members = [person];\nperson = null;\n\nconsole.log(members);\n```",
+    "options":  "{\"options\":[\"null\",\"[null]\",\"[{}]\",\"[{ name: \\\"Lydia\\\" }]\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "首先我们声明了一个拥有`name`属性的对象 `person`。\n\n![](https://static.ecool.fun//article/37365590-420d-4091-9a63-e6f097a7f75d.png)\n\n然后我们又声明了一个变量`members`. 将首个元素赋值为变量`person`。 当设置两个对象彼此相等时，它们会通过 _引用_ 进行交互。但是当你将引用从一个变量分配至另一个变量时，其实只是执行了一个 _复制_ 操作。（注意一点，他们的引用 _并不相同_!）\n\n![](https://static.ecool.fun//article/bf3168b8-81d1-4876-82cb-0f79f171034d.png)\n\n接下来我们让`person`等于`null`。\n\n![](https://static.ecool.fun//article/d5f3049b-322b-4933-b449-56019678cf7d.png)\n\n我们没有修改数组第一个元素的值，而只是修改了变量`person`的值,因为元素（复制而来）的引用与`person`不同。`members`的第一个元素仍然保持着对原始对象的引用。当我们输出`members`数组时，第一个元素会将引用的对象打印出来。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-12-18T20:41:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1868,
+    "filterTotalNum":  1907,
+    "prev":  "ac5c3d92-55a9-4c88-b452-e0b583f13385",
+    "next":  "322d4cf7-d372-4963-87d3-173a058c4099"
+}

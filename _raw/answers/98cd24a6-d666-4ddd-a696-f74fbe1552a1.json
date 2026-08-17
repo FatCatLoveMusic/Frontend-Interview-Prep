@@ -1,0 +1,21 @@
+﻿{
+    "id":  1826,
+    "exerciseKey":  "98cd24a6-d666-4ddd-a696-f74fbe1552a1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么有时候⽤translate来改变位置⽽不是使用position进行定位？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "translate 是 transform 属性的⼀个值。\n\n改变transform或opacity不会触发浏览器重新布局（reflow）或重绘（repaint），只会触发复合（compositions）。\n\n⽽改变绝对定位会触发重新布局，进⽽触发重绘和复合。\n\ntransform使浏览器为元素创建⼀个 GPU 图层，但改变绝对定位会使⽤到 CPU。 \n\n因此translate()更⾼效，可以缩短平滑动画的绘制时间。 \n\n⽽translate改变位置时，元素依然会占据其原始空间，绝对定位就不会发⽣这种情况。\n\n具体的原理可查看 [【前端基础系列】CSS篇-带你搞懂“硬件加速”](https://mp.weixin.qq.com/s?__biz=Mzk0NTI2NDgxNQ==\u0026mid=2247484939\u0026idx=1\u0026sn=229467c549cec5e3980671f488a4d89e\u0026chksm=c31947cbf46ecedd13f930b44e9bc2a25ce706a8d30fce56c54584598015640338a6e075b8ff#rd)",
+    "pivot":  "使用 translate() 来改变元素位置相比于使用 position 属性有以下几个优势:\n\n**性能更好:**\n\n- translate() 是合成属性,通常由浏览器的合成线程来处理,不会触发重排(reflow)和重绘(repaint)。\n- position 定位会触发重排和重绘,对性能的影响较大。\n\n**不会影响布局:**\n\n- translate() 只改变元素的视觉位置,不会影响其他元素的布局。\n- position 定位会改变元素在文档流中的位置,会影响其他元素的布局。\n\n**动画效果更流畅:**\n\n- translate() 的动画效果更流畅,因为合成线程处理更高效。\n- position 定位的动画可能会出现卡顿或跳跃的情况。\n\n因此,在不需要改变元素在文档流中的位置,只需要改变视觉位置时,使用 translate() 通常是更好的选择。它可以提高性能,不影响布局,并且产生更流畅的动画效果。\n\n**考察重点**\n\n- 理解：transform 和 position 属性的区别。\n- 应用：根据布局需求和性能考虑，选择合适的方法改变元素位置。\n",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2022-06-25T05:56:29.000Z",
+    "updateAt":  "2024-08-10T17:06:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  983,
+    "filterTotalNum":  1907,
+    "prev":  "ad2a65d2-9330-4f65-9be7-b61e11e10c02",
+    "next":  "07d98297-cc3c-434b-9eb5-307858ded62d"
+}

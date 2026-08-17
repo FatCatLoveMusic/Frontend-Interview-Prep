@@ -1,0 +1,21 @@
+﻿{
+    "id":  1903,
+    "exerciseKey":  "a9413c3f-5575-464e-8c37-511bf9e32185",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么预防用户快速连续点击，造成数据多次提交？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "为了防止重复提交，前端一般会在第一次提交的结果返回前，将提交按钮禁用。\n\n实现的方法有很多种：\n\n* css设置 `pointer-events` 为 `none`\n* 增加变量控制，当变量满足条件时才执行点击事件的后续代码（比如给按钮的点击事件增加防抖）\n* 如果按钮使用 button 标签实现，可以使用 `disabled` 属性\n* 加遮罩层，比如一个全屏的loading，避免触发按钮的点击事件\n* ...",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-10-09T12:34:40.000Z",
+    "updateAt":  "2024-01-03T09:16:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  907,
+    "filterTotalNum":  1907,
+    "prev":  "96c01fd6-3a42-497e-aca3-4232d08b8e6b",
+    "next":  "b6d72acf-0360-4fc1-8835-6a6f8a3a4025"
+}

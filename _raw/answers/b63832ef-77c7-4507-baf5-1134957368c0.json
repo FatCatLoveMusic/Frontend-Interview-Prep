@@ -1,0 +1,21 @@
+﻿{
+    "id":  2103,
+    "exerciseKey":  "b63832ef-77c7-4507-baf5-1134957368c0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "谈谈 Vue 事件机制，并手写$on、$off、$emit、$once",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Vue 的事件机制允许组件之间进行通信，通过 `$on`、`$off`、`$emit` 和 `$once` 等方法进行事件的订阅、取消订阅、触发和一次性订阅。我们可以通过手写这些方法来理解其工作原理。\n\n### Vue 事件机制\n\n1. **`$on(event, callback)`**：监听特定事件。\n2. **`$off(event, callback)`**：停止监听特定事件。\n3. **`$emit(event, ...args)`**：触发特定事件。\n4. **`$once(event, callback)`**：只监听一次特定事件。\n\n### 手写实现\n\n下面是手写这些方法的简单实现：\n\n```javascript\nclass EventEmitter {\n  constructor() {\n    this.events = {};\n  }\n\n  // 监听事件\n  $on(event, callback) {\n    if (!this.events[event]) {\n      this.events[event] = [];\n    }\n    this.events[event].push(callback);\n  }\n\n  // 停止监听事件\n  $off(event, callback) {\n    if (!this.events[event]) return;\n\n    if (!callback) {\n      // 如果没有传递 callback，移除所有事件监听\n      this.events[event] = [];\n    } else {\n      // 移除特定的事件监听\n      this.events[event] = this.events[event].filter(cb =\u003e cb !== callback);\n    }\n  }\n\n  // 触发事件\n  $emit(event, ...args) {\n    if (this.events[event]) {\n      this.events[event].forEach(callback =\u003e callback.apply(this, args));\n    }\n  }\n\n  // 只监听一次事件\n  $once(event, callback) {\n    const wrapper = (...args) =\u003e {\n      callback.apply(this, args);\n      this.$off(event, wrapper);\n    };\n    this.$on(event, wrapper);\n  }\n}\n\n// 示例\nconst eventBus = new EventEmitter();\n\n// 监听事件\neventBus.$on(\u0027test\u0027, (msg) =\u003e console.log(\u0027test event:\u0027, msg));\n\n// 触发事件\neventBus.$emit(\u0027test\u0027, \u0027Hello, World!\u0027);\n\n// 监听一次事件\neventBus.$once(\u0027once\u0027, (msg) =\u003e console.log(\u0027once event:\u0027, msg));\n\n// 触发一次性事件\neventBus.$emit(\u0027once\u0027, \u0027This should appear once\u0027);\neventBus.$emit(\u0027once\u0027, \u0027This should not appear\u0027);\n\n// 停止监听事件\neventBus.$off(\u0027test\u0027);\n\n// 触发事件（已经移除监听）\neventBus.$emit(\u0027test\u0027, \u0027This should not appear\u0027);\n```\n\n### 解释\n\n1. **`$on`**：将事件和回调函数添加到 `events` 对象中。\n2. **`$off`**：如果没有传递回调函数，则移除所有监听。如果传递了回调函数，则只移除特定的回调。\n3. **`$emit`**：触发事件，调用所有注册的回调函数并传递参数。\n4. **`$once`**：使用一个包装函数 (`wrapper`) 包装原始回调函数，确保回调只执行一次，然后移除事件监听。",
+    "pivot":  "Vue 的事件机制是实现组件间通信的重要方式，它通过`$on`、`$off`、`$emit`和`$once`等方法允许组件之间进行事件的订阅、取消订阅、触发和一次性订阅。这些方法的工作原理可以通过手写它们的实现来更深入地理解。\n\n#### Vue 事件机制的工作原理\n\n1. **`$on(event, callback)`**：当监听器`$on`被调用时，它将回调函数`callback`存储在一个事件监听列表中。这个列表通常保存在一个对象中，例如`this.events`。\n2. **`$off(event, callback)`**：当取消监听器`$off`被调用时，它会从事件监听列表中移除之前通过`$on`存储的回调函数。如果`callback`参数没有提供，则移除所有与`event`相关的事件监听器。\n3. **`$emit(event, ...args)`**：当事件发射器`$emit`被调用时，它会遍历事件监听列表，并调用所有存储在该列表中的回调函数。它将这些回调函数作为参数传递，以便它们可以访问事件数据。\n4. **`$once(event, callback)`**：当一次性监听器`$once`被调用时，它与`$on`类似，但是它会返回一个函数。当这个返回的函数被调用时，它会触发事件，并执行回调函数。之后，它将自动从事件监听列表中移除该回调函数，确保它只被调用一次。\n\n手写实现参考详细答案\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-06-06T01:36:49.000Z",
+    "updateAt":  "2024-08-10T17:07:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  711,
+    "filterTotalNum":  1907,
+    "prev":  "7b8e4d40-609a-4e52-96e0-a4515709125c",
+    "next":  "b5d40614-89d3-42c7-823a-2102ef8006b1"
+}

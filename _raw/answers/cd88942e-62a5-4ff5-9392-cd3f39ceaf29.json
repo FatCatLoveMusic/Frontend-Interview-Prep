@@ -1,0 +1,21 @@
+﻿{
+    "id":  3216,
+    "exerciseKey":  "cd88942e-62a5-4ff5-9392-cd3f39ceaf29",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "MCP 如何实现工具发现（Discovery）？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "MCP 的工具发现，本质上是一个“客户端向 MCP Server 查询能力目录”的过程，而不是模型自己去扫描代码或猜测接口。\n\n典型流程是：客户端先和 MCP Server 建立连接，完成 `initialize` 握手。服务端会在能力声明里告诉客户端自己支持 `tools` 能力，例如：\n\n```json\n{\n  \"capabilities\": {\n    \"tools\": {\n      \"listChanged\": true\n    }\n  }\n}\n```\n\n这一步的意义是能力协商。客户端不应该默认每个 MCP Server 都有工具能力，而是根据服务端声明决定是否去拉取工具列表。`listChanged` 表示工具列表变化时，服务端可以通知客户端重新获取。\n\n随后客户端通过 JSON-RPC 调用 `tools/list`：\n\n```json\n{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"tools/list\",\n  \"params\": {\n    \"cursor\": \"optional-cursor-value\"\n  }\n}\n```\n\n服务端返回当前可用的工具集合。每个工具通常包含 `name`、`description`、`inputSchema` 等元信息；新版本规范中还可能包含 `title`、`icons`、`outputSchema`、缓存相关字段等。核心点是：工具不是只返回一个函数名，而是返回一份让客户端和模型都能理解的“调用契约”。\n\n例如：\n\n```json\n{\n  \"tools\": [\n    {\n      \"name\": \"get_weather\",\n      \"description\": \"Get current weather information for a location\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"location\": {\n            \"type\": \"string\",\n            \"description\": \"City name or zip code\"\n          }\n        },\n        \"required\": [\"location\"]\n      }\n    }\n  ]\n}\n```\n\n客户端拿到这份列表后，会把工具描述转成模型可理解的工具上下文。模型后续如果判断需要调用工具，就由客户端发起 `tools/call`。也就是说，MCP 的 Discovery 解决的是“有哪些工具、每个工具怎么调用、参数结构是什么”的问题；真正执行工具是另一个阶段。\n\n这里有几个工程细节需要注意。\n\n第一，`tools/list` 支持分页，因此工具数量较多时，客户端需要根据 `nextCursor` 持续拉取完整列表，而不是假设一次返回所有工具。\n\n第二，工具列表可能和权限有关。同一个 MCP Server 对不同用户、不同 token、不同授权范围，返回的工具集合可以不同。比如只读用户可能只能看到查询类工具，管理员才能看到写入或删除类工具。\n\n第三，客户端通常会缓存工具列表，尤其是在工具描述会进入模型上下文的场景下，稳定的工具顺序和缓存策略可以减少重复上下文成本。但只要收到 `notifications/tools/list_changed`，或者授权上下文发生变化，就应该重新拉取。\n\n第四，工具发现不是安全边界。客户端不能因为服务端返回了某个工具，就默认它一定安全。工具描述本身也可能被恶意构造，所以客户端需要做 schema 校验、权限控制、用户确认，以及对高风险工具调用做显式审批。\n\n从前端或客户端实现角度看，可以把 MCP 工具发现理解成一个动态插件注册机制：服务端提供工具元数据，客户端负责拉取、缓存、展示、校验，并把可用工具暴露给模型调度。",
+    "pivot":  "MCP 通过 `initialize` 阶段的 `tools` 能力声明确认服务端是否支持工具；客户端再调用 `tools/list` 获取工具列表。工具描述中包含名称、说明、输入 schema 等调用契约，并支持分页、缓存和变更通知。工具发现只负责“发现和描述工具”，工具执行由后续的 `tools/call` 完成；实际落地时还要结合权限、校验、缓存失效和用户确认机制。参考官方规范：\u003chttps://modelcontextprotocol.io/specification/draft/server/tools\u003e。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:59:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  72,
+    "filterTotalNum":  1907,
+    "prev":  "e775a01a-df14-4ec2-9e0c-935d8602c8e4",
+    "next":  "d33aadbf-d49d-439e-9cde-bd64b9349c89"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  62,
+    "exerciseKey":  "19462061-029d-4111-a94e-a3b3ca87a1e1",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\n// counter.js\nlet counter = 10;\nexport default counter;\n\n// index.js\nimport myCounter from \u0027./counter\u0027;\nmyCounter += 1;\nconsole.log(myCounter);\n```\n\n",
+    "options":  "{\"options\":[\"10\",\"11\",\"Error\",\"NaN\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "引入的模块是 _只读_ 的: 你不能修改引入的模块。只有导出他们的模块才能修改其值。\n当我们给`myCounter`增加一个值的时候会抛出一个异常： `myCounter`是只读的，不能被修改。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2022-01-09T12:47:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  1857,
+    "filterTotalNum":  1907,
+    "prev":  "5fd03a9b-274c-4ea1-be11-e9b042022693",
+    "next":  "e3c4f27f-343c-4b70-b95e-6163888c6eb5"
+}

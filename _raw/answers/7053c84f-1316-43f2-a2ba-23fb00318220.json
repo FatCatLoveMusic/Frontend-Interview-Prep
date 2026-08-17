@@ -1,0 +1,21 @@
+﻿{
+    "id":  2057,
+    "exerciseKey":  "7053c84f-1316-43f2-a2ba-23fb00318220",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "需要在本地实现一个聊天室，多个tab页相互通信，不能用websocket，你会怎么做？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以考虑使用以下方法：\n\n1. 使用LocalStorage：这个存储API可在浏览器的不同标签页之间共享数据。当一个标签页发送消息时，将消息存储在LocalStorage中。其他标签页可以监听该存储区的变化，并读取最新的消息内容来实现通信效果。\n```js\n// 监听变化\nwindow.addEventListener(\"storage\", (e) =\u003e {\n    // todo ...\n});\n```\n\n2. 使用Broadcast Channel API：Broadcast Channel API 可以在浏览器的不同上下文（包括不同的标签页）之间进行双向通信。当一个标签页发送消息到广播频道时，其他标签页可以通过监听相同的广播频道来接收和响应消息。\n\n3. 使用SharedWorker：SharedWorker 是一种在多个浏览器上下文之间共享脚本执行的机制，它可以在不同的标签页之间进行通信。可以创建一个SharedWorker，然后在各个标签页中连接到该SharedWorker，使它们能够共享数据和通信。\n\n以上方法都可以实现在本地多个标签页之间进行通信，但需要根据具体需求和项目情况选择适合的解决方案。需要注意的是，这些方法只适用于本地通信，无法实现跨网络的实时通信效果，若需要实现更复杂的聊天室功能，WebSocket仍是更常用的选择。",
+    "pivot":  "## 实现本地聊天室的三种方式\n\n### 1. 使用 `BroadcastChannel` API\n\n`BroadcastChannel` API 允许不同的浏览器标签页或窗口之间进行简单的广播通信。这种方式适用于需要在多个标签页之间广播消息的场景。\n\n#### 思路\n\n- **创建频道**：使用 `BroadcastChannel` 创建一个共享的频道，所有标签页都可以订阅这个频道。\n- **发送消息**：在一个标签页中发送消息到频道。\n- **接收消息**：在其他标签页中监听频道的消息，并处理接收到的消息。\n\n#### 解析\n\n- **简单直观**：`BroadcastChannel` 提供了简单的 API 来实现跨标签页通信，不需要额外的事件监听和数据管理。\n- **浏览器支持**：适用于大多数现代浏览器，但可能不被某些老旧浏览器支持。\n- **适用场景**：适合用于需要在多个标签页之间实时广播消息的应用，如聊天室。\n\n### 2. 使用 `localStorage` 事件\n\n`localStorage` 的 `storage` 事件可以在同一浏览器的不同标签页或窗口之间传递信息。每当一个标签页对 `localStorage` 进行写操作时，其他标签页会收到 `storage` 事件。\n\n#### 思路\n\n- **设置 `localStorage`**：在一个标签页中通过 `localStorage` 写入数据。\n- **监听 `storage` 事件**：在其他标签页中监听 `storage` 事件，接收数据并处理消息。\n\n#### 解析\n\n- **兼容性**：`localStorage` 支持所有现代浏览器，因此兼容性较好。\n- **消息管理**：需要处理 `localStorage` 中的数据管理和事件触发时的清理。\n- **适用场景**：适合简单的跨标签页通信场景，但需要注意数据的同步和处理逻辑。\n\n### 3. 使用 `SharedWorker`\n\n`SharedWorker` 允许多个浏览器上下文（如标签页或窗口）共享一个单一的工作线程，适用于需要跨多个标签页共享状态或处理复杂逻辑的场景。\n\n#### 思路\n\n- **创建 `SharedWorker`**：编写一个 `SharedWorker` 脚本来处理消息传递和共享逻辑。\n- **连接到 `SharedWorker`**：在每个标签页中创建 `SharedWorker` 实例，并与共享的工作线程进行通信。\n- **处理消息**：在 `SharedWorker` 脚本中处理消息并将其广播到所有连接的标签页。\n\n#### 解析\n\n- **功能强大**：`SharedWorker` 允许在多个标签页之间共享工作线程，适合需要复杂通信和状态共享的应用。\n- **资源共享**：能够有效地管理和共享数据，适合于需要持久化状态和复杂逻辑的场景。\n- **浏览器支持**：较为现代，但可能不被所有浏览器支持，需要检查兼容性。\n\n### 总结\n\n- **`BroadcastChannel`**：简单直观，适合广播消息的场景。\n- **`localStorage` 事件**：兼容性好，适合基本的跨标签页通信。\n- **`SharedWorker`**：功能强大，适合复杂的跨标签页通信和状态共享需求。\n\n根据具体的需求和浏览器支持，可以选择最适合的实现方式来构建本地聊天室应用。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2023-12-17T10:01:13.000Z",
+    "updateAt":  "2024-08-10T17:07:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  754,
+    "filterTotalNum":  1907,
+    "prev":  "d09f473f-e37f-4d6b-8208-2a0be8f87de7",
+    "next":  "37ec6705-eb04-44c9-99eb-4ffda663c7f7"
+}

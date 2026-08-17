@@ -1,0 +1,21 @@
+﻿{
+    "id":  430,
+    "exerciseKey":  "6b924c4e-203a-4034-aa34-025b36cbab12",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "数据Mock是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Mock 数据是前端开发过程中必不可少的一环，是分离前后端开发的关键链路。 \n\n通过预先跟服务器端约定好的接口，模拟请求数据甚至逻辑，能够让前端开发独立自主，不会被服务端的开发所阻塞。\n\n前后端同时开发的时候，后端接口数据没有出来，前端可以mock假数据，模拟开发。\n\nMock.js 是常用的辅助生成模拟数据的三方库，借助他可以提升我们的 mock 数据能力。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:35:55.000Z",
+    "updateAt":  "2021-07-07T00:14:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1490,
+    "filterTotalNum":  1907,
+    "prev":  "879ca17c-91e6-488d-a835-d89715f382c0",
+    "next":  "13f1b2b9-725c-4c16-ada0-fb050fdafe28"
+}

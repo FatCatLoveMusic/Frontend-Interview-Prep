@@ -1,0 +1,21 @@
+﻿{
+    "id":  102,
+    "exerciseKey":  "cac139d1-256d-4124-829d-5ca355a99144",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst info = {\n  [Symbol(\u0027a\u0027)]: \u0027b\u0027\n}\n\nconsole.log(info)\nconsole.log(Object.keys(info))\n```",
+    "options":  "{\"options\":[\"{Symbol(\u0027a\u0027): \u0027b\u0027} and [\\\"{Symbol(\u0027a\u0027)\\\"]\",\"{} and []\",\"{ a: \\\"b\\\" } and [\\\"a\\\"]\",\"{Symbol(\u0027a\u0027): \u0027b\u0027} and []\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`Symbol`类型是不可枚举的。`Object.keys`方法返回对象上的所有可枚举的键属性。`Symbol`类型是不可见的，并返回一个空数组。 记录整个对象时，所有属性都是可见的，甚至是不可枚举的属性。\n这是`Symbol`的众多特性之一：除了表示完全唯一的值（防止对象意外名称冲突，例如当使用2个想要向同一对象添加属性的库时），您还可以`隐藏`这种方式对象的属性（尽管不完全。你仍然可以使用`Object.getOwnPropertySymbols()`方法访问 `Symbol`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:27:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1817,
+    "filterTotalNum":  1907,
+    "prev":  "da532e2b-898c-4a7d-b179-fbe8052c8c60",
+    "next":  "3f8c30d2-789e-4108-80c2-30bc0f4ed50c"
+}

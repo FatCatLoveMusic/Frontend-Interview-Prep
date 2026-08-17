@@ -1,0 +1,21 @@
+﻿{
+    "id":  3224,
+    "exerciseKey":  "10ef6a8f-49a0-4815-9536-b9b4db1e47dc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Planner Agent 的职责是什么？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Planner Agent 更像多 Agent 系统里的“任务编排者”，核心职责不是亲自完成具体编码、检索或测试，而是把一个模糊的目标拆成可执行、可验证、可协作的任务链路。\n\n在实际工作流里，Planner Agent 首先要理解用户目标和约束，例如要做一个复杂前端页面，它需要识别出需求澄清、接口设计、组件拆分、状态管理、样式实现、测试验证这些阶段。然后它会把大任务拆成多个子任务，明确每个子任务的输入、输出、依赖关系和完成标准，再分配给合适的 Agent，比如 Research Agent 查资料，Coding Agent 写代码，Review Agent 做质量检查，Testing Agent 执行验证。\n\nPlanner Agent 还要负责动态调整计划。多 Agent 协作不是一次性排好流程就结束，中间可能会出现接口信息缺失、实现方案不可行、测试失败、上下文冲突等问题。Planner Agent 需要根据执行结果重新评估任务状态，决定是补充信息、回滚方案、重新分配任务，还是收敛到一个更简单可落地的实现路径。\n\n一个成熟的 Planner Agent 还需要控制成本和风险。它要避免任务拆得过细导致通信成本过高，也要避免任务拆得过粗导致执行 Agent 无法稳定完成。同时，它要维护全局上下文，确保不同 Agent 的产出可以合并成一致的最终结果，而不是各自完成局部正确但整体冲突的工作。\n\n所以，Planner Agent 的价值在于把“目标”转化成“有顺序、有边界、有验收标准的执行计划”，并在执行过程中持续协调、纠偏和收敛结果。",
+    "pivot":  "Planner Agent 主要负责理解目标、拆解任务、规划依赖、分配 Agent、跟踪执行状态、根据反馈重新规划，并控制协作成本与风险。它不强调亲自执行具体任务，而是保证多 Agent 系统能够围绕同一个目标高效、稳定地产出结果。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:51:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  64,
+    "filterTotalNum":  1907,
+    "prev":  "8406c3db-4068-4876-87de-b226bacc48f1",
+    "next":  "611e58b6-5e2d-4de9-a938-5cd377be20b1"
+}

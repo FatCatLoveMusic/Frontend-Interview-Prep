@@ -1,0 +1,21 @@
+﻿{
+    "id":  1708,
+    "exerciseKey":  "bce43604-1941-4945-bade-2e6622f4420f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "koa和express有哪些不同？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 框架介绍\n\nexpress框架是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，主要基于 Connect 中间件，并且自身封装了路由、视图处理等功能。\n\nkoa是 Express 原班人马基于 ES6 新特性重新开发的框架，主要基于 co 中间件，框架自身不包含任何中间件，很多功能需要借助第三方中间件解决，但是由于其基于 ES6 generator 特性的异步流程控制，解决了 \"callback hell\" 和麻烦的错误处理问题。\n\n## 相同点\n\n两个框架都对http进行了封装。相关的api都差不多，同一批人所写。\n\n## 不同点\n\nexpress内置了许多中间件可供使用，而koa没有。\n\nexpress包含路由，视图渲染等特性，而koa只有http模块。\n\nexpress的中间件模型为线型，而koa的中间件模型为U型，也可称为洋葱模型构造中间件。\n\nexpress通过回调实现异步函数，在多个回调、多个中间件中写起来容易逻辑混乱。\n\n```js\n// express写法\napp.get(\u0027/test\u0027, function (req, res) {\n    fs.readFile(\u0027/file1\u0027, function (err, data) {\n        if (err) {\n            res.status(500).send(\u0027read file1 error\u0027);\n        }\n        fs.readFile(\u0027/file2\u0027, function (err, data) {\n            if (err) {\n                res.status(500).send(\u0027read file2 error\u0027);\n            }\n            res.type(\u0027text/plain\u0027);\n            res.send(data);\n        });\n    });\n});\n\n```\n\n  \nkoa通过generator 和 async/await 使用同步的写法来处理异步，明显好于 callback 和 promise。\n\n```js\napp.use(async (ctx, next) =\u003e {\n    await next();\n    var data = await doReadFile();\n    ctx.response.type = \u0027text/plain\u0027;\n    ctx.response.body = data;\n});\n\n```\n\n## **总结**\n\n**Express**  \n 优点：线性逻辑，通过中间件形式把业务逻辑细分、简化，一个请求进来经过一系列中间件处理后再响应给用户，清晰明了。   \n缺点：基于 callback 组合业务逻辑，业务逻辑复杂时嵌套过多，异常捕获困难。\n\n  \n**Koa**  \n 优点：首先，借助 co 和 generator，很好地解决了异步流程控制和异常捕获问题。其次，Koa 把 Express 中内置的 router、view 等功能都移除了，使得框架本身更轻量。   \n缺点：社区相对较小。",
+    "pivot":  "**答题思路：**\n\nkoa和express作为Node.js平台上两个流行的Web开发框架，它们在多个方面存在不同。从以下几个方面对比阐述：\n\n- 1. 启动方式\n\n- 2. 中间件机制\n\n- 3. 异步编程方式\n\n- 4. 错误处理\n\n- 5. 社区和文档\n\n- 6. 设计理念\n\nkoa和express在启动方式、中间件机制、异步编程方式、错误处理、社区和文档以及设计理念等方面都存在明显的不同。开发者在选择框架时，应根据项目的具体需求和个人的技术栈来做出决策。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-03-20T15:16:26.000Z",
+    "updateAt":  "2024-08-10T17:06:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  1082,
+    "filterTotalNum":  1907,
+    "prev":  "bab18dbe-9168-4ef5-a1d7-e063a762cf50",
+    "next":  "ca2af24f-1516-4fd7-b979-e2f1d09ccb20"
+}

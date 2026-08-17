@@ -1,0 +1,21 @@
+﻿{
+    "id":  1652,
+    "exerciseKey":  "6778bdc8-7ea5-457c-aac7-c1a35b016940",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "盲人分袜子",
+    "desc":  "有两位盲人，他们都各自买了两对黑袜和两对白袜，八对袜子的布质、大小完全相同，而每对袜子都有一张商标纸连着。两位盲人不小心将八对袜子混在一起。他们每人怎样才能取回黑袜和白袜各两对呢？",
+    "options":  null,
+    "explanation":  "每拿一对袜子，就把袜子拆开，一人一只。到最后肯定是两个人都平均分到了黑袜子和白袜子。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-02-06T12:12:02.000Z",
+    "updateAt":  "2022-02-06T20:58:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1138,
+    "filterTotalNum":  1907,
+    "prev":  "1ef8080b-0b76-41f8-8a01-573921c6eddb",
+    "next":  "2975e074-7f61-4de9-ab07-94ca505493bc"
+}

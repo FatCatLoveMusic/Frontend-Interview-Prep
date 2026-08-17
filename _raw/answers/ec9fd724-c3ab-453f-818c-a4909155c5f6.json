@@ -1,0 +1,21 @@
+﻿{
+    "id":  2752,
+    "exerciseKey":  "ec9fd724-c3ab-453f-818c-a4909155c5f6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何实现可过期的 localStorage 数据?",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "实现可过期的 `localStorage` 数据，可以通过在存储数据时附加过期时间，并在读取数据时检查是否过期。\n\n以下是一个简单的实现方法：\n\n### **1. 存储数据**\n\n在存储数据时，可以将数据和过期时间一起存储。在本例中，使用一个对象来保存数据和过期时间的时间戳。\n\n#### **示例代码**\n\n```javascript\nfunction setItemWithExpiry(key, value, ttl) {\n  const now = new Date();\n  const item = {\n    value: value,\n    expiry: now.getTime() + ttl, // ttl 是过期时间（以毫秒为单位）\n  };\n  localStorage.setItem(key, JSON.stringify(item));\n}\n```\n\n### **2. 读取数据**\n\n读取数据时，需要检查数据是否已过期。如果数据已过期，则从 `localStorage` 中删除它，并返回 `null` 或其他标识过期的数据。\n\n#### **示例代码**\n\n```javascript\nfunction getItemWithExpiry(key) {\n  const itemStr = localStorage.getItem(key);\n  \n  // 如果不存在数据，则直接返回 null\n  if (!itemStr) {\n    return null;\n  }\n\n  const item = JSON.parse(itemStr);\n  const now = new Date();\n\n  // 检查是否过期\n  if (now.getTime() \u003e item.expiry) {\n    // 数据过期，删除数据\n    localStorage.removeItem(key);\n    return null;\n  }\n\n  return item.value;\n}\n```\n\n### **3. 使用示例**\n\n#### **存储数据**\n\n```javascript\n// 存储数据，过期时间为 5 分钟（300000 毫秒）\nsetItemWithExpiry(\u0027myKey\u0027, \u0027myValue\u0027, 300000);\n```\n\n#### **读取数据**\n\n```javascript\nconst value = getItemWithExpiry(\u0027myKey\u0027);\nconsole.log(value); // 如果未过期则输出 \u0027myValue\u0027，否则输出 null\n```",
+    "pivot":  "- **存储数据**时，使用一个包含数据和过期时间戳的对象来保存。\n- **读取数据**时，检查当前时间与存储的过期时间进行比较，决定是否返回数据或删除过期数据。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T20:16:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  376,
+    "filterTotalNum":  1907,
+    "prev":  "490221f4-ebf9-4d40-a2d2-254ab02c70f1",
+    "next":  "b62ecffe-ff0d-4f65-8ea7-884ef5b8ddff"
+}

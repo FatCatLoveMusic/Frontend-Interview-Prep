@@ -1,0 +1,21 @@
+﻿{
+    "id":  3128,
+    "exerciseKey":  "7396ddf6-52d8-4f27-94f4-27e04d7cc15b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "大模型的计费规则一般会区分“输入（命中缓存）”、“输入（未命中缓存）”、“输出”，它们有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这个问题本质上是在考察：\n\n\u003e 大模型推理过程中，哪些环节消耗了计算资源，以及为什么不同环节的成本差异这么大。\n\n## 一、输入（未命中缓存）是什么\n\n这是最正常的一种情况。\n\n例如：\n\n```txt\n请帮分析这段 React 代码...\n```\n\n模型收到请求后，需要：\n\n```txt\nPrompt\n↓\nTokenize\n↓\nTransformer 前向计算\n↓\n生成 KV Cache\n```\n\n也就是说：\n\n模型需要从第一个 Token 开始重新计算。\n\n例如：\n\n```txt\n系统提示词\n+\n项目上下文\n+\n用户问题\n```\n\n假设总共：\n\n```txt\n10000 Tokens\n```\n\n那么模型需要把这 10000 个 Token 全部过一遍 Transformer。\n\n这部分计算量非常大。\n\n因此：\n\n```txt\n输入（未命中缓存）\n=\n最贵的输入 Token\n```\n\n---\n\n## 二、什么是 KV Cache\n\n理解缓存计费之前，必须先理解 KV Cache。\n\nTransformer 在推理时会产生：\n\n```txt\nKey\nValue\n```\n\n矩阵。\n\n例如：\n\n```txt\nToken1\nToken2\nToken3\n...\n```\n\n计算完成后：\n\n```txt\nKV1\nKV2\nKV3\n...\n```\n\n可以被保存下来。\n\n这样后续继续生成时：\n\n```txt\nToken10001\n```\n\n就不需要重新计算：\n\n```txt\nToken1 ~ Token10000\n```\n\n了。\n\n直接复用之前结果。\n\n这就是：\n\n```txt\nKV Cache\n```\n\n也是现代大模型推理加速的核心技术。\n\n---\n\n## 三、输入（命中缓存）是什么\n\n假设有一个超长 Prompt：\n\n```txt\n你是资深前端专家...\n项目代码库说明...\n接口文档...\n数据库结构...\n```\n\n总共：\n\n```txt\n50000 Tokens\n```\n\n第一次请求：\n\n```txt\n问题1：\n请分析首页性能问题\n```\n\n模型需要计算：\n\n```txt\n50000 + 问题1\n```\n\n全部内容。\n\n---\n\n随后用户继续提问：\n\n```txt\n问题2：\n请分析登录模块\n```\n\n前面的：\n\n```txt\n50000 Tokens\n```\n\n实际上没变。\n\n因此服务端会发现：\n\n```txt\n前缀完全相同\n```\n\n于是直接复用：\n\n```txt\nKV Cache\n```\n\n不用重新计算。\n\n只计算新增部分：\n\n```txt\n问题2\n```\n\n即可。\n\n这时候：\n\n```txt\n50000 Tokens\n```\n\n就是：\n\n```txt\nInput Cached Tokens\n```\n\n即：\n\n```txt\n输入（命中缓存）\n```\n\n---\n\n因此：\n\n命中缓存的 Token：\n\n```txt\n仍然占上下文长度\n仍然需要传给模型\n但不需要重新计算\n```\n\n计算成本远低于普通输入。\n\n所以价格通常会便宜很多。\n\n例如某些模型可能：\n\n| 类型      | 单价   |\n| ------- | ---- |\n| 输入（未命中） | $1   |\n| 输入（命中）  | $0.1 |\n| 输出      | $8   |\n\n可以相差数倍甚至十倍以上。\n\n---\n\n## 四、为什么 Coding Agent 特别依赖缓存\n\n在 AI Coding 场景里：\n\n例如：\n\n```txt\n整个项目代码\n=\n20 万 Tokens\n```\n\nAgent 连续执行：\n\n```txt\n修 Bug\n写测试\n改组件\n分析依赖\n```\n\n如果每次都重新计算：\n\n```txt\n20 万 Tokens\n```\n\n成本会非常恐怖。\n\n因此：\n\nCursor、Claude Code、OpenAI Codex、各种 Agent 产品都会大量利用 Prompt Cache。\n\n流程类似：\n\n```txt\n项目上下文\n↓\n生成 KV Cache\n↓\n后续任务复用\n```\n\n这样：\n\n```txt\n20万 Token\n↓\n只计算新增几百 Token\n```\n\n成本下降非常明显。\n\n---\n\n## 五、输出为什么最贵\n\n很多人看到价格表会发现：\n\n```txt\nOutput Token\n\u003e\nInput Token\n```\n\n甚至贵好几倍。\n\n原因是：\n\n输出的计算远比输入复杂。\n\n---\n\n输入阶段：\n\n模型已经知道内容。\n\n例如：\n\n```txt\nA\nB\nC\nD\n```\n\n只需要做一次前向传播。\n\n---\n\n输出阶段：\n\n模型需要不断预测：\n\n```txt\n下一个 Token 是什么\n```\n\n例如：\n\n```txt\nconst\n↓\nname\n↓\n=\n↓\n\"Tom\"\n↓\n;\n```\n\n生成一个 Token：\n\n```txt\n一次 Transformer 推理\n```\n\n生成 1000 个 Token：\n\n```txt\n1000 次 Transformer 推理\n```\n\n因此：\n\n```txt\n生成越长\nGPU 占用越久\n```\n\n成本自然更高。\n\n---\n\n## 六、为什么长篇代码特别烧钱\n\n例如：\n\n用户问：\n\n```txt\n分析这段代码\n```\n\n输入：\n\n```txt\n30000 Tokens\n```\n\n输出：\n\n```txt\n500 Tokens\n```\n\n成本并不算高。\n\n---\n\n但如果要求：\n\n```txt\n直接生成完整后台系统代码\n```\n\n可能出现：\n\n```txt\n输入：\n5000 Tokens\n\n输出：\n15000 Tokens\n```\n\n这时真正贵的是：\n\n```txt\nOutput Tokens\n```\n\n而不是输入。\n\n所以很多 AI 编程产品最怕：\n\n```txt\nGenerate entire project\n```\n\n因为输出成本极高。\n\n---\n\n## 七、为什么很多产品强调 Prompt Cache\n\n例如一些 Agent 产品会宣传：\n\n```txt\n90% Cache Hit Rate\n```\n\n意思是：\n\n假设：\n\n```txt\n100 万输入 Tokens\n```\n\n其中：\n\n```txt\n90 万命中缓存\n10 万未命中\n```\n\n实际成本会大幅下降。\n\n这直接决定：\n\n* 平台利润\n* 响应速度\n* 用户额度消耗\n\n因此 Prompt Cache 已经成为 AI Agent 产品的重要优化手段之一。\n",
+    "pivot":  "大模型计费中的输入未命中缓存表示需要完整执行上下文计算；输入命中缓存表示复用了已有 KV Cache，仅需处理新增内容，因此成本更低；输出 Token 则对应模型逐步生成内容的推理过程，需要持续占用计算资源，通常单价最高。缓存命中率越高，长上下文和 Agent 场景的成本优化效果越明显。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-03-23T01:48:42.000Z",
+    "updateAt":  "2026-06-05T08:56:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  136,
+    "filterTotalNum":  1907,
+    "prev":  "46bf3a82-865f-4391-8ff9-1e5b5658f6be",
+    "next":  "46a530de-db64-4561-a680-591146f61c2c"
+}

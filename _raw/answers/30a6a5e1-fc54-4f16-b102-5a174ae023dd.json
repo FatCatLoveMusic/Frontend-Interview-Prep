@@ -1,0 +1,21 @@
+﻿{
+    "id":  59,
+    "exerciseKey":  "30a6a5e1-fc54-4f16-b102-5a174ae023dd",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\n(() =\u003e {\n  let x = (y = 10);\n})();\n\nconsole.log(typeof x);\nconsole.log(typeof y);\n```",
+    "options":  "{\"options\":[\"\\\"undefined\\\", \\\"number\\\"\",\"\\\"number\\\", \\\"number\\\"\",\"\\\"object\\\", \\\"number\\\"\",\"\\\"number\\\", \\\"undefined\\\"\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "`let x = y = 10;` 是下面这个表达式的缩写:\n```javascript\ny = 10;\nlet x = y;\n```\n我们设定`y`等于`10`时,我们实际上增加了一个属性`y`给全局对象(浏览器里的`window`, Nodejs里的`global`)。在浏览器中， `window.y`等于`10`.\n然后我们声明了变量`x`等于`y`,也是`10`.但变量是使用 `let`声明的，它只作用于 _块级作用域_, 仅在声明它的块中有效；就是案例中的立即调用表达式(IIFE)。使用`typeof`操作符时, 操作值 `x`没有被定义：因为我们在`x`声明块的外部，无法调用它。这就意味着`x`未定义。未分配或是未声明的变量类型为`\"undefined\"`. `console.log(typeof x)`返回`\"undefined\"`.\n而我们创建了全局变量`y`，并且设定`y`等于`10`.这个值在我们的代码各处都访问的到。 `y`已经被定义了，而且有一个`\"number\"`类型的值。 `console.log(typeof y)`返回`\"number\"`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:14:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  1860,
+    "filterTotalNum":  1907,
+    "prev":  "e5696d2f-2fdb-474a-b6d0-52f180eee942",
+    "next":  "f03cba69-b0fd-4450-b3e0-cb6a1f855bac"
+}

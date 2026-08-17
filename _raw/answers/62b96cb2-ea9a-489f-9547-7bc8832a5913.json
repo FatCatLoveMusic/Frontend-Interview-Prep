@@ -1,0 +1,21 @@
+﻿{
+    "id":  87,
+    "exerciseKey":  "62b96cb2-ea9a-489f-9547-7bc8832a5913",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nvar status = \"😎\"\n\nsetTimeout(() =\u003e {\n  const status = \"😍\"\n\n  const data = {\n    status: \"🥑\",\n    getStatus() {\n      return this.status\n    }\n  }\n\n  console.log(data.getStatus())\n  console.log(data.getStatus.call(this))\n}, 0)\n```",
+    "options":  "{\"options\":[\"\\\"🥑\\\" and \\\"😍\\\"\",\"\\\"🥑\\\" and \\\"😎\\\"\",\"\\\"😍\\\" and \\\"😎\\\"\",\"\\\"😎\\\" and \\\"😎\\\"\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`this`关键字的指向取决于使用它的位置。 在**函数**中，比如`getStatus`，`this`指向的是调用它的对象，上述例子中`data`对象调用了`getStatus`，因此`this`指向的就是`data`对象。 当我们打印`this.status`时，`data`对象的`status`属性被打印，即`\"🥑\"`。\n使用`call`方法，可以更改`this`指向的对象。`data.getStatus.call(this)`是将`this`的指向由`data`对象更改为全局对象。在全局对象上，有一个名为`status`的变量，其值为`”😎“`。 因此打印`this.status`时，会打印`“😎”`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:24:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1832,
+    "filterTotalNum":  1907,
+    "prev":  "ca78ecad-b7a0-4d2c-ac4e-650f86800a77",
+    "next":  "50a3f8fb-9e65-4a24-b4e4-60c02bb26cdc"
+}

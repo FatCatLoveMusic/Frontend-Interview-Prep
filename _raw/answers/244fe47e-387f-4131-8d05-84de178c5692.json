@@ -1,0 +1,21 @@
+﻿{
+    "id":  366,
+    "exerciseKey":  "244fe47e-387f-4131-8d05-84de178c5692",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "常见的HTTP请求方法",
+    "desc":  "\u003cp\u003e\u003c/p\u003e",
+    "options":  null,
+    "explanation":  "\u003cp style=\"text-align:start;text-indent:2em;\"\u003eHTTP（HyperText Transfer Protocol，超文本传输协议）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP请求方法（也称为“动作”或“操作”）定义了客户端希望对服务器上的资源进行的操作类型。HTTP/1.0 定义了三种请求方法：GET、POST 和 HEAD。随着HTTP/1.1 的引入，又增加了几种请求方法，以支持更丰富的客户端-服务器交互。下面是一些常见的HTTP请求方法：\u003c/p\u003e\u003col\u003e\u003cli\u003e\u003cstrong\u003eGET\u003c/strong\u003e：请求指定的页面信息，并返回实体主体。这是最常用的请求方法，通常用于请求服务器发送资源（如HTML页面）。GET请求的数据会附加在URL之后（即“查询字符串”），以\u003ccode\u003e?\u003c/code\u003e分隔URL和传输数据，多个参数用\u003ccode\u003e\u0026amp;\u003c/code\u003e连接。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST\u003c/strong\u003e：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。POST请求的数据被包含在请求体中。POST请求相比GET请求，更适合发送大量数据。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePUT\u003c/strong\u003e：向指定资源位置上传其最新内容（即更新资源）。PUT请求通常用于上传或更新服务器上的资源。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDELETE\u003c/strong\u003e：请求服务器删除指定的页面。DELETE请求通常用于删除服务器上的资源。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eHEAD\u003c/strong\u003e：类似于GET请求，只不过返回的响应中没有具体的内容，用于获取报头。HEAD请求常用于检查资源的最新状态或是否存在，而不传输实际内容。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eOPTIONS\u003c/strong\u003e：允许客户端查看服务器的性能。它描述了服务器支持的通信选项。例如，它可以被用来确定服务器支持哪些HTTP方法或者是否支持某些特定类型的“内容协商”。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eCONNECT\u003c/strong\u003e：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。通常用于SSL加密服务器的连接（经由非加密的HTTP代理服务器）。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eTRACE\u003c/strong\u003e：回显服务器收到的请求，主要用于测试或诊断。然而，由于安全原因（它可能暴露敏感信息），许多服务器默认禁用TRACE请求。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePATCH\u003c/strong\u003e：是对资源进行部分修改。与PUT请求不同，PATCH请求用于对资源进行局部更新，而不是替换整个资源。\u003c/li\u003e\u003c/ol\u003e\u003cp style=\"text-align:start;text-indent:2em;\"\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp style=\"text-align:start;text-indent:2em;\"\u003eHTTP请求方法：\u003c/p\u003e\u003col\u003e\u003cli\u003e\u003cstrong\u003eGET\u003c/strong\u003e：请求数据，如网页内容。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST\u003c/strong\u003e：提交数据，常用于表单提交或文件上传。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePUT\u003c/strong\u003e：上传或更新资源。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDELETE\u003c/strong\u003e：删除资源。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eHEAD\u003c/strong\u003e：获取资源的元数据，如内容类型或长度，但不返回实际内容。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eOPTIONS\u003c/strong\u003e：查询服务器支持的HTTP方法和选项。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePATCH\u003c/strong\u003e：对资源进行局部修改。\u003c/li\u003e\u003c/ol\u003e\u003cp style=\"text-align:start;text-indent:2em;\"\u003e\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T15:50:36.000Z",
+    "updateAt":  "2024-07-19T18:11:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  1554,
+    "filterTotalNum":  1907,
+    "prev":  "57a80f97-7217-4625-80f1-71ba9fd6d268",
+    "next":  "706d3e5d-a02b-4925-84e2-3e2c81c7ef1b"
+}

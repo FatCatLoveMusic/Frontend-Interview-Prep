@@ -1,0 +1,21 @@
+﻿{
+    "id":  466,
+    "exerciseKey":  "c585e9b3-1595-40cc-9132-b9dff1abd028",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "解释一下TypeScript中的枚举。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "枚举是TypeScipt数据类型，它允许我们定义一组命名常量。 使用枚举使记录意图或创建一组不同的案例变得更加容易。 它是相关值的集合，可以是数字值或字符串值。\n\n```typescript\nenum Gender {\n    Male,\n    Female\n    Other\n}\nconsole.log(Gender.Male); // Output: 0\n\n//We can also access an enum value by it\u0027s number value.\nconsole.log(Gender[1]); // Output: Female\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-08T15:02:03.000Z",
+    "updateAt":  "2021-07-11T11:26:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1454,
+    "filterTotalNum":  1907,
+    "prev":  "92dd5aef-8f57-4e85-a877-30f46de54fc9",
+    "next":  "cb091ae7-6a50-441b-9513-ef6638e5f123"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  426,
+    "exerciseKey":  "47240d74-7170-41b6-b85d-2a6977ea9a11",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现有并行限制的Promise调度器",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nclass Scheduler {\n  constructor() {\n    this.queue = [];\n    this.maxCount = 2;\n    this.runCounts = 0;\n  }\n  add(promiseCreator) {\n    this.queue.push(promiseCreator);\n  }\n  taskStart() {\n    for (let i = 0; i \u003c this.maxCount; i++) {\n      this.request();\n    }\n  }\n  request() {\n    if (!this.queue || !this.queue.length || this.runCounts \u003e= this.maxCount) {\n      return;\n    }\n    this.runCounts++;\n\n    this.queue.shift()().then(() =\u003e {\n      this.runCounts--;\n      this.request();\n    });\n  }\n}\n   \nconst timeout = time =\u003e new Promise(resolve =\u003e {\n  setTimeout(resolve, time);\n})\n  \nconst scheduler = new Scheduler();\n  \nconst addTask = (time,order) =\u003e {\n  scheduler.add(() =\u003e timeout(time).then(()=\u003econsole.log(order)))\n}\n  \n  \naddTask(1000, \u00271\u0027);\naddTask(500, \u00272\u0027);\naddTask(300, \u00273\u0027);\naddTask(400, \u00274\u0027);\nscheduler.taskStart()\n// 2\n// 3\n// 1\n// 4\n```\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:15:53.000Z",
+    "updateAt":  "2021-07-07T00:13:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  1494,
+    "filterTotalNum":  1907,
+    "prev":  "5893d2cc-0ce2-473b-9d42-341860dfdec9",
+    "next":  "f1dfb420-8c92-4210-98af-130b79133d82"
+}

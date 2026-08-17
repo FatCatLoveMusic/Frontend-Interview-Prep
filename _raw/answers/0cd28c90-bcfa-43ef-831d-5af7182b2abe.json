@@ -1,0 +1,21 @@
+﻿{
+    "id":  2218,
+    "exerciseKey":  "0cd28c90-bcfa-43ef-831d-5af7182b2abe",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在表单校验场景中， 如何实现页面视口滚动到报错的位置",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在表单校验场景中，当用户提交表单并发生验证错误时，通常需要将页面滚动到第一个报错的位置，以便用户能够清楚地看到并修正错误。\n\n### 实现思路\n\n1. **在表单提交时进行验证**：通过监听表单的提交事件或触发验证事件，进行表单的字段校验。\n2. **查找第一个错误的位置**：遍历表单字段，找到第一个校验失败的字段，获取其位置。\n3. **滚动页面到错误位置**：使用浏览器的 `scrollIntoView()` 方法将该字段滚动到视口可见区域。\n\n### 具体实现步骤\n\n1. **定义一个表单**：使用 HTML 创建表单，配合各个输入字段和校验提示。\n2. **验证表单**：通过 JavaScript 校验表单字段的值。\n3. **滚动到第一个错误字段**：当发现错误时，使用 `scrollIntoView()` 滚动到对应的输入框。\n\n### 示例代码\n\n假设有一个表单，包含多个输入框，需要进行简单的非空验证：\n\n```html\n\u003cform id=\"myForm\"\u003e\n  \u003cdiv class=\"form-group\"\u003e\n    \u003clabel for=\"name\"\u003eName\u003c/label\u003e\n    \u003cinput type=\"text\" id=\"name\" name=\"name\"\u003e\n    \u003cspan class=\"error-message\" id=\"nameError\"\u003e\u003c/span\u003e\n  \u003c/div\u003e\n  \n  \u003cdiv class=\"form-group\"\u003e\n    \u003clabel for=\"email\"\u003eEmail\u003c/label\u003e\n    \u003cinput type=\"email\" id=\"email\" name=\"email\"\u003e\n    \u003cspan class=\"error-message\" id=\"emailError\"\u003e\u003c/span\u003e\n  \u003c/div\u003e\n\n  \u003cdiv class=\"form-group\"\u003e\n    \u003clabel for=\"age\"\u003eAge\u003c/label\u003e\n    \u003cinput type=\"number\" id=\"age\" name=\"age\"\u003e\n    \u003cspan class=\"error-message\" id=\"ageError\"\u003e\u003c/span\u003e\n  \u003c/div\u003e\n\n  \u003cbutton type=\"submit\"\u003eSubmit\u003c/button\u003e\n\u003c/form\u003e\n```\n\n### JavaScript 代码\n\n```javascript\n// 表单校验\nfunction validateForm(event) {\n  event.preventDefault();  // 阻止表单提交，避免页面刷新\n\n  // 清空之前的错误信息\n  const errorMessages = document.querySelectorAll(\u0027.error-message\u0027);\n  errorMessages.forEach(msg =\u003e msg.textContent = \u0027\u0027);\n\n  // 获取表单字段\n  const name = document.getElementById(\u0027name\u0027);\n  const email = document.getElementById(\u0027email\u0027);\n  const age = document.getElementById(\u0027age\u0027);\n\n  let isValid = true;\n  let firstErrorElement = null;\n\n  // 校验每个字段\n  if (name.value.trim() === \u0027\u0027) {\n    isValid = false;\n    document.getElementById(\u0027nameError\u0027).textContent = \u0027Name is required.\u0027;\n    firstErrorElement = firstErrorElement || name;  // 记录第一个错误字段\n  }\n\n  if (email.value.trim() === \u0027\u0027) {\n    isValid = false;\n    document.getElementById(\u0027emailError\u0027).textContent = \u0027Email is required.\u0027;\n    firstErrorElement = firstErrorElement || email;\n  }\n\n  if (age.value.trim() === \u0027\u0027) {\n    isValid = false;\n    document.getElementById(\u0027ageError\u0027).textContent = \u0027Age is required.\u0027;\n    firstErrorElement = firstErrorElement || age;\n  }\n\n  // 如果有错误，滚动到第一个错误字段\n  if (!isValid \u0026\u0026 firstErrorElement) {\n    firstErrorElement.scrollIntoView({\n      behavior: \u0027smooth\u0027, // 平滑滚动\n      block: \u0027center\u0027 // 滚动到视口中间\n    });\n  }\n\n  return isValid;\n}\n\n// 绑定表单提交事件\nconst form = document.getElementById(\u0027myForm\u0027);\nform.addEventListener(\u0027submit\u0027, validateForm);\n```\n\n### 代码解释\n\n1. **表单校验函数 `validateForm`**：当表单提交时，首先阻止默认行为，防止页面刷新。然后，检查每个输入框的值是否为空。如果某个字段验证失败，就显示对应的错误信息，并记录第一个错误元素。\n   \n2. **`scrollIntoView()` 方法**：如果校验失败，并且找到了第一个错误字段，通过 `scrollIntoView()` 方法将该元素滚动到视口中间。这里使用了 `smooth` 选项来实现平滑滚动效果。\n\n3. **`firstErrorElement`**：用于记录第一个报错的元素，确保滚动到第一个错误的位置。\n\n4. **错误信息显示**：每个输入框旁边都有一个 `span` 元素用于显示相应的错误信息。\n\n### 其他补充\n\n1. **滚动位置优化**：\n   - 你可以调整 `scrollIntoView()` 的 `block` 参数，以控制滚动时的对齐方式。常见的值有：\n     - `start`：元素顶部与视口顶部对齐。\n     - `center`：元素与视口中心对齐。\n     - `end`：元素底部与视口底部对齐。\n\n2. **支持多个错误提示**：\n   - 如果需要支持多个错误提示（例如，表单中的多个字段可能同时出错），你可以扩展逻辑，依次显示所有字段的错误信息，并滚动到第一个错误的字段。\n\n3. **兼容性**：\n   - `scrollIntoView()` 方法在现代浏览器中得到了广泛的支持，但如果你需要兼容更旧的浏览器（如 IE），可能需要使用其他方法（例如：通过 `window.scroll()` 实现）。\n\n4. **自定义验证规则**：\n   - 你可以根据业务需求扩展验证规则，如正则校验邮箱格式、密码强度检查等。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-30T01:36:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  659,
+    "filterTotalNum":  1907,
+    "prev":  "c569f336-d60f-4fb7-88f3-7dbd61f1c435",
+    "next":  "b555e0aa-b4d3-46e8-b289-76f39748ea4b"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  23,
+    "exerciseKey":  "a58a7800-e751-4664-9c9c-b342b21c701a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction Person(firstName, lastName) {\n  this.firstName = firstName\n  this.lastName = lastName\n}\n\nconst lydia = new Person(\u0027Lydia\u0027, \u0027Hallie\u0027)\nconst sarah = Person(\u0027Sarah\u0027, \u0027Smith\u0027)\n\nconsole.log(lydia)\nconsole.log(sarah)\n```",
+    "options":  "{\"options\":[\"Person {firstName: \\\"Lydia\\\", lastName: \\\"Hallie\\\"} and undefined\",\"Person {firstName: \\\"Lydia\\\", lastName: \\\"Hallie\\\"} and Person {firstName: \\\"Sarah\\\", lastName: \\\"Smith\\\"}\",\"Person {firstName: \\\"Lydia\\\", lastName: \\\"Hallie\\\"} and {}\",\"Person {firstName: \\\"Lydia\\\", lastName: \\\"Hallie\\\"} and ReferenceError\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "对于 `sarah`，我们没有使用 `new` 关键字。当使用 `new` 时，`this` 引用我们创建的空对象。当未使用 `new` 时，`this` 引用的是**全局对象**（global object）。\n我们说 `this.firstName` 等于 `\"Sarah\"`，并且 `this.lastName` 等于 `\"Smith\"`。实际上我们做的是，定义了 `global.firstName = \u0027Sarah\u0027` 和 `global.lastName = \u0027Smith\u0027`。而 `sarah` 本身是 `undefined`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:08:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  1896,
+    "filterTotalNum":  1907,
+    "prev":  "9be3e346-ff10-44b3-b98d-057669a266c4",
+    "next":  "90a39d35-309c-4699-a1f7-bd352899965b"
+}

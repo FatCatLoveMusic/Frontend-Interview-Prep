@@ -1,0 +1,21 @@
+﻿{
+    "id":  1884,
+    "exerciseKey":  "c14803df-f552-4a23-b50d-fd8e3f77f17e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "SPA应用怎么进行SEO？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 概述\n\nSPA全名是`Single Page Application`，指的是单页面应用。\n\nSEO全称为`Search Engine Optimization`，指的是搜索引擎优化。\n\nSPA技术将产出html的逻辑从服务器转移到了客户端，在进入React, Vue等UI框架进行开发时，我们开发的页面更多的是在客户端进行脚本执行、数据请求和UI动态装载。\n\n那么搜索引擎爬虫在抓取这样的页面的时，在未做任何优化的情况下，通常拿到的是类似下面的字符文本：\n\n```js\n\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"zh-CN\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"UTF-8\"\u003e\n    \u003ctitle\u003etitle\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\u003cdiv id=\"root\"\u003e\u003c/div\u003e\n\u003cscript src=\"index.js\"\u003e\u003c/script\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\n除了可以事先定义的title（可能title也不能事先确定），在SPA下很多内容需要通过ajax请求server拿到数据通过脚本执行产生。通常爬虫不会有类似浏览器的执行环境去产生这些内容。\n\n那么如何让爬虫拿到的数据和用户通过浏览器看到的数据尽量是一致？\n\n## SPA的优缺点\n\n优点：用户体验好，前后端代码分离，利于后期的维护\n\n缺点：seo不好，首次加载时长比较久，导航需要自己去实现前进后退。\n\n## SPA如何解决SEO的问题\n\n* SSR 服务端渲染\n\n优点：首屏加载快(因为服务器返回的网页已经包含数据, 所以之下载完JS/CSS就可以直接渲染)。每次请求返回的都是一个独立完成的网页, 更利于SEO。\n\n缺点就是服务器压力会比较大，对网络要求比较大，\n\n## 预渲染\n\n无需服务器实时动态编译，采用预渲染，在构建时针对特定路由简单的生成静态HTML文件\n\n本质就是客户端渲染, 只不过和SPA不同的是预渲染有多个界面\n\n最大优点: 由于有多个界面, 所以更利于SEO\n\n最大缺点: 首屏加载慢, 预编译会非常的慢\n\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-08-12T11:58:16.000Z",
+    "updateAt":  "2024-07-22T10:05:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  926,
+    "filterTotalNum":  1907,
+    "prev":  "4eee218f-92b4-4765-a377-0cacbeb992c1",
+    "next":  "255b920d-ba6d-4e6a-85ac-58c78d2e0773"
+}

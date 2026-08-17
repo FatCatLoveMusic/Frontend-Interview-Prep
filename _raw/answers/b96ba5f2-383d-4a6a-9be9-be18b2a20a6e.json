@@ -1,0 +1,21 @@
+﻿{
+    "id":  549,
+    "exerciseKey":  "b96ba5f2-383d-4a6a-9be9-be18b2a20a6e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说对 Node 中的 Stream 的理解？应用场景？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、是什么\n\n流（Stream），是一个数据传输手段，是端到端信息交换的一种方式，而且是有顺序的,是逐块读取数据、处理内容，用于顺序读取输入或写入输出\n\n`Node.js`中很多对象都实现了流，总之它是会冒数据（以 `Buffer` 为单位）\n\n它的独特之处在于，它不像传统的程序那样一次将一个文件读入内存，而是逐块读取数据、处理其内容，而不是将其全部保存在内存中\n\n流可以分成三部分：`source`、`dest`、`pipe`\n\n在`source`和`dest`之间有一个连接的管道`pipe`,它的基本语法是`source.pipe(dest)`，`source`和`dest`就是通过pipe连接，让数据从`source`流向了`dest`，如下图所示：\n\n ![](https://static.ecool.fun//article/e676a4d2-5cbf-4541-8cd6-7770ac09c348.png)\n\n\n\n\n\n## 二、种类\n\n在`NodeJS`，几乎所有的地方都使用到了流的概念，分成四个种类：\n\n- 可写流：可写入数据的流。例如 fs.createWriteStream()  可以使用流将数据写入文件\n\n- 可读流： 可读取数据的流。例如fs.createReadStream() 可以从文件读取内容\n\n- 双工流： 既可读又可写的流。例如 net.Socket\n\n- 转换流： 可以在数据写入和读取时修改或转换数据的流。例如，在文件压缩操作中，可以向文件写入压缩数据，并从文件中读取解压数据\n\n\n在`NodeJS`中`HTTP`服务器模块中，`request` 是可读流，`response` 是可写流。还有`fs` 模块，能同时处理可读和可写文件流\n\n可读流和可写流都是单向的，比较容易理解，而另外两个是双向的\n\n### 双工流\n\n之前了解过`websocket`通信，是一个全双工通信，发送方和接受方都是各自独立的方法，发送和接收都没有任何关系\n\n如下图所示：\n\n ![](https://static.ecool.fun//article/9bc63359-6e40-4582-8bb5-4ab539b12f87.png)\n\n基本代码如下：\n\n```js\nconst { Duplex } = require(\u0027stream\u0027);\n\nconst myDuplex = new Duplex({\n  read(size) {\n    // ...\n  },\n  write(chunk, encoding, callback) {\n    // ...\n  }\n});\n```\n\n\n\n### 双工流\n\n双工流的演示图如下所示：\n\n ![](https://static.ecool.fun//article/7e262767-786d-4abf-84a3-1a3f759a8a57.png)\n\n除了上述压缩包的例子，还比如一个 `babel`，把`es6`转换为，我们在左边写入 `es6`，从右边读取 `es5`\n\n基本代码如下所示：\n\n```js\nconst { Transform } = require(\u0027stream\u0027);\n\nconst myTransform = new Transform({\n  transform(chunk, encoding, callback) {\n    // ...\n  }\n});\n```\n\n\n\n## 三、应用场景\n\n`stream`的应用场景主要就是处理`IO`操作，而`http`请求和文件操作都属于`IO`操作\n\n思想一下，如果一次`IO`操作过大，硬件的开销就过大，而将此次大的`IO`操作进行分段操作，让数据像水管一样流动，知道流动完成\n\n常见的场景有：\n\n- get请求返回文件给客户端\n- 文件操作\n- 一些打包工具的底层操作\n\n\n\n### get请求返回文件给客户端\n\n使用`stream`流返回文件，`res`也是一个`stream`对象，通过`pipe`管道将文件数据返回\n\n```js\nconst server = http.createServer(function (req, res) {\n    const method = req.method; // 获取请求方法\n    if (method === \u0027GET\u0027) { // get 请求\n        const fileName = path.resolve(__dirname, \u0027data.txt\u0027);\n        let stream = fs.createReadStream(fileName);\n        stream.pipe(res); // 将 res 作为 stream 的 dest\n    }\n});\nserver.listen(8000);\n```\n\n\n\n### 文件操作\n\n创建一个可读数据流`readStream`，一个可写数据流`writeStream`，通过`pipe`管道把数据流转过去\n\n```js\nconst fs = require(\u0027fs\u0027)\nconst path = require(\u0027path\u0027)\n\n// 两个文件名\nconst fileName1 = path.resolve(__dirname, \u0027data.txt\u0027)\nconst fileName2 = path.resolve(__dirname, \u0027data-bak.txt\u0027)\n// 读取文件的 stream 对象\nconst readStream = fs.createReadStream(fileName1)\n// 写入文件的 stream 对象\nconst writeStream = fs.createWriteStream(fileName2)\n// 通过 pipe执行拷贝，数据流转\nreadStream.pipe(writeStream)\n// 数据读取完成监听，即拷贝完成\nreadStream.on(\u0027end\u0027, function () {\n    console.log(\u0027拷贝完成\u0027)\n})\n\n```\n\n\n\n\n\n### 一些打包工具的底层操作\n\n目前一些比较火的前端打包构建工具，都是通过`node.js`编写的，打包和构建的过程肯定是文件频繁操作的过程，离不来`stream`，如`gulp`\n",
+    "pivot":  "**作答思路**：\n\n在Node.js中，Stream是一种用于处理流式数据的抽象，它可以以流的形式读取或写入数据。Stream可以是可读的、可写的，或者两者都是。\n\n应用场景：\n\n1. **文件读写**：使用Stream可以高效地读取或写入大文件，避免一次性将文件加载到内存中。\n2. **网络通信**：在Node.js中，所有网络操作都是基于Stream进行的，如HTTP请求和响应。\n3. **流式数据处理**：在处理大量数据时，可以使用Stream来分批次处理数据，而不是一次性处理所有数据。\n4. **实时数据传输**：在需要实时传输数据的应用场景中，可以使用Stream来保证数据的实时性和高效性。\n\n**考察要点**：\n\n1. **Stream概念**：理解Stream的基本原理和用途。\n2. **应用场景**：了解Stream在Node.js中的典型应用场景。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-25T02:17:05.000Z",
+    "updateAt":  "2024-08-10T17:05:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1371,
+    "filterTotalNum":  1907,
+    "prev":  "9ee51dac-67c2-4181-b9a6-18a10b2a8f95",
+    "next":  "b32040b5-50a0-40a8-931d-82738916e4ee"
+}

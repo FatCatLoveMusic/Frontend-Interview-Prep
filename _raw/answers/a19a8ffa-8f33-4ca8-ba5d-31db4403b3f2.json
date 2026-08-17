@@ -1,0 +1,21 @@
+﻿{
+    "id":  2084,
+    "exerciseKey":  "a19a8ffa-8f33-4ca8-ba5d-31db4403b3f2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "MessageChannel 是什么，有什么使用场景？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " `MessageChannel` 是一个 JavaScript API，用于在两个独立的执行环境（如 Web Workers 或者不同的 browsing contexts）之间建立双向通信的通道。`MessageChannel` 提供了两个通信端点（`port1` 和 `port2`），可以在两个不同的执行环境之间传递消息，并通过事件监听的方式来处理这些消息。\n\n使用场景包括但不限于：\n\n1. **Web Workers 通信**：在 Web 开发中，`MessageChannel` 通常用于在主线程和 Web Worker 之间建立通信通道，以便主线程与 Worker 之间传递消息和数据。\n\n2. **不同浏览上下文（browsing context）之间的通信**：在现代浏览器中，多个标签页、iframe 或者其他类型的 browsing context 可以通过 `MessageChannel` 实现通信。\n\n3. **SharedWorker 通信**：`MessageChannel` 可以用于在主线程和 Shared Worker 之间建立通信通道。\n\n4. **服务端和客户端之间的通信**：`MessageChannel` 可以用于客户端（如浏览器）与服务端（如 WebSocket 服务器）之间的通信，特别是在与 WebSocket 或其他类似技术结合使用时。\n\n5. **异步任务处理**：在某些场景中，使用 `MessageChannel` 可以更方便地处理异步任务，因为它提供了独立于主线程的通信通道。\n\n### 使用示例\n\n下面是一个简单的示例，展示如何使用 `MessageChannel` 在主线程和 Web Worker 之间建立通信通道：\n\n```javascript\n// 创建 MessageChannel\nconst channel = new MessageChannel();\nconst port1 = channel.port1;\nconst port2 = channel.port2;\n\n// 在主线程中\nconst worker = new Worker(\u0027worker.js\u0027);\nworker.postMessage({ port: port2 }, [port2]);\n\nport1.onmessage = function(event) {\n  console.log(\u0027Received message from worker:\u0027, event.data);\n};\n\n// 发送消息给 worker\nport1.postMessage(\u0027Hello, Worker!\u0027);\n```\n\n在上面的示例中，我们创建了一个 `MessageChannel`，并通过 `port1` 和 `port2` 进行通信。我们将 `port2` 发送给 Web Worker，`port1` 留在主线程。然后，主线程可以通过监听 `port1` 的 `onmessage` 事件来接收来自 Web Worker 的消息，并通过 `port1.postMessage()` 向 Web Worker 发送消息。\n\n扩展阅读：[2024 年了，你还不知道 MessageChannel 吗？\n](https://mp.weixin.qq.com/s?__biz=Mzk0NTI2NDgxNQ==\u0026mid=2247492054\u0026idx=1\u0026sn=c8c11868dbdd8ffba1e190d1719ae4d8\u0026chksm=c31aa016f46d2900b040a3c139a8d70e28807ce0b7e03085a02e6cbdbce3af33b2af4aad899e\u0026token=2103557006\u0026lang=zh_CN\u0026poc_token=HLrLIWajj9xhO8ZiA6U7wtv9LKPgLUyb2h3DRpH0)",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-02-26T03:04:58.000Z",
+    "updateAt":  "2024-07-19T08:01:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  729,
+    "filterTotalNum":  1907,
+    "prev":  "d01405cd-cb96-4346-9ac9-86f75f698634",
+    "next":  "2839488b-8d7e-47ff-9c9a-c2631479183f"
+}

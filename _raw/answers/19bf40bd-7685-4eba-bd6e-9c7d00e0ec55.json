@@ -1,0 +1,21 @@
+﻿{
+    "id":  56,
+    "exerciseKey":  "19bf40bd-7685-4eba-bd6e-9c7d00e0ec55",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出的是什么?",
+    "desc":  "```javascript\nfunction getInfo(member, year) {\n  member.name = \"Lydia\";\n  year = \"1998\";\n}\n\nconst person = { name: \"Sarah\" };\nconst birthYear = \"1997\";\n\ngetInfo(person, birthYear);\n\nconsole.log(person, birthYear);\n```",
+    "options":  "{\"options\":[\"{ name: \\\"Lydia\\\" }, \\\"1997\\\"\",\"{ name: \\\"Sarah\\\" }, \\\"1998\\\"\",\"{ name: \\\"Lydia\\\" }, \\\"1998\\\"\",\"{ name: \\\"Sarah\\\" }, \\\"1997\\\"\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "普通参数都是 _值_ 传递的，而对象则不同，是 _引用_ 传递。所以说，`birthYear`是值传递，因为他是个字符串而不是对象。当我们对参数进行值传递时，会创建一份该值的 _复制_ 。（可以参考问题46）\n变量`birthYear`有一个对`\"1997\"`的引用，而传入的参数也有一个对`\"1997\"`的引用，但二者的引用并不相同。当我们通过给 `year`赋值`\"1998\"`来更新`year`的值的时候我们只是更新了`year`（的引用）。此时`birthYear`仍然是`\"1997\"`.\n而`person`是个对象。参数`member`引用与之 _相同的_ 对象。当我们修改`member`所引用对象的属性时,`person`的相应属性也被修改了,因为他们引用了相同的对象. `person`的 `name`属性也变成了 `\"Lydia\"`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:13:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  1863,
+    "filterTotalNum":  1907,
+    "prev":  "78f63a99-87f9-4162-b932-3bdb38e4b166",
+    "next":  "ff764705-09da-45ff-8678-56ab75fce6de"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  32,
+    "exerciseKey":  "368a4fdc-4c5f-4a97-81a8-eab34a3fcb7c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nvar num = 8\nvar num = 10\n\nconsole.log(num)\n```",
+    "options":  "{\"options\":[\"8\",\"10\",\"SyntaxError\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "使用 `var` 关键字，你可以用相同的名称声明多个变量。然后变量将保存最新的值。\n你不能使用 `let` 或 `const` 来实现这一点，因为它们是块作用域的。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:09:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1887,
+    "filterTotalNum":  1907,
+    "prev":  "979c6688-b432-487d-81bb-7250ae59840a",
+    "next":  "78102227-0f8f-4f64-b2b2-17c35b6873e6"
+}

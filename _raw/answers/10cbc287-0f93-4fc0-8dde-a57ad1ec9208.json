@@ -1,0 +1,21 @@
+﻿{
+    "id":  72,
+    "exerciseKey":  "10cbc287-0f93-4fc0-8dde-a57ad1ec9208",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\n// index.js\nconsole.log(\u0027running index.js\u0027);\nimport { sum } from \u0027./sum.js\u0027;\nconsole.log(sum(1, 2));\n\n// sum.js\nconsole.log(\u0027running sum.js\u0027);\nexport const sum = (a, b) =\u003e a + b;\n```",
+    "options":  "{\"options\":[\"running index.js, running sum.js, 3\",\"running sum.js, running index.js, 3\",\"running sum.js, 3, running index.js\",\"running index.js, undefined, running sum.js\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`import`命令是编译阶段执行的，在代码运行之前。因此这意味着被导入的模块会先运行，而导入模块的文件会后执行。\n这是CommonJS中`require（）`和`import`之间的区别。使用`require()`，您可以在运行代码时根据需要加载依赖项。 如果我们使用`require`而不是`import`，`running index.js`，`running sum.js`，`3`会被依次打印。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:21:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1847,
+    "filterTotalNum":  1907,
+    "prev":  "7f433ba8-03d7-4cab-b94b-535819249561",
+    "next":  "c591d4b9-eff8-4a29-b01b-50130bde5d3b"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  74,
+    "exerciseKey":  "1915f55c-162b-46ee-bf06-11194d67730c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst name = \"Lydia Hallie\"\nconsole.log(name.padStart(13))\nconsole.log(name.padStart(2))\n```",
+    "options":  "{\"options\":[\"\\\"Lydia Hallie\\\", \\\"Lydia Hallie\\\"\",\"\\\"           Lydia Hallie\\\", \\\"  Lydia Hallie\\\" (\\\"[13x whitespace]Lydia Hallie\\\", \\\"[2x whitespace]Lydia Hallie\\\")\",\"\\\" Lydia Hallie\\\", \\\"Lydia Hallie\\\" (\\\"[1x whitespace]Lydia Hallie\\\", \\\"Lydia Hallie\\\")\",\"\\\"Lydia Hallie\\\", \\\"Lyd\\\"\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "使用`padStart`方法，我们可以在字符串的开头添加填充。传递给此方法的参数是字符串的总长度（包含填充）。字符串`Lydia Hallie`的长度为`12`, 因此`name.padStart（13）`在字符串的开头只会插入1（`13 - 12 = 1`）个空格。\n如果传递给`padStart`方法的参数小于字符串的长度，则不会添加填充。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:21:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1845,
+    "filterTotalNum":  1907,
+    "prev":  "e28517a7-ce0d-41af-b7a0-94a0baeb1477",
+    "next":  "7f433ba8-03d7-4cab-b94b-535819249561"
+}

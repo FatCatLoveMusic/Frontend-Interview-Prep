@@ -1,0 +1,21 @@
+﻿{
+    "id":  409,
+    "exerciseKey":  "f1974383-8f98-4cd9-8a8e-f0c51e61b275",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Array.prototype.forEach()",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nArray.prototype.forEach = function(callback, thisArg) {\n  if (this == null) {\n    throw new TypeError(\u0027this is null or not defined\u0027);\n  }\n  if (typeof callback !== \"function\") {\n    throw new TypeError(callback + \u0027 is not a function\u0027);\n  }\n  const O = Object(this);\n  const len = O.length \u003e\u003e\u003e 0;\n  let k = 0;\n  while (k \u003c len) {\n    if (k in O) {\n      callback.call(thisArg, O[k], k, O);\n    }\n    k++;\n  }\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:01:03.000Z",
+    "updateAt":  "2021-07-07T00:12:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1511,
+    "filterTotalNum":  1907,
+    "prev":  "b66b6742-6ef1-4359-82ae-c69e2a041549",
+    "next":  "d86ffa19-714c-45a6-a7e0-81ebe2248972"
+}

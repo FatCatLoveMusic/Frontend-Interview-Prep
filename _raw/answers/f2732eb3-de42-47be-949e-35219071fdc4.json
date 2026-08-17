@@ -1,0 +1,21 @@
+﻿{
+    "id":  1943,
+    "exerciseKey":  "f2732eb3-de42-47be-949e-35219071fdc4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何定义一个数组，它的元素可能是字符串类型，也可能是数值类型？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```typescript\n // 方法1：\nlet arr1: (number | string)[] = [1]\narr1.push(1)\narr1.push(\u00273\u0027)\n\n// 方法2：\nlet  arr2 : Array\u003cstring | number\u003e = [1, \u00272\u0027]\narr2.push(1)\narr2.push(\u00273\u0027)\n\n// 方法3：\ntype newType = number|string\nlet arr3:newType []= [3]\narr3.push(1)\narr4.push(\u00275\u0027)\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:05:52.000Z",
+    "updateAt":  "2023-03-12T23:11:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  867,
+    "filterTotalNum":  1907,
+    "prev":  "6cfd4286-3c93-45a3-9b63-a67ab7ddd6e6",
+    "next":  "86c1abd9-9552-42ab-93d5-16076a877db0"
+}

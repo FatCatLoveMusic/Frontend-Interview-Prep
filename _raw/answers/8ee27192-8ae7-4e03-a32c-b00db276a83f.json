@@ -1,0 +1,21 @@
+﻿{
+    "id":  1762,
+    "exerciseKey":  "8ee27192-8ae7-4e03-a32c-b00db276a83f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "以下代码的输出是什么？",
+    "desc":  "```js\nvar name = \u0027window\u0027\nconst obj = {\n    name: \u0027obj\u0027,\n    sayName:function() {\n        console.log(this.name)\n    },\n}\nobj.sayMyName = () =\u003e {\n    console.log(this.name)\n}\nconst fn1 = obj.sayName\nconst fn2 = obj.sayMyName\nfn1() \nobj.sayName() \nfn2() \nobj.sayMyName() \n```",
+    "options":  null,
+    "explanation":  "依次输出：\n\n```\nwindow\nobj\nwindow\nwindow\n```\n\n本次主要考察对this指向的理解，题目比较简单，不做具体的分析。\n\n\u003e 本答案由“前端面试题宝典”收集整理，PC端访问请前往： https://fe.ecool.fun/ ",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-10T07:01:24.000Z",
+    "updateAt":  "2022-04-10T15:01:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1047,
+    "filterTotalNum":  1907,
+    "prev":  "aa2840ae-f884-4fcb-a08b-e20310654dbd",
+    "next":  "9c119d14-fe3b-4f23-9a51-222c50529890"
+}

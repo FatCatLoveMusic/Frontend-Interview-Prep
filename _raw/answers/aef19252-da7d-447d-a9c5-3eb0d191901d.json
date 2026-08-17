@@ -1,0 +1,21 @@
+﻿{
+    "id":  1554,
+    "exerciseKey":  "aef19252-da7d-447d-a9c5-3eb0d191901d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是 Samesite Cookie 属性？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "SameSite 是HTTP响应头 `Set-Cookie` 的属性之一。它允许声明该 `Cookie` 是否仅限于第一方或者同一站点上下文。\n\n* 将 Samesite 设为 `strict` ，这种称为严格模式，表示这个 cookie 在任何情况下都不可能作为第三方 cookie。\n\n* 将 Samesite 设为 `Lax` ，这种模式称为宽松模式，也是目前浏览器中的默认值。如果这个请求是个 GET 请求，并且这个请求改变了当前页面或者打开了新的页面，那么这个 cookie 可以作为第三方 cookie，其余情况下都不能作为第三方 cookie。使用这种方法的缺点是，因为它不支持子域，所以子域没有办法与主域共享登录信息，每次转入子域的网站，都需要重新登录。还有一个问题就是它的兼容性不够好。\n\n* 将 Samesite 设为 `None`，Cookie将在所有上下文中发送，即允许跨域发送。\n\n响应头设置方式：\n```\nSet-Cookie: flavor=choco; SameSite=None; Secure\n```\n",
+    "pivot":  "**答题要点：**\n\nSameSite是Set-Cookie头的属性，用于控制Cookie的跨站发送行为。其值有：\n\n- `strict`：严格模式，禁止Cookie作为第三方Cookie。\n- `lax`：宽松模式，默认值，允许GET请求在改变页面或打开新页面的情况下作为第三方Cookie，但不支持子域，可能导致需要重新登录。\n- `None`：允许Cookie在所有上下文中发送，包括跨域，但需与Secure属性一起使用以确保安全性。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:33:13.000Z",
+    "updateAt":  "2024-08-10T17:05:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1235,
+    "filterTotalNum":  1907,
+    "prev":  "4bc2059f-c8c1-46f9-a768-0e43f8a06665",
+    "next":  "dc584829-5c57-435d-9276-f971e479bd29"
+}

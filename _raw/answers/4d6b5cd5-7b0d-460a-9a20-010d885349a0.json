@@ -1,0 +1,21 @@
+﻿{
+    "id":  81,
+    "exerciseKey":  "4d6b5cd5-7b0d-460a-9a20-010d885349a0",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst { name: myName } = { name: \"Lydia\" };\n\nconsole.log(name);\n```",
+    "options":  "{\"options\":[\"\\\"Lydia\\\"\",\"\\\"myName\\\"\",\"undefined\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "当我们从右侧的对象解构属性`name`时，我们将其值`Lydia`分配给名为`myName`的变量。\n使用`{name：myName}`，我们是在告诉JavaScript我们要创建一个名为`myName`的新变量，并且其值是右侧对象的`name`属性的值。\n当我们尝试打印`name`，一个未定义的变量时，就会引发`ReferenceError`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:23:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  1838,
+    "filterTotalNum":  1907,
+    "prev":  "3172f055-5f37-4a60-9940-bb15c6a7d4b6",
+    "next":  "58313b6b-5983-4414-8b85-81057f1c7d9a"
+}

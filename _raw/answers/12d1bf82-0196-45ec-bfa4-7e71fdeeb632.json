@@ -1,0 +1,21 @@
+﻿{
+    "id":  476,
+    "exerciseKey":  "12d1bf82-0196-45ec-bfa4-7e71fdeeb632",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Typescript中never 和 void 的区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`never` 和 `void` 都是用来表示函数的返回类型，但它们有着不同的含义和用途。\n\n下面是两者的区别和使用场景：\n\n### **1. `void`**\n\n**`void`** 类型表示函数没有返回值，通常用于那些没有返回值的函数。可以把它看作是函数的“空”类型，表示该函数执行完毕后没有任何结果返回。\n\n#### **用法：**\n- **函数没有返回值时：**\n  当一个函数没有返回任何内容时，我们通常会将其返回类型设置为 `void`。\n\n  ```typescript\n  function logMessage(message: string): void {\n    console.log(message);\n  }\n  ```\n\n  这里的 `logMessage` 函数没有返回任何值，因此它的返回类型是 `void`。\n\n- **`void` 与 `undefined` 的区别**：\n  - `void` 表示没有返回值，而 `undefined` 是一个实际的值，表示变量未被赋值。\n  - 在 `void` 类型的函数中，返回 `undefined` 或不返回任何内容都是允许的，但不能返回其他类型的值。\n\n  ```typescript\n  function example(): void {\n    // 可以返回 `undefined`，也可以不返回任何值\n    return undefined;\n  }\n  ```\n\n#### **总结：**\n- `void` 用于表示函数没有返回值。\n- `void` 并不是说函数没有任何副作用，它只是指示该函数不返回任何值。\n\n---\n\n### **2. `never`**\n\n**`never`** 类型表示从不返回的函数，即这些函数无法正常结束，它们要么会抛出错误，要么会进入无限循环。因此，`never` 类型表示一个函数永远不会返回。\n\n#### **用法：**\n- **抛出错误的函数：**\n  如果一个函数总是抛出错误并且没有正常的返回值（即它的执行会被终止），它的返回类型应该是 `never`。\n\n  ```typescript\n  function throwError(message: string): never {\n    throw new Error(message);\n  }\n  ```\n\n  这个 `throwError` 函数抛出一个错误，因此它的返回类型是 `never`。\n\n- **无限循环的函数：**\n  如果一个函数进入一个无限循环，也不返回任何东西，它的返回类型也应该是 `never`。\n\n  ```typescript\n  function infiniteLoop(): never {\n    while (true) {\n      // 无限循环\n    }\n  }\n  ```\n\n  由于 `infiniteLoop` 函数会永远执行下去，永远不会返回，它的返回类型是 `never`。\n\n#### **总结：**\n- `never` 类型用于表示那些不会正常返回的函数，通常是因为它们会抛出异常或进入无限循环。\n- `never` 强调了函数的不可达性，即函数不会正常结束。\n\n---\n\n### **3. `void` 与 `never` 的区别总结**\n\n| **特性**                | **`void`**                                       | **`never`**                                      |\n|-------------------------|-------------------------------------------------|-------------------------------------------------|\n| **定义**                | 表示没有返回值的函数。                          | 表示永远不会返回的函数，通常用于抛出异常或进入无限循环。 |\n| **返回值**              | 可以返回 `undefined`，也可以不返回任何值。     | 不能返回任何值，通常抛出异常或进入无限循环。         |\n| **用法场景**            | 用于没有返回值的函数，如事件处理函数。         | 用于那些无法正常返回的函数，如抛出错误的函数或无限循环函数。|\n| **示例**                | `function log(): void { console.log(\u0027Hello\u0027); }` | `function throwError(): never { throw new Error(\u0027Error\u0027); }` |",
+    "pivot":  "- `void` 表示函数没有返回值，允许函数返回 `undefined` 或不返回任何内容。\n- `never` 表示函数不会正常返回，通常是因为它抛出了异常或进入了无限循环，意味着函数的执行不会终止并且不会返回任何值。",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-08T15:14:58.000Z",
+    "updateAt":  "2024-12-25T01:20:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1444,
+    "filterTotalNum":  1907,
+    "prev":  "2de0400f-2cea-41f0-8cb0-616c7124d1bb",
+    "next":  "30de2c61-c961-4613-90a0-b31e5eabf637"
+}

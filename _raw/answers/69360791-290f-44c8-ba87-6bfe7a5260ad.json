@@ -1,0 +1,21 @@
+﻿{
+    "id":  1931,
+    "exerciseKey":  "69360791-290f-44c8-ba87-6bfe7a5260ad",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "找出数组中重复的数字",
+    "desc":  "在一个长度为 n 的数组 `nums` 里的所有数字都在 `0～n-1` 的范围内。\n\n数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。\n\n请找出数组中任意一个重复的数字。\n\n**示例 1：**\n\n**输入：**\n[2, 3, 1, 0, 2, 5, 3]\n\n**输出：** 2 或 3 \n\n**限制：**\n\n`2 \u003c= n \u003c= 100000`\n\n```js\n/**\n * @param {number[]} nums\n * @return {number}\n */\nvar findRepeatNumber = function(nums) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "```js\nvar findRepeatNumber = function(nums) {\n   let map = new Map();\n   for(let i of nums){\n       if(map.has(i)) return i;\n       map.set(i, 1);\n   }\n   return null;\n};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-12-30T01:41:21.000Z",
+    "updateAt":  "2023-03-12T17:10:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  879,
+    "filterTotalNum":  1907,
+    "prev":  "481c1ab4-ec43-4c80-9d04-e48930d67105",
+    "next":  "c7505e46-4e58-4d34-b27d-b022c244cfad"
+}

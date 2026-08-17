@@ -1,0 +1,21 @@
+﻿{
+    "id":  563,
+    "exerciseKey":  "83b73455-d22c-43ac-844d-d92c5ac6b662",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "js对象中，可枚举性（enumerable）是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可枚举性（enumerable）用来控制所描述的属性，是否将被包括在for...in循环之中（除非属性名是一个Symbol）。具体来说，如果一个属性的enumerable为false，下面三个操作不会取到该属性。\n\n* for..in循环\n* Object.keys方法\n* JSON.stringify方法\n\n```javascript\nvar o = { a: 1, b: 2 };\n\no.c = 3;\nObject.defineProperty(o, \"d\", {\n  value: 4,\n  enumerable: false,\n});\n\no.d;\n// 4\n\nfor (var key in o) console.log(o[key]);\n// 1\n// 2\n// 3\n\nObject.keys(o); // [\"a\", \"b\", \"c\"]\n\nJSON.stringify(o); // =\u003e \"{a:1,b:2,c:3}\"\n```\n\n上面代码中，d属性的enumerable为false，所以一般的遍历操作都无法获取该属性，使得它有点像“秘密”属性，但还是可以直接获取它的值。\n\n至于for...in循环和Object.keys方法的区别，在于前者包括对象继承自原型对象的属性，而后者只包括对象本身的属性。如果需要获取对象自身的所有属性，不管enumerable的值，可以使用Object.getOwnPropertyNames方法。\n\n可枚举属性是指那些内部 “可枚举” 标志设置为 true 的属性。对于通过直接的赋值和属性初始化的属性，该标识值默认为即为 true。但是对于通过 Object.defineProperty 等定义的属性，该标识值默认为 false。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-31T09:30:18.000Z",
+    "updateAt":  "2024-07-22T10:12:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1357,
+    "filterTotalNum":  1907,
+    "prev":  "c188ea2f-8882-413c-af52-3ccce36f35cf",
+    "next":  "d1d9bc22-287a-4fb0-9860-51fb461006de"
+}

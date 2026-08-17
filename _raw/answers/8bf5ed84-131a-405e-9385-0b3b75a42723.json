@@ -1,0 +1,21 @@
+﻿{
+    "id":  1920,
+    "exerciseKey":  "8bf5ed84-131a-405e-9385-0b3b75a42723",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Node 和 Element 是什么关系？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## Node与Element的关系\n\nNode与Element的关系，从继承方面思考可能清晰很多。\n\nElement 继承于 Node，具有Node的方法，同时又拓展了很多自己的特有方法。\n\n在Element的一些方法里，是明确区分了Node和Element的。比如说：childNodes与 children, parentNode与parentElement等方法。\n\nNode的一些方法，返回值为Node，比如说文本节点，注释节点之类的，而Element的一些方法，返回值则一定是Element。\n\n区分清楚这点了，也能避免很多低级问题。\n\n简单的说就是Node是一个基类，DOM中的`Element`，`Text和Comment`都继承于它。换句话说，`Element`，`Text`和`Comment`是三种特殊的Node，它们分别叫做`ELEMENT_NODE`,`TEXT_NODE`和`COMMENT_NODE`。\n\n所以我们平时使用的 html上的元素，即`Element`，是类型为`ELEMENT_NODE`的`Node`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-11-13T12:00:10.000Z",
+    "updateAt":  "2024-07-22T10:04:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  890,
+    "filterTotalNum":  1907,
+    "prev":  "82b536ee-2a79-4e64-b238-061656ca8ca9",
+    "next":  "9464fd89-1578-4f3b-a103-840b73b1987e"
+}

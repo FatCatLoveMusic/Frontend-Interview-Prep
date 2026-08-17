@@ -1,0 +1,21 @@
+﻿{
+    "id":  1619,
+    "exerciseKey":  "44b5f8c5-1d8c-4294-b668-7f7f096cd44c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第27题】下面代码的输出是什么？",
+    "desc":  "```js\n\nfunction runAsync(x) {\n  const p = new Promise(r =\u003e\n    setTimeout(() =\u003e r(x, console.log(x)), 1000)\n  );\n  return p;\n}\nfunction runReject(x) {\n  const p = new Promise((res, rej) =\u003e\n    setTimeout(() =\u003e rej(`Error: ${x}`, console.log(x)), 1000 * x)\n  );\n  return p;\n}\nPromise.race([runReject(0), runAsync(1), runAsync(2), runAsync(3)])\n  .then(res =\u003e console.log(\"result: \", res))\n  .catch(err =\u003e console.log(err));\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n.race()的作用也是接收一组异步任务，然后并行执行异步任务，只保留取第一个执行完成的异步操作的结果，其他的方法仍在执行，不过执行结果会被抛弃。\n\n## 结果\n\n```\n0\n\u0027Error: 0\u0027\n1\n2\n3\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:05:18.000Z",
+    "updateAt":  "2022-01-09T23:14:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1171,
+    "filterTotalNum":  1907,
+    "prev":  "2b7bc012-86d2-405a-8a26-778f5f1b6dfe",
+    "next":  "613e333e-ffca-45ff-a13a-debd8053d913"
+}

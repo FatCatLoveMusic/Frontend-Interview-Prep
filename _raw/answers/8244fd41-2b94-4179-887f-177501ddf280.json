@@ -1,0 +1,21 @@
+﻿{
+    "id":  600,
+    "exerciseKey":  "8244fd41-2b94-4179-887f-177501ddf280",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "object.assign和扩展运算法是深拷贝还是浅拷贝，两者区别是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 扩展运算符\n\n```js\nlet outObj = {\n  inObj: {a: 1, b: 2}\n}\nlet newObj = {...outObj}\nnewObj.inObj.a = 2\nconsole.log(outObj) // {inObj: {a: 2, b: 2}}\n```\n\n* Object.assign()\n\n```js\nlet outObj = {\n  inObj: {a: 1, b: 2}\n}\nlet newObj = Object.assign({}, outObj)\nnewObj.inObj.a = 2\nconsole.log(outObj) // {inObj: {a: 2, b: 2}}\n```\n\n可以看到，两者都是浅拷贝。\n\nObject.assign()方法接收的第一个参数作为目标对象，后面的所有参数作为源对象。然后把所有的源对象合并到目标对象中。它会修改了一个对象，因此会触发 ES6 setter。\n\n扩展操作符（…）使用它时，数组或对象中的每一个值都会被拷贝到一个新的数组或对象中。它不复制继承的属性或类的属性，但是它会复制ES6的 symbols 属性。\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-08-22T10:20:08.000Z",
+    "updateAt":  "2024-07-20T11:57:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  1321,
+    "filterTotalNum":  1907,
+    "prev":  "31134096-417d-48df-8030-68dd004c40d1",
+    "next":  "0bd0c9bd-9e5f-47af-8a7d-3ba7aaa28dcd"
+}

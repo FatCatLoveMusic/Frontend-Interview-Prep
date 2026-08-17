@@ -1,0 +1,21 @@
+﻿{
+    "id":  1683,
+    "exerciseKey":  "95cb0844-3e54-45c3-8809-1121bafc57ba",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "jquery的链式调用是怎么实现的？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " 我们都知道 jQuery 可以链式调用，比如：\n\n```js\n$(\"div\").eq(0).css(\"width\", \"200px\").show();\n```\n\n链式调用的核心就在于调用完的方法将自身实例返回。\n\n## 实现一个简单的链式调用\n\n```js\n// 定义一个对象\nclass listFunc {\n // 初始化\n  constructor(val) {\n    this.arr = [...val];\n    return this;\n  }\n  // 打印这个数组\n  get() {\n    console.log(this.arr);\n    return this;\n  }\n  // 向数组尾部添加数据\n  push(val) {\n    console.log(this.arr);\n    this.arr.push(val);\n    return this;\n  }\n  // 删除尾部数据\n  pop() {\n    console.log(this.arr);\n    this.arr.pop();\n    return this;\n  }\n}\nconst list = new listFunc([1, 2, 3]);\nlist.get().pop().push(\u0027ldq\u0027)\n```\n\n",
+    "pivot":  "jQuery的链式调用之所以能够实现，主要是因为它的每个方法在执行完自己的任务后，都会返回调用该方法的jQuery对象本身（即`return this;`）。这样，你就可以在这个返回的对象上继续调用其他方法，从而实现链式调用。\n\n简而言之，链式调用的秘诀在于：**每个方法都返回`this`**。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-03-07T04:45:02.000Z",
+    "updateAt":  "2024-08-10T17:06:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1107,
+    "filterTotalNum":  1907,
+    "prev":  "5e131c75-d26e-4527-8f51-29d842f3c829",
+    "next":  "c3faa4b5-e73e-47f6-af7b-1f9c73d74126"
+}

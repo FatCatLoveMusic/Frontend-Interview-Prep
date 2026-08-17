@@ -1,0 +1,21 @@
+﻿{
+    "id":  3053,
+    "exerciseKey":  "0eb08245-5227-41ee-8dc4-f35a8e3b3748",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为何`setup()`中直接解构`props`会丢失响应性？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue 3 中，`setup()` 里**直接解构 `props` 会丢失响应性**，根本原因在于：**响应式是依赖引用关系实现的，而解构会打断这种引用关系**。\n\n下面从原理、示例和正确做法三个层面说明。\n\n---\n\n## 一、根本原因：解构会“拷贝值”，不再是响应式引用\n\n在 `setup(props)` 中：\n\n* `props` 本身是一个 **浅只读的响应式对象（Proxy）**\n* Vue 的响应式系统是 **基于 getter / setter（Proxy 拦截）+ 依赖收集** 实现的\n* **解构会把属性的当前值“取出来”，赋值给一个普通变量**\n\n一旦解构：\n\n```js\nconst { title } = props;\n```\n\n此时：\n\n* `title` 是一个 **普通变量**\n* 它不再通过 `props.title` 访问\n* Vue 无法拦截 `title` 的读取\n* 依赖收集链路断裂 → 响应性丢失\n\n---\n\n## 二、对比示例：为什么一个会更新，一个不会\n\n### ❌ 错误示例（丢失响应性）\n\n```js\nexport default {\n  props: {\n    title: String\n  },\n  setup(props) {\n    const { title } = props;\n\n    return { title };\n  }\n};\n```\n\n父组件更新 `title` 时：\n\n* `props.title` 变了\n* 但 `title` 变量不会重新赋值\n* 模板中使用 `{{ title }}` 不会更新\n\n---\n\n### ✅ 正确示例 1：不解构，直接使用 props\n\n```js\nsetup(props) {\n  return { props };\n}\n```\n\n模板中：\n\n```html\n{{ props.title }}\n```\n\n说明：\n\n* 每次访问都走 `props.title`\n* 响应式链路完整\n\n---\n\n### ✅ 正确示例 2：使用 `toRefs`（官方推荐）\n\n```js\nimport { toRefs } from \u0027vue\u0027;\n\nsetup(props) {\n  const { title } = toRefs(props);\n  return { title };\n}\n```\n\n这里：\n\n* `title` 是一个 `Ref`\n* 内部仍然指向 `props.title`\n* 响应式未被破坏\n\n模板中：\n\n```html\n{{ title }}\n```\n\n---\n\n### ✅ 正确示例 3：使用 `toRef`（单个字段）\n\n```js\nimport { toRef } from \u0027vue\u0027;\n\nsetup(props) {\n  const title = toRef(props, \u0027title\u0027);\n  return { title };\n}\n```\n\n适合只需要一个 prop 的场景。\n\n---\n\n## 三、为什么 Vue 不“自动处理解构”？\n\n这是一个**语言层面的限制**，不是 Vue 的设计疏忽：\n\n```js\nconst { title } = props;\n```\n\n在 JavaScript 语义上等价于：\n\n```js\nconst title = props.title;\n```\n\n* JS 本身没有“解构后仍保持 getter 引用”的能力\n* Vue 无法在不破坏 JS 语义的前提下自动劫持\n\n因此 Vue 选择：\n\n* **明确规则**\n* **显式 API（toRefs / toRef）**\n* 避免“隐式魔法”带来的不可预测行为",
+    "pivot":  "`setup` 中直接解构 `props` 会丢失响应性，是因为解构会把属性值拷贝为普通变量，打断了与 `props` Proxy 的引用关系，导致 Vue 无法进行依赖收集。正确做法是直接使用 `props.xxx`，或通过 `toRefs / toRef` 将属性转换为保持响应性的 `ref`。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-02-01T15:26:21.000Z",
+    "updateAt":  "2026-02-01T15:26:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  152,
+    "filterTotalNum":  1907,
+    "prev":  "b44c5715-9bea-4e9b-913d-99d356538aab",
+    "next":  "90552483-d460-409a-9f1a-1c6613393bab"
+}

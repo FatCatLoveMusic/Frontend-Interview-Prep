@@ -1,0 +1,21 @@
+﻿{
+    "id":  2667,
+    "exerciseKey":  "82939890-c1de-45f8-b27d-b2675d58763e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "箭头函数为何不能作为构造函数使用？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在箭头函数中，`this`指向的是定义时所在的对象，而不是使用时所在的对象。换句话说，**箭头函数没有自己的this，而是继承父作用域中的this**。\n\n看个例子:\n\n```javascript\nvar person = {\n  name:\u0027张三\u0027,\n  age:18,\n  getName:function(){\n     console.log(\u0027我的名字是：\u0027+this.name)\n  },\n  getAge:()=\u003e{\n     console.log(\u0027我的年龄是：\u0027+this.age)\n  }\n}\n\nperson.getName() // 我的名字是张三\nperson.getAge()  // 我的年龄是undefined\n\n```\n\n`person.getName()`中`this`指向函数的调用者，也就是`person`实例，因此`this.name = \"张三\"`。\n\n`getAge()`通过箭头函数定义，而箭头函数是没有自己的`this`，会继承父作用域的`this`，因此`person.getAge()`执行时，此时的作用域指向`window`，而`window`没有定义`age`属性，所有报`undefined`。\n\n从例子可以得出：**对象中定义的函数使用箭头函数是不合适的**。\n\n\n**先解答下标题问题，为啥箭头函数不能作为构造函数？**\n\n```javascript\n// 构造函数生成实例的过程\nfunction Person(name,age){\n  this.name = name\n  this.age = age\n}\nvar p = new Person(\u0027张三\u0027,18)\n\n//new关键字生成实例过程如下\n// 1. 创建空对象p\nvar p = {}\n// 2. 将空对象p的原型链指向构造器Person的原型\np.__proto__ = Person.prototype\n// 3. 将Person()函数中的this指向p\n// 若此处Person为箭头函数，而没有自己的this，call()函数无法改变箭头函数的指向，也就无法指向p。\nPerson.call(p)\n\n```\n\n构造函数是通过new关键字来生成对象实例，生成对象实例的过程也是通过构造函数给实例绑定this的过程，而箭头函数没有自己的this。创建对象过程，`new` 首先会创建一个空对象，并将这个空对象的`__proto__`指向构造函数的`prototype`，从而继承原型上的方法，但是箭头函数没有`prototype`。因此不能使用箭头作为构造函数，也就不能通过new操作符来调用箭头函数。\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-14T23:58:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  412,
+    "filterTotalNum":  1907,
+    "prev":  "263e22e5-d2ea-4a3d-bd3a-5b35678c06ee",
+    "next":  "6cbf1c8b-1af1-41e4-a2c1-577021781057"
+}

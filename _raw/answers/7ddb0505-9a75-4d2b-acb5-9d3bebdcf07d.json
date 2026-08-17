@@ -1,0 +1,21 @@
+﻿{
+    "id":  2088,
+    "exerciseKey":  "7ddb0505-9a75-4d2b-acb5-9d3bebdcf07d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 为什么要废弃  componentWillMount、componentWillReceiveProps、componentWillUpdate 这三个生命周期钩子？它们有哪些问题呢？React 又是如何解决的呢？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "React 在 16.3 版本中：\n\n* 将 `componentWillMount`、`componentWillReceiveProps`、`componentWillUpdate` 三个生命周期钩子加上了 `UNSAFE` 前缀，变为 `UNSAFE_componentWillMount`、`UNSAFE_componentWillReceiveProps` 和 `UNSAFE_componentWillUpdate`。\n* 并引入了一个新的生命周期钩子：`getDerivedStateFromProps`。\n\n并在 17.0 以及之后的版本中：\n* 删除了 `componentWillMount`、`componentWillReceiveProps`、`componentWillUpdate` 这三个生命周期钩子。\n* 不过 `UNSAFE_componentWillMount`、`UNSAFE_componentWillReceiveProps` 和 `UNSAFE_componentWillUpdate` 还是可以用的。\n\n我们知道 React 的更新流程分为：render 阶段和 commit 阶段。\n\n`componentWillMount`、`componentWillReceiveProps`、`componentWillUpdate` 这三个生命周期钩子都是在 render 阶段执行的。\n\n在 fiber 架构被应用之前，render 阶段是不能被打断的。当页面逐渐复杂之后，就有可能会阻塞页面的渲染，于是 React 推出了 fiber 架构。在应用 fiber 架构之后，低优先级任务的 render 阶段可以被高优先级任务打断。\n\n而这导致的问题就是：**在 render 阶段执行的生命周期函数可能被执行多次**。\n\ncomponentWillMount、componentWillReceiveProps、componentWillUpdate 这三个生命周期钩子，如果我们在其中执行一些具有副作用的操作，例如发送网络请求，就有可能导致一个同样的网络请求被执行多次，这显然不是我们想看到的。\n\n而 React 又没法强迫开发者不去这样做，因为怎么样使用 React 是开发者的自由，所以 React 就新增了一个静态的生命周期 `getDerivedStateFromProps`，来解决这个问题。\n\n用一个静态函数 `getDerivedStateFromProps `来取代被废弃的几个生命周期函数，这样开发者就无法通过 this 获取到组件的实例，也不能发送网络请求以及调用 this.setState。它就是强制开发者在 render 之前只做无副作用的操作，间接强制我们无法进行这些不合理不规范的操作，从而避免对生命周期的滥用。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-03-18T02:39:39.000Z",
+    "updateAt":  "2024-07-22T10:11:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  725,
+    "filterTotalNum":  1907,
+    "prev":  "97fda656-bfa1-4aa9-b1a5-1d0247178cfc",
+    "next":  "0de1d7b2-794c-4867-a61c-7840ae0eafdc"
+}

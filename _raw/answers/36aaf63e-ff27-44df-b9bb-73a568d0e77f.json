@@ -1,0 +1,21 @@
+﻿{
+    "id":  3210,
+    "exerciseKey":  "36aaf63e-ff27-44df-b9bb-73a568d0e77f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是 MCP？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "MCP 是 Model Context Protocol，可以理解成一套让 AI 应用标准化连接外部数据、工具和服务的开放协议。它解决的不是“模型怎么训练”或“Prompt 怎么写”的问题，而是解决大模型应用如何安全、稳定、可扩展地获取上下文和调用外部能力的问题。官方规范也把它定义为连接 LLM 应用与外部数据源、工具的开放协议：[Model Context Protocol Specification](https://modelcontextprotocol.io/specification/2025-03-26)。\n\n从工程角度看，MCP 类似 AI 应用领域的“统一适配层”。没有 MCP 之前，一个 AI IDE 要接 GitHub、数据库、文件系统、日志平台、设计稿平台，往往需要为每个系统单独写一套插件或接口适配。MCP 把这件事抽象成统一的 Client-Server 模型：AI 应用作为 Host，内部创建 MCP Client；外部能力由 MCP Server 暴露，比如文件读取、数据库查询、代码仓库检索、API 调用等。\n\nMCP Server 通常会暴露三类能力：`tools`、`resources` 和 `prompts`。`tools` 更偏动作调用，比如执行查询、创建任务、触发部署；`resources` 更偏上下文读取，比如读取文档、代码文件、配置、日志；`prompts` 则是服务端预置的一些结构化提示模板。客户端会通过协议发现这些能力，再在用户授权或应用策略允许的情况下调用。\n\n协议层面，MCP 基于 JSON-RPC 通信，并包含初始化、能力协商、正常通信、关闭等生命周期。传输方式可以是本地的 stdio，也可以是远程 HTTP。这个设计让 MCP 既能用于本地开发工具，比如 Claude Desktop、AI IDE，也能用于企业内部平台，把知识库、工单系统、监控系统、代码仓库等接入 AI 助手。\n\n对于前端团队来说，MCP 的价值会非常直接。比如可以做一个连接组件库文档、设计规范、业务接口文档、Git 仓库和构建日志的 MCP Server，让 AI 助手不只是泛泛回答问题，而是能基于当前项目的真实上下文分析代码、定位问题、生成更符合团队规范的实现方案。\n\n但 MCP 也不是万能的。它只是协议和连接方式，不负责保证外部工具调用一定安全，也不自动解决权限控制、数据泄露、Prompt Injection、操作审计等问题。真正落地时，MCP Server 需要做权限边界、参数校验、敏感数据过滤、用户确认和日志追踪，否则“让模型能调用工具”会变成新的安全风险入口。",
+    "pivot":  "MCP 是连接 LLM 应用与外部数据、工具、服务的开放协议。\n\n它采用 Host、Client、Server 架构，让 AI 应用通过统一方式发现和调用外部能力。\n\nMCP Server 主要暴露 `tools`、`resources`、`prompts` 三类能力。\n\n它基于 JSON-RPC，并支持能力协商、会话生命周期、本地或远程传输。\n\n它的核心价值是降低 AI 应用接入外部系统的成本，但落地时必须重视权限、安全和审计。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T08:56:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  78,
+    "filterTotalNum":  1907,
+    "prev":  "3406f28e-cd4c-40da-8d62-c15041ed6c7c",
+    "next":  "9aedbf82-363f-4bae-9262-a5716f6e8e5b"
+}

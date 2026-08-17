@@ -1,0 +1,21 @@
+﻿{
+    "id":  2128,
+    "exerciseKey":  "38103157-9bb4-4fdb-8567-d7dc4fae07e7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果想将一个前端项目中的 px 全部转为 rem，你有什么思路",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "对于大型项目，手动转换显然不现实，可以使用一些自动化工具来处理 `px` 到 `rem` 的转换。\n\n- **PostCSS 插件**：使用 [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem) 插件来自动将 `px` 转换为 `rem`。\n  \n  安装：\n  ```bash\n  npm install postcss-pxtorem --save-dev\n  ```\n\n  配置 `postcss.config.js`：\n  ```js\n  module.exports = {\n    plugins: {\n      \u0027postcss-pxtorem\u0027: {\n        rootValue: 16,    // 根元素字体大小\n        propList: [\u0027*\u0027],  // 需要转换的属性，* 表示所有\n        minPixelValue: 2  // 小于 2px 的不会被转换\n      }\n    }\n  }\n  ```\n\n  这样，所有 `px` 单位将根据根元素的字体大小自动转换为 `rem`。\n\n- **CSS 预处理器方案（如 Sass 或 Less）**\n\n还可以使用 Sass 或 Less 结合一些函数来进行转换。例如，使用 Sass 自定义函数来实现 `px` 到 `rem` 的转换：\n\n```scss\n$base-font-size: 16px;\n\n@function px-to-rem($px) {\n  @return $px / $base-font-size * 1rem;\n}\n\nbody {\n  font-size: px-to-rem(16px);  // 转换为 rem\n}\n```\n",
+    "pivot":  "1. **自动化工具**（如 PostCSS 插件）能够高效地将所有 `px` 转换为 `rem`，适合大规模项目。\n2. 通过 **Sass 或 Less** 自定义函数，也可以实现自动化转换，适用于有预处理器的项目。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:36:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  695,
+    "filterTotalNum":  1907,
+    "prev":  "b18e3951-44d8-4347-b429-805ede23b706",
+    "next":  "ffa236b4-904b-4796-88b3-aa350072563a"
+}

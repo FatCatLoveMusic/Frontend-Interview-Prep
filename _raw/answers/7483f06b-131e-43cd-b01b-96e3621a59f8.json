@@ -1,0 +1,21 @@
+﻿{
+    "id":  153,
+    "exerciseKey":  "7483f06b-131e-43cd-b01b-96e3621a59f8",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst user = {\n\temail: \"e@mail.com\",\n\tpassword: \"12345\"\n}\n\nconst updateUser = ({ email, password }) =\u003e {\n\tif (email) {\n\t\tObject.assign(user, { email })\n\t}\n\n\tif (password) {\n\t\tuser.password = password\n\t}\n\n\treturn user\n}\n\nconst updatedUser = updateUser({ email: \"new@email.com\" })\n\nconsole.log(updatedUser === user)\n```",
+    "options":  "{\"options\":[\"false\",\"true\",\"TypeError\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  " `updateUser` 函数更新user的 `email` 和 `password` 属性的值， 如果它们的值传入函数， 函数返回的就是 `user` 对象。 `updateUser` 函数的返回值是 `user` 对象，意味着updatedUser的值与 `user` 指向的是同一个 `user` 对象。`updatedUser === user` 为 `true`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:33.000Z",
+    "isCollected":  false,
+    "currentIndex":  1766,
+    "filterTotalNum":  1907,
+    "prev":  "6836d3b0-9007-4946-a113-cc77fe8d8ace",
+    "next":  "1e8328ad-0ecd-428e-862c-a75c50e1a205"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2959,
+    "exerciseKey":  "965437c7-3f6d-4855-94f7-fa62c3e73196",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在Vue中，为什么推荐使用ref而非直接操作DOM？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "### 1. **保持响应式编程思想**\n\n* Vue 的核心理念是 **数据驱动视图**。\n* 如果你频繁通过 `document.querySelector`、`getElementById` 等方式直接操作 DOM，就等于绕过了 Vue 的响应式系统，破坏了「数据变化 → 视图自动更新」的逻辑。\n* `ref` 是 Vue 提供的 **在响应式体系内获取 DOM 或组件实例的方式**，不会违背 Vue 的设计哲学。\n\n\n### 2. **保证可维护性和可读性**\n\n* 使用 `ref` 获取 DOM 元素或子组件时，逻辑清晰，绑定关系一目了然：\n\n```vue\n\u003ctemplate\u003e\n  \u003cinput ref=\"inputEl\" /\u003e\n\u003c/template\u003e\n\n\u003cscript setup\u003e\nimport { ref, onMounted } from \u0027vue\u0027\n\nconst inputEl = ref(null)\n\nonMounted(() =\u003e {\n  inputEl.value.focus()\n})\n\u003c/script\u003e\n```\n\n* 而如果用 `document.querySelector(\u0027input\u0027)`，就会出现以下问题：\n\n  * 不直观，不知道选中的是不是自己想要的节点。\n  * 如果 DOM 结构变化，选择器很容易失效。\n\n\n### 3. **避免全局作用域污染**\n\n* 原生 DOM 操作往往是「全局查询」的，比如 `document.querySelector`。\n* 当页面很大时，可能会选中不该选的 DOM，造成隐蔽的 bug。\n* `ref` 是 **组件作用域内的绑定**，不会误伤其它组件。\n\n\n### 4. **更好地支持组件和生命周期**\n\n* `ref` 不仅能绑定 DOM，还能绑定 **组件实例**：\n\n```vue\n\u003cChildComponent ref=\"child\" /\u003e\n\nonMounted(() =\u003e {\n  console.log(child.value.someMethod())\n})\n```\n\n* 这种方式比手动查找 DOM、再找对应组件要安全得多。\n* 而且 `ref` 在 Vue 的生命周期中是有保证的（例如在 `onMounted` 之后才能访问），不会出现 DOM 还没挂载就被访问的情况。\n\n\n### 5. **利于服务端渲染（SSR）和未来扩展**\n\n* Vue 在 SSR 或虚拟 DOM 渲染时，不依赖真实 DOM，而是依赖 `ref` 提供的抽象。\n* 直接操作 DOM 会导致 **不可移植**，在非浏览器环境下不可用，而 `ref` 更加通用。\n\n",
+    "pivot":  "在 Vue 中推荐使用 `ref` 而非直接操作 DOM，是为了 **保持响应式编程思想、提高代码可维护性、避免全局污染、增强组件化支持，以及兼容 SSR 和未来扩展**。\n直接操作 DOM 只能作为「最后手段」，通常用于操作第三方库或必须访问底层 DOM 的场景。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-08-28T08:53:44.000Z",
+    "updateAt":  "2025-08-28T08:57:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  243,
+    "filterTotalNum":  1907,
+    "prev":  "e8f52755-fec1-4489-9163-a7fb4216b0b2",
+    "next":  "94fc6ad9-ce15-4a8a-babb-1836bec46903"
+}

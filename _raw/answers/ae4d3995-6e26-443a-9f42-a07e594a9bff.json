@@ -1,0 +1,21 @@
+﻿{
+    "id":  1539,
+    "exerciseKey":  "ae4d3995-6e26-443a-9f42-a07e594a9bff",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "ts中any和unknown有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "unknown 和 any 的主要区别是 unknown 类型会更加严格：在对 unknown 类型的值执行大多数操作之前，我们必须进行某种形式的检查。而在对 any 类型的值执行操作之前，我们不必进行任何检查。\n\n举例说明：\n\n```ts\nlet foo: any = 123;\nconsole.log(foo.msg); // 符合TS的语法\nlet a_value1: unknown = foo;   // OK\nlet a_value2: any = foo;      // OK\nlet a_value3: string = foo;   // OK\n\nlet bar: unknown = 222; // OK \nconsole.log(bar.msg); // Error\nlet k_value1: unknown = bar;   // OK\nlet K_value2: any = bar;      // OK\nlet K_value3: string = bar;   // Error\n```\n\n因为bar是一个未知类型(任何类型的数据都可以赋给 `unknown` 类型)，所以不能确定是否有msg属性。不能通过TS语法检测；而 unknown 类型的值也不能将值赋给 any 和 unknown 之外的类型变量\n\n## 总结\n\nany 和 unknown 都是顶级类型，但是 unknown 更加严格，不像 any 那样不做类型检查，反而 unknown 因为未知性质，不允许访问属性，不允许赋值给其他有明确类型的变量。\n\n",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，`any`和`unknown`都是用来表示可以被赋值给任意类型的类型。它们的主要区别在于：\n\n1. **`any`**：\n   - 允许你将任何类型赋值给`any`类型的变量。\n   - 在编译时，不会对`any`类型进行类型检查。\n   - 可以通过类型断言将`any`类型指定为一个更具体的类型。\n2. **`unknown`**：\n   - 允许你将任何类型赋值给`unknown`类型的变量。\n   - 在编译时，会进行类型检查。\n   - 不能通过类型断言将`unknown`类型指定为一个更具体的类型，需要使用类型保护（Type Guard）来验证类型。\n\n**考察要点**：\n\n1. **类型定义**：理解`any`和`unknown`类型的定义和用法。\n2. **编译时检查**：理解在编译时，`any`和`unknown`类型的类型检查差异。\n3. **类型断言和保护**：理解如何使用类型断言和类型保护来处理`any`和`unknown`类型的变量。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-11-17T10:58:32.000Z",
+    "updateAt":  "2024-08-10T17:05:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  1250,
+    "filterTotalNum":  1907,
+    "prev":  "01c20a11-d5c8-4e32-bbb2-a8d3a5da1961",
+    "next":  "01149afa-e389-4a9f-a534-204db829188b"
+}

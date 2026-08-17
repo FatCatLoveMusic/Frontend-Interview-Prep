@@ -1,0 +1,21 @@
+﻿{
+    "id":  1798,
+    "exerciseKey":  "7e9fd9a8-e8d8-44e6-8ffd-73faf1372a1b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "刷新浏览器后，Vuex的数据是否存在？如何解决？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在vue项目中用vuex来做全局的状态管理， 发现当刷新网页后，保存在vuex实例store里的数据会丢失。\n\n原因：因为 `store` 里的数据是保存在运行内存中的，当页面刷新时，页面会重新加载vue实例，store里面的数据就会被重新赋值初始化。\n\n我们有两种方法解决该问题：\n\n1. 使用 `vuex-along`\n2. 使用 `localStorage` 或者 `sessionStroage`\n\n## 使用vuex-along\n\n`vuex-along` 的实质也是将 `vuex` 中的数据存放到 `localStorage` 或者 `sessionStroage` 中，只不过这个存取过程组件会帮我们完成，我们只需要用vuex的读取数据方式操作就可以了，简单介绍一下 `vuex-along` 的使用方法。\n\n安装 `vuex-along`:\n\n\u003e npm install vuex-along --save\n\n配置 `vuex-along`: 在 `store/index.js` 中最后添加以下代码:\n\n```js\nimport VueXAlong from \u0027vuex-along\u0027 //导入插件\nexport default new Vuex.Store({\n    //modules: {\n        //controler  //模块化vuex\n    //},\n    plugins: [VueXAlong({\n        name: \u0027store\u0027,     //存放在localStroage或者sessionStroage 中的名字\n        local: false,      //是否存放在local中  false 不存放 如果存放按照下面session的配置\n        session: { list: [], isFilter: true } //如果值不为false 那么可以传递对象 其中 当isFilter设置为true时， list 数组中的值就会被过滤调,这些值不会存放在seesion或者local中\n    })]\n});\n```\n\n## 使用 `localStorage` 或者 `sessionStroage`\n\n```js\ncreated() {\n    //在页面加载时读取sessionStorage里的状态信息\n    if (sessionStorage.getItem(\"store\")) {\n      this.$store.replaceState(\n        Object.assign(\n          {},\n          this.$store.state,\n          JSON.parse(sessionStorage.getItem(\"store\"))\n        )\n      );\n    }\n    //在页面刷新时将vuex里的信息保存到sessionStorage里\n    window.addEventListener(\"beforeunload\", () =\u003e {\n      sessionStorage.setItem(\"store\", JSON.stringify(this.$store.state));\n    });\n},\n```\n\n",
+    "pivot":  "在 Vue 项目中使用 Vuex 进行全局状态管理时，如果页面刷新，保存在 Vuex 实例 `store` 里的数据会丢失，因为这些数据是保存在运行内存中的。为了解决这个问题，有几种方法可以考虑：\n\n1. **使用 `vuex-along`**：\n   - `vuex-along` 是一个插件，它可以将 Vuex 中的数据存放到 `localStorage` 或者 `sessionStorage` 中。\n   - 在 `store/index.js` 文件中配置 `vuex-along`，指定存储的名称和是否使用 `localStorage` 或 `sessionStorage`。\n   - 使用 `vuex-along` 后，你仍然可以使用 Vuex 的读取数据方式来操作，插件会自动处理数据的存储和恢复。\n\n2. **使用 `localStorage` 或者 `sessionStorage`**：\n   - 在 Vue 组件的 `created` 钩子中，读取 `sessionStorage` 中的状态信息，并将其合并到 Vuex 的状态中。\n   - 在页面刷新前，将 Vuex 的状态保存到 `sessionStorage` 中。\n   - 通过监听 `beforeunload` 事件，在页面即将卸载时保存状态，并在页面加载时读取状态。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-05-11T14:17:49.000Z",
+    "updateAt":  "2024-08-10T17:06:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1011,
+    "filterTotalNum":  1907,
+    "prev":  "3e2c519b-9142-40e9-bef6-6b1d975be351",
+    "next":  "be6669ec-4d94-4c6a-9fc9-1b243e6ea777"
+}

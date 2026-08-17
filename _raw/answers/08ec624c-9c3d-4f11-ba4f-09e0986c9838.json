@@ -1,0 +1,21 @@
+﻿{
+    "id":  331,
+    "exerciseKey":  "08ec624c-9c3d-4f11-ba4f-09e0986c9838",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 组件间怎么进行通信？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、是什么\n\n我们将组件间通信可以拆分为两个词：\n\n- 组件\n- 通信\n\n`React`的组件灵活多样，按照不同的方式可以分成很多类型的组件\n\n而通信指的是发送者通过某种媒体以某种格式来传递信息到收信者以达到某个目的，广义上，任何信息的交通都是通信\n\n组件间通信即指组件通过某种方式来传递信息以达到某个目的\n\n\n## 二、如何通信\n\n组件传递的方式有很多种，根据传送者和接收者可以分为如下：\n\n- 父组件向子组件传递\n- 子组件向父组件传递\n- 兄弟组件之间的通信\n- 父组件向后代组件传递\n- 非关系组件传递\n\n\n### 父组件向子组件传递\n\n由于`React`的数据流动为单向的，父组件向子组件传递是最常见的方式\n\n父组件在调用子组件的时候，只需要在子组件标签内传递参数，子组件通过`props`属性就能接收父组件传递过来的参数\n\n```jsx\nfunction EmailInput(props) {\n  return (\n    \u003clabel\u003e\n      Email: \u003cinput value={props.email} /\u003e\n    \u003c/label\u003e\n  );\n}\n\nconst element = \u003cEmailInput email=\"123124132@163.com\" /\u003e;\n```\n\n\n### 子组件向父组件传递\n\n子组件向父组件通信的基本思路是，父组件向子组件传一个函数，然后通过这个函数的回调，拿到子组件传过来的值\n\n父组件对应代码如下：\n\n```jsx\nclass Parents extends Component {\n  constructor() {\n    super();\n    this.state = {\n      price: 0\n    };\n  }\n\n  getItemPrice(e) {\n    this.setState({\n      price: e\n    });\n  }\n\n  render() {\n    return (\n      \u003cdiv\u003e\n        \u003cdiv\u003eprice: {this.state.price}\u003c/div\u003e\n        {/* 向子组件中传入一个函数  */}\n        \u003cChild getPrice={this.getItemPrice.bind(this)} /\u003e\n      \u003c/div\u003e\n    );\n  }\n}\n```\n\n子组件对应代码如下：\n\n```jsx\nclass Child extends Component {\n  clickGoods(e) {\n    // 在此函数中传入值\n    this.props.getPrice(e);\n  }\n\n  render() {\n    return (\n      \u003cdiv\u003e\n        \u003cbutton onClick={this.clickGoods.bind(this, 100)}\u003egoods1\u003c/button\u003e\n        \u003cbutton onClick={this.clickGoods.bind(this, 1000)}\u003egoods2\u003c/button\u003e\n      \u003c/div\u003e\n    );\n  }\n}\n```\n\n\n\n### 兄弟组件之间的通信\n\n如果是兄弟组件之间的传递，则父组件作为中间层来实现数据的互通，通过使用父组件传递\n\n```jsx\nclass Parent extends React.Component {\n  constructor(props) {\n    super(props)\n    this.state = {count: 0}\n  }\n  setCount = () =\u003e {\n    this.setState({count: this.state.count + 1})\n  }\n  render() {\n    return (\n      \u003cdiv\u003e\n        \u003cSiblingA\n          count={this.state.count}\n        /\u003e\n        \u003cSiblingB\n          onClick={this.setCount}\n        /\u003e\n      \u003c/div\u003e\n    );\n  }\n}\n```\n\n\n\n### 父组件向后代组件传递\n\n父组件向后代组件传递数据是一件最普通的事情，就像全局数据一样\n\n使用`context`提供了组件之间通讯的一种方式，可以共享数据，其他数据都能读取对应的数据\n\n通过使用`React.createContext`创建一个`context`\n\n```js\n const PriceContext = React.createContext(\u0027price\u0027)\n```\n\n`context`创建成功后，其下存在`Provider`组件用于创建数据源，`Consumer`组件用于接收数据，使用实例如下：\n\n`Provider`组件通过`value`属性用于给后代组件传递数据：\n\n```jsx\n\u003cPriceContext.Provider value={100}\u003e\n\u003c/PriceContext.Provider\u003e\n```\n\n如果想要获取`Provider`传递的数据，可以通过`Consumer`组件或者或者使用`contextType`属性接收，对应分别如下：\n\n```jsx\nclass MyClass extends React.Component {\n  static contextType = PriceContext;\n  render() {\n    let price = this.context;\n    /* 基于这个值进行渲染工作 */\n  }\n}\n```\n\n`Consumer`组件：\n\n````jsx\n\u003cPriceContext.Consumer\u003e\n    { /*这里是一个函数*/ }\n    {\n        price =\u003e \u003cdiv\u003eprice：{price}\u003c/div\u003e\n    }\n\u003c/PriceContext.Consumer\u003e\n````\n\n### 非关系组件传递\n\n如果组件之间关系类型比较复杂的情况，建议将数据进行一个全局资源管理，从而实现通信，例如`redux`。关于`redux`的使用后续再详细介绍\n\n\n## 三、总结\n\n由于`React`是单向数据流，主要思想是组件不会改变接收的数据，只会监听数据的变化，当数据发生变化时它们会使用接收到的新值，而不是去修改已有的值\n\n因此，可以看到通信过程中，数据的存储位置都是存放在上级位置中\n",
+    "pivot":  "1. **Props**：父组件通过 `props` 传递数据和回调函数给子组件。\n2. **Context**：`Context` 提供全局数据，多个组件可以访问，无需逐层传递 `props`。\n3. **Redux**：用于全局状态管理，多个组件共享和管理应用状态。\n4. **状态提升**：将共享状态提升到最近的共同父组件，然后通过 `props` 传递给子组件。\n5. **Event Bus**：通过事件发布-订阅模式实现组件间通信的方式\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:03:47.000Z",
+    "updateAt":  "2024-08-10T17:05:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1589,
+    "filterTotalNum":  1907,
+    "prev":  "1e01a341-f1c4-490b-966d-32433edd42bf",
+    "next":  "37cce645-6114-44e4-a440-3b7f0c9f8887"
+}

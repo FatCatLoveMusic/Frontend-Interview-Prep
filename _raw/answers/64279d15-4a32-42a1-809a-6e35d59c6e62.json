@@ -1,0 +1,21 @@
+﻿{
+    "id":  2800,
+    "exerciseKey":  "64279d15-4a32-42a1-809a-6e35d59c6e62",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JS 内存泄露的问题该如何排查？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### **1. 了解常见的内存泄露类型**\n\n- **全局变量**：未声明的变量被添加到全局作用域。\n- **闭包**：长时间持有对外部作用域的引用。\n- **事件监听器**：未正确移除的事件监听器。\n- **定时器**：未清除的 `setInterval` 或 `setTimeout`。\n- **DOM 引用**：移除 DOM 元素后仍有对其的引用。\n\n### **2. 使用开发者工具进行排查**\n\n**Chrome DevTools** 提供了内存分析工具，可以帮助检测和修复内存泄露问题。\n\n**步骤**：\n\n1. **检查内存快照**：\n   - 打开 Chrome DevTools，转到 \"Memory\" 面板。\n   - 使用 \"Heap Snapshot\" 生成内存快照，比较不同时间点的快照找出持续增长的对象。\n\n2. **分析快照**：\n   - 查找未释放的内存对象，特别是意外增长的数组、对象等。\n   - 查看 DOM 节点和 JavaScript 对象的引用链，识别意外的引用保留。\n\n3. **监视内存分配**：\n   - 使用 \"Allocation Timeline\" 记录内存分配情况，观察是否存在不断增长的内存分配。\n\n4. **使用“Find Leaks”工具**：\n   - 在 \"Memory\" 面板中，使用 \"Heap Snapshot\" 功能找到泄露的对象并分析其引用链。\n\n### **4. 使用第三方工具**\n\n- **[Lighthouse](https://developers.google.com/web/tools/lighthouse)**：用于性能分析和内存泄露检测。\n",
+    "pivot":  "- **检查快照**：使用开发者工具生成和分析内存快照。\n- **监视分配**：跟踪内存分配情况，识别异常。\n- **使用工具**：利用第三方工具和扩展进行深入分析。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2025-04-17T01:00:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  357,
+    "filterTotalNum":  1907,
+    "prev":  "2ea94d0f-e412-4db2-9d42-20c7eb50284f",
+    "next":  "dd92f98d-9e6e-4cc5-bcfc-dc61adce1bf2"
+}

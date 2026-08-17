@@ -1,0 +1,21 @@
+﻿{
+    "id":  2023,
+    "exerciseKey":  "be0412b7-6af9-4ab5-9c7f-4a06cc8cc80d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个请求函数：fetchWithRetry，要求会最多自动重试 3 次，任意一次成功就直接返回",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "下面是一个简单的示例实现，并未包含对异常情况的处理、超时设置等较复杂的功能：\n\n```javascript\nfunction fetchWithRetry(url, options, maxRetry = 3) {\n  return new Promise((resolve, reject) =\u003e {\n    const doFetch = async (attempt) =\u003e {\n      try {\n        const response = await fetch(url, options);\n        if (response.ok) {\n          resolve(response);\n        } else {\n          throw new Error(\u0027Request failed\u0027);\n        }\n      } catch (error) {\n        if (attempt \u003c maxRetry) {\n          console.log(`Attempt ${attempt + 1} failed. Retrying...`);\n          doFetch(attempt + 1);\n        } else {\n          reject(new Error(\u0027Max retries exceeded\u0027));\n        }\n      }\n    };\n\n    doFetch(0);\n  });\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:15:15.000Z",
+    "updateAt":  "2023-07-08T15:54:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  788,
+    "filterTotalNum":  1907,
+    "prev":  "311b7a3b-04a6-47ab-be75-42345638817b",
+    "next":  "37b4752f-88bd-4959-8ff7-c081fdbc20cb"
+}

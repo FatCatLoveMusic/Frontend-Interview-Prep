@@ -1,0 +1,21 @@
+﻿{
+    "id":  2943,
+    "exerciseKey":  "d6e29125-16c6-4b50-b41e-74d42c489c21",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何避免setInterval可能导致的定时器堆积问题？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`setInterval` 在 JavaScript 中按照固定时间间隔重复执行回调，但由于 JS 单线程机制，如果回调执行时间超过间隔，就会导致 **定时器堆积**（多个回调排队等待执行），产生性能问题或逻辑异常。\n\n下面介绍几种避免方法：\n\n---\n\n## 一、使用递归 `setTimeout` 替代 `setInterval`\n\n原理：**在回调执行完后再启动下一次定时器**，保证不会重叠。\n\n```js\nfunction doTask() {\n  // 执行异步或耗时操作\n  console.log(\u0027任务执行\u0027);\n  \n  // 完成后再递归调用\n  setTimeout(doTask, 1000); // 1000ms 后再次执行\n}\n\nsetTimeout(doTask, 1000);\n```\n\n特点：\n\n* 每次间隔从上一次任务结束时开始计算，更安全；\n* 可根据实际执行时间动态调整间隔。\n\n---\n\n## 二、在 `setInterval` 回调中加入执行状态判断\n\n原理：**用一个标志位判断任务是否正在执行**，避免重叠。\n\n```js\nlet isRunning = false;\n\nconst interval = setInterval(() =\u003e {\n  if (isRunning) return; // 上一次还没完成，跳过\n\n  isRunning = true;\n  doAsyncTask().finally(() =\u003e {\n    isRunning = false;\n  });\n}, 1000);\n```\n\n特点：\n\n* 任务仍然按照固定间隔触发，但不会堆积回调；\n* 对耗时异步任务尤为重要。\n\n---\n\n## 三、使用 `requestAnimationFrame`（针对动画或 UI 刷新）\n\n* 对于与渲染相关的循环任务，推荐 `requestAnimationFrame` 替代 `setInterval`，保证任务与浏览器渲染同步，避免不必要的重复调用。\n\n```js\nfunction animate() {\n  // 更新动画逻辑\n  requestAnimationFrame(animate);\n}\nrequestAnimationFrame(animate);\n```\n",
+    "pivot":  "1. **根本问题**：`setInterval` 固定周期触发，任务未完成时仍会排队，可能造成堆积。\n2. **推荐做法**：\n\n   * 优先使用递归 `setTimeout`，保证任务顺序执行；\n   * 或在 `setInterval` 中加标志位判断，避免重叠。\n3. **额外优化**：对动画类或 UI 更新类任务，用 `requestAnimationFrame` 代替固定定时器，提高渲染效率。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2025-08-20T14:43:58.000Z",
+    "updateAt":  "2025-08-20T14:44:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  259,
+    "filterTotalNum":  1907,
+    "prev":  "4521b97d-12af-4be1-ba6e-c32c6db75925",
+    "next":  "b1973f12-5610-430d-9f0b-6c081eda334c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  587,
+    "exerciseKey":  "154d4288-8195-4fd4-87bb-2844cb22a4e5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Promise中的值穿透是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "解释：.then 或者 .catch 的参数期望是函数，传入非函数则会发生值穿透。\n\n当then中传入的不是函数，则这个then返回的promise的data，将会保存上一个的promise.data。这就是发生值穿透的原因。而且每一个无效的then所返回的promise的状态都为resolved。\n\n```javascript\nPromise.resolve(1)\n      .then(2) // 注意这里\n      .then(Promise.resolve(3))\n      .then(console.log)\n```\n\n上面代码的输出是 `1`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2021-08-11T12:31:41.000Z",
+    "updateAt":  "2021-08-15T15:28:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  1333,
+    "filterTotalNum":  1907,
+    "prev":  "bff513af-f95f-481f-8bda-03f3515d0e08",
+    "next":  "e84bcf8c-1ee4-4c28-8e64-875b485369b5"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3017,
+    "exerciseKey":  "6bf1144c-42b2-4337-bb00-090ead8350cc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用 reduce 实现 map",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "从语义上看，`map` 的核心并不是“遍历”，而是**基于原集合生成一个等长的新集合，并保持索引顺序不变**。`reduce` 本身并不限定结果结构，它只是提供了一种“逐步累积结果”的机制，因此完全可以用来表达 `map` 的行为。\n\n在实现上，关键在于：把 `reduce` 的累加器当作“结果数组”，在每一次迭代中，将当前元素经过映射函数处理后追加到累加器中。这样，累加器最终就变成了 `map` 的返回值。\n\n一个等价且语义清晰的实现如下：\n\n```js\nfunction mapByReduce(array, mapper) {\n  return array.reduce((result, current, index, source) =\u003e {\n    result.push(mapper(current, index, source))\n    return result\n  }, [])\n}\n```\n\n这个实现与原生 `Array.prototype.map` 在行为上是一致的：不会修改原数组，返回一个新数组，映射函数能够拿到当前值、索引以及原数组。`reduce` 在这里承担的角色，是把“每一步的映射结果”持续累积到同一个输出容器中。\n\n需要注意的是，用 `reduce` 实现 `map` 更多是一种**表达能力上的练习**，而不是工程上的推荐写法。在可读性和意图表达上，直接使用 `map` 更清晰，也更符合团队协作中的直觉。`reduce` 更适合用于那些无法直接用单一高阶函数表达的聚合场景，而不是替代已经存在、语义明确的 API。\n\n从底层角度看，这两者在复杂度上并无本质差异，时间复杂度同为 O(n)，空间复杂度也都需要一个新的结果数组。差别更多体现在抽象层级和代码可维护性上。\n",
+    "pivot":  "`map` 的本质是等长映射并返回新数组；`reduce` 可以通过累加器承载结果数组来实现同样行为；实现时在每次迭代中 push 映射结果并返回累加器；工程实践中应优先使用语义更明确的 `map`，`reduce` 更适合复杂聚合逻辑。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-01-31T13:33:29.000Z",
+    "updateAt":  "2026-01-31T13:33:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  186,
+    "filterTotalNum":  1907,
+    "prev":  "d7013215-d7d5-4322-be03-476b22f5be2a",
+    "next":  "ef9dbd6c-d3c1-4087-8431-fafa2a68a74c"
+}

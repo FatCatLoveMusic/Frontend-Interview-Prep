@@ -1,0 +1,21 @@
+﻿{
+    "id":  501,
+    "exerciseKey":  "43972778-bd1d-4ff4-a153-6c6df65242e3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "观察者模式和发布订阅模式分别是什么？有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "观察者模式：一个对象（观察者）订阅另一个对象（主题），当主题被激活的时候，触发观察者里面的事件。\n\n![image.png](https://static.ecool.fun//article/61a5cc50-92b5-4d73-bcd7-9882db09243b.png)\n\n发布订阅模式：订阅者把自己想要订阅的事件注册到调度中心，当发布者发布事件到调度中心（就是该事件被触发），再由调度中心统一调度订阅者注册到调度中心的处理代码。\n\n![image.png](https://static.ecool.fun//article/e22d0187-4bc3-4248-9cb8-b4b13e9943a8.png)\n\n对比一下：\n\n![image.png](https://static.ecool.fun//article/c7985036-e17f-4dec-9bdb-ef3b7bf9b895.png)\n\n可以发现两种模式下的角色数量不一样：\n\n* 观察者模式里，只有两个角色：观察者 和 被观察者\n* 发布订阅模式里，却不仅仅只有发布者和订阅者两个角色，还有一个调度中心\n\n从使用场景上：\n\n* 观察者模式比较适合在单个应用内部使用\n* 发布订阅模式则是比较适合跨应用的场景\n\n## 具体使用场景\n\n### 观察者模式应用场景\n\n1. **Vue 响应式系统**\n   - Vue 2 使用 `Object.defineProperty`，Vue 3 使用 `Proxy` 实现数据劫持\n   - 数据变化时直接通知依赖的 Watcher（观察者）\n\n2. **表单验证**\n   - 表单字段作为被观察者\n   - 验证规则作为观察者，字段变化时触发验证\n\n3. **自定义事件系统**\n   ```javascript\n   class Subject {\n     constructor() {\n       this.observers = [];\n     }\n     addObserver(observer) {\n       this.observers.push(observer);\n     }\n     notify(data) {\n       this.observers.forEach(observer =\u003e observer.update(data));\n     }\n   }\n   ```\n\n4. **Intersection Observer API**\n   - 监听元素是否进入视口\n   - 被观察者是 DOM 元素，观察者是回调函数\n\n### 发布订阅模式应用场景\n\n1. **全局事件总线**\n   ```javascript\n   // Vue 中的实现\n   const EventBus = new Vue();\n   // 发布\n   EventBus.$emit(\u0027event-name\u0027, data);\n   // 订阅\n   EventBus.$on(\u0027event-name\u0027, callback);\n   ```\n\n2. **Redux/Vuex 状态管理**\n   - Store 作为事件中心\n   - 组件订阅状态变化\n   - Actions 发布状态变更事件\n\n3. **WebSocket 消息处理**\n   - 服务端推送不同类型消息\n   - 客户端根据不同消息类型注册处理函数\n\n4. **微前端通信**\n   - 不同微应用通过全局事件总线通信\n   - 避免直接耦合\n\n5. **DOM 事件系统**\n   - 浏览器原生的事件监听机制\n   ```javascript\n   document.addEventListener(\u0027click\u0027, handler); // 订阅\n   element.dispatchEvent(new Event(\u0027click\u0027)); // 发布\n   ```\n\n## 对比与选择\n\n| 特性                | 观察者模式               | 发布订阅模式               |\n|---------------------|-------------------------|--------------------------|\n| 耦合度              | 较高（直接引用）         | 较低（通过中间件）        |\n| 灵活性              | 较低                    | 较高                     |\n| 实现复杂度          | 简单                    | 相对复杂                 |\n| 典型应用            | Vue 响应式、表单验证    | 事件总线、状态管理       |\n| 性能影响            | 直接调用，性能较好       | 需要查找订阅者，稍慢     |",
+    "pivot":  "- 需要**直接、明确**的关系时用观察者模式（如组件内部状态管理）\n- 需要**松耦合、跨组件/模块**通信时用发布订阅模式（如全局状态通知）\n- 大型应用更倾向于使用发布订阅模式来降低耦合度",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T07:32:23.000Z",
+    "updateAt":  "2025-07-18T02:17:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1419,
+    "filterTotalNum":  1907,
+    "prev":  "097902c0-17b4-4416-9926-3ad88a55416e",
+    "next":  "fbcd6444-9c0f-492a-b138-bd205bb4bf1d"
+}

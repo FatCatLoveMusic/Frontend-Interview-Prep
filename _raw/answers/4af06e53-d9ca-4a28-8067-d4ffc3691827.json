@@ -1,0 +1,21 @@
+﻿{
+    "id":  407,
+    "exerciseKey":  "4af06e53-d9ca-4a28-8067-d4ffc3691827",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "类数组转化为数组",
+    "desc":  "类数组是具有length属性，但不具有数组原型上的方法。常见的类数组有arguments、DOM操作方法返回的结果。",
+    "options":  null,
+    "explanation":  "* 方法一：Array.from\n```js\nArray.from(document.querySelectorAll(\u0027div\u0027))\n```\n\n* 方法二：Array.prototype.slice.call()\n```js\nArray.prototype.slice.call(document.querySelectorAll(\u0027div\u0027))\n```\n\n* 方法三：扩展运算符\n```js\n[...document.querySelectorAll(\u0027div\u0027)]\n```\n\n* 方法四：利用concat\n```js\nArray.prototype.concat.apply([], document.querySelectorAll(\u0027div\u0027));\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T14:58:56.000Z",
+    "updateAt":  "2021-07-07T00:12:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1513,
+    "filterTotalNum":  1907,
+    "prev":  "d86ffa19-714c-45a6-a7e0-81ebe2248972",
+    "next":  "f56b93a9-52df-49ae-8d63-d7ee4f816f8b"
+}

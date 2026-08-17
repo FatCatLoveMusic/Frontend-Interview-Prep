@@ -1,0 +1,21 @@
+﻿{
+    "id":  2632,
+    "exerciseKey":  "c639112b-02cf-479d-a150-df9551f33e92",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现一个 add 函数",
+    "desc":  "满足以下功能：\n```\nadd(1).getValue(); \t// 1\nadd(1)(2).getValue();  \t// 3\nadd(1)(2)(3).getValue()；  // 6\nadd(1)(2, 3).getValue();   // 6\nadd(1, 2)(3).getValue();   // 6\nadd(1, 2, 3).getValue();   // 6\n```",
+    "options":  "",
+    "explanation":  "```js\nfunction add(...args) {\n  function innerAdd(...innerArgs) {\n    args.push(...innerArgs);\n    return innerAdd;\n  }\n\n  innerAdd.getValue = function() {\n    return args.reduce((acc, curr) =\u003e acc + curr, 0);\n  };\n\n  return innerAdd;\n}\n\n\n// console.log(add(1)(2).getValue()); // 输出: 3\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T14:00:33.000Z",
+    "isCollected":  false,
+    "currentIndex":  436,
+    "filterTotalNum":  1907,
+    "prev":  "11339761-1a8f-4b74-a3ba-47f384669fc4",
+    "next":  "a7da8658-3b6f-4417-8ff0-66e078fa09b9"
+}

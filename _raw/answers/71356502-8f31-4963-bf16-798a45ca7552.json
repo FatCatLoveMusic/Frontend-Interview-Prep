@@ -1,0 +1,21 @@
+﻿{
+    "id":  2260,
+    "exerciseKey":  "71356502-8f31-4963-bf16-798a45ca7552",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何禁止他人使用控制台调试前端页面代码?",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "防止别人调试前端页面代码是一个安全性问题，但需要认识到，前端代码本质上是运行在用户浏览器中的，用户拥有完全的控制权，**无法完全防止代码被调试或篡改**。\n\n我们只能通过一定的技术手段增加调试难度，提升代码安全性。\n\n这些手段主要分为**代码保护**和**运行时检测**两类。\n\n---\n\n### **1. 代码保护**\n\n#### (1) **代码混淆**\n通过工具对 JavaScript 代码进行混淆和压缩，使代码难以阅读和理解：\n- 替换变量名为无意义的字符。\n- 删除空格、注释。\n- 重组代码逻辑，使其更难调试。\n\n常用工具：\n- **UglifyJS**\n- **Terser**\n- **Babel Minify**\n\n示例：\n原始代码：\n```javascript\nfunction sayHello() {\n    console.log(\u0027Hello, world!\u0027);\n}\n```\n混淆后：\n```javascript\nfunction a(){console.log(\"Hello, world!\")}\n```\n\n#### (2) **敏感逻辑放在后端**\n尽量避免将敏感的业务逻辑放在前端，比如权限验证、算法实现等。这些逻辑可以通过 API 调用在服务器端处理。\n\n#### (3) **动态加载代码**\n将部分核心逻辑通过加密后动态加载：\n- 在需要时通过网络请求加载核心代码。\n- 使用加密技术对加载的代码进行保护。\n\n---\n\n### **2. 运行时检测**\n\n#### (1) **检测开发者工具**\n通过轮询或检测方法判断用户是否打开了浏览器的开发者工具：\n- 检测 `window.console` 的调用。\n- 检测 `debugger` 是否被触发。\n- 检测 `DevTools` 是否开启。\n\n示例代码：\n```javascript\n(function detectDevTools() {\n    const threshold = 100; // 检测宽度高度阈值\n    setInterval(() =\u003e {\n        const widthThreshold = window.outerWidth - window.innerWidth \u003e threshold;\n        const heightThreshold = window.outerHeight - window.innerHeight \u003e threshold;\n        if (widthThreshold || heightThreshold) {\n            alert(\u0027检测到开发者工具已开启！\u0027);\n        }\n    }, 1000);\n})();\n```\n\n#### (2) **禁用右键和键盘快捷键**\n通过监听事件禁用常用的调试快捷键，如 `F12`、`Ctrl+Shift+I` 等：\n```javascript\ndocument.addEventListener(\u0027keydown\u0027, (event) =\u003e {\n    if (event.key === \u0027F12\u0027 || (event.ctrlKey \u0026\u0026 event.shiftKey \u0026\u0026 event.key === \u0027I\u0027)) {\n        event.preventDefault();\n        alert(\u0027调试被禁用！\u0027);\n    }\n});\n```\n\n#### (3) **干扰 `console` 输出**\n通过劫持 `console.log` 等函数，干扰开发者读取信息：\n```javascript\nconsole.log = function () {\n    alert(\u0027不允许调试！\u0027);\n};\n```\n\n---\n\n### **3. 资源保护**\n\n#### (1) **防止代码被直接访问**\n- 通过 `robots.txt` 禁止爬虫访问代码。\n- 通过 CDN 或代理隐藏真实的资源路径。\n\n#### (2) **请求签名与校验**\n对前端发起的请求增加签名或时间戳校验，防止用户手动伪造请求。\n\n---\n\n### **4. 提高调试难度**\n\n#### (1) **定期检查运行环境**\n定期检查代码是否被篡改或执行环境是否异常，例如监控全局变量的值或执行环境的行为。\n\n#### (2) **动态代码生成**\n将部分逻辑代码动态生成，增加代码的动态性和复杂性。\n\n---\n\n### **5. 其他**\n- 完全禁止调试前端代码是不可行的，因为最终代码是用户可以访问和执行的。\n- 重点应放在保护核心业务逻辑、敏感数据和后台 API 安全，而不是过度关注前端防调试。",
+    "pivot":  "防止别人调试前端代码的思路包括：\n\n1. **代码保护**：使用混淆和压缩技术，尽量避免敏感逻辑出现在前端。\n2. **运行时检测**：通过检测开发者工具和禁用调试快捷键增加调试难度。\n3. **资源保护**：通过限制访问、请求签名等手段保护前端资源。\n4. **核心逻辑后移**：将重要逻辑放到后端执行。\n\n所有措施只能增加调试难度，**无法完全防止代码被调试**。更重要的是做好后端安全策略，将敏感逻辑和验证放在服务器端实现。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-05T01:20:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  628,
+    "filterTotalNum":  1907,
+    "prev":  "cca00a6f-0496-4c5b-a9c8-08b67d9675a7",
+    "next":  "6c124a2a-e930-4b13-a339-d9df86d4fea9"
+}

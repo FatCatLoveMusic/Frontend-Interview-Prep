@@ -1,0 +1,21 @@
+﻿{
+    "id":  2450,
+    "exerciseKey":  "deb33950-f22a-42f5-ac23-2eb30148d107",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "手写实现 Object.create",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`Object.create` 方法用于创建一个新对象，使用指定的原型对象和可选的属性描述符来初始化新对象。手写实现 `Object.create` 涉及到设置新对象的原型并定义可选的属性。\n\n以下是 `Object.create` 的简单手写实现：\n\n### 实现\n\n```javascript\nfunction create(proto, propertiesObject) {\n    // 创建一个临时构造函数\n    function Temp() {}\n    \n    // 将临时构造函数的原型指向指定的原型对象\n    Temp.prototype = proto;\n    \n    // 创建新对象，并设置其原型\n    const obj = new Temp();\n    \n    // 如果传入了属性描述符对象，则使用 Object.defineProperties 来定义属性\n    if (propertiesObject !== undefined) {\n        Object.defineProperties(obj, propertiesObject);\n    }\n    \n    return obj;\n}\n\n// 示例用法\nconst personPrototype = {\n    greet() {\n        console.log(\u0027Hello!\u0027);\n    }\n};\n\nconst john = create(personPrototype, {\n    name: {\n        value: \u0027John\u0027,\n        writable: true,\n        configurable: true,\n        enumerable: true\n    },\n    age: {\n        value: 30,\n        writable: true,\n        configurable: true,\n        enumerable: true\n    }\n});\n\nconsole.log(john.name); // 输出: John\njohn.greet(); // 输出: Hello!\n```\n\n### 说明\n\n1. **临时构造函数**：\n   ```javascript\n   function Temp() {}\n   ```\n   - 创建一个临时构造函数 `Temp` 用于设置新对象的原型。这个构造函数不会有实际的功能，只是为了创建一个新对象来设置原型链。\n\n2. **设置原型**：\n   ```javascript\n   Temp.prototype = proto;\n   ```\n   - 将 `Temp.prototype` 设置为传入的原型对象 `proto`。这样，通过 `new Temp()` 创建的新对象就会具有指定的原型。\n\n3. **创建新对象**：\n   ```javascript\n   const obj = new Temp();\n   ```\n   - 使用临时构造函数 `Temp` 创建一个新对象 `obj`，其原型链上会包含 `proto`。\n\n4. **定义属性**（可选）：\n   ```javascript\n   if (propertiesObject !== undefined) {\n       Object.defineProperties(obj, propertiesObject);\n   }\n   ```\n   - 如果传入了属性描述符对象 `propertiesObject`，使用 `Object.defineProperties` 方法来定义新对象的属性。这样可以设置属性的值、是否可写、是否可配置等。\n\n5. **返回新对象**：\n   ```javascript\n   return obj;\n   ```\n   - 返回创建的新对象。",
+    "pivot":  "- **目的**：`Object.create` 创建一个新对象，指定其原型，并可选地定义对象属性。\n- **实现**：\n  - 使用临时构造函数来设置新对象的原型。\n  - 可选地使用 `Object.defineProperties` 定义新对象的属性。\n  \n这种实现方式模拟了 `Object.create` 的基本功能，提供了对对象原型链和属性的控制。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-23T05:23:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  524,
+    "filterTotalNum":  1907,
+    "prev":  "56ea667a-50f3-424e-9ed7-9ac28cddf197",
+    "next":  "068836c3-c6b3-4c4c-b24e-301357cf01c1"
+}

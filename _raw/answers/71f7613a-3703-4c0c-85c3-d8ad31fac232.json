@@ -1,0 +1,21 @@
+﻿{
+    "id":  509,
+    "exerciseKey":  "71f7613a-3703-4c0c-85c3-d8ad31fac232",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "箭头函数和普通函数有啥区别？箭头函数能当构造函数吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 什么是箭头函数？\n\nES6中允许使用箭头=\u003e来定义箭头函数，具体语法，我们来看一个简单的例子：\n\n```js\n// 箭头函数\nlet fun = (name) =\u003e {\n    // 函数体\n    return `Hello ${name} !`;\n};\n\n// 等同于\nlet fun = function (name) {\n    // 函数体\n    return `Hello ${name} !`;\n};\n```\n\n可以看出，定义箭头函在数语法上要比普通函数简洁得多。箭头函数省去了function关键字，采用箭头=\u003e来定义函数。函数的参数放在=\u003e前面的括号中，函数体跟在=\u003e后的花括号中。\n\n## 箭头函数与普通函数的区别\n\n1、语法更加简洁、清晰\n\n从上面的基本语法示例中可以看出，箭头函数的定义要比普通函数定义简洁、清晰得多，很快捷。\n\n2、箭头函数不会创建自己的this（重要！！深入理解！！）\n\n我们先来看看MDN上对箭头函数this的解释。\n\n\u003e 箭头函数不会创建自己的this，所以它没有自己的this，它只会从自己的作用域链的上一层继承this。\n\n箭头函数没有自己的this，它会捕获自己在定义时（注意，是定义时，不是调用时）所处的外层执行环境的this，并继承这个this值。所以，箭头函数中this的指向在它被定义的时候就已经确定了，之后永远不会改变。\n\n3、箭头函数继承而来的this指向永远不变（重要！！深入理解！！）\n\n上面的例子，就完全可以说明箭头函数继承而来的this指向永远不变。对象obj的方法b是使用箭头函数定义的，这个函数中的this就永远指向它定义时所处的全局执行环境中的this，即便这个函数是作为对象obj的方法调用，this依旧指向Window对象。\n\n4、.call()/.apply()/.bind()无法改变箭头函数中this的指向\n\n.call()/.apply()/.bind()方法可以用来动态修改函数执行时this的指向，但由于箭头函数的this定义时就已经确定且永远不会改变。所以使用这些方法永远也改变不了箭头函数this的指向，虽然这么做代码不会报错。\n\n5、箭头函数不能作为构造函数使用\n\n我们先了解一下构造函数的new都做了些什么？简单来说，分为四步： \n\n① JS内部首先会先生成一个对象； \n② 再把函数中的this指向该对象；\n③ 然后执行构造函数中的语句；\n④ 最终返回该对象实例。\n\n但是！！因为箭头函数没有自己的this，它的this其实是继承了外层执行环境中的this，且this指向永远不会随在哪里调用、被谁调用而改变，所以箭头函数不能作为构造函数使用，或者说构造函数不能定义成箭头函数，否则用new调用时会报错！\n\n6、箭头函数没有自己的arguments\n\n箭头函数没有自己的arguments对象。在箭头函数中访问arguments实际上获得的是外层局部（函数）执行环境中的值。\n\n7、箭头函数没有原型prototype\n\n```js\nlet sayHi = () =\u003e {\n    console.log(\u0027Hello World !\u0027)\n};\nconsole.log(sayHi.prototype); // undefined\n```\n\n8、箭头函数不能用作Generator函数，不能使用yeild关键字\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T08:01:14.000Z",
+    "updateAt":  "2024-07-22T10:52:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  1411,
+    "filterTotalNum":  1907,
+    "prev":  "cf3a9965-7761-4d5e-8b0a-cbde804517b8",
+    "next":  "14ad497b-56ee-461b-8c82-110f4d1c04b0"
+}

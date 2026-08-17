@@ -1,0 +1,21 @@
+﻿{
+    "id":  97,
+    "exerciseKey":  "dd7273e3-f9be-4cde-a77a-693a02fc967a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nfunction giveLydiaPizza() {\n  return \"Here is pizza!\"\n}\n\nconst giveLydiaChocolate = () =\u003e \"Here\u0027s chocolate... now go hit the gym already.\"\n\nconsole.log(giveLydiaPizza.prototype)\nconsole.log(giveLydiaChocolate.prototype)\n```",
+    "options":  "{\"options\":[\"{ constructor: ...} { constructor: ...}\",\"{} { constructor: ...}\",\"{ constructor: ...} {}\",\"{ constructor: ...} undefined\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "常规函数，例如`giveLydiaPizza`函数，有一个`prototype`属性，它是一个带有`constructor`属性的对象（原型对象）。 然而，箭头函数，例如`giveLydiaChocolate`函数，没有这个`prototype`属性。 尝试使用`giveLydiaChocolate.prototype`访问`prototype`属性时会返回`undefined`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:27:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1822,
+    "filterTotalNum":  1907,
+    "prev":  "04705905-b7f4-41cc-8828-1b14f2f42af2",
+    "next":  "8454a7ca-e1c0-4f25-abc3-4c8528593056"
+}

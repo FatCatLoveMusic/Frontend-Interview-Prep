@@ -1,0 +1,21 @@
+﻿{
+    "id":  2448,
+    "exerciseKey":  "068836c3-c6b3-4c4c-b24e-301357cf01c1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现数组的flat方法，支持深度层级参数",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "实现 `Array.prototype.flat` 方法，支持指定深度层级的数组扁平化，可以按照以下步骤进行：\n\n1. **定义函数**：创建一个 `flat` 方法，接受一个可选的深度层级参数。\n2. **递归处理**：根据深度层级递归地将嵌套的数组元素展开。\n3. **处理非数组元素**：将非数组元素直接添加到结果中。\n\n### 实现代码\n\n```javascript\nArray.prototype.myFlat = function(depth = 1) {\n    // 如果深度为 0，直接返回当前数组的副本\n    if (depth \u003c 1) {\n        return [...this];\n    }\n\n    // 递归扁平化数组\n    const flatten = (arr, d) =\u003e {\n        let result = [];\n        for (const item of arr) {\n            // 如果元素是数组并且深度大于 0，则递归扁平化\n            if (Array.isArray(item) \u0026\u0026 d \u003e 0) {\n                result.push(...flatten(item, d - 1));\n            } else {\n                result.push(item);\n            }\n        }\n        return result;\n    };\n\n    return flatten(this, depth);\n};\n\n// 示例用法\nconst arr = [1, [2, [3, [4, 5]]], 6];\nconsole.log(arr.myFlat());       // 输出: [1, 2, [3, [4, 5]], 6]\nconsole.log(arr.myFlat(1));      // 输出: [1, 2, [3, [4, 5]], 6]\nconsole.log(arr.myFlat(2));      // 输出: [1, 2, 3, [4, 5], 6]\nconsole.log(arr.myFlat(3));      // 输出: [1, 2, 3, 4, 5, 6]\nconsole.log(arr.myFlat(0));      // 输出: [1, [2, [3, [4, 5]]], 6]\n```\n\n### 解释\n\n1. **深度检查**：\n   - `depth = 1`：设定默认深度为 1。\n   - 如果深度为 0，则返回数组的浅拷贝。\n\n2. **递归扁平化函数 `flatten`**：\n   - 遍历数组中的每个元素。\n   - 如果元素是数组且当前深度大于 0，则递归调用 `flatten`，将深度减 1。\n   - 否则，直接将元素推入结果数组中。\n\n3. **合并结果**：\n   - 使用展开运算符 `...` 合并递归结果。\n\n### 总结\n\n- **自定义 `flat` 方法**：实现了支持指定深度层级的数组扁平化。\n- **递归处理**：处理多层嵌套数组，深度层级控制扁平化的程度。\n- **灵活性**：支持不同深度层级的扁平化操作，可以处理各种嵌套结构。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-23T05:25:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  525,
+    "filterTotalNum":  1907,
+    "prev":  "deb33950-f22a-42f5-ac23-2eb30148d107",
+    "next":  "4f9d6d3d-0e9b-42b2-9074-f4682689464c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1627,
+    "exerciseKey":  "26bf47fe-07e4-4014-b3ea-8a745f70d718",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第35题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function testSometing() {\n  console.log(\"执行testSometing\");\n  return \"testSometing\";\n}\n\nasync function testAsync() {\n  console.log(\"执行testAsync\");\n  return Promise.resolve(\"hello async\");\n}\n\nasync function test() {\n  console.log(\"test start...\");\n  const v1 = await testSometing();\n  console.log(v1);\n  const v2 = await testAsync();\n  console.log(v2);\n  console.log(v1, v2);\n}\n\ntest();\n\nvar promise = new Promise(resolve =\u003e {\n  console.log(\"promise start...\");\n  resolve(\"promise\");\n});\npromise.then(val =\u003e console.log(val));\n\nconsole.log(\"test end...\");\n\n```",
+    "options":  null,
+    "explanation":  "这儿直接给出答案：\n\n```\n\u0027test start...\u0027\n\u0027执行testSometing\u0027\n\u0027promise start...\u0027\n\u0027test end...\u0027\n\u0027testSometing\u0027\n\u0027执行testAsync\u0027\n\u0027promise\u0027\n\u0027hello async\u0027\n\u0027testSometing\u0027 \u0027hello async\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:16:44.000Z",
+    "updateAt":  "2022-01-09T23:23:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1163,
+    "filterTotalNum":  1907,
+    "prev":  "32b06302-58e6-44df-acb7-6c975dcc2957",
+    "next":  "7fdc5ee0-1c5f-483b-927b-140536ea83f2"
+}

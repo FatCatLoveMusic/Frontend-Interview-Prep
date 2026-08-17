@@ -1,0 +1,21 @@
+﻿{
+    "id":  1593,
+    "exerciseKey":  "51f267dd-1550-48e2-9710-7cc8103dcc41",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "在点击 button 时，触发的 event.target 是哪个？",
+    "desc":  "```html\n\u003cdiv onclick=\"console.log(\u0027first div\u0027)\"\u003e\n  \u003cdiv onclick=\"console.log(\u0027second div\u0027)\"\u003e\n    \u003cbutton onclick=\"console.log(\u0027button\u0027)\"\u003e\n      Click!\n    \u003c/button\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n```",
+    "options":  "{\"options\":[\"最外层div\",\"第二层的div\",\"button\",\"上面三个元素\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "event.target 是触发事件的对象 (某个DOM元素) 的引用。\n\n当事件处理程序在事件的冒泡或捕获阶段被调用时，它与event.currentTarget不同。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-01-09T05:00:14.000Z",
+    "updateAt":  "2022-01-09T13:00:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  1197,
+    "filterTotalNum":  1907,
+    "prev":  "70dbc6db-7714-4ba9-9913-cf8cc2a444f7",
+    "next":  "87bd71f8-a515-4c4d-bf74-fd7dfe9ff68a"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1688,
+    "exerciseKey":  "87408912-b244-4727-951c-65993c6dbcff",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么解决canvas中获取跨域图片数据的问题？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 背景\n\n在一张图片添加相关文字，然后转化为base64数据，上传至服务器。当代码上线写完部署到测试环境，控制台报出如下错题：\n\n```\nUncaught (in promise) DOMException: Failed to execute \u0027toDataURL\u0027 on \u0027HTMLCanvasElement\u0027: Tainted canvases may not be exported\n```\n\n这是因为页面在请求图片时产生跨域情况，canvas认为该图片数据为污染的数据，是不安全的数据，无法导出base64数据。\n\n## 为什么 canvas 认为跨域图片数据为 污染的数据\n\n当请求跨域图片数据，而未满足跨域请求资源的条件时。如果canvas使用未经跨域允许的图片的原始数据，这些是不可信的数据，可能会暴露页面的数据。\n\n## 请求图片资源 - 同域\n\nRequest Headers带有cookie。图片数据是被canvas信任的。\n\n## 请求图片资源 - 跨域\n\n默认情况下，直接请求跨域图片。因为不符合跨域请求资源的条件，图片数据是不被canvas信任的。\n\n为了解决图片跨域资源共享的问题， \u003cimg\u003e 元素提供了支持的属性：crossOrigin，该属性一共有两个值可选：anonymous 和 use-credentials，下面列举了两者的使用场景，以及满足的条件。\n\n| |anonymous|use-credentials|\n|--|--|--|\n|用途|匿名请求跨域图片资源，不会发送证书（比如cookie等）|具名请求跨域图片资源，会携带证书数据|\n|Request Headers|\torigin\t|origin、cookie|\n|Response headers|\tAccess-Control-Allow-Origin|\tAccess-Control-Allow-Origin、Access-Control-Allow-Credentials|\n|所需条件|\tAccess-Control-Allow-Origin 字段值需要包含请求域。\t|Access-Control-Allow-Origin 字段值需要包含请求域，且不能为通配符 *。Access-Control-Allow-Credentials 字段值需要为 true，表明允许请求发送证书数据。|\n\n## 代码示例\n\n```js\n// page origin is https://a.com\n\nconst canvas = document.createElement(\u0027canvas\u0027);\nconst context = canvas.getContext(\u00272d\u0027);\n\nconst img = new Image();\nimg.crossOrigin = \u0027anonymous\u0027;\nimg.onload = function () {\n   context.drawImage(this, 0, 0);\n   context.getImageData(0, 0, img.width, img.height);\n};\nimg.src = \u0027https://b.com/a.png\u0027;\n```\n\n另外，跨域图片能正常裁剪（图片未转化成base64），应该满足三个条件：\n\n* img元素中设置crossorigin属性\n* 图片允许跨域，设置响应头Access-Control-Allow-Origin\n* 使用js方式请求图片资源, 需要避免使用缓存，设置url后加上时间戳，或者http头设置Cache-Control为no-cache\n\n主要原因是：\n\n* 如果使用跨域的资源画到canvas中，并且资源没有使用CORS去请求，canvas会被认为是被污染了, canvas可以正常展示，但是没办法使用toDataURL()或者toBlob()导出数据，见Allowing cross-origin use of images and canvas。 所以通过在img标签上设置crossorigin，启用CORS，属性值为anonymous，在CORS请求时不会发送认证信息,见HTML attribute: crossorigin。\n* 在启用CORS请求跨域资源时，资源必须允许跨域，才能正常返回，最简单的方式设置响应头Access-Control-Allow-Origin\n* 图片已经通过img标签加载过，浏览器默认会缓存下来，下次使用js方式再去请求，直接返回缓存的图片，如果缓存中的图片不是通过CORS 请求或者响应头中不存在Access-Control-Allow-Origin，都会导致报错。\n\n",
+    "pivot":  "解决Canvas中获取跨域图片数据的问题，方法如下：\n\n1. **配置CORS**：\n   - 确保图片服务器支持CORS，并在HTTP响应中包含`Access-Control-Allow-Origin`头部，允许你的网站域名访问。\n\n2. **使用代理**：\n   - 如果无法控制图片服务器，设置一个代理服务器来转发请求，并在响应中添加CORS头部。\n\n3. **使用同源图片**：\n   - 尽可能使用与你的网站位于同一域或子域的图片，或者将图片保存在本地服务器上。\n\n4. **HTML `crossOrigin` 属性**：\n   - 在HTML的`\u003cimg\u003e`标签中设置`crossOrigin=\"anonymous\"`（或`\"use-credentials\"`，如果服务器需要认证），但这要求图片服务器支持CORS。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-03-08T15:35:58.000Z",
+    "updateAt":  "2024-08-10T17:06:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1102,
+    "filterTotalNum":  1907,
+    "prev":  "b866f9eb-e02a-4220-b35a-013db09ce0c2",
+    "next":  "1036468a-13c7-49d5-af8f-31c31135ceea"
+}

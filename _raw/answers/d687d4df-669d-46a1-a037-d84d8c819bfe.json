@@ -1,0 +1,21 @@
+﻿{
+    "id":  2878,
+    "exerciseKey":  "d687d4df-669d-46a1-a037-d84d8c819bfe",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果想在小程序中嵌入 markdown 的文档，你有什么思路？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "小程序不支持直接渲染 `markdown`，但是支持富文本的渲染，可以将文档转成 html 后进行渲染，或者使用一些第三方的库直接进行 `markdown`完成渲染。\n\n### **1. 转成 html 后渲染**\n\n- **步骤**：\n  1. 使用 Markdown 解析库（如 `marked`、`markdown-it` 等）将 Markdown 文本转换为 HTML。\n  2. 使用小程序的 `\u003cweb-view\u003e` 、`\u003crich-text\u003e` 组件，或者自定义的组件渲染转换后的 HTML。\n\n- **示例**：\n  ```javascript\n  // 在 JavaScript 文件中\n  import marked from \u0027marked\u0027;\n\n  // 将 Markdown 转换为 HTML\n  const markdownText = \u0027# Hello World\\nThis is a Markdown document.\u0027;\n  const html = marked(markdownText);\n\n  // 将转换后的 HTML 传递给小程序的页面或组件\n  this.setData({ html });\n  ```\n\n  ```html\n  \u003c!-- 在 WXML 文件中 --\u003e\n  \u003crich-text nodes=\"{{html}}\" /\u003e\n  ```\n\n### **2. 使用第三方的组件库**\n\n可以使用第三方库，如 `wxParse` 或 `towxml` 进行渲染。这些库可以将 Markdown 文本解析为微信小程序可以理解的组件和数据。\n\n以下是使用 `wxParse` 的基本步骤：\n\n1. 下载并导入 `wxParse` 到你的项目中。\n2. 在需要使用的页面的 JS 文件中，引入 `wxParse.js`。\n3. 使用 `wxParse.wxParse(\u0027markdown\u0027, \u0027md\u0027, markdownContent, this)` 方法将 Markdown 文本解析为数据和组件。\n4. 在对应的 WXML 文件中，使用 `\u003cimport src=\"wxParse.wxml\"/\u003e` 导入 `wxParse` 的 WXML。\n5. 在需要显示 Markdown 的地方，使用 `\u003ctemplate is=\"wxParse\" data=\"{{wxParseData:markdown.nodes}}\"/\u003e` 显示解析后的内容。\n\n以下是使用 `wxParse` 渲染 Markdown 的代码示例：\n\n```javascript\n// 引入 wxParse.js\nvar wxParse = require(\u0027../../wxParse/wxParse.js\u0027);\n\nPage({\n  data: {\n    markdown: \u0027\u0027\n  },\n  onLoad: function(options) {\n    var that = this;\n    var markdownContent = \u0027# 这是一个标题\\n这是一段普通的文本\u0027;\n    wxParse.wxParse(\u0027markdown\u0027, \u0027md\u0027, markdownContent, that);\n  }\n});\n```\n\n```html\n\u003c!-- 引入 wxParse.wxml --\u003e\n\u003cimport src=\"../../wxParse/wxParse.wxml\"/\u003e\n\u003cview\u003e\n  \u003c!-- 显示解析后的内容 --\u003e\n  \u003ctemplate is=\"wxParse\" data=\"{{wxParseData:markdown.nodes}}\"/\u003e\n\u003c/view\u003e\n```",
+    "pivot":  "* 转成 html 后，使用 `rich-text` 或者其他方式进行渲染\n* 使用第三方库渲染 `markdown`文档，比如 `wxParse` 或 `towxml`",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-09-09T06:15:52.000Z",
+    "updateAt":  "2024-09-10T11:13:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  323,
+    "filterTotalNum":  1907,
+    "prev":  "58f33dfb-be76-4251-ad48-d661d65c4b28",
+    "next":  "9ccba9eb-a2fe-4334-8c82-bf6fa2582cab"
+}

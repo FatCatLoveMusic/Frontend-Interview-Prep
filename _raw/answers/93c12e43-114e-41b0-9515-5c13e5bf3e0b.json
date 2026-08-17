@@ -1,0 +1,21 @@
+﻿{
+    "id":  2415,
+    "exerciseKey":  "93c12e43-114e-41b0-9515-5c13e5bf3e0b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "原生 js 如何进行监听路由的变化？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在原生 JavaScript 中，可以通过监听 `hashchange` 事件和 `popstate` 事件来监听路由变化。以下是常见的方法：\n\n### 1. 监听 `hashchange` 事件\n`hashchange` 事件适用于基于哈希的路由（即 `#` 形式的路由，如 `example.com/#/home`）。\n\n```javascript\nwindow.addEventListener(\u0027hashchange\u0027, function() {\n    console.log(\u0027Hash changed to:\u0027, location.hash);\n});\n```\n\n- **原理**：当 URL 中的 `#` 部分发生变化时，会触发 `hashchange` 事件。\n- **优点**：简单、兼容性好。\n- **缺点**：只能监听 `#` 部分的变化，不适用于 `history` API 模式的路由。\n\n### 2. 监听 `popstate` 事件\n`popstate` 事件适用于 `history` API（例如 `pushState`、`replaceState`）实现的前端路由。\n\n```javascript\nwindow.addEventListener(\u0027popstate\u0027, function(event) {\n    console.log(\u0027Location changed to:\u0027, location.pathname);\n    console.log(\u0027State data:\u0027, event.state);\n});\n```\n\n- **原理**：当 `history` 堆栈发生变化（例如使用 `back`、`forward`、`go` 等方法）时，会触发 `popstate` 事件。\n- **优点**：适用于 `history` API，能更好地支持现代路由方案。\n- **缺点**：不包括直接调用 `pushState` 和 `replaceState` 的情况，需要手动触发。\n\n### 3. 重写 `pushState` 和 `replaceState` 以触发自定义事件\n`pushState` 和 `replaceState` 本身不会触发 `popstate`，可以重写它们并手动触发事件。\n\n```javascript\nconst originalPushState = history.pushState;\nhistory.pushState = function (...args) {\n    originalPushState.apply(this, args);\n    window.dispatchEvent(new Event(\u0027pushstate\u0027));\n};\n\nconst originalReplaceState = history.replaceState;\nhistory.replaceState = function (...args) {\n    originalReplaceState.apply(this, args);\n    window.dispatchEvent(new Event(\u0027replacestate\u0027));\n};\n\n// 监听自定义的 pushstate 和 replacestate 事件\nwindow.addEventListener(\u0027pushstate\u0027, () =\u003e {\n    console.log(\u0027URL changed (pushState):\u0027, location.pathname);\n});\nwindow.addEventListener(\u0027replacestate\u0027, () =\u003e {\n    console.log(\u0027URL changed (replaceState):\u0027, location.pathname);\n});\n```",
+    "pivot":  "1. **hash 路由**：使用 `hashchange` 事件即可监听。\n2. **history 路由**：使用 `popstate` 事件，并重写 `pushState` 和 `replaceState` 方法触发自定义事件。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-10-31T03:18:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  538,
+    "filterTotalNum":  1907,
+    "prev":  "ad98f8b2-58de-446b-a9ec-2660f1c2e581",
+    "next":  "b7510525-d358-4b38-a29d-430524dc2dca"
+}

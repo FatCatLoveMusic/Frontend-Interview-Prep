@@ -1,0 +1,21 @@
+﻿{
+    "id":  117,
+    "exerciseKey":  "d73bb354-253c-4832-80e1-0aa525bc7dc9",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nfunction* generatorOne() {\n  yield [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027];\n}\n\nfunction* generatorTwo() {\n  yield* [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027];\n}\n\nconst one = generatorOne()\nconst two = generatorTwo()\n\nconsole.log(one.next().value)\nconsole.log(two.next().value)\n```",
+    "options":  "{\"options\":[\"a and a\",\"a and undefined\",\"[\u0027a\u0027, \u0027b\u0027, \u0027c\u0027] and a\",\"a and [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "通过 `yield` 关键字, 我们在 `Generator` 函数里执行`yield`表达式. 通过 `yield*` 关键字, 我们可以在一个`Generator` 函数里面执行（`yield`表达式）另一个 `Generator` 函数, 或可遍历的对象 (如数组).\n在函数 `generatorOne` 中, 我们通过 `yield` 关键字 yield 了一个完整的数组 `[\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]`。函数`one`通过`next`方法返回的对象的`value` 属性的值 (`one.next().value`) 等价于数组 `[\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]`.\n```javascript\nconsole.log(one.next().value) // [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\nconsole.log(one.next().value) // undefined\n```\n在函数 `generatorTwo` 中, 我们使用 `yield*` 关键字。就相当于函数`two`第一个`yield`的值, 等价于在迭代器中第一个 `yield` 的值。数组`[\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]`就是这个迭代器. 第一个 `yield` 的值就是 `a`, 所以我们第一次调用 `two.next().value`时, 就返回`a`。\n```javascript\nconsole.log(two.next().value) // \u0027a\u0027\nconsole.log(two.next().value) // \u0027b\u0027\nconsole.log(two.next().value) // \u0027c\u0027\nconsole.log(two.next().value) // undefined\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:29:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1802,
+    "filterTotalNum":  1907,
+    "prev":  "fe5c8180-dafd-428e-86d7-4360811d5321",
+    "next":  "3bd8f12b-0050-4323-869c-4b63d7820276"
+}

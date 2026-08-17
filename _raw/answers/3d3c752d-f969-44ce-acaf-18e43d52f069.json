@@ -1,0 +1,21 @@
+﻿{
+    "id":  423,
+    "exerciseKey":  "3d3c752d-f969-44ce-acaf-18e43d52f069",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 event模块",
+    "desc":  "实现node中回调函数的机制，node中回调函数其实是内部使用了观察者模式。\n\n\u003e观察者模式：定义了对象间一种一对多的依赖关系，当目标对象Subject发生改变时，所有依赖它的对象Observer都会得到通知。\n\n",
+    "options":  null,
+    "explanation":  "```js\nfunction EventEmitter() {\n  this.events = new Map();\n}\n\n// 需要实现的一些方法：\n// addListener、removeListener、once、removeAllListeners、emit\n\n// 模拟实现addlistener方法\nconst wrapCallback = (fn, once = false) =\u003e ({ callback: fn, once });\nEventEmitter.prototype.addListener = function(type, fn, once = false) {\n  const hanlder = this.events.get(type);\n  if (!hanlder) {\n    // 没有type绑定事件\n    this.events.set(type, wrapCallback(fn, once));\n  } else if (hanlder \u0026\u0026 typeof hanlder.callback === \u0027function\u0027) {\n    // 目前type事件只有一个回调\n    this.events.set(type, [hanlder, wrapCallback(fn, once)]);\n  } else {\n    // 目前type事件数\u003e=2\n    hanlder.push(wrapCallback(fn, once));\n  }\n}\n// 模拟实现removeListener\nEventEmitter.prototype.removeListener = function(type, listener) {\n  const hanlder = this.events.get(type);\n  if (!hanlder) return;\n  if (!Array.isArray(this.events)) {\n    if (hanlder.callback === listener.callback) this.events.delete(type);\n    else return;\n  }\n  for (let i = 0; i \u003c hanlder.length; i++) {\n    const item = hanlder[i];\n    if (item.callback === listener.callback) {\n      hanlder.splice(i, 1);\n      i--;\n      if (hanlder.length === 1) {\n        this.events.set(type, hanlder[0]);\n      }\n    }\n  }\n}\n// 模拟实现once方法\nEventEmitter.prototype.once = function(type, listener) {\n  this.addListener(type, listener, true);\n}\n// 模拟实现emit方法\nEventEmitter.prototype.emit = function(type, ...args) {\n  const hanlder = this.events.get(type);\n  if (!hanlder) return;\n  if (Array.isArray(hanlder)) {\n    hanlder.forEach(item =\u003e {\n      item.callback.apply(this, args);\n      if (item.once) {\n        this.removeListener(type, item);\n      }\n    })\n  } else {\n    hanlder.callback.apply(this, args);\n    if (hanlder.once) {\n      this.events.delete(type);\n    }\n  }\n  return true;\n}\nEventEmitter.prototype.removeAllListeners = function(type) {\n  const hanlder = this.events.get(type);\n  if (!hanlder) return;\n  this.events.delete(type);\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:11:20.000Z",
+    "updateAt":  "2021-07-07T00:13:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  1497,
+    "filterTotalNum":  1907,
+    "prev":  "7375c380-9dd8-497e-9b74-e4cc0779532c",
+    "next":  "19448048-9bd0-46ba-9cf4-3946003a83df"
+}

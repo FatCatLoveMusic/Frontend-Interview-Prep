@@ -1,0 +1,21 @@
+﻿{
+    "id":  1608,
+    "exerciseKey":  "58350841-57d6-4b0a-9e31-57f5f0e16357",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第16题】下面代码的输出是什么？",
+    "desc":  "```js\nPromise.reject(1)\n  .then(res =\u003e {\n    console.log(res);\n    return 2;\n  })\n  .catch(err =\u003e {\n    console.log(err);\n    return 3\n  })\n  .then(res =\u003e {\n    console.log(res);\n  });\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n因为reject(1)，此时走的是catch，且第二个then中的res得到的就是catch中的返回值。\n\n## 结果\n```\n1\n3\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:44:12.000Z",
+    "updateAt":  "2022-01-09T23:01:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1182,
+    "filterTotalNum":  1907,
+    "prev":  "30dd1b36-496d-4a65-a3e7-75be59b36570",
+    "next":  "1b41e9cc-194a-4e0c-8bc5-17a83af9abad"
+}

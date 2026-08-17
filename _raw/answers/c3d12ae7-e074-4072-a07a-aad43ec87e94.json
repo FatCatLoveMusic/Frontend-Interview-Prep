@@ -1,0 +1,21 @@
+﻿{
+    "id":  1599,
+    "exerciseKey":  "c3d12ae7-e074-4072-a07a-aad43ec87e94",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第七题】下面代码的输出是什么？",
+    "desc":  "```js\nconsole.log(\u0027start\u0027)\nsetTimeout(() =\u003e {\n  console.log(\u0027time\u0027)\n})\nPromise.resolve().then(() =\u003e {\n  console.log(\u0027resolve\u0027)\n})\nconsole.log(\u0027end\u0027)\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n* 刚开始整个脚本作为一个宏任务来执行，对于同步代码直接压入执行栈进行执行，因此先打印出start和end。\n* setTimout作为一个宏任务被放入宏任务队列(下一个)\n* Promise.then作为一个微任务被放入微任务队列\n* 本次宏任务执行完，检查微任务，发现Promise.then，执行它\n* 接下来进入下一个宏任务，发现setTimeout，执行。\n\n## 结果\n\n```\n\u0027start\u0027\n\u0027end\u0027\n\u0027resolve\u0027\n\u0027time\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:30:11.000Z",
+    "updateAt":  "2022-01-09T23:00:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1191,
+    "filterTotalNum":  1907,
+    "prev":  "a7ccbacc-5415-4c3f-b168-5fcc4d7792ee",
+    "next":  "1b7efa22-c54d-4dc9-a54e-7faa69f5b821"
+}

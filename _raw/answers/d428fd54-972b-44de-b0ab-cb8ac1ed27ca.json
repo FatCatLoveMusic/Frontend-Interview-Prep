@@ -1,0 +1,21 @@
+﻿{
+    "id":  638,
+    "exerciseKey":  "d428fd54-972b-44de-b0ab-cb8ac1ed27ca",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对版本管理的理解？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "版本控制（Version control），是维护工程蓝图的标准作法，能追踪工程蓝图从诞生一直到定案的过程。此外，版本控制也是一种软件工程技巧，借此能在软件开发的过程中，确保由不同人所编辑的同一程序文件都得到同步\n\n透过文档控制，能记录任何工程项目内各个模块的改动历程，并为每次改动编上序号\n\n一种简单的版本控制形式如下：赋给图的初版一个版本等级“A”。当做了第一次改变后，版本等级改为“B”，以此类推\n\n版本控制能提供项目的设计者，将设计恢复到之前任一状态的选择权\n\n简言之，你的修改只要提到到版本控制系统，基本都可以找回，版本控制系统就像一台时光机器，可以让你回到任何一个时间点",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-10-24T03:34:08.000Z",
+    "updateAt":  "2021-10-24T12:11:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1283,
+    "filterTotalNum":  1907,
+    "prev":  "791b77aa-0432-440b-bedb-506a4f8eac36",
+    "next":  "4d19c9e2-7a80-40fd-83ee-ae6d9b531a0a"
+}

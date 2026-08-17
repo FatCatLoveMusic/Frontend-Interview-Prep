@@ -1,0 +1,21 @@
+﻿{
+    "id":  2771,
+    "exerciseKey":  "13146206-837d-4eb6-9d47-c7152c4dae46",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "手写实现 Promise.allSettled",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "手写实现 `Promise.allSettled` 方法，涉及创建一个新的 `Promise` 对象，该对象在所有输入的 `Promise` 对象都完成（无论成功还是失败）时解决，并返回每个 `Promise` 对象的状态和结果。\n\n### **实现步骤**\n\n1. **接收输入**：接受一个 `Promise` 对象的可迭代对象（通常是数组）。\n2. **初始化**：创建一个新的 `Promise` 对象，用于最终的结果。\n3. **处理每个 `Promise`**：遍历输入的 `Promise` 对象，处理每个 `Promise` 的状态（成功或失败）。\n4. **收集结果**：将每个 `Promise` 对象的状态和结果收集到一个数组中。\n5. **完成处理**：在所有 `Promise` 对象都完成后，返回结果数组。\n\n### **实现代码**\n\n```javascript\nfunction promiseAllSettled(promises) {\n  return new Promise((resolve) =\u003e {\n    // 结果数组\n    const results = [];\n    let completedCount = 0;\n\n    // 遍历每个 Promise\n    promises.forEach((promise, index) =\u003e {\n      // 确保 promise 是一个 Promise 对象\n      Promise.resolve(promise).then(\n        (value) =\u003e {\n          results[index] = { status: \u0027fulfilled\u0027, value };\n        },\n        (reason) =\u003e {\n          results[index] = { status: \u0027rejected\u0027, reason };\n        }\n      ).finally(() =\u003e {\n        // 记录已完成的 Promise 数量\n        completedCount++;\n        // 如果所有 Promise 都完成了\n        if (completedCount === promises.length) {\n          resolve(results);\n        }\n      });\n    });\n  });\n}\n\n// 示例用法\nconst p1 = Promise.resolve(1);\nconst p2 = Promise.reject(new Error(\u0027Failed\u0027));\nconst p3 = new Promise((resolve) =\u003e setTimeout(resolve, 100, 3));\n\npromiseAllSettled([p1, p2, p3]).then(results =\u003e {\n  console.log(results);\n  /*\n  [\n    { status: \u0027fulfilled\u0027, value: 1 },\n    { status: \u0027rejected\u0027, reason: Error(\u0027Failed\u0027) },\n    { status: \u0027fulfilled\u0027, value: 3 }\n  ]\n  */\n});\n```\n\n### **说明**\n\n1. **接收和处理**：\n   - 使用 `Promise.resolve(promise)` 确保每个输入都是 `Promise` 对象，方便处理非 `Promise` 对象。\n   - 在每个 `Promise` 成功时，将 `{ status: \u0027fulfilled\u0027, value }` 记录到结果数组中。\n   - 在每个 `Promise` 失败时，将 `{ status: \u0027rejected\u0027, reason }` 记录到结果数组中。\n\n2. **最终处理**：\n   - 使用 `finally()` 方法确保无论 `Promise` 成功还是失败，最终都能够执行并检查是否所有 `Promise` 对象都完成。\n   - 当所有 `Promise` 对象都完成时，调用 `resolve(results)` 传递结果数组。\n\n这种实现方法确保了处理所有 `Promise` 对象，无论它们的结果如何，并在所有 `Promise` 完成后提供最终结果。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T20:03:23.000Z",
+    "isCollected":  false,
+    "currentIndex":  370,
+    "filterTotalNum":  1907,
+    "prev":  "a0a7f06f-8aa3-4408-8a40-87c33bd3608f",
+    "next":  "b2307971-c42d-49f7-b659-d3e2a50d3505"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1775,
+    "exerciseKey":  "c8997d09-6634-4e27-9f3f-5376a6e97f17",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何区分数组和对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 方法1 ：通过 ES6 中的 Array.isArray 来识别\n\n```\nconsole.log(Array.isArray([]))//true\nconsole.log(Array.isArray({}))//false\n```\n## 方法2 ：通过 instanceof 来识别\n\n```\nconsole.log([] instanceof Array)//true\nconsole.log({} instanceof Array)//false\n```\n## 方法3 ：通过调用 constructor 来识别\n```\nconsole.log([].constructor)//[Function: Array]\nconsole.log({}.constructor)//[Function: Object]\n```\n## 方法4 ：通过 Object.prototype.toString.call 方法来识别\n\n```\nconsole.log(Object.prototype.toString.call([]))//[object Array]  \nconsole.log(Object.prototype.toString.call({}))//[object Object]   \n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-17T12:23:45.000Z",
+    "updateAt":  "2024-07-20T10:31:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1034,
+    "filterTotalNum":  1907,
+    "prev":  "e79d1df5-690b-428c-846d-9f076e2afae3",
+    "next":  "07bfb2a3-8a44-492e-9dd2-96c8d85b3cb2"
+}

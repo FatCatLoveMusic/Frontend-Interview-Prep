@@ -1,0 +1,21 @@
+﻿{
+    "id":  1777,
+    "exerciseKey":  "487a7c86-fd00-4567-a6e2-dd6446e79e5e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Map 和 Set 的用法以及区别",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "### 首先了解一下 Map\nMap 是一组键值对的结构，和 JSON 对象类似。\n\n\n**(1) Map数据结构如下**\n\n这里我们可以看到的是Map的数据结构是一个键值对的结构\n\n![image.png](https://static.ecool.fun//article/c88014da-ef2f-4626-89cc-d3b7729546e6.jpeg)\n\n\n**(2) key 不仅可以是字符串还可以是对象**\n\n```\nvar obj ={name:\"小如\",age:9}\nlet map = new Map()\nmap.set(obj,\"111\")\n```\n打印结果如下\n\n![image.png](https://static.ecool.fun//article/f85eb9e7-c056-4b49-82e4-20f8e8a3e8e7.jpeg)\n\n**(3) Map常用语法如下**\n\n```\n//初始化`Map`需要一个二维数组(请看 Map 数据结构)，或者直接初始化一个空`Map` \nlet map = new Map();\n\n//添加key和value值\nmap.set(\u0027Amy\u0027,\u0027女\u0027)\nmap.set(\u0027liuQi\u0027,\u0027男\u0027)\n\n//是否存在key，存在返回true,反之为false\nmap.has(\u0027Amy\u0027) //true\nmap.has(\u0027amy\u0027) //false\n\n//根据key获取value\nmap.get(\u0027Amy\u0027) //女\n\n//删除 key为Amy的value\nmap.delete(\u0027Amy\u0027)\nmap.get(\u0027Amy\u0027) //undefined  删除成功\n```\n**(4) 一个key只能对应一个value，多次对一个key放入value，后面的值会把前面的值覆盖掉**\n\n```\nvar map =new Map\nmap.set(\u0027Amy\u0027,\"女\")\nmap.set(\u0027Amy\u0027,\"男\")\nconsole.log(map) \n```\n打印结果如下\n\n![image.png](https://static.ecool.fun//article/fff162fa-10e5-4de8-aa5f-49e04702374a.jpeg)\n\n### 再来了解一下 Set\nSet 对象类似于数组，且成员的值都是唯一的\n\n**(1) 打印出的数据结构如下**\n\n这里打印出来是一个对象\n\n![image.png](https://static.ecool.fun//article/74e2e811-d1d8-488b-94ba-fefd47ee649c.jpeg)\n\n**(2) 最常用来去重使用，去重方法有很多但是都没有它运行的快。**\n\n```\nvar arr=[1,3,4,2,5,1,4]\n// 这里原本是一个对象用了es6的语法 转化成了数组，就是转化数组之前已经过滤掉了重复的元素了\nvar arr2=[...new Set(arr)] //[1,3,4,2,5]\n```\n**(3) Set常用语法如下**\n\n```\n//初始化一个Set ，需要一个Array数组，要么空Set\nvar set = new Set([1,2,3,5,6]) \nconsole.log(set)  // {1, 2, 3, 5, 6}\n\n//添加元素到Set中\nset.add(7) //{1, 2, 3, 5, 6, 7}\n\n//删除Set中的元素\nset.delete(3) // {1, 2, 5, 6, 7}\n\n//检测是否含有此元素，有为true，没有则为false\nset.has(2) //true\n```\n\n\n### 总结Map和Set的区别\n\n**(1) 这两种方法具有极快的查找速度;那么下面我们来对比一下Map，Set，Array 的执行时间**\n\n```\n//首先初始化数据\nvar lng=100\nvar arr =new Array(lng).fill(2)\nvar set =new Set(arr)\nlet map =new Map()\nfor(var i=0;i\u003clng;i++){\narr[i]=i\nmap.set(i,arr[i])\n}\n\n// Array\nconsole.time()\nfor(var j=0;j\u003clng;j++){\narr.includes(j)\n}\nconsole.timeEnd()  //default: 0.01220703125 ms\n\n\n// Set\nconsole.time()\nfor(var j=0;j\u003clng;j++){\nset.has(j)\n}\nconsole.timeEnd()  // default: 0.005859375 ms\n\n// Map\nconsole.time()\nfor(var j=0;j\u003clng;j++){\nmap.has(j)\n}\nconsole.timeEnd()\n// default: 0.007080078125 ms\n```\n\n通过以上几种方法我们可以看到，Set执行时间最短，那么查找速度最快，当然了Set 和 Map的查找速度都很快想差不大，所以说这两种方法具有极快的查找速度。\n\n**(2) 初始化需要的值不一样，Map需要的是一个二维数组，而Set 需要的是一维 Array 数组**\n\n**(3) Map 和 Set 都不允许键重复**\n\n**(4) Map的键是不能修改，但是键对应的值是可以修改的；Set不能通过迭代器来改变Set的值，因为Set的值就是键。**\n\n**(5) Map 是键值对的存在，值也不作为健；而 Set 没有 value 只有 key，value 就是 key；**\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-17T12:57:26.000Z",
+    "updateAt":  "2024-07-22T15:40:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1032,
+    "filterTotalNum":  1907,
+    "prev":  "f00474b0-83a2-4723-8bee-0e2abe8b8277",
+    "next":  "e79d1df5-690b-428c-846d-9f076e2afae3"
+}

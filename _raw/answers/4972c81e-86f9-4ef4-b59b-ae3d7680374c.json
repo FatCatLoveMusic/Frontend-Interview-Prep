@@ -1,0 +1,21 @@
+﻿{
+    "id":  522,
+    "exerciseKey":  "4972c81e-86f9-4ef4-b59b-ae3d7680374c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“计数排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法简介\n\n计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。\n\n## 算法描述\n\n具体算法描述如下：\n\n* 找出待排序的数组中最大和最小的元素；\n* 统计数组中每个值为i的元素出现的次数，存入数组C的第i项；\n* 对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；\n* 反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。\n\n## 代码实现\n\n```javascript\nfunction countingSort(array) {\n    var len = array.length,\n        B = [],\n        C = [],\n        min = max = array[0];\n    console.time(\u0027计数排序耗时\u0027);\n    for (var i = 0; i \u003c len; i++) {\n        min = min \u003c= array[i] ? min : array[i];\n        max = max \u003e= array[i] ? max : array[i];\n        C[array[i]] = C[array[i]] ? C[array[i]] + 1 : 1;\n    }\n    for (var j = min; j \u003c max; j++) {\n        C[j + 1] = (C[j + 1] || 0) + (C[j] || 0);\n    }\n    for (var k = len - 1; k \u003e= 0; k--) {\n        B[C[array[k]] - 1] = array[k];\n        C[array[k]]--;\n    }\n    console.timeEnd(\u0027计数排序耗时\u0027);\n    return B;\n}\nvar arr = [2, 2, 3, 8, 7, 1, 2, 2, 2, 7, 3, 9, 8, 2, 1, 4, 2, 4, 6, 9, 2];\nconsole.log(countingSort(arr)); //[1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 4, 4, 6, 7, 7, 8, 8, 9, 9]\n\n```\n\n## 算法分析\n\n当输入的元素是n 个0到k之间的整数时，它的运行时间是 O(n + k)。计数排序不是比较排序，排序的速度快于任何比较排序算法。由于用来计数的数组C的长度取决于待排序数组中数据的范围（等于待排序数组的最大值与最小值的差加上1），这使得计数排序对于数据范围很大的数组，需要大量时间和内存。\n\n* 最佳情况：T(n) = O(n+k)\n* 最差情况：T(n) = O(n+k)\n* 平均情况：T(n) = O(n+k)",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-17T12:13:06.000Z",
+    "updateAt":  "2024-07-22T11:43:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1398,
+    "filterTotalNum":  1907,
+    "prev":  "73e0dfb8-798e-4380-888b-7e5ae349e2d8",
+    "next":  "e221664e-c3b1-4c18-827e-7a6bd2a2593e"
+}

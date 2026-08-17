@@ -1,0 +1,21 @@
+﻿{
+    "id":  3065,
+    "exerciseKey":  "f142c5fe-17fd-444e-8daf-bd03d085ce69",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "`requestAnimationFrame` 与 `requestIdleCallback` 在渲染优化中的执行时机差异？谁优先触发？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这个问题本质是理解 **浏览器一帧的调度模型**。\n不搞清楚一帧里发生了什么，很容易回答成“谁快谁慢”这种表层结论。\n\n核心结论先给出：\n\n\u003e 在有下一帧渲染需求的情况下，`requestAnimationFrame` 一定优先于 `requestIdleCallback` 执行。\n\u003e `requestIdleCallback` 只会在当前帧还有“空闲时间”时才会触发。\n\n下面从浏览器帧模型拆解。\n\n---\n\n# 一、浏览器一帧的基本流程\n\n以 60fps 为例，一帧约 16.6ms。\n\n一次完整渲染循环大致是：\n\n1. 执行宏任务（例如 setTimeout）\n2. 清空微任务队列\n3. 触发 requestAnimationFrame 回调\n4. 进行样式计算（Style）\n5. 布局计算（Layout）\n6. 绘制（Paint）\n7. 合成（Composite）\n8. 如果还有时间 → 执行 requestIdleCallback\n\n需要明确一点：\n\n* rAF 是“下一帧渲染前”的回调\n* rIC 是“当前帧剩余时间”的回调\n\n---\n\n# 二、requestAnimationFrame 的执行时机\n\n`requestAnimationFrame` 的设计目标是：\n\n\u003e 在浏览器即将进行下一次重绘之前执行回调。\n\n特点：\n\n* 每帧最多执行一次\n* 与刷新率同步\n* 在样式计算之前触发\n* 如果标签页不可见，会暂停\n\n执行时机可以理解为：\n\n\u003e 在下一帧开始渲染流程之前\n\n示例：\n\n```js id=\"z0ad4h\"\nrequestAnimationFrame(() =\u003e {\n  // 适合更新动画状态\n})\n```\n\n如果在 rAF 中修改 DOM，会参与当前帧的布局与绘制。\n\n---\n\n# 三、requestIdleCallback 的执行时机\n\n`requestIdleCallback` 的设计目标是：\n\n\u003e 利用主线程空闲时间执行低优先级任务。\n\n它有两个触发条件：\n\n1. 当前帧执行完所有渲染任务后仍有剩余时间\n2. 或者超时（timeout）触发\n\n示例：\n\n```js id=\"dbb8k7\"\nrequestIdleCallback((deadline) =\u003e {\n  while (deadline.timeRemaining() \u003e 0) {\n    // 做低优先级任务\n  }\n});\n```\n\n关键特征：\n\n* 不保证每帧都会执行\n* 如果帧很忙，可能一直被延迟\n* 优先级低于渲染任务\n\n---\n\n# 四、两者在同一帧中的相对顺序\n\n假设：\n\n```js id=\"wj3k6a\"\nrequestAnimationFrame(() =\u003e console.log(\u0027rAF\u0027));\nrequestIdleCallback(() =\u003e console.log(\u0027rIC\u0027));\n```\n\n执行顺序一定是：\n\n```\nrAF\nrIC\n```\n\n原因：\n\n* rAF 是渲染前任务\n* rIC 是渲染后空闲任务\n\n只要这一帧需要渲染，rAF 必然优先。\n\n---\n\n# 五、极端情况分析\n\n## 情况一：主线程持续繁忙\n\n如果 JavaScript 长时间占用主线程：\n\n* rAF 会延迟到下一帧\n* rIC 可能根本不执行\n\nrIC 不保证执行时间。\n\n---\n\n## 情况二：页面不可见\n\n* rAF 会暂停\n* rIC 仍可能执行（取决于浏览器策略）\n\n---\n\n## 情况三：高帧率显示器\n\n在 120Hz 下：\n\n* 每帧时间更短（约 8ms）\n* rIC 更难获得空闲时间\n\n---\n\n# 六、在渲染优化中的使用场景\n\n## requestAnimationFrame 适合：\n\n* 动画\n* DOM 变更\n* 视觉相关更新\n* 滚动同步\n\n因为它保证在渲染前执行。\n\n---\n\n## requestIdleCallback 适合：\n\n* 预加载\n* 数据预计算\n* 日志上报\n* 非关键计算\n\n因为它只在空闲时间运行。\n\n---\n\n# 七、优先级总结\n\n在浏览器调度优先级中：\n\n微任务 \u003e rAF \u003e 渲染 \u003e rIC\n\n可以抽象为：\n\n高优先级（影响视觉） → rAF\n低优先级（非关键逻辑） → rIC\n\n---\n\n# 八、本质差异\n\n可以从“目标函数”角度理解：\n\n* rAF 优化的是“帧同步”\n* rIC 优化的是“主线程利用率”\n\n两者并不是竞争关系，而是不同调度通道。",
+    "pivot":  "`requestAnimationFrame` 在浏览器即将进行下一帧渲染之前执行，用于动画与视觉更新，优先级高于渲染阶段后的任务。`requestIdleCallback` 只会在当前帧所有渲染任务完成且仍有剩余时间时触发，属于低优先级空闲调度机制。因此在同一帧中，rAF 必然先于 rIC 执行。rAF 用于保证帧同步，rIC 用于利用空闲时间执行非关键任务。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-03-03T15:14:25.000Z",
+    "updateAt":  "2026-03-03T15:14:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  140,
+    "filterTotalNum":  1907,
+    "prev":  "cf82f359-6b3e-494b-ba24-11d79fabb8b8",
+    "next":  "88f58c02-0b7c-4706-9e7e-08d7509205c5"
+}

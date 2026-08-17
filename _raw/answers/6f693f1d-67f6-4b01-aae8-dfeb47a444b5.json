@@ -1,0 +1,21 @@
+﻿{
+    "id":  269,
+    "exerciseKey":  "6f693f1d-67f6-4b01-aae8-dfeb47a444b5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "script 标签为什么建议放在 body 标签的底部（defer、async）",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "因为浏览器在渲染html的时候是从上到下执行的，当遇到js文件的时候就会停止当前页面的渲染，转而去下载js文件。\n\n如果将script标签放在头部，在文件很大的情况下将导致首屏加载时间延长，影响用户体验。\n\n## 解决办法\n\n* 将script标签放在body的底部\n* 通过defer、async属性将js文件转为异步加载\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:54:16.000Z",
+    "updateAt":  "2023-05-15T21:32:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1650,
+    "filterTotalNum":  1907,
+    "prev":  "ba6327df-ba59-4870-921c-36b8516c4451",
+    "next":  "53060972-481f-4025-a055-aa278d737fc1"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2235,
+    "exerciseKey":  "f7df10d2-74ea-47cc-993c-ee7fd657b606",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么遍历 ES6 中的 Map 对象？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 ES6 中，`Map` 是一种新的集合类型，它存储键值对（key-value pairs），与对象不同的是，`Map` 的键可以是任何类型（不仅仅是字符串），并且键值对的顺序是有序的。\n\n要遍历 `Map` 对象，可以使用以下几种方法：\n\n### 1. **使用 `forEach()` 方法**\n`Map` 具有 `forEach()` 方法，它接受一个回调函数，回调函数会接收三个参数：`value`（值），`key`（键），以及 `Map` 本身。\n\n```javascript\nconst myMap = new Map([\n  [\u0027a\u0027, 1],\n  [\u0027b\u0027, 2],\n  [\u0027c\u0027, 3]\n]);\n\nmyMap.forEach((value, key) =\u003e {\n  console.log(key, value);  // 输出：a 1, b 2, c 3\n});\n```\n\n### 2. **使用 `for...of` 循环**\n`Map` 是可迭代的，可以直接使用 `for...of` 循环进行遍历。默认情况下，`Map` 会按 `[key, value]` 的形式返回每个元素。\n\n```javascript\nconst myMap = new Map([\n  [\u0027a\u0027, 1],\n  [\u0027b\u0027, 2],\n  [\u0027c\u0027, 3]\n]);\n\nfor (let [key, value] of myMap) {\n  console.log(key, value);  // 输出：a 1, b 2, c 3\n}\n```\n\n### 3. **使用 `Map` 的 `keys()` 方法**\n`keys()` 方法返回一个包含所有键的迭代器，可以用 `for...of` 循环遍历这些键。\n\n```javascript\nconst myMap = new Map([\n  [\u0027a\u0027, 1],\n  [\u0027b\u0027, 2],\n  [\u0027c\u0027, 3]\n]);\n\nfor (let key of myMap.keys()) {\n  console.log(key);  // 输出：a, b, c\n}\n```\n\n### 4. **使用 `Map` 的 `values()` 方法**\n`values()` 方法返回一个包含所有值的迭代器，可以用 `for...of` 循环遍历这些值。\n\n```javascript\nconst myMap = new Map([\n  [\u0027a\u0027, 1],\n  [\u0027b\u0027, 2],\n  [\u0027c\u0027, 3]\n]);\n\nfor (let value of myMap.values()) {\n  console.log(value);  // 输出：1, 2, 3\n}\n```\n\n### 5. **使用 `Map` 的 `entries()` 方法**\n`entries()` 方法返回一个包含 `[key, value]` 键值对的迭代器，可以用 `for...of` 循环遍历这些键值对。\n\n```javascript\nconst myMap = new Map([\n  [\u0027a\u0027, 1],\n  [\u0027b\u0027, 2],\n  [\u0027c\u0027, 3]\n]);\n\nfor (let [key, value] of myMap.entries()) {\n  console.log(key, value);  // 输出：a 1, b 2, c 3\n}\n```",
+    "pivot":  "- **`forEach()`**：适用于在遍历时执行某些操作，接收 `value`、`key` 和 `Map` 本身作为参数。\n- **`for...of`**：适用于更加灵活的遍历，支持 `Map` 的 `entries()`、`keys()` 和 `values()` 方法。\n- **`keys()`**、**`values()`**、**`entries()`**：分别用于遍历键、值或键值对。",
+    "vipLimit":  1,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-26T11:03:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  647,
+    "filterTotalNum":  1907,
+    "prev":  "43b44cfd-43c7-4d03-85d3-26d84ee975ab",
+    "next":  "5a3d1db3-0883-4fe2-a860-4cdba743faf2"
+}

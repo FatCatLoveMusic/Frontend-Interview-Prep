@@ -1,0 +1,21 @@
+﻿{
+    "id":  26,
+    "exerciseKey":  "2f15c826-8011-46de-9c27-864728b75432",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction getPersonInfo(one, two, three) {\n  console.log(one)\n  console.log(two)\n  console.log(three)\n}\n\nconst person = \u0027Lydia\u0027\nconst age = 21\n\ngetPersonInfo`${person} is ${age} years old`\n```",
+    "options":  "{\"options\":[\"\\\"Lydia\\\" 21 [\\\"\\\", \\\" is \\\", \\\" years old\\\"]\",\"[\\\"\\\", \\\" is \\\", \\\" years old\\\"] \\\"Lydia\\\" 21\",\"\\\"Lydia\\\" [\\\"\\\", \\\" is \\\", \\\" years old\\\"] 21\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "如果使用标记模板字面量，第一个参数的值总是包含字符串的数组。其余的参数获取的是传递的表达式的值！",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:09:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  1893,
+    "filterTotalNum":  1907,
+    "prev":  "b8242a9b-8f0f-4c56-ab8f-cc092b3f1db3",
+    "next":  "ffb601c8-7b57-4a0b-892a-f1935cfb528e"
+}

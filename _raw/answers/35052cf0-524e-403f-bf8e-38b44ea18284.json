@@ -1,0 +1,21 @@
+﻿{
+    "id":  2784,
+    "exerciseKey":  "35052cf0-524e-403f-bf8e-38b44ea18284",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "纯 TS 项目工程中, 如何使用 alias path?",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在纯 TypeScript 项目中使用 alias path 可以简化模块的导入路径，以下是关键的步骤：\n\n### **1. 配置 `tsconfig.json`**\n\n首先，在项目的根目录中找到或创建 `tsconfig.json` 文件。然后，使用 `paths` 和 `baseUrl` 属性来配置路径别名。\n\n#### **示例 `tsconfig.json` 配置**：\n\n```json\n{\n  \"compilerOptions\": {\n    \"baseUrl\": \"./\", // 基础目录，所有路径别名都是相对于这个目录\n    \"paths\": {\n      \"@components/*\": [\"src/components/*\"],\n      \"@utils/*\": [\"src/utils/*\"],\n      \"@models/*\": [\"src/models/*\"]\n    },\n    \"moduleResolution\": \"node\",\n    \"target\": \"es6\",\n    \"module\": \"commonjs\",\n    \"outDir\": \"./dist\",\n    \"strict\": true\n  },\n  \"include\": [\"src/**/*\"]\n}\n```\n\n### **2. 配置构建工具**\n\n如果你的项目使用了构建工具（如 Webpack、Vite），还需要配置相应的工具来识别这些别名。\n\n#### **Webpack 配置**：\n\n在 `webpack.config.js` 文件中，配置 `resolve.alias`。\n\n```javascript\nconst path = require(\u0027path\u0027);\n\nmodule.exports = {\n  // ...其他配置\n  resolve: {\n    alias: {\n      \u0027@components\u0027: path.resolve(__dirname, \u0027src/components/\u0027),\n      \u0027@utils\u0027: path.resolve(__dirname, \u0027src/utils/\u0027),\n      \u0027@models\u0027: path.resolve(__dirname, \u0027src/models/\u0027)\n    },\n    extensions: [\u0027.ts\u0027, \u0027.js\u0027]\n  }\n};\n```\n\n#### **Vite 配置**：\n\n在 `vite.config.ts` 文件中，配置 `resolve.alias`。\n\n```typescript\nimport { defineConfig } from \u0027vite\u0027;\nimport { resolve } from \u0027path\u0027;\n\nexport default defineConfig({\n  resolve: {\n    alias: {\n      \u0027@components\u0027: resolve(__dirname, \u0027src/components\u0027),\n      \u0027@utils\u0027: resolve(__dirname, \u0027src/utils\u0027),\n      \u0027@models\u0027: resolve(__dirname, \u0027src/models\u0027)\n    }\n  }\n});\n```\n\n### **3. 使用别名**\n\n在代码中使用路径别名进行模块导入。\n\n#### **示例**：\n\n```typescript\n// 以前的导入方式\n// import Button from \u0027../../components/Button\u0027;\n\n// 使用别名\nimport Button from \u0027@components/Button\u0027;\n```\n\n### **4. IDE 支持**\n\n确保你的 IDE 支持 TypeScript 路径别名。例如，在 VSCode 中，TypeScript 支持自动识别别名路径，但可能需要重启编辑器来应用更改。\n\n### **5. 运行和测试**\n\n在配置完成后，运行构建和测试过程，确保路径别名配置正确，模块导入能够正常工作。",
+    "pivot":  "在纯 TypeScript 项目中使用 alias path 主要涉及以下步骤：\n1. **配置 `tsconfig.json`**：设置 `baseUrl` 和 `paths`。\n2. **配置构建工具**：根据使用的工具配置路径别名（Webpack、Vite 等）。\n3. **使用别名**：在代码中按配置的别名路径进行模块导入。\n4. **IDE 支持**：确保 IDE 支持路径别名配置。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T19:57:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  366,
+    "filterTotalNum":  1907,
+    "prev":  "030b9bad-6476-469a-896a-866596754c08",
+    "next":  "ea2fac70-cd8c-47ad-997b-331cac76af38"
+}

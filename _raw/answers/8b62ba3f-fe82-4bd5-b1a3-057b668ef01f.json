@@ -1,0 +1,21 @@
+﻿{
+    "id":  417,
+    "exerciseKey":  "8b62ba3f-fe82-4bd5-b1a3-057b668ef01f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 instanceof",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "instanceof运算符用于检测构造函数的prototype属性是否出现在某个实例对象的原型链上。\n\n\n```js\nconst myInstanceof = (left, right) =\u003e {\n  // 基本数据类型都返回false\n  if (typeof left !== \u0027object\u0027 || left === null) return false;\n  let proto = Object.getPrototypeOf(left);\n  while (true) {\n    if (proto === null) return false;\n    if (proto === right.prototype) return true;\n    proto = Object.getPrototypeOf(proto);\n  }\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:07:52.000Z",
+    "updateAt":  "2021-07-07T00:13:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  1503,
+    "filterTotalNum":  1907,
+    "prev":  "665b5487-848c-424b-b6a5-800169ee8fd5",
+    "next":  "e22ceb33-c162-4e98-a395-880716003777"
+}

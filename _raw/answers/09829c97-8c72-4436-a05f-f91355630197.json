@@ -1,0 +1,21 @@
+﻿{
+    "id":  3047,
+    "exerciseKey":  "09829c97-8c72-4436-a05f-f91355630197",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何拦截`arr[0] = 1`这类操作",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "要拦截 `arr[0] = 1` 这类**通过下标直接修改数组元素的操作**，本质上需要拦截的是：\n\n\u003e **对象属性的 `set` 行为**\n\n在 JavaScript 中，这类操作是否可拦截，取决于使用的是 **ES5 的 `Object.defineProperty`** 体系，还是 **ES6 的 `Proxy`** 体系。\n\n---\n\n## 一、结论先行\n\n* **无法通过 `Object.defineProperty` 完整拦截 `arr[0] = 1`**\n* **可以通过 `Proxy` 精确拦截 `arr[0] = 1`**\n\n这也是 Vue2 与 Vue3 在数组响应式能力上的本质差异之一。\n\n---\n\n## 二、为什么 `defineProperty` 做不到\n\n### 1. 数组下标是“动态属性”\n\n```js\narr[0] = 1\n```\n\n等价于：\n\n```js\narr[\u00270\u0027] = 1\n```\n\n而 `Object.defineProperty` 的限制是：\n\n* 只能拦截**已存在的属性**\n* 无法感知**新增属性**\n* 无法批量监听所有未知 key\n\n即使提前对 `0、1、2...` 做劫持：\n\n* 无法预知数组未来长度\n* `length` 的变化也无法可靠追踪\n\n因此只能通过 **hack 原型方法**（push、splice 等）做“部分覆盖”。\n\n---\n\n### 2. Vue2 的实际策略（背景理解）\n\nVue2 对数组的处理是：\n\n* 劫持 `push / pop / splice / shift / unshift / sort / reverse`\n* 不支持 `arr[index] = value`\n* 不支持 `arr.length = n`\n\n这是能力边界，而不是遗漏。\n\n---\n\n## 三、Proxy 如何拦截 `arr[0] = 1`\n\n### 1. 核心原理\n\n`Proxy` 能拦截的是：\n\n\u003e **对象层面的“任意属性访问与修改”**\n\n数组在 JS 中本质上是对象，因此：\n\n```js\narr[0] = 1\n```\n\n一定会触发 `set` trap。\n\n---\n\n### 2. 示例实现\n\n```js\nconst arr = new Proxy([], {\n  set(target, key, value, receiver) {\n    console.log(\u0027set:\u0027, key, value);\n    return Reflect.set(target, key, value, receiver);\n  }\n});\n\narr[0] = 1;       // set: \"0\" 1\narr.length = 10; // set: \"length\" 10\n```\n\n可拦截的包括：\n\n* 下标赋值\n* length 变更\n* 动态新增元素\n\n---\n\n## 四、为什么 Proxy 是“完整解法”\n\n对比能力边界：\n\n| 能力        | defineProperty | Proxy |\n| --------- | -------------- | ----- |\n| 下标赋值      | 不可行            | 可行    |\n| 新增属性      | 不可感知           | 可感知   |\n| 删除属性      | 不可感知           | 可感知   |\n| length 修改 | 不稳定            | 可拦截   |\n| 全量代理      | 需要逐个定义         | 一次代理  |\n\n这也是 Vue3 全面转向 Proxy 的根本原因。\n\n---\n\n## 五、工程层面的注意点\n\n### 1. 不要直接修改原数组引用\n\n一旦做了 Proxy：\n\n```js\nconst raw = [];\nconst observed = new Proxy(raw, ...);\n```\n\n后续逻辑必须**只使用代理对象**，否则拦截会失效。\n\n---\n\n### 2. 避免在 set 中直接操作 target\n\n推荐使用：\n\n```js\nReflect.set(target, key, value, receiver);\n```\n\n而不是：\n\n```js\ntarget[key] = value;\n```\n\n否则容易破坏 this 绑定和继承语义。",
+    "pivot":  "**`arr[0] = 1` 本质是对象属性赋值，ES5 的 `defineProperty` 无法完整拦截动态下标，而 ES6 的 `Proxy` 可以通过 `set` trap 精确感知，因此成为现代响应式系统和状态管理的基础能力。**",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2026-02-01T15:13:48.000Z",
+    "updateAt":  "2026-02-01T15:13:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  158,
+    "filterTotalNum":  1907,
+    "prev":  "efa108f0-e78a-48e7-b722-e6b67c32a494",
+    "next":  "53cc93d4-4b6d-46fc-a9b4-26d3ef075ea5"
+}

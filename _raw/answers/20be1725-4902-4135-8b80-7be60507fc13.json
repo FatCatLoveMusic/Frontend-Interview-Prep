@@ -1,0 +1,21 @@
+﻿{
+    "id":  1732,
+    "exerciseKey":  "20be1725-4902-4135-8b80-7be60507fc13",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "VNode 有哪些属性？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Vue内部定义的Vnode对象包含了以下属性：\n\n* __v_isVNode: *true*，内部属性，有该属性表示为Vnode\n* __v_skip: true，内部属性，表示跳过响应式转换，reactive转换时会根据此属性进行判断\n* isCompatRoot?: *true*，用于是否做了兼容处理的判断\n* type: VNodeTypes，虚拟节点的类型\n* props: (VNodeProps \u0026 ExtraProps) | *null*，虚拟节点的props\n* key: *string* | *number* | *null*，虚拟阶段的key，可用于diff\n* ref: VNodeNormalizedRef | *null*，虚拟阶段的引用\n* scopeId: *string* | *null*，仅限于SFC(单文件组件)，在设置currentRenderingInstance当前渲染实例时，一期设置\n* slotScopeIds: *string*[] | *null*，仅限于单文件组件，与单文件组件的插槽有关\n* children: VNodeNormalizedChildren，子节点\n* component: ComponentInternalInstance | null，组件实例\n* dirs: DirectiveBinding[] | null，当前Vnode绑定的指令\n* transition: TransitionHooks\u003cHostElement\u003e | null，TransitionHooks\n* DOM相关属性\n\t* el: HostNode | *null*，宿主阶段\n\t* anchor: HostNode | *null* // fragment anchor\n\t* target: HostElement | *null* ，teleport target 传送的目标\n\t* targetAnchor: HostNode | *null* // teleport target anchor\n\t* staticCount: *number*，包含的静态节点的数量\n* suspense 悬挂有关的属性\n\t* suspense: SuspenseBoundary | *null*\n\t* ssContent: VNode | *null*\n\t* ssFallback: VNode | *null*\n* optimization only 用于优化的属性\n\t* shapeFlag: *number*\n\t* patchFlag: *number*\n\t* dynamicProps: *string*[] | *null*\n\t* dynamicChildren: VNode[] | *null*\n* 根节点会有的属性\n\t* appContext: AppContext | *null*，实例上下文\n\n可以看到在Vue内部，对于一个Vnode描述对象的属性大概有二十多个。\n\nVue为了给用于减轻一定的负担，但又不至于太封闭，就创建了渲染h。可以在用户需要的时候，通过h函数创建对应的Vnode即可。\n\n这样就给为一些高阶玩家保留了自由发挥的空间。",
+    "pivot":  "Vue内部定义的Vnode对象包含了多个属性，用于描述虚拟节点（Virtual DOM）的各个方面。这些属性包括：\n\n1. **内部属性**：\n   - `__v_isVNode: true`：标识该对象是一个Vnode。\n   - `__v_skip: true`：标识是否跳过响应式转换。\n   - `isCompatRoot?: true`：用于判断是否进行了兼容处理。\n2. **类型和属性**：\n   - `type`：虚拟节点的类型。\n   - `props`：虚拟节点的props，包括静态和动态属性。\n   - `key`：用于diff算法的key。\n   - `ref`：虚拟节点的引用。\n   - `scopeId`：单文件组件的scopeId。\n   - `slotScopeIds`：与单文件组件的插槽有关。\n   - `children`：子节点。\n   - `component`：组件实例。\n   - `dirs`：当前Vnode绑定的指令。\n   - `transition`：TransitionHooks。\n3. **DOM相关属性**：\n   - `el`：宿主阶段的节点。\n   - `anchor`：fragment的锚点。\n   - `target`：teleport的目标。\n   - `targetAnchor`：teleport的目标锚点。\n   - `staticCount`：静态节点的数量。\n4. **suspense相关属性**：\n   - `suspense`：SuspenseBoundary。\n   - `ssContent`：VNode。\n   - `ssFallback`：VNode。\n5. **优化属性**：\n   - `shapeFlag`：表示节点的形状。\n   - `patchFlag`：表示节点的patch标记。\n   - `dynamicProps`：动态属性列表。\n   - `dynamicChildren`：动态子节点列表。\n6. **根节点属性**：\n   - `appContext`：实例上下文。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-04-05T08:31:30.000Z",
+    "updateAt":  "2024-08-10T17:06:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1070,
+    "filterTotalNum":  1907,
+    "prev":  "e8631603-4764-426e-b62b-ddd6dd663d4f",
+    "next":  "26f1a1e7-1bfd-4a0c-91b1-4e1c8455f60a"
+}

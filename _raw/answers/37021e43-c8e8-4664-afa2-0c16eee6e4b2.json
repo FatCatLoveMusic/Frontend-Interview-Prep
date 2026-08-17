@@ -1,0 +1,21 @@
+﻿{
+    "id":  99,
+    "exerciseKey":  "37021e43-c8e8-4664-afa2-0c16eee6e4b2",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nfunction getItems(fruitList, ...args, favoriteFruit) {\n  return [...fruitList, ...args, favoriteFruit]\n}\n\ngetItems([\"banana\", \"apple\"], \"pear\", \"orange\")\n```",
+    "options":  "{\"options\":[\"[\\\"banana\\\", \\\"apple\\\", \\\"pear\\\", \\\"orange\\\"]\",\"[[\\\"banana\\\", \\\"apple\\\"], \\\"pear\\\", \\\"orange\\\"]\",\"[\\\"banana\\\", \\\"apple\\\", [\\\"pear\\\"], \\\"orange\\\"]\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`... args`是剩余参数，剩余参数的值是一个包含所有剩余参数的数组，**并且只能作为最后一个参数**。上述示例中，剩余参数是第二个参数，这是不可能的，并会抛出语法错误。\n```javascript\nfunction getItems(fruitList, favoriteFruit, ...args) {\n  return [...fruitList, ...args, favoriteFruit]\n}\ngetItems([\"banana\", \"apple\"], \"pear\", \"orange\")\n```\n上述例子是有效的，将会返回数组：`[ \u0027banana\u0027, \u0027apple\u0027, \u0027orange\u0027, \u0027pear\u0027 ]`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:27:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  1820,
+    "filterTotalNum":  1907,
+    "prev":  "73f2cb7c-2613-4f06-8777-f72b1778a28b",
+    "next":  "04705905-b7f4-41cc-8828-1b14f2f42af2"
+}

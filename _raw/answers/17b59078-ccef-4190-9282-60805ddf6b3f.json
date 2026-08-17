@@ -1,0 +1,21 @@
+﻿{
+    "id":  450,
+    "exerciseKey":  "17b59078-ccef-4190-9282-60805ddf6b3f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "微信小程序bindtap  和  catchtap 区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 相同点： 都是点击事件\n* 不同点： `bindtap` 不会阻止冒泡，`catchtap` 可以阻止冒泡。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-07T14:39:45.000Z",
+    "updateAt":  "2021-07-11T10:53:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  1470,
+    "filterTotalNum":  1907,
+    "prev":  "92af3054-e90c-4c0d-a5af-2a54b19931ab",
+    "next":  "7f816cdc-b5e8-4939-9c85-004a4110210c"
+}

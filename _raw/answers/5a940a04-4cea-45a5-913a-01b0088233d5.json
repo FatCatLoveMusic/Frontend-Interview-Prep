@@ -1,0 +1,21 @@
+﻿{
+    "id":  3282,
+    "exerciseKey":  "5a940a04-4cea-45a5-913a-01b0088233d5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "前端如何实现多 Agent 协作界面？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "实现多 Agent 协作界面时，前端核心不是“同时展示多个聊天框”，而是把 Agent 协作过程建模成一个可观察、可控制、可追溯的任务系统。界面要让用户看清楚：当前目标是什么、每个 Agent 在负责什么、它们之间如何交接、哪些步骤需要人工确认、最终产物是什么。\n\n比较合理的前端架构是以“事件流 + 状态机”为中心。后端负责真正的 Agent 编排，前端通过 `SSE` 或 `WebSocket` 接收事件，例如：\n\n```ts\ntype AgentEvent =\n  | { type: \u0027agent_started\u0027; agentId: string; taskId: string }\n  | { type: \u0027message_delta\u0027; agentId: string; taskId: string; content: string; seq: number }\n  | { type: \u0027tool_call\u0027; agentId: string; taskId: string; toolName: string; input: unknown }\n  | { type: \u0027handoff\u0027; fromAgentId: string; toAgentId: string; reason: string }\n  | { type: \u0027artifact_created\u0027; taskId: string; artifactId: string }\n  | { type: \u0027approval_required\u0027; taskId: string; actionId: string }\n  | { type: \u0027task_finished\u0027; taskId: string }\n  | { type: \u0027error\u0027; taskId: string; message: string };\n```\n\n前端拿到这些事件后，不直接在组件里拼状态，而是通过 reducer、状态管理库或事件存储层统一归并成页面状态。这样可以天然支持断线重连、事件重放、日志追踪、调试回放，也能避免多 Agent 并发输出时 UI 状态混乱。\n\n界面布局上，一般会分成几个稳定区域：左侧是任务树或 Agent 列表，中间是协作时间线，右侧是当前 Agent 的详情、工具调用、上下文和产物预览。时间线不只展示自然语言消息，还要展示工具调用、Agent 交接、子任务状态、审批节点和错误恢复。对于用户来说，真正重要的是“发生了什么”和“下一步是否需要介入”，而不是只看到一大段流式文本。\n\n多 Agent 场景下还要特别处理并发和可控性。每个 Agent、每个任务都应该有独立状态，例如 `idle`、`running`、`waiting_approval`、`blocked`、`completed`、`failed`。用户操作也要明确，比如暂停、继续、取消、重新执行某个步骤、批准某个工具调用、驳回某个方案。前端不能假设所有 Agent 都会顺序执行，因为真实协作往往是并行的，UI 必须能表达分支、汇总和交接。\n\n流式输出是另一个关键点。文本 token 可以增量渲染，但不能每个 token 都触发全量页面更新。通常会对流式内容做缓冲和节流，比如按 50ms 或 100ms 合并更新一次，同时用 `seq` 做去重和乱序修正。长日志、长对话、工具调用结果要做虚拟列表，否则多 Agent 长时间运行后页面会明显卡顿。\n\n在交互设计上，需要区分“Agent 的思考过程”和“用户需要看的决策信息”。不是所有内部日志都应该默认展开，工具调用参数、执行结果、错误栈可以折叠展示；关键结论、风险提示、待审批动作应该突出。对于代码生成、文档生成、数据分析这类场景，还需要有 artifact 面板展示最终产物，例如文件 diff、表格、图表、报告或预览页面。\n\n安全和权限也不能忽略。多 Agent 经常会调用工具、访问文件、读写数据、发请求，前端需要在高风险动作前提供确认界面，并清楚展示工具名称、影响范围和参数摘要。对于敏感信息，要做脱敏展示；对于失败任务，要保留错误上下文，但避免把 token、密钥、内部地址直接暴露在界面上。\n\n落地时，可以把数据模型抽象成四类：`Agent` 表示角色和能力，`Task` 表示目标和执行状态，`Event` 表示过程，`Artifact` 表示产物。组件层只消费归并后的视图模型，通信层负责连接、重连、心跳和事件确认，状态层负责事件归并和派生数据，UI 层负责展示协作过程和用户控制入口。这样前端不会被具体 Agent 数量绑定，后续增加 Planner、Coder、Reviewer、Researcher 等角色时，界面仍然可以扩展。\n",
+    "pivot":  "多 Agent 协作界面的核心是把协作过程事件化、状态化，而不是简单做多个聊天窗口。前端应通过 `SSE` 或 `WebSocket` 接收 Agent 事件，用统一状态层归并任务、消息、工具调用、交接和产物。UI 上要提供任务视图、协作时间线、Agent 状态、人工审批和产物预览。工程上要重点处理并发状态、流式渲染、断线恢复、性能优化、权限确认和错误追踪。最终目标是让用户能够看清过程、控制风险、理解结果。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-08T12:36:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  6,
+    "filterTotalNum":  1907,
+    "prev":  "833dd50e-b1eb-4248-897c-efc890bf15bb",
+    "next":  "8f04d26c-f525-45ca-81f5-a2cd48c15f16"
+}

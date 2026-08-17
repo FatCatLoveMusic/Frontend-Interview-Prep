@@ -1,0 +1,21 @@
+﻿{
+    "id":  514,
+    "exerciseKey":  "769ab8fd-1070-42d3-817e-48d9b37374ff",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是 let 的临时性死区？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "let 会产生临时性死区，在当前的执行上下文中，会进行变量提升，但是未被初始化，所以在执行上下文执行阶段，执行代码如果还没有执行到变量赋值，就引用此变量就会报错，此变量未初始化。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-11T08:06:45.000Z",
+    "updateAt":  "2021-07-11T16:10:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1406,
+    "filterTotalNum":  1907,
+    "prev":  "cebb4191-0937-48cf-b844-1aaf0faa96f6",
+    "next":  "dc0b6bc1-71a9-4dec-a1df-a63d08f1c888"
+}

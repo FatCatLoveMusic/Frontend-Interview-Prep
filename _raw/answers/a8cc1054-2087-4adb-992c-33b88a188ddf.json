@@ -1,0 +1,21 @@
+﻿{
+    "id":  1550,
+    "exerciseKey":  "a8cc1054-2087-4adb-992c-33b88a188ddf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是 Polyfill ？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Polyfill 指的是用于实现浏览器并不支持的原生 API 的代码。\n\n比如说 `querySelectorAll` 是很多现代浏览器都支持的原生 Web API，但是有些古老的浏览器并不支持，那么假设有人写了一段代码来实现这个功能使这些浏览器也支持了这个功能，那么这就可以成为一个 Polyfill。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:24:15.000Z",
+    "updateAt":  "2021-11-17T22:25:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1239,
+    "filterTotalNum":  1907,
+    "prev":  "23cebacc-48d3-4b48-9393-5c424afffab0",
+    "next":  "7ff627a9-0948-4352-9b70-69aad59fe2ec"
+}

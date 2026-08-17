@@ -1,0 +1,21 @@
+﻿{
+    "id":  561,
+    "exerciseKey":  "ee457290-82ef-4c2b-b2f1-e6b1b28e9166",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何中断Promise？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Promise 有个缺点就是一旦创建就无法取消，所以本质上 Promise 是无法被终止的，但我们在开发过程中可能会遇到下面两个需求：\n\n* 中断调用链\n\n就是在某个 then/catch 执行之后，不想让后续的链式调用继续执行了。\n\n```\nsomePromise\n  .then(() =\u003e {})\n  .then(() =\u003e {\n    // 终止 Promise 链，让下面的 then、catch 和 finally 都不执行\n  })\n  .then(() =\u003e console.log(\u0027then\u0027))\n  .catch(() =\u003e console.log(\u0027catch\u0027))\n  .finally(() =\u003e console.log(\u0027finally\u0027))\n```\n\n一种方法是在then中直接抛错, 这样就不会执行后面的then, 直接跳到catch方法打印err(但此方法并没有实际中断)。但如果链路中对错误进行了捕获，后面的then函数还是会继续执行。\n\nPromise的then方法接收两个参数：\n```javascript\nPromise.prototype.then(onFulfilled, onRejected)\n```\n\n若onFulfilled或onRejected是一个函数，当函数返回一个新Promise对象时，原Promise对象的状态将跟新对象保持一致，详见Promises/A+标准。\n\n因此，当新对象保持“pending”状态时，原Promise链将会中止执行。\n\n```javascript\nPromise.resolve().then(() =\u003e {\n    console.log(\u0027then 1\u0027)\n    return new Promise(() =\u003e {})\n}).then(() =\u003e {\n    console.log(\u0027then 2\u0027)\n}).then(() =\u003e {\n    console.log(\u0027then 3\u0027)\n}).catch((err) =\u003e {\n    console.log(err)\n})\n```\n\n* 中断Promise\n\n注意这里是中断而不是终止，因为 Promise 无法终止，这个中断的意思是：在合适的时候，把 pending 状态的 promise 给 reject 掉。例如一个常见的应用场景就是希望给网络请求设置超时时间，一旦超时就就中断，我们这里用定时器模拟一个网络请求，随机 3 秒之内返回。\n\n```javascript\nfunction timeoutWrapper(p, timeout = 2000) {\n  const wait = new Promise((resolve, reject) =\u003e {\n    setTimeout(() =\u003e {\n      reject(\u0027请求超时\u0027)\n    }, timeout)\n  })\n  return Promise.race([p, wait])\n}\n```\n\n",
+    "pivot":  "首先我们要搞清楚一点，`Promise`有一个很明显的缺点：**一旦创建就无法取消**。所以从本质上来说`Promise`一旦创建就无法终止。这一点我们在答题的时候一定要提到。\n\n## 思路\n\n1.  当函数返回一个新的`Promise`对象时，原`Promise`对象的状态将跟新对象保持一致，因此，当新对象保持`Pending`状态时，原`Promise`链将会中止执行，所以我们可以利用这一特性中断调用链。\n2.  把`pending`状态的`Promise`给`reject`掉，这个应该是比较熟悉的吧，不就是我们平时设置的网络超时吗，利用这一点也可以实中断`Promise`。\n3.  在`then`中直接抛错，这样就不会执行后面的`then`，直接跳到`catch`方法打印`error`。\n\n## 实现:\n\n* 当新对象保持pending状态时，原Promise链会中止执行\n\n```js\nPromise.resolve().then(() =\u003e {\n    console.log(\u00271\u0027)\n    return new Promise(() =\u003e {})\n})\n.then(() =\u003e console.log(\u00272\u0027))\n.then(() =\u003e console.log(\u00273\u0027))\n.catch((err) =\u003e console.log(err))\n```\n\n* 设置超时时间，一旦超时就中断，我们可以用定时器模拟一个网络请求,利用Promise.race()\n\n```js\nfunction fun(p,timeout) {\n    const wait = new Promise((resolve,reject) =\u003e {\n        setTimeout(() =\u003e {\n            reject(\u0027请求超时\u0027)\n        },timeout)\n    })\n    return Promise.race([p, wait])\n}\nfun(new Promise(() =\u003e console.log(\u00271\u0027)), 2000)\n```\n\n* 在then中直接抛错\n\n```js\nPromise.resolve()\n.then(() =\u003e console.log(\u00271\u0027))\n.then(() =\u003e {\n    console.log(\u00272\u0027)\n    throw \u0027错误\u0027\n})\n.then(() =\u003e console.log(\u00273\u0027))\n.catch((err) =\u003e console.log(err))\n```\n\n**其实并不推荐这种做法，因为如果链路中对错误进行了捕获，后面的then函数还是会继续执行的。**",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-31T08:51:43.000Z",
+    "updateAt":  "2024-08-10T21:15:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  1359,
+    "filterTotalNum":  1907,
+    "prev":  "d1d9bc22-287a-4fb0-9860-51fb461006de",
+    "next":  "025b1291-525e-4605-ac8a-6a53baf94d5d"
+}

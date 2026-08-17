@@ -1,0 +1,21 @@
+﻿{
+    "id":  583,
+    "exerciseKey":  "e253151b-a880-448b-9cd1-d869971a63e4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "bind() 连续调用多次，this的绑定值是什么呢？",
+    "desc":  "```javascript\nvar bar = function(){\n    console.log(this.x);\n}\nvar foo = {\n    x:3\n}\nvar sed = {\n    x:4\n}\nvar func = bar.bind(foo).bind(sed);\nfunc(); //?\n  \nvar fiv = {\n    x:5\n}\nvar func = bar.bind(foo).bind(sed).bind(fiv);\nfunc(); //?\n```",
+    "options":  null,
+    "explanation":  "答案是，两次都仍将输出 3 ，而非期待中的 4 和 5 。\n\n原因是，在Javascript中，多次 bind() 是无效的。\n\n更深层次的原因， bind() 的实现，相当于使用函数在内部包了一个 call / apply ，第二次 bind() 相当于再包住第一次 bind() ,故第二次以后的 bind 是无法生效的。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-08-10T03:04:35.000Z",
+    "updateAt":  "2021-08-15T15:28:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1337,
+    "filterTotalNum":  1907,
+    "prev":  "0e7888d9-d8a4-41f8-a052-f94350ee0c15",
+    "next":  "12240b0e-e285-422e-b6ac-b1e839af6cae"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  541,
+    "exerciseKey":  "4c911fbf-c243-476a-ad8d-09a7868b304e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "分析比较 opacity: 0、visibility: hidden、display: none 优劣和适用场景",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 结构\n\ndisplay:none: 会让元素完全从渲染树中消失，渲染的时候不占据任何空间, 不能点击，\nvisibility: hidden:不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，不能点击\nopacity: 0: 不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，可以点击\n\n## 继承\ndisplay: none和opacity: 0：是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示。\nvisibility: hidden：是继承属性，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显式。\n\n## 性能\n\ndisplaynone : 修改元素会造成文档回流,读屏器不会读取display: none元素内容，性能消耗较大\nvisibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少读屏器读取visibility: hidden元素内容\nopacity: 0 ：修改元素会造成重绘，性能消耗较少",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-19T14:33:34.000Z",
+    "updateAt":  "2024-07-22T09:22:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1379,
+    "filterTotalNum":  1907,
+    "prev":  "d9e5d51b-5b8d-4b80-8011-6766a0323bb3",
+    "next":  "e9f01da3-63b7-4098-ab32-89df1dca2ec4"
+}

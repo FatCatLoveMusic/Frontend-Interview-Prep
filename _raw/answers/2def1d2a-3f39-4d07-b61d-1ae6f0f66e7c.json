@@ -1,0 +1,21 @@
+﻿{
+    "id":  21,
+    "exerciseKey":  "2def1d2a-3f39-4d07-b61d-1ae6f0f66e7c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "当我们这么做时，会发生什么？",
+    "desc":  "```javascript\nfunction bark() {\n  console.log(\u0027Woof!\u0027)\n}\n\nbark.animal = \u0027dog\u0027\n```",
+    "options":  "{\"options\":[\"正常运行!\",\"SyntaxError. 你不能通过这种方式给函数增加属性。\",\"undefined\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "这在 JavaScript 中是可以的，因为函数是对象！（除了基本类型之外其他都是对象）\n函数是一个特殊的对象。你写的这个代码其实不是一个实际的函数。函数是一个拥有属性的对象，并且属性也可被调用。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:07:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1898,
+    "filterTotalNum":  1907,
+    "prev":  "90a39d35-309c-4699-a1f7-bd352899965b",
+    "next":  "c3272068-de10-428e-8e99-27b2cba2dfe5"
+}

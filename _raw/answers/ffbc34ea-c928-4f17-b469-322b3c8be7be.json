@@ -1,0 +1,21 @@
+﻿{
+    "id":  492,
+    "exerciseKey":  "ffbc34ea-c928-4f17-b469-322b3c8be7be",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "谈谈对 babel-polyfill 的了解",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "babel polyfill 有三种：\n\n* babel-polyfill\n* babel-runtime\n* babel-plugin-transform-runtime\n\n## babel-polyfill\n\nbabel-polyfill通过向全局对象和内置对象的prototype上添加方法来实现的。所以这会造成全局空间污染。\n\nbabel-polyfill使用的两种方式：\n\n* webpack.config.js 中：\n\n配置webpack.config.js里的entry设置为entry: [\u0027babel-polyfill\u0027,path.join(__dirname, \u0027index.js\u0027)]\n\n* 业务 js 中：\n\n在webpack.config.js配置的主入口index.js文件的最顶层键入\n\n```js\nimport \u0027babel-polyfill\u0027\n```\n\n两者打印出来的大小都是一样的，打包后大小是280KB，如果没有使用babel-polyfill，大小是3.43kb。\n\n两则相差大概81.6倍。原因是webpack把babel-polyfill整体全部都打包进去了。而babel-polyfill肯定也实现了所有ES6新API的垫片,文件一定不会小。\n\n那么有没有一种办法,根据实际代码中用到的ES6新增API ,来使用对应的垫片,而不是全部加载进去呢?\n\n是的，有的。那就是 `babel-runtime \u0026 babel-plugin-transform-runtime`，他们可以实现按需加载。\n\n## babel-runtime\n\n简单说 babel-runtime 更像是一种按需加载的实现，比如你哪里需要使用 Promise，只要在这个文件头部\n\n```js\nimport Promise from \u0027babel-runtime/core-js/promise\u0027\n```\n\n就行了。\n\n不过如果你许多文件都要使用 Promise，难道每个文件都要 import 一下吗？当然不是，Babel 官方已考虑这种情况，只需要使用 babel-plugin-transform-runtime 就可以解决手动 import 的苦恼了。\n\n## babel-plugin-transform-runtime\n\nbabel-plugin-transform-runtime 装了就不需要装 babel-runtime了，因为前者依赖后者。\n总的来说，babel-plugin-transform-runtime 就是可以在我们使用新 API 时 自动 import babel-runtime 里面的 polyfill，具体插件做了以下三件事情：\n\n* 当我们使用 async/await 时，自动引入 babel-runtime/regenerator\n* 当我们使用 ES6 的静态事件或内置对象时，自动引入 babel-runtime/core-js\n* 移除内联 babel helpers 并替换使用 babel-runtime/helpers  来替换\n\nbabel-plugin-transform-runtime 优点：\n\n* 不会污染全局变量\n* 多次使用只会打包一次\n* 依赖统一按需引入,无重复引入,无多余引入\n* 避免 babel 编译的工具函数在每个模块里重复出现，减小库和工具包的体积\n\n使用方式：\n\n在 .babelrc 中配置：\n\n```\nplugins: [\"tranform-runtime\"]\n```\n\n打包后大小为 17.4kb，比之前的280kb要小很多。\n\n\n",
+    "pivot":  "- **`babel-polyfill`**：是用于向 JavaScript 环境添加缺失特性的库，特别是在旧版浏览器中提供现代特性支持。\n- **`core-js` 和 `regenerator-runtime`**：从 Babel 7.4 开始，推荐使用这两个库来替代 `babel-polyfill`。\n- **兼容性**：通过 polyfill，可以让现代 JavaScript 代码在旧版浏览器中运行，避免兼容性问题。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T04:25:57.000Z",
+    "updateAt":  "2024-08-10T17:05:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  1428,
+    "filterTotalNum":  1907,
+    "prev":  "7f7e5941-1079-476a-8a62-8ca51879c7ab",
+    "next":  "22408f82-1fd7-4d7d-a24d-7bb9cad2aee3"
+}

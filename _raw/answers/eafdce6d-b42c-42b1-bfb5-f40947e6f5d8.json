@@ -1,0 +1,21 @@
+﻿{
+    "id":  2917,
+    "exerciseKey":  "eafdce6d-b42c-42b1-bfb5-f40947e6f5d8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在 React 中如何实现代码分割？有哪些常见方式？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 React 中，代码分割主要依赖于 **`React.lazy` + `Suspense`** 和 **`React Loadable`（第三方库）**，此外 Webpack 的 **`import()`** 也能实现代码分割。\n\n常见方式如下：  \n\n1. **`React.lazy` + `Suspense`**（官方推荐）  \n   ```tsx\n   const LazyComponent = React.lazy(() =\u003e import(\u0027./LazyComponent\u0027));\n   function App() {\n     return (\n       \u003cSuspense fallback={\u003cdiv\u003eLoading...\u003c/div\u003e}\u003e\n         \u003cLazyComponent /\u003e\n       \u003c/Suspense\u003e\n     );\n   }\n   ```\n\n2. **`import()` 动态导入**（适用于路由懒加载）  \n   ```tsx\n   import { lazy } from \u0027react\u0027;\n   const LazyPage = lazy(() =\u003e import(\u0027./pages/LazyPage\u0027));\n   ```\n\n3. **`React Loadable`（第三方库，适用于更复杂的场景）**  \n   ```tsx\n   import Loadable from \u0027react-loadable\u0027;\n   const LoadableComponent = Loadable({\n     loader: () =\u003e import(\u0027./MyComponent\u0027),\n     loading: () =\u003e \u003cdiv\u003eLoading...\u003c/div\u003e,\n   });\n   ```\n\n4. **Webpack `import()` + `optimization.splitChunks`**（适用于手动分割多个模块）  \n   ```js\n   module.exports = {\n     optimization: {\n       splitChunks: {\n         chunks: \u0027all\u0027,\n       },\n     },\n   };\n   ```",
+    "pivot":  "- **首选 `React.lazy + Suspense`** 进行懒加载，适用于组件级别的代码分割。  \n- **对于路由懒加载**，可以结合 React Router 使用 `lazy`。  \n- **`React Loadable`** 提供更丰富的加载状态控制。  \n- **Webpack `splitChunks`** 适用于全局优化代码分割，避免重复加载。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-03-20T01:33:38.000Z",
+    "updateAt":  "2025-03-20T01:33:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  284,
+    "filterTotalNum":  1907,
+    "prev":  "3cd22a2e-ada1-4e6b-9efd-9b719823ab52",
+    "next":  "b178d461-b38f-4415-8f26-d9126b5e167d"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2696,
+    "exerciseKey":  "de043b5a-d621-4278-abb8-b467310306a9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "js 中对于超过 Number 最大值的数怎么处理？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 JavaScript 中，`Number` 类型的最大值为 `Number.MAX_VALUE`。当计算结果超过这个最大值时，会出现以下情况：\n\n### **1. 使用 `Infinity`**\n\n- **描述**：当计算结果超出 `Number.MAX_VALUE`，JavaScript 会返回 `Infinity`。\n- **示例**：\n  ```javascript\n  const largeNumber = Number.MAX_VALUE * 2; // 结果是 Infinity\n  console.log(largeNumber); // Infinity\n  ```\n\n### **2. 使用 `BigInt`**\n\n- **描述**：`BigInt` 是一种新的原生数据类型，可以表示任意精度的整数。适用于处理超出 `Number` 最大值的数值。\n- **使用方法**：\n  ```javascript\n  const bigNumber = BigInt(\"123456789012345678901234567890\");\n  console.log(bigNumber); // 123456789012345678901234567890n\n  ```\n\n- **与 `Number` 的区别**：\n  - `BigInt` 可以表示比 `Number` 更大的整数值，但不支持小数。\n  - `BigInt` 与 `Number` 类型在操作和比较时需注意不同，`BigInt` 与 `Number` 不能直接进行算术运算。\n\n### **3. 使用字符串表示法**\n\n- **描述**：当处理极大的数值时，可以使用字符串来表示和操作这些数值，避免直接计算。\n- **示例**：\n  ```javascript\n  const bigNumberStr = \"123456789012345678901234567890\";\n  // 使用自定义函数或库来进行大数运算\n  ```\n\n### **4. 使用专门的大数库**\n\n- **描述**：有一些 JavaScript 库专门用于处理大数运算，比如 `bignumber.js`、`decimal.js`。\n- **示例**：\n  ```javascript\n  const BigNumber = require(\u0027bignumber.js\u0027);\n  const largeNumber = new BigNumber(\u0027123456789012345678901234567890\u0027);\n  console.log(largeNumber.toString()); // 123456789012345678901234567890\n  ```",
+    "pivot":  "- **`Infinity`**：表示超过最大值的数。\n- **`BigInt`**：用于处理超大整数值。\n- **字符串表示法**：用于表示和操作极大数值。\n- **大数库**：提供更强大和精确的数值计算能力。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-14T23:39:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  401,
+    "filterTotalNum":  1907,
+    "prev":  "08d4f63d-6d32-4a94-be36-75aa55e09730",
+    "next":  "f1c73b17-109f-45e6-a4ad-8cee1bef2c8b"
+}

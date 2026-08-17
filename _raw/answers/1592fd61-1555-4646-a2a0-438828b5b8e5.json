@@ -1,0 +1,21 @@
+﻿{
+    "id":  636,
+    "exerciseKey":  "1592fd61-1555-4646-a2a0-438828b5b8e5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "能否使用自闭合script标签引入脚本文件?\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "不能。自闭合标签来自于XML语法，而不是HTML语法。\n\n根据现在的HTML语法，只有不需要结束标签的void element（如img之类的），或者是外部元素（如svg）可以使用自闭合。script标签显然不在此列。\n\n ```html\n // 正确写法\n \u003cscript src=\"...\"\u003e\u003c/script\u003e\n \n // 错误写法\n \u003cscript src=\"...\"/\u003e\n ```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-09-27T03:04:13.000Z",
+    "updateAt":  "2021-10-18T22:52:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1285,
+    "filterTotalNum":  1907,
+    "prev":  "4d19c9e2-7a80-40fd-83ee-ae6d9b531a0a",
+    "next":  "1b65452c-ab0b-41a8-8621-fc25704afa33"
+}

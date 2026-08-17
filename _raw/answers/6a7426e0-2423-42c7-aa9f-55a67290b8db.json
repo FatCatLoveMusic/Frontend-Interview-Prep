@@ -1,0 +1,21 @@
+﻿{
+    "id":  398,
+    "exerciseKey":  "6a7426e0-2423-42c7-aa9f-55a67290b8db",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么使用 git 将多次提交压缩成一次提交？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在使用 Git 作为版本控制的时候，我们可能会由于各种各样的原因提交了许多临时的 commit，而这些 commit 拼接起来才是完整的任务。那么我们为了避免太多的 commit 而造成版本控制的混乱，通常我们推荐将这些 commit 合并成一个。\n\n* 查看提交历史，git log\n\n首先你要知道自己想合并的是哪几个提交，可以使用git log命令来查看提交历史，假如最近4条历史如下：\n\n```\ncommit 3ca6ec340edc66df13423f36f52919dfa3......\n\ncommit 1b4056686d1b494a5c86757f9eaed844......\n\ncommit 53f244ac8730d33b353bee3b24210b07......\n\ncommit 3a4226b4a0b6fa68783b07f1cee7b688.......\n```\n\n历史记录是按照时间排序的，时间近的排在前面。\n\n* git rebase\n\n想要合并1-3条，有两个方法：\n\n1.从HEAD版本开始往过去数3个版本\n```\ngit rebase -i HEAD~3\n```\n\n2.指名要合并的版本之前的版本号\n```\ngit rebase -i 3a4226b\n```\n请注意3a4226b这个版本是不参与合并的，可以把它当做一个坐标\n\n* 选取要合并的提交\n\n1.执行了rebase命令之后，会弹出一个窗口，头几行如下：\n```\npick 3ca6ec3   \u0027注释**********\u0027\n\npick 1b40566   \u0027注释*********\u0027\n\npick 53f244a   \u0027注释**********\u0027\n```\n\n2.将pick改为squash或者s,之后保存并关闭文本编辑窗口即可。改完之后文本内容如下：\n\n```\npick 3ca6ec3   \u0027注释**********\u0027\n\ns 1b40566   \u0027注释*********\u0027\n\ns 53f244a   \u0027注释**********\u0027\n```\n\n3.然后保存退出，Git会压缩提交历史，如果有冲突，需要修改，修改的时候要注意，保留最新的历史，不然我们的修改就丢弃了。修改以后要记得敲下面的命令：\n```\ngit add .  \n\ngit rebase --continue  \n```\n\n如果你想放弃这次压缩的话，执行以下命令：\n\n```\ngit rebase --abort  \n```\n\n4.如果没有冲突，或者冲突已经解决，则会出现如下的编辑窗口：\n```\n# This is a combination of 4 commits.  \n#The first commit’s message is:  \n注释......\n# The 2nd commit’s message is:  \n注释......\n# The 3rd commit’s message is:  \n注释......\n# Please enter the commit message for your changes. Lines starting # with ‘#’ will be ignored, and an empty message aborts the commit.\n```\n\n5.输入wq保存并推出, 再次输入git log查看 commit 历史信息，你会发现这两个 commit 已经合并了。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-06T13:10:02.000Z",
+    "updateAt":  "2021-07-07T00:12:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1522,
+    "filterTotalNum":  1907,
+    "prev":  "6c221f8f-6a86-45f9-8141-59c21388c073",
+    "next":  "02ba022f-9a63-4a9b-a668-1e2f01ab3493"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2298,
+    "exerciseKey":  "a18d9351-fc9a-45b4-8ccd-3870299d5cd8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue中的 ref、toRef 和 toRefs 有什么区别？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 Vue 3 中，`ref`、`toRef` 和 `toRefs` 是与响应式系统相关的 API，它们用于处理响应式数据，但各自有不同的用途和场景：\n\n### **1. ref**\n\n- **定义**：`ref` 用于创建一个响应式的引用对象。它可以是基本类型或对象类型。\n- **用法**：当你需要将一个值（如字符串、数字、对象等）转换为响应式数据时使用。\n- **返回值**：返回一个包含 `.value` 属性的对象，通过该属性访问和修改其值。\n\n```javascript\nimport { ref } from \u0027vue\u0027;\n\nconst count = ref(0); // 创建响应式的引用\ncount.value++; // 修改值\n```\n\n### **2. toRef**\n\n- **定义**：`toRef` 用于将响应式对象中的某个属性转换为一个响应式引用。它适用于在 setup 函数中解构响应式对象时，保持响应性。\n- **用法**：当你需要从一个响应式对象中提取一个属性，并希望这个属性依然是响应式的时使用。\n- **返回值**：返回一个响应式引用对象。\n\n```javascript\nimport { ref, reactive, toRef } from \u0027vue\u0027;\n\nconst state = reactive({ count: 0 });\nconst countRef = toRef(state, \u0027count\u0027); // 转换为响应式引用\ncountRef.value++; // 修改值\n```\n\n### **3. toRefs**\n\n- **定义**：`toRefs` 用于将一个响应式对象的所有属性转换为响应式引用，返回一个新对象。\n- **用法**：适用于将整个响应式对象解构为单独的响应式引用，保持各属性的响应性。\n- **返回值**：返回一个新对象，其中每个属性都是响应式引用。\n\n```javascript\nimport { reactive, toRefs } from \u0027vue\u0027;\n\nconst state = reactive({ count: 0, name: \u0027Vue\u0027 });\nconst { count, name } = toRefs(state); // 解构为响应式引用\ncount.value++; // 修改 count\n```",
+    "pivot":  "- **`ref`**：用于创建单个响应式引用。\n- **`toRef`**：用于从响应式对象中提取单个属性，并保持响应性。\n- **`toRefs`**：用于将整个响应式对象的所有属性转换为响应式引用，便于解构使用。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-09-21T02:26:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  603,
+    "filterTotalNum":  1907,
+    "prev":  "e4b385fd-73d5-4364-8d9f-60503302b187",
+    "next":  "333a617e-1a0b-4c3e-b6f2-1f627430360e"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2277,
+    "exerciseKey":  "3d4e5433-6d67-4a4c-8cc5-85257807d775",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "前端系统中，怎么统一处理登录态过期的场景？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "统一处理登录态过期的场景可以通过以下几个步骤实现：\n\n### 1. **拦截请求响应，检查状态码**\n   - **实现思路**：在发送请求或接收响应时进行拦截，通过 HTTP 状态码或后端自定义的错误码判断用户的登录状态是否过期。例如，后端可以返回 `401`（Unauthorized）状态码，表示需要重新登录。\n   - **具体实现**：使用 Axios 或 Fetch 进行请求拦截，例如 Axios 提供的 `interceptors` 可以在所有请求或响应的入口处检查状态，遇到 `401` 统一跳转登录。\n\n   **示例代码（使用 Axios 拦截器）：**\n   ```javascript\n   import axios from \u0027axios\u0027;\n   import { redirectToLogin } from \u0027./auth\u0027; // 定义重定向到登录页的函数\n\n   axios.interceptors.response.use(\n     response =\u003e response, // 正常响应\n     error =\u003e {\n       if (error.response \u0026\u0026 error.response.status === 401) {\n         // 登录态过期处理\n         redirectToLogin();\n       }\n       return Promise.reject(error);\n     }\n   );\n   ```\n\n### 2. **封装统一的请求方法**\n   - **实现思路**：封装一个通用的 `request` 方法，用于管理所有 API 请求，并在该方法中统一处理登录态过期问题。当遇到过期状态码时，集中处理跳转逻辑或刷新令牌。\n   - **具体实现**：封装后的 `request` 方法可以统一管理拦截器逻辑，并添加登录态过期的逻辑判断。\n\n   **示例代码：**\n   ```javascript\n   async function request(url, options) {\n     try {\n       const response = await fetch(url, options);\n       if (response.status === 401) {\n         redirectToLogin(); // 重定向到登录\n         return;\n       }\n       return await response.json();\n     } catch (error) {\n       console.error(\u0027请求失败:\u0027, error);\n     }\n   }\n   ```\n\n### 3. **使用 Token 续期机制**\n   - **实现思路**：采用 **Token 刷新机制**，在前端存储 `accessToken` 和 `refreshToken`，如果 `accessToken` 过期，则调用刷新接口获取新的 `accessToken`，避免用户频繁跳转到登录页。\n   - **具体实现**：当遇到 `401` 错误时，可以调用刷新接口更新 `accessToken`。若刷新失败，再跳转至登录页。\n\n   **示例代码：**\n   ```javascript\n   axios.interceptors.response.use(\n     response =\u003e response,\n     async error =\u003e {\n       const { response } = error;\n       if (response.status === 401) {\n         try {\n           const refreshResponse = await axios.post(\u0027/refresh-token\u0027, {\n             refreshToken: localStorage.getItem(\u0027refreshToken\u0027)\n           });\n           localStorage.setItem(\u0027accessToken\u0027, refreshResponse.data.accessToken);\n           error.config.headers[\u0027Authorization\u0027] = `Bearer ${refreshResponse.data.accessToken}`;\n           return axios(error.config);\n         } catch (refreshError) {\n           redirectToLogin();\n         }\n       }\n       return Promise.reject(error);\n     }\n   );\n   ```\n\n### 4. **用户操作超时自动登出**\n   - **实现思路**：设置用户不活跃超时时间，如果用户在指定时间内无操作，则触发登出操作，清除登录态并跳转到登录页面。\n   - **具体实现**：可以在全局监听 `mousemove`、`keydown` 等事件，重置倒计时。倒计时结束触发登录态过期逻辑。\n\n   **示例代码：**\n   ```javascript\n   let timeoutId;\n   const logoutAfterTimeout = () =\u003e {\n     clearTimeout(timeoutId);\n     timeoutId = setTimeout(() =\u003e {\n       alert(\u0027登录超时，请重新登录\u0027);\n       redirectToLogin();\n     }, 30 * 60 * 1000); // 30 分钟超时\n   };\n\n   window.addEventListener(\u0027mousemove\u0027, logoutAfterTimeout);\n   window.addEventListener(\u0027keydown\u0027, logoutAfterTimeout);\n   ```\n\n### 5. **重定向至原页面**\n   - **实现思路**：用户被重定向至登录页后，登录成功应自动跳转回之前试图访问的页面。\n   - **具体实现**：记录用户访问的页面 URL，作为参数传递给登录页。登录后根据该 URL 重定向回原页面，提升用户体验。\n\n   **示例代码：**\n   ```javascript\n   function redirectToLogin() {\n     const currentPath = window.location.pathname;\n     window.location.href = `/login?redirect=${encodeURIComponent(currentPath)}`;\n   }\n   ```",
+    "pivot":  "通过拦截请求、Token 刷新、用户超时退出、原页面重定向等策略，前端可以统一、友好地处理登录态过期场景，避免用户频繁登录，同时提高系统的安全性和用户体验。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-29T02:01:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  616,
+    "filterTotalNum":  1907,
+    "prev":  "f3744f8f-ee93-4809-821a-5a7321e84865",
+    "next":  "a28772a7-f8b5-40a7-b5ad-087b6576b7a6"
+}

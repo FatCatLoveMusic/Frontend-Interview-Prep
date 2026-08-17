@@ -1,0 +1,21 @@
+﻿{
+    "id":  2874,
+    "exerciseKey":  "24d0a905-35d4-407c-8852-f3d0ba41d214",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "浏览器是否支持 CommonJs 规范？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "浏览器本身不直接支持 CommonJS 规范。CommonJS 主要是为服务器端（如 Node.js）设计的模块规范，通常用于服务器环境中处理模块的加载和管理。\n\n### **CommonJS 规范概述**\n\n- **模块导出**：使用 `module.exports` 和 `exports` 导出模块。\n- **模块加载**：使用 `require()` 函数导入模块。\n\n例如，CommonJS 模块的代码如下：\n\n**math.js**:\n```javascript\n// 导出模块\nmodule.exports = {\n  add: function(a, b) {\n    return a + b;\n  }\n};\n```\n\n**app.js**:\n```javascript\n// 导入模块\nconst math = require(\u0027./math\u0027);\nconsole.log(math.add(1, 2));\n```\n\n### **浏览器的支持情况**\n\n- **浏览器不支持 CommonJS**：浏览器的 JavaScript 环境不原生支持 CommonJS 模块系统。浏览器的模块系统是基于 ES6 的模块化标准（ESM），即 `import` 和 `export` 语法。\n\n### **如何在浏览器中使用 CommonJS**\n\n为了在浏览器中使用 CommonJS 模块，通常需要使用打包工具来处理模块系统的转换：\n\n1. **使用打包工具**：工具如 Webpack、Browserify 或 Parcel 可以将 CommonJS 模块打包成浏览器可以理解的格式。它们会将 CommonJS 模块和依赖打包成一个或多个 JavaScript 文件，并在浏览器中执行。\n\n   **使用 Webpack 打包**：\n   - Webpack 会解析 CommonJS 模块，并将其打包成一个浏览器可用的文件。Webpack 会使用自己的模块系统和加载器，将 CommonJS 模块转换成浏览器支持的格式。\n\n2. **使用模块加载器**：一些库（如 Browserify）可以将 CommonJS 模块转换成浏览器可以理解的格式。它们可以将 CommonJS 模块打包成一个包含所有依赖的 JavaScript 文件。\n\n### **示例**\n\n使用 Webpack 将 CommonJS 模块打包成浏览器支持的格式：\n\n1. **项目结构**：\n   ```\n   project/\n   ├── src/\n   │   ├── math.js\n   │   └── app.js\n   └── webpack.config.js\n   ```\n\n2. **`math.js`** (CommonJS 模块)：\n   ```javascript\n   module.exports = {\n     add: function(a, b) {\n       return a + b;\n     }\n   };\n   ```\n\n3. **`app.js`** (CommonJS 模块)：\n   ```javascript\n   const math = require(\u0027./math\u0027);\n   console.log(math.add(1, 2));\n   ```\n\n4. **`webpack.config.js`** (Webpack 配置)：\n   ```javascript\n   const path = require(\u0027path\u0027);\n\n   module.exports = {\n     entry: \u0027./src/app.js\u0027,\n     output: {\n       filename: \u0027bundle.js\u0027,\n       path: path.resolve(__dirname, \u0027dist\u0027)\n     },\n     mode: \u0027development\u0027\n   };\n   ```\n\n5. **构建项目**：\n   ```bash\n   npx webpack\n   ```\n\n6. **生成的 `bundle.js` 文件可以在浏览器中使用**。",
+    "pivot":  "- **浏览器不原生支持 CommonJS**：浏览器不直接支持 CommonJS 规范。\n- **使用打包工具**：通过 Webpack、Browserify 等工具将 CommonJS 模块转换为浏览器支持的格式。\n- **ESM 规范**：现代浏览器原生支持 ES6 模块（`import` 和 `export`），并推荐使用该标准进行模块化开发。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-09-03T01:38:45.000Z",
+    "updateAt":  "2024-09-03T01:38:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  327,
+    "filterTotalNum":  1907,
+    "prev":  "d4932c0d-8a08-4b1b-9e52-036572452c9f",
+    "next":  "b7e5c9a8-6756-4c79-9b75-a3cb680e12b4"
+}

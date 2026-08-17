@@ -1,0 +1,21 @@
+﻿{
+    "id":  2830,
+    "exerciseKey":  "596703db-a53c-43bd-8d22-0cfb21fcd059",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "未知高度和宽度元素的水平垂直居中的方案有哪些， 简单手写一下？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "要在未知高度和宽度的元素中实现水平和垂直居中，可以使用多种 CSS 技巧。以下是几种常见的方案以及它们的简单手写实现：\n\n### **1. Flexbox**\n\n**HTML：**\n\n```html\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"centered-element\"\u003eCentered\u003c/div\u003e\n\u003c/div\u003e\n```\n\n**CSS：**\n\n```css\n.container {\n  display: flex;\n  justify-content: center; /* 水平居中 */\n  align-items: center;     /* 垂直居中 */\n  height: 100vh;           /* 使容器填满视口 */\n}\n\n.centered-element {\n  /* 元素的样式 */\n}\n```\n\n### **2. Grid**\n\n**HTML：**\n\n```html\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"centered-element\"\u003eCentered\u003c/div\u003e\n\u003c/div\u003e\n```\n\n**CSS：**\n\n```css\n.container {\n  display: grid;\n  place-items: center;     /* 同时水平和垂直居中 */\n  height: 100vh;           /* 使容器填满视口 */\n}\n\n.centered-element {\n  /* 元素的样式 */\n}\n```\n\n### **3. Absolute + Transform**\n\n**HTML：**\n\n```html\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"centered-element\"\u003eCentered\u003c/div\u003e\n\u003c/div\u003e\n```\n\n**CSS：**\n\n```css\n.container {\n  position: relative;\n  height: 100vh;           /* 使容器填满视口 */\n}\n\n.centered-element {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%); /* 使元素居中 */\n}\n```\n\n### **4. Line-Height (适用于单行文本)**\n\n**HTML：**\n\n```html\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"centered-element\"\u003eCentered\u003c/div\u003e\n\u003c/div\u003e\n```\n\n**CSS：**\n\n```css\n.container {\n  height: 100vh;           /* 使容器填满视口 */\n  line-height: 100vh;      /* 设置行高为容器高度 */\n  text-align: center;      /* 水平居中 */\n}\n\n.centered-element {\n  display: inline-block;\n  vertical-align: middle; /* 垂直居中 */\n  line-height: normal;    /* 恢复正常行高 */\n}\n```",
+    "pivot":  "- **Flexbox** 和 **Grid** 是现代 CSS 布局的强大工具，适用于大多数情况。\n- **Absolute + Transform** 是一个经典的解决方案，适用于任何情况。\n- **Line-Height** 是用于简单文本居中的方法。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T14:12:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  347,
+    "filterTotalNum":  1907,
+    "prev":  "818064e8-137a-4499-81f5-554f4890fb55",
+    "next":  "a2036088-aba0-48f4-b81b-b2bc0c632efc"
+}

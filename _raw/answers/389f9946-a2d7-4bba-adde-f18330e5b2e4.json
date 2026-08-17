@@ -1,0 +1,21 @@
+﻿{
+    "id":  1589,
+    "exerciseKey":  "389f9946-a2d7-4bba-adde-f18330e5b2e4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "js中的undefined和 ReferenceError: xxx is not defined 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* ReferenceError：当尝试引用一个未定义的变量/函数时，就会抛出ReferenceError。\n* undefined：当一个变量声明后，没有被赋值，那么它就是undefined类型。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:58:51.000Z",
+    "updateAt":  "2021-12-26T16:06:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1201,
+    "filterTotalNum":  1907,
+    "prev":  "9b617ec3-5346-4f82-9fcf-d502817b8c2d",
+    "next":  "257565c9-6179-4faa-a592-168f6269cc99"
+}

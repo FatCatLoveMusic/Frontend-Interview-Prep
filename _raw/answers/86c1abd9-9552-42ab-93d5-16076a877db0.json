@@ -1,0 +1,21 @@
+﻿{
+    "id":  1942,
+    "exerciseKey":  "86c1abd9-9552-42ab-93d5-16076a877db0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "js函数有哪几种声明方式？有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "有 `表达式` 和 `声明式` 两种函数声明方式\n\n* 函数的声明式写法为：`function test(){}`，这种写法会导致函数提升，所有通过`function`关键字声明的变量都会被解释器优先编译，不管声明在什么位置都可以调用它，但是它本身并不会被执行。\n\n```js\ntest(); // 测试\nfunction test() {\n  console.log(\"测试\");\n}\ntest(); // 测试\n```\n\n* 函数的表达式写法为：`var test = function(){}`，这种写法不会导致函数提升，必须先声明后调用，不然就会报错。\n\n```js\ntest(); // 报错：TypeError: test is not a function\nvar test = function() {\n  console.log(\"测试\");\n};\n```\n\n## 二者的区别\n\n```javascript\n//函数声明式\nfunction greeting(){\n      console.log(\"hello world\");  \n}\n//函数表达式\nvar greeting = function(){\n    console.log(\"hello world\"); \n}\n```\n\n1. 函数声明式变量会声明提前 函数表达式变量不会声明提前\n2. **函数声明**中的`函数名`是必需的，而**函数表达式**中的`函数名则是可选的`。\n3. 函数表达式可以在定义的时候直接在表达式后面加()执行，而函数声明则不可以。  \n\n```javascript  \nfunction fun(){  \n   console.log(\u0027我是一个函数声明式\u0027)  \n}();   //unexpected token  \n\nvar foo = function (){  \n    console.log(\u0027我是一个函数表达式\u0027)  \n}();   //我是一个函数表达式  \n\n```\n\n4. 自执行函数即使带有函数名，它里面的函数还是属于函数表达式。  \n\n```javascript  \n(function fun(){  \n    console.log(\u0027我是一个函数表达式\u0027)  \n})()  //我是一个函数表达式  \n```  \n\n因为函数只是整个自执行函数的一部分。\n\n\n\n\n",
+    "pivot":  "#### 函数声明式写法\n\n- 使用 `function` 关键字声明函数，例如 `function test(){}`\n- 特点：\n  - **函数提升**：函数声明会被提升到作用域顶部，可以在声明之前调用。\n  - 必须有函数名。\n\n#### 函数表达式写法\n\n- 将一个匿名函数赋值给变量，例如 `var test = function(){}`\n- 特点：\n  - **不会提升**：必须先声明后调用，否则会报错。\n  - 函数名是可选的，通常用于匿名函数。\n\n#### 二者的区别\n\n1. **声明提升**：函数声明会被提升，而函数表达式不会。\n2. **函数名**：函数声明需要函数名，而函数表达式中的函数名是可选的。\n3. **立即执行**：函数表达式可以在定义时直接后面加 `()` 立即执行，而函数声明不可以。\n4. **自执行函数**：即使是带有函数名的自执行函数，它内部的函数仍然属于函数表达式。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T09:16:49.000Z",
+    "updateAt":  "2024-08-10T17:07:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  868,
+    "filterTotalNum":  1907,
+    "prev":  "f2732eb3-de42-47be-949e-35219071fdc4",
+    "next":  "d66f9477-309f-4af7-b667-d39ad3525a5b"
+}

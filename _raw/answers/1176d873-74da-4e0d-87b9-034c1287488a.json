@@ -1,0 +1,21 @@
+﻿{
+    "id":  312,
+    "exerciseKey":  "1176d873-74da-4e0d-87b9-034c1287488a",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "网络劫持",
+    "desc":  "\u003cp\u003e\u003c/p\u003e",
+    "options":  null,
+    "explanation":  "\u003cul\u003e\u003cli\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003eDNS劫持（涉嫌违法）：修改运行商的 DNS 记录，重定向到其他网站。DNS 劫持是违法的行为，目前 DNS 劫持已被监管，现在很少见 DNS 劫持\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003cli\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003eHTTP劫持：前提有 HTTP 请求。因 HTTP 是明文传输，运营商便可借机修改 HTTP 响应内容（如加广告）。\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e预防方案\u003c/span\u003e\u003c/span\u003e\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e \u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e全站 HTTPS\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp\u003e\u003cbr/\u003e\u003cspan style=\"font-size:15px\"\u003e\u003cspan style=\"line-height:27\"\u003e微详细\u003c/span\u003e\u003c/span\u003e\u003cbr/\u003e\u003cstrong\u003e答题要点：\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e网络劫持（Network Hijacking）是一种网络安全攻击，攻击者通过在数据传输过程中插入自己，从而控制通信流。这种攻击方式通常会导致通信数据的篡改、窃听或阻断，从而影响通信的完整性和安全性。\u003cbr/\u003e网络劫持的类型：\u003cbr/\u003e1、\u003cstrong\u003e中间人攻击（Man-in-the-Middle, MitM）\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e攻击者在客户端和服务器之间插入自己，拦截并篡改通信数据。\u003c/li\u003e\u003cli\u003e攻击者可能伪装成客户端或服务器，使通信双方认为是在与对方直接通信。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e2、DNS劫持\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e攻击者控制或篡改DNS服务器，将用户的域名解析请求指向攻击者控制的恶意网站。\u003c/li\u003e\u003cli\u003e用户在浏览器中输入域名时，会被重定向到攻击者的恶意网站。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e3、路由劫持\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e攻击者控制网络中的路由器或交换机，将通信流量重定向到攻击者的服务器。\u003c/li\u003e\u003cli\u003e攻击者可以监控或篡改通信数据，或者阻断通信。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e预防网络劫持的措施：\u003c/p\u003e\u003cp\u003e\u003cbr/\u003e1、\u003cstrong\u003e使用HTTPS\u003c/strong\u003e：确保所有的通信都使用HTTPS协议，以加密数据传输，防止数据被截获和篡改。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e2、验证证书\u003c/strong\u003e：在客户端和服务器端验证证书的有效性，确保通信双方的身份是可信的。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e3、使用数字签名\u003c/strong\u003e：对数据进行数字签名，确保数据的完整性和不可否认性。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e4、使用安全的框架和库\u003c/strong\u003e：使用经过安全审计的框架和库，它们通常提供了内置的预防网络劫持的功能。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-04T11:00:18.000Z",
+    "updateAt":  "2024-07-18T23:38:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1608,
+    "filterTotalNum":  1907,
+    "prev":  "7830d575-2143-47c3-b938-2f9448a7465e",
+    "next":  "5f0460dc-84ca-425e-8629-7aec874d024c"
+}

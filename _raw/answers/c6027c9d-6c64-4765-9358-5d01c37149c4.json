@@ -1,0 +1,21 @@
+﻿{
+    "id":  512,
+    "exerciseKey":  "c6027c9d-6c64-4765-9358-5d01c37149c4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JS代码中的use strict是什么意思？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "use strict是一种ECMAscript5添加的(严格）运行模式，这种模式使得Javascript 在更严格的条件下运行。\n\n设立\"严格模式\"的目的，主要有以下几个:\n\n* 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;消除代码运行的一些不安全之处，保证代码运行的安全;\n* 提高编译器效率，增加运行速度;\n* 为未来新版本的Javascript 做好铺垫。\n\n区别:\n\n* 禁止使用with语句。\n* 禁止this关键字指向全局对象。\n* 对象不能有重名的属性。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-11T08:04:11.000Z",
+    "updateAt":  "2024-07-22T10:52:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1408,
+    "filterTotalNum":  1907,
+    "prev":  "dc0b6bc1-71a9-4dec-a1df-a63d08f1c888",
+    "next":  "b9a0ceb2-84b5-4a79-8548-d043a97d0096"
+}

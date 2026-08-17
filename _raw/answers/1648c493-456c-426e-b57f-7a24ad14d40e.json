@@ -1,0 +1,21 @@
+﻿{
+    "id":  604,
+    "exerciseKey":  "1648c493-456c-426e-b57f-7a24ad14d40e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是类数组对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "一个拥有 length 属性和若干索引属性的对象就可以被称为类数组对象，类数组对象和数组类似，但是不能调用数组的方法。常见的类数组对象有 arguments 和 DOM 方法的返回结果，还有一个函数也可以被看作是类数组对象，因为它含有 length 属性值，代表可接收的参数个数。\n\n常见的类数组转换为数组的方法有这样几种：\n\n（1）通过 call 调用数组的 slice 方法来实现转换\n\n```js\nArray.prototype.slice.call(arrayLike);\n```\n\n（2）通过 call 调用数组的 splice 方法来实现转换\n```js\nArray.prototype.splice.call(arrayLike, 0);\n```\n\n（3）通过 apply 调用数组的 concat 方法来实现转换\n```js\nArray.prototype.concat.apply([], arrayLike);\n```\n\n（4）通过 Array.from 方法来实现转换\n```js\nArray.from(arrayLike);\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-08-22T10:27:26.000Z",
+    "updateAt":  "2024-07-20T18:09:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  1317,
+    "filterTotalNum":  1907,
+    "prev":  "6b6a6323-32e3-4082-91a4-d431a88436d9",
+    "next":  "0d68ac37-7345-4813-a9cd-95a5089c61ba"
+}

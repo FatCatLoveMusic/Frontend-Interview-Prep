@@ -1,0 +1,21 @@
+﻿{
+    "id":  1596,
+    "exerciseKey":  "3c969c35-6d25-4932-977e-d9ba31000ccd",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第二题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = new Promise((resolve, reject) =\u003e {\n  console.log(1);\n  resolve(\u0027success\u0027)\n  console.log(2);\n});\npromise.then(() =\u003e {\n  console.log(3);\n});\nconsole.log(4);\n```",
+    "options":  null,
+    "explanation":  "## 过程分析\n\n* 从上至下，先遇到`new Promise`，执行其中的同步代码1\n* 再遇到`resolve(\u0027success\u0027)`， 将promise的状态改为了resolved并且将值保存下来\n* 继续执行同步代码2\n* 跳出promise，往下执行，碰到`promise.then`这个微任务，将其加入微任务队列\n* 执行同步代码4\n* 本轮宏任务全部执行完毕，检查微任务队列，发现`promise.then`这个微任务且状态为resolved，执行它。\n\n## 结果\n\n```\n1 2 4 3\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:18:12.000Z",
+    "updateAt":  "2022-01-09T22:26:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1194,
+    "filterTotalNum":  1907,
+    "prev":  "db6857d7-1559-4abe-816d-545b9be4e05e",
+    "next":  "7579cdab-94b8-4a25-ab87-77569bb7d86d"
+}

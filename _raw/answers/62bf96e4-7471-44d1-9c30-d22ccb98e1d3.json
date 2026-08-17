@@ -1,0 +1,21 @@
+﻿{
+    "id":  439,
+    "exerciseKey":  "62bf96e4-7471-44d1-9c30-d22ccb98e1d3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是BigInt?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "BigInt是一种新的数据类型，用于当整数值大于Number数据类型支持的范围时。这种数据类型允许我们安全地对 大整数 执行算术操作，表示高分辨率的时间戳，使用大整数id，等等，而不需要使用库。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:59:07.000Z",
+    "updateAt":  "2021-07-07T00:14:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  1481,
+    "filterTotalNum":  1907,
+    "prev":  "a24f7d09-79df-4468-af94-654e8cfd3288",
+    "next":  "27491e6c-d92d-4d41-9bff-4781665945df"
+}

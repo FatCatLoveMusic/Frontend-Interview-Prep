@@ -1,0 +1,21 @@
+﻿{
+    "id":  3232,
+    "exerciseKey":  "40566000-df63-4235-8fb7-01f24a055c22",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "了解哪些 Agent 开发框架？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "可以按“抽象层级”和“落地场景”来看 Agent 开发框架。\n\n偏通用编排的框架里，[LangGraph](https://langchain-ai.github.io/langgraph/) 是比较典型的代表。它不是简单封装一次 LLM 调用，而是把 Agent 流程建模成有状态的图，适合做多步骤、可回溯、可中断、可恢复的 Agent。相比 LangChain 早期偏链式调用的写法，LangGraph 更适合生产环境，因为节点、状态、分支和循环都比较明确，便于调试和控制。\n\n[OpenAI Agents SDK](https://platform.openai.com/docs/guides/agents-sdk/) 更偏轻量工程化，核心概念是 Agent、Tool、Handoff、Guardrail 和 Tracing。它适合快速构建工具调用型 Agent，尤其是需要多 Agent 转交、输入输出校验、链路追踪的场景。优势是抽象不算重，和模型能力结合紧密。\n\n多 Agent 协作方向，[Microsoft AutoGen](https://microsoft.github.io/autogen/) 和 [CrewAI](https://docs.crewai.com/) 都比较常见。AutoGen 更强调多个 Agent 之间通过对话协作，适合研究型、代码型、复杂任务拆解型场景；CrewAI 的角色、任务、Crew、Process 概念更接近业务流程编排，表达上比较直观，适合把“调研员、分析师、执行员”这类角色型工作流快速搭起来。\n\n知识库和 RAG 相关场景里，[LlamaIndex](https://docs.llamaindex.ai/) 和 [Haystack](https://docs.haystack.deepset.ai/) 更合适。它们的优势不只是 Agent，而是数据接入、索引、检索、重排、引用来源、文档问答这些能力更成熟。如果 Agent 的核心任务是围绕企业文档、知识库、合同、工单做推理和问答，通常会优先考虑这类框架。\n\n企业生态里，[Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/) 和 [Google ADK](https://adk.dev/) 也值得关注。Semantic Kernel 更贴近微软技术栈，适合 .NET、Azure、企业插件体系；Google ADK 是代码优先的 Agent 开发框架，支持工具、子 Agent、部署和调试，和 Gemini、Vertex AI 生态结合比较自然。\n\n如果从前端和 TypeScript 产品落地视角看，[Vercel AI SDK](https://vercel.com/ai-sdk) 和 [Mastra](https://mastra.ai/) 也很重要。它们更贴近 Web 应用开发，适合处理流式输出、工具调用、对话状态、React UI 集成和 Node 服务端编排。前端做 Agent 产品时，真正复杂的往往不是单次模型调用，而是流式渲染、工具调用进度展示、用户中断、人工确认、错误恢复和会话状态管理，这类框架能减少不少胶水代码。\n\n实际选型不会只看“能不能调模型”，还要看几个点：流程是否可控、状态是否可持久化、工具调用是否有权限边界、是否支持 tracing 和 eval、是否容易接入现有后端服务、是否支持人工确认，以及前端是否容易做流式交互。Agent 框架解决的是编排问题，生产质量更多取决于工具设计、权限控制、观测体系和异常恢复。",
+    "pivot":  "Agent 框架大致可以分为通用编排、多 Agent 协作、RAG 知识库、企业生态和 TypeScript/Web 产品集成几类。LangGraph 适合复杂有状态流程，OpenAI Agents SDK 适合轻量工具调用和多 Agent 转交，AutoGen、CrewAI 适合多 Agent 协作，LlamaIndex、Haystack 适合知识库场景，Semantic Kernel、Google ADK 更偏企业生态，Vercel AI SDK、Mastra 更贴近前端和全栈产品落地。真正选型时，重点看可控性、可观测性、权限安全、状态持久化和前端交互体验。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T08:18:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  56,
+    "filterTotalNum":  1907,
+    "prev":  "6bd2d40c-994a-4802-9fdd-a5d8f1ed4848",
+    "next":  "18c0266f-336b-4855-a603-8625d6bdfdb1"
+}

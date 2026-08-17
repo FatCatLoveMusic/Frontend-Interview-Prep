@@ -1,0 +1,21 @@
+﻿{
+    "id":  2798,
+    "exerciseKey":  "0d79b365-4f76-4bf2-9ec1-f55fdfc83fb7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "vue2 中的虚拟 dom 是怎么实现的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "Vue 2 中的虚拟 DOM 实现机制基于以下几个核心概念和技术：\n\n### **1. 虚拟 DOM 节点**\n\n- **VNode（虚拟节点）**：Vue 2.x 中的虚拟 DOM 使用 VNode 对象来表示 DOM 元素。每个 VNode 对象包含标签名、属性、子节点等信息。\n\n### **2. 创建虚拟 DOM**\n\n- **`_c`（createElement）函数**：Vue 的编译器在编译模板时，会将模板转换成渲染函数，这些渲染函数调用 `_c` 函数来创建 VNode 对象。\n  \n- **`_v`（createTextVNode）函数**：用于创建文本节点的 VNode 对象。\n\n- **示例代码**：\n  ```javascript\n  // 示例渲染函数生成的 VNode\n  function render() {\n    return _c(\u0027div\u0027, { id: \u0027app\u0027 },\n      [_c(\u0027h1\u0027, null, [\u0027Hello, Vue!\u0027]),\n       _c(\u0027p\u0027, null, [\u0027This is a virtual DOM example.\u0027])]\n    );\n  }\n  ```\n\n### **3. 更新虚拟 DOM**\n\n- **diff 算法**：Vue 使用一种高效的 diff 算法来比较新旧虚拟 DOM 树的差异。这个算法基于以下几个原则：\n\n  - **同层比较**：仅比较同一层的节点，而不是递归地比较所有层级。\n  - **同类比较**：对相同类型的节点进行比较，避免不必要的节点创建和销毁。\n  - **key 属性**：通过 `key` 属性来标识节点，帮助高效地重用和移动节点，特别是在列表渲染时。\n\n### **4. 渲染和更新**\n\n- **渲染**：首次渲染时，Vue 会根据 VNode 创建真实的 DOM 节点，并插入到文档中。\n\n- **更新**：当数据变化时，Vue 会重新生成一个新的 VNode 树，并使用 diff 算法与旧的 VNode 树进行比较。找到的差异会被转化为操作真实 DOM 的指令，然后应用到真实 DOM 上。\n\n### **5. 关键代码**\n\n- **创建 VNode**：\n  ```javascript\n  function createElement(tag, data, children) {\n    return { tag, data, children };\n  }\n  ```\n\n- **虚拟 DOM diff**：\n  ```javascript\n  function diff(oldVNode, newVNode) {\n    if (!oldVNode) return newVNode;\n    if (!newVNode) return null;\n    if (oldVNode.tag !== newVNode.tag) return newVNode;\n    if (oldVNode.tag === \u0027TEXT\u0027) {\n      if (oldVNode.text !== newVNode.text) return newVNode;\n      return null;\n    }\n    const patch = {};\n    const propChanges = {};\n    for (let key in newVNode.data) {\n      if (oldVNode.data[key] !== newVNode.data[key]) {\n        propChanges[key] = newVNode.data[key];\n      }\n    }\n    if (Object.keys(propChanges).length \u003e 0) {\n      patch.props = propChanges;\n    }\n    const children = [];\n    for (let i = 0; i \u003c Math.max(oldVNode.children.length, newVNode.children.length); i++) {\n      const childPatch = diff(oldVNode.children[i], newVNode.children[i]);\n      if (childPatch) children[i] = childPatch;\n    }\n    if (children.length \u003e 0) {\n      patch.children = children;\n    }\n    return Object.keys(patch).length \u003e 0 ? patch : null;\n  }\n  ```\n\n- **更新真实 DOM**：\n  ```javascript\n  function patch(node, patch) {\n    if (patch === null) return;\n    if (patch.props) {\n      for (let key in patch.props) {\n        node[key] = patch.props[key];\n      }\n    }\n    if (patch.children) {\n      patch.children.forEach((childPatch, index) =\u003e {\n        const childNode = node.childNodes[index];\n        if (childNode) {\n          patch(childNode, childPatch);\n        }\n      });\n    }\n  }\n  ```",
+    "pivot":  "- **虚拟 DOM**：Vue 2 使用 VNode 对象来表示虚拟 DOM 节点，优化了真实 DOM 操作。\n- **diff 算法**：高效比较新旧虚拟 DOM 树，找到并应用差异。\n- **渲染与更新**：首次渲染时创建真实 DOM，后续更新时根据 diff 算法更新真实 DOM。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T19:48:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  359,
+    "filterTotalNum":  1907,
+    "prev":  "dd92f98d-9e6e-4cc5-bcfc-dc61adce1bf2",
+    "next":  "782db61c-8d50-4def-a133-98f8c9154c1c"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  295,
+    "exerciseKey":  "ec2aa05e-da02-4a15-9862-9eaee4aa54e5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "::before 和 :after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 单冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。\n* ::before就是以一个子元素的存在，定义在元素主体内容之前的一个伪元素。并不存在于dom之中，只存在在页面之中。\n\n:before 和 :after 这两个伪元素，是在CSS2.1里新出现的。起初，伪元素的前缀使用的是单冒号语法，但随着Web的进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号，成为::before ::after",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:25:37.000Z",
+    "updateAt":  "2021-07-04T19:24:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1625,
+    "filterTotalNum":  1907,
+    "prev":  "27da945d-848c-4af3-bc27-65e4833776b2",
+    "next":  "60b32fdd-58ef-4fe0-bc87-da65c5a00db1"
+}

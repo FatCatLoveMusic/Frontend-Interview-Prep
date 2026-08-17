@@ -1,0 +1,21 @@
+﻿{
+    "id":  3064,
+    "exerciseKey":  "88f58c02-0b7c-4706-9e7e-08d7509205c5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Tailwind 的响应式断点（如 `md:`）底层如何实现？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这个问题的关键在于理解：\n`md:` 不是运行时逻辑，而是 **构建期的变体（variant）展开机制**。\n\n在 Tailwind CSS 中，响应式系统建立在三个核心之上：\n\n* screens 配置映射\n* 变体解析机制\n* JIT 构建阶段规则生成\n\n---\n\n## 一、`md:` 本质是什么？\n\n当写：\n\n```html\n\u003cdiv class=\"md:text-red-500\"\u003e\n```\n\nTailwind 在构建阶段会将其解析为：\n\n* variant：`md`\n* utility：`text-red-500`\n\n然后生成如下 CSS：\n\n```css\n@media (min-width: 768px) {\n  .md\\:text-red-500 {\n    color: #ef4444;\n  }\n}\n```\n\n关键点：\n\n* `md:` 只是一个前缀标记\n* 构建阶段转换成 `@media`\n* 冒号会被转义为合法 CSS 选择器\n\n---\n\n## 二、断点从哪里来？\n\n断点定义在配置文件中：\n\n```js\n// tailwind.config.js\nmodule.exports = {\n  theme: {\n    screens: {\n      sm: \u0027640px\u0027,\n      md: \u0027768px\u0027,\n      lg: \u00271024px\u0027,\n      xl: \u00271280px\u0027,\n    }\n  }\n}\n```\n\n`md` 映射为：\n\n```css\n@media (min-width: 768px)\n```\n\n本质是一个键值映射表。\n\n---\n\n## 三、构建阶段做了什么？\n\n在 JIT 模式下，流程是：\n\n1. 扫描源码中的 class\n2. 拆分出 variant 与 utility\n3. 生成基础规则\n4. 根据 variant 包裹规则\n\n例如：\n\n```html\nmd:hover:text-red-500\n```\n\n会解析为：\n\n* variant1：md\n* variant2：hover\n* utility：text-red-500\n\n生成结果：\n\n```css\n@media (min-width: 768px) {\n  .md\\:hover\\:text-red-500:hover {\n    color: #ef4444;\n  }\n}\n```\n\n可以看出，变体系统是可组合的，类似规则生成管线。\n\n---\n\n## 四、为什么不是运行时判断？\n\n原因有两个：\n\n第一，性能稳定。\n所有规则提前生成，浏览器只执行标准 CSS。\n\n第二，逻辑简单。\n完全依赖浏览器原生 `@media` 机制，不需要 JS 监听 resize。\n\n---\n\n## 五、移动优先原则\n\nTailwind 默认采用 mobile-first。\n\n写法：\n\n```html\ntext-red-500 md:text-blue-500\n```\n\n含义：\n\n* 默认红色\n* 屏幕宽度 ≥ 768px 时变蓝\n\n生成顺序保证：\n\n* 基础规则在前\n* media query 在后\n* 利用 CSS 层叠覆盖\n\n---\n\n## 六、抽象理解\n\n可以把 Tailwind 的响应式机制理解为：\n\n对基础 utility 规则进行“包装”。\n\n伪逻辑可以理解为：\n\n```\n生成基础规则\n如果有 screen 变体 → 用 @media 包裹\n如果有伪类变体 → 添加伪类选择器\n```\n\n这是一种构建期规则生成模型，而不是条件分支执行。",
+    "pivot":  "Tailwind 的响应式断点基于构建期的变体系统实现。`md:` 在编译阶段被解析为 screen 变体，并根据 `screens` 配置生成对应的 `@media (min-width)` 包裹规则。所有响应式逻辑依赖原生 CSS media query，遵循 mobile-first 原则，通过规则生成管线支持多变体组合，不涉及运行时计算。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-03-03T15:12:43.000Z",
+    "updateAt":  "2026-03-03T15:12:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  141,
+    "filterTotalNum":  1907,
+    "prev":  "f142c5fe-17fd-444e-8daf-bd03d085ce69",
+    "next":  "fa06c194-9fab-4cf0-8cc7-dda90c2c4f97"
+}

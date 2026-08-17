@@ -1,0 +1,21 @@
+﻿{
+    "id":  2018,
+    "exerciseKey":  "991e859c-58aa-42e4-8ccb-2e74aba9a083",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现一个函数，要求能在页面请求很多时，尽可能快地按照顺序输出返回的结果。",
+    "desc":  "```js\nconst promiseList = [\n new Promise((resolve) =\u003e {\n  setTimeout(resolve, 1000)\n }),\n new Promise((resolve) =\u003e {\n  setTimeout(resolve, 2000)\n }),\n new Promise((resolve) =\u003e {\n  setTimeout(resolve, 3000)\n }),\n new Promise((resolve) =\u003e {\n  setTimeout(resolve, 1500)\n })\n]\n\nfn(promiseList);\n```",
+    "options":  null,
+    "explanation":  "要实现在页面请求很多时，尽可能快地按顺序输出返回结果，可以使用 `Promise` 和 `async/await` 来处理异步请求，并通过控制并发请求数量和使用队列来保持请求的顺序。\n\n以下是一个示例函数`processRequests`，该函数接收一个包含请求URL的数组，并按照顺序发起异步请求，等待所有请求完成后按顺序输出返回的结果：\n\n```javascript\nfunction processRequests(urls) {\n  const results = [];\n\n  // 并发请求数量\n  const concurrentLimit = 5;\n\n  // 创建一个队列来存储请求\n  const queue = urls.slice();\n\n  // 递归函数，依次处理队列中的请求\n  async function sendRequest() {\n    if (queue.length === 0) {\n      // 队列为空，所有请求已完成，输出结果\n      console.log(results);\n      return;\n    }\n\n    // 取出队列中的下一个请求\n    const url = queue.shift();\n\n    try {\n      // 发起异步请求\n      const response = await fetch(url);\n\n      // 处理请求结果，这里假设返回的是文本\n      const result = await response.text();\n\n      // 将结果存入数组中\n      results.push(result);\n\n      // 递归调用自身，继续处理下一个请求\n      sendRequest();\n    } catch (error) {\n      // 处理请求错误\n      console.error(`Request failed for ${url}:`, error);\n\n      // 递归调用自身，继续处理下一个请求\n      sendRequest();\n    }\n  }\n\n  // 控制并发请求数量，同时发送多个请求\n  for (let i = 0; i \u003c concurrentLimit; i++) {\n    sendRequest();\n  }\n}\n```\n\n使用示例：\n\n```javascript\nconst urls = [\n  \u0027https://api.example.com/1\u0027,\n  \u0027https://api.example.com/2\u0027,\n  \u0027https://api.example.com/3\u0027,\n  // ...更多请求URL\n];\n\nprocessRequests(urls);\n```\n\n`processRequests`函数将请求URL数组作为参数，并创建一个队列来存储请求。通过控制并发请求数量，每次最多发送`concurrentLimit`个请求，等待这些请求完成后再继续处理下一个请求。当所有请求完成后，按顺序输出返回的结果。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:09:19.000Z",
+    "updateAt":  "2023-07-08T15:58:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  793,
+    "filterTotalNum":  1907,
+    "prev":  "49ab4d36-c9e1-42c9-9df1-a610dc9dac8e",
+    "next":  "ac644e0a-1fbe-4e0a-9f9f-ecc373a13a87"
+}

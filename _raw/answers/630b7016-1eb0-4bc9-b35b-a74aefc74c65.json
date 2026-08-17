@@ -1,0 +1,21 @@
+﻿{
+    "id":  2923,
+    "exerciseKey":  "630b7016-1eb0-4bc9-b35b-a74aefc74c65",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么理解 ESM 中的 export * from \"a.js\" 这种写法？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 ESM（ES Modules）中，`export * from \"a.js\"` 的作用是：**将 `a.js` 中的所有命名导出（`named exports`）重新导出（re-export）**，供当前模块的使用者使用。\n\n---\n\n### 等价理解：\n\n```js\n// 假设 a.js 中有：\nexport const foo = \u0027foo\u0027;\nexport const bar = \u0027bar\u0027;\n\n// 那么在 b.js 中写：\nexport * from \u0027./a.js\u0027;\n// 相当于重新导出了 foo 和 bar\n\n// 使用时\nimport { foo, bar } from \u0027./b.js\u0027; // 可以正常使用\n```\n\n---\n\n### 注意事项：\n1. 不会导出 `a.js` 中的默认导出（`export default`）。\n2. 如果当前模块中已经存在相同名称的导出，会发生冲突，抛出错误。\n3. 它是 **重新导出**，并不会在当前模块声明变量或函数。\n\n---\n\n### 应用场景：\n\n- **统一出口模块（barrel 文件）**：\n\n```js\n// utils/index.js\nexport * from \u0027./math.js\u0027;\nexport * from \u0027./string.js\u0027;\nexport * from \u0027./date.js\u0027;\n\n// 在其他地方可以统一引入\nimport { formatDate, sum } from \u0027./utils\u0027;\n```",
+    "pivot":  "- `export * from \u0027a.js\u0027` 是将 `a.js` 的所有**命名导出**重新导出；\n- 常用于统一封装模块接口，提升模块复用性；\n- 不导出默认值，若需要导出默认值，需要显式写 `export { default } from \u0027a.js\u0027`。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-04-10T06:54:00.000Z",
+    "updateAt":  "2025-04-10T06:54:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  279,
+    "filterTotalNum":  1907,
+    "prev":  "3ea6f42d-50f6-4b3f-9f44-1bdf7c886a13",
+    "next":  "fa065548-704b-4428-b784-6a038acde5b4"
+}

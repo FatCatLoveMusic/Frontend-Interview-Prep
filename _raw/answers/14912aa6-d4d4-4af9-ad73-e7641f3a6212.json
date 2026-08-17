@@ -1,0 +1,21 @@
+﻿{
+    "id":  298,
+    "exerciseKey":  "14912aa6-d4d4-4af9-ad73-e7641f3a6212",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "style标签写在body后与body前有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "页面加载自上而下 当然是先加载样式。\n\n写在body标签后由于浏览器以逐行方式对HTML文档进行解析，当解析到写在尾部的样式表（外联或写在style标签）会导致浏览器停止之前的渲染，等待加载且解析样式表完成之后重新渲染，在windows的IE下可能会出现FOUC现象（即样式失效导致的页面闪烁问题）\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:29:48.000Z",
+    "updateAt":  "2021-07-04T19:24:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1622,
+    "filterTotalNum":  1907,
+    "prev":  "52e2ccda-70e2-438b-8328-ef25f78afb6a",
+    "next":  "12770dfd-79d2-4c0b-80e1-e19f3ab85c82"
+}

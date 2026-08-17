@@ -1,0 +1,21 @@
+﻿{
+    "id":  2573,
+    "exerciseKey":  "53f0ec19-c292-4d4c-bcf0-dc50f9ba6b59",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "script 预加载方式有哪些，这些加载方式有何区别？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在网页中，`\u003cscript\u003e` 标签有几种预加载方式可以用来优化脚本的加载和执行。不同的预加载方式具有不同的特性和应用场景，以下是主要的预加载方式及其区别：\n\n### **1. `\u003cscript\u003e` 标签的默认行为**\n\n```html\n\u003cscript src=\"script.js\"\u003e\u003c/script\u003e\n```\n- **行为**：默认情况下，`\u003cscript\u003e` 标签会在 HTML 文档解析时同步加载和执行脚本。这会阻塞文档的渲染，直到脚本下载并执行完毕。\n\n### **2. `defer` 属性**\n\n```html\n\u003cscript src=\"script.js\" defer\u003e\u003c/script\u003e\n```\n- **行为**：`defer` 属性表示脚本将在文档解析完成后（即 `DOMContentLoaded` 事件之前）异步执行。这种方式不会阻塞 HTML 文档的解析，脚本会按顺序执行。\n- **特点**：\n  - 适用于 `\u003chead\u003e` 部分的脚本。\n  - 保证脚本执行顺序与在文档中的顺序一致。\n  - 有效避免了脚本加载对页面渲染的阻塞。\n\n### **3. `async` 属性**\n\n```html\n\u003cscript src=\"script.js\" async\u003e\u003c/script\u003e\n```\n- **行为**：`async` 属性表示脚本将异步加载并立即执行（不管 HTML 是否解析完毕）。一旦脚本下载完成，它将立即执行，而不会等待其他脚本或 HTML 解析完成。\n- **特点**：\n  - 适用于不依赖于其他脚本的脚本（如分析脚本、广告脚本等）。\n  - 脚本的执行顺序与在文档中的顺序不一定一致，取决于哪个脚本最早加载完成。\n  - 有可能会影响页面的渲染顺序和依赖脚本的执行顺序。\n\n### **4. `preload` 和 `prefetch`**\n\n```html\n\u003clink rel=\"preload\" href=\"script.js\" as=\"script\"\u003e\n\u003clink rel=\"prefetch\" href=\"script.js\" as=\"script\"\u003e\n```\n- **行为**：\n  - **`preload`**：在页面加载过程中提前加载资源，以便资源在需要时能更快地使用。通常用于确保关键资源在页面渲染前已加载完成。\n  - **`prefetch`**：指示浏览器预先加载可能在将来页面中使用的资源，以提高未来页面的加载速度。通常用于优化用户可能接下来的操作。\n- **特点**：\n  - `preload` 用于当前页面中即将需要的资源，加载优先级较高。\n  - `prefetch` 用于未来可能需要的资源，加载优先级较低。\n  - `preload` 和 `prefetch` 可以提高资源的加载速度，但它们的使用场景和效果有所不同。\n\n### **5. `module` 类型脚本**\n\n```html\n\u003cscript type=\"module\" src=\"script.js\"\u003e\u003c/script\u003e\n```\n- **行为**：`type=\"module\"` 指定脚本为 ECMAScript 模块，支持模块化导入和导出。模块脚本会被延迟加载并在 HTML 文档解析完成后执行。\n- **特点**：\n  - 支持 `import` 和 `export` 语法，允许模块化开发。\n  - 默认具有 `defer` 行为，保证模块脚本在 DOMContentLoaded 事件触发之前执行。",
+    "pivot":  "- **`\u003cscript\u003e`**：默认同步加载，阻塞文档渲染。\n- **`defer`**：异步加载，但在 DOMContentLoaded 事件之前按顺序执行。适合 `\u003chead\u003e` 部分的脚本。\n- **`async`**：异步加载，立即执行，不保证执行顺序。适合独立的脚本。\n- **`preload`**：提前加载资源，适合当前页面所需的关键资源。\n- **`prefetch`**：预先加载可能会在未来页面中使用的资源，适合优化未来的页面加载。\n- **`module`**：模块化脚本，延迟加载，支持 ES6 模块特性。\n\n每种预加载方式都有其适用的场景和特点，通过合理选择和使用这些方式，可以优化网页性能和资源加载效率。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2024-08-15T19:14:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  466,
+    "filterTotalNum":  1907,
+    "prev":  "bd1d3517-7b88-46a3-a077-6865e0b96b27",
+    "next":  "8a109788-5551-44a0-ba39-526632145959"
+}

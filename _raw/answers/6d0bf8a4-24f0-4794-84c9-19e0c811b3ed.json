@@ -1,0 +1,21 @@
+﻿{
+    "id":  1950,
+    "exerciseKey":  "6d0bf8a4-24f0-4794-84c9-19e0c811b3ed",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 product 方法",
+    "desc":  "/**\n * @file 计算数组笛卡尔积\n */\n\n// 示例\nproduct([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]\n\nfunction product(xList: number[], yList: number[]): [number, number][] {\n    // 补全内部实现\n    throw new Error(\u0027功能待实现\u0027);\n}\n\nexport default {}",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 计算数组笛卡尔积\n */\n\n// 示例\nconsole.log(product([1, 2], [3, 4])); // [[1, 3], [1, 4], [2, 3], [2, 4]]\n\nfunction product(xList: number[], yList: number[]): [number, number][] {\n  // 参考答案\n  return xList.reduce((v, t) =\u003e {\n    return v.concat(yList.map((item) =\u003e [t, item]));\n  }, [] as [number, number][]);\n}\n\nexport default {};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:27:23.000Z",
+    "updateAt":  "2023-03-12T23:30:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  860,
+    "filterTotalNum":  1907,
+    "prev":  "5bd5fdd4-706a-49dd-9cbe-1f2a05779ffe",
+    "next":  "0da5c58e-1299-477f-95f1-9e05ebf8aa2e"
+}

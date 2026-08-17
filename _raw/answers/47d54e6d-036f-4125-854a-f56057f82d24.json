@@ -1,0 +1,21 @@
+﻿{
+    "id":  2982,
+    "exerciseKey":  "47d54e6d-036f-4125-854a-f56057f82d24",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "写一个 prompt，让AI手写一个符合Promise A+规范的Promise",
+    "desc":  "能否让AI手写一个符合Promise A+规范的Promise，并分析其代码？\n",
+    "options":  null,
+    "explanation":  "编写这类 Prompt 时，核心在于**约束条件的前置**。\n\n应当不仅要求 AI 写出代码，更要要求其遵循具体的规范条款，并强制其处理容易被忽略的边界情况。\n\n以下是一个高标准的 Prompt 模板，旨在引导 AI 生成一份严谨且具备生产力参考价值的实现。\n\n### 推荐的 Prompt 模板\n\n**角色设定**：\n你是一位深耕前端工程化与异步编程规范的资深技术专家，对 Promise/A+ 官方规范有极深的理解。\n\n**任务目标**：\n请从零开始手写一个名为 `MyPromise` 的类（或构造函数），要求必须完整通过 Promise/A+ 规范的校验。\n\n**核心约束**：\n\n1. **状态机实现**：明确管理 `pending`、`fulfilled`、`rejected` 三种状态，确保状态转换的不可逆性。\n2. **Then 方法设计**：实现 `then` 方法，支持链式调用，并处理参数可选性（值穿透）。\n3. **异步调度**：严格遵循规范 2.2.4 条款，确保 `onFulfilled` 和 `onRejected` 在执行环境栈仅包含平台代码时异步执行（可使用 `setTimeout` 或 `queueMicrotask` 模拟）。\n4. **Promise 解决程序（重要）**：实现核心的 `[[Resolve]](promise, x)` 逻辑，必须详细处理 `x` 与 `promise` 相等（循环引用）、`x` 是 Promise 对象、以及 `x` 是 Thenable 对象（包含 `then` 属性的 object 或 function）等各种边界情况。\n5. **异常处理**：在执行器（executor）及 `then` 回调中进行严谨的 `try-catch` 捕获。\n\n**输出要求**：\n\n* 代码中使用注释标注出对应规范的条款编号。\n* 提供一个简单的测试用例，展示异步链式调用的效果。\n* 保持代码逻辑清晰，避免使用过度封装的工具函数，以便于理解底层原理。\n\n---\n\n### 提示词策略解析\n\n* **明确提到条款编号**：强制 AI 在生成代码时对照规范原文，这能有效防止 AI 为了省事而写出一个“简化版”而非“规范版”。\n* **强调 Thenable 处理**：这是 Promise/A+ 规范中最复杂的部分（即 `resolvePromise` 函数），也是区分初级实现与专家级实现的关键。\n* **限定异步机制**：规范明确要求回调必须异步执行，如果不强调这一点，AI 可能会写出同步执行的错误逻辑。\n",
+    "pivot":  "* **明确标准**：直接引用 Promise/A+ 规范作为基准，消除模糊地带。\n* **边界约束**：重点强调循环引用检测、Thenable 对象解析等高阶逻辑。\n* **可追溯性**：要求代码注释包含规范条款，便于人工审计与学习。\n* **执行环境**：指定异步调度方案，确保符合微任务/宏任务的执行预期。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-12-31T04:14:24.000Z",
+    "updateAt":  "2026-01-30T15:13:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  221,
+    "filterTotalNum":  1907,
+    "prev":  "5a30098c-581e-4fea-873d-89e02a806c63",
+    "next":  "32797895-a944-4341-88ae-7cde47215472"
+}

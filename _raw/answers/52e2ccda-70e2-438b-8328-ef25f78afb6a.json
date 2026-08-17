@@ -1,0 +1,21 @@
+﻿{
+    "id":  299,
+    "exerciseKey":  "52e2ccda-70e2-438b-8328-ef25f78afb6a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是CSS Sprites？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "将一个页面涉及到的所有图片都包含到一张大图中去，然后利用CSS的 `background-image`，`background-repeat`，`background-position` 的组合进行背景定位。\n利用`CSS Sprites`能很好地减少网页的http请求，从而大大的提高页面的性能。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:31:46.000Z",
+    "updateAt":  "2021-07-04T19:24:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  1621,
+    "filterTotalNum":  1907,
+    "prev":  "6db4a7aa-877e-4ec6-966f-3ada571e2fbf",
+    "next":  "14912aa6-d4d4-4af9-ad73-e7641f3a6212"
+}

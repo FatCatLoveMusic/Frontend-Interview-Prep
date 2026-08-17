@@ -1,0 +1,21 @@
+﻿{
+    "id":  2738,
+    "exerciseKey":  "da46c6c7-daf2-42d2-a705-fba41ddd6cff",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何组织 monorepo 工程？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "组织 monorepo 工程（单一代码库管理多个项目或包）是一个关键的工程管理任务。它需要合理的结构和工具，以确保项目的可维护性、可扩展性和协作效率。以下是一些常见的实践和工具来组织 monorepo 工程：\n\n### **1. 项目结构**\n\n#### **目录结构**\n\n- **根目录**：包含全局配置文件（如 `package.json`、`tsconfig.json`）、构建工具配置、CI/CD 配置等。\n- **`packages/` 或 `modules/` 目录**：包含多个子项目或包，每个包有自己的目录。\n  - 每个包应包含自己的 `package.json` 文件、源代码、测试文件等。\n- **`libs/` 目录**：可以用于共享库或工具模块，这些库可以被多个子项目使用。\n- **`scripts/` 目录**：包含用于构建、测试、发布等的脚本。\n- **`docs/` 目录**：包含文档，如项目说明、开发指南等。\n\n#### **示例结构**\n\n```\nmonorepo/\n├── packages/\n│   ├── app1/\n│   │   ├── src/\n│   │   ├── package.json\n│   │   └── ...\n│   ├── app2/\n│   │   ├── src/\n│   │   ├── package.json\n│   │   └── ...\n│   └── lib/\n│       ├── src/\n│       ├── package.json\n│       └── ...\n├── scripts/\n├── docs/\n├── package.json\n└── tsconfig.json\n```\n\n### **2. 工具和框架**\n\n#### **包管理**\n\n- **[Lerna](https://lerna.js.org/)**：管理 JavaScript 项目的多包仓库，提供版本控制、包发布、依赖管理等功能。\n- **[Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/)**：通过 workspaces 支持多包管理，可以优化依赖安装和提升构建效率。\n- **[Nx](https://nx.dev/)**：支持 monorepo 的开发工具，提供高级功能，如构建优化、依赖图分析、代码生成等。\n\n#### **构建工具**\n\n- **[Webpack](https://webpack.js.org/)**：用于打包和构建 JavaScript 和资源文件。\n- **[Vite](https://vitejs.dev/)**：现代前端构建工具，提供更快的开发和构建体验。\n- **[Babel](https://babeljs.io/)**：用于转译现代 JavaScript 代码，使其兼容旧版浏览器。\n\n#### **CI/CD 工具**\n\n- **[GitHub Actions](https://github.com/features/actions)**、**[GitLab CI](https://docs.gitlab.com/ee/ci/)**、**[CircleCI](https://circleci.com/)**：用于自动化构建、测试和部署流程。\n\n### **3. 版本控制和依赖管理**\n\n#### **版本控制**\n\n- **单一版本**：所有包使用相同的版本号，可以简化发布和版本管理，但可能需要更多的协调。\n- **独立版本**：每个包有自己的版本号，提供更细粒度的版本控制，适用于需要单独更新包的场景。\n\n#### **依赖管理**\n\n- **集中式依赖管理**：将所有依赖定义在根目录的 `package.json` 中，确保依赖的一致性和简化版本冲突问题。\n- **分散式依赖管理**：每个包有自己的 `package.json`，允许不同的包使用不同版本的依赖，适用于包之间的依赖不一致的情况。\n\n### **4. 开发流程和最佳实践**\n\n#### **代码共享**\n\n- **创建共享库**：将通用功能、工具函数、组件等提取到共享库中，以便在多个项目之间复用。\n- **版本管理**：为共享库设置适当的版本管理策略，确保各个项目能够使用兼容的版本。\n\n#### **构建和测试**\n\n- **统一构建**：设置统一的构建脚本和配置，以确保所有包的构建过程一致。\n- **隔离测试**：为每个包编写独立的测试用例，并设置测试脚本，确保每个包的功能正常。\n\n#### **文档和规范**\n\n- **编写文档**：提供详细的文档，说明项目结构、开发规范、包的使用方法等。\n- **代码规范**：统一代码风格和规范，以提高代码的一致性和可维护性。\n\n### **5. 维护和扩展**\n\n- **自动化工具**：使用工具自动化常见任务，如依赖更新、版本发布等，减少人工干预。\n- **监控和分析**：监控各个包的健康状况和性能，定期进行代码审查和性能优化。",
+    "pivot":  "组织 monorepo 工程需要合理的目录结构、适合的工具和框架、有效的版本控制和依赖管理策略。\n\n通过设置统一的开发流程和最佳实践，可以确保项目的可维护性和可扩展性，提高团队的协作效率。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T20:26:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  380,
+    "filterTotalNum":  1907,
+    "prev":  "a2fc1424-164d-41c5-a366-0e118ccb2f09",
+    "next":  "025f89d2-e3b9-4693-ba07-da3b11036d42"
+}

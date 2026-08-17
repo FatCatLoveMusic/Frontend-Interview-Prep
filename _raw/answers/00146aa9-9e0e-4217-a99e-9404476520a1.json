@@ -1,0 +1,21 @@
+﻿{
+    "id":  105,
+    "exerciseKey":  "00146aa9-9e0e-4217-a99e-9404476520a1",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\n// 🎉✨ This is my 100th question! ✨🎉\n\nconst output = `${[] \u0026\u0026 \u0027Im\u0027}possible!\nYou should${\u0027\u0027 \u0026\u0026 `n\u0027t`} see a therapist after so much JavaScript lol`\n```",
+    "options":  "{\"options\":[\"possible! You should see a therapist after so much JavaScript lol\",\"Impossible! You should see a therapist after so much JavaScript lol\",\"possible! You shouldn\u0027t see a therapist after so much JavaScript lol\",\"Impossible! You shouldn\u0027t see a therapist after so much JavaScript lol\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`[]`是一个真值。 使用`\u0026\u0026`运算符，如果左侧值是真值，则返回右侧值。 在这种情况下，左侧值`[]`是一个真值，所以返回`Im`。\n`\"\"`是一个假值。 如果左侧值是假的，则不返回任何内容。 `n\u0027t`不会被退回。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:28:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1814,
+    "filterTotalNum":  1907,
+    "prev":  "a0544c68-4798-4f40-b233-bc3510170371",
+    "next":  "80d02415-01b5-428f-a5a5-3021d2ce9b75"
+}

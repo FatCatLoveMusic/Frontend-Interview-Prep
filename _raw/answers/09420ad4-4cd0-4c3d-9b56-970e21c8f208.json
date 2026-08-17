@@ -1,0 +1,21 @@
+﻿{
+    "id":  576,
+    "exerciseKey":  "09420ad4-4cd0-4c3d-9b56-970e21c8f208",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "谈谈 Object.defineProperty 与 Proxy 的区别",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue2.x 的版本中，双向绑定是基于 Object.defineProperty 方式实现的。而 Vue3.x 版本中，使用了 ES6 中的 Proxy 代理的方式实现。\n\n## Object.defineProperty(obj, prop, descriptor)\n\n使用 Object.defineProperty 会产生三个主要的问题：\n\n* 不能监听数组的变化\n\n在 Vue2.x 中解决数组监听的方法是将能够改变原数组的方法进行重写实现（比如：push、 pop、shift、unshift、splice、sort、reverse），举例：\n\n```javascript\n// 我们重写 push 方法\nconst originalPush = Array.prototype.push\n\nArray.prototype.push = function() {\n  // 我们在这个位置就可以进行 数据劫持 了\n  console.log(\u0027数组被改变了\u0027)\n\n  originalPush.apply(this, arguments)\n}\n```\n\n* 必须遍历对象的每个属性\n\n可以通过 Object.keys() 来实现\n\n* 必须深层遍历嵌套的对象\n\n通过递归深层遍历嵌套对象，然后通过 Object.keys() 来实现对每个属性的劫持\n\n## Proxy\n\n* Proxy 针对的整个对象，Object.defineProperty 针对单个属性，这就解决了 需要对对象进行深度递归（支持嵌套的复杂对象劫持）实现对每个属性劫持的问题\n\n```javascript\n// 定义一个复杂对象\nconst obj = {\n    obj: {\n        children: {\n            a: 1\n        }\n    }\n}\n\nconst objProxy = new Proxy(obj, {\n    get(target, property, receiver){\n        console.log(\u0027-- target --\u0027)\n        return Reflect.get(target, property, receiver)\n    },\n\n    set(target, property, value, receiver) {\n        console.log(\u0027-- set --\u0027)\n        return Reflect.set(target, property, value, receiver)\n    }\n})\n\nconsole.log(objProxy.obj) // 输出 \u0027-- target --\u0027\nconsole.log(objProxy.a = 2) // 输出 \u0027-- set --\u0027\n```\n\n* Proxy 解决了 Object.defineProperty 无法劫持数组的问题\n\n```javascript\nconst ary = [1, 2, 3]\n\nconst aryProxy = new Proxy(ary, {\n    get(target, property, receiver){\n        console.log(\u0027-- target --\u0027)\n        return Reflect.get(target, property, receiver)\n    },\n    set(target, property, value, receiver) {\n        console.log(\u0027-- set --\u0027)\n        return Reflect.set(target, property, value, receiver)\n    }\n})\n\nconsole.log(aryProxy[0]) // 输出 \u0027-- target --\u0027\nconsole.log(aryProxy.push(1)) // 输出 \u0027-- set --\u0027\n```\n\n*  比 Object.defineProperty 有更多的拦截方法，对比一些新的浏览器，可能会对 Proxy 针正对性的优化，有助于性能提升\n\n\n",
+    "pivot":  "### Vue2.x 中的双向绑定实现\n\n- **基于**：Vue2.x 的双向绑定是基于 `Object.defineProperty` 实现的。\n- **问题**：这种方式存在一些局限性：\n  1. **数组监听**：无法直接监听数组的变化，需要重写数组的方法来模拟。\n  2. **属性遍历**：需要遍历对象的每个属性来定义属性描述符。\n  3. **嵌套对象监听**：需要递归遍历嵌套对象的所有属性。\n\n### Vue3.x 中的双向绑定实现\n\n- **基于**：Vue3.x 使用 `Proxy` 代理的方式实现双向绑定。\n- **优势**：\n  1. **对象深度监听**：Proxy 可以针对整个对象进行代理，无需遍历每个属性，解决了深度递归的问题。\n  2. **数组监听**：Proxy 可以直接监听数组的变化，无需重写数组方法。\n  3. **拦截方法**：Proxy 提供更多的拦截方法，如 `get`、`set`、`deleteProperty` 等，使得数据劫持更加灵活。\n  4. **性能优化**：Proxy 可能得到浏览器针对性的优化，有助于性能提升。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-08-07T08:36:38.000Z",
+    "updateAt":  "2024-08-10T17:05:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  1344,
+    "filterTotalNum":  1907,
+    "prev":  "c6db446a-bbc3-42a9-bc4a-aeecfde8bcbc",
+    "next":  "a93416a5-73ab-49be-98d0-42c829616f9a"
+}

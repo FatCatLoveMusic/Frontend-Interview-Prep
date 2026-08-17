@@ -1,0 +1,21 @@
+﻿{
+    "id":  138,
+    "exerciseKey":  "3cfca707-0c28-403b-bf3a-c2b892010ade",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst myPromise = Promise.resolve(Promise.resolve(\"Promise!\"));\n\nfunction funcOne() {\n\tmyPromise.then(res =\u003e res).then(res =\u003e console.log(res));\n\tsetTimeout(() =\u003e console.log(\"Timeout!\"), 0);\n\tconsole.log(\"Last line!\");\n}\n\nasync function funcTwo() {\n\tconst res = await myPromise;\n\tconsole.log(await res);\n\tsetTimeout(() =\u003e console.log(\"Timeout!\"), 0);\n\tconsole.log(\"Last line!\");\n}\n\nfuncOne();\nfuncTwo();\n```",
+    "options":  "{\"options\":[\"Promise! Last line! Promise! Last line! Last line! Promise!\",\"Last line! Timeout! Promise! Last line! Timeout! Promise!\",\"Promise! Last line! Last line! Promise! Timeout! Timeout!\",\"Last line! Promise! Promise! Last line! Timeout! Timeout!\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "// 2023-03-04 更新解析\n\n首先，我们调用 `funcOne`。\n\n在函数 `funcOne` 的第一行，我们调用`myPromise` promise _异步操作_。当JS引擎在忙于执行 promise，它继续执行函数 `funcOne`。下一行 _异步操作_ `setTimeout`，其回调函数被 Web API 调用。\n\npromise 和 timeout 都是异步操作，函数继续执行当JS引擎忙于执行 promise 和 处理 `setTimeout` 的回调。相当于 `Last line!` 首先被输出， 因为它不是异步操作。\n\n执行完 `funcOne` 的最后一行，继续往后执行 `funcTwo`，但 `funcTwo` 函数内部第一行就是 `await` 阻止了后面代码的执行，所以才会去执行`funcOne`中`myPromise`的第一个`then`。`funcOne` 中第一行的 `promise` 状态转变为 resolved，`Promise!` 被打印。\n\n然而，我们调用了 `funcTwo()`, 调用栈不为空，`setTimeout` 的回调仍不能入栈。\n\n我们现在处于 `funcTwo`，先 _awaiting_ myPromise。通过 `await` 关键字， 我们暂停了函数的执行直到 promise 状态变为 resolved (或 rejected)。然后，我们输出 `res` 的 awaited 值（因为 promise 本身返回一个 promise）。 接着输出 `Promise!`。\n\n下一行就是 _异步操作_ `setTimeout`，其回调函数被 Web API 调用。\n\n我们执行到函数 `funcTwo` 的最后一行，输出 `Last line!`。现在，因为 `funcTwo` 出栈，调用栈为空。在事件队列中等待的回调函数（`() =\u003e console.log(\"Timeout!\")` from `funcOne`, and `() =\u003e console.log(\"Timeout!\")` from `funcTwo`）以此入栈。第一个回调输出 `Timeout!`，并出栈。然后，第二个回调输出 `Timeout!`，并出栈。得到结果 `Last line! Promise! Promise! Last line! Timeout! Timeout!`\n\n大家还可以想想，下面会输出什么：\n\n```js\nconst myPromise = Promise.resolve(Promise.resolve(\"Promise!\"));\n\nfunction funcOne() {\n  myPromise.then(res =\u003e {\n     console.log(\"执行第一个then\", res)\n     return res\n  }).then(res =\u003e {\n      console.log(\u0027执行第二个then\u0027, res)\n  });\n  setTimeout(() =\u003e console.log(\"Timeout!\"), 0);\n  console.log(\"Last line!\");\n}\n\nasync function funcTwo() {\n  console.log(\u0027进入funcTwo\u0027)\n  const res = await myPromise;\n  console.log(\u0027执行完第一个await，继续往下执行\u0027)\n  console.log(await res);\n  console.log(\u0027执行完第二个await，继续往下执行\u0027)\n  setTimeout(() =\u003e console.log(\"Timeout!\"), 0);\n  console.log(\"Last line!\");\n}\n\nfuncOne();\nfuncTwo();\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-07-05T15:35:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1781,
+    "filterTotalNum":  1907,
+    "prev":  "79eaaf8e-f456-4527-847e-58bad43fd47a",
+    "next":  "b752b91f-930f-43b6-8017-83d56392dc7e"
+}

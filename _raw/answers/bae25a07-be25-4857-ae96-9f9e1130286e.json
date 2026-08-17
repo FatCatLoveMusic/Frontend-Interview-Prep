@@ -1,0 +1,21 @@
+﻿{
+    "id":  1875,
+    "exerciseKey":  "bae25a07-be25-4857-ae96-9f9e1130286e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何获取页面的滚动距离值？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在获取页面滚动距离的高度时候，往往有不同的获取方式，而且不同的属性浏览器支持稍有差别：\n\n_**pageYOffset**_：属window对象，IE9+、Firefox、Chrome、Opera均支持该方式获取页面滚动敢赌值，并且会忽略DOCTYPE定义规则。\n\n```javascript\nwindow.pageYOffset\n```\n\n_**scrollY**_：属于window对象，Firefox、Chrome、Opera均支持，IE不支持，忽略DOCTYPE定义规则。\n\n```javascript\nwindow.scrollY\n```\n\n页面如果未定义DOCTYPE文档头，所有浏览器都支持docume.body.scrollTop属性获取滚动高度。\n\n```javascript\ndocument.body.scrollTop\n```\n\n如果页面定义了DOCTYPE文档头，那么HTML元素上的scrollT属性在IE、Firefox、Opera（presto内核）下都可以获取滚动高度值，而在Chrome和Safari下其值为0。\n\n```javascript\ndocument.documentElement.scrollTop; //Chrome,Safari下为0\n```\n\n此在获取页面滚动高度的时候优先考虑使用 window.pageYOffset 然后在使用scrollTop。\n\n```javascript\n var _scrollLeft = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft \n var _scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop\n```",
+    "pivot":  "### 获取页面滚动距离的属性和方法\n\n1. **`window.pageYOffset`**：\n\n2. **`window.scrollY`**：\n\n3. **`document.body.scrollTop`**：\n\n4. **`document.documentElement.scrollTop`**：\n\n### 获取滚动距离的优先级\n\n- 优先使用 `window.pageYOffset`，因为它被大多数现代浏览器支持，且不依赖于DOCTYPE定义。\n- 如果 `window.pageYOffset` 不可用，使用 `window.scrollY`。\n- 如果上述两者都不可用，使用 `document.body.scrollTop`（仅在没有DOCTYPE的情况下）。\n- 如果所有上述方法都不可用，使用 `document.documentElement.scrollTop`（仅在IE、Firefox、Opera（presto内核）下）。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:45:20.000Z",
+    "updateAt":  "2024-08-10T17:06:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  935,
+    "filterTotalNum":  1907,
+    "prev":  "c51ba9d2-f3d9-4b38-8f33-f962fa4983ea",
+    "next":  "1aa28332-a1a6-4778-812f-3226a2003614"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2073,
+    "exerciseKey":  "b11685c7-d458-4225-a5b1-40a34631a8d1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "created 和 mounted 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在Vue中，`created`和`mounted`是两个常用的生命周期钩子函数，它们在组件的生命周期中扮演着不同的角色：\n\n**created**：\n- `created`是组件生命周期中的一个钩子函数，在Vue实例被创建后立即调用。\n- 在`created`钩子函数中，Vue实例已经完成了数据观测（data observation），但尚未渲染真实DOM。这意味着你可以访问实例中的数据、方法、计算属性等，但不能保证实例已经被插入到DOM中。\n- `created`常用于一些初始化操作，例如数据请求、事件监听或其他非DOM相关的任务。因为此时，组件的模板还未被编译成真实DOM。\n\n**mounted**：\n- `mounted`是组件生命周期中的一个钩子函数，在Vue实例挂载到DOM后调用。\n- 在`mounted`钩子函数中，Vue实例已经完成了模板编译，并且已经将生成的虚拟DOM渲染到真实DOM中。\n- `mounted`常用于需要对DOM进行操作的任务，例如初始化第三方库、绑定事件监听器、执行动画等。因为此时，组件已经被插入到DOM中，可以安全地访问和操作DOM元素。\n\n区别总结：\n- `created`在实例创建后被调用，适合处理数据初始化和非DOM相关的任务。\n- `mounted`在实例挂载到DOM后被调用，适合进行DOM操作、初始化第三方库和绑定事件监听。",
+    "pivot":  "在Vue中，`created`和`mounted`是两个常用的生命周期钩子函数，它们在组件的生命周期中扮演着不同的角色：\n\n**created**：\n\n- `created`钩子在组件实例创建后立即被调用。\n- 此时，Vue实例已经完成了数据观测，但还未渲染真实DOM。\n- 适合用于数据请求、事件监听等非DOM操作。\n\n**mounted**：\n\n- `mounted`钩子在组件实例挂载到DOM后调用。\n- 此时，Vue实例已经将模板编译成真实DOM并渲染到页面。\n- 适合用于对DOM进行操作，如初始化第三方库、绑定事件监听等。\n\n区别总结：\n\n- `created`适合非DOM相关的初始化操作。\n- `mounted`适合对DOM进行操作和初始化第三方库。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-12-17T10:49:03.000Z",
+    "updateAt":  "2024-08-10T17:07:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  740,
+    "filterTotalNum":  1907,
+    "prev":  "b4fc51b1-88d0-4213-80a0-49a5d9c6b9f4",
+    "next":  "05452814-d4c0-43ae-bfbe-3807f7779726"
+}

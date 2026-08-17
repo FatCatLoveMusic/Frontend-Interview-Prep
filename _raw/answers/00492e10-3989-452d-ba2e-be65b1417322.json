@@ -1,0 +1,21 @@
+﻿{
+    "id":  2620,
+    "exerciseKey":  "00492e10-3989-452d-ba2e-be65b1417322",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 const 和 readonly 的区别",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`const` 和 `readonly` 是 TypeScript 中用于处理不可变数据的关键字，但它们用于不同的场景和具有不同的功能。\n\n以下是它们的主要区别：\n\n### **1. `const`**\n\n- **作用范围**：`const` 是 JavaScript 的一个关键字，用于声明常量。它确保声明的变量在初始化后不能被重新赋值。\n- **适用对象**：`const` 用于变量声明，适用于基本数据类型和对象（如数组和对象字面量）。注意，`const` 声明的对象的属性是可以修改的，但不能重新赋值整个对象。\n\n  ```javascript\n  // 基本数据类型\n  const x = 10;\n  x = 20; // 编译错误\n\n  // 对象\n  const obj = { name: \"John\" };\n  obj.name = \"Doe\"; // 合法，修改对象属性\n  obj = { name: \"Jane\" }; // 编译错误，不能重新赋值\n  ```\n\n- **作用**：`const` 确保变量引用的地址（或基本类型的值）在初始化后不会改变，但对象的内容仍然可以被修改。\n\n### **2. `readonly`**\n\n- **作用范围**：`readonly` 是 TypeScript 特有的关键字，用于指定类的属性或接口的属性为只读。这意味着这些属性在对象创建后不能被修改。\n\n- **适用对象**：`readonly` 主要用于类和接口，应用于类的属性、接口的属性和数组类型。\n\n  ```typescript\n  // 在类中使用\n  class Person {\n    readonly name: string;\n\n    constructor(name: string) {\n      this.name = name;\n    }\n  }\n\n  const person = new Person(\"John\");\n  person.name = \"Doe\"; // 编译错误，属性为只读\n\n  // 在接口中使用\n  interface ReadOnlyPerson {\n    readonly name: string;\n  }\n\n  const person: ReadOnlyPerson = { name: \"John\" };\n  person.name = \"Doe\"; // 编译错误，属性为只读\n\n  // 在数组中使用\n  const numbers: readonly number[] = [1, 2, 3];\n  numbers[0] = 4; // 编译错误，数组为只读\n  ```\n\n- **作用**：`readonly` 确保属性在对象创建后不可修改，适用于对象的属性、数组和元组。",
+    "pivot":  "- **`const`**：\n  - 用于声明常量，确保变量在初始化后不能被重新赋值。\n  - 适用于基本数据类型和对象的引用。\n  - 对象的属性是可以修改的，但整个对象不能重新赋值。\n\n- **`readonly`**：\n  - 用于定义只读属性，确保对象的属性在初始化后不能被修改。\n  - 适用于类、接口、数组和元组等。\n  - 对象的属性或数组的元素在创建后不可修改。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T14:09:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  440,
+    "filterTotalNum":  1907,
+    "prev":  "19b30b63-a332-4538-a362-50d7732af156",
+    "next":  "45f3d2fd-ebbc-43d6-8dff-4e5ebcc79afc"
+}

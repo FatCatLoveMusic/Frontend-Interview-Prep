@@ -1,0 +1,21 @@
+﻿{
+    "id":  2851,
+    "exerciseKey":  "ee207d9a-ac6d-44dd-a8fc-e180fd37be36",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "js 对象可以使用 for...of 迭代吗？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "JavaScript **对象本身并不能直接使用 for...of 迭代**，因为它并不是一个可迭代对象（iterable）。\r\n\r\n但是，如果我们想要遍历对象的属性，可以使用 for...in 循环，例如：\r\n```js\r\nconst obj = {\r\n  name: \u0027John\u0027,\r\n  age: 30,\r\n  city: \u0027New York\u0027\r\n};\r\n\r\nfor (let prop in obj) {\r\n  console.log(prop + \u0027: \u0027 + obj[prop]);\r\n}\r\n\r\n// 这段代码可以输出：\r\nname: John\r\nage: 30\r\ncity: New York\r\n```\r\n\r\n需要注意的是，for...in 循环会遍历对象自身的所有可枚举属性，包括非数字键和继承的属性。如果只想遍历对象自身的属性，可以使用 hasOwnProperty() 方法进行判断，例如：\r\n```js\r\nconst obj = {\r\n  name: \u0027John\u0027,\r\n  age: 30,\r\n  city: \u0027New York\u0027\r\n};\r\n\r\nfor (let prop in obj) {\r\n  if (obj.hasOwnProperty(prop)) {\r\n    console.log(prop + \u0027: \u0027 + obj[prop]);\r\n  }\r\n}\r\n```\r\n\r\n这段代码和上面的代码功能是一样的，但是多了一个 hasOwnProperty() 判断，可以确保只输出对象自身的属性。\r\n\r\n\r\n",
+    "pivot":  "普通的 JavaScript 对象（`{}`）默认不支持 `for...of` 迭代。如果你需要使对象可迭代，你可以通过实现 `Symbol.iterator` 方法来创建自定义的迭代器。对于简单的对象键值对的迭代，可以使用 `Object.keys()`, `Object.values()`, 和 `Object.entries()` 方法。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T12:25:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  339,
+    "filterTotalNum":  1907,
+    "prev":  "eca441f6-10bd-41e4-b154-a409d43ad44b",
+    "next":  "675f2f01-6304-49e6-aacc-71d754fcb7d4"
+}

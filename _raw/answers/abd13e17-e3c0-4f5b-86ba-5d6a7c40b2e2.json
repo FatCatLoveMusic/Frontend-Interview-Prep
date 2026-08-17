@@ -1,0 +1,21 @@
+﻿{
+    "id":  2263,
+    "exerciseKey":  "abd13e17-e3c0-4f5b-86ba-5d6a7c40b2e2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "OAuth2.0 是什么，是怎么实现授权第三方应用登录的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "OAuth2.0 是一种授权协议，允许第三方应用在不获取用户密码的情况下，安全地访问用户的资源。OAuth2.0 通过 `Access Token` 实现登录授权，应用可以使用该令牌访问用户授权的资源。\n\n### OAuth2.0 登录原理\nOAuth2.0 登录主要涉及四个角色：\n1. **资源拥有者（Resource Owner）**：通常是用户，拥有资源和访问权限。\n2. **客户端（Client）**：需要访问资源的第三方应用（例如社交平台上的某个应用）。\n3. **资源服务器（Resource Server）**：存储资源的服务器，提供接口供客户端访问资源。\n4. **授权服务器（Authorization Server）**：负责用户认证，并发放 `Access Token` 和 `Refresh Token`。\n\n### OAuth2.0 授权流程\nOAuth2.0 提供了四种授权模式，其中最常见的是“授权码模式”（Authorization Code Flow），适合 web 应用，流程如下：\n\n1. **用户授权请求**\n   - 用户在客户端应用上点击“使用某平台登录”（例如使用 Google 登录），客户端应用将用户跳转到授权服务器的授权页面。\n   - 客户端会传递 `client_id`、`redirect_uri`、`response_type` 等参数。\n\n2. **用户同意授权**\n   - 用户在授权页面上登录，并同意授权客户端访问自己的某些资源（如用户信息、邮箱等）。\n   - 授权服务器验证用户身份后，生成一个**授权码（Authorization Code）**，将其重定向返回给客户端。\n\n3. **交换授权码获取访问令牌**\n   - 客户端收到授权码后，直接向授权服务器请求 `Access Token`。该请求包含 `client_id`、`client_secret`、`grant_type`、`code`、`redirect_uri` 等参数。\n   - 授权服务器验证授权码有效后，返回 `Access Token` 和 `Refresh Token`（可选）。\n\n4. **使用 Access Token 访问资源**\n   - 客户端拿到 `Access Token` 后，可以在需要时携带该令牌向资源服务器发起请求，资源服务器验证令牌有效性后允许访问。\n   - 如果 `Access Token` 过期，可以通过 `Refresh Token` 请求新的 `Access Token`，避免用户重新登录。\n\n### OAuth2.0 中的关键令牌\n1. **Authorization Code（授权码）**：用于交换 `Access Token` 的临时凭据。\n2. **Access Token（访问令牌）**：允许客户端访问资源的凭证，通常有过期时间。\n3. **Refresh Token（刷新令牌）**：当 `Access Token` 过期时，使用 `Refresh Token` 获取新的 `Access Token`，无需用户重新登录。\n\n### 安全性\n- **Access Token 有时效性**，过期后需要重新获取，减少安全风险。\n- **Refresh Token** 通常有效期较长，用于延长用户会话，适合安全性高的场景。",
+    "pivot":  "OAuth2.0 登录通过授权码、安全令牌等机制，让客户端可以安全地代表用户访问资源，适用于第三方应用授权登录，提升用户体验的同时保障用户信息安全。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-30T01:45:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  625,
+    "filterTotalNum":  1907,
+    "prev":  "2a6a5b54-6c0f-4b6e-b767-92b6d30ebb2b",
+    "next":  "bae77f88-bd2e-4f1a-a55c-b410706985a4"
+}

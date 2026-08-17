@@ -1,0 +1,21 @@
+﻿{
+    "id":  334,
+    "exerciseKey":  "f31923c7-7157-408b-8e12-74ced305802e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "setState 之后发生了什么\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "**简单版本**： React 利用状态队列机制实现了 setState 的“异步”更新，避免频繁的重复更新 state。\n\n首先将新的 state 合并到状态更新队列中，然后根据更新队列和 shouldComponentUpdate 的状态来判断是否需要更新组件。\n\n**复杂版本**：\n\n* enqueueSetState 将 state 放入队列中，并调用 enqueueUpdate 处理要更新的 Component\n* 如果组件当前正处于 update 事务中，则先将 Component 存入 dirtyComponent 中。否则调用batchedUpdates 处理。\n* batchedUpdates 发起一次 transaction.perform() 事务\n* 开始执行事务初始化，运行，结束三个阶段\n\t* 初始化：事务初始化阶段没有注册方法，故无方法要执行\n\t* 运行：执行 setSate 时传入的 callback 方法\n\t* 结束：更新 isBatchingUpdates 为 false，并执行 FLUSH_BATCHED_UPDATES 这个 wrapper 中的close方法，FLUSH_BATCHED_UPDATES在close阶段，会循环遍历所有的 dirtyComponents，调用updateComponent 刷新组件，并执行它的 pendingCallbacks, 也就是 setState 中设置的 callback。\n\n",
+    "pivot":  "当调用 `setState` 时，React 会经历以下几个步骤：\n\n### 1. **更新队列**\n\n- **状态更新**：`setState` 将更新请求放入更新队列中。此时，React 会合并新的状态与当前状态，创建一个新的状态对象。\n\n### 2. **重新渲染**\n\n- **标记更新**：React 将标记需要重新渲染的组件。组件的 `render` 方法会在下一次重新渲染周期中被调用，以便生成新的虚拟 DOM。\n\n### 3. **虚拟 DOM 比较（Diffing）**\n\n- **生成虚拟 DOM**：组件的 `render` 方法生成新的虚拟 DOM 树。\n- **比较虚拟 DOM**：React 使用 diff 算法比较新的虚拟 DOM 树和旧的虚拟 DOM 树，找出差异。\n\n### 4. **更新实际 DOM**\n\n- **计算差异**：根据 diff 算法计算出最小的差异（补丁）。\n- **批量更新**：将这些差异批量应用到实际 DOM 上，以优化性能并减少重绘次数。\n\n### 5. **生命周期方法**\n\n- **触发生命周期方法**：\n  - **类组件**：`componentDidUpdate` 方法在组件更新后被调用，可以在这个方法中执行副作用。\n  - **函数组件**：`useEffect` 钩子中的副作用会在组件更新后执行。\n\n### 6. **回调函数**\n\n- **执行回调**：如果 `setState` 调用时传递了回调函数（第二个参数），它将在组件更新并重新渲染完成后执行。\n\n### 总结\n\n1. **更新队列**：将状态更新请求放入队列。\n2. **重新渲染**：标记组件需要重新渲染，生成新的虚拟 DOM。\n3. **虚拟 DOM 比较**：计算新旧虚拟 DOM 之间的差异。\n4. **更新实际 DOM**：应用差异，更新实际 DOM。\n5. **生命周期方法**：触发相关生命周期方法或副作用。\n6. **回调函数**：执行传递给 `setState` 的回调函数。\n\n这个过程确保了 React 能够高效地更新 UI，同时保持组件状态的一致性。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:11:31.000Z",
+    "updateAt":  "2024-08-10T17:05:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  1586,
+    "filterTotalNum":  1907,
+    "prev":  "e203426f-23a1-4872-8ff7-1d0d27e57a81",
+    "next":  "36be973b-0351-4a18-b6b8-5e68023e7b96"
+}

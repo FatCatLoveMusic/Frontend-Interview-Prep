@@ -1,0 +1,21 @@
+﻿{
+    "id":  1564,
+    "exerciseKey":  "1ea15cb6-7aa1-4d94-8bae-f20fa5594c87",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么使用 setTimeout 实现 setInterval？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "setInterval 的作用是每隔一段指定时间执行一个函数，但是这个执行不是真的到了时间立即执行，它真正的作用是每隔一段时间将事件加入事件队列中去，只有当当前的执行栈为空的时候，才能去从事件队列中取出事件执行。所以可能会出现这样的情况，就是当前执行栈执行的时间很长，导致事件队列里边积累多个定时器加入的事件，当执行栈结束的时候，这些事件会依次执行，因此就不能到间隔一段时间执行的效果。\n\n针对 setInterval 的这个缺点，我们可以使用 setTimeout 递归调用来模拟 setInterval，这样我们就确保了只有一个事件结束了，我们才会触发下一个定时器事件，这样解决了 setInterval 的问题。\n\n```js\n// 思路是使用递归函数，不断地去执行 setTimeout 从而达到 setInterval 的效果\n\nfunction mySetInterval(fn, timeout) {\n  // 控制器，控制定时器是否继续执行\n  var timer = {\n    flag: true\n  };\n\n  // 设置递归函数，模拟定时器执行。\n  function interval() {\n    if (timer.flag) {\n      fn();\n      setTimeout(interval, timeout);\n    }\n  }\n\n  // 启动定时器\n  setTimeout(interval, timeout);\n\n  // 返回控制器\n  return timer;\n}\n\n```",
+    "pivot":  "```javascript\nfunction setIntervalWithSetTimeout(callback, interval) {\n  let timeoutId;\n  let lastExecutionTime = 0;\n  function scheduleNextExecution() {\n    timeoutId = setTimeout(() =\u003e {\n      callback();\n      lastExecutionTime = Date.now();\n      scheduleNextExecution();\n    }, interval - (Date.now() - lastExecutionTime));\n  }\n  scheduleNextExecution();\n  return {\n    cancel: function() {\n      clearTimeout(timeoutId);\n    }\n  };\n}\n// 使用示例\nconst intervalId = setIntervalWithSetTimeout(() =\u003e {\n  console.log(\u0027每隔500毫秒执行一次\u0027);\n}, 500);\n// 停止定时器\nsetTimeout(() =\u003e {\n  intervalId.cancel();\n}, 3000);\n```\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:40:47.000Z",
+    "updateAt":  "2024-08-10T17:06:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1226,
+    "filterTotalNum":  1907,
+    "prev":  "c860f93c-430e-4813-b534-0fcfda8b64ba",
+    "next":  "6efa769a-3eb9-44ea-bd7c-01c5c991000f"
+}

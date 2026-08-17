@@ -1,0 +1,21 @@
+﻿{
+    "id":  1697,
+    "exerciseKey":  "718abe6b-08ab-4669-bc33-187fabad8fec",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "cookie、localStorage和sessionStorage 三者之间有什么区别",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 生命周期\n\n* cookie：可设置失效时间，没有设置的话，默认是关闭浏览器后失效\n* localStorage：除非被手动清除，否则将会永久保存。\n* sessionStorage： 仅在当前网页会话下有效，关闭页面或浏览器后就会被清除。\n\n## 存放数据大小\n\n* cookie：4KB左右\n* localStorage和sessionStorage：可以保存5MB的信息。\n\n## http请求\n\n* cookie：每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题\n* localStorage和sessionStorage：仅在客户端（即浏览器）中保存，不参与和服务器的通信\n\n## 易用性\n\n* cookie：需要程序员自己封装，原生的 Cookie API 不友好\n* localStorage和sessionStorage：原生 API 可以接受，亦可再次封装来对Object和Array有更好的支持\n\n## 应用场景\n\n从安全性来说，因为每次http请求都会携带cookie信息，这样无形中浪费了带宽，所以cookie应该尽可能少的使用，另外cookie还需要指定作用域，不可以跨域调用（当前页面只能读取页面所在域的 `cookie`，即 `document.cookie` ），限制比较多。但是用来识别用户登录来说，cookie还是比storage更好用的。其他情况下，可以使用storage，就用storage。\n\nstorage在存储数据的大小上面秒杀了cookie，现在基本上很少使用cookie了。\n\nlocalStorage和sessionStorage唯一的差别一个是永久保存在浏览器里面，一个是关闭网页就清除了信息。localStorage可以用来夸页面传递参数，sessionStorage用来保存一些临时的数据，防止用户刷新页面之后丢失了一些参数。\n",
+    "pivot":  "是cookie、localStorage和sessionStorage三者的区别：\n\n1. **存储时间**：\n   - cookie：可设置有效期，甚至永久。\n   - sessionStorage：当前会话有效，窗口或标签页关闭即失效。\n   - localStorage：除非手动删除，否则永久存储。\n\n2. **存储容量**：\n   - cookie：较小，约4KB，且总数有限制。\n   - sessionStorage和localStorage：较大，通常约5MB。\n\n3. **与服务端通信**：\n   - cookie：会随HTTP请求发送到服务器。\n   - sessionStorage和localStorage：不参与与服务端的通信。\n\n4. **数据共享性**：\n   - cookie和localStorage：同源下所有窗口/标签页共享。\n   - sessionStorage：仅当前窗口/标签页有效。\n\n5. **操作便捷性**：\n   - cookie：读写较繁琐，需手动解析字符串。\n   - sessionStorage和localStorage：提供简单API（setItem, getItem等）进行读写操作。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-03-15T16:01:01.000Z",
+    "updateAt":  "2024-08-10T17:06:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1093,
+    "filterTotalNum":  1907,
+    "prev":  "4fae3374-d530-49b9-b626-c176eb5ee22b",
+    "next":  "4a29429d-d77e-46be-a4fd-099ba208c52f"
+}

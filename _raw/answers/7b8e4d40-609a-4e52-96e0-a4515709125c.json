@@ -1,0 +1,21 @@
+﻿{
+    "id":  2104,
+    "exerciseKey":  "7b8e4d40-609a-4e52-96e0-a4515709125c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "vue3 为什么要引入 Composition API ？\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Vue 3 引入 Composition API 的原因主要是为了更好地解决以下几个问题：\n\n### 1. 更好的代码组织和重用\n\n在 Vue 2 中，使用选项式 API（Options API）来定义组件的逻辑，通常将数据、方法、计算属性和生命周期钩子分开写在不同的配置对象中。当组件变得复杂时，不同功能的代码可能会散落在各个部分，难以维护和重用。\n\n#### 示例：\n\n```javascript\n// Vue 2 中使用 Options API\nexport default {\n  data() {\n    return {\n      count: 0,\n      message: \u0027Hello World\u0027\n    };\n  },\n  computed: {\n    doubleCount() {\n      return this.count * 2;\n    }\n  },\n  methods: {\n    increment() {\n      this.count++;\n    }\n  },\n  created() {\n    console.log(this.message);\n  }\n};\n```\n\n通过 Composition API，可以将相关功能的逻辑组织在一起，从而提高代码的可读性和可维护性。\n\n#### 示例：\n\n```javascript\n// Vue 3 中使用 Composition API\nimport { ref, computed, onMounted } from \u0027vue\u0027;\n\nexport default {\n  setup() {\n    const count = ref(0);\n    const message = ref(\u0027Hello World\u0027);\n    \n    const doubleCount = computed(() =\u003e count.value * 2);\n    \n    const increment = () =\u003e {\n      count.value++;\n    };\n    \n    onMounted(() =\u003e {\n      console.log(message.value);\n    });\n    \n    return {\n      count,\n      doubleCount,\n      increment,\n      message\n    };\n  }\n};\n```\n\n### 2. 更好的逻辑复用\n\n在 Vue 2 中，逻辑复用主要通过 mixins 和 scoped slots 实现，但它们都有一些缺点，比如命名冲突和代码可读性差。\n\nComposition API 通过组合函数（composable functions）来实现逻辑复用，这些函数可以在多个组件之间共享和复用逻辑，避免了 mixins 的缺点。\n\n#### 示例：\n\n```javascript\n// 一个组合函数，可以在多个组件中复用\nimport { ref, onMounted } from \u0027vue\u0027;\n\nexport function useMessage() {\n  const message = ref(\u0027Hello World\u0027);\n  \n  onMounted(() =\u003e {\n    console.log(message.value);\n  });\n  \n  return {\n    message\n  };\n}\n```\n\n#### 在组件中使用：\n\n```javascript\nimport { ref } from \u0027vue\u0027;\nimport { useMessage } from \u0027./useMessage\u0027;\n\nexport default {\n  setup() {\n    const count = ref(0);\n    const { message } = useMessage();\n    \n    const increment = () =\u003e {\n      count.value++;\n    };\n    \n    return {\n      count,\n      message,\n      increment\n    };\n  }\n};\n```\n\n### 3. 更好的 TypeScript 支持\n\nComposition API 天然地支持 TypeScript，使得类型推断和类型检查更为自然和方便。相比于 Options API，通过 Composition API 定义的逻辑更容易进行类型声明和类型推断，提升了开发体验。\n\n#### 示例：\n\n```typescript\nimport { ref, computed } from \u0027vue\u0027;\n\nexport default {\n  setup() {\n    const count = ref\u003cnumber\u003e(0);\n    const doubleCount = computed\u003cnumber\u003e(() =\u003e count.value * 2);\n    \n    const increment = (): void =\u003e {\n      count.value++;\n    };\n    \n    return {\n      count,\n      doubleCount,\n      increment\n    };\n  }\n};\n```\n\n### 4. 适应函数式编程趋势\n\nComposition API 借鉴了函数式编程的思想，将逻辑封装成函数，使得代码更加简洁、模块化、可测试，同时也更符合现代 JavaScript 开发趋势。\n\n### 总结\n\nVue 3 引入 Composition API 主要是为了提升代码组织和复用性、提供更好的 TypeScript 支持、适应函数式编程趋势，并且解决 Vue 2 中存在的一些问题。通过 Composition API，可以让组件逻辑更加清晰、灵活和易于维护。",
+    "pivot":  "Vue 3 引入 Composition API 主要是为了提高代码的组织性和复用性。它允许开发者使用函数式的方式组织组件逻辑，从而更好地处理复杂的逻辑和状态共享，尤其在大型项目中。这种方法也提供了更好的类型推断支持（在 TypeScript 中尤为重要），并改善了代码的可维护性和可读性。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-06-06T01:38:47.000Z",
+    "updateAt":  "2024-08-10T19:06:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  710,
+    "filterTotalNum":  1907,
+    "prev":  "944d0ea6-53f8-426b-b583-7010d1639860",
+    "next":  "b63832ef-77c7-4507-baf5-1134957368c0"
+}

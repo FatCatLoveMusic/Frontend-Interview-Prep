@@ -1,0 +1,21 @@
+﻿{
+    "id":  1873,
+    "exerciseKey":  "3526fff1-d92d-4568-b6dd-549bc6c2a92e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何让Promise.all在抛出异常后依然有效",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在处理多个并发请求时，我们一般会用`Promise.all()`方法。\n\n该方法指当所有在可迭代参数中的 `promises` 已完成，或者第一个传递的 promise（指 reject）失败时，返回 promise。\n\n但是当其中任何一个被拒绝的话。`Promise.all([..])`就会立即被拒绝，并丢弃来自其他所有promis的全部结果。\n\n也就是说，`promise.all` 中任何一个 `promise` 出现错误的时候都会执行reject，导致其它正常返回的数据也无法使用。\n\n如何让Promise.all在抛出异常后依然有效呢？\n\n# 方案一\n\n在promise.all队列中，使用map每一个过滤每一个promise任务，其中任意一个报错后，return一个返回值，确保promise能正常执行走到.then中。\n\n```js\nvar p1 = new Promise((resolve, reject) =\u003e {\n\tresolve(\u0027p1\u0027);\n});\nvar p2 = new Promise((resolve, reject) =\u003e {\n\tresolve(\u0027p2\u0027);\n});\nvar p3 = new Promise((resolve, reject) =\u003e {\n\treject(\u0027p3\u0027);\n});\nPromise.all([p1, p2, p3].map(p =\u003e p.catch(e =\u003e \u0027出错后返回的值\u0027 )))\n  .then(values =\u003e {\n    console.log(values);\n  }).catch(err =\u003e {\n    console.log(err);\n  })\n```\n\n# 方案二\n\n使用 `Promise.allSettled` 替代 `Promise.all()`。\n\n\u003e `Promise.allSettled()`方法返回一个promise，该promise在所有给定的promise已被解析或被拒绝后解析，并且每个对象都描述每个promise的结果。\n\n\n\n\n",
+    "pivot":  "在处理多个并发请求时，`Promise.all()` 方法可以同时等待所有传入的 `Promise` 对象完成。当所有 `Promise` 都已经完成或者第一个失败的 `Promise` 被拒绝时，它会返回一个完成状态的 `Promise`，并返回一个包含所有成功结果的数组。\n\n然而，如果 `Promise.all()` 中的任何一个 `Promise` 被拒绝，那么整个 `Promise.all()` 操作会立即被拒绝，并且不会返回任何成功的结果。这意味着如果其中一个 `Promise` 失败，其他成功的 `Promise` 的结果也会被丢弃。\n\n为了在 `Promise.all()` 中抛出异常后依然能够获取其他成功的 `Promise` 的结果，我们可以采取以下两种方案：\n\n#### 方案一：使用 `map` 方法处理每个 `Promise`\n\n在 `Promise.all()` 队列中，我们使用 `map` 方法对每个 `Promise` 进行处理。如果任何一个 `Promise` 失败，我们返回一个特定的值，以确保整个 `Promise.all()` 能够正常执行并走到 `.then()` 中。\n\n#### 方案二：使用 `Promise.allSettled` 替代 `Promise.all()`\n\n另一个解决方案是使用 `Promise.allSettled()` 方法。这个方法会返回一个新的 `Promise`，它在所有给定的 `Promise` 已经被解析或被拒绝后解析。每个对象都描述了每个 `Promise` 的结果。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:44:01.000Z",
+    "updateAt":  "2024-08-10T17:06:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  937,
+    "filterTotalNum":  1907,
+    "prev":  "1aa28332-a1a6-4778-812f-3226a2003614",
+    "next":  "38114327-a110-4a75-8745-534924338657"
+}

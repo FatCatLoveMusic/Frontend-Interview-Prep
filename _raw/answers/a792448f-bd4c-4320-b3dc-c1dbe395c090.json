@@ -1,0 +1,21 @@
+﻿{
+    "id":  1578,
+    "exerciseKey":  "a792448f-bd4c-4320-b3dc-c1dbe395c090",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何使用css来实现禁止移动端页面的左右划动手势？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "CSS属性 `touch-action` 用于设置触摸屏用户如何操纵元素的区域(例如，浏览器内置的缩放功能)。\n\n最简单方法是：\n\n```css\nhtml{\n touch-action: none;\n touch-action: pan-y;\n}\n```\n\n还可以直接指定对应元素的宽度和overflow：\n\n```css\nhtml{\n width: 100vw;\n overflow-x: hidden;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:24:57.000Z",
+    "updateAt":  "2021-12-26T16:05:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1212,
+    "filterTotalNum":  1907,
+    "prev":  "6a8dda85-ad38-4eec-86b5-dad87ad3c929",
+    "next":  "44ee4b87-a54c-4bcf-89c3-0467c6170dff"
+}

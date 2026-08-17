@@ -1,0 +1,21 @@
+﻿{
+    "id":  335,
+    "exerciseKey":  "e203426f-23a1-4872-8ff7-1d0d27e57a81",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在 shouldComponentUpdate 或 componentWillUpdate 中使用 setState 会发生什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "当调用 setState 的时候，实际上会将新的 state 合并到状态更新队列中，并对 partialState 以及 _pendingStateQueue 更新队列进行合并操作。最终通过 enqueueUpdate 执行 state 更新。\n\n如果在 shouldComponentUpdate 或 componentWillUpdate 中使用 setState，会使得 state 队列（_pendingStateQueue）不为 null，从而调用 updateComponent 方法，updateComponent 中会继续调用 shouldComponentUpdate 和 componentWillUpdate，因此造成死循环。",
+    "pivot":  "在 `shouldComponentUpdate` 或 `componentWillUpdate` 中使用 `setState` 会导致一些潜在的问题：\n\n### `shouldComponentUpdate` 中使用 `setState`\n\n- **问题**：`shouldComponentUpdate` 用于决定组件是否应该更新。如果在这个方法中调用 `setState`，会导致组件重新渲染，从而触发 `shouldComponentUpdate` 再次被调用。这样会导致无限循环，因为每次调用 `setState` 都会触发重新渲染和 `shouldComponentUpdate` 调用。\n\n### `componentWillUpdate` 中使用 `setState`\n\n- **问题**：`componentWillUpdate` 是在组件更新之前调用的。如果在这个生命周期方法中调用 `setState`，会导致组件在更新阶段再次调用 `componentWillUpdate`。这会导致额外的渲染和不必要的更新，可能会引发性能问题或意外的行为。\n\n### 总结\n\n- **`shouldComponentUpdate`**：在这个方法中调用 `setState` 会导致无限更新循环。\n- **`componentWillUpdate`**：在这个方法中调用 `setState` 会触发额外的渲染，可能影响性能。\n\n通常，应避免在这些生命周期方法中调用 `setState`，并将状态更新逻辑放在 `componentDidUpdate` 中，以确保更新在组件完成渲染后进行。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:11:57.000Z",
+    "updateAt":  "2024-08-10T17:05:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1585,
+    "filterTotalNum":  1907,
+    "prev":  "32135204-0c1c-459c-977b-d12895bd5a70",
+    "next":  "f31923c7-7157-408b-8e12-74ced305802e"
+}

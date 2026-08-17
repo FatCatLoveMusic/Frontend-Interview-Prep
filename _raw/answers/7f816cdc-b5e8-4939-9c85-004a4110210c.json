@@ -1,0 +1,21 @@
+﻿{
+    "id":  449,
+    "exerciseKey":  "7f816cdc-b5e8-4939-9c85-004a4110210c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "小程序 WXSS  与 CSS 的区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "小程序 WXSS (WeiXin Style Sheets) 与标准 CSS 在核心概念上保持一致，但针对小程序运行环境做了特定调整和扩展，主要差异体现在以下几个方面：\n\n1. 尺寸单位扩展\nWXSS 在传统 CSS 单位基础上引入了 rpx（responsive pixel）单位，可根据屏幕宽度进行自适应缩放（1rpx ≈ 0.5px @750px 设计稿标准）。这种设计简化了多端适配工作流，而标准 CSS 需要依赖 rem/vw 等方案实现类似效果。\n\n2. 样式隔离机制\n小程序默认启用样式隔离，组件样式不会影响外部页面。这种隔离通过给组件添加唯一属性选择器实现，与标准 CSS 的全局作用域形成对比。CSS Modules 或 Scoped CSS 虽然能实现类似效果，但需要额外配置。\n\n3. 选择器支持差异\nWXSS 选择器支持度约为 CSS2 水平，部分 CSS3 选择器（如 :first-child）可能表现不一致。特别限制包括：\n- 不支持属性选择器\n- 不支持级联选择器（如 div p）\n- 通配符 * 作用范围有限\n\n4. 预处理器支持\n原生 WXSS 不支持 Sass/Less 等预处理语法（需依赖构建工具转换），而现代 CSS 开发通常直接集成预处理工具链。\n\n5. 导入方式\nWXSS 使用 @import 语句时必须指定相对路径，且不支持 CSS 原生 @charset 规则。",
+    "pivot":  "- rpx 单位是针对小程序设计的响应式解决方案\n- 默认样式隔离机制降低样式冲突风险\n- 选择器支持度是标准 CSS 的子集\n- 预处理器需要额外构建步骤支持\n- 导入规则存在特定限制",
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-07T14:35:49.000Z",
+    "updateAt":  "2025-07-16T12:24:08.000Z",
+    "isCollected":  false,
+    "currentIndex":  1471,
+    "filterTotalNum":  1907,
+    "prev":  "17b59078-ccef-4190-9282-60805ddf6b3f",
+    "next":  "66ee2368-475e-403c-afb2-2c3fd693a843"
+}

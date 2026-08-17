@@ -1,0 +1,21 @@
+﻿{
+    "id":  2029,
+    "exerciseKey":  "e834149b-923e-4565-8c26-2a43a5b98085",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "有效的变位词",
+    "desc":  "给定两个字符串 `s` 和 `t` ，编写一个函数来判断它们是不是一组变位词（字母异位词）。\n\n**注意：**若 `s` 和 `t`中每个字符出现的次数都相同且**字符顺序不完全相同**，则称 `s` 和 `t`互为变位词（字母异位词）。\n\n**示例 1:**\n\n\n**输入:** s = \"anagram\", t = \"nagaram\"\n\n**输出:** true\n\n**示例 2:**\n\n\n**输入:** s = \"rat\", t = \"car\"\n\n**输出:** false\n\n**示例 3:**\n\n\n**输入:** s = \"a\", t = \"a\"\n\n**输出:** false\n\n**提示:**\n\n* `1 \u003c= s.length, t.length \u003c= 5 * 104`\n* `s` and `t` 仅包含小写字母\n\n```js\n/**\n * @param {string} s\n * @param {string} t\n * @return {boolean}\n */\nvar isAnagram = function(s, t) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "## 题目分析\n\n* 判断s和t的长度是否相等，若不相等，则s和t绝对不是变位词\n* 判断s和t是否相等，若相等，则s和t中每个字符出现的次数相同且字符顺序完全相同，s和t不是变位词\n* 若s和t不相等但长度相等，可以使用多种方法进行判断\n\n下面介绍两种常见的实现方法：\n\n## 方法一\n\n* 搜集s字符串各个字符数量\n* 遍历t字符串，递减数组各个字符数量\n* 若有字符数量为负，则为无效，否则是有效\n\n```js\n/**\n * @param {string} s\n * @param {string} t\n * @return {boolean}\n */\nvar isAnagram = function(s, t) {\n    if(s === t || s.length != t.length) {\n        return false\n    }\n    let table = new Array(26).fill(0)\n    for(let i = 0; i \u003c s.length; i ++) {\n        table[s.charCodeAt(i) - \u0027a\u0027.charCodeAt(0)] ++\n    }\n    for(let i = 0; i \u003c t.length; i ++) {\n        table[t.charCodeAt(i) - \u0027a\u0027.charCodeAt(0)] --\n        if(table[t.charCodeAt(i) - \u0027a\u0027.charCodeAt(0)] \u003c 0) {\n            return false\n        }\n    }\n    return true\n};\n```\n\n##  方法二\n\n我们可以对字符串 s 和 t 分别排序，看排序后的字符串是否相等。\n\n```js\nvar isAnagram = function(s, t) {\n    return s.length == t.length \u0026\u0026 s !== t \u0026\u0026 [...s].sort().join(\u0027\u0027) === [...t].sort().join(\u0027\u0027)\n};\n```\n\nPS：面试题由 “[前端面试题宝典（https://fe.ecool.fun/）](https://fe.ecool.fun/)” 整理和录入，未授权任何机构或其他刷题工具引用。推荐官网刷题，题库更全，题目答案不定时更新~\n\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:21:03.000Z",
+    "updateAt":  "2023-06-09T09:25:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  782,
+    "filterTotalNum":  1907,
+    "prev":  "c578d161-5468-4577-90c2-98e46cb82604",
+    "next":  "beeaa808-12ab-4dda-b270-219aacfb3633"
+}

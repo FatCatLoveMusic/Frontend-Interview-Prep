@@ -1,0 +1,21 @@
+﻿{
+    "id":  560,
+    "exerciseKey":  "025b1291-525e-4605-ac8a-6a53baf94d5d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Object.create 和 new 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "js中创建对象的方式一般有两种Object.create和new\n\n```javascript\nconst Base = function(){};\nconst o1 = Object.create(Base);\nconst o2 = new Base();\n```\n\n在讲述两者区别之前，我们需要知道：\n\n* 构造函数Foo的原型属性Foo.prototype指向了原型对象。\n* 原型对象保存着实例共享的方法，有一个指针constructor指回构造函数。\n* js中只有函数有 prototype 属性，所有的对象只有 __proto__ 隐式属性。\n\n那这样到底有什么不一样呢？\n\n## Object.create\n\n先来看看 `Object.create` 的实现方式\n\n```javascript\nObject.create =  function (o) {\n    var F = function () {};\n    F.prototype = o;\n    return new F();\n};\n```\n\n可以看出来。Object.create是内部定义一个对象，并且让F.prototype对象 赋值为引进的对象/函数 o，并return出一个新的对象。\n\n## new\n\n再看看 `const o2 = new Base()` 的时候，new做了什么。\n\n```javascript\nvar o1 = new Object();\no1.[[Prototype]] = Base.prototype;\nBase.call(o1);\n```\n\nnew做法是新建一个obj对象o1，并且让o1的__proto__指向了Base.prototype对象。并且使用 call 进行强转作用环境。从而实现了实例的创建。\n\n## 区别\n\n看似是一样的。我们对原来的代码进行改进一下。\n\n```javascript\nvar Base = function () {\n    this.a = 2\n}\nvar o1 = new Base();\nvar o2 = Object.create(Base);\nconsole.log(o1.a); // 2\nconsole.log(o2.a); // undefined\n```\n\n可以看到Object.create 失去了原来对象的属性的访问。\n\n再进行下改造：\n```javascript\nvar Base = function () {\n    this.a = 2\n}\nBase.prototype.a = 3;\nvar o1 = new Base();\nvar o2 = Object.create(Base);\nconsole.log(o1.a); // 2\nconsole.log(o2.a); // undefined\n```\n\n## 小结\n\n小结\n\n|比较|new|Object.create|\n|--|--|--|\n|构造函数|保留原构造函数属性|丢失原构造函数属性|\n|原型链|原构造函数prototype属性|原构造函数/（对象）本身|\n|作用对象|function|function和object|\n\n\n",
+    "pivot":  "- **`Object.create`** 主要用于基于一个现有对象创建一个新对象，设置其原型，并可以指定新的属性。它不涉及构造函数的执行。\n- **`new`** 用于创建构造函数的实例，执行构造函数的逻辑，并将新对象的原型链接到构造函数的 `prototype` 上。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-31T02:05:44.000Z",
+    "updateAt":  "2024-08-10T21:16:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1360,
+    "filterTotalNum":  1907,
+    "prev":  "ee457290-82ef-4c2b-b2f1-e6b1b28e9166",
+    "next":  "adfb6812-fe80-4875-ae6f-bbcaab8e1a9e"
+}

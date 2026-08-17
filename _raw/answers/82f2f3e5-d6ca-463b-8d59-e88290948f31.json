@@ -1,0 +1,21 @@
+﻿{
+    "id":  3062,
+    "exerciseKey":  "82f2f3e5-d6ca-463b-8d59-e88290948f31",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "字符串解码",
+    "desc":  "给定一个经过编码的字符串，返回它解码后的字符串。编码规则为：`k[encoded_string]`，表示 `encoded_string` 重复 `k` 次。其中 `k` 为正整数，`encoded_string` 不包含数字。\n\n示例：\n\n* 输入：`\"3[a]2[bc]\"`\n* 输出：`\"aaabcbc\"`",
+    "options":  null,
+    "explanation":  "这个问题本质是一个 **嵌套结构解析问题**。\n核心难点不在重复，而在于：\n\n* 支持多位数字\n* 支持嵌套结构\n* 正确处理括号边界\n\n例如：\n\n```\n3[a2[c]]\n```\n\n这种情况下不能简单正则替换，必须用结构化解析。\n\n---\n\n# 一、解题思路\n\n推荐使用 **栈（Stack）**。\n\n因为每遇到 `[`，意味着进入一层新的子表达式；\n每遇到 `]`，意味着当前子表达式结束，需要回到上一层。\n\n可以维护两个栈：\n\n* 数字栈（存放 k）\n* 字符串栈（存放上一层结果）\n\n遍历字符串，逻辑如下：\n\n1. 遇到数字 → 构建当前倍数\n2. 遇到 `[` → 把当前倍数和当前字符串压栈，重置状态\n3. 遇到 `]` → 出栈，拼接字符串\n4. 遇到普通字符 → 追加到当前字符串\n\n---\n\n# 二、实现代码\n\n```js\nfunction decodeString(s) {\n  const numStack = [];\n  const strStack = [];\n  \n  let currentNum = 0;\n  let currentStr = \"\";\n\n  for (let char of s) {\n    if (!isNaN(char)) {\n      // 处理多位数\n      currentNum = currentNum * 10 + Number(char);\n    } else if (char === \"[\") {\n      numStack.push(currentNum);\n      strStack.push(currentStr);\n      \n      currentNum = 0;\n      currentStr = \"\";\n    } else if (char === \"]\") {\n      const repeatTimes = numStack.pop();\n      const prevStr = strStack.pop();\n      currentStr = prevStr + currentStr.repeat(repeatTimes);\n    } else {\n      currentStr += char;\n    }\n  }\n\n  return currentStr;\n}\n```\n\n---\n\n# 三、执行过程示例\n\n输入：\n\n```\n\"3[a]2[bc]\"\n```\n\n流程：\n\n1. 读到 `3` → currentNum = 3\n2. 遇到 `[` → 入栈\n3. 读到 `a` → currentStr = \"a\"\n4. 遇到 `]` → 出栈 → \"aaa\"\n5. 读到 `2` → currentNum = 2\n6. 读到 `bc`\n7. 遇到 `]` → 拼接 → \"aaabcbc\"\n\n---\n\n# 四、时间复杂度\n\n时间复杂度：O(n)\n\n每个字符只遍历一次，\n字符串拼接整体复杂度与输出规模线性相关。\n\n空间复杂度：O(n)\n\n主要来自栈与输出字符串。\n\n---\n\n# 五、为什么不能用正则\n\n正则无法优雅处理嵌套结构：\n\n```\n3[a2[c]]\n```\n\n括号是典型的“上下文相关结构”，必须借助栈或递归解析。\n\n---\n\n# 六、本质理解\n\n这是一个典型的：\n\n* 语法结构解析问题\n* 栈处理嵌套问题\n* 局部结果逐层展开\n\n核心思想是：\n遇到 `[` 进入子环境，\n遇到 `]` 回到父环境。\n\n",
+    "pivot":  "该问题本质是一个嵌套结构解析问题，适合使用栈进行处理。通过数字栈与字符串栈保存中间状态，在遇到 `]` 时进行回溯拼接即可。时间复杂度为 O(n)，能够正确处理多位数字和多层嵌套结构。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-03-03T15:07:29.000Z",
+    "updateAt":  "2026-03-03T15:07:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  143,
+    "filterTotalNum":  1907,
+    "prev":  "fa06c194-9fab-4cf0-8cc7-dda90c2c4f97",
+    "next":  "76bd6235-2d8d-4519-b14a-98bbde4eb3a1"
+}

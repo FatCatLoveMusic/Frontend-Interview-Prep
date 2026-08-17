@@ -1,0 +1,21 @@
+﻿{
+    "id":  1555,
+    "exerciseKey":  "4bc2059f-c8c1-46f9-a768-0e43f8a06665",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是点击劫持？如何防范点击劫持？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "点击劫持是一种视觉欺骗的攻击手段，攻击者将需要攻击的网站通过 iframe 嵌套的方式嵌入自己的网页中，并将 iframe 设置为透明，在页面中透出一个按钮诱导用户点击。\n\n我们可以在 http 相应头中设置 X-FRAME-OPTIONS 来防御用 iframe 嵌套的点击劫持攻击。通过不同的值，可以规定页面在特\n定的一些情况才能作为 iframe 来使用。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:33:34.000Z",
+    "updateAt":  "2021-11-17T22:49:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  1234,
+    "filterTotalNum":  1907,
+    "prev":  "c79bd75a-aa6d-4228-9e55-c9fb41e97253",
+    "next":  "aef19252-da7d-447d-a9c5-3eb0d191901d"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2447,
+    "exerciseKey":  "4f9d6d3d-0e9b-42b2-9074-f4682689464c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "斐波拉契数列是什么，用 JS 实现，用尾调优化斐波拉契数列",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "斐波那契数列（Fibonacci Sequence）是一种经典的数列，每个数都是前两个数的和。通常的数列从 0 和 1 开始，数列的定义如下：\n\n- \\( F(0) = 0 \\)\n- \\( F(1) = 1 \\)\n- 对于 \\( n \u003e 1 \\)，\\( F(n) = F(n-1) + F(n-2) \\)\n\n### JavaScript 实现\n\n斐波那契数列可以用递归方法、迭代方法或尾调用优化方法来实现。尾调用优化（Tail Call Optimization, TCO）是一种优化技术，允许编译器在函数的最后一步调用另一个函数时，重用当前函数的栈帧，从而避免栈溢出。\n\n### 1. 基本递归实现（不优化）\n\n```javascript\nfunction fibonacci(n) {\n    if (n \u003c= 1) return n;\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n\nconsole.log(fibonacci(10)); // 输出: 55\n```\n\n### 2. 尾调用优化实现\n\n尾调用优化需要确保递归调用是函数的最后一步。下面是尾调用优化的斐波那契数列实现：\n\n```javascript\nfunction fibonacci(n) {\n    function tailRecursiveFib(n, a = 0, b = 1) {\n        if (n === 0) return a;\n        if (n === 1) return b;\n        return tailRecursiveFib(n - 1, b, a + b);\n    }\n    \n    return tailRecursiveFib(n);\n}\n\nconsole.log(fibonacci(10)); // 输出: 55\n```\n\n### 解释\n\n1. **尾递归函数 `tailRecursiveFib`**：\n   - 该函数接收三个参数：`n`（剩余的步骤）、`a`（当前的斐波那契数）和 `b`（下一个斐波那契数）。\n   - 如果 `n` 为 0，返回 `a`，否则，如果 `n` 为 1，返回 `b`。\n   - 否则，递归调用 `tailRecursiveFib`，将 `n-1` 作为新的步骤，`b` 作为当前的斐波那契数，`a + b` 作为下一个斐波那契数。\n\n2. **尾调用优化**：\n   - 在递归调用中，`tailRecursiveFib` 是函数的最后一步调用，因此可以进行尾调用优化，避免了传统递归中的栈深度问题。",
+    "pivot":  "- **斐波那契数列**：每个数是前两个数的和，常见的递归和迭代实现方式。\n- **尾调用优化**：通过尾递归实现可以提高性能和避免栈溢出问题，特别是在处理大规模的递归调用时。\n\n尾调用优化在某些 JavaScript 引擎中可能不被完全支持，但良好的编程实践是尽量使用尾递归来避免性能瓶颈。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-23T05:26:23.000Z",
+    "isCollected":  false,
+    "currentIndex":  526,
+    "filterTotalNum":  1907,
+    "prev":  "068836c3-c6b3-4c4c-b24e-301357cf01c1",
+    "next":  "746d796e-fd0c-44c7-b38f-00296bdfdde9"
+}

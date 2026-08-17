@@ -1,0 +1,21 @@
+﻿{
+    "id":  69,
+    "exerciseKey":  "16a99f71-99b2-4611-8d11-07e6b294660e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst value = { number: 10 };\n\nconst multiply = (x = { ...value }) =\u003e {\n  console.log(x.number *= 2);\n};\n\nmultiply();\nmultiply();\nmultiply(value);\nmultiply(value);\n```",
+    "options":  "{\"options\":[\"20, 40, 80, 160\",\"20, 40, 20, 40\",\"20, 20, 20, 40\",\"NaN, NaN, 20, 40\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "在ES6中，我们可以使用默认值初始化参数。如果没有给函数传参，或者传的参值为 `\"undefined\"` ，那么参数的值将是默认值。上述例子中，我们将 `value` 对象进行了解构并传到一个新对象中，因此 `x` 的默认值为 `{number：10}` 。\n默认参数在调用时才会进行计算，每次调用函数时，都会创建一个新的对象。我们前两次调用 `multiply` 函数且不传递值，那么每一次 `x` 的默认值都为 `{number：10}` ，因此打印出该数字的乘积值为`20`。\n第三次调用 `multiply` 时，我们传递了一个参数，即对象`value`。 `*=`运算符实际上是`x.number = x.number * 2`的简写，我们修改了`x.number`的值，并打印出值`20`。\n第四次，我们再次传递`value`对象。 `x.number`之前被修改为`20`，所以`x.number * = 2`打印为`40`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:21:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  1850,
+    "filterTotalNum":  1907,
+    "prev":  "30ae1cd5-9a7f-409b-9839-181f42fa6a15",
+    "next":  "baac6d08-4161-4949-a058-e1c5696791e0"
+}

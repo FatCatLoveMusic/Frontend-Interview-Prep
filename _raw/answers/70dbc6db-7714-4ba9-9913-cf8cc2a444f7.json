@@ -1,0 +1,21 @@
+﻿{
+    "id":  1594,
+    "exerciseKey":  "70dbc6db-7714-4ba9-9913-cf8cc2a444f7",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "在点击p标签时，会输出什么？\n",
+    "desc":  "```html\n\u003cdiv onclick=\"console.log(\u0027div\u0027)\"\u003e\n  \u003cp onclick=\"console.log(\u0027p\u0027)\"\u003e\n    Click here!\n  \u003c/p\u003e\n\u003c/div\u003e\n```",
+    "options":  "{\"options\":[\"p div\",\"div p\",\"p\",\"div\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "在事件传播过程中，有3个阶段：**捕获**、**目标**和**冒泡**。\n\n默认情况下，事件处理程序在冒泡阶段执行（除非将 `useCapture` 设置为 `true`），它从最深的嵌套元素向外。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-01-09T05:03:40.000Z",
+    "updateAt":  "2022-01-09T13:03:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1196,
+    "filterTotalNum":  1907,
+    "prev":  "7579cdab-94b8-4a25-ab87-77569bb7d86d",
+    "next":  "51f267dd-1550-48e2-9710-7cc8103dcc41"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2038,
+    "exerciseKey":  "03e6d443-bac2-40be-847b-3276b05bae4e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说下面代码的输出是什么？",
+    "desc":  "```js\nfunction Foo(){\n    Foo.a = function(){\n        console.log(1);\n    }\n    this.a = function(){\n        console.log(2)\n    }\n}\n\nFoo.prototype.a = function(){\n    console.log(3);\n}\n\nFoo.a = function(){\n    console.log(4);\n}\n\nFoo.a();\nlet obj = new Foo();\nobj.a();\nFoo.a();\n```",
+    "options":  null,
+    "explanation":  "运行以上代码，输出结果为：\n\n```\n4\n2\n1\n```\n\n解析如下：\n\n1. 首先，调用 Foo.a() 方法，输出 4。这是因为 Foo.a 是一个静态方法，直接在函数对象上定义的，所以可以通过函数名直接调用执行。\n\n2. 然后，创建一个 Foo 类型的实例 obj，调用 obj.a() 方法，输出 2。这是因为在构造函数 Foo 中，使用 this.a 定义了实例属性 a，会覆盖原型中的同名属性。\n\n3. 最后，再次调用 Foo.a() 方法，输出 1。虽然在上面已经定义了一个静态方法 Foo.a，但是在构造函数 Foo 中又重新定义了一个同名属性，导致静态方法被覆盖了，所以此时输出的是在构造函数中定义的方法。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-05-31T12:17:29.000Z",
+    "updateAt":  "2024-07-19T10:31:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  773,
+    "filterTotalNum":  1907,
+    "prev":  "6edf54be-a9ce-44f3-8dbc-490ab7ef06b8",
+    "next":  "daa37c79-092b-4d02-a963-05a374864788"
+}

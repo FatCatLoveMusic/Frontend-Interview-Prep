@@ -1,0 +1,21 @@
+﻿{
+    "id":  443,
+    "exerciseKey":  "8edaa033-4005-41cc-a255-f175f6c4eb6b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "[] == ![]结果是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "== 中，左右两边都需要转换为数字然后进行比较。\n\n[]转换为数字为0。\n\n![] 首先是转换为布尔值，由于[]作为一个引用类型转换为布尔值为true, 因此![]为false，进而在转换成数字，变为0。 0 == 0 ， 结果为true",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:01:51.000Z",
+    "updateAt":  "2021-07-07T00:15:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1477,
+    "filterTotalNum":  1907,
+    "prev":  "919bfdcc-3d20-469f-b789-f99cc15410fe",
+    "next":  "7e7da360-d6e1-4f9f-b987-7e740b8d8d7e"
+}

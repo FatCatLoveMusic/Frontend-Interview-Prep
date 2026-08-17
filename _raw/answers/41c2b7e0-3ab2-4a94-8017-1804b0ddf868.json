@@ -1,0 +1,21 @@
+﻿{
+    "id":  1631,
+    "exerciseKey":  "41c2b7e0-3ab2-4a94-8017-1804b0ddf868",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第39题】下面代码的输出是什么？",
+    "desc":  "```js\nconst async1 = async () =\u003e {\n  console.log(\u0027async1\u0027);\n  setTimeout(() =\u003e {\n    console.log(\u0027timer1\u0027)\n  }, 2000)\n  await new Promise(resolve =\u003e {\n    console.log(\u0027promise1\u0027)\n  })\n  console.log(\u0027async1 end\u0027)\n  return \u0027async1 success\u0027\n} \nconsole.log(\u0027script start\u0027);\nasync1().then(res =\u003e console.log(res));\nconsole.log(\u0027script end\u0027);\nPromise.resolve(1)\n  .then(2)\n  .then(Promise.resolve(3))\n  .catch(4)\n  .then(res =\u003e console.log(res))\nsetTimeout(() =\u003e {\n  console.log(\u0027timer2\u0027)\n}, 1000)\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n需要注意的点：\n\n* async函数中await的`new Promise`要是没有返回值的话则不执行后面的内容\n* .then函数中的参数期待的是函数，如果不是函数的话会发生透传\n* 注意定时器的延迟时间\n\n## 结果\n\n```\n\u0027script start\u0027\n\u0027async1\u0027\n\u0027promise1\u0027\n\u0027script end\u0027\n1\n\u0027timer2\u0027\n\u0027timer1\u0027\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:21:20.000Z",
+    "updateAt":  "2022-01-09T23:24:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1159,
+    "filterTotalNum":  1907,
+    "prev":  "dec780c4-3610-4673-b12f-add388ceec10",
+    "next":  "570eed0a-2340-4c59-a6c0-967db6a7dc48"
+}

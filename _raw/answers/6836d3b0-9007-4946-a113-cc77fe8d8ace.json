@@ -1,0 +1,21 @@
+﻿{
+    "id":  154,
+    "exerciseKey":  "6836d3b0-9007-4946-a113-cc77fe8d8ace",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst fruit = [\u0027🍌\u0027, \u0027🍊\u0027, \u0027🍎\u0027]\n\nfruit.slice(0, 1)\nfruit.splice(0, 1)\nfruit.unshift(\u0027🍇\u0027)\n\nconsole.log(fruit)\n```",
+    "options":  "{\"options\":[\"[\u0027🍌\u0027, \u0027🍊\u0027, \u0027🍎\u0027]\",\"[\u0027🍊\u0027, \u0027🍎\u0027]\",\"[\u0027🍇\u0027, \u0027🍊\u0027, \u0027🍎\u0027]\",\"[\u0027🍇\u0027, \u0027🍌\u0027, \u0027🍊\u0027, \u0027🍎\u0027]\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "首先，我们在fruit数组上调用 `slice` 方法。 slice方法不会修改原始数组，但是会返回从数组切片下来的值：香蕉emoji。\n其次，我们在fruit数组上调用 `splice` 方法。 splice方法会修改原始数组，也就意味着fruit数组此时为 `[\u0027🍊\u0027, \u0027🍎\u0027]`。\n最后，我们在fruit数组上调用 `unshift` 方法，通过添加一个值的方式改变了原始数组，添加的是\u0027🍇\u0027，它成为了数组的第一个元素。现在fruit数组的组成为 `[\u0027🍇\u0027, \u0027🍊\u0027, \u0027🍎\u0027]`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  1765,
+    "filterTotalNum":  1907,
+    "prev":  "321642db-58ca-47ab-9d2a-9cebc24a9bb1",
+    "next":  "7483f06b-131e-43cd-b01b-96e3621a59f8"
+}

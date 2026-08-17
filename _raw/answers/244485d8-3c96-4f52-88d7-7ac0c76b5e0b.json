@@ -1,0 +1,21 @@
+﻿{
+    "id":  189,
+    "exerciseKey":  "244485d8-3c96-4f52-88d7-7ac0c76b5e0b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JavaScript中的简单数据类型有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "JavaScript 中的简单数据类型包括以下几种：\n\n- 字符串（String）：用于表示文本数据，用引号（单引号或双引号）包裹起来，例如：\"Hello, World!\"。\n\n- 数字（Number）：用于表示数值数据，包括整数和浮点数（带小数点的数），例如：42、3.14。\n\n- 布尔值（Boolean）：用于表示逻辑值，只有两个可能的取值：true（真）和false（假）。\n\n- undefined：表示未定义的值，通常表示未声明的变量或缺少返回值的函数。\n\n- null：表示空值，用于显式地表示变量或对象没有值。\n\n- Symbol（符号）：表示唯一的标识符，用于对象属性的键。\n\n- BigInt：用于表示任意精度的整数。BigInt 是一种简单数据类型，在 ECMAScript 2020 中引入。\n\n这些简单数据类型在 JavaScript 中是不可变的，也就是说，它们的值在创建后不能被修改。当你对一个简单数据类型的值进行操作时，实际上是创建了一个新的值。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:44:43.000Z",
+    "updateAt":  "2024-07-22T15:41:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  1730,
+    "filterTotalNum":  1907,
+    "prev":  "4b009a64-6d98-4469-89d4-9c254d682fa6",
+    "next":  "5116f1a8-f1b2-49ec-bbfc-5550861762da"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  305,
+    "exerciseKey":  "5bdf6ed5-2178-4bef-8690-c04dcdf46930",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是JSX？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "JSX即JavaScript XML。一种在React组件内部构建标签的类XML语法。JSX为react.js开发的一套语法糖，也是react.js的使用基础。React在不使用JSX的情况下一样可以工作，然而使用JSX可以提高组件的可读性，因此推荐使用JSX。\n\n```react.js\nclass MyComponent extends React.Component {\n  render() {\n    let props = this.props;  \n    return (\n      \u003cdiv className=\"my-component\"\u003e\n      \u003ca href={props.url}\u003e{props.name}\u003c/a\u003e\n      \u003c/div\u003e\n    );\n  }\n}\n```\n\n**优点**：\n\n* 允许使用熟悉的语法来定义 HTML 元素树；\n* 提供更加语义化且移动的标签；\n* 程序结构更容易被直观化；\n* 抽象了 React Element 的创建过程；\n* 可以随时掌控 HTML 标签以及生成这些标签的代码；\n* 是原生的 JavaScript。",
+    "pivot":  "- **JSX**：一种 JavaScript 语法扩展，让你在 JavaScript 代码中书写类似 HTML 的结构。\n- **直观**：使组件结构的定义更加直观和易读。\n- **表达式嵌入**：支持在 JSX 中嵌入 JavaScript 表达式。\n- **编译**：JSX 需要被编译成标准 JavaScript，以便浏览器理解。\n\nJSX 是 React 的核心特性之一，简化了组件的定义和 UI 的描述，使得开发和维护 React 应用变得更加高效。\n",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:47:14.000Z",
+    "updateAt":  "2024-08-10T17:04:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  1615,
+    "filterTotalNum":  1907,
+    "prev":  "e246ac60-73f0-4e33-b0f9-b0d1e6c15af8",
+    "next":  "d184edae-f95e-494b-8944-86e713028816"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2313,
+    "exerciseKey":  "bed3cfa0-30ee-43ca-905d-a9f0c13f0468",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请在不使用 setTimeout 的前提下，实现 setInterval",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "可以通过递归调用函数来实现 `setInterval`，而不使用 `setTimeout`。\n\n下面是一个简单的实现示例：\n\n```javascript\nfunction mySetInterval(callback, interval) {\n  let start = Date.now();\n\n  function loop() {\n    const now = Date.now();\n    const elapsed = now - start;\n\n    if (elapsed \u003e= interval) {\n      callback(); // 执行回调函数\n      start = Date.now(); // 重置开始时间\n    }\n\n    requestAnimationFrame(loop); // 请求下一帧\n  }\n\n  loop(); // 启动循环\n}\n\n// 使用示例\nmySetInterval(() =\u003e {\n  console.log(\u0027Hello, World!\u0027);\n}, 1000);\n```\n\n### **解释**\n\n- **递归调用**：`loop` 函数在每一帧调用自己，形成一个循环。\n- **时间检查**：在每次调用时检查经过的时间，如果超过设定的间隔，就执行回调函数，并重置开始时间。\n- **`requestAnimationFrame`**：使用 `requestAnimationFrame` 确保在浏览器的重绘周期内进行调用，这样可以更有效地利用浏览器资源。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-19T01:40:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  593,
+    "filterTotalNum":  1907,
+    "prev":  "274aef71-fe2f-4e9d-9684-0b048bebdd4f",
+    "next":  "64cfe53d-5551-47b4-97bc-720a146723af"
+}

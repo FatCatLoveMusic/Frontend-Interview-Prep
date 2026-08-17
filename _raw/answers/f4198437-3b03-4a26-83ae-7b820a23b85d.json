@@ -1,0 +1,21 @@
+﻿{
+    "id":  315,
+    "exerciseKey":  "f4198437-3b03-4a26-83ae-7b820a23b85d",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "sql 注入",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e就是通过把SQL命令插入到Web表单递交或输入域名或页面请求的查询字符串，最终达到欺骗数据库服务器执行恶意的SQL命令,从而达到和服务器\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003cbr/\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e进行直接的交互\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr/\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e\u003cspan style=\"font-size:14ptpx\"\u003e\u003cstrong\u003e预防方案\u003c/strong\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003cbr/\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003ei）后台进行输入验证，对敏感字符过滤。\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003eii）使用参数化查询，能避免拼接SQL，就不要拼接SQL语句。\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cbr/\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp\u003e\u003cstrong\u003e答题要点：\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003e前端安全中的SQL注入是一种常见的攻击方式，它发生在用户输入的数据被直接拼接到SQL查询语句中，而没有经过适当的验证或转义的情况下。这种攻击可以导致数据库中的敏感数据被读取、修改或删除，甚至可能导致整个数据库被破坏。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e预防SQL注入的策略：\u003c/strong\u003e\u003c/p\u003e\u003ch4\u003e\u003cstrong\u003e1、参数化查询\u003c/strong\u003e：使用参数化查询（Prepared Statements）来防止SQL注入。参数化查询将用户输入的数据作为参数传递给查询，而不是直接拼接到查询字符串中。\u003c/h4\u003e\u003cp\u003e\u003cstrong\u003e2、输入验证\u003c/strong\u003e：在服务器端对用户输入的数据进行验证，确保其符合预期的格式和范围；验证数据类型、长度、格式等，避免接受可能被恶意利用的数据。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e3、使用白名单\u003c/strong\u003e：只允许特定的字符集或字符序列，拒绝任何不在白名单中的输入。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e4、转义特殊字符\u003c/strong\u003e：如果必须将用户输入直接拼接到查询中，使用适当的转义字符（如\u003ccode\u003emysql_real_escape_string\u003c/code\u003e或\u003ccode\u003ePDO::quote\u003c/code\u003e）来转义特殊字符。\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e5、限制权限\u003c/strong\u003e：确保数据库用户的权限最小化，只允许执行必要操作。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T11:01:53.000Z",
+    "updateAt":  "2024-07-18T23:28:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  1605,
+    "filterTotalNum":  1907,
+    "prev":  "dfc9b600-74ec-4e03-8832-c3d69de4dcea",
+    "next":  "825e3009-688d-43d4-ba62-0c4940d90ce9"
+}

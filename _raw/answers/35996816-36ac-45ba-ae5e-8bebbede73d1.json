@@ -1,0 +1,21 @@
+﻿{
+    "id":  2938,
+    "exerciseKey":  "35996816-36ac-45ba-ae5e-8bebbede73d1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果你有一个业务组件库，希望打包输出为 esm + cjs + dts，有什么思路？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "打包成 ESM、CJS 和生成 TypeScript 的 `.d.ts` 类型声明文件，关键是合理配置构建工具。\n\n我们可以选用 `Rollup` 或 `Vite`（底层也是用 Rollup），下面以使用 **Vite 构建组件库** 为例，讲讲如何配置输出 ESM + CJS + DTS：\n\n---\n\n### 一、初始化项目结构\n\n假设目录结构是：\n\n```\n/src\n  Button/index.tsx\n  index.ts  // 组件库入口\n\npackage.json\nvite.config.ts\ntsconfig.json\n```\n\n---\n\n### 二、Vite 配置打包输出\n\n`vite.config.ts` 示例：\n\n```ts\nimport { defineConfig } from \u0027vite\u0027;\nimport dts from \u0027vite-plugin-dts\u0027;\nimport path from \u0027path\u0027;\n\nexport default defineConfig({\n  build: {\n    lib: {\n      entry: path.resolve(__dirname, \u0027src/index.ts\u0027), // 组件库入口\n      name: \u0027MyComponentLib\u0027,\n      formats: [\u0027es\u0027, \u0027cjs\u0027],\n      fileName: (format) =\u003e `my-component-lib.${format}.js`,\n    },\n    rollupOptions: {\n      external: [\u0027react\u0027, \u0027react-dom\u0027], // 避免打包这些外部依赖\n      output: {\n        globals: {\n          react: \u0027React\u0027,\n          \u0027react-dom\u0027: \u0027ReactDOM\u0027,\n        },\n      },\n    },\n  },\n  plugins: [dts()],\n});\n```\n\n重点解释下配置细节：\n\n* `formats: [\u0027es\u0027, \u0027cjs\u0027]`：表示输出两种格式。\n* `external`: 保持 `react`、`react-dom` 是外部依赖（否则会被打进 bundle）。\n* `vite-plugin-dts`：自动为库生成类型定义文件。\n\n---\n\n### 三、生成 `.d.ts` 类型文件\n\n安装 `vite-plugin-dts` 插件：\n\n```bash\npnpm add vite-plugin-dts -D\n```\n\n它会读取 `tsconfig.json` 并在打包时生成类型声明到 `dist/` 目录。你也可以单独用 `tsc` 生成，但 `vite-plugin-dts` 更方便，支持合并等特性。\n\n---\n\n### 四、tsconfig.json 配置\n\n```json\n{\n  \"compilerOptions\": {\n    \"target\": \"ESNext\",\n    \"module\": \"ESNext\",\n    \"declaration\": true,\n    \"declarationDir\": \"dist/types\",\n    \"emitDeclarationOnly\": true,\n    \"jsx\": \"react-jsx\",\n    \"outDir\": \"dist\",\n    \"moduleResolution\": \"node\",\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"strict\": true\n  },\n  \"include\": [\"src\"]\n}\n```\n\n确保开启 `declaration` 和 `emitDeclarationOnly`，并设置好 `include`。\n\n---\n\n### 五、打包命令配置\n\n在 `package.json` 中配置构建命令：\n\n```json\n{\n  \"main\": \"dist/my-component-lib.cjs.js\",\n  \"module\": \"dist/my-component-lib.es.js\",\n  \"types\": \"dist/types/index.d.ts\",\n  \"scripts\": {\n    \"build\": \"vite build\"\n  }\n}\n```\n\n* `main` 是 CJS 的入口\n* `module` 是 ESM 的入口\n* `types` 指向类型声明文件\n\n---\n\n### 六、验证输出\n\n执行：\n\n```bash\npnpm build\n```\n\n会输出：\n\n* `dist/my-component-lib.es.js`\n* `dist/my-component-lib.cjs.js`\n* `dist/types/index.d.ts`\n\n此时组件库即可支持多种模块加载方式和类型提示。\n\n---\n\n### 其他建议\n\n* 如果库中包含样式文件（如 `.scss`），要通过插件或 Vite 自定义配置将样式打包或分离。\n* 发布前可以通过 `npm pack` 查看实际输出的文件内容。\n* 如果考虑 tree-shaking，建议每个组件也单独导出，便于用户按需引入。\n",
+    "pivot":  "1. 使用 `vite.build` 搭配 `vite-plugin-dts` 可以同时输出 ESM、CJS 和 `.d.ts`。\n2. 保持 React、Vue 等为 external 避免重复打包。\n3. 配置 `package.json` 的 `main/module/types` 字段，清晰指向输出结果。\n4. 确保 tsconfig.json 中开启类型声明生成并指定输出路径。\n5. 实际打包后建议用真实项目验证加载和类型提示是否正常。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2025-05-15T08:44:38.000Z",
+    "updateAt":  "2025-05-15T08:44:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  264,
+    "filterTotalNum":  1907,
+    "prev":  "248830a2-ac8d-4321-8d65-2ab4566f44aa",
+    "next":  "ab91b1c8-b017-488d-9d69-45ca69b012e7"
+}

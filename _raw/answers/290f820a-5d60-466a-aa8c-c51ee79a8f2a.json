@@ -1,0 +1,21 @@
+﻿{
+    "id":  469,
+    "exerciseKey":  "290f820a-5d60-466a-aa8c-c51ee79a8f2a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是TypeScript Declare关键字?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "我们知道所有的JavaScript库/框架都没有TypeScript声明文件，但是我们希望在TypeScript文件中使用它们时不会出现编译错误。为此，我们使用declare关键字。在我们希望定义可能存在于其他地方的变量的环境声明和方法中，可以使用declare关键字。\n\n例如，假设我们有一个名为myLibrary的库，它没有TypeScript声明文件，在全局命名空间中有一个名为myLibrary的命名空间。如果我们想在TypeScript代码中使用这个库，我们可以使用以下代码:\n```\ndeclare var myLibrary;  \n```\nTypeScript运行时将把myLibrary变量赋值为任意类型。这是一个问题，我们不会得到智能感知在设计时，但我们将能够使用库在我们的代码。",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，`declare`关键字用于声明全局变量、函数、类等，这些声明不会被编译成JavaScript代码，而是用于提供类型信息。`declare`声明的类型不会在运行时被创建，因此不会影响代码的执行。\n\n**考察要点**：\n\n1. **声明类型**：理解`declare`关键字用于声明类型。\n2. **编译时作用**：了解`declare`声明在编译时的作用，即提供类型信息。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-08T15:05:35.000Z",
+    "updateAt":  "2024-08-10T17:05:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1451,
+    "filterTotalNum":  1907,
+    "prev":  "59af70f8-871d-4358-aac1-e5dc4a0ca6df",
+    "next":  "3bdbc545-1273-41a8-b93f-cb642dae0ada"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3252,
+    "exerciseKey":  "cd9eb5c3-4162-45b2-b7da-7566c5935a64",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Agent 如何实现版本管理？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "从工程化角度看，Agent 的版本管理不能只管代码版本，因为 Agent 的行为由多种因素共同决定：代码、模型、Prompt、工具定义、工作流、知识库、记忆结构、配置参数、评测集，任何一个变化都可能导致输出行为变化。因此更合理的做法是把 Agent 当成一个可发布的软件制品来管理。\n\n一个成熟的 Agent 版本通常会有一份 `manifest` 或 `lockfile`，明确记录当前版本依赖了哪些内容，例如：\n\n```json\n{\n  \"agentVersion\": \"2.3.1\",\n  \"model\": \"gpt-4.1\",\n  \"promptVersion\": \"prompt-2026-06-01\",\n  \"toolSchemaVersion\": \"tools-1.8.0\",\n  \"workflowVersion\": \"graph-2.3.0\",\n  \"knowledgeBaseVersion\": \"kb-2026-05-28\",\n  \"memorySchemaVersion\": \"memory-1.2.0\"\n}\n```\n\n这样做的核心价值是可追溯。线上某一次 Agent 回复异常时，不能只知道它用了哪个模型，还要能还原当时的 Prompt、工具 schema、RAG 索引、上下文拼接策略和运行配置。否则问题会很难定位，也无法稳定回滚。\n\n版本号本身可以采用语义化版本管理。比如 `major` 表示工作流、工具协议、记忆结构等有破坏性变化；`minor` 表示新增能力或新增工具；`patch` 表示 Prompt 微调、边界 case 修复、评测样本补充等兼容性改动。这样研发、测试和业务方能快速判断一次升级的风险等级。\n\n发布流程上，Agent 版本应该像前端应用一样走环境流转：开发环境验证、测试环境评测、灰度环境小流量试运行，最后再全量发布。不同的是，Agent 还需要更重视评测体系。每次发布前应跑离线 eval，包括核心任务成功率、工具调用准确率、幻觉率、敏感内容处理、长上下文稳定性、历史回归用例等。只有评测指标不退化，才允许进入灰度。\n\n线上运行时，需要把版本信息打进 trace 和日志中，例如 `agent_version`、`prompt_version`、`tool_version`、`kb_version`、`model_version`。这样才能做按版本维度的监控分析，比如某个版本的工具调用失败率是否升高，某类任务的成功率是否下降，或者某次 Prompt 调整是否引入了新的误判。\n\n还有一个容易被忽略的问题是状态兼容。Agent 往往会有长期记忆、会话状态、任务进度或用户偏好，如果新版本改变了 memory schema，就需要设计迁移策略。常见做法是：已经运行中的任务继续使用旧版本，新会话默认使用新版本；长期数据通过 schema version 做兼容读取或迁移；必要时保留双写或降级逻辑。\n\n回滚也必须是版本管理的一部分。Agent 发布不是简单替换 Prompt 文件，而是要能回滚到完整制品，包括旧 Prompt、旧工具定义、旧知识库索引、旧配置和旧模型选择。否则只回滚代码，行为仍然可能无法恢复。\n\n总结来说，Agent 的版本管理重点不是给 Prompt 起一个名字，而是把 Agent 的行为依赖全部固化成可追踪、可评测、可灰度、可回滚的发布单元。",
+    "pivot":  "Agent 版本管理应覆盖代码、模型、Prompt、工具、工作流、知识库、记忆结构和配置。  \n\n* 每个版本需要有 manifest 或 lockfile，保证行为可复现。  \n* 版本号可采用语义化管理，区分破坏性变更、能力增强和修复。  \n* 发布前要通过自动化评测和回归测试，发布中要灰度和监控。  \n* 线上日志必须记录完整版本信息，方便排查和对比。  \n* 涉及记忆和状态时，需要考虑 schema 兼容、迁移和旧任务隔离。  \n\n成熟的 Agent 版本管理最终目标是可追溯、可验证、可灰度、可回滚。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T07:48:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  36,
+    "filterTotalNum":  1907,
+    "prev":  "9f97d4b9-0aba-4612-ae34-0e23242aed0c",
+    "next":  "4a44862a-cde6-48e7-855f-c162e3c77823"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1949,
+    "exerciseKey":  "0da5c58e-1299-477f-95f1-9e05ebf8aa2e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 treePath 方法",
+    "desc":  "```ts\n/**\n * @file 二叉树所有路径\n */\n\ntype Tree = {\n    value: number;\n    left?: Tree;\n    right?: Tree;\n}\nconst tree: Tree = {\n    value: 1,\n    left: {\n        value: 2,\n        right: { value: 5 }\n    },\n    right: { value: 3 }\n};\nfunction treePath(root: Tree): string[] {\n    // 补全此处代码\n    throw new Error(\u0027功能待实现\u0027);\n}\nconsole.log(treePath(tree)) // [ \u00271-\u003e2-\u003e5\u0027, \u00271-\u003e3\u0027 ]\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 二叉树所有路径\n */\n\ntype Tree = {\n  value: number;\n  left?: Tree;\n  right?: Tree;\n};\n\nconst tree: Tree = {\n  value: 1,\n  left: {\n    value: 2,\n    right: { value: 5 },\n  },\n  right: { value: 3 },\n};\n\nfunction treePath(root: Tree): string[] {\n  const answer: [] = [];\n  let tmp: [][] = [];\n  const travel = (r: Tree) =\u003e {\n    if (r == null) {\n      return;\n    }\n    //@ts-ignore\n    tmp.push(r.value);\n    if (r.left == null \u0026\u0026 r.right == null) {\n      //@ts-ignore\n      answer.push(tmp);\n      tmp = [tmp[0]];\n      return;\n    }\n    if (r.left) travel(r.left);\n    if (r.right) travel(r.right);\n  };\n  travel(root);\n  //@ts-ignore\n  return answer.map((t) =\u003e t.join(\"-\u003e\"));\n}\nconsole.log(treePath(tree)); // [ \u00271-\u003e2-\u003e5\u0027, \u00271-\u003e3\u0027 ]\n\nexport default {};\n```\n",
+    "pivot":  "**作答思路**：\n\n实现思路是遍历二叉树并收集所有路径，然后将路径格式化为字符串形式。\n\n1. **定义树节点类型**：首先，定义了一个`Tree`类型，表示二叉树节点，其中包含`value`、`left`和`right`属性。\n2. **构建树结构**：使用一个对象来构建二叉树的示例结构，其中包含了根节点和两个子节点。\n3. **定义树路径函数**：创建一个`treePath`函数，它接受一个`Tree`类型的根节点作为参数。\n4. **初始化变量**：在`treePath`函数内部，初始化两个数组：`answer`用于存储所有路径的数组，`tmp`用于存储当前路径的数组。\n5. **递归遍历函数**：定义一个`travel`函数，它是一个递归函数，用于遍历二叉树。\n6. **递归遍历逻辑**：在`travel`函数中，首先检查当前节点是否为`null`，如果是，则返回。然后将当前节点的`value`添加到`tmp`数组中。如果当前节点是叶子节点（即左右子节点都为`null`），则将当前路径的副本添加到`answer`数组中，并将`tmp`数组重置为只包含当前节点的`value`。接着递归地调用`travel`函数来处理左子节点和右子节点。\n7. **格式化路径**：在`treePath`函数的最后，使用`map`函数将`answer`数组中的路径数组转换为字符串数组，每个路径字符串由路径数组中的值通过`-\u003e`连接而成。。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:26:34.000Z",
+    "updateAt":  "2024-08-10T17:07:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  861,
+    "filterTotalNum":  1907,
+    "prev":  "6d0bf8a4-24f0-4794-84c9-19e0c811b3ed",
+    "next":  "75022926-8fe3-4f93-bab2-4e3c8e31c170"
+}

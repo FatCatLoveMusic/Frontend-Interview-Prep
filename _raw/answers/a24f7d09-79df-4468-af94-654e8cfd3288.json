@@ -1,0 +1,21 @@
+﻿{
+    "id":  440,
+    "exerciseKey":  "a24f7d09-79df-4468-af94-654e8cfd3288",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "typeof 是否能正确判断类型？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "对于原始类型来说，除了 null 都可以调用typeof显示正确的类型。\n\n```js\ntypeof 1 // \u0027number\u0027\ntypeof \u00271\u0027 // \u0027string\u0027\ntypeof undefined // \u0027undefined\u0027\ntypeof true // \u0027boolean\u0027\ntypeof Symbol() // \u0027symbol\u0027\n\n```\n\n但对于引用数据类型，除了函数之外，都会显示\"object\"。\n\n\n\n```js\ntypeof [] // \u0027object\u0027\ntypeof {} // \u0027object\u0027\ntypeof console.log // \u0027function\u0027\n\n```\n\n因此采用typeof判断对象数据类型是不合适的，采用instanceof会更好，instanceof的原理是基于原型链的查询，只要处于原型链中，判断永远为true\n\n\n\n```js\n\nconst Person = function() {}\nconst p1 = new Person()\np1 instanceof Person // true\nvar str1 = \u0027hello world\u0027\nstr1 instanceof String // false\nvar str2 = new String(\u0027hello world\u0027)\nstr2 instanceof String // true\n\n```",
+    "pivot":  "`typeof` 是 JavaScript 中用于返回一个值的数据类型的一元操作符。它对于基本数据类型的判断通常是准确的，但在某些情况下可能不会返回你期望的结果。\n\n### 基本数据类型的判断\n\n```javascript\ntypeof undefined;  // \"undefined\"\ntypeof 42;         // \"number\"\ntypeof \"Hello\";     // \"string\"\ntypeof true;       // \"boolean\"\ntypeof null;       // \"object\" —— 这是一个常见的陷阱\ntypeof Symbol();   // \"symbol\"\n```\n\n### 对象和数组的判断\n\n```js\ntypeof {};            // \"object\"\ntypeof [];            // \"object\" —— 数组是对象的一种类型\ntypeof new Date();    // \"object\" —— Date 对象是对象的一种类型\ntypeof function() {}; // \"function\" —— 函数在 JavaScript 中被归类为对象\n```\n\n### typeof 的限制\n\n- null 的问题：typeof null 返回 \"object\"，因为 null 被视为一个空的对象引用。\n- 函数问题：尽管函数是对象，typeof 会返回 \"function\"。\n不能区分对象类型：typeof 无法区分数组、日期对象、自定义对象等，因为它们都被归类为 \"object\"。\n- 不同上下文的对象：来自 iframe 或服务端动态加载的脚本创建的对象可能无法被 typeof 正确判断。\n- 未定义的变量：对未声明的变量使用 typeof 会导致 ReferenceError。\n\n### 总结\n\ntypeof 可以正确判断基本数据类型，但在处理复杂对象时可能有限制。如果需要更细致的类型检查，可以使用 instanceof 操作符或 Object.prototype.toString.call() 方法。\n\n```js\n// 使用 instanceof 进行更细致的类型检查\nconsole.log([] instanceof Array); // true\nconsole.log({} instanceof Object); // true\n\n// 使用 Object.prototype.toString.call 检查对象的具体类型\nconsole.log(Object.prototype.toString.call(new Date())); // \"[object Date]\"\nconsole.log(Object.prototype.toString.call(function(){})); // \"[object Function]\"\n```\n\ninstanceof 和 Object.prototype.toString.call 是处理复杂类型判断时的有用工具，它们可以提供更精确的结果。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:00:14.000Z",
+    "updateAt":  "2024-08-10T17:05:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  1480,
+    "filterTotalNum":  1907,
+    "prev":  "1d87535d-c1c8-4c6e-b6f5-583c80193217",
+    "next":  "62bf96e4-7471-44d1-9c30-d22ccb98e1d3"
+}

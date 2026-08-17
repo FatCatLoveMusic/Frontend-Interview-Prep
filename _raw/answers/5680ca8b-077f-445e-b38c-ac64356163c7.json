@@ -1,0 +1,21 @@
+﻿{
+    "id":  2624,
+    "exerciseKey":  "5680ca8b-077f-445e-b38c-ac64356163c7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "vue3 的响应式库是独立出来的，如果单独使用是什么样的效果？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 Vue 3 中，响应式系统被抽离到一个独立的库中，名为 `@vue/reactivity`。这个库可以单独使用来管理响应式状态，类似于 Vue 的响应式系统，但不依赖于 Vue 组件或 Vue 实例。\n\n### **独立使用效果**\n\n1. **创建响应式对象**：\n\n   使用 `reactivity` 库可以创建响应式对象，类似于 Vue 的 `ref` 和 `reactive`。\n\n   ```javascript\n   import { reactive, effect } from \u0027@vue/reactivity\u0027;\n\n   const state = reactive({\n     count: 0\n   });\n\n   effect(() =\u003e {\n     console.log(`Count is: ${state.count}`);\n   });\n\n   state.count++;\n   // 输出: Count is: 1\n   ```\n\n2. **使用 `ref`**：\n\n   对于基本类型的数据，可以使用 `ref` 来创建响应式数据。\n\n   ```javascript\n   import { ref } from \u0027@vue/reactivity\u0027;\n\n   const count = ref(0);\n\n   effect(() =\u003e {\n     console.log(`Count is: ${count.value}`);\n   });\n\n   count.value++;\n   // 输出: Count is: 1\n   ```\n\n3. **依赖追踪和计算属性**：\n\n   使用 `effect` 可以创建响应式的副作用，类似于 Vue 组件中的计算属性。\n\n   ```javascript\n   import { reactive, effect, computed } from \u0027@vue/reactivity\u0027;\n\n   const state = reactive({\n     count: 0\n   });\n\n   const doubled = computed(() =\u003e state.count * 2);\n\n   effect(() =\u003e {\n     console.log(`Doubled count is: ${doubled.value}`);\n   });\n\n   state.count++;\n   // 输出: Doubled count is: 2\n   ```",
+    "pivot":  "使用 `@vue/reactivity` 库，您可以在 Vue 组件之外管理响应式状态，进行依赖追踪和副作用处理。它提供了 Vue 3 的核心响应式功能，可以用于构建库或工具，而无需使用完整的 Vue 框架。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T14:07:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  438,
+    "filterTotalNum":  1907,
+    "prev":  "a7da8658-3b6f-4417-8ff0-66e078fa09b9",
+    "next":  "19b30b63-a332-4538-a362-50d7732af156"
+}

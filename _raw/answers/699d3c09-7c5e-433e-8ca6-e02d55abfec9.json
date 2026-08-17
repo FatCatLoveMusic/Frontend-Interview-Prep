@@ -1,0 +1,21 @@
+﻿{
+    "id":  2591,
+    "exerciseKey":  "699d3c09-7c5e-433e-8ca6-e02d55abfec9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "web components 是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "Web Components 是一组 Web 平台 API，允许开发者创建封装性强、可重用的组件，这些组件可以在任何 Web 应用程序中使用。\n\nWeb Components 主要包括以下四个核心技术：\n\n### **1. 自定义元素（Custom Elements）**\n允许开发者定义新的 HTML 元素及其行为。这些自定义元素可以像内置元素一样被使用，并且支持生命周期回调函数。\n\n### **2. 模板（Templates）**\n`\u003ctemplate\u003e` 元素用于定义可以重复使用的 HTML 结构。模板中的内容在被使用时才会被实例化和插入到 DOM 中，从而提高性能和重用性。\n\n### **3. Shadow DOM**\n允许将组件的内部结构和样式封装在一个独立的 DOM 子树中，这样可以避免样式和脚本的冲突。Shadow DOM 使组件可以有自己的封闭样式和结构。\n\n### **4. HTML Imports（已废弃）**\nHTML Imports 曾用于引入和使用 HTML 文档的片段，但该技术已被废弃，现代 Web 组件技术通常通过模块化 JavaScript 或 ES6 模块来替代。\n\n### **Web Components 的优势**\n\n- **封装性**：通过 Shadow DOM 隔离组件的样式和结构，避免全局样式和脚本的干扰。\n- **重用性**：自定义元素可以被多次重用，促进代码的模块化和组织。\n- **标准化**：作为 Web 标准的一部分，Web Components 与各种 JavaScript 框架和库兼容，能够在不同的环境中使用。\n\n### **使用示例**\n\n```html\n\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"UTF-8\"\u003e\n    \u003ctitle\u003eWeb Components Example\u003c/title\u003e\n    \u003cscript\u003e\n        class MyElement extends HTMLElement {\n            constructor() {\n                super();\n                const shadow = this.attachShadow({ mode: \u0027open\u0027 });\n                shadow.innerHTML = `\u003cstyle\u003ep { color: red; }\u003c/style\u003e\u003cp\u003eHello, Web Components!\u003c/p\u003e`;\n            }\n        }\n        customElements.define(\u0027my-element\u0027, MyElement);\n    \u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n    \u003cmy-element\u003e\u003c/my-element\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\n在上面的示例中，定义了一个自定义元素 `\u003cmy-element\u003e`，它具有一个 Shadow DOM 和一些样式。这个元素可以被插入到任何 HTML 文档中，并且它的样式和结构是封闭的，不会受到外部样式的影响。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2025-07-16T09:17:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  452,
+    "filterTotalNum":  1907,
+    "prev":  "da682e52-a098-4f33-a4b5-9fd40bb48e99",
+    "next":  "24799e30-6a38-46e5-b770-e575035b3a51"
+}

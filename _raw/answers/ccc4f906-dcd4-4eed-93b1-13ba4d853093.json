@@ -1,0 +1,21 @@
+﻿{
+    "id":  538,
+    "exerciseKey":  "ccc4f906-dcd4-4eed-93b1-13ba4d853093",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现数字的千分位逗号分割",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 方案一：数组循环\n\n```javascript\nfunction thousands(num) {\n     var result = [], counter = 0;\n     num = (num || 0).toString().split(\u0027\u0027);\n     for (var i = num.length - 1; i \u003e= 0; i--) {\n         counter++;\n         result.unshift(num[i]);\n         if (!(counter % 3) \u0026\u0026 i != 0) { result.unshift(\u0027,\u0027); }\n     }\n     console.log(result.join(\u0027\u0027));\n }\n\nthousands(314159265354)\n```\n\n## 方案二：字符串循环\n\n直接获取字符串下标，不需要转数组\n```javascript\nfunction thousands(num) {\n     var result = \u0027\u0027, counter = 0;\n     num = (num || 0).toString();\n     for (var i = num.length - 1; i \u003e= 0; i--) {\n         counter++;\n         result = num.charAt(i) + result;\n         if (!(counter % 3) \u0026\u0026 i != 0) { result = \u0027,\u0027 + result; }\n     }\n     console.log(result);\n}\nthousands(314159265354)\n```\n\n## 方案三：字符串不循环\n\n直接根据截取\n```javascript\nfunction thousands(num) {\n     var num = (num || 0).toString(), result = \u0027\u0027;\n     while (num.length \u003e 3) {\n         result = \u0027,\u0027 + num.slice(-3) + result;\n         num = num.slice(0, num.length - 3);\n     }\n     if (num) { result = num + result; }\n     console.log(result);\n}\nthousands(314159265354)\n```\n\n## 方案四：正则\n\n```javascript\nfunction thousands(num) {\n     var num = (num || 0).toString(), reg = \u0027/\\d{3}$/\u0027, result = \u0027\u0027; //匹配三个数字字符\n     while (reg.test(num) ) {\n         result = RegExp.lastMatch + result;//返回上一次正则表达式搜索过程中最后一个匹配的文本字符串。\n         if (num !== RegExp.lastMatch) {\n             result = \u0027,\u0027 + result;\n             num = RegExp.leftContext;//返回上一次正则表达式匹配时，被搜索字符串中最后一个匹配文本之前(不包括最后一个匹配)的所有字符。\n         } else {\n             num = \u0027\u0027;\n             break;\n         }\n     }\n     if (num) { result = num + result; }\n     console.log(result);\n};\nthousands(314159265354)\n```\n\n## 方案五：升级版正则\n\n```javascript\nfunction thousands(num) {\n    // \\B 匹配非单词边界，匹配位置的左右两边都是 \\w([a-zA-Z0-9_])\n    // ?=是先行断言，表示这个位置后面的内容需要满足的条件，注意只是匹配一个位置，并不匹配具体的字符，所以是零宽；\n    // ?!后行断言，表示这个位置后面的内容不能满足的条件,(?!\\d)表示接下来的位置不是数字,可以是小数点\n    // \\d{3}匹配三个数字，+表示前面的内容重复1到多次,也就是匹配3个数字一到多次，3的倍数字符串\n    // (?=(\\d{3})+(?!\\d))匹配一个位置，这个位置后面首先是3的倍数个数字的字符串，接下来的位置不是数字\n    \n    console.log(num.toString().replace(/\\B(?=(\\d{3})+(?!\\d))/g, \",\"));\n}\nthousands(314159265354.99)\n```\n\n## 方案六：凑整法\n\n```javascript\nfunction thousands(num) {\n     var num = (num || 0).toString(), temp = num.length % 3;\n     switch (temp) {\n         case 1:\n             num = \u002700\u0027 + num;\n             break;\n         case 2:\n             num = \u00270\u0027 + num;\n             break;\n     }\n     console.log (num.match(/\\d{3}/g).join(\u0027,\u0027).replace(/^0+/, \u0027\u0027));\n}\nthousands(314159265354)\n```\n\n## 方案七：toLocaleString\n\n```javascript\nvar num = 123456789\n//格式化千分位输出\nnum.toLocaleString()\n//格式化为千分位带$符号输出\nnum.toLocaleString(\"en-US\",{style:\"currency\",currency:\"USD\"})\n//格式化为带￥符号输出\nnum.toLocaleString(\"zh-Hans-CN\",{style:\"currency\",currency:\"CNY\"})\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-19T14:18:30.000Z",
+    "updateAt":  "2021-07-25T10:31:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1382,
+    "filterTotalNum":  1907,
+    "prev":  "8ee26123-8081-423b-bb77-b45b500facbf",
+    "next":  "7566c4ff-4ce9-4357-85db-ce5494d9cf90"
+}

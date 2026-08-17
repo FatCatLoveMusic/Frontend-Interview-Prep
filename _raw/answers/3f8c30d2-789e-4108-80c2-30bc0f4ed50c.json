@@ -1,0 +1,21 @@
+﻿{
+    "id":  101,
+    "exerciseKey":  "3f8c30d2-789e-4108-80c2-30bc0f4ed50c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nclass Person {\n  constructor() {\n    this.name = \"Lydia\"\n  }\n}\n\nPerson = class AnotherPerson {\n  constructor() {\n    this.name = \"Sarah\"\n  }\n}\n\nconst member = new Person()\nconsole.log(member.name)\n```",
+    "options":  "{\"options\":[\"\\\"Lydia\\\"\",\"\\\"Sarah\\\"\",\"Error: cannot redeclare Person\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "我们可以将类设置为等于其他类/函数构造函数。 在这种情况下，我们将`Person`设置为`AnotherPerson`。 这个构造函数的名字是`Sarah`，所以新的`Person`实例`member`上的name属性是`Sarah`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:27:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  1818,
+    "filterTotalNum":  1907,
+    "prev":  "cac139d1-256d-4124-829d-5ca355a99144",
+    "next":  "73f2cb7c-2613-4f06-8777-f72b1778a28b"
+}

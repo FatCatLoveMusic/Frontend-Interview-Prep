@@ -1,0 +1,21 @@
+﻿{
+    "id":  160,
+    "exerciseKey":  "f1a7b0d9-bb14-4d85-97e2-a1668c60098c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nlet randomValue = { name: \"Lydia\" }\nrandomValue = 23\n\nif (!typeof randomValue === \"string\") {\n\tconsole.log(\"It\u0027s not a string!\")\n} else {\n\tconsole.log(\"Yay it\u0027s a string!\")\n}\n```",
+    "options":  "{\"options\":[\"It\u0027s not a string!\",\"Yay it\u0027s a string!\",\"TypeError\",\"undefined\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  " `if` 语句的条件判断 `!typeof randomValue` 的值是否等于 `\"string\"`。 `!` 操作符将这个值转化为一个布尔值。如果值是truthy的话，返回值会是 `false`，如果值是falsy，返回值会是 `true`。在这里， `typeof randomValue` 的返回值是一个truthy值 `\"number\"`，意味着 `!typeof randomValue` 的值是一个布尔值 `false`。\n `!typeof randomValue === \"string\"` 总是返回false，因为我们实际上是在执行 `false === \"string\"`。因为条件返回的是 `false`，所以 `else` 语句中的代码块会被运行，因此打印 `Yay it\u0027s a string!` 。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:36:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1759,
+    "filterTotalNum":  1907,
+    "prev":  "dc607f56-c467-4cc2-8a0a-c79d498bee49",
+    "next":  "a84229a5-810b-463d-9d53-d22fc59fc528"
+}

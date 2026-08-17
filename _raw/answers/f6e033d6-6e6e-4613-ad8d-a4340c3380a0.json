@@ -1,0 +1,21 @@
+﻿{
+    "id":  610,
+    "exerciseKey":  "f6e033d6-6e6e-4613-ad8d-a4340c3380a0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "页面统计数据中，常用的 PV、UV 指标分别是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## PV(页面访问量)\n\n即页面浏览量或点击量，用户每1次对网站中的每个网页访问均被记录1个PV。\n\n用户对同一页面的多次访问，访问量累计，用以衡量网站用户访问的网页数量。\n\n##  UV(独立访客)\n\n是指通过互联网访问、浏览这个网页的自然人。访问您网站的一台电脑客户端为一个访客。\n\n00:00-24:00内相同的客户端只被计算一次。\n\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-08-30T02:11:57.000Z",
+    "updateAt":  "2021-08-30T10:45:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1311,
+    "filterTotalNum":  1907,
+    "prev":  "0bb0b3a7-ed1b-41c0-a93e-7187b2aa85a8",
+    "next":  "319f4c73-a33b-42bb-842c-a5a5e31c101e"
+}

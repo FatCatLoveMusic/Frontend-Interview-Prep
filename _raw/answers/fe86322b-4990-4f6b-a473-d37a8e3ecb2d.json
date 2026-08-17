@@ -1,0 +1,21 @@
+﻿{
+    "id":  107,
+    "exerciseKey":  "fe86322b-4990-4f6b-a473-d37a8e3ecb2d",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "依次输出什么?",
+    "desc":  "```javascript\nconst myPromise = () =\u003e Promise.resolve(\u0027I have resolved!\u0027)\n\nfunction firstFunction() {\n  myPromise().then(res =\u003e console.log(res))\n  console.log(\u0027second\u0027)\n}\n\nasync function secondFunction() {\n  console.log(await myPromise())\n  console.log(\u0027second\u0027)\n}\n\nfirstFunction()\nsecondFunction()\n```",
+    "options":  "{\"options\":[\"I have resolved!, second, I have resolved!, second\",\"second, I have resolved!, second, I have resolved!\",\"I have resolved!, second, second, I have resolved!\",\"second, I have resolved!, I have resolved!, second\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "该题执行顺序为：\n\n* 执行firstFunction()函数，进入函数执行MyPromise() ，然后将resolve()放入微队列，打印 second\n* 继续执行 secondFunction()函数，执行await后面语句，mypromise()放入微队列，后续代码也放入。\n\n此时同步任务执行完成，执行微任务队列中的任务因此最终结果为 `second, I have resolved, I have resolved, second`，所以答案为 `D`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-03-04T22:52:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  1812,
+    "filterTotalNum":  1907,
+    "prev":  "8318d81a-7336-466e-9761-cbd175ccfd2c",
+    "next":  "a0544c68-4798-4f40-b233-bc3510170371"
+}

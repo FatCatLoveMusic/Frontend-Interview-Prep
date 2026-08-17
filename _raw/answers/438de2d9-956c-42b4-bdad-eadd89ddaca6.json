@@ -1,0 +1,21 @@
+﻿{
+    "id":  2915,
+    "exerciseKey":  "438de2d9-956c-42b4-bdad-eadd89ddaca6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "template 标签为什么不可以使用 v-show？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`\u003ctemplate\u003e` 标签在 Vue 中是一个 **占位符元素**，它本身在渲染时不会生成任何实际的 DOM 元素，只是为了包裹一些结构或逻辑，帮助开发者更好地组织模板内容。因此，`\u003ctemplate\u003e` 标签没有实际的渲染结果，它的存在只在编译和渲染过程中起到作用。\n\n### 为什么 `v-show` 不能直接用于 `\u003ctemplate\u003e`？\n\n1. **`v-show` 是基于 `display` 样式控制元素的显示和隐藏的**：\n   - 当使用 `v-show` 时，Vue 会动态控制绑定元素的 `display` 样式。如果元素被隐藏，`display: none` 会被应用到该元素，反之则会恢复为正常的显示状态。\n   - 然而，`\u003ctemplate\u003e` 本身并不会渲染任何真实的 DOM 元素。它的作用仅限于包裹其他元素，并不生成实际的 HTML 元素。因此，`v-show` 并不适用于 `\u003ctemplate\u003e` 标签。\n\n2. **`\u003ctemplate\u003e` 没有实际的 DOM 元素**：\n   - `v-show` 操作的是 DOM 元素的样式，而 `\u003ctemplate\u003e` 本身并不渲染为一个真实的 DOM 元素，因此 `v-show` 无法对 `\u003ctemplate\u003e` 标签本身进行样式控制。\n\n### 示例：\n如果你在 Vue 中使用 `v-show` 绑定到 `\u003ctemplate\u003e` 上，会得到一个警告，并且不会起作用：\n\n```vue\n\u003ctemplate v-show=\"isVisible\"\u003e\n  \u003cdiv\u003e内容\u003c/div\u003e\n\u003c/template\u003e\n```\n这种情况下，Vue 会提示 `v-show` 不能直接应用在 `\u003ctemplate\u003e` 标签上，因为 `\u003ctemplate\u003e` 并不渲染任何实际的 DOM 元素。\n\n### 正确的使用方式：\n如果你想根据条件控制 `\u003ctemplate\u003e` 中的内容的显示与隐藏，可以将 `v-show` 或 `v-if` 应用到 `\u003ctemplate\u003e` 内部的实际渲染元素上：\n\n```vue\n\u003ctemplate\u003e\n  \u003cdiv v-show=\"isVisible\"\u003e\n    内容\n  \u003c/div\u003e\n\u003c/template\u003e\n```\n\n或者使用 `v-if` 来实现条件渲染：\n\n```vue\n\u003ctemplate\u003e\n  \u003cdiv v-if=\"isVisible\"\u003e\n    内容\n  \u003c/div\u003e\n\u003c/template\u003e\n```",
+    "pivot":  "- **`\u003ctemplate\u003e`** 是一个 **占位符标签**，它本身不会被渲染成 DOM 元素，所以无法使用 `v-show`。\n- 如果要控制条件渲染或显示/隐藏，应该将 `v-show` 或 `v-if` 应用到实际的 DOM 元素（如 `\u003cdiv\u003e`、`\u003cspan\u003e` 等）上，而不是 `\u003ctemplate\u003e` 本身。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2025-02-26T09:09:07.000Z",
+    "updateAt":  "2025-02-26T09:09:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  286,
+    "filterTotalNum":  1907,
+    "prev":  "b178d461-b38f-4415-8f26-d9126b5e167d",
+    "next":  "7aad6bf7-246a-4725-a614-cfcc5945cb96"
+}

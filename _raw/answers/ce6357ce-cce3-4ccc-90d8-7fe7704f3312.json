@@ -1,0 +1,21 @@
+﻿{
+    "id":  2859,
+    "exerciseKey":  "ce6357ce-cce3-4ccc-90d8-7fe7704f3312",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CORS 是如何实现跨域的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "CORS (Cross-Origin Resource Sharing) 的实现机制是通过 HTTP 头部协商来安全地控制跨域请求，其核心流程可分为**简单请求**和**预检请求**两种模式：\n\n### 一、简单请求（Simple Request）\n满足以下条件的请求会直接发送（无需预检）：\n1. **方法限制**：GET / HEAD / POST\n2. **头部限制**：仅允许以下安全头部：\n   - `Accept`、`Accept-Language`、`Content-Language`\n   - `Content-Type` 仅限 `text/plain`、`multipart/form-data`、`application/x-www-form-urlencoded`\n3. **流程**：\n   - 浏览器自动添加 `Origin` 头部（如 `Origin: https://foo.com`）\n   - 服务端响应需包含：\n     ```http\n     Access-Control-Allow-Origin: https://foo.com  // 或 *（不推荐带凭证时使用）\n     Access-Control-Allow-Credentials: true       // 可选，允许携带 Cookie\n     ```\n   - 若响应头未通过验证，浏览器会拦截响应\n\n### 二、预检请求（Preflight Request）\n不满足简单请求条件的请求（如 PUT/DELETE 或自定义头部），会先发送 OPTIONS 请求进行协商：\n1. **预检请求头部**：\n   ```http\n   OPTIONS /resource HTTP/1.1\n   Origin: https://foo.com\n   Access-Control-Request-Method: DELETE\n   Access-Control-Request-Headers: X-Custom-Header\n   ```\n2. **服务端必须响应**：\n   ```http\n   HTTP/1.1 204 No Content\n   Access-Control-Allow-Origin: https://foo.com\n   Access-Control-Allow-Methods: GET, POST, DELETE\n   Access-Control-Allow-Headers: X-Custom-Header\n   Access-Control-Max-Age: 86400  // 缓存预检结果（秒）\n   ```\n3. **正式请求**：预检通过后才会发送实际请求\n\n### 三、关键控制头部\n| 头部字段                          | 作用                                                                 |\n|-----------------------------------|----------------------------------------------------------------------|\n| `Access-Control-Allow-Origin`     | 指定允许访问的源（需精确匹配或配置动态白名单）                       |\n| `Access-Control-Expose-Headers`   | 允许前端访问的额外响应头（默认仅能获取简单响应头）                   |\n| `Access-Control-Allow-Credentials`| 是否允许携带 Cookie（需配合 `credentials: \u0027include\u0027` 使用）          |\n| `Access-Control-Allow-Methods`    | 预检请求中声明允许的 HTTP 方法                                       |\n| `Access-Control-Allow-Headers`    | 预检请求中声明允许的自定义请求头                                     |\n\n### 四、实际场景示例\n**带凭证的 API 调用**：\n```javascript\nfetch(\u0027https://api.example.com/data\u0027, {\n  credentials: \u0027include\u0027,\n  headers: { \u0027Authorization\u0027: \u0027Bearer token\u0027 }\n})\n```\n服务端需配置：\n```http\nAccess-Control-Allow-Origin: https://yourdomain.com  // 不能为 *\nAccess-Control-Allow-Credentials: true\nAccess-Control-Expose-Headers: Authorization\n```\n\n### 五、安全注意事项\n1. 避免滥用 `*` 通配符，应配置明确的源白名单\n2. 敏感操作应结合 CSRF 防护（如 SameSite Cookie）\n3. 对于复杂请求，合理设置 `Access-Control-Max-Age` 减少预检开销",
+    "pivot":  "- 简单请求通过 `Origin` + `Access-Control-Allow-Origin` 快速协商\n- 非简单请求需预检 OPTIONS 验证\n- 带凭证的请求需严格配置源和 `Allow-Credentials`\n- 服务端通过响应头声明跨域权限策略\n- 现代浏览器自动处理 CORS 流程，开发者只需正确配置头部",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2025-07-16T12:44:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  334,
+    "filterTotalNum":  1907,
+    "prev":  "6843e240-9534-4371-8b64-ba76b4aa8ed4",
+    "next":  "20f1385d-4442-43c5-bb20-2a53a9bfc6c6"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  665,
+    "exerciseKey":  "1098e46f-224f-4edb-89d2-b5ca0c5cfe68",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说对 TypeScript 中命名空间与模块的理解？区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、模块\n\n`TypeScript` 与` ECMAScript` 2015 一样，任何包含顶级 `import` 或者 `export` 的文件都被当成一个模块\n\n相反地，如果一个文件不带有顶级的`import`或者`export`声明，那么它的内容被视为全局可见的\n\n例如我们在在一个 `TypeScript` 工程下建立一个文件 `1.ts`，声明一个变量`a`，如下：\n\n```ts\nconst a = 1\n```\n\n然后在另一个文件同样声明一个变量`a`，这时候会出现错误信息\n\n ![](https://static.ecool.fun//article/e164e76f-b731-4419-9e47-0098a9f00350.png)\n\n提示重复声明`a`变量，但是所处的空间是全局的\n\n如果需要解决这个问题，则通过`import`或者`export`引入模块系统即可，如下：\n\n```ts\nconst a = 10;\n\nexport default a\n```\n\n在`typescript`中，`export`关键字可以导出变量或者类型，用法与`es6`模块一致，如下：\n\n```ts\nexport const a = 1\nexport type Person = {\n    name: String\n}\n```\n\n通过`import` 引入模块，如下：\n\n```ts\nimport { a, Person } from \u0027./export\u0027;\n```\n\n\n\n## 二、命名空间\n\n命名空间一个最明确的目的就是解决重名问题\n\n命名空间定义了标识符的可见范围，一个标识符可在多个名字空间中定义，它在不同名字空间中的含义是互不相干的\n\n这样，在一个新的名字空间中可定义任何标识符，它们不会与任何已有的标识符发生冲突，因为已有的定义都处于其他名字空间中\n\n`TypeScript` 中命名空间使用 `namespace` 来定义，语法格式如下：\n\n```ts\nnamespace SomeNameSpaceName {\n   export interface ISomeInterfaceName {      }\n   export class SomeClassName {      }\n}\n```\n\n以上定义了一个命名空间 `SomeNameSpaceName`，如果我们需要在外部可以调用 `SomeNameSpaceName` 中的类和接口，则需要在类和接口添加 `export` 关键字\n\n使用方式如下：\n\n```ts\nSomeNameSpaceName.SomeClassName\n```\n\n命名空间本质上是一个对象，作用是将一系列相关的全局变量组织到一个对象的属性，如下：\n\n```ts\nnamespace Letter {\n  export let a = 1;\n  export let b = 2;\n  export let c = 3;\n  // ...\n  export let z = 26;\n}\n```\n\n编译成`js`如下：\n\n```js\nvar Letter;\n(function (Letter) {\n    Letter.a = 1;\n    Letter.b = 2;\n    Letter.c = 3;\n    // ...\n    Letter.z = 26;\n})(Letter || (Letter = {}));\n```\n\n\n\n\n\n## 三、区别\n\n- 命名空间是位于全局命名空间下的一个普通的带有名字的  JavaScript  对象，使用起来十分容易。但就像其它的全局命名空间污染一样，它很难去识别组件之间的依赖关系，尤其是在大型的应用中\n\n- 像命名空间一样，模块可以包含代码和声明。 不同的是模块可以声明它的依赖\n\n- 在正常的TS项目开发过程中并不建议用命名空间，但通常在通过 d.ts 文件标记 js 库类型的时候使用命名空间，主要作用是给编译器编写代码的时候参考使用\n\n",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，命名空间（Namespace）和模块（Module）都是用于组织代码和提高代码可维护性的机制。它们的主要区别在于：\n\n1. **命名空间**：\n   - 命名空间用于组织全局作用域的代码，通常用于大型项目。\n   - 命名空间之间不能相互引用，每个命名空间都是独立的。\n   - 命名空间通过导入（Import）和导出（Export）来共享成员。\n2. **模块**：\n   - 模块用于组织代码块，可以包含多个文件。\n   - 模块之间可以通过`import`和`export`进行相互引用。\n   - 模块可以在编译时生成单个文件或多个文件，这取决于配置。\n\n**考察要点**：\n\n1. **命名空间概念**：理解命名空间的作用和用途。\n2. **模块概念**：理解模块的作用和用途。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-10-24T04:31:31.000Z",
+    "updateAt":  "2024-08-10T17:05:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  1256,
+    "filterTotalNum":  1907,
+    "prev":  "fff79f62-47be-438a-83bf-6f81bcc0dfe9",
+    "next":  "b7edb0a3-10d1-4857-907b-cc99acaf3516"
+}

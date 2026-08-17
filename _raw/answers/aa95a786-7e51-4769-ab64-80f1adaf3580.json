@@ -1,0 +1,21 @@
+﻿{
+    "id":  453,
+    "exerciseKey":  "aa95a786-7e51-4769-ab64-80f1adaf3580",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么推荐使用 TypeScript ？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "TypeScript是微软公司开发和维护的一种面向对象的编程语言。它是JavaScript的超集，包含其所有元素。\n\n强类型和弱类型、静态类型和动态类型是两组不同的概念。\n\n类型强弱是针对类型转换是否显示来区分，静态和动态类型是针对类型检查的时机来区分。\n\nTS对JS的改进主要是静态类型检查，静态类型检查有何意义？标准答案是“静态类型更有利于构建大型应用”。\n\n推荐使用TypeScript的原因有：\n\n* TypeScript简化了JavaScript代码，使其更易于阅读和调试。\n* TypeScript是开源的。\n* TypeScript为JavaScript ide和实践（如静态检查）提供了高效的开发工具。\n* TypeScript使代码更易于阅读和理解。\n* 使用TypeScript，我们可以大大改进普通的JavaScript。\n* TypeScript为我们提供了ES6（ECMAScript 6）的所有优点，以及更高的生产率。\n* TypeScript通过对代码进行类型检查，可以帮助我们避免在编写JavaScript时经常遇到的令人痛苦的错误。\n* 强大的类型系统，包括泛型。\n* TypeScript只不过是带有一些附加功能的JavaScript。\n* TypeScript代码可以按照ES5和ES6标准编译，以支持最新的浏览器。\n* 与ECMAScript对齐以实现兼容性。\n* 以JavaScript开始和结束。\n* 支持静态类型。\n* TypeScript将节省开发人员的时间。\n* TypeScript是ES3、ES5和ES6的超集。\n",
+    "pivot":  "**作答思路：**\n\n推荐使用TypeScript的原因包括：\n\n1. **静态类型检查**：TypeScript提供了静态类型检查，可以在开发过程中发现潜在的错误，提高代码质量。\n2. **模块化**：支持模块化编程，可以将代码组织成模块，并通过`import`和`export`来共享代码。\n3. **泛型**：支持泛型编程，允许创建可重用的组件，这些组件可以处理多种数据类型。\n4. **接口**：提供接口（Interface）来定义对象的结构，可以用于类型检查和对象交互。\n5. **编译为JavaScript**：TypeScript代码需要编译为JavaScript才能在浏览器或Node.js中运行，这意味着它具有与JavaScript完全兼容的运行时。\n6. **大型项目支持**：适合大型项目，因为它提供了更好的代码组织和维护。\n7. **生态系统**：拥有丰富的第三方库和工具，可以方便地集成到项目中。\n\n**考察要点**：\n\n1. **静态类型检查**：理解静态类型检查如何提高代码质量。\n2. **模块化和泛型**：了解TypeScript如何支持模块化和泛型编程。\n3. **大型项目支持**：了解TypeScript如何支持大型项目的开发。\n",
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-07T15:15:21.000Z",
+    "updateAt":  "2024-08-10T17:05:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1467,
+    "filterTotalNum":  1907,
+    "prev":  "149adb7b-11b7-4cc2-be36-f36b38d36f81",
+    "next":  "1464793e-3ece-4943-92af-cb470fee46f3"
+}

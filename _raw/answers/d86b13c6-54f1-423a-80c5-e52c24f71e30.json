@@ -1,0 +1,21 @@
+﻿{
+    "id":  632,
+    "exerciseKey":  "d86b13c6-54f1-423a-80c5-e52c24f71e30",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Cookie 的 SameSite 属性有什么作用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击和用户追踪。\n\n## 相关概念：\n\n* 第一方cookie：第一方 cookie 指的是由网络用户访问的域创建的 cookie。\n* 第三方cookie：第三方 cookie 是建立在别的域名不是你访问的域名（地址栏中的网址），比如：广告网络商就是最常见的第三方 cookies 的来源，他们用它们在多个网站上追踪用户的行为，当然这些活动可以用来调整广告。此外图像、 JavaScript 和 iframe 通常也会导致第三方 cookies 的生成。\n\n## CSRF 攻击是什么？\n\nCookie 往往用来存储用户的身份信息，恶意网站可以设法伪造带有正确 Cookie 的 HTTP 请求，这就是 CSRF 攻击。\n\n举例来说，用户登陆了银行网站your-bank.com，银行服务器发来了一个 Cookie。\n\n```\nSet-Cookie:id=a3fWa;\n```\n\n用户后来又访问了恶意网站`malicious.com`，上面有一个表单。\n\n```html\n\u003cform action=\"your-bank.com/transfer\" method=\"POST\"\u003e\n  ...\n\u003c/form\u003e\n```\n\n用户一旦被诱骗发送这个表单，银行网站就会收到带有正确 Cookie 的请求。为了防止这种攻击，表单一般都带有一个随机 token，告诉服务器这是真实请求。\n\n```html\n\u003cform action=\"your-bank.com/transfer\" method=\"POST\"\u003e\n  \u003cinput type=\"hidden\" name=\"token\" value=\"dad3weg34\"\u003e\n  ...\n\u003c/form\u003e\n```\n\n这种第三方网站引导发出的 Cookie，就称为第三方 Cookie。它除了用于 CSRF 攻击，还可以用于用户追踪。\n\n比如，Facebook 在第三方网站插入一张看不见的图片。\n\n```\n\u003cimg src=\"facebook.com\" style=\"visibility:hidden;\"\u003e\n```\n\n浏览器加载上面代码时，就会向 Facebook 发出带有 Cookie 的请求，从而 Facebook 就会知道你是谁，访问了什么网站。\n\n## SameSite 属性\n\nCookie 的SameSite属性用来限制第三方 Cookie，从而减少安全风险。\n\n它可以设置三个值:\n\n* Strict\n* Lax\n* None\n\n### Strict\n\nStrict最为严格，完全禁止第三方 Cookie，跨站点时，任何情况下都不会发送 Cookie。换言之，只有当前网页的 URL 与请求目标一致，才会带上 Cookie。\n\n```\nSet-Cookie: CookieName=CookieValue; SameSite=Strict;\n```\n\n这个规则过于严格，可能造成非常不好的用户体验。比如，当前网页有一个 GitHub 链接，用户点击跳转就不会带有 GitHub 的 Cookie，跳转过去总是未登陆状态。\n\n### Lax\n\nLax规则稍稍放宽，大多数情况也是不发送第三方 Cookie，但是导航到目标网址的 Get 请求除外。\n\n```\nSet-Cookie: CookieName=CookieValue; SameSite=Lax;\n```\n\n导航到目标网址的 GET 请求，只包括三种情况：链接，预加载请求，GET 表单。详见下表。\n\n|请求类型|示例|正常情况|Lax|\n|--|--|--|--|\n|链接|\t\u003ca href=\"...\"\u003e\u003c/a\u003e|\t发送 Cookie|\t发送 Cookie|\n|预加载|\t\u003clink rel=\"prerender\" href=\"...\"/\u003e|\t发送 Cookie|\t发送 Cookie|\n|GET| 表单\t\u003cform method=\"GET\" action=\"...\"\u003e|发送 Cookie|\t发送 Cookie|\n|POST| 表单\t\u003cform method=\"POST\" action=\"...\"\u003e\t|发送 Cookie|\t不发送|\n|iframe|\t\u003ciframe src=\"...\"\u003e\u003c/iframe\u003e|\t发送 Cookie\t|不发送|\n|AJAX|\t$.get(\"...\")\t|发送 Cookie|\t不发送|\n|Image|\t\u003cimg src=\"...\"\u003e\t|发送 Cookie|\t不发送|\n\n设置了Strict或Lax以后，基本就杜绝了 CSRF 攻击。当然，前提是用户浏览器支持 SameSite 属性。\n\n### None\n\n网站可以选择显式关闭SameSite属性，将其设为None，这样无论是否跨站都会发送 Cookie。不过，前提是必须同时设置Secure属性（Cookie 只能通过 HTTPS 协议发送），否则无效。\n\n下面的设置无效。\n\n```\nSet-Cookie: widget_session=abc123; SameSite=None\n```\n\n下面的设置有效。\n\n```\nSet-Cookie: widget_session=abc123; SameSite=None; Secure\n```\n",
+    "pivot":  "**答题要点：**\n\nChrome 51 开始支持新的 Cookie 属性 SameSite，用于防止 CSRF 攻击和用户追踪。SameSite 属性有三个值：Strict、Lax 和 None。\n\n- **Strict**：最严格的设置，完全禁止第三方 Cookie，只有当前网页的 URL 与请求目标一致时才会发送 Cookie。\n- **Lax**：允许 GET 请求跨站发送 Cookie，包括链接、预加载请求和 GET 表单。\n- **None**：允许任何类型的请求跨站发送 Cookie，但必须同时设置 Secure 属性。\nSameSite 属性可以减少 CSRF 攻击的风险，但也可能影响用户体验，例如，点击外部链接时可能需要重新登录。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-09-25T09:49:45.000Z",
+    "updateAt":  "2024-08-10T17:05:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1289,
+    "filterTotalNum":  1907,
+    "prev":  "d8fe4e1f-93ef-440b-a06b-81d22897afa2",
+    "next":  "d370ad63-b673-4887-899d-6446148bcfe7"
+}

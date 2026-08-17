@@ -1,0 +1,21 @@
+﻿{
+    "id":  2050,
+    "exerciseKey":  "49ec948f-9b64-4d28-b97f-3796518a6c16",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现lodash的set和get方法",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* `set` 方法可以根据提供的路径（以点分隔）设置对象的值，如果路径上的嵌套对象不存在，则会递归创建。\n* `get` 方法会根据提供的路径获取对象中的值，如果路径上的某个键不存在或对象中断，返回 `undefined`。\n\n下面是提供的参考：\n\n```javascript\nfunction set(object, path, value) {\n  const keys = path.split(\u0027.\u0027);\n  let current = object;\n\n  for (let i = 0; i \u003c keys.length - 1; i++) {\n    const key = keys[i];\n    if (!(key in current)) {\n      // Create nested objects if the key doesn\u0027t exist\n      current[key] = {};\n    }\n    current = current[key];\n  }\n\n  current[keys[keys.length - 1]] = value;\n}\n\nfunction get(object, path) {\n  const keys = path.split(\u0027.\u0027);\n  let current = object;\n\n  for (const key of keys) {\n    if (typeof current !== \u0027object\u0027 || !(key in current)) {\n      return undefined;\n    }\n    current = current[key];\n  }\n\n  return current;\n}\n```\n\n下面是使用的示例：\n\n```javascript\nconst obj = { \n  foo: {\n    bar: {\n      baz: \u0027Hello, World!\u0027\n    }\n  }\n};\n\nset(obj, \u0027foo.bar.baz\u0027, \u0027New Value\u0027);\nconsole.log(get(obj, \u0027foo.bar.baz\u0027)); // Output: New Value\n\nconsole.log(get(obj, \u0027foo.bar.qux\u0027)); // Output: undefined\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-10-25T11:30:05.000Z",
+    "updateAt":  "2023-10-30T10:38:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  761,
+    "filterTotalNum":  1907,
+    "prev":  "27a34d44-74b5-4406-b6e6-61f4b1d203a1",
+    "next":  "c1728539-a263-46bd-b5b7-583191a4ccf8"
+}

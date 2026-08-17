@@ -1,0 +1,21 @@
+﻿{
+    "id":  418,
+    "exerciseKey":  "665b5487-848c-424b-b6a5-800169ee8fd5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现Object.assign",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Object.assign()方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象（请注意这个操作是浅拷贝）\n\n```js\nObject.defineProperty(Object, \u0027assign\u0027, {\n  value: function(target, ...args) {\n    if (target == null) {\n      return new TypeError(\u0027Cannot convert undefined or null to object\u0027);\n    }\n    \n    // 目标对象需要统一是引用数据类型，若不是会自动转换\n    const to = Object(target);\n\n    for (let i = 0; i \u003c args.length; i++) {\n      // 每一个源对象\n      const nextSource = args[i];\n      if (nextSource !== null) {\n        // 使用for...in和hasOwnProperty双重判断，确保只拿到本身的属性、方法（不包含继承的）\n        for (const nextKey in nextSource) {\n          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {\n            to[nextKey] = nextSource[nextKey];\n          }\n        }\n      }\n    }\n    return to;\n  },\n  // 不可枚举\n  enumerable: false,\n  writable: true,\n  configurable: true,\n})\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:08:33.000Z",
+    "updateAt":  "2021-07-07T00:13:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  1502,
+    "filterTotalNum":  1907,
+    "prev":  "a6a869f2-a5f5-451e-8f1d-eb25cea4750f",
+    "next":  "8b62ba3f-fe82-4bd5-b1a3-057b668ef01f"
+}

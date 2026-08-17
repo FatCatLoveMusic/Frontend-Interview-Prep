@@ -1,0 +1,21 @@
+﻿{
+    "id":  319,
+    "exerciseKey":  "f1de93ec-d1c8-48b0-98a9-bf256dfe2df0",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "前端的常规安全策略",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e定期请第三方机构做安全性测试，漏洞扫描\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e使用第三方开源库做上线前的安全测试，可以考虑融合到CI中\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003ecode review 保证代码质量\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e默认项目中设置对应的 Header 请求头，如 X-XSS-Protection、 X-Content-Type-Options 、X-Frame-Options Header、Content-Security-Policy 等等\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003cli\u003e\u003cspan style=\"font-size:10.5ptpx\"\u003e\u003cspan style=\"color:#24292e\"\u003e\u003cspan style=\"background-color:#ffffff\"\u003e\u003cspan style=\"letter-spacing:0ptpx\"\u003e对第三方包和库做检测：NSP(Node Security Platform)，Snyk\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/span\u003e\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp\u003e\u003cstrong\u003e答题要点：\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e1、防止跨站脚本攻击（XSS）\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e使用\u003ccode\u003eHttpOnly\u003c/code\u003e属性保护Cookies，防止Cookies被JavaScript访问。\u003c/li\u003e\u003cli\u003e对输入数据进行验证和清洗，避免恶意代码注入。\u003c/li\u003e\u003cli\u003e使用\u003ccode\u003eContent Security Policy\u003c/code\u003e（CSP）来限制可以加载和执行的资源。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e2、防止跨站请求伪造（CSRF）\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e在请求中添加CSRF令牌，确保每个请求都包含验证信息。\u003c/li\u003e\u003cli\u003e验证请求的来源，确保请求来自可信的域。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e3、数据验证和清洗\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e对用户输入进行验证，防止SQL注入、命令注入等攻击。\u003c/li\u003e\u003cli\u003e清洗输入数据，去除可能包含恶意代码的字符。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e4、安全编码实践\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e使用安全的编程实践，避免常见的编程错误和安全漏洞。\u003c/li\u003e\u003cli\u003e避免使用已知的漏洞代码库和框架。\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e5、HTTPS的使用\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cul\u003e\u003cli\u003e使用HTTPS协议加密数据传输，保护数据不被中间人攻击。\u003c/li\u003e\u003cli\u003e对敏感数据使用TLS/SSL加密\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T11:03:43.000Z",
+    "updateAt":  "2024-07-18T23:19:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1601,
+    "filterTotalNum":  1907,
+    "prev":  "ffc383ed-5d5e-4313-8fa4-8c940d423b37",
+    "next":  "ce52c8e9-5835-4021-ba1c-1cda46ba1578"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1963,
+    "exerciseKey":  "bc3c6285-2523-4d07-94c4-9dc539b63ece",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 useUpdate 方法，调用时强制组件重新渲染",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以利用 `useReducer` 每次调用 `updateReducer` 方法，来达到强制组件重新渲染的目的。\n\n```js\nimport { useReducer } from \u0027react\u0027;\n\nconst updateReducer = (num: number): number =\u003e (num + 1) % 1_000_000;\n\nexport default function useUpdate(): () =\u003e void {\n  const [, update] = useReducer(updateReducer, 0);\n\n  return update;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-04-26T08:59:04.000Z",
+    "updateAt":  "2023-05-02T20:07:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  847,
+    "filterTotalNum":  1907,
+    "prev":  "ea493a51-70e5-481b-b5ec-2ce6900a7eea",
+    "next":  "fe737e1d-6ee1-4344-9ab7-7d3dafb749f6"
+}

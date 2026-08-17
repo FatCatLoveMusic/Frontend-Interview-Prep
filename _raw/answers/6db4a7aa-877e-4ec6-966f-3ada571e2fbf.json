@@ -1,0 +1,21 @@
+﻿{
+    "id":  300,
+    "exerciseKey":  "6db4a7aa-877e-4ec6-966f-3ada571e2fbf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是虚拟DOM？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "虚拟DOM（VDOM）它是真实DOM的内存表示,一种编程概念，一种模式。它会和真实的DOM同步，比如通过ReactDOM这种库，这个同步的过程叫做调和(reconcilation)。\n\n虚拟DOM更多是一种模式，不是一种特定的技术。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:35:12.000Z",
+    "updateAt":  "2021-07-04T19:24:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  1620,
+    "filterTotalNum":  1907,
+    "prev":  "702b094e-0bdc-4be6-b8c7-e2a70dc13688",
+    "next":  "52e2ccda-70e2-438b-8328-ef25f78afb6a"
+}

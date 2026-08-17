@@ -1,0 +1,21 @@
+﻿{
+    "id":  233,
+    "exerciseKey":  "51699bda-02be-4433-b2bf-450c2655594f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue中组件和插件有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、组件是什么\n\n回顾以前对组件的定义：\n\n组件就是把图形、非图形的各种逻辑均抽象为一个统一的概念（组件）来实现开发的模式，在`Vue`中每一个`.vue`文件都可以视为一个组件\n\n组件的优势\n\n- 降低整个系统的耦合度，在保持接口不变的情况下，我们可以替换不同的组件快速完成需求，例如输入框，可以替换为日历、时间、范围等组件作具体的实现\n\n- 调试方便，由于整个系统是通过组件组合起来的，在出现问题的时候，可以用排除法直接移除组件，或者根据报错的组件快速定位问题，之所以能够快速定位，是因为每个组件之间低耦合，职责单一，所以逻辑会比分析整个系统要简单\n\n- 提高可维护性，由于每个组件的职责单一，并且组件在系统中是被复用的，所以对代码进行优化可获得系统的整体升级\n\n## 二、插件是什么\n\n插件通常用来为 `Vue` 添加全局功能。插件的功能范围没有严格的限制——一般有下面几种：\n\n- 添加全局方法或者属性。如: `vue-custom-element`\n- 添加全局资源：指令/过滤器/过渡等。如 `vue-touch`\n- 通过全局混入来添加一些组件选项。如` vue-router`\n- 添加 `Vue` 实例方法，通过把它们添加到 `Vue.prototype` 上实现。\n- 一个库，提供自己的 `API`，同时提供上面提到的一个或多个功能。如` vue-router`\n\n## 三、两者的区别\n\n两者的区别主要表现在以下几个方面：\n\n- 编写形式\n- 注册形式\n- 使用场景\n\n\n### 编写形式\n\n#### 编写组件\n\n编写一个组件，可以有很多方式，我们最常见的就是`vue`单文件的这种格式，每一个`.vue`文件我们都可以看成是一个组件\n\n`vue`文件标准格式\n\n```vue\n\u003ctemplate\u003e\n\u003c/template\u003e\n\u003cscript\u003e\nexport default{ \n    ...\n}\n\u003c/script\u003e\n\u003cstyle\u003e\n\u003c/style\u003e\n```\n\n我们还可以通过`template`属性来编写一个组件，如果组件内容多，我们可以在外部定义`template`组件内容，如果组件内容并不多，我们可直接写在`template`属性上\n\n```js\n\u003ctemplate id=\"testComponent\"\u003e     // 组件显示的内容\n    \u003cdiv\u003ecomponent!\u003c/div\u003e   \n\u003c/template\u003e\n\nVue.component(\u0027componentA\u0027,{ \n    template: \u0027#testComponent\u0027  \n    template: `\u003cdiv\u003ecomponent\u003c/div\u003e`  // 组件内容少可以通过这种形式\n})\n```\n\n#### 编写插件\n`vue`插件的实现应该暴露一个 `install` 方法。这个方法的第一个参数是 `Vue` 构造器，第二个参数是一个可选的选项对象\n\n```js\nMyPlugin.install = function (Vue, options) {\n  // 1. 添加全局方法或 property\n  Vue.myGlobalMethod = function () {\n    // 逻辑...\n  }\n\n  // 2. 添加全局资源\n  Vue.directive(\u0027my-directive\u0027, {\n    bind (el, binding, vnode, oldVnode) {\n      // 逻辑...\n    }\n    ...\n  })\n\n  // 3. 注入组件选项\n  Vue.mixin({\n    created: function () {\n      // 逻辑...\n    }\n    ...\n  })\n\n  // 4. 添加实例方法\n  Vue.prototype.$myMethod = function (methodOptions) {\n    // 逻辑...\n  }\n}\n```\n\n\n### 注册形式\n\n#### 组件注册\n\n`vue`组件注册主要分为全局注册与局部注册\n\n全局注册通过`Vue.component`方法，第一个参数为组件的名称，第二个参数为传入的配置项\n\n```js\nVue.component(\u0027my-component-name\u0027, { /* ... */ })\n```\n\n局部注册只需在用到的地方通过`components`属性注册一个组件\n\n```\nconst component1 = {...} // 定义一个组件\n\nexport default {\n\tcomponents:{\n\t\tcomponent1   // 局部注册\n\t}\n}\n```\n\n\n#### 插件注册\n插件的注册通过`Vue.use()`的方式进行注册（安装），第一个参数为插件的名字，第二个参数是可选择的配置项\n\n```\nVue.use(插件名字,{ /* ... */} )\n```\n\n注意的是：\n\n注册插件的时候，需要在调用 `new Vue()` 启动应用之前完成\n\n`Vue.use`会自动阻止多次注册相同插件，只会注册一次\n\n\n\n### 使用场景\n\n具体的其实在插件是什么章节已经表述了，这里在总结一下\n\n组件 `(Component)` 是用来构成你的 `App` 的业务模块，它的目标是 `App.vue`\n\n插件 `(Plugin)` 是用来增强你的技术栈的功能模块，它的目标是 `Vue` 本身\n\n简单来说，插件就是指对`Vue`的功能的增强或补充\n",
+    "pivot":  "在Vue.js中，组件和插件是两个重要的概念，它们各自有不同的用途和编写方式。\n\n#### 组件\n\n组件是Vue.js的核心概念之一，用于构建应用程序的各个部分。在Vue中，`.vue`文件可以视为一个组件。\n\n#### 插件\n\n插件是用来扩展Vue.js功能的外部库或工具，它可以添加全局方法、属性、指令、过渡效果等。\n\n插件的主要用途包括：\n\n- 添加全局方法或属性。\n- 添加全局资源，如指令、过滤器、过渡效果等。\n- 通过全局混入来添加组件选项。\n- 添加Vue实例方法。\n- 提供自己的API，同时提供以上功能。\n插件的编写方式通常包括暴露一个`install`方法，该方法接收Vue构造器和可选的选项对象作为参数。\n\n插件的注册方式是通过`Vue.use`方法：\n\n- `Vue.use(插件名, {选项})`：第一个参数是插件的名字，第二个参数是可选的配置项。\n\n#### 区别\n\n组件和插件的区别主要体现在编写形式、注册形式和使用场景上：\n\n- **编写形式**：组件通常通过`.vue`文件或`template`属性定义；插件则需要定义一个`install`方法。\n- **注册形式**：组件可以通过`Vue.component`全局注册或通过局部注册；插件则通过`Vue.use`方法注册。\n- **使用场景**：组件用于构建应用的业务模块；插件用于增强或补充Vue.js的功能。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T03:36:49.000Z",
+    "updateAt":  "2024-08-10T17:04:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1686,
+    "filterTotalNum":  1907,
+    "prev":  "a88670ef-a898-4676-a272-cabf8bdfade7",
+    "next":  "c0ba0aa2-8660-4049-9a1a-9264259f3182"
+}

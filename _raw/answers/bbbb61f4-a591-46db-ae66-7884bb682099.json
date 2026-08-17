@@ -1,0 +1,21 @@
+﻿{
+    "id":  2484,
+    "exerciseKey":  "bbbb61f4-a591-46db-ae66-7884bb682099",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "html 元素节点上， 有多个 class 名称，这几个class 名称对应的样式渲染优先级是如何的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 HTML 元素上，多个 `class` 名称的样式渲染优先级（或称为特指度）是由 CSS 的特指度计算规则决定的。具体来说，CSS 选择器的优先级是由以下几个部分组成的：\n\n### 特指度计算规则\n\n1. **ID 选择器**（如 `#header`）：特指度最高。\n2. **类选择器**（如 `.menu`）、属性选择器（如 `[type=\"text\"]`）和伪类选择器（如 `:hover`）：特指度次之。\n3. **元素选择器**（如 `div`）和伪元素选择器（如 `::before`）：特指度最低。\n4. **通配符选择器**（如 `*`）、组合器（如 `\u003e`、`+`）和伪类（如 `:not()`）的特指度通常较低。\n\n### 计算多个 `class` 的优先级\n\n当一个元素上有多个 `class` 名称时，每个 `class` 名称的样式规则都会应用到该元素。若多个 `class` 选择器定义了相同的 CSS 属性，浏览器会按照以下规则决定哪个样式优先应用：\n\n1. **特指度**：在多个 `class` 选择器的情况下，优先应用特指度更高的规则。例如，`.class1` 和 `.class2` 的特指度相同，那么后定义的样式会覆盖先定义的样式。\n\n2. **样式表的顺序**：如果多个样式规则的特指度相同，那么后定义的规则会覆盖先定义的规则。例如，如果 CSS 文件中 `.menu { color: red; }` 在 `.header { color: blue; }` 之后，那么 `.menu` 的样式会被应用。\n\n3. **内联样式**：内联样式（即 `style` 属性中的样式）具有比外部样式表更高的特指度。如果元素上有内联样式，它们会覆盖 `class` 中定义的样式。\n\n4. **`!important` 声明**：如果 CSS 属性使用了 `!important`，它将具有最高的优先级，覆盖所有其他没有 `!important` 的规则。\n\n### 示例\n\n```html\n\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"UTF-8\"\u003e\n    \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003e\n    \u003ctitle\u003eClass Priority Example\u003c/title\u003e\n    \u003cstyle\u003e\n        .class1 {\n            color: red;\n        }\n        .class2 {\n            color: blue;\n        }\n        .class1.class2 {\n            color: green;\n        }\n    \u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n    \u003cdiv class=\"class1 class2\"\u003eThis text will be green.\u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\n在这个例子中，`\u003cdiv\u003e` 元素同时应用了 `.class1` 和 `.class2`，并且 `.class1.class2` 的选择器具有更高的特指度，因此 `color` 属性设置为 `green`。",
+    "pivot":  "多个 `class` 名称的样式渲染优先级由 CSS 选择器的特指度、样式表的定义顺序、内联样式和 `!important` 声明共同决定。在特指度相同的情况下，后定义的样式会覆盖前定义的样式。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-09-10T10:56:24.000Z",
+    "isCollected":  false,
+    "currentIndex":  504,
+    "filterTotalNum":  1907,
+    "prev":  "b153090e-a6cc-4503-88df-25a1a77c62da",
+    "next":  "2ca37e15-70b8-4e97-abd5-d5d6170a2eeb"
+}

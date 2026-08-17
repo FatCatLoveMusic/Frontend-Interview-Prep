@@ -1,0 +1,21 @@
+﻿{
+    "id":  1567,
+    "exerciseKey":  "e8118221-94ab-44c9-ab83-299e6eefee15",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何判断一个对象是否为空对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nfunction checkNullObj(obj) {\n  return Object.keys(obj).length === 0;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:42:52.000Z",
+    "updateAt":  "2021-11-17T22:48:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  1223,
+    "filterTotalNum":  1907,
+    "prev":  "125134e6-1cc2-460b-9770-60d464365e89",
+    "next":  "e1584502-c0d4-416f-abe4-cc0a01c6002d"
+}

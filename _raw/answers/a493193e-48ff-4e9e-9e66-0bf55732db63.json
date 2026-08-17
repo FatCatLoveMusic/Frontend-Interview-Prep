@@ -1,0 +1,21 @@
+﻿{
+    "id":  567,
+    "exerciseKey":  "a493193e-48ff-4e9e-9e66-0bf55732db63",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对 Object.defineProperty 的理解",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。\n\n该方法接受三个参数，第一个参数是 obj：要定义属性的对象，第二个参数是 prop：要定义或修改的属性的名称或 Symbol，第三个参数是 descriptor：要定义或修改的属性描述符。\n\n```javascript\nconst obj = {};\nObject.defineProperty(obj, \"property\", { value: 18 });\nconsole.log(obj.property); // 18\n```\n\n虽然我们可以直接添加属性和值，但是使用这种方式，我们能进行更多的配置。\n\n函数的第三个参数 descriptor 所表示的属性描述符有两种形式：数据描述符和存取描述符。数据描述符是一个具有值的属性，该值可以是可写的，也可以是不可写的。存取描述符是由 getter 函数和 setter 函数所描述的属性。一个描述符只能是这两者其中之一；不能同时是两者。\n\n这两种同时拥有下列两种键值：\n\n* configurable：是否可以删除目标属性或是否可以再次修改属性的特性（writable, configurable, enumerable）。设置为true可以被删除或可以重新设置特性；设置为false，不能被可以被删除或不可以重新设置特性。默认为false。\n* enumerable：当且仅当该属性的 enumerable 键值为 true 时，该属性才会出现在对象的枚举属性中。默认为 false。\n\n```javascript\nconst obj = { property: 24 };\nObject.defineProperty(obj, \"property\", { configurable: true });\ndelete obj[\"property\"]; // true\nobj; // {}\n// 改变状态\nconst obj = { property: 24 };\nObject.defineProperty(obj, \"property\", { configurable: false });\ndelete obj[\"property\"]; // false\nobj; // {\u0027property\u0027: 24}\n```\n\n```javascript\nconst obj = { property1: 24, property2: 34, property3: 54 };\nObject.defineProperty(obj, \"property1\", { enumerable: true });\nfor (i in obj) {\n  console.log(i);\n}\n// property1\n// property2\n// property3\n// 改状态\n\nObject.defineProperty(obj, \"property1\", { enumerable: false });\nfor (i in obj) {\n  console.log(i);\n}\n// property2\n// property3\n\n```\n\n数据描述符还具有以下可选键值：\n\n* value：该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。\n* writable：当且仅当该属性的 writable 键值为 true 时，属性的值，也就是上面的 value，才能被赋值运算符改变。默认为 false。\n\n```javascript\nconst obj = {};\nObject.defineProperty(obj, \"property1\", { value: 18 });\nobj; // {\u0027property1\u0027: 18}\n```\n\n```javascript\nconst obj = {};\nObject.defineProperty(obj, \"property1\", { value: 18, writable: false });\nobj.property1 = 24;\nobj; // {\u0027property1\u0027: 18}\n\n// 改变状态\nconst obj = {};\nObject.defineProperty(obj, \"property1\", { value: 18, writable: true });\nobj.property1 = 24;\nobj; // {\u0027property1\u0027: 24}\n\n```\n\n存取描述符还具有以下可选键值：\n\n* get：属性的 getter 函数，如果没有 getter，则为 undefined。当访问该属性时，会调用此函数。执行时不传入任何参数，但是会传入 this 对象（由于继承关系，这里的 this 并不一定是定义该属性的对象）。该函数的返回值会被用作属性的值。默认为 undefined。\n* set：属性的 setter 函数，如果没有 setter，则为 undefined。当属性值被修改时，会调用此函数。该方法接受一个参数（也就是被赋予的新值），会传入赋值时的 this 对象。默认为 undefined。\n\n```javascript\nconst obj = {};\nObject.defineProperty(obj, \"property1\", {\n  get(value) {\n    return value;\n  },\n  set(newValue) {\n    value = newValue;\n  },\n});\n\n```\n\n\n",
+    "pivot":  "### Object.defineProperty() 方法\n\n- **定义**：`Object.defineProperty()` 方法在对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。\n- **参数**：\n  - `obj`：要定义属性的对象。\n  - `prop`：要定义或修改的属性的名称或 Symbol。\n  - `descriptor`：要定义或修改的属性描述符。\n\n### 属性描述符\n\n- **数据描述符**：包含值和可选的 `writable` 和 `configurable` 键。\n  - `value`：属性的值。\n  - `writable`：控制属性值是否可被重写。\n  - `configurable`：控制属性是否可被删除或重新定义。\n- **存取描述符**：包含 `get` 和 `set` 函数。\n  - `get`：访问属性时调用的函数。\n  - `set`：属性值被修改时调用的函数。\n\n### 总结\n\n- `Object.defineProperty()` 方法提供了更精细的控制来定义或修改对象的属性。\n- 描述符允许开发者控制属性的可配置性、可枚举性、值的可写性，以及是否需要 getter 和 setter。\n- 使用这些选项可以创建更安全、更易于管理的对象属性。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-31T15:05:46.000Z",
+    "updateAt":  "2024-08-10T17:05:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1353,
+    "filterTotalNum":  1907,
+    "prev":  "89dcd3da-6e76-4935-9232-ce96d2b801bb",
+    "next":  "18682a73-0c4e-4859-96fd-2a6fde7587b7"
+}

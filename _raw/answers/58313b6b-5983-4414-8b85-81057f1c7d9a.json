@@ -1,0 +1,21 @@
+﻿{
+    "id":  80,
+    "exerciseKey":  "58313b6b-5983-4414-8b85-81057f1c7d9a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst box = { x: 10, y: 20 };\n\nObject.freeze(box);\n\nconst shape = box;\nshape.x = 100;\nconsole.log(shape)\n```",
+    "options":  "{\"options\":[\"{ x: 100, y: 20 }\",\"{ x: 10, y: 20 }\",\"{ x: 100 }\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`Object.freeze`使得无法添加、删除或修改对象的属性（除非属性的值是另一个对象）。\n当我们创建变量`shape`并将其设置为等于冻结对象`box`时，`shape`指向的也是冻结对象。你可以使用`Object.isFrozen`检查一个对象是否被冻结，上述情况，`Object.isFrozen（shape）`将返回`true`。\n由于`shape`被冻结，并且`x`的值不是对象，所以我们不能修改属性`x`。 `x`仍然等于`10`，`{x：10，y：20}`被打印。\n注意，上述例子我们对属性`x`进行修改，可能会导致抛出TypeError异常（最常见但不仅限于严格模式下时）。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2024-08-03T21:05:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  1839,
+    "filterTotalNum":  1907,
+    "prev":  "4d6b5cd5-7b0d-460a-9a20-010d885349a0",
+    "next":  "4d2b6272-e362-4c49-bf69-7f2c2e253e61"
+}

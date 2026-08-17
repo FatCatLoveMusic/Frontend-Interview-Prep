@@ -1,0 +1,21 @@
+﻿{
+    "id":  79,
+    "exerciseKey":  "4d2b6272-e362-4c49-bf69-7f2c2e253e61",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nfunction addToList(item, list) {\n  return list.push(item);\n}\n\nconst result = addToList(\"apple\", [\"banana\"]);\nconsole.log(result);\n```",
+    "options":  "{\"options\":[\"[\u0027apple\u0027, \u0027banana\u0027]\",\"2\",\"true\",\"undefined\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`push()`方法返回新数组的长度。一开始，数组包含一个元素（字符串`\"banana\"`），长度为1。 在数组中添加字符串`\"apple\"`后，长度变为2，并将从`addToList`函数返回。\n`push`方法修改原始数组，如果你想从函数返回数组而不是数组长度，那么应该在push `item`之后返回`list`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:23:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1840,
+    "filterTotalNum":  1907,
+    "prev":  "58313b6b-5983-4414-8b85-81057f1c7d9a",
+    "next":  "fa5c044e-7c3c-4995-b929-09b950d82a16"
+}

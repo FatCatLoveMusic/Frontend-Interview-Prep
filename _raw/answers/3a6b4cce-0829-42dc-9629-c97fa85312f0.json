@@ -1,0 +1,21 @@
+﻿{
+    "id":  165,
+    "exerciseKey":  "3a6b4cce-0829-42dc-9629-c97fa85312f0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS中，有哪些方式可以隐藏页面元素？有什么区别?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、前言\n\n在平常的样式排版中，我们经常遇到将某个模块隐藏的场景\n\n通过`css`隐藏元素的方法有很多种，它们看起来实现的效果是一致的\n\n但实际上每一种方法都有一丝轻微的不同，这些不同决定了在一些特定场合下使用哪一种方法\n\n## 二、实现方式\n\n通过`css`实现隐藏元素方法有如下：\n\n- display:none\n- visibility:hidden\n- opacity:0\n- 设置height、width模型属性为0\n- position:absolute\n- clip-path\n\n### display:none\n\n设置元素的`display`为`none`是最常用的隐藏元素的方法\n\n```css\n.hide {\n    display:none;\n}\n```\n\n将元素设置为`display:none`后，元素在页面上将彻底消失\n\n元素本身占有的空间就会被其他元素占有，也就是说它会导致浏览器的重排和重绘\n\n消失后，自身绑定的事件不会触发，也不会有过渡效果\n\n特点：元素不可见，不占据空间，无法响应点击事件\n\n### visibility:hidden\n\n设置元素的`visibility`为`hidden`也是一种常用的隐藏元素的方法\n\n从页面上仅仅是隐藏该元素，DOM结果均会存在，只是当时在一个不可见的状态，不会触发重排，但是会触发重绘\n\n```css\n.hidden{\n    visibility:hidden\n}\n```\n\n给人的效果是隐藏了，所以他自身的事件不会触发\n\n特点：元素不可见，占据页面空间，无法响应点击事件\n\n\n### opacity:0\n\n`opacity`属性表示元素的透明度，将元素的透明度设置为0后，在我们用户眼中，元素也是隐藏的\n\n不会引发重排，一般情况下也会引发重绘\n\n\u003e 如果利用 animation 动画，对 opacity 做变化（animation会默认触发GPU加速），则只会触发 GPU 层面的 composite，不会触发重绘\n\n```css\n.transparent {\n    opacity:0;\n}\n```\n\n由于其仍然是存在于页面上的，所以他自身的的事件仍然是可以触发的，但被他遮挡的元素是不能触发其事件的\n\n需要注意的是：其子元素不能设置opacity来达到显示的效果\n\n特点：改变元素透明度，元素不可见，占据页面空间，可以响应点击事件\n\n\n\n### 设置height、width属性为0\n\n将元素的`margin`，`border`，`padding`，`height`和`width`等影响元素盒模型的属性设置成0，如果元素内有子元素或内容，还应该设置其`overflow:hidden`来隐藏其子元素\n\n```css\n.hiddenBox {\n    margin:0;     \n    border:0;\n    padding:0;\n    height:0;\n    width:0;\n    overflow:hidden;\n}\n```\n\n特点：元素不可见，不占据页面空间，无法响应点击事件\n\n\n\n### position:absolute\n\n将元素移出可视区域\n\n```css\n.hide {\n   position: absolute;\n   top: -9999px;\n   left: -9999px;\n}\n```\n\n特点：元素不可见，不影响页面布局\n\n\n### clip-path\n\n通过裁剪的形式\n\n```css\n.hide {\n  clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);\n}\n```\n\n特点：元素不可见，占据页面空间，无法响应点击事件\n\n\n### 小结\n\n最常用的还是`display:none`和`visibility:hidden`，其他的方式只能认为是奇招，它们的真正用途并不是用于隐藏元素，所以并不推荐使用它们\n\n\n## 三、区别\n\n关于`display: none`、`  visibility: hidden`、`opacity: 0`的区别，如下表所示：\n\n|                        | display: none | visibility: hidden | opacity: 0 |\n| :--------------------- | :------------ | :----------------- | ---------- |\n| 页面中                 | 不存在        | 存在               | 存在       |\n| 重排                   | 会            | 不会               | 不会       |\n| 重绘                   | 会            | 会                 | 不一定     |\n| 自身绑定事件           | 不触发        | 不触发             | 可触发     |\n| transition             | 不支持        | 支持               | 支持       |\n| 子元素可复原           | 不能          | 能                 | 不能       |\n| 被遮挡的元素可触发事件 | 能            | 能                 | 不能       |\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:17:45.000Z",
+    "updateAt":  "2024-07-22T10:02:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  1754,
+    "filterTotalNum":  1907,
+    "prev":  "9cc69b35-a6f3-466a-8724-7b855b38a1a9",
+    "next":  "9d9b80c8-3768-4bf3-96a6-b6c6bf7cb8c3"
+}

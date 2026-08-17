@@ -1,0 +1,21 @@
+﻿{
+    "id":  572,
+    "exerciseKey":  "394752d7-88aa-4512-bd7e-91711a3904b7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "meta 标签中的viewport 有什么用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " `meta viewport` 是移动端页面中非常关键的一个配置，用于控制页面在移动设备上的 **视口（Viewport）大小以及缩放行为**。移动浏览器默认会使用一个虚拟布局视口来渲染 PC 网站，如果不进行配置，页面通常会被整体缩小显示，导致字体和布局异常。因此需要通过 `viewport` 指定页面的显示规则。\n\n## 技术分析\n\n在移动浏览器中通常存在两个概念：**layout viewport（布局视口）** 和 **visual viewport（视觉视口）**。布局视口通常会被设定为一个较大的宽度（例如约 980px），用于兼容 PC 页面，而视觉视口则是用户当前实际看到的区域。\n\n`meta viewport` 的作用是让开发者能够控制布局视口与设备屏幕之间的关系。例如常见配置：\n\n```html\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003e\n```\n\n其中 `width=device-width` 表示布局视口宽度与设备屏幕宽度保持一致，这样 CSS 中的 `px` 就会按照设备宽度进行布局。`initial-scale=1.0` 则表示页面初始缩放比例为 1，不会在加载时自动缩放。\n\n除此之外，`viewport` 还可以控制页面是否允许用户缩放（`user-scalable`）、最大和最小缩放比例（`maximum-scale`、`minimum-scale`）等，从而影响页面的交互体验。\n\n如果不设置 `viewport`，移动浏览器通常会按照 PC 页面逻辑渲染页面，再自动缩小以适应屏幕，这会导致响应式布局、媒体查询和移动端适配策略无法正常工作。\n\n## 工程实践\n\n在移动端开发中，`meta viewport` 是响应式布局的基础配置。无论是使用 `flex`、`rem`、`vw` 还是媒体查询进行适配，都依赖于正确的视口宽度。\n\n大多数移动端项目都会使用类似如下配置：\n\n```html\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\"\u003e\n```\n\n这样可以保证页面宽度与设备宽度一致，并避免用户误触导致页面缩放。如果涉及无障碍设计或需要支持放大阅读，则通常不会限制 `user-scalable`。",
+    "pivot":  "`meta viewport` 用于控制移动端浏览器的视口大小和页面缩放行为。\n\n移动浏览器默认使用较大的布局视口（如约 980px）来兼容 PC 页面。\n\n通过 `width=device-width` 可以让布局视口与设备宽度一致，从而支持响应式布局。\n\n`initial-scale`、`maximum-scale` 等参数可以控制页面的缩放比例。\n\n移动端页面适配（rem、vw、媒体查询等）都依赖正确配置 `viewport`。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-08-02T02:10:22.000Z",
+    "updateAt":  "2026-03-09T14:05:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  1348,
+    "filterTotalNum":  1907,
+    "prev":  "a19c5526-dc2d-43ac-bda7-c4b2948839a4",
+    "next":  "286f67d3-4e8d-48f5-962a-ed9cccc46335"
+}

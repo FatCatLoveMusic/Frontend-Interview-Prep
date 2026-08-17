@@ -1,0 +1,21 @@
+﻿{
+    "id":  2908,
+    "exerciseKey":  "a75d5604-a4f4-410b-9ec9-f5f5f90de35e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "watch与watchEffect 有什么区别，分别在什么场景下使用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`watch` 和 `watchEffect` 是 Vue 3 中用于响应式数据变化的两个 API，它们都可以用于监听和响应数据的变化，但有一些关键的区别。理解这两个 API 的不同用途和行为对于有效地使用 Vue 3 的响应式系统非常重要。\n\n### **1. `watch`**\n`watch` 是 Vue 3 中用于监听特定的响应式数据变化的 API。你可以选择一个或多个响应式源，并在其变化时执行相应的回调函数。\n\n#### **基本用法**\n```javascript\nimport { ref, watch } from \u0027vue\u0027;\n\nconst count = ref(0);\n\nwatch(count, (newVal, oldVal) =\u003e {\n  console.log(`count changed from ${oldVal} to ${newVal}`);\n});\n\n// 修改 count 时触发 watch\ncount.value = 1;\n```\n\n#### **特点**\n- **监听指定的响应式数据**：你需要明确指定要监听的目标，可以是一个响应式数据、多个响应式数据或 getter 函数。\n- **手动触发回调**：`watch` 只会在你指定的数据变化时触发回调函数，而不是自动运行。需要显式指定要监听的数据。\n- **获取旧值**：你可以通过 `watch` 获取到变化前的旧值。\n\n#### **用例**\n- 监听单个或多个响应式数据的变化。\n- 当数据变化时执行副作用，且可能需要使用旧值。\n- 监听复杂的 getter 函数。\n\n#### **示例**\n```javascript\nimport { ref, watch } from \u0027vue\u0027;\n\nconst count = ref(0);\nconst message = ref(\u0027Hello\u0027);\n\nwatch([count, message], ([newCount, newMessage], [oldCount, oldMessage]) =\u003e {\n  console.log(`count: ${oldCount} -\u003e ${newCount}, message: ${oldMessage} -\u003e ${newMessage}`);\n});\n\ncount.value = 1;\nmessage.value = \u0027World\u0027;\n```\n\n### **2. `watchEffect`**\n`watchEffect` 是 Vue 3 中的一种更简洁的 API，它会自动追踪其内部使用的所有响应式数据并在这些数据变化时执行副作用。它通常用于执行副作用，而不需要显式声明你要监听的响应式数据。\n\n#### **基本用法**\n```javascript\nimport { ref, watchEffect } from \u0027vue\u0027;\n\nconst count = ref(0);\n\nwatchEffect(() =\u003e {\n  console.log(`count is: ${count.value}`);\n});\n\n// 修改 count 时自动触发 watchEffect\ncount.value = 1;\n```\n\n#### **特点**\n- **自动追踪响应式数据**：`watchEffect` 会自动追踪其作用域内的所有响应式数据（如 `ref`、`reactive`）的变化，不需要显式指定要监听的数据。\n- **立即执行**：`watchEffect` 在注册时会立即执行一次，且执行副作用时会跟踪其内部使用的响应式数据。\n- **没有旧值**：`watchEffect` 不会提供旧值，它只关心当前的变化和执行副作用。\n\n#### **用例**\n- 执行副作用，如更新 DOM、进行计算或触发其他操作。\n- 自动追踪所需的响应式数据，简化监听逻辑。\n\n#### **示例**\n```javascript\nimport { ref, watchEffect } from \u0027vue\u0027;\n\nconst count = ref(0);\nconst message = ref(\u0027Hello\u0027);\n\nwatchEffect(() =\u003e {\n  console.log(`count is: ${count.value}, message is: ${message.value}`);\n});\n\ncount.value = 1;\nmessage.value = \u0027World\u0027;\n```\n\n### **主要区别**\n\n| 特性               | `watch`                                         | `watchEffect`                                   |\n|--------------------|------------------------------------------------|------------------------------------------------|\n| **触发时机**       | 当指定的数据变化时才触发                      | 在注册时立即执行一次，之后每次所依赖的响应式数据变化时触发 |\n| **数据追踪**       | 需要明确指定监听的目标（响应式数据或 getter） | 自动追踪其内部使用的所有响应式数据           |\n| **旧值**           | 提供旧值和新值                                | 只有新值，没有旧值                           |\n| **用途**           | 用于处理特定数据的变化，如执行计算、API 请求等 | 用于执行副作用，自动反应数据变化             |\n| **性能开销**       | 因为明确指定数据，所以可能性能上更高效        | 更方便，但由于自动追踪所有数据，性能上稍高于 `watch` |",
+    "pivot":  "- **`watch`**：适用于需要明确指定哪些响应式数据变化时才执行副作用的场景。它适用于监听特定数据并获取旧值，通常用于执行需要依赖旧值或多个源数据的逻辑。\n- **`watchEffect`**：适用于需要自动响应多个响应式数据变化并立即执行副作用的场景，尤其是在你不关心旧值时，它简化了代码结构。\n\n在选择时，如果你需要明确控制哪些数据触发副作用，或者需要旧值，可以使用 `watch`。如果你希望自动跟踪并响应多个数据的变化，可以使用 `watchEffect`，这样可以避免手动列出所有依赖。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-12-25T01:11:04.000Z",
+    "updateAt":  "2024-12-25T01:11:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  293,
+    "filterTotalNum":  1907,
+    "prev":  "7cdbad60-69cf-4534-aac1-2413f9fe77a1",
+    "next":  "532a249c-5130-48c4-ac7e-35c5e5ec4637"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2296,
+    "exerciseKey":  "333a617e-1a0b-4c3e-b6f2-1f627430360e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue 中的路由守卫是什么，可以在什么场景下使用？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "路由守卫（Route Guards）是 Vue Router 提供的一种功能，用来在路由跳转过程中控制导航的行为。它可以帮助开发者在用户访问某个路由之前、路由发生变化时或路由完成之后，进行一些特定的逻辑处理。\n\n#### **路由守卫的分类**\nVue 中的路由守卫分为三类：\n\n1. **全局守卫**：作用于整个应用的路由系统，影响所有路由的导航。\n   - `beforeEach`：在每个路由跳转前触发。\n   - `beforeResolve`：在所有组件内守卫和异步路由组件被解析后触发。\n   - `afterEach`：路由跳转结束后触发。\n\n2. **路由独享守卫**：作用于单个路由定义。\n   - `beforeEnter`：当进入某个特定路由前触发，仅作用于配置此守卫的路由。\n\n3. **组件内守卫**：在路由组件内使用，针对组件级别的导航控制。\n   - `beforeRouteEnter`：在路由进入该组件之前触发，可以访问组件实例。\n   - `beforeRouteUpdate`：当复用的组件接收到新的参数或路由时触发。\n   - `beforeRouteLeave`：在离开当前路由组件时触发，可以阻止导航。\n\n---\n\n### **常见使用场景**\n\n1. **身份验证与权限控制**\n   - 在用户进入某个页面前验证其身份，确保只有登录用户才能访问某些页面。如果未登录，可以在路由守卫中重定向到登录页面。\n   ```js\n   router.beforeEach((to, from, next) =\u003e {\n     if (to.meta.requiresAuth \u0026\u0026 !isLoggedIn()) {\n       next(\u0027/login\u0027); // 未登录则重定向到登录页面\n     } else {\n       next(); // 继续导航\n     }\n   });\n   ```\n\n2. **数据加载与异步请求**\n   - 在路由跳转时，预先获取页面所需的数据，在数据加载完成后再进行路由跳转。这样可以确保进入页面时所需的数据已经准备好。\n   ```js\n   router.beforeEach((to, from, next) =\u003e {\n     fetchDataForRoute(to).then(data =\u003e {\n       to.params.data = data;\n       next();\n     });\n   });\n   ```\n\n3. **阻止路由跳转**\n   - 在某些情况下，需要阻止用户离开页面，比如表单内容未保存时提醒用户确认，避免数据丢失。\n   ```js\n   beforeRouteLeave(to, from, next) {\n     if (this.formHasUnsavedChanges) {\n       const answer = window.confirm(\u0027您有未保存的更改，是否确认离开？\u0027);\n       if (!answer) next(false); // 阻止跳转\n       else next();\n     } else {\n       next();\n     }\n   }\n   ```\n\n4. **动态修改页面标题或元信息**\n   - 可以通过守卫在每次路由跳转时动态更改页面标题或 SEO 相关的 meta 信息。\n   ```js\n   router.beforeEach((to, from, next) =\u003e {\n     document.title = to.meta.title || \u0027默认标题\u0027;\n     next();\n   });\n   ```\n\n5. **访问日志**\n   - 在全局守卫中记录用户的路由访问历史或进行埋点统计，帮助分析用户行为。\n   ```js\n   router.afterEach((to, from) =\u003e {\n     console.log(`Navigated from ${from.path} to ${to.path}`);\n   });\n   ```",
+    "pivot":  "Vue 中的路由守卫通过拦截路由的导航过程，提供了对页面跳转前、跳转时、跳转后进行控制的能力。它常用于身份验证、数据加载、页面跳转控制、SEO 优化等场景，是实现复杂路由逻辑的关键机制。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-16T01:17:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  604,
+    "filterTotalNum":  1907,
+    "prev":  "a18d9351-fc9a-45b4-8ccd-3870299d5cd8",
+    "next":  "0227182d-cafd-426e-a6a7-3e71364c2755"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  354,
+    "exerciseKey":  "093766f5-6c3c-4844-a823-4a7e49864a18",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "沙漠尸体",
+    "desc":  "一个人被发现死在沙漠里，手中捏着一根火柴，周围没有任何足迹，也没有其他线索。他是怎么死的呢？",
+    "options":  null,
+    "explanation":  "男子是从飞机上坠落死亡的。\n\n可能是因为机械故障之类的原因，有部分乘客必须离开飞机，于是大家用火柴来抽签，而男子的运气不好，只能跳出飞机。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T13:16:09.000Z",
+    "updateAt":  "2021-07-04T21:24:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1566,
+    "filterTotalNum":  1907,
+    "prev":  "a7aba2d7-10f3-4ed9-8453-cc7b68edef77",
+    "next":  "7b0cfdab-9709-4c5a-91bb-7fdfbd99c327"
+}

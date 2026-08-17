@@ -1,0 +1,21 @@
+﻿{
+    "id":  1760,
+    "exerciseKey":  "9f396d9a-43dc-4f39-a53a-3d25fa1cf348",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSSOM树和DOM树是同时解析的吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "浏览器会下下载HTML解析页面生成DOM树，遇到CSS标签就开始解析CSS，这个过程不会阻塞，但是如果遇到了JS脚本，此时假如CSSOM还没有构建完，需要等待CSSOM构建完，再去执行JS脚本，然后再执行DOM解析，此时会阻塞。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-10T06:41:46.000Z",
+    "updateAt":  "2022-04-10T14:43:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  1049,
+    "filterTotalNum":  1907,
+    "prev":  "9c119d14-fe3b-4f23-9a51-222c50529890",
+    "next":  "6d437b44-17fe-4e37-b02e-ed7c7ddb2b80"
+}

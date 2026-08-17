@@ -1,0 +1,21 @@
+﻿{
+    "id":  1852,
+    "exerciseKey":  "f196bf54-110a-4440-896a-a678835bea83",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "数组中的第 k 大的数字",
+    "desc":  "给定整数数组 `nums` 和整数 `k`，请返回数组中第 `**k**` 个最大的元素。\n\n请注意，你需要找的是数组排序后的第 `k` 个最大的元素，而不是第 `k` 个不同的元素。\n\n**示例 1:**\n\n\n**输入:** `[3,2,1,5,6,4],` k = 2\n**输出:** 5\n\n**示例 2:**\n\n\n**输入:** `[3,2,3,1,2,4,5,5,6], `k = 4\n**输出:** 4\n\n**提示：** \n\n* `1 \u003c= k \u003c= nums.length \u003c= 10^4`\n* `-10^4 \u003c= nums[i] \u003c= 10^4`\n\n```js\n/**\n * @param {number[]} nums\n * @param {number} k\n * @return {number}\n */\nvar findKthLargest = function(nums, k) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "## 解题1\nArray.sort从大到小排序，并取值\n```js\n/**\n * @param {number[]} nums\n * @param {number} k\n * @return {number}\n */\nvar findKthLargest = function(nums, k) {\n    nums.sort((a, b) =\u003e b - a)\n    return nums[k - 1]\n};\n```\n\n## 解题2\n推排序\n\n1. 思路是维持一个单调递减堆stack\n2. 循环nums数组，\n3. 判断堆顶元素是否小于数组元素n，满足，则推入tmp中\n4. 直到stack为空或不满足上一步判断\n5. 如果stack的长度小于k，则推入n\n6. 如果stack的长度还小于k，并tmp有值，持续将tmp中的值填入stack\n7. 最后返回stack栈顶元素\n\n```js\n/**\n * @param {number[]} nums\n * @param {number} k\n * @return {number}\n */\nvar findKthLargest = function(nums, k) {\n    let stack = []\n\n    for (let i = 0; i \u003c nums.length; i++) {\n        const n = nums[i], tmp = []\n        while(stack.length \u0026\u0026 stack[stack.length - 1] \u003c n) {\n            tmp.push(stack.pop())\n        }\n        if (stack.length \u003c k) stack.push(n)\n        while(tmp.length \u0026\u0026 stack.length \u003c k) {\n            stack.push(tmp.pop())\n        }\n    }\n    return stack[stack.length - 1]\n};\n```\n- 时间复杂度：O(NK)，N = nums.length，K = k\n- 空间复杂度：O(K)\n\n## 解题3\n快速排序，从大到小，取数组下标k-1的元素，即为所求。\n因为题目只要求第K大的数字，所以不需要全部排序，只需要比较左右分的下标pos和k-1的大小，对部分区间进行排序即可\n```js\n/**\n * @param {number[]} nums\n * @param {number} k\n * @return {number}\n */\nvar findKthLargest = function(nums, k) {\n    quickSort(0, nums.length - 1)\n    return nums[k-1]\n\n    function quickSort(left, right) {\n        if (left \u003c right) {\n            let pos = partition(left, right)\n            if (pos \u003c k-1)  quickSort(pos + 1, right)\n            if (pos \u003e k-1)  quickSort(left, pos - 1)\n        }\n    }\n\n    function partition(left, right) {\n        const pivot = nums[right]\n        let i = left\n        for(let j = left; j \u003c right; j++) {\n            if (nums[j] \u003e= pivot) {\n                swap(i++, j)\n            }\n        }\n        swap(i, right)\n\n        return i\n    }\n\n    function swap(i, j) {\n        const tmp = nums[i]\n        nums[i] = nums[j]\n        nums[j]  = tmp\n    }\n};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-07-17T10:58:35.000Z",
+    "updateAt":  "2022-07-17T19:37:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  958,
+    "filterTotalNum":  1907,
+    "prev":  "6e2ce014-4783-4e8d-ba0a-e655a8b687cd",
+    "next":  "4fabe17b-9140-475e-acce-4f49e60c6840"
+}

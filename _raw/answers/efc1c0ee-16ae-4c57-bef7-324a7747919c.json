@@ -1,0 +1,21 @@
+﻿{
+    "id":  19,
+    "exerciseKey":  "efc1c0ee-16ae-4c57-bef7-324a7747919c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nclass Chameleon {\n  static colorChange(newColor) {\n    this.newColor = newColor\n    return this.newColor\n  }\n\n  constructor({ newColor = \u0027green\u0027 } = {}) {\n    this.newColor = newColor\n  }\n}\n\nconst freddie = new Chameleon({ newColor: \u0027purple\u0027 })\n\nconsole.log(freddie.colorChange(\u0027orange\u0027));\n```",
+    "options":  "{\"options\":[\"orange\",\"purple\",\"green\",\"TypeError\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`colorChange` 是一个静态方法。静态方法被设计为只能被创建它们的构造器使用（也就是 `Chameleon`），并且不能传递给实例。因为 `freddie` 是一个实例，静态方法不能被实例使用，因此抛出了 `TypeError` 错误。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2022-01-09T13:10:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  1900,
+    "filterTotalNum":  1907,
+    "prev":  "c3272068-de10-428e-8e99-27b2cba2dfe5",
+    "next":  "5a76ab56-d02a-4d74-b8ed-946d1f59ce14"
+}

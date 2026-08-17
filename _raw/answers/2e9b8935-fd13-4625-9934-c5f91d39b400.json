@@ -1,0 +1,21 @@
+﻿{
+    "id":  2421,
+    "exerciseKey":  "2e9b8935-fd13-4625-9934-c5f91d39b400",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue 项目中，你做过哪些性能优化？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 Vue 项目中，进行性能优化通常包括以下几个方面：\n\n### 1. **组件优化**\n   - **使用 `v-show` 替代 `v-if`**：`v-show` 仅切换 `display` 属性，而 `v-if` 会添加和删除 DOM 元素，适用于频繁切换的组件。\n   - **组件懒加载**：利用 Vue 的异步组件加载功能 (`defineAsyncComponent`) 或 `webpack` 的代码分割（dynamic imports）来减少初始加载时间。\n\n   ```javascript\n   const AsyncComponent = defineAsyncComponent(() =\u003e\n     import(\u0027./components/AsyncComponent.vue\u0027)\n   );\n   ```\n\n   ```html\n   \u003crouter-view v-if=\"componentLoaded\" /\u003e\n   ```\n\n   - **避免不必要的重渲染**：通过 `computed` 属性避免不必要的组件更新。\n\n   ```javascript\n   computed: {\n     filteredItems() {\n       return this.items.filter(item =\u003e item.active);\n     }\n   }\n   ```\n\n### 2. **性能分析**\n   - **使用 Vue Devtools**：检查组件的渲染性能、事件监听和状态管理。\n   - **浏览器开发者工具**：利用 Performance 面板分析应用的性能瓶颈。\n\n### 3. **减少计算量**\n   - **使用 `computed` 代替 `methods`**：`computed` 是基于依赖的缓存计算结果，而 `methods` 每次调用都会重新计算。\n\n   ```javascript\n   computed: {\n     itemCount() {\n       return this.items.length;\n     }\n   }\n   ```\n\n### 4. **优化事件处理**\n   - **防止不必要的事件触发**：使用事件修饰符（如 `.stop`、`.prevent`）来优化事件处理。\n\n   ```html\n   \u003cbutton @click.stop=\"handleClick\"\u003eClick Me\u003c/button\u003e\n   ```\n\n   - **节流和防抖**：对频繁触发的事件（如滚动、输入）使用节流或防抖技术。\n\n   ```javascript\n   methods: {\n     handleScroll: _.throttle(function() {\n       // handle scroll event\n     }, 200)\n   }\n   ```\n\n### 5. **合理使用 Vuex**\n   - **避免直接修改状态**：使用 Vuex 的 mutation 和 action 管理状态变更，避免全局状态的不必要更新。\n\n   ```javascript\n   mutations: {\n     setUser(state, user) {\n       state.user = user;\n     }\n   }\n   ```\n\n### 6. **优化模板**\n   - **使用 `v-for` 的 `key`**：为 `v-for` 循环的元素提供唯一的 `key`，提升渲染性能。\n\n   ```html\n   \u003cdiv v-for=\"item in items\" :key=\"item.id\"\u003e{{ item.name }}\u003c/div\u003e\n   ```\n\n   - **避免复杂的模板表达式**：将复杂的表达式移到计算属性中，避免每次渲染都重新计算。\n\n### 7. **异步数据处理**\n   - **按需加载数据**：只在需要时加载数据，避免不必要的 API 请求。\n\n   ```javascript\n   async mounted() {\n     const data = await fetchData();\n     this.data = data;\n   }\n   ```\n\n### 8. **缓存和懒加载**\n   - **图片和静态资源缓存**：利用浏览器缓存策略或 CDN 来加速静态资源的加载。\n   - **懒加载**：对图片和组件使用懒加载技术。\n\n   ```javascript\n   \u003cimg v-lazy=\"image.url\" /\u003e\n   ```\n\n### 9. **减少第三方库使用**\n   - **精简依赖**：仅引入必要的第三方库，减少包体积，提升加载速度。",
+    "pivot":  "- **组件和模板优化**：减少不必要的重渲染，利用计算属性和异步组件。\n- **性能分析工具**：使用 Vue Devtools 和浏览器开发者工具定位瓶颈。\n- **数据和事件处理**：使用 Vuex 管理状态，优化事件处理。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-09-03T13:06:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  534,
+    "filterTotalNum":  1907,
+    "prev":  "212e760b-fb9a-4dc6-9175-c2053e96cd16",
+    "next":  "2232a4c3-4c8b-4241-b778-88aaada16ef4"
+}

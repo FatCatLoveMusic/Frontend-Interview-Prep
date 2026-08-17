@@ -1,0 +1,21 @@
+﻿{
+    "id":  2017,
+    "exerciseKey":  "ac644e0a-1fbe-4e0a-9f9f-ecc373a13a87",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "浏览器有哪几种缓存，各种缓存的优先级是什么样的？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在浏览器中，有以下几种常见的缓存：\n\n1. 强制缓存：通过设置 Cache-Control 和 Expires 等响应头实现，可以让浏览器直接从本地缓存中读取资源而不发起请求。\n2. 协商缓存：通过设置 Last-Modified 和 ETag 等响应头实现，可以让浏览器发送条件请求，询问服务器是否有更新的资源。如果服务器返回 304 Not Modified 响应，则表示客户端本地缓存仍然有效，可直接使用缓存的资源。\n3. Service Worker 缓存：Service Worker 是一种特殊的 JS 脚本，可以拦截网络请求并返回缓存的响应，以实现离线访问和更快的加载速度等功能。\n4. Web Storage 缓存：包括 localStorage 和 sessionStorage。localStorage 用于存储用户在网站上的永久性数据，而 sessionStorage 则用于存储用户会话过程中的临时数据。\n\n这些缓存的优先级如下：\n\n1. Service Worker 缓存：由于其可以完全控制网络请求，因此具有最高的优先级，即使是强制缓存也可以被它所覆盖。\n2. 强制缓存：如果存在强制缓存，并且缓存没有过期，则直接使用缓存，不需要向服务器发送请求。\n3. 协商缓存：如果强制缓存未命中，但协商缓存可用，则会向服务器发送条件请求，询问资源是否更新。如果服务器返回 304 Not Modified 响应，则直接使用缓存。\n4. Web Storage 缓存：Web Storage 缓存的优先级最低，只有在网络不可用或者其他缓存都未命中时才会生效。",
+    "pivot":  "### 延伸知识\n\n光记住这些理论是不够的，还需要深入在实际场景中去运用。至少要思考如下几个问题：\n\n- HTML文件应该采用哪种缓存？强缓存还是协商缓存？\n- JS/CSS/图片，应该采用哪种方式？\n- webpack打包时的 contenthash 是做什么的？\n- 有时候，JS文件名没法修改，我们会在JS的URL最后面加上类似 `xxx.js?v=20240719` 这种query参数，是做什么的？\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:06:05.000Z",
+    "updateAt":  "2024-08-10T17:07:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  794,
+    "filterTotalNum":  1907,
+    "prev":  "991e859c-58aa-42e4-8ccb-2e74aba9a083",
+    "next":  "4e206538-eb5c-43d2-8665-0471800fcd80"
+}

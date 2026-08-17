@@ -1,0 +1,21 @@
+﻿{
+    "id":  104,
+    "exerciseKey":  "80d02415-01b5-428f-a5a5-3021d2ce9b75",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst name = \"Lydia\"\n\nconsole.log(name())\n```",
+    "options":  "{\"options\":[\"SyntaxError\",\"ReferenceError\",\"TypeError\",\"undefined\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "变量`name`保存字符串的值，该字符串不是函数，因此无法调用。\n当值不是预期类型时，会抛出`TypeErrors`。 JavaScript期望`name`是一个函数，因为我们试图调用它。 但它是一个字符串，因此抛出`TypeError`：`name is not a function`\n当你编写了一些非有效的JavaScript时，会抛出语法错误，例如当你把`return`这个词写成`retrun`时。\n当JavaScript无法找到您尝试访问的值的引用时，抛出`ReferenceErrors`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:28:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  1815,
+    "filterTotalNum":  1907,
+    "prev":  "00146aa9-9e0e-4217-a99e-9404476520a1",
+    "next":  "da532e2b-898c-4a7d-b179-fbe8052c8c60"
+}

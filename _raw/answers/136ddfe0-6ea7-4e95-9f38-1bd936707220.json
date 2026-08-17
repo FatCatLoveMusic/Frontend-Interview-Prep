@@ -1,0 +1,21 @@
+﻿{
+    "id":  2135,
+    "exerciseKey":  "136ddfe0-6ea7-4e95-9f38-1bd936707220",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 isObjectEmpty 方法，判断一个对象是否为空",
+    "desc":  "要求：如果其原型链上有自定义数据或者方法，认为是非空对象。",
+    "options":  "",
+    "explanation":  "为了实现 `isObjectEmpty`，我们需要同时判断：\n\n1. 对象自身是否有可枚举属性（通过 `Object.keys()`）  \n2. 原型链上是否有**非原生**、**自定义的属性或方法**\n\n示例代码：\n\n```js\nfunction isObjectEmpty(obj) {\n  if (typeof obj !== \u0027object\u0027 || obj === null) return false;\n\n  // 检查自身属性\n  if (Object.keys(obj).length \u003e 0) return false;\n\n  // 检查原型链上的自定义属性（跳过 Object.prototype 的原生方法）\n  let proto = Object.getPrototypeOf(obj);\n  while (proto \u0026\u0026 proto !== Object.prototype) {\n    if (Object.getOwnPropertyNames(proto).some(key =\u003e key !== \u0027constructor\u0027)) {\n      return false;\n    }\n    proto = Object.getPrototypeOf(proto);\n  }\n\n  return true;\n}\n```",
+    "pivot":  "- 自身属性非空 → 返回 `false`  \n- 原型链上存在非 `Object.prototype` 的自定义成员 → 返回 `false`  \n- 否则为“空对象” → 返回 `true`",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:16:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  690,
+    "filterTotalNum":  1907,
+    "prev":  "b6c3496a-d62e-4b85-a8fd-b56ce74911cf",
+    "next":  "83f93d81-b47e-41ef-9ae6-b5c98beb63ff"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1924,
+    "exerciseKey":  "b927e10f-2e07-4cf6-9005-54c1c3ed73ea",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "二叉树的最近公共祖先",
+    "desc":  "给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。\n\n[百度百科](https://baike.baidu.com/item/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/8918834?fr=aladdin)中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（**一个节点也可以是它自己的祖先**）。”\n\n**示例 1：**\n\n![](https://static.ecool.fun/article/771e5d00-61f3-49a7-9d57-ccde4ae5358a.png) \n\n\n**输入：** root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1\n\n**输出：** 3\n\n**解释：** 节点 `5 `和节点 `1 `的最近公共祖先是节点 `3 。`\n\n**示例 2：**\n\n![](https://static.ecool.fun/article/771e5d00-61f3-49a7-9d57-ccde4ae5358a.png) \n\n\n**输入：** root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4\n\n**输出：** 5\n\n**解释：** 节点 `5 `和节点 `4 `的最近公共祖先是节点 `5 。`因为根据定义最近公共祖先节点可以为节点本身。\n\n**示例 3：**\n\n**输入：** root = [1,2], p = 1, q = 2\n\n**输出：** 1\n\n**提示：**\n\n* 树中节点数目在范围 `[2, 105]` 内。\n* `-109 \u003c= Node.val \u003c= 109`\n* 所有 `Node.val` `互不相同` 。\n* `p != q`\n* `p` 和 `q` 均存在于给定的二叉树中。\n\n```js\n/**\n * Definition for a binary tree node.\n * function TreeNode(val) {\n *     this.val = val;\n *     this.left = this.right = null;\n * }\n */\n/**\n * @param {TreeNode} root\n * @param {TreeNode} p\n * @param {TreeNode} q\n * @return {TreeNode}\n */\nvar lowestCommonAncestor = function(root, p, q) {\n    \n};\n```",
+    "options":  null,
+    "explanation":  "- 我们使用递归，当节点为null或者节点等于p或q向上返回此节点。\n- 在结果向上回溯的过程中，要对左右节点的返回值进行判断：\n  1. 如果左右节点返回的值都不为null（如图中紫色箭头所示）， \n![image.png](https://static.ecool.fun/article/d088d5a5-e713-4117-977d-5030c527024e.png)\n\n# 复杂度\n\n- 时间复杂度: O(n)\n- 空间复杂度: O(1)\n\n# Code\n\n```JavaScript\n\n/**\n * Definition for a binary tree node.\n * function TreeNode(val) {\n *     this.val = val;\n *     this.left = this.right = null;\n * }\n */\n/**\n * @param {TreeNode} root\n * @param {TreeNode} p\n * @param {TreeNode} q\n * @return {TreeNode}\n */\nvar lowestCommonAncestor = function (root, p, q) {\n    var travelTree = function (node, p, q) {\n        if (node == null || node == p || node == q) return node;\n        let left = travelTree(node.left, p, q);\n        let right = travelTree(node.right, p, q);\n        if (left \u0026\u0026 right) {\n            return node;\n        }\n        else if (left \u0026\u0026 right == null) {\n            return left;\n        } else if (left == null \u0026\u0026 right) {\n            return right\n        } else {\n            return null\n        }\n    }\n    return travelTree(root, p, q)\n};\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-12-30T01:17:49.000Z",
+    "updateAt":  "2023-03-12T23:04:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  886,
+    "filterTotalNum":  1907,
+    "prev":  "6f40b143-3941-44c6-ac90-9bf87795ee2c",
+    "next":  "478e5483-7797-4844-be41-c7b96a383c00"
+}

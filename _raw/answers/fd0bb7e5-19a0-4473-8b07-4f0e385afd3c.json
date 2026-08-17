@@ -1,0 +1,21 @@
+﻿{
+    "id":  1586,
+    "exerciseKey":  "fd0bb7e5-19a0-4473-8b07-4f0e385afd3c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用js生成1-10000的数组",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "实现的方法很多，除了使用循环（for,while,forEach等）外，最简单的是使用`Array.from`\n\n```js\n// 方法一\nArray.from(new Array(10001).keys()).slice(1)\n\n// 方法二\nArray.from({length:10000},(node,i)=\u003e i+1)\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:47:33.000Z",
+    "updateAt":  "2021-12-26T22:26:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  1204,
+    "filterTotalNum":  1907,
+    "prev":  "a7e1aeb6-aaf9-43fe-92ac-fd574fb60a96",
+    "next":  "d0625555-2b53-4edc-bf3f-2721eaf7af55"
+}

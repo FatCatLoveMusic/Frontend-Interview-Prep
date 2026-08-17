@@ -1,0 +1,21 @@
+﻿{
+    "id":  2345,
+    "exerciseKey":  "5794f8b9-0953-450d-9035-1a1b2575d7d8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个函数， 计算两个日期之间的天数差",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "以下是使用JavaScript实现计算两个日期之间的天数差的函数：\n\n```javascript\nfunction calculateDateDifference(date1, date2) {\n  // 确保输入的日期是 Date 对象\n    const startDate = new Date(date1);\n    const endDate = new Date(date2);\n\n    // 计算时间差（以毫秒为单位）\n    const timeDifference = endDate - startDate;\n\n    // 计算天数差\n    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));\n\n    return daysDifference;\n}\n\n// 示例用法\nconst date1 = \u00272022-01-01\u0027;\nconst date2 = \u00272022-01-10\u0027;\n\nconst difference = calculateDateDifference(date1, date2);\nconsole.log(difference); // 输出结果为 9\n```\n\n上述函数首先将两个日期字符串转换为Date对象，然后计算两个日期对象之间的时间差（以毫秒表示），最后将时间差转换为天数。通过调用`calculateDateDifference`函数，可以获取两个日期之间的天数差。\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T14:13:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  577,
+    "filterTotalNum":  1907,
+    "prev":  "cd3ffbb1-582b-4d92-be2d-baeda2c8d050",
+    "next":  "9e75bdd5-d3aa-4840-8842-9d4dcf7b1c24"
+}

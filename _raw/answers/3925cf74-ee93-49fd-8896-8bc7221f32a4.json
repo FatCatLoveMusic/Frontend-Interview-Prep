@@ -1,0 +1,21 @@
+﻿{
+    "id":  1743,
+    "exerciseKey":  "3925cf74-ee93-49fd-8896-8bc7221f32a4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "promise.catch后面的.then还会执行吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "答案： **会继续执行**。\n\n虽然**Promise**是开发过程中使用非常频繁的一个技术点，但是它的一些细节可能很多人都没有去关注过。我们都知道`.then`, `.catch`, `.finally`都可以链式调用，其本质上是因为返回了一个新的**Promise**实例。\n\ncatch的语法形式如下：\n\n```javascript\np.catch(onRejected);\n```\n\n`.catch`只会处理`rejected`的情况，并且也会返回一个新的`Promise`实例。\n\n`.catch(onRejected)`与`then(undefined, onRejected)`在表现上是一致的。\n\n事实上，catch(onRejected)从内部调用了then(undefined, onRejected)。\n\n* 如果`.catch(onRejected)`的`onRejected`回调中返回了一个状态为`rejected`的`Promise`实例，那么`.catch`返回的`Promise`实例的状态也将变成`rejected`。\n* 如果`.catch(onRejected)`的`onRejected`回调中抛出了异常，那么`.catch`返回的`Promise`实例的状态也将变成`rejected`。\n* 其他情况下，`.catch`返回的`Promise`实例的状态将是`fulfilled`。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-04-05T13:26:36.000Z",
+    "updateAt":  "2024-07-20T10:36:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  1059,
+    "filterTotalNum":  1907,
+    "prev":  "444b420e-8423-4776-85b0-fc27705ab507",
+    "next":  "f47b5d5d-4aec-44a9-907d-a2a054d6984e"
+}

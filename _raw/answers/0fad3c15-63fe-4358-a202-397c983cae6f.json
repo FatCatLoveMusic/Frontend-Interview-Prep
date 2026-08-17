@@ -1,0 +1,21 @@
+﻿{
+    "id":  2890,
+    "exerciseKey":  "0fad3c15-63fe-4358-a202-397c983cae6f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么在页面上获取用户的定位信息？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "要在网页上获取用户的地理位置信息，可以使用 HTML5 提供的 Geolocation API，或者使用百度地图、高德地图等 SDK 进行获取。\n\n下面仅介绍通过 Geolocation API 实现的基本步骤和代码示例：\n\n### **步骤**\n1. **检查浏览器是否支持 Geolocation API**\n   使用 `navigator.geolocation` 对象来检测是否支持该功能。\n   \n2. **请求获取用户的当前位置**\n   调用 `getCurrentPosition()` 方法来获取当前位置，该方法需要用户允许网页访问其位置信息。\n\n3. **处理成功和错误情况**\n   提供回调函数来处理成功获取位置信息和错误的情况。\n\n### **实现代码示例**\n\n```javascript\nif (navigator.geolocation) {\n  // 获取当前位置信息\n  navigator.geolocation.getCurrentPosition(\n    // 成功获取位置时的回调\n    function(position) {\n      const latitude = position.coords.latitude;   // 纬度\n      const longitude = position.coords.longitude; // 经度\n      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);\n      \n      // 在页面上展示位置信息\n      document.getElementById(\"location\").innerText =\n        `您的位置：纬度 ${latitude}, 经度 ${longitude}`;\n    },\n    // 获取位置失败时的回调\n    function(error) {\n      console.error(`Error Code = ${error.code}: ${error.message}`);\n      alert(\"无法获取您的位置信息，请确保已授权！\");\n    },\n    // 可选参数配置\n    {\n      enableHighAccuracy: true, // 提高精度（消耗更多资源）\n      timeout: 5000,            // 超时时间（毫秒）\n      maximumAge: 0             // 不使用缓存\n    }\n  );\n} else {\n  alert(\"您的浏览器不支持 Geolocation API\");\n}\n```\n\n### **页面展示示例**\n在 HTML 页面上可以创建一个元素，用于展示用户的位置信息：\n\n```html\n\u003cdiv id=\"location\"\u003e定位中...\u003c/div\u003e\n```\n\n### **关键参数说明**\n- `success(position)`：当成功获取到位置时的回调函数，返回 `position` 对象，包含用户的经度、纬度等。\n- `error(error)`：当获取位置失败时的回调函数。可以通过 `error.code` 和 `error.message` 了解失败原因，如用户拒绝授权或请求超时。\n- `options`：可以提供配置参数，如提高位置精度（`enableHighAccuracy`）、设置超时时间（`timeout`）、以及是否使用缓存中的位置信息（`maximumAge`）。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-10-16T12:07:32.000Z",
+    "updateAt":  "2024-10-16T12:07:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  311,
+    "filterTotalNum":  1907,
+    "prev":  "5e6f561b-5c29-482e-b07b-f08a4aa11432",
+    "next":  "b45cda77-44a7-45aa-a563-eb46bc5fd1d6"
+}

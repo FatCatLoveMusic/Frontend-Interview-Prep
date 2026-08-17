@@ -1,0 +1,21 @@
+﻿{
+    "id":  128,
+    "exerciseKey":  "a8d808be-7214-4540-bb33-594b23a5a9d3",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst add = x =\u003e y =\u003e z =\u003e {\n\tconsole.log(x, y, z);\n\treturn x + y + z;\n};\n\nadd(4)(5)(6);\n```",
+    "options":  "{\"options\":[\"4 5 6\",\"6 5 4\",\"4 function function\",\"undefined undefined 6\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "函数 `add` 是一个返回 返回箭头函数的箭头函数 的箭头函数（still with me?）。第一个函数接收一个值为 `4` 的参数 `x`。我们调用第二个函数，它接收一个值为 `5` 的参数 `y`。然后我们调用第三个函数，它接收一个值为 `6` 的参数 `z`。当我们尝试在最后一个箭头函数中获取 `x`, `y` 和 `z` 的值，JS 引擎根据作用域链去找 `x` 和 `y` 的值。得到 `4` `5` `6`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:31:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1791,
+    "filterTotalNum":  1907,
+    "prev":  "758b3c03-bac2-4d4f-a900-63f478a1e770",
+    "next":  "13232ee2-18b7-45a3-a633-c796611934e8"
+}

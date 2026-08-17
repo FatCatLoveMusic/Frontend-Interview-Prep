@@ -1,0 +1,21 @@
+﻿{
+    "id":  2034,
+    "exerciseKey":  "231bf96d-c071-4e8e-9db8-cd0fa0763fc5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "generator 是怎么做到中断和恢复的？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Generator 是一种特殊的函数类型，可以在函数执行过程中暂停和恢复执行。它通过使用 yield 表达式来实现中断和恢复执行的功能。\n\n当 Generator 函数被调用时，它并不会立即执行，而是返回一个迭代器对象。每次调用迭代器对象的 next() 方法时，Generator 函数会从上一次执行的位置继续执行，直到遇到下一个 yield 表达式或函数结束。此时，Generator 函数将返回一个包含当前值和执行状态的对象，其中 value 属性表示 yield 表达式的结果，done 属性表示是否执行完毕。\n\n例如，下面是一个简单的 Generator 函数示例：\n\n```\nfunction* myGenerator() {\n  console.log(\u0027Step 1\u0027);\n  yield;\n  console.log(\u0027Step 2\u0027);\n  yield;\n  console.log(\u0027Step 3\u0027);\n}\n\nconst gen = myGenerator();\ngen.next(); // 输出 Step 1\ngen.next(); // 输出 Step 2\ngen.next(); // 输出 Step 3\n```\n\n在这个示例中，myGenerator() 函数包含三个 yield 表达式，每次调用迭代器对象的 next() 方法都会从上一次执行的位置继续执行，直到遇到下一个 yield 表达式或函数结束。\n\n当执行第一个 gen.next() 方法时，输出 Step 1，并暂停执行，将控制权交回给调用者。当再次调用 gen.next() 方法时，继续执行后面的代码，输出 Step 2，并再次暂停执行。最后，再次调用 gen.next() 方法时，完成函数的执行，输出 Step 3，并返回一个包含 value 和 done 属性的对象。\n\n通过使用 yield 表达式和迭代器对象，Generator 函数可以实现中断和恢复执行的功能，从而提供更灵活、更高效的 JavaScript 编程方式。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-31T01:20:21.000Z",
+    "updateAt":  "2024-07-19T10:37:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  777,
+    "filterTotalNum":  1907,
+    "prev":  "00499f71-c1c2-46aa-9e87-d3ae7b79f268",
+    "next":  "ac91c80a-17f4-4ede-931e-2f458660e3e0"
+}

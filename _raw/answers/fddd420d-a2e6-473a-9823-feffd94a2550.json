@@ -1,0 +1,21 @@
+﻿{
+    "id":  3206,
+    "exerciseKey":  "fddd420d-a2e6-473a-9823-feffd94a2550",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Agent Workflow 如何实现重试机制？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Agent Workflow 的重试机制不能简单理解成“失败了再跑一次”，核心是要把重试做成工作流状态机的一部分，让每个节点都能被可靠地恢复、判断和重新调度。\n\n在实际实现里，通常会把一次 Agent Workflow 拆成多个可执行节点，比如 LLM 推理节点、工具调用节点、数据查询节点、文件处理节点、人工确认节点等。每个节点都有自己的执行状态，例如 `pending`、`running`、`success`、`failed`、`retrying`、`dead`。重试一般发生在节点级别，而不是每次失败都从整个 Workflow 头部重新开始，这样可以避免重复消耗 Token、重复调用外部接口，也能减少副作用风险。\n\n比较合理的做法是给每个节点配置独立的 retry policy，比如最大重试次数、超时时间、退避策略、哪些错误允许重试、重试失败后进入降级还是人工介入。例如网络超时、429 限流、临时服务不可用通常可以重试；参数错误、权限错误、Schema 校验失败、业务逻辑不满足一般不应该重试，因为再跑一次结果大概率还是失败。\n\n一个简化的 TypeScript 伪代码可以这样表达：\n\n```ts\ntype RetryPolicy = {\n  maxAttempts: number;\n  baseDelayMs: number;\n  maxDelayMs: number;\n  retryable: (error: unknown) =\u003e boolean;\n};\n\nfunction getRetryDelay(attempt: number, policy: RetryPolicy) {\n  const exponentialDelay = policy.baseDelayMs * 2 ** (attempt - 1);\n  const cappedDelay = Math.min(exponentialDelay, policy.maxDelayMs);\n  const jitter = 0.8 + Math.random() * 0.4;\n\n  return Math.floor(cappedDelay * jitter);\n}\n\nasync function runNode(node: WorkflowNode, context: WorkflowContext) {\n  const policy = node.retryPolicy;\n  let attempt = context.getAttempt(node.id);\n\n  while (attempt \u003c policy.maxAttempts) {\n    try {\n      context.markRunning(node.id, attempt + 1);\n\n      const result = await node.execute(context);\n\n      context.saveNodeResult(node.id, result);\n      context.markSuccess(node.id);\n\n      return result;\n    } catch (error) {\n      attempt += 1;\n      context.recordError(node.id, error, attempt);\n\n      if (!policy.retryable(error) || attempt \u003e= policy.maxAttempts) {\n        context.markFailed(node.id, error);\n        throw error;\n      }\n\n      context.markRetrying(node.id, attempt);\n      await sleep(getRetryDelay(attempt, policy));\n    }\n  }\n}\n```\n\n这里有几个关键点。第一，重试次数和执行结果必须持久化，不能只存在内存里。因为 Agent Workflow 很可能是长任务，服务重启、浏览器刷新、队列迁移都可能发生。如果没有 checkpoint，失败恢复时就只能从头开始，代价和风险都很高。\n\n第二，重试要配合指数退避和 jitter。指数退避可以避免失败后立刻高频打爆下游服务，jitter 可以避免大量任务在同一时间点同时重试，尤其是在调用 LLM API、搜索服务、数据库、第三方 SaaS API 时很重要。\n\n第三，必须考虑幂等性。Agent Workflow 经常会调用带副作用的工具，比如发消息、创建工单、提交表单、更新 CRM 数据、扣减库存等。这类节点不能无脑重试，否则可能产生重复消息、重复订单或者脏数据。通常要给每次工具调用传入 `idempotencyKey`，或者在执行前检查业务状态；如果无法做到幂等，就需要把这个节点设计成人工确认、补偿事务，或者只允许失败后进入待处理队列。\n\n第四，错误分类非常重要。一个成熟的 Workflow 引擎不会对所有异常使用同一种重试策略。LLM 输出格式不符合 JSON Schema，可以尝试通过 repair prompt 重试；工具调用 500 可以延迟重试；用户权限不足应该直接失败；模型多次无法完成规划时，可以切换模型、降低任务复杂度，或者把上下文交给人工处理。\n\n第五，重试不应该无限持续。超过最大次数后，节点要进入明确的终态，例如 `failed`、`dead_letter`、`needs_human_review`。这样系统才能被观测和运维，而不是任务静默卡住。配合日志、traceId、attempt 记录、错误原因和输入快照，才能在排查问题时知道是模型问题、工具问题、上下文问题还是业务约束问题。\n\n在 Agent 场景里，还可以增加更智能的重试方式。比如第一次失败只是重试同一个工具，第二次失败会让 Agent 重新规划，第三次失败切换到备用工具，最后仍然失败才进入人工介入。这种机制比普通后端任务重试更复杂，因为 Agent 的失败不一定来自系统异常，也可能来自推理路径错误、上下文缺失或者工具选择不合理。",
+    "pivot":  "- 重试应该落在 Workflow 状态机和节点调度层，而不是简单重新执行整个流程。\n- 每个节点需要独立配置最大次数、超时、退避策略和可重试错误类型。\n- 重试状态、输入、输出、错误和 attempt 计数必须持久化，支持断点恢复。\n- 对有副作用的工具调用必须保证幂等，必要时引入补偿或人工确认。\n- 使用指数退避和 jitter，避免限流和雪崩。\n- 超过重试次数后要进入明确终态，并配套日志、监控和人工介入机制。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-29T13:58:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  82,
+    "filterTotalNum":  1907,
+    "prev":  "cecde905-f3b8-4989-a7f2-4c37375d943e",
+    "next":  "100ea2fb-9d76-49c0-9441-9c9ea93b0565"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  111,
+    "exerciseKey":  "71637418-9f70-4504-9eed-ab1f3d6c702d",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst colorConfig = {\n  red: true,\n  blue: false,\n  green: true,\n  black: true,\n  yellow: false,\n}\n\nconst colors = [\"pink\", \"red\", \"blue\"]\n\nconsole.log(colorConfig.colors[1])\n```",
+    "options":  "{\"options\":[\"true\",\"false\",\"undefined\",\"TypeError\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "在JavaScript中，我们有两种访问对象属性的方法：括号表示法或点表示法。 在此示例中，我们使用点表示法（`colorConfig.colors`）代替括号表示法（`colorConfig [“ colors”]`）。\n使用点表示法，JavaScript会尝试使用该确切名称在对象上查找属性。 在此示例中，JavaScript尝试在colorconfig对象上找到名为colors的属性。 没有名为“colors”的属性，因此返回“undefined”。\n然后，我们尝试使用`[1]`访问第一个元素的值。 我们无法对未定义的值执行此操作，因此会抛出`Cannot read property \u00271\u0027 of undefined`。\nJavaScript解释（或取消装箱）语句。 当我们使用方括号表示法时，它会看到第一个左方括号`[`并一直进行下去，直到找到右方括号`]`。 只有这样，它才会评估该语句。 如果我们使用了colorConfig [colors [1]]，它将返回colorConfig对象上red属性的值。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:28:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  1808,
+    "filterTotalNum":  1907,
+    "prev":  "8769cc70-a32f-4b69-893d-40e819dd6c5f",
+    "next":  "2a420371-13f4-46fc-a5d8-d2338682d8d6"
+}

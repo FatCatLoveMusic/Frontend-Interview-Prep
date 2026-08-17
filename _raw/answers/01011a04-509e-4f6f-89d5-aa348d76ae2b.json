@@ -1,0 +1,21 @@
+﻿{
+    "id":  471,
+    "exerciseKey":  "01011a04-509e-4f6f-89d5-aa348d76ae2b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "TypeScript中的类型有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "### 一、原始类型（Primitive Types）\n\n这些与 JavaScript 的基本类型一致：\n\n* `string`：字符串，例如 `\u0027hello\u0027`\n* `number`：数字，例如 `42`\n* `boolean`：布尔值，例如 `true`\n* `null`：表示空值（需开启 strictNullChecks 才完全生效）\n* `undefined`：未定义\n* `bigint`：任意精度整数\n* `symbol`：独一无二的值\n\n\n### 二、对象类型（Object Types）\n\n包括：\n\n* `object`：非原始类型的集合\n* 接口（`interface`）：声明对象的结构\n* 类型别名（`type`）：更灵活的结构定义\n* 类（`class`）：面向对象编程结构\n* 数组类型：`string[]`、`Array\u003cnumber\u003e`\n* 元组（Tuple）：固定长度与类型的数组，如 `[string, number]`\n* 函数类型：定义输入输出签名，如 `(x: number, y: number) =\u003e number`\n\n\n### 三、特殊类型\n\n* `any`：关闭类型检查，允许任何值（**不推荐在生产环境滥用**）\n* `unknown`：更安全的 `any`，必须先类型缩小才能使用\n* `never`：永远不会发生的值，通常用于抛错或死循环\n* `void`：通常用于无返回值的函数\n* `enum`：枚举类型，表示一组命名常量\n\n\n### 四、联合类型与交叉类型\n\n* **联合类型（Union）**：值可以是多种类型之一，例如 `string | number`\n* **交叉类型（Intersection）**：同时拥有多个类型的特性，例如 `{ name: string } \u0026 { age: number }`\n\n\n### 五、类型工具与泛型系统\n\n#### 泛型（Generics）\n\n通过参数化定义可复用的类型逻辑：\n\n```ts\nfunction identity\u003cT\u003e(value: T): T {\n  return value;\n}\n```\n\n#### 条件类型（Conditional Types）\n\n基于类型判断的逻辑分支：\n\n```ts\ntype IsString\u003cT\u003e = T extends string ? true : false;\n```\n\n#### 映射类型（Mapped Types）\n\n用于批量构造新类型：\n\n```ts\ntype Readonly\u003cT\u003e = {\n  [P in keyof T]: T[P];\n}\n```\n\n#### 索引类型（Indexed Access Types）\n\n取类型中的某个属性类型：\n\n```ts\ntype Age = Person[\u0027age\u0027];\n```\n\n### 六、内置工具类型（Utility Types）\n\nTypeScript 提供了丰富的内置工具类型，用于操作已有类型：\n\n* `Partial\u003cT\u003e`：将所有属性设为可选\n* `Required\u003cT\u003e`：将所有属性设为必填\n* `Readonly\u003cT\u003e`：将所有属性设为只读\n* `Pick\u003cT, K\u003e`：从 T 中挑选某些属性\n* `Omit\u003cT, K\u003e`：从 T 中排除某些属性\n* `Record\u003cK, T\u003e`：构造键为 K，值为 T 的对象类型\n* `Exclude\u003cT, U\u003e`：从 T 中排除 U\n* `Extract\u003cT, U\u003e`：从 T 中提取 U\n\n### 七、字面量类型与模板字面量类型\n\n* **字面量类型**：`\u0027GET\u0027 | \u0027POST\u0027` 等限定值\n* **模板字面量类型**（TypeScript 4.1+）：\n\n```ts\ntype EventName = `on${Capitalize\u003cstring\u003e}`;\n```\n\n### 八、类型守卫与类型推导机制\n\n* 类型守卫：如 `typeof`、`instanceof`、用户自定义类型谓词（`x is T`）；\n* 类型推导：TS 能自动推断变量、函数返回值等的类型，减少冗余注解。\n\n",
+    "pivot":  "* TypeScript 类型系统包含基本类型、对象类型、特殊类型、工具类型等多个层级；\n* 支持高级特性如泛型、条件类型、映射类型等，使类型系统更具表达力；\n* 熟练使用类型系统可大幅提升开发效率、增强代码可维护性与可读性；\n* TypeScript 的核心价值不仅是“加类型”，更是通过类型构造语言提升开发质量。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-08T15:08:24.000Z",
+    "updateAt":  "2025-08-04T02:00:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  1449,
+    "filterTotalNum":  1907,
+    "prev":  "614de7f3-ce19-4359-aeb5-e63f64c8b48e",
+    "next":  "59af70f8-871d-4358-aac1-e5dc4a0ca6df"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  281,
+    "exerciseKey":  "a4bbb8e2-1333-460a-8127-87f04f83c5b8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "前端项目中为什么要初始化CSS样式？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "因为浏览器的兼容问题，不同浏览器对标签的默认值是不同的，如果没有对浏览器的CSS初始化，会造成相同页面在不同浏览器的显示存在差异。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T07:39:35.000Z",
+    "updateAt":  "2021-07-04T16:07:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  1638,
+    "filterTotalNum":  1907,
+    "prev":  "833fba72-1614-4502-adc3-1f5593ae6560",
+    "next":  "63d73ae0-ea78-4b4c-8a85-6be7513a62a4"
+}

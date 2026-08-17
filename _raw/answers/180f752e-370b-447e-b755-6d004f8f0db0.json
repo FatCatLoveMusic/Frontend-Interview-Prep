@@ -1,0 +1,21 @@
+﻿{
+    "id":  293,
+    "exerciseKey":  "180f752e-370b-447e-b755-6d004f8f0db0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS优化、提高性能的方法有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 避免过度约束\n* 避免后代选择符\n* 避免链式选择符\n* 使用紧凑的语法\n* 避免不必要的命名空间\n* 避免不必要的重复\n* 最好使用表示语义的名字。一个好的类名应该是描述他是什么而不是像什么\n* 避免！important，可以选择其他选择器\n* 尽可能的精简规则，你可以合并不同类里的重复规则",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:24:05.000Z",
+    "updateAt":  "2021-07-04T19:24:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1627,
+    "filterTotalNum":  1907,
+    "prev":  "60b32fdd-58ef-4fe0-bc87-da65c5a00db1",
+    "next":  "ff429084-6242-4bd6-9f09-64e567aeb99d"
+}

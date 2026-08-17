@@ -1,0 +1,21 @@
+﻿{
+    "id":  416,
+    "exerciseKey":  "e22ceb33-c162-4e98-a395-880716003777",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "函数珂里化",
+    "desc":  "实现方法add：\n```js\nadd(1)(2)(3)(4)=10;\nadd(1)(1,2,3)(2)=9;\n```",
+    "options":  null,
+    "explanation":  "```js\nfunction add() {\n  const _args = [...arguments];\n  function fn() {\n    _args.push(...arguments);\n    return fn;\n  }\n  fn.toString = function() {\n    return _args.reduce((sum, cur) =\u003e sum + cur);\n  }\n  return fn;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:06:22.000Z",
+    "updateAt":  "2021-07-07T00:13:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1504,
+    "filterTotalNum":  1907,
+    "prev":  "8b62ba3f-fe82-4bd5-b1a3-057b668ef01f",
+    "next":  "c50bec05-c350-46bd-a2a6-dd5f9a6cdf46"
+}

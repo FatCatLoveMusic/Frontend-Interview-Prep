@@ -1,0 +1,21 @@
+﻿{
+    "id":  2817,
+    "exerciseKey":  "2e201752-ecd3-4420-9d6e-df58b43e25ee",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "ESM 与 CJS 的差异有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "ECMAScript Modules（ESM）和 CommonJS（CJS）是 JavaScript 中两种主要的模块系统，它们各有特点和差异。\n\n### **1. 语法**\n\n- **ESM**（ECMAScript Modules）：\n  - **导入**：使用 `import` 语法\n    ```javascript\n    import { foo } from \u0027./module.js\u0027;\n    import * as bar from \u0027./module.js\u0027;\n    import defaultExport from \u0027./module.js\u0027;\n    ```\n  - **导出**：使用 `export` 语法\n    ```javascript\n    export const foo = 42;\n    export function bar() { ... }\n    export default function() { ... }\n    ```\n\n- **CJS**（CommonJS）：\n  - **导入**：使用 `require` 语法\n    ```javascript\n    const foo = require(\u0027./module.js\u0027).foo;\n    const bar = require(\u0027./module.js\u0027);\n    ```\n  - **导出**：使用 `module.exports` 和 `exports`\n    ```javascript\n    module.exports = {\n      foo: 42,\n      bar: function() { ... }\n    };\n    // 或者\n    exports.foo = 42;\n    exports.bar = function() { ... };\n    ```\n\n### **2. 模块加载方式**\n\n- **ESM**：\n  - **静态**：模块加载在编译时确定，可以进行静态分析，支持树摇优化（tree-shaking）。\n  - **异步**：支持异步加载（动态导入），可以使用 `import()` 来按需加载模块。\n  \n- **CJS**：\n  - **动态**：模块加载在运行时进行，`require` 可以在任何地方调用，包括条件语句中。\n  - **同步**：`require` 是同步的，所有模块在程序开始时加载。\n\n### **3. 文件扩展名**\n\n- **ESM**：\n  - 通常使用 `.js` 文件扩展名，默认情况下会使用 `ESM` 语法，但也可以使用 `.mjs` 扩展名明确标识为 ESM 模块。\n  \n- **CJS**：\n  - 通常使用 `.js` 文件扩展名，模块系统默认为 `CJS`。使用 `.cjs` 扩展名可以明确标识为 CJS 模块。\n\n### **4. 模块解析**\n\n- **ESM**：\n  - **相对路径**：需要提供完整的路径（包括文件扩展名），例如 `import { foo } from \u0027./module.js\u0027;`\n  - **绝对路径**：支持 URL 作为模块标识符。\n  \n- **CJS**：\n  - **相对路径**：可以省略文件扩展名，例如 `const foo = require(\u0027./module\u0027);`，Node.js 会尝试自动解析 `.js`、`.json`、`.node` 等扩展名。\n\n### **5. 模块缓存**\n\n- **ESM**：\n  - 模块加载结果会被缓存，后续的导入会从缓存中读取。\n  \n- **CJS**：\n  - 模块首次 `require` 时加载，后续的 `require` 会使用缓存的结果。\n\n### **6. 默认导出**\n\n- **ESM**：\n  - 支持默认导出，可以导出一个默认值和多个命名值。\n  \n- **CJS**：\n  - `module.exports` 可以导出一个对象或函数，不能直接导出多个命名值。\n\n### **7. `this` 绑定**\n\n- **ESM**：\n  - 在模块代码中，`this` 是 `undefined`。模块代码不在函数上下文中运行，而是在模块上下文中运行。\n  \n- **CJS**：\n  - 在模块代码中，`this` 指向 `module.exports`，即模块的导出对象。\n\n### **示例对比**\n\n**ESM 示例：**\n\n```javascript\n// module.js\nexport const foo = 42;\nexport default function() { ... }\n\n// main.js\nimport { foo } from \u0027./module.js\u0027;\nimport defaultExport from \u0027./module.js\u0027;\n```\n\n**CJS 示例：**\n\n```javascript\n// module.js\nconst foo = 42;\nmodule.exports = function() { ... };\nmodule.exports.foo = foo;\n\n// main.js\nconst module = require(\u0027./module.js\u0027);\nconst foo = module.foo;\nconst defaultExport = module;\n```\n",
+    "pivot":  "- **ESM** 是现代 JavaScript 的模块系统，具有静态分析、异步加载等优势，适用于现代前端和 Node.js 环境。\n- **CJS** 是 Node.js 的传统模块系统，支持动态加载和同步加载，适用于老旧的 Node.js 项目。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T14:20:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  350,
+    "filterTotalNum":  1907,
+    "prev":  "d74aa7b7-f554-4ee8-9adb-2599e1caf57c",
+    "next":  "4ad4e434-9883-480e-a403-f54614a41293"
+}

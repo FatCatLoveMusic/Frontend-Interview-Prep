@@ -1,0 +1,21 @@
+﻿{
+    "id":  2918,
+    "exerciseKey":  "3cd22a2e-ada1-4e6b-9efd-9b719823ab52",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在 React 项目中，一般怎么处理错误？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 React 项目中，错误处理一般分为 **组件级错误** 和 **全局错误**，主要采用 **错误边界（Error Boundaries）**、**`try...catch`**、**全局监听** 以及 **日志上报** 等方式。\n\n### 1. **错误边界（Error Boundaries）**（处理渲染、生命周期方法中的错误）  \n```tsx\nclass ErrorBoundary extends React.Component {\n  state = { hasError: false };\n\n  static getDerivedStateFromError(error: Error) {\n    return { hasError: true };\n  }\n\n  componentDidCatch(error: Error, info: React.ErrorInfo) {\n    console.error(\u0027Error:\u0027, error, info);\n  }\n\n  render() {\n    if (this.state.hasError) return \u003ch1\u003e出错了！\u003c/h1\u003e;\n    return this.props.children;\n  }\n}\n\n// 使用：\n\u003cErrorBoundary\u003e\n  \u003cMyComponent /\u003e\n\u003c/ErrorBoundary\u003e\n```\n\n### 2. **`try...catch` 处理事件错误**\nReact 事件处理程序不会被 `ErrorBoundary` 捕获，需要手动用 `try...catch` 处理：\n```tsx\nconst handleClick = () =\u003e {\n  try {\n    // 可能出错的代码\n  } catch (error) {\n    console.error(\u0027事件错误:\u0027, error);\n  }\n};\n\u003cbutton onClick={handleClick}\u003e点击\u003c/button\u003e\n```\n\n### 3. **全局监听（`window.onerror`、`unhandledrejection`）**\n对于 **未捕获的 JavaScript 错误**，可以用 `window.onerror` 或 `unhandledrejection` 进行兜底：\n```tsx\nwindow.onerror = (message, source, lineno, colno, error) =\u003e {\n  console.error(\u0027全局错误:\u0027, { message, source, lineno, colno, error });\n};\n\nwindow.addEventListener(\u0027unhandledrejection\u0027, (event) =\u003e {\n  console.error(\u0027Promise 未捕获错误:\u0027, event.reason);\n});\n```\n\n### 4. **日志上报**\n可以结合 **Sentry** 或其他监控系统，将错误上报：\n```tsx\nimport * as Sentry from \u0027@sentry/react\u0027;\nSentry.init({ dsn: \u0027your-dsn-url\u0027 });\n\n\u003cSentry.ErrorBoundary fallback={\u003ch1\u003e出错了\u003c/h1\u003e}\u003e\n  \u003cMyComponent /\u003e\n\u003c/Sentry.ErrorBoundary\u003e;\n```",
+    "pivot":  "- **渲染、生命周期错误** → **使用 `ErrorBoundary`**  \n- **事件处理错误** → **手动 `try...catch`**  \n- **全局错误** → **监听 `window.onerror` 和 `unhandledrejection`**  \n- **日志上报** → **结合 Sentry 进行监控**",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-03-20T01:47:17.000Z",
+    "updateAt":  "2025-03-20T01:47:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  283,
+    "filterTotalNum":  1907,
+    "prev":  "ae19c36b-5312-4299-b371-8c61e96cbb8d",
+    "next":  "eafdce6d-b42c-42b1-bfb5-f40947e6f5d8"
+}

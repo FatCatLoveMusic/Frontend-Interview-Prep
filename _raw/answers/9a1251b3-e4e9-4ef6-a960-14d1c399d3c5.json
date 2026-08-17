@@ -1,0 +1,21 @@
+﻿{
+    "id":  2053,
+    "exerciseKey":  "9a1251b3-e4e9-4ef6-a960-14d1c399d3c5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "改变this指向的方法有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "有以下几种常用的方法可以改变`this`的指向：\n\n1. 使用`bind()`方法：`bind()`方法会创建一个新的函数，并将其内部的`this`绑定到指定的对象。例如：\n\n```javascript\nfunction sayHello() {\n  console.log(\"Hello, \" + this.name);\n}\n\nconst person = { name: \"John\" };\nconst boundFunction = sayHello.bind(person);\nboundFunction(); // 输出: Hello, John\n```\n\n2. 使用箭头函数（Arrow Function）：箭头函数没有自己的`this`，它会继承外部作用域的`this`。因此，在箭头函数中使用`this`时，它会指向定义时所在的上下文。例如：\n\n```javascript\nconst obj = {\n  name: \"Alice\",\n  sayHello: function() {\n    setTimeout(() =\u003e {\n      console.log(\"Hello, \" + this.name);\n    }, 1000);\n  }\n};\n\nobj.sayHello(); // 输出: Hello, Alice\n```\n\n3. 使用`call()`或`apply()`方法：`call()`和`apply()`方法可以立即调用函数，并显式指定函数内部的`this`值。它们之间的区别在于参数的传递方式。例如：\n\n```javascript\nfunction sayHello() {\n  console.log(\"Hello, \" + this.name);\n}\n\nconst person = { name: \"John\" };\nsayHello.call(person); // 输出: Hello, John\n\n// 或者使用 apply()\nsayHello.apply(person); // 输出: Hello, John\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-12-17T09:54:44.000Z",
+    "updateAt":  "2024-07-19T10:18:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  758,
+    "filterTotalNum":  1907,
+    "prev":  "9b464276-64d0-4c3b-b908-0b5e34da878b",
+    "next":  "286f8c5a-9f06-476d-9670-bd02de26db4e"
+}

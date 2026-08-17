@@ -1,0 +1,21 @@
+﻿{
+    "id":  2960,
+    "exerciseKey":  "e8f52755-fec1-4489-9163-a7fb4216b0b2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue2中v-model的实现原理",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue 2 中，`v-model` 的本质是 **语法糖**，它本质上是对 **`value`（或 `checked`）属性绑定 + `input` 事件监听** 的封装。理解它的实现原理，需要从 **指令编译机制** 和 **双向绑定逻辑** 入手。\n\n---\n\n## 1. `v-model` 的核心原理\n\n假设在模板中写：\n\n```vue\n\u003cinput v-model=\"msg\"\u003e\n```\n\n编译后的大致效果等价于：\n\n```vue\n\u003cinput\n  :value=\"msg\"\n  @input=\"msg = $event.target.value\"\n/\u003e\n```\n\n### 分析：\n\n1. **`:value=\"msg\"`**\n\n   * 将 Vue 实例中的 `msg` 属性绑定到 input 的 value 上。\n   * 当 `msg` 发生变化时，视图自动更新（单向绑定）。\n\n2. **`@input=\"msg = $event.target.value\"`**\n\n   * 监听用户输入事件，将 input 的值同步回 Vue 实例的数据。\n   * 完成从视图到数据的更新，实现双向绑定。\n\n---\n\n## 2. 内部实现机制\n\n### 2.1 数据劫持（双向绑定）\n\n* Vue 2 利用 **`Object.defineProperty`** 对 `data` 中的属性进行 getter/setter 劫持。\n* 当数据发生变化时，会触发 **Watcher** 更新视图。\n* 当用户输入触发 `input` 事件时，通过事件回调修改数据，setter 被触发，视图更新。\n\n### 2.2 指令编译\n\n* Vue 编译模板时，会检测到 `v-model` 指令：\n\n  * 对 **文本输入框 (`input[type=text]`)**，绑定 `value` + `input`\n  * 对 **复选框 (`input[type=checkbox]`)**，绑定 `checked` + `change`\n  * 对 **单选框 (`input[type=radio]`)**，绑定 `checked` + `change`\n  * 对 **`\u003cselect\u003e`**，绑定 `value` + `change`\n* 这些规则都是在 Vue 的 **`v-model` 指令编译器**里实现的。\n\n### 2.3 Watcher 和 Dep\n\n* 每个绑定的数据属性都有一个 **依赖收集器（Dep）**\n* 当数据被访问时，收集依赖（Watcher）\n* 当数据被修改时，Dep 通知所有 Watcher 更新视图\n\n---\n\n## 3. 自定义组件上的 v-model\n\n在 Vue 2 中，`v-model` 也可以用于组件。原理是：\n\n```vue\n\u003cmy-input v-model=\"msg\" /\u003e\n```\n\n* 编译后等价于：\n\n```vue\n\u003cmy-input\n  :value=\"msg\"\n  @input=\"msg = $event\"\n/\u003e\n```\n\n* 组件需要：\n\n  * 接收 `value` 属性\n  * 在内部触发 `this.$emit(\u0027input\u0027, newValue)`\n* Vue 通过这个约定，实现组件上的双向绑定。\n",
+    "pivot":  "1. **本质**：`v-model` = 数据绑定 + 事件监听（语法糖）\n2. **核心机制**：\n\n   * `Object.defineProperty` 劫持数据，实现响应式\n   * 指令编译器绑定 `value/checked` 和事件\n   * Watcher/Dep 通知视图更新\n3. **在组件上**：约定 `value` + `input` 事件即可实现双向绑定",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-08-28T08:56:05.000Z",
+    "updateAt":  "2025-08-28T08:57:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  242,
+    "filterTotalNum":  1907,
+    "prev":  "2446e942-5af4-4e38-98b5-5bb96b968a2c",
+    "next":  "965437c7-3f6d-4855-94f7-fa62c3e73196"
+}

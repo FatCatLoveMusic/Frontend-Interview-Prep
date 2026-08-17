@@ -1,0 +1,21 @@
+﻿{
+    "id":  438,
+    "exerciseKey":  "27491e6c-d92d-4d41-9bff-4781665945df",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "0.1+0.2为什么不等于0.3？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "0.1和0.2在转换成二进制后会无限循环，由于标准位数的限制后面多余的位数会被截掉，此时就已经出现了精度的损失，相加后因浮点数小数位的限制而截断的二进制数字在转换为十进制就会变成 0.30000000000000004。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:58:52.000Z",
+    "updateAt":  "2021-07-07T00:14:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1482,
+    "filterTotalNum":  1907,
+    "prev":  "62bf96e4-7471-44d1-9c30-d22ccb98e1d3",
+    "next":  "82a008f4-a9a4-4af6-aa6f-ec9d3b026487"
+}

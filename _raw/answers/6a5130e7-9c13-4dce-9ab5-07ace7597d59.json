@@ -1,0 +1,21 @@
+﻿{
+    "id":  135,
+    "exerciseKey":  "6a5130e7-9c13-4dce-9ab5-07ace7597d59",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst myPromise = Promise.resolve(\"Woah some cool data\");\n\n(async () =\u003e {\n\ttry {\n\t\tconsole.log(await myPromise);\n\t} catch {\n\t\tthrow new Error(`Oops didn\u0027t work`);\n\t} finally {\n\t\tconsole.log(\"Oh finally!\");\n\t}\n})();\n```",
+    "options":  "{\"options\":[\"Woah some cool data\",\"Oh finally!\",\"Woah some cool data Oh finally!\",\"Oops didn\u0027t work Oh finally!\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "在 `try` 块区，我们打印 `myPromise` 变量的 awaited 值： `\"Woah some cool data\"`。因为`try` 块区没有错误抛出，`catch` 块区的代码并不执行。`finally` 块区的代码 _总是_ 执行，`\"Oh finally!\"` 被输出。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:31:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  1784,
+    "filterTotalNum":  1907,
+    "prev":  "524c782b-11d8-4be0-9ba6-6fcfd487ace0",
+    "next":  "462a3a5d-0364-41c1-b437-d8f63587ae1c"
+}

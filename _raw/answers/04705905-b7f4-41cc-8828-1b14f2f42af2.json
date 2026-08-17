@@ -1,0 +1,21 @@
+﻿{
+    "id":  98,
+    "exerciseKey":  "04705905-b7f4-41cc-8828-1b14f2f42af2",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst person = {\n  name: \"Lydia\",\n  age: 21\n}\n\nfor (const [x, y] of Object.entries(person)) {\n  console.log(x, y)\n}\n```",
+    "options":  "{\"options\":[\"name Lydia and age 21\",\"[\\\"name\\\", \\\"Lydia\\\"] and [\\\"age\\\", 21]\",\"[\\\"name\\\", \\\"age\\\"] and undefined\",\"Error\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "`Object.entries()`方法返回一个给定对象自身可枚举属性的键值对数组，上述情况返回一个二维数组，数组每个元素是一个包含键和值的数组：\n`[[\u0027name\u0027，\u0027Lydia\u0027]，[\u0027age\u0027，21]]`\n使用`for-of`循环，我们可以迭代数组中的每个元素，上述情况是子数组。 我们可以使用`const [x，y]`在`for-of`循环中解构子数组。 `x`等于子数组中的第一个元素，`y`等于子数组中的第二个元素。\n第一个子阵列是`[“name”，“Lydia”]`，其中`x`等于`name`，而`y`等于`Lydia`。\n第二个子阵列是`[“age”，21]`，其中`x`等于`age`，而`y`等于`21`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:27:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1821,
+    "filterTotalNum":  1907,
+    "prev":  "37021e43-c8e8-4664-afa2-0c16eee6e4b2",
+    "next":  "dd7273e3-f9be-4cde-a77a-693a02fc967a"
+}

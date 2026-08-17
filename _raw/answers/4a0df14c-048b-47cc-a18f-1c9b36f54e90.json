@@ -1,0 +1,21 @@
+﻿{
+    "id":  180,
+    "exerciseKey":  "4a0df14c-048b-47cc-a18f-1c9b36f54e90",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "ES6中数组新增了哪些扩展?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "以下是一些 ES6 中数组新增的扩展：\n\n1. 扩展运算符（Spread operator）：使用 `...` 语法可以将一个数组展开成多个独立的元素，或者将多个元素合并为一个数组。\n\n2. Array.from()：通过类似数组的对象或可迭代对象创建一个新的数组。\n\n3. Array.of()：创建一个由传入参数组成的新数组。\n\n4. find() 和 findIndex()：用于在数组中查找满足指定条件的第一个元素及其索引。\n\n5. includes()：检查数组是否包含指定的元素，并返回布尔值。\n\n6. fill()：使用指定的值填充数组的所有元素。\n\n7. flat() 和 flatMap()：用于将嵌套的数组展平，减少维度。\n\n8. map()、filter()、reduce()、forEach() 等方法的回调函数支持箭头函数语法。\n\n9. entries()、keys() 和 values()：用于遍历数组的键值对、键和值。\n\n10. 数组解构赋值：可以通过解构赋值从数组中提取值并赋给变量。\n\n11. 数组的扩展属性：`Array.prototype.length` 可以被修改，`Array.prototype[@@toStringTag]` 返回 `\"Array\"`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:35:15.000Z",
+    "updateAt":  "2024-07-22T15:41:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1739,
+    "filterTotalNum":  1907,
+    "prev":  "593b09fd-094f-44b7-a375-6ddc393113a5",
+    "next":  "c843a307-4934-4fa2-9c16-9f06484b0021"
+}

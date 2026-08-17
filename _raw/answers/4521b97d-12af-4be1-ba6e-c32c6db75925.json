@@ -1,0 +1,21 @@
+﻿{
+    "id":  2944,
+    "exerciseKey":  "4521b97d-12af-4be1-ba6e-c32c6db75925",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何实现一个可以监听任何事件的React Hooks？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 React 中，如果想实现一个可以 **监听任意 DOM 或全局事件的 Hook**，核心思路是：\n\n1. 利用 `useEffect` 做生命周期管理，确保事件绑定和解绑正确；\n2. 使用 `useRef` 保存回调函数，避免每次渲染都重新绑定；\n3. 支持可配置的事件源（`window`、`document`、任意 DOM 元素）。\n\n\n## 一、核心 Hook 实现\n\n```js\nimport { useEffect, useRef } from \u0027react\u0027;\n\n/**\n * useEventListener - 通用事件监听 Hook\n * @param {string} eventName - 事件名\n * @param {function} handler - 事件回调\n * @param {EventTarget} element - 监听目标，默认 window\n */\nfunction useEventListener(eventName, handler, element = window) {\n  // 保存 handler 的最新引用，避免每次 render 重新绑定\n  const savedHandler = useRef();\n\n  useEffect(() =\u003e {\n    savedHandler.current = handler;\n  }, [handler]);\n\n  useEffect(() =\u003e {\n    // 确保 element 可用\n    const targetElement = element \u0026\u0026 \u0027addEventListener\u0027 in element ? element : window;\n    if (!targetElement) return;\n\n    // 定义事件回调，保证调用最新 handler\n    const eventListener = (event) =\u003e savedHandler.current(event);\n\n    targetElement.addEventListener(eventName, eventListener);\n\n    // 清理函数\n    return () =\u003e {\n      targetElement.removeEventListener(eventName, eventListener);\n    };\n  }, [eventName, element]);\n}\n\nexport default useEventListener;\n```\n\n---\n\n## 二、使用示例\n\n### 1. 监听窗口大小变化\n\n```js\nimport useEventListener from \u0027./useEventListener\u0027;\nimport { useState } from \u0027react\u0027;\n\nfunction WindowSize() {\n  const [size, setSize] = useState({ width: window.innerWidth, height: window.innerHeight });\n\n  useEventListener(\u0027resize\u0027, () =\u003e {\n    setSize({ width: window.innerWidth, height: window.innerHeight });\n  });\n\n  return \u003cdiv\u003e窗口大小: {size.width} x {size.height}\u003c/div\u003e;\n}\n```\n\n### 2. 监听键盘事件\n\n```js\nfunction KeyLogger() {\n  useEventListener(\u0027keydown\u0027, (e) =\u003e {\n    console.log(\u0027按下的键:\u0027, e.key);\n  });\n\n  return \u003cdiv\u003e按下任意键查看控制台日志\u003c/div\u003e;\n}\n```\n\n---\n\n## 三、设计要点\n\n1. **避免重复绑定**：\n\n   * `useRef` 保存 handler，`useEffect` 只在事件类型或目标改变时绑定/解绑；\n\n2. **清理事件**：\n\n   * `useEffect` 返回清理函数，保证组件卸载时不会造成内存泄漏；\n\n3. **支持灵活事件源**：\n\n   * 默认绑定到 `window`，也可以传入任意 `EventTarget` 或 DOM 元素。\n\n4. **可复用性高**：\n\n   * 这个 Hook 可用于监听任意事件，如鼠标、滚动、键盘、拖拽、自定义事件等。\n\n",
+    "pivot":  "* 核心是 **用 useEffect 管理绑定和解绑、用 useRef 保存最新回调**；\n* 可以监听任意事件类型和事件源，保持 Hook 高复用性；\n* 保证清理机制，防止内存泄漏。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-08-20T14:48:05.000Z",
+    "updateAt":  "2025-08-20T14:48:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  258,
+    "filterTotalNum":  1907,
+    "prev":  "abd67a8c-15c5-421f-9d48-c4aa19869a88",
+    "next":  "d6e29125-16c6-4b50-b41e-74d42c489c21"
+}

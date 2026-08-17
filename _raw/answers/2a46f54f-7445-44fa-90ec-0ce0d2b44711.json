@@ -1,0 +1,21 @@
+﻿{
+    "id":  1896,
+    "exerciseKey":  "2a46f54f-7445-44fa-90ec-0ce0d2b44711",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "map和 filter 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 参数\n\n首先，map和filter函数的参数，是完全相同的\n\n\u003e array.map(function(currentValue,index,arr), thisValue)\n\u003e \n\u003e array.filter(function(currentValue,index,arr), thisValue)\n\n* currentValue：数组元素；\n* index：索引\n* arr：原数组；\n* thisValue：作为该执行回调时使用，传递给函数，用作 \"this\" 的值\n\n## 用途\n\n但是在用途上，它们是有区别的：  \n\n1. map方法返回的新数组是原数组的映射，何为映射？就是和原数组的长度相同，数值做相应处理。  \n2. filter方法返回的值是过滤原数组后的新数组，和原数组长度不同，数值不变。  \n\n**示例**：\n\n```\nlet arr = [\"1\",\"2\",\"3\"];\nlet a = arr.map((item,index,a) =\u003e{\n    return item + 1\n});\nconsole.log(a);//[\"11\", \"21\", \"31\"]\nlet b = arr.filter((item,index,a) =\u003e{\n    return item \u003e 1\n})\nconsole.log(b);//[\"2\", \"3\"]\n```\n\n另外，filter可过滤NaN、null、undefined、0\n\n```js\nlet arr = [NaN,null,undefined,\"0\",0,1,2,3];\nlet newArr = arr.filter(item =\u003e item);\nconsole.log(newArr);//[\"0\", 1, 2, 3]\n```",
+    "pivot":  "#### 参数\n\n`map` 和 `filter` 函数在 JavaScript 中用于处理数组。它们都接受相同的三个参数：\n\n1. **currentValue**：当前处理的数组元素。\n2. **index**：当前元素在数组中的索引。\n3. **arr**：包含所有元素的原始数组。\n4. **thisValue**：可选参数，作为执行回调时使用的 `this` 的值。\n\n#### 用途\n\n尽管 `map` 和 `filter` 函数的参数相同，但它们的作用和使用场景却有所不同：\n\n1. **map**：\n   - **返回值**：返回一个新数组，其元素是原始数组中每个元素的映射版本。\n   - **应用场景**：当你想要创建一个与原始数组具有相同长度的新数组，但每个元素都经过某种转换或处理时使用。\n2. **filter**：\n   - **返回值**：返回一个新数组，其包含原始数组中满足指定条件的所有元素。\n   - **应用场景**：当你想要创建一个新数组，只包含原始数组中符合特定条件的元素时使用。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-10-09T11:46:06.000Z",
+    "updateAt":  "2024-08-10T17:07:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  914,
+    "filterTotalNum":  1907,
+    "prev":  "0ea76a47-8e0f-4d79-81a6-7ca371b1ea8c",
+    "next":  "da41ddaa-57d7-405e-83d8-8cc56fca6ec1"
+}

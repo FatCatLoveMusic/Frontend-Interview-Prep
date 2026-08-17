@@ -1,0 +1,21 @@
+﻿{
+    "id":  393,
+    "exerciseKey":  "4cf47e01-92e5-4e04-ab83-f4eca1953e23",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何提高webpack的构建速度？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Webpack 的构建过程本质上包括**模块解析、加载、编译、优化、输出**等多个阶段，因此优化手段也需从多个维度入手。\n\n以下从**开发模式（`webpack-dev-server`）和生产模式（`webpack build`）两个阶段**，分别分析提高构建速度的关键策略。\n\n---\n\n## 一、通用优化策略\n\n### 1. **合理使用缓存**\n\n* **开启持久化缓存**（Webpack 5）：\n\n  ```js\n  module.exports = {\n    cache: {\n      type: \u0027filesystem\u0027,\n    },\n  };\n  ```\n\n  能将模块编译结果缓存到磁盘，避免重复编译。\n\n* **`babel-loader` 开启缓存**：\n\n  ```js\n  {\n    loader: \u0027babel-loader\u0027,\n    options: {\n      cacheDirectory: true\n    }\n  }\n  ```\n\n### 2. **减少模块解析范围**\n\n* **使用 `include` / `exclude` 精准匹配**\n\n  ```js\n  {\n    test: /\\.js$/,\n    loader: \u0027babel-loader\u0027,\n    include: path.resolve(__dirname, \u0027src\u0027),\n    exclude: /node_modules/\n  }\n  ```\n\n* **配置 `resolve.extensions` 精简后缀解析**\n\n  ```js\n  resolve: {\n    extensions: [\u0027.js\u0027, \u0027.ts\u0027]\n  }\n  ```\n\n* **配置 `resolve.alias` 减少深层查找**\n\n  ```js\n  resolve: {\n    alias: {\n      \u0027@\u0027: path.resolve(__dirname, \u0027src\u0027)\n    }\n  }\n  ```\n\n### 3. **并行/多进程处理**\n\n* **使用 `thread-loader`** 处理 JS/TS 转译等耗时任务：\n\n  ```js\n  {\n    test: /\\.js$/,\n    use: [\u0027thread-loader\u0027, \u0027babel-loader\u0027]\n  }\n  ```\n\n* **使用 `terser-webpack-plugin` 的并行压缩**：\n  Webpack 5 中默认已启用，手动配置时可设置：\n\n  ```js\n  optimization: {\n    minimize: true,\n    minimizer: [new TerserPlugin({ parallel: true })]\n  }\n  ```\n\n---\n\n## 二、开发阶段优化（提升热更新和增量编译速度）\n\n### 1. **使用 `webpack-dev-server` + HMR**\n\n* 启用热模块替换（HMR），只更新变更部分，提高效率；\n* 配合 React Fast Refresh、Vue HMR 插件，提升开发体验。\n\n### 2. **开启 `source-map` 优化模式**\n\n* 开发阶段推荐：\n\n  ```js\n  devtool: \u0027cheap-module-source-map\u0027\n  ```\n\n  比 `eval-source-map` 更快，调试体验仍可接受。\n\n### 3. **使用模块缓存机制**\n\n* Webpack 会将未变更模块缓存，如果未配置 `module.id`，建议开启：\n\n  ```js\n  optimization: {\n    moduleIds: \u0027deterministic\u0027\n  }\n  ```\n\n---\n\n## 三、生产阶段优化（压缩构建产物）\n\n### 1. **Tree Shaking（摇树优化）**\n\n* 确保使用 `ESModule` 规范（`import`/`export`），否则无法移除无用代码；\n* 设置 `sideEffects: false`，移除副作用模块（需谨慎）：\n\n  ```json\n  // package.json\n  {\n    \"sideEffects\": false\n  }\n  ```\n\n### 2. **合理分包 + 动态引入**\n\n* 利用 `SplitChunksPlugin` 拆分公共依赖和第三方库，减少重复打包：\n\n  ```js\n  optimization: {\n    splitChunks: {\n      chunks: \u0027all\u0027,\n    },\n  }\n  ```\n\n* 对大型路由模块按需加载，减少初始构建体积。\n\n### 3. **缩小构建目标范围**\n\n* 使用 `IgnorePlugin` 忽略无用语言包等：\n\n  ```js\n  new webpack.IgnorePlugin({\n    resourceRegExp: /^\\.\\/locale$/,\n    contextRegExp: /moment$/,\n  });\n  ```\n\n* 精简 polyfill，例如使用 `core-js-pure` 或按需引入。\n\n---\n\n## 四、其他技巧与工具\n\n### 1. **使用 `webpack-bundle-analyzer` 分析体积**\n\n```js\nconst { BundleAnalyzerPlugin } = require(\u0027webpack-bundle-analyzer\u0027);\n```\n\n定位冗余依赖和重复打包问题。\n\n### 2. **使用轻量替代库**\n\n* 用 `dayjs` 替代 `moment`；\n* 用 `lodash-es` + Tree Shaking 替代整个 lodash。\n\n### 3. **升级到 Webpack 5**\n\nWebpack 5 提供了更好的缓存机制、更快的构建性能和内置优化能力。",
+    "pivot":  "* Webpack 构建慢的根源在于**模块数量多、体积大、处理流程长**；\n* 提升构建速度需从**缓存、并发、范围控制、按需加载**四个方向优化；\n* 区分开发和生产环境进行有针对性的配置调整；\n* 借助生态工具（如 thread-loader、BundleAnalyzer、TerserPlugin）提升自动化与调试效率；\n* 保持依赖精简、代码可维护，有助于从源头优化构建时间。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-05T15:34:30.000Z",
+    "updateAt":  "2025-08-04T06:29:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  1527,
+    "filterTotalNum":  1907,
+    "prev":  "45b15dc2-e189-4d3a-80b3-b65bef138ccb",
+    "next":  "a2580d1e-90e9-48bc-b93c-247425fb3e5f"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1793,
+    "exerciseKey":  "9f6cb07a-c464-4b2e-b2ab-9861e56c4de3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是硬件加速？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "硬件加速就是将浏览器的渲染过程交给GPU处理，而不是使用自带的比较慢的渲染器。这样就可以使得 `animation` 与 `transition` 更加顺畅。\n\n我们可以在浏览器中用css开启硬件加速，使GPU (Graphics Processing Unit) 发挥功能，从而提升性能。\n\n现在大多数电脑的显卡都支持硬件加速。鉴于此，我们可以发挥GPU的力量，从而使我们的网站或应用表现的更为流畅。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2022-05-09T15:14:26.000Z",
+    "updateAt":  "2022-05-09T23:23:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1016,
+    "filterTotalNum":  1907,
+    "prev":  "5adab921-8dfb-4a65-9f44-38ae8a70820f",
+    "next":  "0139d2e8-67c1-40f9-868e-5f277e223629"
+}

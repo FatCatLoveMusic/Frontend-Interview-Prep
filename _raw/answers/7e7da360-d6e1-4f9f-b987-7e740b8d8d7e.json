@@ -1,0 +1,21 @@
+﻿{
+    "id":  442,
+    "exerciseKey":  "7e7da360-d6e1-4f9f-b987-7e740b8d8d7e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Object.is和===有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Object在严格等于的基础上修复了一些特殊情况下的失误，具体来说就是+0和-0，NaN和NaN。 \n\n源码如下：\n```js\nfunction is(x, y) {\nif (x === y) {\n//运行到1/x === 1/y的时候x和y都为0，但是1/+0 = +Infinity， 1/-0 = -Infinity, 是不\n一样的\nreturn x !== 0 || y !== 0 || 1 / x === 1 / y;\n} else {\n//NaN===NaN是false,这是不对的，我们在这里做一个拦截，x !== x，那么一定是 NaN, y 同理\n//两个都是NaN的时候返回true\nreturn x !== x \u0026\u0026 y !== y;\n}\n\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:01:26.000Z",
+    "updateAt":  "2024-07-22T10:55:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1478,
+    "filterTotalNum":  1907,
+    "prev":  "8edaa033-4005-41cc-a255-f175f6c4eb6b",
+    "next":  "1d87535d-c1c8-4c6e-b6f5-583c80193217"
+}

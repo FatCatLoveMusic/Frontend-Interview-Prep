@@ -1,0 +1,21 @@
+﻿{
+    "id":  2767,
+    "exerciseKey":  "b2307971-c42d-49f7-b659-d3e2a50d3505",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS 尺寸单位有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "CSS 提供了多种尺寸单位，用于设置元素的大小、位置和其他样式属性。主要的尺寸单位包括：\n\n### **1. 绝对单位**\n\n- **`px`（像素）**：固定的单位，适用于设备屏幕上的精确像素。\n  ```css\n  width: 100px;\n  ```\n\n- **`cm`（厘米）**：用于印刷样式，1厘米等于约37.8像素。\n  ```css\n  margin: 2cm;\n  ```\n\n- **`mm`（毫米）**：用于印刷样式，1毫米等于约3.78像素。\n  ```css\n  padding: 10mm;\n  ```\n\n- **`in`（英寸）**：用于印刷样式，1英寸等于96像素。\n  ```css\n  font-size: 1in;\n  ```\n\n- **`pt`（点）**：印刷样式单位，1点等于1/72英寸，约为1.333像素。\n  ```css\n  line-height: 12pt;\n  ```\n\n- **`pc`（派卡）**：印刷样式单位，1派卡等于12点。\n  ```css\n  border-width: 2pc;\n  ```\n\n### **2. 相对单位**\n\n- **`%`（百分比）**：相对于包含块的尺寸，如父元素的宽度或高度。\n  ```css\n  width: 50%;\n  ```\n\n- **`em`**：相对于当前元素的字体大小，`1em`等于当前字体的大小。\n  ```css\n  font-size: 2em;\n  ```\n\n- **`rem`**：相对于根元素（`\u003chtml\u003e`）的字体大小，`1rem`等于根元素的字体大小。\n  ```css\n  margin: 1rem;\n  ```\n\n- **`vh`（视口高度）**：相对于视口的高度，`1vh`等于视口高度的1%。\n  ```css\n  height: 50vh;\n  ```\n\n- **`vw`（视口宽度）**：相对于视口的宽度，`1vw`等于视口宽度的1%。\n  ```css\n  width: 50vw;\n  ```\n\n- **`vmin`**：相对于视口的较小的宽度或高度，`1vmin`是 `vw` 和 `vh` 中较小的那个。\n  ```css\n  font-size: 2vmin;\n  ```\n\n- **`vmax`**：相对于视口的较大的宽度或高度，`1vmax`是 `vw` 和 `vh` 中较大的那个。\n  ```css\n  font-size: 2vmax;\n  ```\n\n- **`ch`**：相对于 `0` 字符的宽度（当前字体的数字 `0` 的宽度）。\n  ```css\n  width: 10ch;\n  ```\n\n- **`ex`**：相对于当前字体的 `x` 高度。\n  ```css\n  height: 5ex;\n  ```\n\n### **3. 动态单位**\n\n- **`auto`**：根据元素内容或布局自动计算尺寸。\n  ```css\n  width: auto;\n  ```\n\n- **`min-content`、`max-content`、`fit-content`**：用于定义元素尺寸的最小、最大或适应内容的尺寸。\n  ```css\n  width: min-content;\n  ```\n",
+    "pivot":  "- **绝对单位**：`px`, `cm`, `mm`, `in`, `pt`, `pc`\n- **相对单位**：`%`, `em`, `rem`, `vh`, `vw`, `vmin`, `vmax`, `ch`, `ex`\n- **动态单位**：`auto`, `min-content`, `max-content`, `fit-content`",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T20:06:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  371,
+    "filterTotalNum":  1907,
+    "prev":  "13146206-837d-4eb6-9d47-c7152c4dae46",
+    "next":  "197d354c-bc4c-4715-bf47-7af0c347f997"
+}

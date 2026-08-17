@@ -1,0 +1,21 @@
+﻿{
+    "id":  489,
+    "exerciseKey":  "dcfb407b-223e-40ec-a3d2-7d7ef9514774",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "babel-polyfill 有什么用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。\n\n举例来说，ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-11T04:17:45.000Z",
+    "updateAt":  "2021-07-11T14:57:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  1431,
+    "filterTotalNum":  1907,
+    "prev":  "918f3f51-70e0-4dc7-8865-558be6abd388",
+    "next":  "3c2be850-72a9-42fe-b9cc-60a632f8ac61"
+}

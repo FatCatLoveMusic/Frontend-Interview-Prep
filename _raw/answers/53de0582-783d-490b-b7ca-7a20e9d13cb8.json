@@ -1,0 +1,21 @@
+﻿{
+    "id":  1914,
+    "exerciseKey":  "53de0582-783d-490b-b7ca-7a20e9d13cb8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何判断某个字符串长度（要求支持表情）？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "大家看到题目，可能首先想到的是 `str.length` 获取字符串的长度。\n\n其实 JS 中的字符串长度是个奇怪的设定，很多编程语言，获取字符串的长度是得到字节长度，比如一个正常的汉字是两个字节，但在 js 中，\u0027汉\u0027.length 是 **1** 。看上去很方便，殊不知，这个特性埋下的坑。\n\n比如：\n\n```\n😀 : \u0027😀\u0027.length 得到的是 2\n𠮷 : \u0027𠮷\u0027\u0027.length 得到的也是 2\n```\n\nES6 里添加了一个东西叫字符串迭代器，还添加了一个东西叫 unicode 正则模式，它们也不能直接统计字符数，而是可以把字符串拆成一个字符的数组，你可以间接的计算出字符个数。\n\n使用字符串的Iterator统计长度，如下例子：\n\n```js\nconst testStr = \u0027123 \u0027 \n \nfor(let c of testStr) { \n  console.log(c) \n} \n// 1 \n// 2 \n// 3 \n//   \nconsole.log([...testStr].length) \n// 4 \n```\n\n使用 `Array.from` 替换，并且封装一下：\n\n```js\nfunction unicodeLength(str) {\n    return Array.from(str).length\n}\n```\n\n\n\n\n",
+    "pivot":  "在JavaScript中，传统的`String.prototype.length`属性返回的字符串长度是基于UTF-16代码单元的数目，而不是字符的“感知长度”（即用户所认为的字符数）。由于某些字符（特别是表情符号和一些其他Unicode字符）需要两个或更多的UTF-16代码单元来表示，直接使用`.length`可能不会得到预期的结果。\n\n为了正确计算包含表情符号的字符串的“感知长度”，你可以使用`Array.from()`方法结合`String.prototype.codePointAt()`方法。`codePointAt()`方法返回给定索引处的字符的Unicode码点，这对于所有Unicode字符（包括表情符号）都是准确的。\n\n下面是一个计算字符串“感知长度”的函数示例：\n\n```javascript\nfunction getPerceivedLength(str) {\n  // 使用Array.from()和String.prototype.codePointAt()的回调函数来迭代字符串\n  // codePointAt()的第二个参数用于指示是否考虑整个字符（对于多码点字符）\n  // 但由于Array.from()调用codePointAt()时默认传递索引，我们不需要显式设置第二个参数\n  // 直接获取所有码点，并计算其数量\n  return Array.from(str, c =\u003e c.codePointAt(0)).length;\n}\n\n// 测试\nconst strWithEmoji = \"Hello 🌍\";\nconsole.log(strWithEmoji.length); // 可能输出 7，因为🌍可能由两个UTF-16代码单元组成\nconsole.log(getPerceivedLength(strWithEmoji)); // 输出 6，正确表示了字符串的“感知长度”\n\nconst strWithMultiEmoji = \"👨‍👩‍👧‍👦\"; // 家庭：男人、女人、女孩、男孩\nconsole.log(strWithMultiEmoji.length); // 可能输出 8 或更多，因为每个角色可能由多个UTF-16代码单元组成\nconsole.log(getPerceivedLength(strWithMultiEmoji)); // 输出 1，因为这是一个单独的“感知字符”\n```\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-10-10T12:42:30.000Z",
+    "updateAt":  "2024-08-10T17:07:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  896,
+    "filterTotalNum":  1907,
+    "prev":  "b837af11-c26f-41d2-b2fc-3610a1575ec2",
+    "next":  "9491596e-4423-4426-b300-a31ded121bc1"
+}

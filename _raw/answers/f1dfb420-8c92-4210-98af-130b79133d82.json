@@ -1,0 +1,21 @@
+﻿{
+    "id":  425,
+    "exerciseKey":  "f1dfb420-8c92-4210-98af-130b79133d82",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Promise.all",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "// 简易版\n```javascript\nPromise.myAll = function(promiseArr) {\n  return new Promise((resolve, reject) =\u003e {\n    const ans = [];\n    let index = 0;\n    for (let i = 0; i \u003c promiseArr.length; i++) {\n      promiseArr[i]\n      .then(res =\u003e {\n        ans[i] = res;\n        index++;\n        if (index === promiseArr.length) {\n          resolve(ans);\n        }\n      })\n      .catch(err =\u003e reject(err));\n    }\n  })\n}\n```\n\n// 终极版\n\n```javascript\n// 输入不仅仅只有Array\nfunction promiseAll (args) {\n  return new Promise((resolve, reject) =\u003e {\n    const promiseResults = [];\n    let iteratorIndex = 0;\n    // 已完成的数量，用于最终的返回，不能直接用完成数量作为iteratorIndex\n    // 输出顺序和完成顺序是两码事\n    let fullCount = 0;\n    // 用于迭代iterator数据\n    for (const item of args) {\n      // for of 遍历顺序，用于返回正确顺序的结果\n      // 因iterator用forEach遍历后的key和value一样，所以必须存一份for of的 iteratorIndex\n      let resultIndex = iteratorIndex;\n      iteratorIndex += 1;\n      // 包一层，以兼容非promise的情况\n      Promise.resolve(item).then(res =\u003e {\n        promiseResults[resultIndex] = res;\n        fullCount += 1;\n        // Iterator 接口的数据无法单纯的用length和size判断长度，不能局限于Array和 Map类型中\n        if (fullCount === iteratorIndex) {\n          resolve(promiseResults)\n        }\n      }).catch(err =\u003e {\n        reject(err)\n      })\n    }\n    // 处理空 iterator 的情况\n    if(iteratorIndex===0){\n      resolve(promiseResults)\n    }\n  }\n  )\n}\nif (!Promise.all) Promise.all = promiseAll;\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:14:34.000Z",
+    "updateAt":  "2021-08-13T10:14:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1495,
+    "filterTotalNum":  1907,
+    "prev":  "47240d74-7170-41b6-b85d-2a6977ea9a11",
+    "next":  "7375c380-9dd8-497e-9b74-e4cc0779532c"
+}

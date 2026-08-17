@@ -1,0 +1,21 @@
+﻿{
+    "id":  484,
+    "exerciseKey":  "72489e71-cf2d-4c98-8fd3-d43f7bfe217e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "TypeScript中有哪些声明变量的方式？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "1. 使用 `let` 关键字：\n   ```typescript\n   let x: number = 10;\n   ```\n\n2. 使用 `const` 关键字来声明常量：\n   ```typescript\n   const pi: number = 3.14;\n   ```\n\n3. 使用 `var` 关键字（不推荐，通常在ES6之前使用）：\n   ```typescript\n   var name: string = \"John\";\n   ```\n\n4. 使用函数作用域声明变量：\n   ```typescript\n   function example() {\n       var localVar: number = 42;\n   }\n   ```\n\n5. 使用函数参数的方式声明变量：\n   ```typescript\n   function greet(name: string) {\n       console.log(`Hello, ${name}!`);\n   }\n   ```\n\n6. 使用对象字面量声明变量：\n   ```typescript\n   let person: { name: string, age: number } = { name: \"Alice\", age: 30 };\n   ```\n\n7. 使用数组字面量声明数组变量：\n   ```typescript\n   let numbers: number[] = [1, 2, 3, 4, 5];\n   ```\n\n8. 使用接口声明对象的结构：\n   ```typescript\n   interface Person {\n       name: string;\n       age: number;\n   }\n   \n   let person: Person = { name: \"Bob\", age: 25 };\n   ```\n\n9. 使用类来声明对象：\n   ```typescript\n   class Animal {\n       constructor(public name: string, public species: string) {}\n   }\n   \n   let cat: Animal = new Animal(\"Fluffy\", \"Cat\");\n   ```",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，有多种声明变量的方式，包括：\n\n1. **let和const**：\n   - `let`声明的变量可以在同一作用域内重新赋值。\n   - `const`声明的变量一旦被赋值就不能再被修改。\n2. **var**：\n   - 类似于`let`，但它的作用域是全局的或函数级的。\n3. **默认值**：\n   - 可以为变量指定默认值，如果未赋值则使用默认值。\n4. **解构赋值**：\n   - 从对象或数组中解构变量，并分别赋值给多个变量。\n5. **模板字符串**：\n   - 用于创建字符串，可以包含变量和表达式。\n6. **类型注解**：\n   - 在变量声明时，可以为变量添加类型注解，以提供类型提示。\n7. **类型推断**：\n   - TypeScript可以自动推断变量的类型，通常基于赋值操作。\n\n**考察要点**：\n\n1. **变量声明方式**：了解在TypeScript中声明变量的不同方式。\n2. **作用域和可变性**：理解`let`、`const`和`var`声明变量的作用域和可变性。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-11T03:22:04.000Z",
+    "updateAt":  "2024-08-10T17:05:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  1436,
+    "filterTotalNum":  1907,
+    "prev":  "fa381450-0faf-4395-9207-7fa114c27440",
+    "next":  "c50852c5-6471-4bd3-8392-02ab58e4c726"
+}

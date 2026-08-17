@@ -1,0 +1,21 @@
+﻿{
+    "id":  586,
+    "exerciseKey":  "e84bcf8c-1ee4-4c28-8e64-875b485369b5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何使用js计算一个html页面有多少种标签？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 分析\n\n这道题看似简单，但是是一个很有价值的一道题目。它包含了很多重要的知识：\n\n* 如何获取所有DOM节点\n* 伪数组如何转为数组\n* 去重\n\n## 解答\n\n* 获取所有的DOM节点。\n\n```javascript\ndocument.querySelectorAll(\u0027*\u0027)\n```\n\n此时得到的是一个NodeList集合，我们需要将其转化为数组，然后对其筛选。\n\n* 转化为数组\n```javascript\n[...document.querySelectorAll(\u0027*\u0027)]\n```\n一个拓展运算符就轻松搞定。\n\n* 获取数组每个元素的标签名\n```javascript\n[...document.querySelectorAll(\u0027*\u0027)].map(ele =\u003e ele.tagName)\n```\n使用一个map方法，将我们需要的结果映射到一个新数组。\n\n* 去重\n```javascript\nnew Set([...document.querySelectorAll(\u0027*\u0027)].map(ele=\u003e ele.tagName)).size\n```\n\n我们使用ES6中的Set对象，把数组作为构造函数的参数，就实现了去重，再使用Set对象的size方法就可以得到有多少种HTML元素了。\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-08-11T08:23:45.000Z",
+    "updateAt":  "2024-07-20T18:17:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1334,
+    "filterTotalNum":  1907,
+    "prev":  "154d4288-8195-4fd4-87bb-2844cb22a4e5",
+    "next":  "4c33c24c-2e00-49a8-9f70-14c9ed80bf32"
+}

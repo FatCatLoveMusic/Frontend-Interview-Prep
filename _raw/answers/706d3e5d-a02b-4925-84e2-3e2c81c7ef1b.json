@@ -1,0 +1,21 @@
+﻿{
+    "id":  365,
+    "exerciseKey":  "706d3e5d-a02b-4925-84e2-3e2c81c7ef1b",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "GET和POST的请求的区别",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp style=\"text-align:start;text-indent:2em;\"\u003eGET和POST是HTTP协议中两种常见的请求方法，它们在用途、数据传输方式、安全性、数据限制等方面存在显著差异。以下是GET和POST请求的主要区别：\u003c/p\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e1. 用途\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：主要用于从服务器获取资源，通常用于查询数据，而不应该用于对服务器产生影响。它适用于请求服务器发送资源或数据，例如获取网页内容、图片等。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：通常用于向服务器提交数据，对服务器状态产生影响，比如提交表单、上传文件等。POST请求旨在向指定的资源提交要被处理的数据。\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e2. 数据传输方式\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：将参数附加在URL的末尾（Query String），以键值对的形式出现，可在浏览器地址栏直接看到。由于数据在URL中，因此GET请求的数据传输是可见的。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：将参数放在请求体中传输，对用户来说是不可见的。这使得POST请求能够传输大量数据，并且不会受到URL长度的限制。\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e3. 安全性\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：由于数据会暴露在URL上，因此相对不太安全，适合传输一些不敏感的数据。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：数据不会暴露在URL上，相对比较安全，适合传输敏感数据。然而，需要注意的是，即使使用POST请求，如果未采取其他安全措施（如HTTPS加密通信），数据仍然可能在传输过程中被截获。\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e4. 数据限制\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：由于URL长度的限制，GET请求的数据长度也有限制。不同的浏览器和服务器限制不同，但一般限制在2KB到8KB之间，更加常见的是1KB以内。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：对数据长度没有特定限制，因此适合传输大量数据。理论上，POST请求可以发送的数据量远大于GET请求。\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e5. 缓存和历史记录\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：可以被缓存，并且会被保存在浏览器历史记录当中，因此GET请求可以被收藏为书签。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：通常不会被缓存，也不会被保存在浏览器历史记录中。\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e6. 幂等性\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：被认为是幂等的，即对同一URL的多个请求应该返回同样的结果（前提是资源没有发生变化）。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：通常不是幂等的，因为每次POST请求都可能在服务器上产生新的资源或修改现有资源。\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003e7. 使用场景\u003c/h3\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGET请求\u003c/strong\u003e：更适用于获取资源和查询数据，例如搜索查询、读取数据等。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePOST请求\u003c/strong\u003e：更适用于提交数据和对服务器产生影响的操作，例如表单提交、文件上传、更新资源等。\u003c/li\u003e\u003c/ul\u003e\u003cp style=\"text-align:start;text-indent:2em;\"\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp style=\"text-align:start;text-indent:2em;\"\u003eGET和POST请求的区别：\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003eGET\u003c/h3\u003e\u003cul\u003e\u003cli\u003e用于请求数据（如读取网页）\u003c/li\u003e\u003cli\u003e数据附加在URL中，可见\u003c/li\u003e\u003cli\u003e有URL长度限制\u003c/li\u003e\u003cli\u003e可缓存，可保留在历史记录中\u003c/li\u003e\u003cli\u003e通常被认为是幂等的（多次请求相同结果）\u003c/li\u003e\u003c/ul\u003e\u003ch3 style=\"text-align:start;text-indent:2em;\"\u003ePOST\u003c/h3\u003e\u003cul\u003e\u003cli\u003e用于提交数据（如表单提交）\u003c/li\u003e\u003cli\u003e数据放在请求体中，不可见\u003c/li\u003e\u003cli\u003e数据量限制较少\u003c/li\u003e\u003cli\u003e不可缓存，不保存在历史记录中\u003c/li\u003e\u003cli\u003e通常不是幂等的（每次请求可能产生新结果）\u003c/li\u003e\u003c/ul\u003e",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-04T15:49:57.000Z",
+    "updateAt":  "2024-07-19T18:13:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  1555,
+    "filterTotalNum":  1907,
+    "prev":  "244fe47e-387f-4131-8d05-84de178c5692",
+    "next":  "d7b4d0ce-dc04-4989-9244-88276318b6db"
+}

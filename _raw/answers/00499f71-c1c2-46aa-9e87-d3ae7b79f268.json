@@ -1,0 +1,21 @@
+﻿{
+    "id":  2035,
+    "exerciseKey":  "00499f71-c1c2-46aa-9e87-d3ae7b79f268",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请按以下要求实现方法 fn ：遇到退格字符就删除前面的字符，遇到两个退格就删除两个字符",
+    "desc":  "```js\n// 比较含有退格的字符串，\"\u003c-\"代表退格键，\"\u003c\"和\"-\"均为正常字符\n// 输入：\"a\u003c-b\u003c-\", \"c\u003c-d\u003c-\"，结果：true，解释：都为\"\"\n// 输入：\"\u003c-\u003c-ab\u003c-\", \"\u003c-\u003c-\u003c-\u003c-a\"，结果：true，解释：都为\"a\"\n// 输入：\"\u003c-\u003cab\u003c-c\", \"\u003c\u003c-\u003ca\u003c-\u003c-c\"，结果：false，解释：\"\u003cac\" !== \"c\"\n\nfunction fn(str1, str2) {\n\n}\n```",
+    "options":  null,
+    "explanation":  "```js \nfunction fn(str1, str2) { \n\n  const doDelete = (str) =\u003e {\n    let flag = 0;// 0 - 正常字符；1 - \u003c；2 - \u003c-\n    const stack = [];\n    for(let i = 0; i \u003c str.length; i++) {\n      const char = str[i];\n      stack.push(char);\n\n      if(char === \u0027\u003c\u0027 \u0026\u0026 !flag) {\n        flag += 1\n      } else if(flag === 1) {\n        if(char === \u0027-\u0027) {\n          flag += 1\n        } else {\n          flag -= 1\n        }\n      }\n\n      if(flag === 2) {\n        stack.pop();\n        stack.pop();\n        stack.pop();\n        flag = 0\n      }\n    }\n    // console.log(String(stack))\n    return String(stack);\n  }\n\n  return doDelete(str1) === doDelete(str2);\n}\n\nconsole.log(fn(\"a\u003c-b\u003c-\", \"c\u003c-d\u003c-\"))\nconsole.log(fn(\"\u003c-\u003c-ab\u003c-\", \"\u003c-\u003c-\u003c-\u003c-a\"))\nconsole.log(fn(\"\u003c-\u003cab\u003c-c\", \"\u003c\u003c-\u003ca\u003c-\u003c-c\"))\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-31T01:21:10.000Z",
+    "updateAt":  "2023-06-01T09:27:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  776,
+    "filterTotalNum":  1907,
+    "prev":  "45e0af2e-c2c9-4577-92c9-85afb2f11297",
+    "next":  "231bf96d-c071-4e8e-9db8-cd0fa0763fc5"
+}

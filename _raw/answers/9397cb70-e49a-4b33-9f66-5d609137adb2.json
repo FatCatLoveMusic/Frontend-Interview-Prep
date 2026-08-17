@@ -1,0 +1,21 @@
+﻿{
+    "id":  3278,
+    "exerciseKey":  "9397cb70-e49a-4b33-9f66-5d609137adb2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何实现 Agent 的思考过程展示？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "实现 Agent 的思考过程展示，核心不是把模型的原始 CoT 全量暴露出来，而是把 Agent 执行任务时可观察、可解释、可审计的过程结构化展示出来。也就是展示“它正在做什么、为什么做这一步、调用了什么工具、拿到了什么结果、下一步状态是什么”，而不是直接泄露模型内部逐字推理链。\n\n前端上通常采用流式事件驱动的方式实现。后端通过 SSE 或 WebSocket 持续推送 Agent 运行事件，前端把这些事件渲染成时间线、步骤卡片或折叠面板。例如一次 Agent 执行可以拆成这些事件：任务开始、规划生成、检索资料、调用工具、工具返回、阶段性总结、错误重试、最终答案。\n\n一个比较合理的事件结构类似这样：\n\n```ts\ntype AgentEvent =\n  | { type: \u0027plan\u0027; taskId: string; steps: string[] }\n  | { type: \u0027thought_summary\u0027; taskId: string; content: string }\n  | { type: \u0027tool_call\u0027; taskId: string; tool: string; input: unknown }\n  | { type: \u0027tool_result\u0027; taskId: string; tool: string; result: unknown }\n  | { type: \u0027message_delta\u0027; taskId: string; content: string }\n  | { type: \u0027status\u0027; taskId: string; status: \u0027running\u0027 | \u0027waiting\u0027 | \u0027done\u0027 | \u0027failed\u0027 };\n```\n\n前端接收到事件后，不应该只拼接字符串，而应该维护一个 Agent Run 的状态机。比如 `running` 表示正在执行，`tool_calling` 表示正在调用外部工具，`waiting_user` 表示需要用户确认，`completed` 表示结束，`failed` 表示失败。这样 UI 可以准确展示加载态、重试态、取消按钮、人工确认入口，而不是只能显示一段滚动文本。\n\n在展示形态上，通常会把最终答案和过程信息分层。最终答案保持在主内容区，思考过程放在可展开区域，比如“执行过程”“工具调用”“引用来源”“中间步骤”。用户默认看到关键进展，需要时再展开细节。这样既能增强可信度，也不会让页面被大量中间信息淹没。\n\n需要特别注意安全边界。Agent 的“思考过程”更适合展示经过整理的 reasoning summary，而不是原始推理文本。工具调用参数和结果也要做脱敏，比如 token、手机号、邮箱、内部接口地址、权限信息都不能直接展示。对于代码执行、数据库查询、外部 API 调用，还要展示可审计信息，但避免泄露敏感数据。\n\n前端实现时还要处理几个工程细节：流式内容需要增量渲染，避免每次事件都触发大面积重排；长任务需要支持取消和重连；事件要有 `taskId`、`stepId`、`timestamp`，方便乱序合并和历史回放；Markdown 渲染要做 XSS 防护；工具结果过长时要折叠或分页展示。\n\n所以，一个成熟的 Agent 思考过程展示，本质上是“可观测事件流 + 状态机 + 分层 UI + 安全脱敏”。它服务的是可解释性、信任感和可调试性，而不是简单地把模型脑内文本打印出来。",
+    "pivot":  "- 不直接展示原始 CoT，而是展示结构化、可审计的过程摘要。\n- 使用 SSE 或 WebSocket 推送 Agent 运行事件。\n- 前端基于事件维护任务状态机，而不是简单拼接字符串。\n- UI 上区分最终答案、执行过程、工具调用、引用来源。\n- 对工具参数、返回结果和敏感信息做脱敏与折叠。\n- 支持流式渲染、取消、重连、历史回放和错误恢复。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T03:09:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  10,
+    "filterTotalNum":  1907,
+    "prev":  "c64c9c92-db1f-41b0-bc5d-0b779dcf4c6f",
+    "next":  "f58b9f85-153d-47b9-851f-f65abe8ec3e0"
+}

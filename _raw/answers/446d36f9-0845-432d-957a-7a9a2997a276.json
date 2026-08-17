@@ -1,0 +1,21 @@
+﻿{
+    "id":  1633,
+    "exerciseKey":  "446d36f9-0845-432d-957a-7a9a2997a276",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用Promise实现红绿灯交替重复亮",
+    "desc":  "红灯3秒亮一次，绿灯2秒亮一次，黄灯1秒亮一次；如何让三个灯不断交替重复亮灯？\n\n要求：用Promise实现\n\n三个亮灯函数已经存在：\n\n```js\nfunction red() {\n    console.log(\u0027red\u0027);\n}\nfunction green() {\n    console.log(\u0027green\u0027);\n}\nfunction yellow() {\n    console.log(\u0027yellow\u0027);\n}\n```",
+    "options":  null,
+    "explanation":  "```js\nfunction red() {\n  console.log(\"red\");\n}\nfunction green() {\n  console.log(\"green\");\n}\nfunction yellow() {\n  console.log(\"yellow\");\n}\nconst light = function (timer, cb) {\n  return new Promise(resolve =\u003e {\n    cb()\n    setTimeout(() =\u003e {\n      resolve()\n    }, timer)\n  })\n}\nconst step = function () {\n  Promise.resolve().then(() =\u003e {\n    return light(3000, red)\n  }).then(() =\u003e {\n    return light(2000, green)\n  }).then(() =\u003e {\n    return light(1000, yellow)\n  }).then(() =\u003e {\n    return step()\n  })\n}\n\nstep();\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:26:04.000Z",
+    "updateAt":  "2024-03-18T20:33:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1157,
+    "filterTotalNum":  1907,
+    "prev":  "9f0dbfc0-bd61-4956-8093-d604ac401983",
+    "next":  "dec780c4-3610-4673-b12f-add388ceec10"
+}

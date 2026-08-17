@@ -1,0 +1,21 @@
+﻿{
+    "id":  144,
+    "exerciseKey":  "cb23ddfc-db2e-4d2a-b859-9238d30daed9",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nclass Counter {\n  #number = 10\n\n  increment() {\n    this.#number++\n  }\n\n  getNum() {\n    return this.#number\n  }\n}\n\nconst counter = new Counter()\ncounter.increment()\n\nconsole.log(counter.#number)\n```",
+    "options":  "{\"options\":[\"10\",\"11\",\"undefined\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "在 ES2020 中，通过 `#` 我们可以给 class 添加私有变量。在 class 的外部我们无法获取该值。当我们尝试输出 `counter.#number`，语法错误被抛出：我们无法在 class `Counter` 外部获取它!\n\n## 注意\n\n有同学反馈，上面的代码在 Chrome console里，是可以打印出 `11` 这个值的，测试之后确实能看到，这一点在MDN上也有明确说明（**只在Chrome的console控制台里，才能够访问到私有属性，这是为了开发调试的便利**）：\n\n\u003eNote: Code run in the Chrome console can access private properties outside the class. This is a DevTools-only relaxation of the JavaScript syntax restriction.\n\nMDN链接：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties#description",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2024-09-09T15:55:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  1775,
+    "filterTotalNum":  1907,
+    "prev":  "b586c729-13ac-45ae-807c-8a7a0a23c7a4",
+    "next":  "1ddb78cb-2581-4995-8c0e-a6ea22b564ca"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1880,
+    "exerciseKey":  "17555ccc-83cf-4f7e-9834-8c1bb749e7d7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请对以下数组，根据 `born` 的值降序排列",
+    "desc":  "```js\nconst singers = [\n  { name: \u0027Steven Tyler\u0027, band: \u0027Aerosmith\u0027, born: 1948 },\n  { name: \u0027Karen Carpenter\u0027, band: \u0027The Carpenters\u0027, born: 1950 },\n  { name: \u0027Kurt Cobain\u0027, band: \u0027Nirvana\u0027, born: 1967 },\n  { name: \u0027Stevie Nicks\u0027, band: \u0027Fleetwood Mac\u0027, born: 1948 },\n];\n```",
+    "options":  null,
+    "explanation":  "`Array.prototype.sort()` 方法用原地算法对数组的元素进行排序，并返回数组。在很多排序场景下推荐使用。\n\n语法： \n\n\u003e arr.sort([compareFunction])\n\n这道题在实现上也比较简单，我们直接看实现方法：\n\n```js\nfunction compare(a, b) {\n  return a.born \u003c b.born ? 1: -1 \n}\n\nsingers.sort(compare);\n\n// 也可以进行简写\nsingers.sort((a,b) =\u003e b.born - a.born)\n\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:47:19.000Z",
+    "updateAt":  "2023-03-03T20:25:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  930,
+    "filterTotalNum":  1907,
+    "prev":  "16cd86d3-cdc5-4c8c-946b-19f72408525f",
+    "next":  "1e753e43-2b36-405f-8267-f00afc7656c1"
+}

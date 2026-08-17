@@ -1,0 +1,21 @@
+﻿{
+    "id":  20,
+    "exerciseKey":  "c3272068-de10-428e-8e99-27b2cba2dfe5",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nlet greeting\ngreetign = {} // Typo!\nconsole.log(greetign)\n```",
+    "options":  "{\"options\":[\"{}\",\"ReferenceError: greetign is not defined\",\"undefined\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "代码打印出了一个对象，这是因为我们在全局对象上创建了一个空对象！当我们将 `greeting` 写错成 `greetign` 时，JS 解释器实际在上浏览器中将它视为 `global.greetign = {}` （或者 `window.greetign = {}`）。\n为了避免这个为题，我们可以使用 `\"use strict\"。这能确保当你声明变量时必须赋值。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:07:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  1899,
+    "filterTotalNum":  1907,
+    "prev":  "2def1d2a-3f39-4d07-b61d-1ae6f0f66e7c",
+    "next":  "efc1c0ee-16ae-4c57-bef7-324a7747919c"
+}

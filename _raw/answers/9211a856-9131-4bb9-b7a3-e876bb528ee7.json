@@ -1,0 +1,21 @@
+﻿{
+    "id":  381,
+    "exerciseKey":  "9211a856-9131-4bb9-b7a3-e876bb528ee7",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "如何用webpack来优化前端性能",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e用webpack优化前端性能是指优化webpack的输出结果，让打包的最终结果在浏览器运行快速高效。\u003cbr/\u003e \u003c/p\u003e\u003cul\u003e\u003cli\u003e压缩代码:删除多余的代码、注释、简化代码的写法等等方式。可以利用webpack的\u003ccode\u003eUglifyJsPlugin\u003c/code\u003e和\u003ccode\u003eParallelUglifyPlugin\u003c/code\u003e来压缩JS文件， 利用\u003ccode\u003ecssnano\u003c/code\u003e（css-loader?minimize）来压缩css\u003c/li\u003e\u003cli\u003e \u003c/li\u003e\u003cli\u003e利用CDN加速: 在构建过程中，将引用的静态资源路径修改为CDN上对应的路径。可以利用webpack对于\u003ccode\u003eoutput\u003c/code\u003e参数和各loader的\u003ccode\u003epublicPath\u003c/code\u003e参数来修改资源路径\u003c/li\u003e\u003cli\u003eTree Shaking: 将代码中永远不会走到的片段删除掉。可以通过在启动webpack时追加参数\u003ccode\u003e--optimize-minimize\u003c/code\u003e来实现\u003c/li\u003e\u003cli\u003eCode Splitting: 将代码按路由维度或者组件分块(chunk),这样做到按需加载,同时可以充分利用浏览器缓存\u003c/li\u003e\u003cli\u003e提取公共第三方库:  SplitChunksPlugin插件来进行公共模块抽取,利用浏览器缓存可以长期缓存这些无需频繁变动的公共代码\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp\u003e\u003cstrong\u003e答题思路\u003c/strong\u003e：阐述使用Webpack优化前端性能的方法，并简要说明每个方法的作用。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e1. 使用最新版本的Webpack，以利用其性能优化特性。\u003c/p\u003e\u003cp\u003e2. 减少Loader的使用，尽量减少处理步骤。\u003c/p\u003e\u003cp\u003e3. 利用Webpack的缓存功能，如使用cache-loader或HardSourceWebpackPlugin。\u003c/p\u003e\u003cp\u003e4. 使用externals功能，将第三方库排除在bundle之外，减少构建时间。\u003c/p\u003e\u003cp\u003e5. 分割代码，使用SplitChunksPlugin进行代码分割，减少单文件大小。\u003c/p\u003e\u003cp\u003e6. 压缩代码，使用TerserPlugin等插件进行压缩。\u003c/p\u003e\u003cp\u003e7. 利用tree-shaking去除无用代码。\u003c/p\u003e\u003cp\u003e8. 使用动态导入（如import()）实现懒加载，按需加载资源。\u003c/p\u003e\u003cp\u003e9. 设置合理的resolve.extensions和resolve.alias，减少解析时间。\u003c/p\u003e\u003cp\u003e10. 使用Webpack Bundle Analyzer分析打包结果，进一步优化。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e考察要点\u003c/strong\u003e：对Webpack优化策略的掌握程度。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-05T14:58:19.000Z",
+    "updateAt":  "2024-07-18T18:23:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1539,
+    "filterTotalNum":  1907,
+    "prev":  "c4765da3-f74e-4190-b3c0-7b66f5cd05b0",
+    "next":  "fe099894-7e1f-4b13-bc0a-8f065b7b4616"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  150,
+    "exerciseKey":  "a0908792-bdd8-4de6-bb2e-3480a753c3d3",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nlet count = 0;\nconst nums = [0, 1, 2, 3];\n\nnums.forEach(num =\u003e {\n\tif (num) count += 1\n})\n\nconsole.log(count)\n```",
+    "options":  "{\"options\":[\"1\",\"2\",\"3\",\"4\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "在 `forEach` 循环内部的 `if` 会判断 `num` 的值是truthy或者是falsy。因为 `nums` 数组的第一个数字是 `0`，一个falsy值， `if` 语句代码块不会被执行。`count` 仅仅在 `nums` 数组的其他3个数字 `1`，`2`，`3` 时加1。因为 `count` 执行了3次加 `1` 运算，所以 `count` 的值为 `3`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1769,
+    "filterTotalNum":  1907,
+    "prev":  "91d69ce5-0958-4c4c-b181-ef99c58aa053",
+    "next":  "8313f0e7-db8e-4ecd-bf57-099dca7656fb"
+}

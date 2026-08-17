@@ -1,0 +1,21 @@
+﻿{
+    "id":  1689,
+    "exerciseKey":  "b866f9eb-e02a-4220-b35a-013db09ce0c2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "我现在有一个canvas，上面随机布着一些黑块，请实现方法，计算canvas上有多少个黑块。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这一题可以转化成图的联通分量问题。通过getImageData获得像素数组，从头到尾遍历一遍，就可以判断每个像素是否是黑色。同时，准备一个width * height大小的二维数组，这个数组的每个元素是1/0。如果是黑色，二维数组对应元素就置1；否则置0。\n\n然后问题就被转换成了图的连通分量问题。可以通过深度优先遍历或者并查集来实现。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-03-08T15:40:17.000Z",
+    "updateAt":  "2022-03-08T23:40:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1101,
+    "filterTotalNum":  1907,
+    "prev":  "76e41377-7373-4113-8c6d-e506cadb0fe0",
+    "next":  "87408912-b244-4727-951c-65993c6dbcff"
+}

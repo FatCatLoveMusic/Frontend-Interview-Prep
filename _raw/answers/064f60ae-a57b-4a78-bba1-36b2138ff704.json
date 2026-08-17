@@ -1,0 +1,21 @@
+﻿{
+    "id":  2972,
+    "exerciseKey":  "064f60ae-a57b-4a78-bba1-36b2138ff704",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue3 中的 Teleport 是什么，有哪些应用场景？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`Teleport` 是 Vue 3 引入的一个内置组件，用于**将组件模板的一部分渲染到 DOM 树中的任意位置**，而不是受限于父组件的层级结构。它的核心价值在于「逻辑结构」与「渲染位置」的分离。\n\n在日常开发中，`Teleport` 常用于处理那些**在视觉层面需要脱离当前组件层级、但逻辑上仍属于当前组件的 UI 元素**。\n\n\n### 一、典型应用场景\n\n**1. 全局弹窗、对话框、抽屉**\n在模态弹窗、消息提示、全局遮罩等场景中，若直接将内容嵌入在业务组件内，会导致层级受限（例如被父容器的 `overflow:hidden`、`z-index` 影响）。\n使用 `Teleport` 可以将弹窗节点渲染到 `body` 下，确保显示层级最高，同时又能与业务逻辑组件保持同一个上下文。\n\n```vue\n\u003ctemplate\u003e\n  \u003cbutton @click=\"visible = true\"\u003e打开弹窗\u003c/button\u003e\n  \u003cteleport to=\"body\"\u003e\n    \u003cdiv v-if=\"visible\" class=\"dialog-mask\"\u003e\n      \u003cdiv class=\"dialog\"\u003e\n        \u003cp\u003e这是一个弹窗\u003c/p\u003e\n        \u003cbutton @click=\"visible = false\"\u003e关闭\u003c/button\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/teleport\u003e\n\u003c/template\u003e\n```\n\n---\n\n**2. 全局提示、通知组件（如 Message / Toast）**\n这类组件需要在页面顶层渲染，但往往由业务组件触发。\n通过 `Teleport`，消息组件可始终固定渲染在 `body` 下，避免受局部布局影响。\n\n---\n\n**3. 固定在页面某个容器外的元素**\n在布局复杂的页面中，有时需要将某些内容渲染到页面顶部或侧边固定栏（例如固定操作条、侧边工具栏、悬浮按钮）。\n使用 `Teleport` 可以轻松将这部分内容渲染到指定容器，而无需打乱父组件结构。\n\n---\n\n**4. 嵌入第三方容器（如 iframe 内部或独立 DOM 节点）**\n在微前端、图表系统等场景中，`Teleport` 可以将 Vue 组件渲染进非 Vue 管理的 DOM 节点内，实现跨框架或跨区域渲染。\n\n### 二、注意点与机制\n\n1. `Teleport` 仅影响渲染位置，不影响组件的响应式逻辑和上下文作用域。\n   被传送的节点仍然处于原组件的响应系统中，可直接访问响应式数据、计算属性、方法等。\n\n2. 可以动态切换 `to` 的目标容器，实现“动态挂载目标”的场景，例如某个模块在不同布局下挂载到不同的区域。\n\n3. 若使用 SSR，需要注意目标容器是否在服务端存在；一般建议在客户端挂载时再执行传送。\n",
+    "pivot":  "1. `Teleport` 的核心作用是**逻辑内聚、渲染分离**。\n2. 常用于弹窗、提示、抽屉、全局蒙层、浮动工具栏等场景。\n3. 保持了组件的响应式逻辑与上下文一致，同时解决了 DOM 层级与布局限制问题。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-10-29T12:09:14.000Z",
+    "updateAt":  "2025-10-29T12:09:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  230,
+    "filterTotalNum":  1907,
+    "prev":  "913ff070-8e11-4025-b2e4-283a4dfa26b4",
+    "next":  "a985899b-4460-4e46-83ab-682b717f7bad"
+}

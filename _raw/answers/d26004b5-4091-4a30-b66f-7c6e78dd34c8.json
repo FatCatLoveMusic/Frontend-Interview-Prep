@@ -1,0 +1,21 @@
+﻿{
+    "id":  287,
+    "exerciseKey":  "d26004b5-4091-4a30-b66f-7c6e78dd34c8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS中，box-sizing属性值有什么用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "用来控制元素的盒子模型的解析模式，默认为content-box\n\n* context-box：W3C的标准盒子模型，设置元素的 height/width 属性指的是content部分的高/宽\n* border-box：IE传统盒子模型。设置元素的height/width属性指的是border + padding + content部分的高/宽",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-04T09:37:38.000Z",
+    "updateAt":  "2021-07-04T19:23:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  1633,
+    "filterTotalNum":  1907,
+    "prev":  "a180397f-7b8e-421f-964e-ed97bdd57efd",
+    "next":  "55ba9331-1165-4b0e-baba-dc9a6378a8fb"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  435,
+    "exerciseKey":  "b9bd9552-5748-45b1-88a8-f36e45f6261f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是内存泄漏？什么原因会导致呢？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "内存泄露的解释：程序中己动态分配的堆内存由于某种原因未释放或无法释放。\n\n* 根据JS的垃圾回收机制，当内存中引用的次数为0的时候内存才会被回收\n* 全局执行上下文中的对象被标记为不再使用才会被释放\n\n## 内存泄露的几种场景\n\n* 全局变量过多。**通常是变量未被定义或者胡乱引用了全局变量**\n```js\n// main.js\n// 场景1\nfunction a(){\n    b=10;\n}\na();\nb++;\n\n// 场景2\nsetTimeout(()=\u003e{\n    console.log(b)\n},1000)\n```\n\n* 闭包。 未手动解决必包遗留的内存引用。**定义了闭包就要消除闭包带来的副作用**。\n\n```js\n\nfunction closuer (){\n    const b = 0;\n    return (c)=\u003e b + c\n}\n\nconst render = closuer();\n\nrender();\nrender = null; // 手动设置为null，GC会自己去清除\n```\n\n* 事件监听未被移除\n```js\n\nfunction addEvent (){\n const node =  document.getElementById(\u0027warp\u0027);\n    node.addEventListener(\u0027touchmove\u0027,()=\u003e{\n        console.log(\u0027In Move\u0027);\n    })\n}\n\nconst onTouchEnd = (){\n   const node =  document.getElementById(\u0027warp\u0027);\n   node.\n}\n\nuseEffect(()=\u003e()=\u003e{\n     const node =  document.getElementById(\u0027warp\u0027);\n     node.removeEventListener(\u0027touchmove\u0027);\n}) // 类似react 生命周期函数： componentWillUnmount\nrender(\u003cdiv id=\u0027warp\u0027 onTouchEnd={onTouchEnd}\u003e\n // code...\n\u003c/div\u003e)\n```\n\n* 缓存。建议所有缓存都设置好过期时间。\n\n",
+    "pivot":  "#### 答题思路\n\n什么是内存泄漏？\n\n- **定义**：内存泄漏（Memory Leak）是指程序中已分配的内存由于某种原因未被释放或无法释放，导致这部分内存无法再次被使用，造成内存的浪费和程序的潜在性能问题。\n\n什么原因会导致内存泄漏？\n\n1. **全局变量**：不当地使用全局变量或在全局作用域中创建变量，这些变量在整个页面生命周期内都不会被自动释放。\n\n2. **闭包**：闭包可以保持对外部函数作用域中变量的引用，如果这些变量是较大的对象或数组，且闭包本身未被及时销毁，那么这些变量所占用的内存也无法被释放。\n\n3. **DOM引用**：在JavaScript中，如果DOM元素被JavaScript变量引用，即使这些DOM元素已经从页面上移除了，它们所占用的内存也不会被释放，因为JavaScript仍然保持着对这些元素的引用。\n\n4. **定时器**：如`setTimeout`或`setInterval`创建的定时器，如果定时器中的回调函数引用了外部变量，而这些变量又包含了大量数据或DOM元素，那么在定时器未被清除之前，这些资源都无法被释放。\n\n5. **第三方库**：使用的第三方库可能存在内存泄漏的问题，特别是当这些库管理大量资源（如DOM元素、数据等）时。\n\n6. **内存泄漏的连锁反应**：一个小的内存泄漏可能会引发连锁反应，导致更多的内存泄漏，最终严重影响程序的性能和稳定性。\n\n#### 考察要点\n\n1. **内存管理知识**：考察面试者对JavaScript内存管理机制的理解，包括垃圾回收机制、作用域链等。\n\n2. **编程习惯**：通过询问内存泄漏的原因，考察面试者的编程习惯和代码质量意识。\n\n3. **问题解决能力**：面试者是否能够识别和解决潜在的内存泄漏问题，以及是否有有效的策略来预防内存泄漏。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:55:39.000Z",
+    "updateAt":  "2024-08-10T17:05:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  1485,
+    "filterTotalNum":  1907,
+    "prev":  "2caef7c7-6f12-4104-9a51-b360dc775357",
+    "next":  "393c70e6-3652-45e0-b1a9-d03eb27641b6"
+}

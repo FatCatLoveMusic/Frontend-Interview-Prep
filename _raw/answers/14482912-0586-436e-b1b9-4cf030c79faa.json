@@ -1,0 +1,21 @@
+﻿{
+    "id":  2876,
+    "exerciseKey":  "14482912-0586-436e-b1b9-4cf030c79faa",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Js 中，有哪些方法可以退出循环",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "一般使用以下几种方法退出循环：\n\n### **1. `break`**\n\n- **作用**：立即终止当前循环，跳出循环体并继续执行循环后的代码。\n- **用法**：通常在循环内的条件判断中使用。\n- **示例**：\n  ```javascript\n  for (let i = 0; i \u003c 10; i++) {\n    if (i === 5) {\n      break; // 退出循环\n    }\n    console.log(i); // 输出 0, 1, 2, 3, 4\n  }\n  ```\n\n### **2. `return`**\n\n- **作用**：用于函数中，立即退出循环并返回函数的调用者。它不仅会退出循环，还会结束整个函数的执行。\n- **用法**：适用于需要在函数中退出循环并返回值的情况。\n- **示例**：\n  ```javascript\n  function findFirstNegative(nums) {\n    for (let num of nums) {\n      if (num \u003c 0) {\n        return num; // 退出循环并返回负数\n      }\n    }\n    return null; // 如果没有负数，返回 null\n  }\n\n  console.log(findFirstNegative([1, 2, 3, -4, 5])); // 输出 -4\n  ```\n\n### **3. `throw`**\n\n- **作用**：抛出一个异常，终止当前循环及其包含的函数，并跳转到异常处理代码块（`catch`）。\n- **用法**：适用于需要通过异常机制退出循环并处理错误的情况。\n- **示例**：\n  ```javascript\n  function processNumbers(numbers) {\n    for (let num of numbers) {\n      if (num \u003c 0) {\n        throw new Error(\u0027Negative number found\u0027); // 退出循环并抛出错误\n      }\n      console.log(num);\n    }\n  }\n\n  try {\n    processNumbers([1, 2, 3, -4, 5]);\n  } catch (e) {\n    console.error(e.message); // 输出 \u0027Negative number found\u0027\n  }\n  ```",
+    "pivot":  "- **`break`**：立即退出循环体。\n- **`return`**：退出循环并返回函数的结果（适用于函数内）。\n- **`throw`**：抛出异常，退出循环并转到异常处理部分（适用于错误处理）。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-09-09T01:24:42.000Z",
+    "updateAt":  "2024-09-09T01:24:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  325,
+    "filterTotalNum":  1907,
+    "prev":  "9ccba9eb-a2fe-4334-8c82-bf6fa2582cab",
+    "next":  "d4932c0d-8a08-4b1b-9e52-036572452c9f"
+}

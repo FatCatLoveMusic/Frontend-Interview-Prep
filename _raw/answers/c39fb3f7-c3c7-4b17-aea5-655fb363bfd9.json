@@ -1,0 +1,21 @@
+﻿{
+    "id":  2401,
+    "exerciseKey":  "c39fb3f7-c3c7-4b17-aea5-655fb363bfd9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "extends 条件类型怎么定义？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 TypeScript 中，**条件类型**（Conditional Types）是一种根据类型条件选择不同类型的机制。`extends` 关键字在条件类型中用于表示一个类型是否满足特定条件。条件类型的基本语法如下：\n\n```typescript\nT extends U ? X : Y\n```\n\n- **`T`**：待检查的类型。\n- **`U`**：用于比较的类型。\n- **`X`**：如果 `T` 满足 `U` 的条件，则结果类型。\n- **`Y`**：如果 `T` 不满足 `U` 的条件，则结果类型。\n\n### **定义条件类型**\n\n**示例 1：基本的条件类型**\n\n```typescript\ntype TrueType = true extends true ? \u0027Yes\u0027 : \u0027No\u0027;  // \u0027Yes\u0027\ntype FalseType = false extends true ? \u0027Yes\u0027 : \u0027No\u0027; // \u0027No\u0027\n```\n\n在这个例子中：\n- `true` 确实可以 `extends` `true`，所以 `TrueType` 的结果是 `\u0027Yes\u0027`。\n- `false` 不可以 `extends` `true`，所以 `FalseType` 的结果是 `\u0027No\u0027`。\n\n**示例 2：基于泛型的条件类型**\n\n```typescript\ntype IsString\u003cT\u003e = T extends string ? \u0027Yes\u0027 : \u0027No\u0027;\n\ntype Result1 = IsString\u003cstring\u003e;  // \u0027Yes\u0027\ntype Result2 = IsString\u003cnumber\u003e;  // \u0027No\u0027\n```\n\n在这个例子中，`IsString` 是一个泛型条件类型：\n- 当 `T` 是 `string` 时，结果是 `\u0027Yes\u0027`。\n- 当 `T` 不是 `string` 时，结果是 `\u0027No\u0027`。\n\n**示例 3：复杂的条件类型**\n\n可以结合多个条件进行复杂的判断。\n\n```typescript\ntype IsStringOrNumber\u003cT\u003e = T extends string | number ? \u0027String or Number\u0027 : \u0027Other\u0027;\n\ntype Test1 = IsStringOrNumber\u003cstring\u003e;   // \u0027String or Number\u0027\ntype Test2 = IsStringOrNumber\u003cnumber\u003e;   // \u0027String or Number\u0027\ntype Test3 = IsStringOrNumber\u003cboolean\u003e;  // \u0027Other\u0027\n```\n\n在这个例子中：\n- `IsStringOrNumber` 判断 `T` 是否是 `string` 或 `number`，结果是 `\u0027String or Number\u0027`。\n- 否则，结果是 `\u0027Other\u0027`。\n\n**示例 4：条件类型与联合类型**\n\n```typescript\ntype ElementType\u003cT\u003e = T extends (infer U)[] ? U : T;\n\ntype NumberArray = ElementType\u003cnumber[]\u003e;  // number\ntype StringType = ElementType\u003cstring\u003e;      // string\n```\n\n在这个例子中：\n- `ElementType` 用于提取数组类型中的元素类型。\n- `number[]` 的元素类型是 `number`。\n- `string` 不是数组类型，因此 `ElementType\u003cstring\u003e` 结果是 `string`。\n\n### **条件类型的高级用法**\n\n**条件类型的分布式条件类型**：\n- 当条件类型与联合类型一起使用时，条件类型会分布到联合的每个成员上。\n\n```typescript\ntype Distribute\u003cT\u003e = T extends any ? T : never;\n\ntype Result = Distribute\u003c\u0027a\u0027 | \u0027b\u0027\u003e;  // \u0027a\u0027 | \u0027b\u0027\n```\n\n在这个例子中，`Distribute` 将条件类型 `T extends any ? T : never` 应用于 `\u0027a\u0027 | \u0027b\u0027`，结果是 `\u0027a\u0027 | \u0027b\u0027`。\n\n**递归条件类型**：\n- 条件类型也可以用于递归类型的处理，例如构建深度递归类型。\n\n```typescript\ntype Flatten\u003cT\u003e = T extends (infer U)[]\n  ? U extends any[] \n    ? Flatten\u003cU\u003e\n    : U\n  : T;\n\ntype Result1 = Flatten\u003cnumber[]\u003e;          // number\ntype Result2 = Flatten\u003cnumber[][][]\u003e;     // number\n```",
+    "pivot":  "- **条件类型**：允许在类型系统中进行条件判断，基于类型的条件选择不同的类型。\n- **语法**：`T extends U ? X : Y`，用于根据 `T` 是否扩展 `U` 选择 `X` 或 `Y`。\n- **应用场景**：用于创建复杂的类型转换和类型推断逻辑。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-05T01:18:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  549,
+    "filterTotalNum":  1907,
+    "prev":  "4d9c10d8-6509-4675-ba54-86c34d7116b4",
+    "next":  "ea84f54a-0aec-444f-b417-2887cb4f0199"
+}

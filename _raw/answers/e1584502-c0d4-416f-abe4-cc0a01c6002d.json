@@ -1,0 +1,21 @@
+﻿{
+    "id":  1566,
+    "exerciseKey":  "e1584502-c0d4-416f-abe4-cc0a01c6002d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "封装一个 javascript 的类型判断函数",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nfunction getType(value) {\n  // 判断数据是 null 的情况\n  if (value === null) {\n    return value + \"\";\n  }\n\n  // 判断数据是引用类型的情况\n  if (typeof value === \"object\") {\n    let valueClass = Object.prototype.toString.call(value),\n      type = valueClass.split(\" \")[1].split(\"\");\n\n    type.pop();\n\n    return type.join(\"\").toLowerCase();\n  } else {\n    // 判断数据是基本数据类型的情况和函数的情况\n    return typeof value;\n  }\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:42:27.000Z",
+    "updateAt":  "2021-11-17T22:50:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1224,
+    "filterTotalNum":  1907,
+    "prev":  "e8118221-94ab-44c9-ab83-299e6eefee15",
+    "next":  "c860f93c-430e-4813-b534-0fcfda8b64ba"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  356,
+    "exerciseKey":  "241821b0-1f2d-42b4-a245-2eee847fd732",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "计算聚会人数",
+    "desc":  "一次朋友聚会，大家见面时总共握手45次。如果参加聚会的人和其余的每个人只握手一次，问参加聚会的共有多少人？",
+    "options":  null,
+    "explanation":  "很简单的排列组合问题，答案 **10人**",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T13:19:13.000Z",
+    "updateAt":  "2021-07-04T21:24:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1564,
+    "filterTotalNum":  1907,
+    "prev":  "393d4762-e0b3-4fe6-9c5e-25d26f3680a8",
+    "next":  "a7aba2d7-10f3-4ed9-8453-cc7b68edef77"
+}

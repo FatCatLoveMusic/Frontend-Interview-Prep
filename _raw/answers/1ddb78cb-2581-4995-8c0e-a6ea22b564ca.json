@@ -1,0 +1,21 @@
+﻿{
+    "id":  143,
+    "exerciseKey":  "1ddb78cb-2581-4995-8c0e-a6ea22b564ca",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst add = x =\u003e x + x;\n\nfunction myFunc(num = 2, value = add(num)) {\n\tconsole.log(num, value);\n}\n\nmyFunc();\nmyFunc(3);\n```",
+    "options":  "{\"options\":[\"2 4 and 3 6\",\"2 NaN and 3 NaN\",\"2 Error and 3 6\",\"2 4 and 3 Error\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "首先我们不传递任何参数调用 `myFunc()`。因为我们没有传递参数，`num` 和 `value` 获取它们各自的默认值：num 为 `2`, 而 `value` 为函数 `add` 的返回值。对于函数 `add`，我们传递值为2的 `num` 作为参数。函数 `add` 返回 `4` 作为 `value` 的值。\n然后，我们调用 `myFunc(3)` 并传递值 `3` 参数 `num` 的值。我们没有给 `value` 传递值。因为我们没有给参数 `value` 传递值，它获取默认值：函数 `add` 的返回值。对于函数 `add`，我们传递值为3的 `num`给它。函数 `add` 返回 `6` 作为 `value` 的值。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:33:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1776,
+    "filterTotalNum":  1907,
+    "prev":  "cb23ddfc-db2e-4d2a-b859-9238d30daed9",
+    "next":  "6612daa5-7854-4379-bdb9-46398ef4f87c"
+}

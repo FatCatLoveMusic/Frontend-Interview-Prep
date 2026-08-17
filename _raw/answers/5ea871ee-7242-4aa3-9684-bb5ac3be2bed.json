@@ -1,0 +1,21 @@
+﻿{
+    "id":  2645,
+    "exerciseKey":  "5ea871ee-7242-4aa3-9684-bb5ac3be2bed",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何解决 node_modules 中，同一个包安装了多个不同版本的问题？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 `node_modules` 中遇到同一个包的多个版本问题，通常是由于不同依赖包对该包有不同的版本要求。解决这个问题有几个常用的方法：\n\n### **1. 使用 `npm` 或 `yarn` 的解析策略**\n\n#### **1.1 使用 `npm` 的 `dedupe`**\n\n- `npm dedupe` 会尝试减少 `node_modules` 中重复的包版本，使得可能的依赖只会使用一个版本。\n\n  ```bash\n  npm dedupe\n  ```\n\n#### **1.2 使用 `yarn` 的 `resolutions`**\n\n- `yarn` 提供了 `resolutions` 字段，可以强制使用某个版本的依赖包。\n\n  ```json\n  // package.json\n  {\n    \"resolutions\": {\n      \"package-name\": \"desired-version\"\n    }\n  }\n  ```\n\n  - 使用 `yarn install` 时，`yarn` 会使用 `resolutions` 中指定的版本。\n\n### **2. 合并和升级**\n\n#### **2.1 手动合并依赖**\n\n- 查找所有 `package.json` 文件中依赖的版本，尝试将它们合并到一致的版本。然后更新 `package-lock.json` 或 `yarn.lock` 文件。\n\n#### **2.2 升级依赖**\n\n- 如果可能，升级所有依赖到最新版本，以减少版本冲突。例如，使用 `npm-check-updates` 工具来批量更新依赖。\n\n  ```bash\n  npx npm-check-updates -u\n  npm install\n  ```\n\n### **3. 使用 `pnpm` 作为包管理工具**\n\n- `pnpm` 使用一种不同的策略来管理包，使得 `node_modules` 目录中的依赖可以被高效共享，减少版本冲突。\n\n  ```bash\n  npm install -g pnpm\n  pnpm install\n  ```\n\n### **4. 定制依赖包版本**\n\n#### **4.1 使用 `package.json` 的 `peerDependencies`**\n\n- 如果你的项目是一个库或插件，使用 `peerDependencies` 来指定你支持的包版本，而不是直接依赖它们。这样可以避免在 `node_modules` 中安装多个版本。\n\n#### **4.2 使用 `resolutions` （对于 `npm` 7+）**\n\n- 在 `npm` 7+ 版本中，也可以使用类似 `yarn` 的 `resolutions` 解决版本冲突。需要在 `package.json` 中设置 `overrides`。\n\n  ```json\n  // package.json\n  {\n    \"overrides\": {\n      \"package-name\": \"desired-version\"\n    }\n  }\n  ```",
+    "pivot":  "- 使用工具（如 `npm dedupe` 或 `yarn resolutions`）来减少版本冲突。\n- 手动合并或升级依赖包。\n- 考虑使用 `pnpm` 作为包管理工具，优化包的处理方式。\n- 在可能的情况下，使用 `peerDependencies` 来减少版本冲突的发生。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T09:30:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  426,
+    "filterTotalNum":  1907,
+    "prev":  "6576edd9-ceb6-4871-8e33-008fdad7ef80",
+    "next":  "6230fdac-bad1-4a20-aca7-69b7ce01ca25"
+}

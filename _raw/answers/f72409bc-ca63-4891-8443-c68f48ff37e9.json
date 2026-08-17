@@ -1,0 +1,21 @@
+﻿{
+    "id":  1878,
+    "exerciseKey":  "f72409bc-ca63-4891-8443-c68f48ff37e9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何顺序执行10个异步任务？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 解法1：for 循环 + await\n \n简单的 for 循环是依次进行循环的，不像 Array.forEach，Array.map 方法是并发执行的，利用这一特点加 async / await 很容易写出下面这样的代码：\n\n```js\n(async () =\u003e {\n  const sleep = delay =\u003e {\n    return new Promise((resolve, reject) =\u003e {\n      setTimeout(_ =\u003e resolve(), delay)\n    })\n  }\n  \n  const task = (i) =\u003e {\n    return new Promise(async (resolve, reject) =\u003e {\n      await sleep(500)\n      console.log(`now is ${i}`)\n      ++i\n      resolve(i)\n    })\n  }\n  \n  let param = 0\n  for (let i = 0; i \u003c 4; i++) {\n    param = await task(param)\n  }  \n})()\n```\n\n输出：\n\n```\nnow is 0\nnow is 1\nnow is 2\nnow is 3\n```\n\n## 解法2：Array.prototype.reduce\n\n关于 Array.prototype.reduce 方法相信大部分小伙伴初见时都是用来数组求和。\n\nreduce有`初始值`，`积累值`，以及`当前值`的概念。其中 `积累值`可以看作是前一个值，通过返回`积累值`又可以看作是 下一个值。使用reduce来解决问题的代码为：\n\n```js\nconst sleep = delay =\u003e {\n  return new Promise((resolve, reject) =\u003e {\n    setTimeout(_ =\u003e resolve(), delay)\n  })\n}\n\nconst task = (i) =\u003e {\n  return new Promise(async (resolve, reject) =\u003e {\n    await sleep(500)\n    console.log(`now is ${i}`)\n    ++i\n    resolve(i)\n  })\n}\n\n[task, task, task, task].reduce(async (prev, task) =\u003e {\n  const res = await prev\n  return task(res)\n}, 0)\n```\n\n输出：\n\n```\nnow is 0\nnow is 1\nnow is 2\nnow is 3\n```\n\n可以这样理解 `prev` 和 `task`：\n\n* prev：前一个 异步任务（promise）\n* task：当前的异步任务\n\n当前的异步任务需要上一个异步任务的结果作参数，故很显然要 await prev。\n\n\n",
+    "pivot":  "### 解法1：for 循环 + await\n\n使用 `for` 循环结合 `async/await` 可以实现顺序执行异步任务：\n\n- **特点**：通过 `for` 循环的顺序性，确保了每个 `task` 函数都是在前一个任务完成后才执行。\n\n### 解法2：Array.prototype.reduce\n\n使用 `reduce` 方法也可以实现异步任务的顺序执行，其原理是利用 `reduce` 的累加器功能\n\n- **特点**：`reduce` 方法中的 `prev` 代表前一个异步任务的结果，`task` 是当前的异步任务。通过 `await prev` 确保了任务的顺序执行。\n\n这两种解法都有效地处理了异步任务的顺序执行问题，但它们在代码结构和执行逻辑上有所不同。`for` 循环 + `await` 更直观易懂，而 `reduce` 方法则提供了一种更函数式编程的解决方案。在实际应用中，可以根据具体需求和偏好来选择使用哪种方法。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:46:47.000Z",
+    "updateAt":  "2024-08-10T17:06:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  932,
+    "filterTotalNum":  1907,
+    "prev":  "1e753e43-2b36-405f-8267-f00afc7656c1",
+    "next":  "983ff108-fded-4272-96b6-24a0a20af286"
+}

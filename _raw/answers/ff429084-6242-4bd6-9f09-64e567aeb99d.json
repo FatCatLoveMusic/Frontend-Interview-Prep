@@ -1,0 +1,21 @@
+﻿{
+    "id":  292,
+    "exerciseKey":  "ff429084-6242-4bd6-9f09-64e567aeb99d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "margin和padding分别适合什么场景使用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "何时使用margin：\n\n* 需要在border外侧添加空白\n* 空白处不需要背景色\n* 上下相连的两个盒子之间的空白，需要相互抵消时。\n\n何时使用padding：\n\n* 需要在border内侧添加空白\n* 空白处需要背景颜色\n* 上下相连的两个盒子的空白，希望为两者之和。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:23:24.000Z",
+    "updateAt":  "2021-07-04T19:24:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  1628,
+    "filterTotalNum":  1907,
+    "prev":  "180f752e-370b-447e-b755-6d004f8f0db0",
+    "next":  "c7844d1f-223c-41cc-b6c2-6df29d8ecc00"
+}

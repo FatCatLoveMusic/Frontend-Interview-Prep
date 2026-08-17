@@ -1,0 +1,21 @@
+﻿{
+    "id":  1544,
+    "exerciseKey":  "a0e34df4-b603-4b18-bcd6-ebf8c94b3325",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "根据运算优先级添加括号",
+    "desc":  "现已知一个字符串是由正整数和加减乘除四个运算符(+ - * /)组成。\n\n例如存在字符串 `const str = \u002711+2-3*4+5/2*4+10/5\u0027`，现在需要将高优先级运算，用小括号包裹起来，例如结果为 `\u002711+2-(3*4)+(5/2*4)+(10/5)\u0027`。注意可能会出现连续的乘除运算，需要包裹到一起。\n\n请用 `javascript` 实现这一过程",
+    "options":  null,
+    "explanation":  "介绍一种只需遍历一次的实现方式，思路比较简单，主要用到了2个临时变量，分别用于记录当前是否在高优先级运算范围和临时值，然后根据不同优先级的运算符进行不同的处理操作。\n\n具体的代码如下：\n\n ```js\n function addBrackets(expression) {\n  const resultArr = []\n\n  // 定义运算符\n  const symbolArr = [\u0027+\u0027, \u0027-\u0027, \u0027*\u0027, \u0027/\u0027]\n\n  // 定义高优先级运算符\n  const highLevelSymbolArr = [\u0027*\u0027, \u0027/\u0027]\n\n  // 判断某个字符串是否是运算符\n  const isSymbolFn = (str) =\u003e symbolArr.includes(str)\n\n  // 判断某个字符串是否是高优先级运算符\n  const isHighLevelSymbolFn = (str) =\u003e highLevelSymbolArr.includes(str)\n\n  // 输入表达式的长度\n  const expLen = expression.length\n\n  // 标记当前的遍历是否处于高优先级运算符范围\n  let isInBracket = false\n  // 记录临时值\n  let currentNum = \u0027\u0027\n\n  for (let i = 0; i \u003c expLen; i++) {\n    const isSymbol = isSymbolFn(expression[i])\n    const isHighLevelSymbol = isSymbol \u0026\u0026 isHighLevelSymbolFn(expression[i])\n\n    // 处理当前字符是运算符的场景\n    if (isSymbol) {\n      //处理当前字符是高优先级运算符\n      if (isHighLevelSymbol) {\n        // 如果当前没有被标记为高优先运算符，就在前面加个括号\n        if (!isInBracket) {\n          currentNum = \u0027(\u0027 + currentNum\n        }\n\n        // 修改标记状态\n        isInBracket = true\n        currentNum += expression[i]\n      } else {\n        // 普通运算符\n\n        if (isInBracket) {\n          // 如果之前已经在高优先级运算符范围，就需要标记结束\n          resultArr.push(currentNum + \u0027)\u0027)\n          isInBracket = false\n        } else {\n          resultArr.push(currentNum)\n        }\n        resultArr.push(expression[i])\n        currentNum = \u0027\u0027\n      }\n    } else {\n      // 如果是数字，就直接进行记录\n      currentNum = currentNum + expression[i]\n    }\n  }\n\n  if (currentNum) {\n    resultArr.push(currentNum + (isInBracket ? \u0027)\u0027 : \u0027\u0027))\n  }\n\n  return resultArr.join(\u0027\u0027)\n}\n\n ```\n \n 另外还可以使用滑动窗口的思路来实现：\n \n ![滑动窗口实现](https://pic.rmb.bdstatic.com/bjh/0531a9146d945741a3368bf59f197c0d.jpeg)\n \n## 使用正则实现（2022/10/30更新）\n \n有小伙伴提供了一种正则表达式的实现方式，供大家参考：\n\n```js\nlet text = \u002711+2-34+5/24+10/5+10/512\u0027; \ntext.match(/([0-9]{1,}[*|/]){1,}[0-9]{1,}/g).forEach((item)=\u003e{ \n\ttext = text.replace(item,`(${item})`) \n})\nconsole.log(text); // \u002711+2-34+(5/24)+(10/5)+(10/512)\u0027\n```\n\n以上答案由“前端面试题宝典”收集、整理，PC端访问地址： [https://fe.ecool.fun/](https://fe.ecool.fun/)",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2021-11-17T11:51:05.000Z",
+    "updateAt":  "2023-03-04T22:54:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1245,
+    "filterTotalNum":  1907,
+    "prev":  "a09650c2-d9af-4f1a-ad05-8b33757cbca7",
+    "next":  "aea31e8b-4929-4a02-8fe5-8eb27fd663bf"
+}

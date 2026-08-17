@@ -1,0 +1,21 @@
+﻿{
+    "id":  145,
+    "exerciseKey":  "b586c729-13ac-45ae-807c-8a7a0a23c7a4",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "选择哪一个？",
+    "desc":  "```javascript\nconst teams = [\n\t{ name: \"Team 1\", members: [\"Paul\", \"Lisa\"] },\n\t{ name: \"Team 2\", members: [\"Laura\", \"Tim\"] }\n];\n\nfunction* getMembers(members) {\n\tfor (let i = 0; i \u003c members.length; i++) {\n\t\tyield members[i];\n\t}\n}\n\nfunction* getTeams(teams) {\n\tfor (let i = 0; i \u003c teams.length; i++) {\n\t\t// ✨ SOMETHING IS MISSING HERE ✨\n\t}\n}\n\nconst obj = getTeams(teams);\nobj.next(); // { value: \"Paul\", done: false }\nobj.next(); // { value: \"Lisa\", done: false }\n```",
+    "options":  "{\"options\":[\"yield getMembers(teams[i].members)\",\"yield* getMembers(teams[i].members)\",\"return getMembers(teams[i].members)\",\"return yield getMembers(teams[i].members)\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "为了遍历 `teams` 数组中对象的属性 `members` 中的每一项，我们需要将 `teams[i].members` 传递给 Generator 函数 `getMembers`。Generator 函数返回一个 generator 对象。为了遍历这个 generator 对象中的每一项，我们需要使用 `yield*`.\n如果我们没有写 `yield`，`return yield` 或者 `return`，整个 Generator 函数不会第一时间 return 当我们调用 `next` 方法.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:33:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1774,
+    "filterTotalNum":  1907,
+    "prev":  "aa20fdd3-2a4b-44a6-a97b-7bdbc6dd30d4",
+    "next":  "cb23ddfc-db2e-4d2a-b859-9238d30daed9"
+}

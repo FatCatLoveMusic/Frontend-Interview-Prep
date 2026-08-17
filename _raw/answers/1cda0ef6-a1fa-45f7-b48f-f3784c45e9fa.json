@@ -1,0 +1,21 @@
+﻿{
+    "id":  1803,
+    "exerciseKey":  "1cda0ef6-a1fa-45f7-b48f-f3784c45e9fa",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个类，其实例可以链式调用，它有一个 sleep 方法，可以 sleep 一段时间后再后续调用",
+    "desc":  "```js\nconst boy = new PlayBoy(\u0027Tom\u0027) \nboy.sayHi().sleep(1000).play(\u0027王者\u0027).sleep(2000).play(\u0027跳一跳\u0027) \n// 输出 \n// 大家好我是Tom \n// 1s 之后 \n// 我在玩王者 \n// 2s 之后 \n// 我在玩跳一跳\n```",
+    "options":  null,
+    "explanation":  "实现思想：创建一个任务队列，在每个方法中都往任务队列里追加一个函数，利用队列的先进先出的思想来控制函数的执行顺序。\n\n```js\n// 首先 定义一个类 PlayBoy \nclass PlayBoy {\n  constructor(name) {\n    this.name = name\n    this.queue = []  //创建一个任务队列（利用队列的先进先出性质来模拟链式调用函数的执行顺序）\n    setTimeout(()=\u003e{ // 进入异步任务队列 也是开启 自定义任务队列 queue 的入口\n      this.next()  // next是类PlayBoy 原型上的方法，用来从queue 任务队列中取出函数执行 \n    },0)\n \n    return this\n  }\n}\n\nPlayBoy.prototype.sayHi = function () {\n \n  const fn = () =\u003e {\n    console.log(\u0027hi\u0027)\n    this.next()\n  }\n  this.queue.push(fn)\n  return this\n}\n\nPlayBoy.prototype.sleep = function (timer) {\n \n  const fn = () =\u003e {\n    setTimeout(() =\u003e {\n      this.next()\n    }, timer)\n  }\n  this.queue.push(fn)\n  return this\n}\n\nPlayBoy.prototype.play = function () {\n \n  const fn = () =\u003e {\n    console.log(\u0027play\u0027)\n    this.next()\n  }\n  this.queue.push(fn)\n  return this\n}\n\nPlayBoy.prototype.next = function () {\n  const fn = this.queue.shift()  // 从任务队列中取出函数 函数存在的话即调用\n \n  fn \u0026\u0026 fn()\n}\n\nnew PlayBoy().sayHi().sleep(5000).play()\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2022-05-16T04:31:16.000Z",
+    "updateAt":  "2022-05-16T12:31:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1006,
+    "filterTotalNum":  1907,
+    "prev":  "deb034d1-2a96-45b4-8576-132f2af9c797",
+    "next":  "0932f958-6b14-4aac-b469-4ed62242c65f"
+}

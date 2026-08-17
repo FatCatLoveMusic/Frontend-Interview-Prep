@@ -1,0 +1,21 @@
+﻿{
+    "id":  103,
+    "exerciseKey":  "da532e2b-898c-4a7d-b179-fbe8052c8c60",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst getList = ([x, ...y]) =\u003e [x, y]\nconst getUser = user =\u003e ({ name: user.name, age: user.age })\n\nconst list = [1, 2, 3, 4]\nconst user = { name: \"Lydia\", age: 21 }\n\nconsole.log(getList(list))\nconsole.log(getUser(user))\n```",
+    "options":  "{\"options\":[\"[1, [2, 3, 4]] 、 undefined\",\"[1, [2, 3, 4]] 、 { name: \\\"Lydia\\\", age: 21 }\",\"[1, 2, 3, 4] 、 { name: \\\"Lydia\\\", age: 21 }\",\"Error 、 { name: \\\"Lydia\\\", age: 21 }\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`getList`函数接收一个数组作为其参数。 \n\n在`getList`函数的括号之间，我们立即解构这个数组。 \n\n可以将其视为：\n `[x, ...y] = [1, 2, 3, 4]`\n使用剩余的参数`... y`，我们将所有剩余参数放在一个数组中。 在这种情况下，其余的参数是`2`，`3`和`4`。 `y`的值是一个数组，包含所有其余参数。 在这种情况下，`x`的值等于`1`，所以当我们打印`[x，y]`时，会打印`[1，[2,3,4]]`。\n\n `getUser`函数接收一个对象。对于箭头函数，如果只返回一个值，我们不必编写花括号。但是，如果一个箭头函数返回了一个对象，就必须在圆括号之间编写它，否则就会报错。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2023-03-03T20:29:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1816,
+    "filterTotalNum":  1907,
+    "prev":  "80d02415-01b5-428f-a5a5-3021d2ce9b75",
+    "next":  "cac139d1-256d-4124-829d-5ca355a99144"
+}

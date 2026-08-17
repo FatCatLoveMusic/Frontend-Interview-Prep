@@ -1,0 +1,21 @@
+﻿{
+    "id":  1662,
+    "exerciseKey":  "482d976d-6697-4456-b0f5-8af4dd060dfc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "过桥问题",
+    "desc":  "在一个夜晚，同时有4人需要过一桥，一次最多只能通过两个人，且只有一只手电筒，而且每人的速度不同。A，B，C，D需要时间分别为：1，2，5，10分钟。问：在17分钟内这四个人怎么过桥？",
+    "options":  null,
+    "explanation":  "第一步：A、B过花时间2分钟。\n\n第二步：B回花时间2分钟。\n\n第三步：C、D过花时间10分钟。\n\n第四步：A回花时间1分钟。\n\n第五步：A、B再过花时间2分钟。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-02-06T12:57:14.000Z",
+    "updateAt":  "2022-02-06T20:59:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1128,
+    "filterTotalNum":  1907,
+    "prev":  "23ad38a6-12b2-4969-8dac-bfcfb00834d4",
+    "next":  "d131bd64-4531-4903-bb82-76aa277c7cb8"
+}

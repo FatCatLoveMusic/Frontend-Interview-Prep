@@ -1,0 +1,21 @@
+﻿{
+    "id":  3246,
+    "exerciseKey":  "a16eb1c7-fd55-4ebf-8538-7c20155a8332",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Agent 的 Token 消耗如何统计？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Agent 的 Token 消耗统计，核心不是只看一次大模型调用，而是要把 Agent 执行过程中的每一次模型请求都纳入链路统计。因为 Agent 通常不是单轮问答，而是包含规划、工具调用、结果观察、反思、重试、总结等多个步骤，每一步都可能触发一次 LLM 调用。\n\n比较可靠的方式是以“单次模型调用”为最小统计单位。每次调用结束后，从模型服务返回的 `usage` 信息中读取实际消耗，例如输入 Token、输出 Token、总 Token。有些模型还会进一步区分 cached tokens、reasoning tokens、tool call tokens 等，这些也应该单独记录。实际统计应优先使用服务端返回的真实 usage，而不是只依赖本地 tokenizer 预估。\n\n在 Agent 场景里，统计维度通常要比普通 Chat 更细。除了记录 `prompt_tokens`、`completion_tokens`、`total_tokens`，还应该记录 `trace_id`、`session_id`、`agent_id`、`step_name`、`model`、`prompt_version`、`tool_name`、是否重试、是否命中缓存、是否发生截断等信息。这样后续才能知道 Token 到底消耗在规划阶段、工具结果回填阶段，还是最终回答阶段。\n\n需要特别注意的是，工具调用本身通常不直接消耗大模型 Token，但工具调用的参数、工具返回结果、函数 schema、历史消息、检索内容，只要被塞回上下文重新发给模型，就会变成输入 Token。很多 Agent 的 Token 膨胀，实际是因为工具返回内容过长、历史对话无限累积、RAG 召回内容没有压缩，或者每轮都重复发送完整系统提示词和工具定义。\n\n工程上通常会做两层统计。请求前用 tokenizer 做预估，主要用于限流、预算控制和提前截断；请求后使用模型 API 返回的 usage 做准账，用于计费、报表和优化分析。预估值和真实值之间可能存在差异，尤其是不同模型、函数调用、多模态输入、缓存命中、reasoning tokens 场景下，所以最终结算应以真实 usage 为准。\n\n在实现上，可以把 Agent 的每个执行节点都包装成一个 span。模型调用 span 记录输入输出 Token 和耗时，工具调用 span 记录工具名称、耗时和返回内容大小，整个任务结束后再聚合出本次 Agent run 的总消耗。如果存在重试、并发分支、fallback 模型，也要把这些调用全部累计进去，否则统计出来的成本会偏低。\n\n成本计算时不能只看 total tokens，还要按照模型价格拆分输入、输出、缓存输入、推理 Token 等不同类别。因为很多模型的输入和输出单价不同，cached token 通常也有单独价格。最终可以按用户、团队、业务场景、Agent 类型、模型版本、时间窗口做聚合，用来支持成本看板、预算报警和优化决策。",
+    "pivot":  "- Agent Token 统计应以“每次 LLM 调用”为最小粒度，再聚合到一次 Agent run。\n- 优先使用模型 API 返回的真实 `usage`，本地 tokenizer 主要用于请求前预估。\n- 工具返回内容、历史消息、RAG 召回内容只要进入上下文，就会计入输入 Token。\n- 统计维度要包含会话、步骤、模型、工具、重试、缓存、prompt 版本等信息。\n- 成本计算要区分输入、输出、缓存、reasoning tokens 等不同计费类别。\n- 好的统计体系不仅用于计费，更重要的是定位 Agent 成本膨胀的具体环节。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T05:12:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  42,
+    "filterTotalNum":  1907,
+    "prev":  "6676940a-231b-477b-a099-a78bb19506ce",
+    "next":  "968ceffe-e796-4542-99f4-c4146f50c81b"
+}

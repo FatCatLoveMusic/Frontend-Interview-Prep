@@ -1,0 +1,21 @@
+﻿{
+    "id":  2477,
+    "exerciseKey":  "b90eb9af-fa06-4b4e-ba83-fbe34330cbf6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "html 中前缀为 data- 开头的元素属性是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 HTML 中，前缀为 `data-` 的元素属性被称为 **自定义数据属性**（Custom Data Attributes）。这些属性用于存储与元素相关的私有数据，供 JavaScript 使用，而不会影响页面的样式或行为。\n\n### 主要特点\n\n1. **自定义数据存储**：\n   - 自定义数据属性允许开发者在 HTML 元素上存储额外的信息，这些信息不会影响 HTML 的标准行为或样式。\n\n2. **不影响页面表现**：\n   - `data-` 属性不会被浏览器默认处理或渲染，它们只用于存储数据并可通过 JavaScript 访问。\n\n3. **灵活性**：\n   - 自定义数据属性名称是自由定义的，只需以 `data-` 为前缀，并且后面跟着自定义的名称。例如，`data-user-id` 和 `data-info` 都是合法的自定义数据属性。\n\n### 语法\n\n```html\n\u003celement data-attribute-name=\"value\"\u003e\n  ...\n\u003c/element\u003e\n```\n\n### 示例\n\n```html\n\u003cdiv id=\"myElement\" data-user-id=\"12345\" data-role=\"admin\"\u003e\n  User Info\n\u003c/div\u003e\n```\n\n### 访问自定义数据属性\n\n**使用 JavaScript 访问**：\n\n```javascript\nconst element = document.getElementById(\u0027myElement\u0027);\n\n// 获取自定义数据属性\nconst userId = element.getAttribute(\u0027data-user-id\u0027);\nconst role = element.getAttribute(\u0027data-role\u0027);\n\nconsole.log(userId); // 输出: 12345\nconsole.log(role);   // 输出: admin\n\n// 使用 dataset 访问\nconst data = element.dataset;\nconsole.log(data.userId); // 输出: 12345\nconsole.log(data.role);   // 输出: admin\n```\n\n**注意**：\n\n- `dataset` 属性是一个对象，包含了所有以 `data-` 开头的属性，以驼峰命名的形式作为键（例如，`data-user-id` 会被访问为 `dataset.userId`）。\n- 属性名称中只允许使用字母、数字、`-` 和 `_`。在 JavaScript 中访问时，连字符（-）会被转换为驼峰命名法（例如，`data-user-id` 变成 `dataset.userId`）。\n\n### 使用场景\n\n- **存储动态数据**：如用户信息、状态标识等。\n- **实现交互**：通过将数据附加到元素上，可以在事件处理程序中使用这些数据来控制行为或更新 UI。\n- **避免在 HTML 中硬编码数据**：在不修改 DOM 结构的情况下存储和访问附加数据。",
+    "pivot":  "`data-` 属性提供了一种简洁的方法来将自定义数据存储在 HTML 元素中，这些数据可通过 JavaScript 进行访问和操作，而不会影响页面的标准表现。它们是现代 Web 开发中用于处理元素相关数据的有用工具。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-09-04T01:30:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  507,
+    "filterTotalNum":  1907,
+    "prev":  "893f6941-8eb4-4c4c-9bba-0f4802d7320a",
+    "next":  "25a1d366-42f6-42e2-9a41-b6dd4624fd55"
+}

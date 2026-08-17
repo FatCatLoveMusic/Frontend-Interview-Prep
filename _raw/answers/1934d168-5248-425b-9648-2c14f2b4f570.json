@@ -1,0 +1,21 @@
+﻿{
+    "id":  1583,
+    "exerciseKey":  "1934d168-5248-425b-9648-2c14f2b4f570",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "input上传文件可以同时选择多张吗？怎么设置？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以，通过给input标签设置multiple属性。\n\n```html\n\u003cinput type=\"file\" name=\"files\" multiple/\u003e\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:37:03.000Z",
+    "updateAt":  "2021-12-26T16:05:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  1207,
+    "filterTotalNum":  1907,
+    "prev":  "7a9f621a-416f-4c2b-8d08-8f8e0a113c6a",
+    "next":  "bfffc416-1177-4c3c-bf93-622185a72fda"
+}

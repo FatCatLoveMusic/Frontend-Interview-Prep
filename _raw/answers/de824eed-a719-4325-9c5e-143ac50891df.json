@@ -1,0 +1,21 @@
+﻿{
+    "id":  2723,
+    "exerciseKey":  "de824eed-a719-4325-9c5e-143ac50891df",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS 中的文档流是什么？\n",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "CSS 中的文档流（Document Flow），也称为标准流，是指浏览器如何按照 HTML 元素的结构和 CSS 样式规则来布局和呈现网页内容的过程。文档流决定了元素在页面上的位置和排列方式。文档流的主要特点和组成部分包括：\n\n### **1. 主要布局模式**\n\n- **正常流（Normal Flow）**：元素按照在 HTML 中的顺序逐个显示。块级元素（如 `\u003cdiv\u003e`, `\u003cp\u003e`）在页面上垂直堆叠，行内元素（如 `\u003cspan\u003e`, `\u003ca\u003e`）在页面上水平排列。\n- **浮动（Float）**：当元素应用 `float` 属性后，它会从正常流中脱离，允许其他文本和行内元素围绕它排列。\n- **定位（Positioning）**：使用 `position` 属性（如 `absolute`, `relative`, `fixed`, `sticky`）时，元素会脱离正常流，根据其定位规则进行放置。\n- **弹性盒布局（Flexbox）**：通过 `display: flex`，元素成为弹性容器及其子元素成为弹性项，允许灵活地布局和对齐。\n- **网格布局（Grid）**：通过 `display: grid`，元素成为网格容器及其子元素成为网格项，提供了二维布局的能力。\n\n### **2. 文档流中的元素类型**\n\n- **块级元素（Block-level Elements）**：通常会从新行开始，占据父元素的整个宽度，如 `\u003cdiv\u003e`, `\u003ch1\u003e`, `\u003cp\u003e`。\n- **行内元素（Inline Elements）**：在同一行内显示，仅占据其内容的宽度，如 `\u003cspan\u003e`, `\u003ca\u003e`, `\u003cimg\u003e`。\n- **块级行内元素（Block-level Inline Elements）**：既有块级元素的特性又能在行内显示，如 `\u003cbutton\u003e`, `\u003cinput\u003e`。\n\n### **3. 影响文档流的 CSS 属性**\n\n- **`display`**：决定元素的显示类型（如 `block`, `inline`, `flex`, `grid`）。\n- **`position`**：决定元素的定位方式（如 `static`, `relative`, `absolute`, `fixed`, `sticky`）。\n- **`float`**：使元素脱离正常流并允许文本环绕。\n- **`clear`**：用于控制浮动元素的清除，以避免元素重叠。\n\n### **4. 文档流的影响**\n\n- **布局**：文档流决定了元素的默认布局方式。块级元素会垂直堆叠，行内元素会水平排列。\n- **重叠和排列**：使用浮动和定位可以改变元素的排列顺序和位置，但这些元素不会占据正常文档流的位置。\n- **响应式设计**：通过调整文档流中的元素（如使用 Flexbox 或 Grid），可以实现响应式布局，适应不同的屏幕尺寸。\n\n### **5. 示例**\n\n```html\n\u003c!DOCTYPE html\u003e\n\u003chtml\u003e\n\u003chead\u003e\n  \u003cstyle\u003e\n    .container {\n      border: 1px solid black;\n      padding: 10px;\n    }\n    .block {\n      display: block;\n      background-color: lightblue;\n      margin-bottom: 10px;\n    }\n    .inline {\n      display: inline;\n      background-color: lightcoral;\n    }\n    .float {\n      float: left;\n      width: 100px;\n      height: 100px;\n      background-color: lightgreen;\n      margin-right: 10px;\n    }\n    .absolute {\n      position: absolute;\n      top: 20px;\n      left: 20px;\n      width: 100px;\n      height: 100px;\n      background-color: lightyellow;\n    }\n  \u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n  \u003cdiv class=\"container\"\u003e\n    \u003cdiv class=\"block\"\u003eBlock Element\u003c/div\u003e\n    \u003cdiv class=\"inline\"\u003eInline Element\u003c/div\u003e\n    \u003cdiv class=\"float\"\u003eFloating Element\u003c/div\u003e\n    \u003cdiv class=\"absolute\"\u003eAbsolute Positioning\u003c/div\u003e\n  \u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\n在这个示例中：\n- `.block` 元素按正常流的块级布局显示。\n- `.inline` 元素在同一行内显示。\n- `.float` 元素浮动到左侧，其他内容围绕它。\n- `.absolute` 元素绝对定位，脱离了正常流。",
+    "pivot":  "文档流是浏览器布局和呈现页面内容的基础。通过理解和控制文档流中的不同布局模式和 CSS 属性，可以实现各种复杂的页面布局和设计。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T22:49:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  385,
+    "filterTotalNum":  1907,
+    "prev":  "3c436b0a-3f53-4b66-a5cf-3ce6aef339c8",
+    "next":  "25e975bd-1335-4a62-9f80-a519500d3587"
+}

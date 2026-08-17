@@ -1,0 +1,21 @@
+﻿{
+    "id":  2843,
+    "exerciseKey":  "dcd1a0fe-65fe-444b-a205-1fb0cec790b5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个双向链表， 具备添加节点、删除节点、在特定位置插入节点、查找节点、遍历等功能",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "要实现一个双向链表（Doubly Linked List），需要定义一个节点类和一个链表类。\n\n双向链表中的每个节点都有两个指针，一个指向下一个节点（`next`），一个指向上一个节点（`prev`）。\n\n链表类则包含了各种操作链表的方法，如添加节点、删除节点、在特定位置插入节点、查找节点和遍历链表。\n\n以下是一个实现双向链表的示例：\n\n### **1. 节点类（Node Class）**\n\n```javascript\nclass Node {\n  constructor(data) {\n    this.data = data; // 节点存储的数据\n    this.next = null; // 指向下一个节点的指针\n    this.prev = null; // 指向上一个节点的指针\n  }\n}\n```\n\n### **2. 双向链表类（DoublyLinkedList Class）**\n\n```javascript\nclass DoublyLinkedList {\n  constructor() {\n    this.head = null; // 链表的头节点\n    this.tail = null; // 链表的尾节点\n    this.size = 0;    // 链表的节点数量\n  }\n\n  // 添加节点到链表的末尾\n  append(data) {\n    const newNode = new Node(data);\n    if (this.head === null) {\n      // 链表为空时，新节点是头节点和尾节点\n      this.head = newNode;\n      this.tail = newNode;\n    } else {\n      // 链表非空时，更新尾节点的指针\n      this.tail.next = newNode;\n      newNode.prev = this.tail;\n      this.tail = newNode;\n    }\n    this.size++;\n  }\n\n  // 在特定位置插入节点\n  insertAt(position, data) {\n    if (position \u003c 0 || position \u003e this.size) {\n      throw new Error(\u0027Index out of bounds\u0027);\n    }\n\n    const newNode = new Node(data);\n\n    if (position === 0) {\n      // 插入到链表的头部\n      if (this.head === null) {\n        this.head = newNode;\n        this.tail = newNode;\n      } else {\n        newNode.next = this.head;\n        this.head.prev = newNode;\n        this.head = newNode;\n      }\n    } else if (position === this.size) {\n      // 插入到链表的尾部\n      this.append(data);\n    } else {\n      // 插入到链表的中间\n      let current = this.head;\n      for (let i = 0; i \u003c position - 1; i++) {\n        current = current.next;\n      }\n      newNode.next = current.next;\n      newNode.prev = current;\n      current.next.prev = newNode;\n      current.next = newNode;\n    }\n    this.size++;\n  }\n\n  // 删除特定位置的节点\n  removeAt(position) {\n    if (position \u003c 0 || position \u003e= this.size) {\n      throw new Error(\u0027Index out of bounds\u0027);\n    }\n\n    if (position === 0) {\n      // 删除头节点\n      if (this.head === this.tail) {\n        // 只有一个节点\n        this.head = null;\n        this.tail = null;\n      } else {\n        this.head = this.head.next;\n        this.head.prev = null;\n      }\n    } else if (position === this.size - 1) {\n      // 删除尾节点\n      this.tail = this.tail.prev;\n      this.tail.next = null;\n    } else {\n      // 删除中间节点\n      let current = this.head;\n      for (let i = 0; i \u003c position; i++) {\n        current = current.next;\n      }\n      current.prev.next = current.next;\n      current.next.prev = current.prev;\n    }\n    this.size--;\n  }\n\n  // 查找特定节点\n  find(data) {\n    let current = this.head;\n    while (current) {\n      if (current.data === data) {\n        return current;\n      }\n      current = current.next;\n    }\n    return null; // 没有找到\n  }\n\n  // 遍历链表并打印节点数据\n  traverse() {\n    let current = this.head;\n    while (current) {\n      console.log(current.data);\n      current = current.next;\n    }\n  }\n\n  // 从尾部开始遍历链表并打印节点数据\n  traverseReverse() {\n    let current = this.tail;\n    while (current) {\n      console.log(current.data);\n      current = current.prev;\n    }\n  }\n}\n```\n\n### **用法示例**\n\n```javascript\nconst list = new DoublyLinkedList();\n\nlist.append(1);\nlist.append(2);\nlist.append(3);\nlist.insertAt(1, 4); // 链表现在是 1 -\u003e 4 -\u003e 2 -\u003e 3\nlist.traverse();     // 输出: 1, 4, 2, 3\n\nlist.removeAt(1);    // 链表现在是 1 -\u003e 2 -\u003e 3\nlist.traverse();     // 输出: 1, 2, 3\n\nconsole.log(list.find(2)); // 输出: Node { data: 2, next: Node { ... }, prev: Node { ... } }\n\nlist.traverseReverse();   // 输出: 3, 2, 1\n```\n",
+    "pivot":  "主要涉及节点类（定义了双向链表中的每个节点）与双向链表类（提供了基本操作，添加、插入、删除、查找和遍历）的实现",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T14:03:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  345,
+    "filterTotalNum":  1907,
+    "prev":  "cfaa364a-d43d-49f8-ad44-a8466480e2e3",
+    "next":  "818064e8-137a-4499-81f5-554f4890fb55"
+}

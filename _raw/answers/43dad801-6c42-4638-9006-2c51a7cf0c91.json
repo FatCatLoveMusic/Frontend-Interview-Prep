@@ -1,0 +1,21 @@
+﻿{
+    "id":  592,
+    "exerciseKey":  "43dad801-6c42-4638-9006-2c51a7cf0c91",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对以下几个页面生命周期事件的理解：DOMContentLoaded，load，beforeunload，unload",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "HTML 页面的生命周期包含三个重要事件：\n\n* DOMContentLoaded —— 浏览器已完全加载 HTML，并构建了 DOM 树，但像 `\u003cimg\u003e` 和样式表之类的外部资源可能尚未加载完成。\n* load —— 浏览器不仅加载完成了 HTML，还加载完成了所有外部资源：图片，样式等。\n* beforeunload/unload —— 当用户正在离开页面时。\n\n每个事件都是有用的：\n\n* DOMContentLoaded 事件 —— DOM 已经就绪，因此处理程序可以查找 DOM 节点，并初始化接口。\n* load 事件 —— 外部资源已加载完成，样式已被应用，图片大小也已知了。\n* beforeunload 事件 —— 用户正在离开：我们可以检查用户是否保存了更改，并询问他是否真的要离开。\n* unload 事件 —— 用户几乎已经离开了，但是我们仍然可以启动一些操作，例如发送统计数据。\n\n## DOMContentLoaded 和脚本\n\n当浏览器处理一个 HTML 文档，并在文档中遇到 \u003cscript\u003e 标签时，就会在继续构建 DOM 之前运行它。这是一种防范措施，因为脚本可能想要修改 DOM，甚至对其执行 document.write 操作，所以 DOMContentLoaded 必须等待脚本执行结束。\n\n因此，DOMContentLoaded 肯定在下面的这些脚本执行结束之后发生。\n\n此规则有两个例外：\n\n* 具有 async 特性（attribute）的脚本不会阻塞 DOMContentLoaded，稍后 我们会讲到。\n* 使用 document.createElement(\u0027script\u0027) 动态生成并添加到网页的脚本也不会阻塞 DOMContentLoaded。\n\n## DOMContentLoaded 和样式\n\n外部样式表不会影响 DOM，因此 DOMContentLoaded 不会等待它们。\n\n但这里有一个陷阱。如果在样式后面有一个脚本，那么该脚本必须等待样式表加载完成。原因是，脚本可能想要获取元素的坐标和其他与样式相关的属性。因此，它必须等待样式加载完成。\n\n当 DOMContentLoaded 等待脚本时，它现在也在等待脚本前面的样式。\n\n## 浏览器内建的自动填充\n\nFirefox，Chrome 和 Opera 都会在 DOMContentLoaded 中自动填充表单。\n\n例如，如果页面有一个带有登录名和密码的表单，并且浏览器记住了这些值，那么在 DOMContentLoaded 上，浏览器会尝试自动填充它们（如果得到了用户允许）。\n\n因此，如果 DOMContentLoaded 被需要加载很长时间的脚本延迟触发，那么自动填充也会等待。你可能在某些网站上看到过（如果你使用浏览器自动填充）—— 登录名/密码字段不会立即自动填充，而是在页面被完全加载前会延迟填充。这实际上是 DOMContentLoaded 事件之前的延迟。\n\n## window.onload\n\n当整个页面，包括样式、图片和其他资源被加载完成时，会触发 window 对象上的 load 事件。可以通过 onload 属性获取此事件。\n\n## window.onunload\n\n当访问者离开页面时，window 对象上的 unload 事件就会被触发。我们可以在那里做一些不涉及延迟的操作，例如关闭相关的弹出窗口。\n\n有一个值得注意的特殊情况是发送分析数据。\n\n假设我们收集有关页面使用情况的数据：鼠标点击，滚动，被查看的页面区域等。\n\n自然地，当用户要离开的时候，我们希望通过 unload 事件将数据保存到我们的服务器上。\n\n有一个特殊的 navigator.sendBeacon(url, data) 方法可以满足这种需求，详见规范 https://w3c.github.io/beacon/。\n\n它在后台发送数据，转换到另外一个页面不会有延迟：浏览器离开页面，但仍然在执行 sendBeacon。\n\n当 sendBeacon 请求完成时，浏览器可能已经离开了文档，所以就无法获取服务器响应（对于分析数据来说通常为空）。\n\n还有一个 keep-alive 标志，该标志用于在 fetch 方法中为通用的网络请求执行此类“离开页面后”的请求。你可以在 Fetch API 一章中找到更多相关信息。\n\n如果我们要取消跳转到另一页面的操作，在这里做不到。但是我们可以使用另一个事件 —— onbeforeunload。\n\n## window.onbeforeunload\n\n如果访问者触发了离开页面的导航（navigation）或试图关闭窗口，beforeunload 处理程序将要求进行更多确认。\n\n如果我们要取消事件，浏览器会询问用户是否确定。\n\n## 总结\n\n页面生命周期事件：\n\n* 当 DOM 准备就绪时，document 上的 DOMContentLoaded 事件就会被触发。在这个阶段，我们可以将 JavaScript 应用于元素。\n\t* 诸如 `\u003cscript\u003e...\u003c/script\u003e` 或 `\u003cscript src=\"...\"\u003e\u003c/script\u003e` 之类的脚本会阻塞 DOMContentLoaded，浏览器将等待它们执行结束。\n\t* 图片和其他资源仍然可以继续被加载。\n* 当页面和所有资源都加载完成时，window 上的 load 事件就会被触发。我们很少使用它，因为通常无需等待那么长时间。\n* 当用户想要离开页面时，window 上的 beforeunload 事件就会被触发。如果我们取消这个事件，浏览器就会询问我们是否真的要离开（例如，我们有未保存的更改）。\n* 当用户最终离开时，window 上的 unload 事件就会被触发。在处理程序中，我们只能执行不涉及延迟或询问用户的简单操作。正是由于这个限制，它很少被使用。我们可以使用 navigator.sendBeacon 来发送网络请求。\n\n\n",
+    "pivot":  "### HTML 页面生命周期事件\n\n- **DOMContentLoaded**：当浏览器已完全加载 HTML 并构建了 DOM 树，但外部资源（如图片、样式表）可能尚未加载完成时触发。\n- **load**：当浏览器不仅加载完成了 HTML，还加载完成了所有外部资源时触发。\n- **beforeunload/unload**：当用户正在离开页面时触发。\n\n### DOMContentLoaded 和脚本\n\n- **阻塞规则**：\n  - 普通脚本（无 `async` 或 `defer` 属性）会阻塞 `DOMContentLoaded`。\n  - `async` 脚本和动态创建的脚本不会阻塞 `DOMContentLoaded`。\n\n### DOMContentLoaded 和样式\n\n- **样式加载**：\n  - 外部样式表不会阻塞 `DOMContentLoaded`。\n  - 但在样式表加载完成后，后续的脚本会阻塞 `DOMContentLoaded`，因为脚本可能需要样式信息。\n\n### 浏览器内建的自动填充\n\n- **表单自动填充**：\n  - Firefox、Chrome 和 Opera 会在 `DOMContentLoaded` 事件中自动填充表单。\n  - 但如果 `DOMContentLoaded` 被长时间脚本延迟，自动填充也会延迟。\n\n### window.onload\n\n- **页面加载完成**：\n  - 当整个页面，包括样式、图片等资源被加载完成时触发。\n  - 较少使用，因为通常不需要等待整个页面加载。\n\n### window.onunload\n\n- **用户离开页面**：\n  - 当用户离开页面时触发。\n  - 适用于不涉及延迟的操作，如发送统计数据。\n\n### navigator.sendBeacon\n\n- **后台数据发送**：\n  - 在用户离开页面时，可以在后台发送数据，如分析数据。\n  - 即使浏览器已经离开文档，请求仍在执行。\n\n### window.onbeforeunload\n\n- **用户离开前的确认**：\n  - 当用户触发了离开页面的导航或试图关闭窗口时触发。\n  - 用于在用户离开前询问确认。",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-08-18T11:22:59.000Z",
+    "updateAt":  "2025-04-21T05:54:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1329,
+    "filterTotalNum":  1907,
+    "prev":  "de0467f1-fe29-442c-8122-3373f20c32fa",
+    "next":  "8dad4e08-b8b7-4593-bb5e-8df4d4b14499"
+}

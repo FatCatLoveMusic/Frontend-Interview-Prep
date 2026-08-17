@@ -1,0 +1,21 @@
+﻿{
+    "id":  1882,
+    "exerciseKey":  "2aa4ec3d-020c-4c2e-9147-53707afb2d4e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "SEO是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "SEO（Search Engine Optimization），汉译为搜索引擎优化。\n\n搜索引擎优化是一种利用搜索引擎的搜索规则来提高目前网站在有关搜索引擎内的自然排名的方式。\n\nSEO是指为了从搜索引擎中获得更多的免费流量，从网站结构、内容建设方案、用户互动传播、页面等角度进行合理规划，使网站更适合搜索引擎的索引原则的行为。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-08-12T11:45:05.000Z",
+    "updateAt":  "2022-08-12T19:48:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  928,
+    "filterTotalNum":  1907,
+    "prev":  "255b920d-ba6d-4e6a-85ac-58c78d2e0773",
+    "next":  "16cd86d3-cdc5-4c8c-946b-19f72408525f"
+}

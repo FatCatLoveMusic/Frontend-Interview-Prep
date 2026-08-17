@@ -1,0 +1,21 @@
+﻿{
+    "id":  1828,
+    "exerciseKey":  "38fbd4c0-d294-4bf5-9041-250449fe0f6a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么实现单行、多行文本溢出隐藏？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n- 单行文本溢出\n\n```css\noverflow: hidden;            // 溢出隐藏\ntext-overflow: ellipsis;      // 溢出用省略号显示\nwhite-space: nowrap;         // 规定段落中的文本不进行换行\n```\n\n- 多行文本溢出\n\n```css\noverflow: hidden;            // 溢出隐藏\ntext-overflow: ellipsis;     // 溢出用省略号显示\ndisplay:-webkit-box;         // 作为弹性伸缩盒子模型显示。\n-webkit-box-orient:vertical; // 设置伸缩盒子的子元素排列方式：从上到下垂直排列\n-webkit-line-clamp:3;        // 显示的行数\n```\n\n注意：由于上面的三个属性都是 CSS3 的属性，没有浏览器可以兼容，所以要在前面加一个`-webkit-` 来兼容一部分浏览器。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-06-25T06:00:19.000Z",
+    "updateAt":  "2024-07-19T16:00:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  981,
+    "filterTotalNum":  1907,
+    "prev":  "e894262c-f9eb-495b-bb45-5016337f3af1",
+    "next":  "ad2a65d2-9330-4f65-9be7-b61e11e10c02"
+}

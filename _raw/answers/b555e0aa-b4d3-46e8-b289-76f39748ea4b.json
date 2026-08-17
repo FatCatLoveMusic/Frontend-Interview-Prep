@@ -1,0 +1,21 @@
+﻿{
+    "id":  2216,
+    "exerciseKey":  "b555e0aa-b4d3-46e8-b289-76f39748ea4b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Husky 和 lint-staged 有什么区别？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "**Husky** 和 **lint-staged** 都是前端开发中常用的工具，用来提升代码质量，特别是在代码提交和推送阶段进行校验和格式化。它们各自有不同的作用和使用场景，通常可以配合使用。\n\n### **1. Husky**\n**Husky** 是一个 Git 钩子工具，允许你在 Git 提交（`commit`）、推送（`push`）等操作时，自动执行指定的命令。它让你能够在这些 Git 操作前后运行脚本，通常用于代码检查、格式化、单元测试等工作。\n\n#### 主要作用：\n- **Git 钩子管理**：它通过配置 Git 钩子（如 `pre-commit`、`pre-push` 等）来执行任务。\n- **与 Git 操作集成**：可以在 Git 操作的不同生命周期内执行自定义的命令，比如在提交代码前运行 `eslint` 或者在推送前运行测试。\n\n#### 常见用途：\n- 在 `git commit` 之前，自动执行代码检查（如 `eslint` 或 `prettier`），保证代码符合规范。\n- 在 `git push` 之前，自动执行单元测试，确保不会将未通过测试的代码推送到远程仓库。\n  \n#### 示例：\n```bash\n# 在安装 Husky 后，添加 Git 钩子\nnpx husky-init\nnpm install\n```\n\n然后，你可以在 `.husky/pre-commit` 文件中添加如下一行命令，来确保在提交代码之前运行 lint 检查：\n```bash\nnpx lint-staged\n```\n\n### **2. lint-staged**\n**lint-staged** 是一个工具，用于仅对暂存（staged）的文件（即已经通过 `git add` 添加到暂存区的文件）执行 lint 校验或格式化。它的目的是提高效率，避免对整个项目的所有文件进行校验，只对即将提交的文件进行检查。\n\n#### 主要作用：\n- **只检查暂存的文件**：与 Husky 配合使用时，可以保证只检查那些已经加入 Git 暂存区的文件，而不是整个项目。\n- **与 Husky 配合**：通常在 `pre-commit` 钩子中运行 `lint-staged`，确保只有被修改的文件通过 Lint 检查或格式化，避免对未修改的文件浪费计算资源。\n\n#### 常见用途：\n- 运行 `eslint`、`prettier`、`stylelint` 等工具，只对修改的文件进行检查和格式化。\n- 执行 Git 钩子时，避免不必要的操作，提升效率。\n\n#### 示例：\n```bash\n// 在 package.json 中配置 lint-staged\n{\n  \"lint-staged\": {\n    \"*.js\": \"eslint --fix\",\n    \"*.css\": \"stylelint --fix\",\n    \"*.json\": \"prettier --write\"\n  }\n}\n```\n\n在 Git 提交时，`lint-staged` 只会检查那些已经暂存的 `.js`、`.css` 和 `.json` 文件，并自动修复它们。\n\n### **区别总结**\n\n| **特性**          | **Husky**                        | **lint-staged**                  |\n|-------------------|----------------------------------|----------------------------------|\n| **作用**          | 管理和执行 Git 钩子             | 只对暂存的文件执行校验和格式化 |\n| **工作原理**      | 触发 Git 提交、推送等操作时执行脚本 | 只检查 Git 暂存区中的文件       |\n| **常见场景**      | 在 Git 操作前执行检查和脚本      | 在 Git 提交前只检查修改的文件   |\n| **配置方式**      | 配置 Git 钩子，如 `pre-commit`  | 配置哪些文件需要执行哪些操作    |\n| **是否与 Git 操作结合** | 是，直接与 Git 提交、推送操作挂钩 | 是，与 Git 提交操作结合，但只检查暂存文件 |\n\n### **如何配合使用 Husky 和 lint-staged**\n\n- **Husky** 负责在 Git 提交或推送时触发钩子事件。\n- **lint-staged** 配合 `pre-commit` 钩子，只对暂存区中的文件进行 lint 校验和自动修复。\n\n#### 配合示例：\n1. 安装 Husky 和 lint-staged：\n   ```bash\n   npm install husky lint-staged --save-dev\n   ```\n\n2. 启用 Husky：\n   ```bash\n   npx husky-init\n   npm install\n   ```\n\n3. 配置 `lint-staged` 来处理文件：\n   在 `package.json` 中添加 `lint-staged` 配置：\n   ```json\n   {\n     \"lint-staged\": {\n       \"*.js\": \"eslint --fix\",\n       \"*.css\": \"stylelint --fix\"\n     }\n   }\n   ```\n\n4. 配置 Husky 钩子：\n   在 `.husky/pre-commit` 文件中添加：\n   ```bash\n   npx lint-staged\n   ```\n\n这样，每次提交时，Husky 会触发 `pre-commit` 钩子，运行 `lint-staged`，`lint-staged` 会只检查那些已经暂存的文件，并对其进行自动修复或格式化。",
+    "pivot":  "- **Husky** 用于管理 Git 钩子，执行某些操作（如校验、测试等）在 Git 提交前或推送前进行。\n- **lint-staged** 主要用于只对暂存区的文件执行校验或格式化，避免浪费不必要的资源。\n\n这两个工具通常一起使用，在提交时既能确保代码规范，又能提高效率。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-30T01:38:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  660,
+    "filterTotalNum":  1907,
+    "prev":  "0cd28c90-bcfa-43ef-831d-5af7182b2abe",
+    "next":  "c59ac670-a5c6-4488-b01d-aab71005affe"
+}

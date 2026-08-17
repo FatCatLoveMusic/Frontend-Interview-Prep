@@ -1,0 +1,21 @@
+﻿{
+    "id":  2000,
+    "exerciseKey":  "8c396acb-2093-4216-8d4a-f8fec4e64f26",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么判断一个对象是否是 React 元素？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "如果想要判断一个对象是否是 React 元素，可以使用 `React.isValidElement()` 方法进行判断。该方法接收一个参数，返回一个布尔值，用于表示指定的对象是否是 React 元素。\n\n以下是一个示例代码：\n\n```javascript\nimport React from \u0027react\u0027;\n\nconst MyComponent = () =\u003e {\n  return \u003cdiv\u003eHello, world!\u003c/div\u003e;\n}\n\nconst elem = \u003cMyComponent /\u003e;\n\nconsole.log(React.isValidElement(elem)); // true\nconsole.log(React.isValidElement({}));   // false\n```\n\n在上述代码中，定义了一个简单的组件 `MyComponent`，并通过 JSX 语法创建了一个 React 元素 `elem`。然后，使用 `React.isValidElement()` 方法对 `elem` 和一个普通对象 `{}` 进行判断，并输出结果。\n\n需要注意的是，`React.isValidElement()` 方法只能用于判断是否为 React 元素，并不能判断元素的类型和其他属性。如果需要获取元素的类型或其他属性，可以直接访问元素的属性，例如 `type`、`props`、`key` 等。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2023-05-25T01:21:53.000Z",
+    "updateAt":  "2024-07-23T09:47:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  810,
+    "filterTotalNum":  1907,
+    "prev":  "96b1ba5e-0f25-4633-a8d1-d0a49ee9f463",
+    "next":  "76826682-df0e-4dad-a50f-d500a09065cb"
+}

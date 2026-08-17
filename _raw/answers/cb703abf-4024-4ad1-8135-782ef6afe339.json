@@ -1,0 +1,21 @@
+﻿{
+    "id":  1893,
+    "exerciseKey":  "cb703abf-4024-4ad1-8135-782ef6afe339",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "假设我要上传图片，怎么在选择图片后，通过浏览器预览待上传的图片？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "实现预览有两种方式：\n\n* 一种是用 `window.URL.createObjectURl` 方法对选择的图片数据（可以勉强理解为input的value）生成一个blob对象路径\n* 第二种是使用 `FileReader` 读取器\n\n那么无论那种方法，首先都得得到文件数据，获得文件数据是从files集合中获取。\n\n先来看下 `window.URL.createObjectURl` 的实现方法：\n\n```js\nfunction imgChange(img) {\n document.querySelector(\"img\").src=window.URL.cteateObejectURL(img.files[0]);\n}\n```\n\n而使用\t`FileRader` 读取文件.可分为四步；\n\n1. 创建 `FileReader` 对像；\n2. 调用 `readAsDataURL` 方法读取文件；\n3. 调用 `onload` 事件监听。因为我们需要拿到完整的数据，但我们又不知道文件何时读完，所以需要第三步监听；\n4. 通过 `FileReader` 的 `result` 属性拿到读取结果。\n\n```js\nfunction imgChange(img) {\n    // 生成一个文件读取的对象\n    const reader = new FileReader();\n    reader.onload = function (ev) {\n        document.querySelector(\"img\").src = imgFile;\n    }\n    //发起异步读取文件请求，读取结果为data:url的字符串形式，\n    reader.readAsDataURL(img.files[0]);\n}\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-09-27T01:48:59.000Z",
+    "updateAt":  "2024-07-22T10:04:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  917,
+    "filterTotalNum":  1907,
+    "prev":  "f10c4b00-cceb-4323-97dc-55b315b05024",
+    "next":  "b41d5c3e-04c4-4873-867c-62ebf28ce369"
+}

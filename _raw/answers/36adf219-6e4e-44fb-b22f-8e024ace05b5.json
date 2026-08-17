@@ -1,0 +1,21 @@
+﻿{
+    "id":  2122,
+    "exerciseKey":  "36adf219-6e4e-44fb-b22f-8e024ace05b5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说你对 React 生态的了解",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "React 的生态系统非常丰富，是支撑其成为主流前端框架的重要原因之一。\n\n可以从几个主要方面简要说明：\n\n---\n\n### 1. **状态管理**\n- **Redux**：经典的状态管理方案，适合大型应用，配合中间件（如 redux-thunk、redux-saga）处理异步逻辑。\n- **Zustand / Jotai / Recoil**：更现代、轻量的替代方案，适合中小型项目。\n- **React Context + useReducer**：适合简单全局状态的共享，不依赖外部库。\n\n---\n\n### 2. **路由管理**\n- **React Router**：React 官方推荐的路由库，支持嵌套路由、懒加载、动态路由等。\n- **Next.js 自带路由**：基于文件系统的路由方案，简化配置流程。\n\n---\n\n### 3. **异步数据管理**\n- **SWR / React Query**：支持缓存、自动重试、请求去重、依赖刷新等功能，极大提升了数据请求体验。\n- **Axios / Fetch**：底层请求库，通常配合上述工具使用。\n\n---\n\n### 4. **组件库**\n- **Ant Design / Material UI**：完整的企业级组件库，满足常规开发需求。\n- **Tailwind CSS + Headless UI**：更注重样式和结构分离，适合需要高度定制的项目。\n- **shadcn/ui**：基于 Tailwind 构建，现代化、高可定制的新兴组件库。\n\n---\n\n### 5. **框架扩展**\n- **Next.js**：服务端渲染 + 静态生成的 React 应用框架，支持 SEO、路由、API 路由等。\n- **Remix**：强调服务端优先的路由框架，增强数据获取和页面渲染逻辑。\n\n---\n\n### 6. **构建工具**\n- **Vite / Webpack / Parcel**：React 可以在这些工具中灵活运行，Vite 更现代、热更新更快。\n- **Create React App (CRA)**：React 官方脚手架，适合快速搭建项目。\n\n---\n\n### 7. **测试工具**\n- **Jest**：React 官方推荐的测试框架。\n- **React Testing Library**：以用户视角测试组件行为，更贴近真实交互。\n- **Cypress / Playwright**：端到端测试工具，测试完整用户流程。\n\n---\n\n### 8. **动画与交互**\n- **Framer Motion**：流畅强大的动画库，配合 React 使用简单高效。\n- **React Spring**：基于物理的动画方案，适合复杂动画场景。",
+    "pivot":  "React 的生态围绕组件化、状态管理、路由、数据请求、构建和测试等各个方面，提供了从开发到部署的完整工具链。根据项目规模和需求的不同，可以灵活选型构建不同复杂度的应用。React 本身的“库而非框架”特性，也为其生态的多样性和活力提供了基础。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T12:04:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  699,
+    "filterTotalNum":  1907,
+    "prev":  "4d26d285-ec10-4515-9fcd-3221ebbcaf43",
+    "next":  "ea5086ef-c685-499f-b0eb-14bae30eafac"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1827,
+    "exerciseKey":  "ad2a65d2-9330-4f65-9be7-b61e11e10c02",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS预处理器/后处理器是什么？为什么要使用它们？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n**预处理器，** 如：`less`，`sass`，`stylus`，用来预编译`sass`或者`less`，增加了`css`代码的复用性。层级，`mixin`， 变量，循环， 函数等对编写以及开发UI组件都极为方便。\n\n\n**后处理器，** 如： `postCss`，通常是在完成的样式表中根据`css`规范处理`css`，让其更加有效。目前最常做的是给`css`属性添加浏览器私有前缀，实现跨浏览器兼容性的问题。\n\n\n`css`预处理器为`css`增加一些编程特性，无需考虑浏览器的兼容问题，可以在`CSS`中使用变量，简单的逻辑程序，函数等在编程语言中的一些基本的性能，可以让`css`更加的简洁，增加适应性以及可读性，可维护性等。\n\n\n其它`css`预处理器语言：`Sass（Scss）`, `Less`, `Stylus`, `Turbine`, `Swithch css`, `CSS Cacheer`, `DT Css`。\n\n\n使用原因：\n\n- 结构清晰， 便于扩展\n- 可以很方便的屏蔽浏览器私有语法的差异\n- 可以轻松实现多重继承\n- 完美的兼容了`CSS`代码，可以应用到老项目中",
+    "pivot":  "CSS预处理器和后处理器是改善CSS编写和管理的工具,主要优势如下:\n\n**CSS预处理器:**\n\n1. 添加变量、函数、混合(mixin)等高级功能,提高CSS的可维护性和模块化\n2. 支持嵌套语法,使CSS结构更清晰易读\n3. 提供代码复用的机制,减少重复编写\n4. 常见的CSS预处理器有Sass、Less和Stylus。\n\n**CSS后处理器:**\n\n1. 自动添加浏览器前缀,提高CSS的兼容性\n2. 优化CSS代码,如代码压缩、自动排序等\n3. 支持模块化、变量、函数等高级功能\n4. 常见的CSS后处理器有PostCSS和Autoprefixer。\n\n总之,使用CSS预处理器和后处理器可以提高CSS的可维护性、模块化和跨浏览器兼容性,从而更好地管理和优化CSS代码。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-06-25T05:59:33.000Z",
+    "updateAt":  "2024-08-10T17:06:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  982,
+    "filterTotalNum":  1907,
+    "prev":  "38fbd4c0-d294-4bf5-9041-250449fe0f6a",
+    "next":  "98cd24a6-d666-4ddd-a696-f74fbe1552a1"
+}

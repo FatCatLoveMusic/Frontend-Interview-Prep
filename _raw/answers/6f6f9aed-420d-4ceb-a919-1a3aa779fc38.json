@@ -1,0 +1,21 @@
+﻿{
+    "id":  516,
+    "exerciseKey":  "6f6f9aed-420d-4ceb-a919-1a3aa779fc38",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“选择排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法简介\n\n选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。\n\n## 算法步骤\n\n* 首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置\n* 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。\n* 重复第二步，直到所有元素均排序完毕。\n\n## 代码实现\n```javascript\nfunction selectionSort(arr) {\n    var len = arr.length;\n    var minIndex, temp;\n    console.time(\u0027选择排序耗时\u0027);\n    for (var i = 0; i \u003c len - 1; i++) {\n        minIndex = i;\n        for (var j = i + 1; j \u003c len; j++) {\n            if (arr[j] \u003c arr[minIndex]) {     //寻找最小的数\n                minIndex = j;                 //将最小数的索引保存\n            }\n        }\n        temp = arr[i];\n        arr[i] = arr[minIndex];\n        arr[minIndex] = temp;\n    }\n    console.timeEnd(\u0027选择排序耗时\u0027);\n    return arr;\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(selectionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n```\n\n## 算法分析\n\n* 最佳情况：T(n) = O(n2)\n* 最差情况：T(n) = O(n2)\n* 平均情况：T(n) = O(n2)",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-17T11:57:33.000Z",
+    "updateAt":  "2024-07-22T15:42:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  1404,
+    "filterTotalNum":  1907,
+    "prev":  "f9ab9093-c472-475f-9d99-ddc69c56cfed",
+    "next":  "cebb4191-0937-48cf-b844-1aaf0faa96f6"
+}

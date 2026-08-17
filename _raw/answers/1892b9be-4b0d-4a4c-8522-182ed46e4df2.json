@@ -1,0 +1,21 @@
+﻿{
+    "id":  322,
+    "exerciseKey":  "1892b9be-4b0d-4a4c-8522-182ed46e4df2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何在React中应用样式？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "将样式应用于React组件有三种方法。\n\n## 外部样式表\n\n在此方法中，你可以将外部样式表导入到组件使用类中。 但是你应该使用className而不是class来为React元素应用样式, 这里有一个例子。\n\n```react.js\nimport React from \u0027react\u0027;\nimport \u0027./App.css\u0027;\nimport { Header } from \u0027./header/header\u0027;\nimport { Footer } from \u0027./footer/footer\u0027;\nimport { Dashboard } from \u0027./dashboard/dashboard\u0027;\nimport { UserDisplay } from \u0027./userdisplay\u0027;\n\nfunction App() {\n  return (\n    \u003cdiv className=\"App\"\u003e\n      \u003cHeader /\u003e\n      \u003cDashboard /\u003e\n      \u003cUserDisplay /\u003e\n      \u003cFooter /\u003e\n    \u003c/div\u003e\n  );\n}\n\nexport default App;\n```\n\n## 内联样式\n\n在这个方法中，我们可以直接将 props 传递给HTML元素，属性为style。这里有一个例子。这里需要注意的重要一点是，我们将javascript对象传递给style，这就是为什么我们使用 `backgroundColor` 而不是CSS方法`backbackground-color`。\n\n```react.js\nimport React from \u0027react\u0027;\n\nexport const Header = () =\u003e {\n\n    const heading = \u0027TODO App\u0027\n\n    return(\n        \u003cdiv style={{backgroundColor:\u0027orange\u0027}}\u003e\n            \u003ch1\u003e{heading}\u003c/h1\u003e\n        \u003c/div\u003e\n    )\n}\n```\n\n## 定义样式对象并使用它\n\n因为我们将javascript对象传递给style属性，所以我们可以在组件中定义一个style对象并使用它。下面是一个示例，你也可以将此对象作为 props 传递到组件树中。\n\n```react.js\nimport React from \u0027react\u0027;\n\nconst footerStyle = {\n    width: \u0027100%\u0027,\n    backgroundColor: \u0027green\u0027,\n    padding: \u002750px\u0027,\n    font: \u002730px\u0027,\n    color: \u0027white\u0027,\n    fontWeight: \u0027bold\u0027\n}\n\nexport const Footer = () =\u003e {\n    return(\n        \u003cdiv style={footerStyle}\u003e\n            All Rights Reserved 2019\n        \u003c/div\u003e\n    )\n}\n```\n\n",
+    "pivot":  "- **内联样式**：快速应用样式，但不支持伪类和媒体查询。\n- **外部 CSS 文件**：传统方式，适合全局样式，但可能导致样式冲突。\n- **CSS Modules**：局部样式，避免冲突，需配置支持。\n- **Styled Components 和 Emotion**：CSS-in-JS 解决方案，样式局部作用域，动态样式，需引入库。\n\n选择适当的样式方式可以根据项目需求、团队偏好和维护性来决定。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T11:10:40.000Z",
+    "updateAt":  "2024-08-10T17:04:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1598,
+    "filterTotalNum":  1907,
+    "prev":  "f59d29a2-7ff8-41ca-8176-a24f1ca6d0f5",
+    "next":  "b97ddbf9-57fd-493f-888d-1ffb7981f10a"
+}

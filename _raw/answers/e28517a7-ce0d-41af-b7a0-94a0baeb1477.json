@@ -1,0 +1,21 @@
+﻿{
+    "id":  75,
+    "exerciseKey":  "e28517a7-ce0d-41af-b7a0-94a0baeb1477",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconsole.log(\"🥑\" + \"💻\");\n```",
+    "options":  "{\"options\":[\"\\\"🥑💻\\\"\",\"257548\",\"A string containing their code points\",\"Error\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "使用`+`运算符，您可以连接字符串。 上述情况，我们将字符串`“🥑”`与字符串`”💻“`连接起来，产生`”🥑💻“`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:22:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1844,
+    "filterTotalNum":  1907,
+    "prev":  "3476a4fe-f6a3-4a70-a364-edef0bb45fa8",
+    "next":  "1915f55c-162b-46ee-bf06-11194d67730c"
+}

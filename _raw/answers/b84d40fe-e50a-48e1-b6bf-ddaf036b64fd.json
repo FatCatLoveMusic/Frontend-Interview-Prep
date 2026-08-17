@@ -1,0 +1,21 @@
+﻿{
+    "id":  2641,
+    "exerciseKey":  "b84d40fe-e50a-48e1-b6bf-ddaf036b64fd",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Service Worker 是如何缓存 http 请求资源的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "Service Worker 的缓存机制是通过缓存 API 实现的，它允许开发者拦截和缓存 HTTP 请求，以提高离线体验和加速页面加载。以下是 Service Worker 缓存 HTTP 请求资源的基本流程和原理：\n\n### **1. 注册 Service Worker**\n\n首先，Service Worker 需要在浏览器中注册。通常在主线程（如 JavaScript 入口文件）中进行注册：\n\n```javascript\nif (\u0027serviceWorker\u0027 in navigator) {\n  navigator.serviceWorker.register(\u0027/service-worker.js\u0027)\n    .then(registration =\u003e {\n      console.log(\u0027Service Worker registered with scope:\u0027, registration.scope);\n    })\n    .catch(error =\u003e {\n      console.error(\u0027Service Worker registration failed:\u0027, error);\n    });\n}\n```\n\n### **2. 安装 Service Worker**\n\n在 Service Worker 脚本中，首先会触发 `install` 事件。在这个事件中，可以预缓存一些资源，以便在 Service Worker 激活后立即可用：\n\n```javascript\nself.addEventListener(\u0027install\u0027, event =\u003e {\n  event.waitUntil(\n    caches.open(\u0027my-cache-v1\u0027).then(cache =\u003e {\n      return cache.addAll([\n        \u0027/\u0027,\n        \u0027/styles/main.css\u0027,\n        \u0027/scripts/main.js\u0027,\n        \u0027/images/logo.png\u0027\n      ]);\n    })\n  );\n});\n```\n\n### **3. 激活 Service Worker**\n\n`activate` 事件在 Service Worker 安装完成后触发。可以在这个事件中进行缓存清理，删除旧的缓存：\n\n```javascript\nself.addEventListener(\u0027activate\u0027, event =\u003e {\n  event.waitUntil(\n    caches.keys().then(cacheNames =\u003e {\n      return Promise.all(\n        cacheNames.filter(cacheName =\u003e {\n          // 这里可以指定要删除的缓存\n          return cacheName !== \u0027my-cache-v1\u0027;\n        }).map(cacheName =\u003e {\n          return caches.delete(cacheName);\n        })\n      );\n    })\n  );\n});\n```\n\n### **4. 拦截和缓存请求**\n\n`fetch` 事件允许 Service Worker 拦截所有的网络请求。可以根据需要从缓存中返回资源，或将请求转发到网络：\n\n```javascript\nself.addEventListener(\u0027fetch\u0027, event =\u003e {\n  event.respondWith(\n    caches.match(event.request).then(cachedResponse =\u003e {\n      // 如果缓存中有匹配的资源，直接返回\n      if (cachedResponse) {\n        return cachedResponse;\n      }\n\n      // 否则，发起网络请求\n      return fetch(event.request).then(response =\u003e {\n        // 克隆响应对象，因为响应只能被消费一次\n        const responseClone = response.clone();\n\n        // 将网络请求的结果缓存\n        caches.open(\u0027my-cache-v1\u0027).then(cache =\u003e {\n          cache.put(event.request, responseClone);\n        });\n\n        return response;\n      });\n    }).catch(() =\u003e {\n      // 网络和缓存都失败的情况\n      return new Response(\u0027Oops, something went wrong.\u0027);\n    })\n  );\n});\n```\n\n### **5. 资源管理**\n\n- **缓存清理**：定期删除过期或不再需要的缓存，保持缓存的健康状态。\n- **缓存策略**：可以实现不同的缓存策略，如缓存优先、网络优先、缓存和网络同时等。",
+    "pivot":  "Service Worker 通过拦截 HTTP 请求，并使用缓存 API 存储和管理缓存资源，使得应用能够离线访问，提高了应用的性能和可靠性。核心过程包括注册 Service Worker、在 `install` 事件中预缓存资源、在 `fetch` 事件中拦截请求并从缓存或网络返回资源，以及在 `activate` 事件中进行缓存清理。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T09:39:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  430,
+    "filterTotalNum":  1907,
+    "prev":  "5926a5ad-e62b-42c7-a747-676ca6c0ad57",
+    "next":  "5f0627e5-a8f1-471a-b988-60169bd11e12"
+}

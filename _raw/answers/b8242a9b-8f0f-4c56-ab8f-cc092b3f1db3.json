@@ -1,0 +1,21 @@
+﻿{
+    "id":  27,
+    "exerciseKey":  "b8242a9b-8f0f-4c56-ab8f-cc092b3f1db3",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction checkAge(data) {\n  if (data === { age: 18 }) {\n    console.log(\u0027You are an adult!\u0027)\n  } else if (data == { age: 18 }) {\n    console.log(\u0027You are still an adult.\u0027)\n  } else {\n    console.log(`Hmm.. You don\u0027t have an age I guess`)\n  }\n}\n\ncheckAge({ age: 18 })\n```",
+    "options":  "{\"options\":[\"You are an adult!\",\"You are still an adult.\",\"Hmm.. You don\u0027t have an age I guess\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "在测试相等性时，基本类型通过它们的值（value）进行比较，而对象通过它们的引用（reference）进行比较。JavaScript 检查对象是否具有对内存中相同位置的引用。\n题目中我们正在比较的两个对象不是同一个引用：作为参数传递的对象引用的内存位置，与用于判断相等的对象所引用的内存位置并不同。\n这也是 `{ age: 18 } === { age: 18 }` 和 `{ age: 18 } == { age: 18 }` 都返回 `false` 的原因。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:09:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1892,
+    "filterTotalNum":  1907,
+    "prev":  "2dec0eee-6b2c-4d4a-920b-6acef97924b7",
+    "next":  "2f15c826-8011-46de-9c27-864728b75432"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1546,
+    "exerciseKey":  "b43082e8-2312-4594-ac1c-4f0d2d5da81c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "移动端点击有 300ms 的延迟是因为移动端会有双击缩放的这个操作，因此浏览器在 click 之后要等待 300ms，看用户有没有下一次点击，来判断这次操作是不是双击。\n\n有三种办法来解决这个问题：\n\n* 通过 meta 标签禁用网页的缩放。\n* 通过 meta 标签将网页的 viewport 设置为 ideal viewport。\n* 调用一些 js 库，比如 FastClick\n\nclick 延时问题还可能引起点击穿透的问题，就是如果我们在一个元素上注册了 touchStart 的监听事件，这个事件会将这个元素隐藏掉，我们发现当这个元素隐藏后，触发了这个元素下的一个元素的点击事件，这就是点击穿透。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:15:48.000Z",
+    "updateAt":  "2024-07-20T11:32:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  1243,
+    "filterTotalNum":  1907,
+    "prev":  "eb451be3-dc88-481c-b8a8-da6c8d278e95",
+    "next":  "a09650c2-d9af-4f1a-ad05-8b33757cbca7"
+}

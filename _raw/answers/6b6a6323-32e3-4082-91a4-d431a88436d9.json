@@ -1,0 +1,21 @@
+﻿{
+    "id":  605,
+    "exerciseKey":  "6b6a6323-32e3-4082-91a4-d431a88436d9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是 DOM 和 BOM？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "DOM（Document Object Model）和 BOM（Browser Object Model）是 JavaScript 中常用的两个概念，用于描述浏览器中的不同对象模型。\n\n1. **DOM（Document Object Model）**:\n   - DOM 是表示 HTML 和 XML 文档的标准的对象模型。它将文档中的每个组件（如元素、属性、文本等）都看作是一个对象，开发者可以使用 JavaScript 来操作这些对象，从而动态地改变页面的内容、结构和样式。\n   - DOM 以树状结构组织文档的内容，其中树的根节点是 `document` 对象，它代表整个文档。`document` 对象有各种方法和属性，可以用来访问和修改文档的内容和结构。\n\n2. **BOM（Browser Object Model）**:\n   - BOM 是表示浏览器窗口及其各个组件的对象模型。它提供了一组对象，用于访问和控制浏览器窗口及其各个部分，如地址栏、历史记录等。\n   - BOM 的核心对象是 `window` 对象，它表示浏览器窗口，并且是 JavaScript 中的全局对象。`window` 对象提供了许多属性和方法，用于控制浏览器窗口的各个方面，如页面导航、定时器、对话框等。\n   - BOM 还提供了其他一些对象，如 `navigator`（提供浏览器相关信息）、`location`（提供当前文档的 URL 信息）、`history`（提供浏览器历史记录）、`screen`（提供屏幕信息）等。\n\n总的来说，DOM 是用于访问和操作网页文档的对象模型，而 BOM 是用于控制浏览器窗口及其各个组件的对象模型。在 JavaScript 编程中，开发者通常会同时使用 DOM 和 BOM 来完成各种任务，如操作网页元素、导航控制、事件处理等。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-08-22T10:28:27.000Z",
+    "updateAt":  "2024-07-22T10:07:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  1316,
+    "filterTotalNum":  1907,
+    "prev":  "33d77817-96e1-4531-840c-26426223102c",
+    "next":  "1648c493-456c-426e-b57f-7a24ad14d40e"
+}

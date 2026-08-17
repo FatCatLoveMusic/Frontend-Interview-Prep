@@ -1,0 +1,21 @@
+﻿{
+    "id":  1964,
+    "exerciseKey":  "ea493a51-70e5-481b-b5ec-2ce6900a7eea",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "以下等式是成立的吗：1_000_000 === 1000000 ？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`1_000_000 === 1000000` 的结果为 true\n\n`1_000_000` 中使用了 `_`，这是数字分隔符规范(Numeric Separators)，也就是允许在数字值中使用下划线来提高数值的可读性。\n\n如果我们尝试写十亿这样的值，可以通过用下划线分隔数字来提高可读性。\n\n```js\nlet a = 1000000000000; \nlet b = 1_000_000_000_000; \nconsole.log(a===b); // true\n```\n\n数字分隔符规范不仅支持整数，还支持各种数字格式：\n\n```js\n// Decimal \nlet dec = 1_000_000.220_720; \n\n// Binary \nlet bin = 0b1010_0001_1000_0101; \n\n// Octal \nlet oct = 0o1234_5670; \n\n// Hexadecimal \nlet hex = 0xA0_B0_C0; \n\n// BigInt \nlet bint = 9_223_372_036_854_775_807n;\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2023-04-26T09:11:09.000Z",
+    "updateAt":  "2024-07-20T17:29:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  846,
+    "filterTotalNum":  1907,
+    "prev":  "6b8fcb09-74e7-4ced-97a0-ba7b12575684",
+    "next":  "bc3c6285-2523-4d07-94c4-9dc539b63ece"
+}

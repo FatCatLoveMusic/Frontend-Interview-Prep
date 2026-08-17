@@ -1,0 +1,21 @@
+﻿{
+    "id":  479,
+    "exerciseKey":  "0c0db5d1-e09a-4699-911a-3cfa4f4bd765",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "什么是微前端？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "微前端（Micro-Frontends）是一种类似于微服务的架构，它将微服务的理念应用于浏览器端，即将 Web 应用由单一的单体应用转变为多个小型前端应用聚合为一的应用。\n\n各个前端应用还可以独立运行、独立开发、独立部署。\n\n微前端不是单纯的前端框架或者工具，而是一套架构体系，",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T01:31:04.000Z",
+    "updateAt":  "2021-07-11T11:08:10.000Z",
+    "isCollected":  false,
+    "currentIndex":  1441,
+    "filterTotalNum":  1907,
+    "prev":  "d3411be6-a0be-4901-8f37-f418af1c0475",
+    "next":  "887a5434-989a-45c3-bf97-b6988394ece6"
+}

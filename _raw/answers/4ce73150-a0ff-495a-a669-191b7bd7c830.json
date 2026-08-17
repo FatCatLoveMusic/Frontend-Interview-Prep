@@ -1,0 +1,21 @@
+﻿{
+    "id":  362,
+    "exerciseKey":  "4ce73150-a0ff-495a-a669-191b7bd7c830",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "HTTP和HTTPS的区别",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e\u003ccode\u003eHTTPS\u003c/code\u003e是在\u003ccode\u003eHTTP\u003c/code\u003e的基础上加入了\u003ccode\u003eSSL\u003c/code\u003e协议，\u003ccode\u003eSSL\u003c/code\u003e依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密（在传输层）\u003cbr/\u003e \u003ccode\u003eHTTP\u003c/code\u003e + 加密 + 认证 + 完整性保护 = \u003ccode\u003eHTTPS\u003c/code\u003e\u003cbr/\u003e \u003c/p\u003e\u003col\u003e\u003cli\u003e \u003ccode\u003eHTTPS\u003c/code\u003e协议需要到CA申请证书或自制证书\u003cbr/\u003e \u003c/li\u003e\u003cli\u003e \u003ccode\u003eHTTP\u003c/code\u003e的信息是明文传输；\u003cbr/\u003e \u003ccode\u003eHTTPS\u003c/code\u003e则是具有安全性的ssl加密\u003cbr/\u003e \u003c/li\u003e\u003cli\u003e \u003ccode\u003eHTTP\u003c/code\u003e是直接与TCP进行数据传输；\u003cbr/\u003e 而\u003ccode\u003eHTTPS\u003c/code\u003e运行在\u003ccode\u003eSSL/TLS\u003c/code\u003e(安全传输层协议)之上，\u003ccode\u003eSSL/TLS\u003c/code\u003e运行在\u003ccode\u003eTCP\u003c/code\u003e之上，用的端口也不一样，前者是80（需要国内备案），后者是443\u003cbr/\u003e \u003c/li\u003e\u003cli\u003e \u003ccode\u003eHTTP\u003c/code\u003e的连接很简单，是无状态的；\u003cbr/\u003e \u003ccode\u003eHTTPS\u003c/code\u003e协议是由\u003ccode\u003eSSL+HTTP\u003c/code\u003e协议构建的，可进行加密传输、身份认证的网络协议，比\u003ccode\u003eHTTP\u003c/code\u003e协议安全\u003cbr/\u003e \u003c/li\u003e\u003c/ol\u003e\u003cp\u003e \u003c/p\u003e",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T15:45:43.000Z",
+    "updateAt":  "2024-07-19T18:16:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1558,
+    "filterTotalNum":  1907,
+    "prev":  "d4f2b4e6-6d91-4aed-b4de-c2166e44bc3d",
+    "next":  "d627f91c-d910-447b-88b5-4f424799aa84"
+}

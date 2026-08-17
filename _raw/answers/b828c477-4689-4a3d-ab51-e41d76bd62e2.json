@@ -1,0 +1,21 @@
+﻿{
+    "id":  1917,
+    "exerciseKey":  "b828c477-4689-4a3d-ab51-e41d76bd62e2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个将多维数组展示的方法\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "**方法一：ES6新增的数组扩展方法flat()**\n\n```javascript\nlet arr = [1,2,3,[4,5],6];\nlet res = arr.flat();//[1,2,3,4,5,6]\n```\n\n可能会有小伙伴说flat()默认只能拉伸一层，如果需要处理的是多层嵌套数组呢？\n\n```javascript\nlet arr1 = [1,2,3,[4,5,[6,7]],8];\nlet res1 = arr.flat(3); //参数3代表三维数组的展开，结果为[1,2,3,4,5,6,7,8]\n\nlet arr2 = [1,2,3,[4,5,[6,7,[8]]],9];\nlet res2 = arr2.flat(4); //参数4代表思维数组的展开，结果为[1,2,3,4,5,6,7,8,9]\n\n......\n```\n\n不过这样处理的话，对于已知的数组维度是可以处理的，那么对于未知嵌套层级的数组是相当不友好的，那么针对未知的多维嵌套数组我们应该用什么方法展开呢？看代码：\n\n```javascript\nlet arr3 = [1,2,3,[4,5,[6,7,[8]]],9];\nlet res3 = arr3.flat(Infinity); //参数为Infinity,结果为[1,2,3,4,5,6,7,8,9]\n```\n\n这样不管你要处理的数组是几层嵌套关系，都会处理成你想要的一维数组。\n\n**方法二：apply()结合concat()使用以展开成一维数组**\n\n```javascript\nlet arr4 = [1,2,3,[4,5],6];\nlet res4 = [].concat.apply([],arr4);//结果为[1,2,3,4,5,6]\n```\n\n这个方法虽然可以处理，不过有一个缺陷需要指出，那就是该方法只能将二维数组展开为一维，二维以上的多维数组的处理就需要循环遍历一层层的使用该方法了，有点麻烦，如果想使用简单的方法，请参考方法一。\n\n**方法三：reduce()结合concat()方法**\n\n```javascript\nlet arr5 = [[0, 1], [2, 3]];\nlet res5 = arr5.reduce(\n  (acc, cur) =\u003e {\n    return acc.concat(cur);\n  }\n);//结果为[0,2,3,4]\n```\n\n需要注意的是此方法和方法二类似，处理多维数组的时候需要进行其他处理。\n\n**方法四：针对方法一和方法二的缺陷，可以使用递归的方法进行展开**\n\n```javascript\nlet arr6 = [1,2,[3,4,[5,6],7],8]\nfunction flatten(arr){\n\tlet res6 = [];\n\tfor(let i=0; i \u003c arr.length; i++){\n\t\tif(Array.isArray(arr[i])){\n\t\t\tres6 = res6.concat(flatten(arr[i])) \n\t\t}else{\n\t\t\tres6.push(arr[i])\n\t\t}\n\t}\n\treturn res6;\n}\nFlatten(arr6);//结果为[1,2,3,4,5,6,7,8]\n```\n\n**方法五：使用toString()和split(\u0027,\u0027)方法**\n\n如果数组的元素都是数字，那么我们可以考虑使用 toString 方法，因为：toString会将数组中的数以逗号形式结合起来。toString()之后再split(\u0027,\u0027)转成数组，并将其转换回数字数组：\n\n```javascript\nvar arr = [1, [2, [3, 4],[5,[6],[7,8]]]];\nvar arrStr = arr.toString();\nconsole.log(arrStr);//1,2,3,4,5,6,7,8\nvar strArr = arrStr.split(\u0027,\u0027);\nconsole.log(strArr)//[\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\"]\n```\n\n该方法只适用于数组内全部是数字的情况。\n\n**方法六：使用reduce和concat方法，结合递归，利用重写原型的另一种方法**\n\n```javascript\nArray.prototype.flatten=function(){\n  return this.reduce(function(prev, cur) {\n    var moreArr = [].concat(cur).some(Array.isArray); //判断cur是不是一个数组\n    return prev.concat(moreArr ? cur.flatten() : cur);\n  },[]);\n};\nvar bbb = [1,2,3,[4,[5,6,[7,8]]]]\nvar ccc=bbb.flatten();\nconsole.log(ccc);//结果为[1, 2, 3, 4, 5, 6, 7, 8]\n```\n\n**方法七：es6扩展运算符**\n\n```javascript\nfunction flatten(arr){\n  while(arr.some(item=\u003eArray.isArray(item))){\n    arr = [].concat(...arr);\n  }\n  return arr;\n}\nvar sunArr = [1,2,3,[4,[5,[6]]]];\nflatten(sunArr);//结果为 [1, 2, 3, 4, 5, 6]\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-10-10T12:42:46.000Z",
+    "updateAt":  "2023-03-12T22:57:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  893,
+    "filterTotalNum":  1907,
+    "prev":  "f1a76998-d6bd-487e-ae2e-06a045f8e7aa",
+    "next":  "e2d6e9f5-8166-454e-91ac-79b1816a075f"
+}

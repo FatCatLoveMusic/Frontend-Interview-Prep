@@ -1,0 +1,21 @@
+﻿{
+    "id":  1832,
+    "exerciseKey":  "84f9d3f9-88aa-4441-8868-b7c834f796fc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么实现一个宽高自适应的正方形？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n- 利用vw来实现：\n\n```css\n.square {\n  width: 10%;\n  height: 10vw;\n  background: tomato;\n}\n```\n\n- 利用元素的margin/padding百分比是相对父元素width的性质来实现：\n\n```css\n.square {\n  width: 20%;\n  height: 0;\n  padding-top: 20%;\n  background: orange;\n}\n```\n\n- 利用子元素的margin-top的值来实现：\n\n```css\n.square {\n  width: 30%;\n  overflow: hidden;\n  background: yellow;\n}\n.square::after {\n  content: \u0027\u0027;\n  display: block;\n  margin-top: 100%;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-06-25T06:24:22.000Z",
+    "updateAt":  "2022-06-25T14:35:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  977,
+    "filterTotalNum":  1907,
+    "prev":  "072b9f8d-7383-4823-9508-77e4e9d1744c",
+    "next":  "e1900c3f-a1e8-426c-8f5c-3281129e1430"
+}

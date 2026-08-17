@@ -1,0 +1,21 @@
+﻿{
+    "id":  457,
+    "exerciseKey":  "b19b40b5-e032-482f-8520-25affc3b02db",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "解释如何使用 TypeScript mixin。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Mixin 本质上是在相反方向上工作的继承。Mixins 允许你通过组合以前类中更简单的部分类设置来构建新类。\n\n相反，类A继承类B来获得它的功能，类B从类A需要返回一个新类的附加功能。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-07T15:31:15.000Z",
+    "updateAt":  "2021-07-11T10:58:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1463,
+    "filterTotalNum":  1907,
+    "prev":  "58972e2f-584c-4073-af2a-f6b0c81f447d",
+    "next":  "15457f3a-3fba-48d2-902e-eda18ef47e18"
+}

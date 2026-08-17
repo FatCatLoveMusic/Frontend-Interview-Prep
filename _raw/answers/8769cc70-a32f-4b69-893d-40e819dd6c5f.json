@@ -1,0 +1,21 @@
+﻿{
+    "id":  112,
+    "exerciseKey":  "8769cc70-a32f-4b69-893d-40e819dd6c5f",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconsole.log(\u0027❤️\u0027 === \u0027❤️\u0027)\n```",
+    "options":  "{\"options\":[\"true\",\"false\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "在内部，表情符号是unicode。 heat表情符号的unicode是`“ U + 2764 U + FE0F”`。 对于相同的表情符号，它们总是相同的，因此我们将两个相等的字符串相互比较，这将返回true。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:29:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1807,
+    "filterTotalNum":  1907,
+    "prev":  "943c425e-0b59-4ef6-b22d-6596c19a962a",
+    "next":  "71637418-9f70-4504-9eed-ab1f3d6c702d"
+}

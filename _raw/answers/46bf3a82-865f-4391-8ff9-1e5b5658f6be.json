@@ -1,0 +1,21 @@
+﻿{
+    "id":  3129,
+    "exerciseKey":  "46bf3a82-865f-4391-8ff9-1e5b5658f6be",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果公司想用大模型，但又担心暴露隐私数据，该怎么解决？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "企业在接入大模型时，最大的顾虑通常不是“效果不够好”，而是：\n\n\u003e 数据是否会泄露、模型是否会学习企业内部数据、以及是否满足合规要求。\n\n尤其是：\n\n* 源代码\n* 用户数据\n* 财务数据\n* 医疗数据\n* 合同\n* 内部知识库\n* 商业决策信息\n\n这些内容一旦外流，风险非常大。\n\n所以现在企业落地大模型时，核心思路已经不是“直接调用公网 AI”，而是：\n\n\u003e 在“模型能力”和“数据安全”之间做隔离与控制。\n\n通常会从几个层面解决。\n\n---\n\n首先是最基础的一层：\n\n## 一、避免直接把敏感数据发送到公网模型\n\n很多企业一开始的问题是：\n\n```txt id=\"xgxjjq\"\n员工直接把数据库、源码、合同复制到 ChatGPT\n```\n\n这实际上是最大的风险点。\n\n因为公网 SaaS 型 AI：\n\n* 请求会经过第三方服务器\n* 数据可能用于模型训练（取决于平台策略）\n* 企业无法控制数据存储位置\n* 无法做审计和权限控制\n\n所以企业通常会先做：\n\n* 禁止直接使用公网 AI 处理敏感数据\n* 使用企业版 AI\n* 统一 AI 网关出口\n\n例如：\n\n* [OpenAI Enterprise](https://openai.com/enterprise-privacy/?utm_source=chatgpt.com)\n* [Microsoft Azure OpenAI Service](https://azure.microsoft.com/products/ai-services/openai-service?utm_source=chatgpt.com)\n* [Google Vertex AI](https://cloud.google.com/vertex-ai?utm_source=chatgpt.com)\n\n这些企业方案通常会承诺：\n\n* 不参与模型训练\n* 数据隔离\n* 企业私有存储\n* 审计日志\n* 权限控制\n\n这和普通网页版 ChatGPT 是不同的。\n\n---\n\n## 二、私有化部署（Private Deployment）\n\n这是目前很多大型企业最核心的方案。\n\n即：\n\n\u003e 模型运行在企业自己的服务器、私有云或内网环境。\n\n这样数据根本不离开企业网络。\n\n常见方式包括：\n\n### 1. 本地部署开源模型\n\n例如：\n\n* Meta 的 Llama 3\n* DeepSeek 的 DeepSeek 系列\n* Alibaba Cloud 的 Qwen 系列\n* Mistral AI 的 Mistral\n\n部署后：\n\n```txt id=\"e9l0zh\"\n员工 -\u003e 企业内网 AI -\u003e 本地 GPU 集群\n```\n\n所有数据都在公司内部流转。\n\n这种方式安全性最高。\n\n但问题是：\n\n* GPU 成本高\n* 运维复杂\n* 模型升级成本高\n* 推理优化门槛高\n\n所以一般：\n\n* 金融\n* 政务\n* 医疗\n* 大厂核心业务\n\n更倾向这种模式。\n\n---\n\n### 2. VPC / 专有云部署\n\n有些企业不想完全自建 GPU 集群。\n\n于是会采用：\n\n```txt id=\"2k8p5u\"\n云厂商提供模型\n+\n部署在企业专属 VPC\n```\n\n例如 Azure OpenAI 的企业隔离环境。\n\n本质是：\n\n* 模型仍由云厂商维护\n* 但网络、存储、权限是企业独享\n\n这是很多中大型公司的折中方案。\n\n---\n\n## 三、RAG（检索增强生成）替代模型训练\n\n很多企业以为：\n\n```txt id=\"7fj29d\"\n要让 AI 懂公司知识\n=\n必须把公司数据训练进模型\n```\n\n其实现在更多采用的是 RAG。\n\n即：\n\n```txt id=\"efh9b9\"\n用户问题\n→ 检索企业知识库\n→ 把相关内容临时注入 Prompt\n→ 模型生成答案\n```\n\n这样：\n\n* 企业数据不进入模型参数\n* 不需要重新训练大模型\n* 数据可控\n* 可随时更新知识库\n\n这是当前企业知识库 AI 最主流的方案。\n\n例如：\n\n* 内部文档问答\n* 工单助手\n* 代码助手\n* 合同检索\n* 运维知识库\n\n很多都是 RAG 架构。\n\n---\n\n## 四、数据脱敏与权限隔离\n\n即使使用企业模型，也不能完全相信“所有人都能访问所有数据”。\n\n因此企业通常还会做：\n\n### 数据脱敏\n\n例如：\n\n```txt id=\"yl3g06\"\n手机号 -\u003e 138****1234\n身份证 -\u003e 部分隐藏\n客户姓名 -\u003e 匿名化\n```\n\n避免敏感字段直接进入模型。\n\n---\n\n### 权限控制\n\n不同员工：\n\n* 只能访问对应部门知识库\n* 只能读取有权限的数据\n* AI 返回结果时也需要鉴权\n\n否则会出现：\n\n```txt id=\"g8e7u0\"\n市场部员工问到了财务数据\n```\n\n这其实是很多 AI 知识库项目最大的风险。\n\n所以企业 AI 很强调：\n\n* IAM\n* RBAC\n* 数据权限继承\n\n本质上 AI 只是新的访问入口。\n\n---\n\n## 五、增加 AI 网关与审计系统\n\n成熟企业一般不会让业务系统直接调用大模型。\n\n而是：\n\n```txt id=\"h1ck4l\"\n业务系统\n→ AI Gateway\n→ 大模型\n```\n\nAI Gateway 会统一处理：\n\n* Prompt 审计\n* 数据脱敏\n* Token 控制\n* 权限校验\n* 模型路由\n* 日志记录\n* 内容安全检测\n\n这样可以避免：\n\n* 员工乱传数据\n* Prompt 注入攻击\n* 越权访问\n* AI 输出违规内容\n\n很多企业现在已经把 AI Gateway 当成基础设施。\n\n---\n\n## 六、针对代码场景的特殊隔离\n\n企业最敏感的数据之一，其实是源码。\n\n尤其：\n\n* 核心算法\n* 商业逻辑\n* 安全代码\n* 内部 SDK\n\n因此 AI Coding 场景通常会：\n\n### 禁止公网 Copilot 直接访问私有仓库\n\n或者：\n\n### 使用企业级代码助手\n\n例如：\n\n* [GitHub Copilot for Business](https://github.com/features/copilot/copilot-business?utm_source=chatgpt.com)\n* [Cursor for Teams](https://www.cursor.com/teams?utm_source=chatgpt.com)\n\n很多还支持：\n\n* 私有仓库索引\n* 企业 SSO\n* 审计日志\n* 禁止训练代码\n* 内部模型替换\n\n本质上都是为了控制源码泄露风险。\n\n---\n\n## 七、真正的难点其实是“组织治理”\n\n技术只是第一步。\n\n很多企业最后失败，不是因为模型不行，而是：\n\n* 员工乱用 AI\n* 没有权限体系\n* 没有审计\n* 数据边界不清晰\n* AI 输出无法追责\n\n所以成熟企业会建立：\n\n* AI 使用规范\n* 数据分级制度\n* Prompt 安全规范\n* AI 审计机制\n* 人工复核流程\n\n本质上：\n\n\u003e 企业接入大模型，最终是“安全治理问题”，而不仅仅是“模型部署问题”。",
+    "pivot":  "企业使用大模型时，核心目标是在“模型能力”和“数据安全”之间建立隔离。常见方案包括使用企业版 AI 服务、私有化部署开源模型、通过 RAG 架构接入企业知识库而不是训练模型，以及增加数据脱敏、权限控制和 AI Gateway 审计系统。对于源码等高敏感场景，还会采用企业级代码助手与私有仓库隔离。真正成熟的企业方案，不只是技术部署，更重要的是 AI 安全治理与权限体系建设。",
+    "vipLimit":  1,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2026-03-23T01:48:54.000Z",
+    "updateAt":  "2026-05-18T08:29:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  135,
+    "filterTotalNum":  1907,
+    "prev":  "2d2e3dd9-dcce-47d8-8319-31734155184b",
+    "next":  "7396ddf6-52d8-4f27-94f4-27e04d7cc15b"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2334,
+    "exerciseKey":  "1f734f01-90ea-4e70-8968-5aed96d8662e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "将静态资源缓存在本地的方式有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "**关键词**：静态资源缓存本地\n\n**浏览器可以使用以下几种方式将前端静态资源缓存在本地**：\n\n1. HTTP缓存：浏览器通过设置HTTP响应头中的Cache-Control或Expires字段来指定资源的缓存策略。常见的缓存策略有：no-cache（每次都请求服务器进行验证）、no-store（不缓存资源）、max-age（设置资源缓存的最大时间）等。浏览器根据这些缓存策略来决定是否将资源缓存在本地。\n\n2. ETag/If-None-Match：服务器可以通过在响应头中添加ETag字段，用于标识资源的版本号。当浏览器再次请求资源时，会将上次请求返回的ETag值通过If-None-Match字段发送给服务器，由服务器判断资源是否发生了变化。如果资源未发生变化，服务器会返回304 Not Modified状态码，浏览器则直接使用本地缓存的资源。\n\n3. Last-Modified/If-Modified-Since：服务器可以通过在响应头中添加Last-Modified字段，用于标识资源的最后修改时间。浏览器再次请求资源时，会将上次请求返回的Last-Modified值通过If-Modified-Since字段发送给服务器。服务器根据资源的最后修改时间判断资源是否发生了变化，如果未发生变化，则返回304 Not Modified状态码，浏览器使用本地缓存的资源。\n\n4. Service Worker缓存：使用Service Worker可以将前端资源缓存在浏览器的Service Worker缓存中。Service Worker是运行在浏览器后台的脚本，它可以拦截和处理网络请求，因此可以将前端资源缓存起来，并在离线状态下提供缓存的资源。\n\n5. LocalStorage或IndexedDB：对于一些小的静态资源，可以将其存储在浏览器的LocalStorage或IndexedDB中。这些存储方式是浏览器提供的本地存储机制，可以将数据以键值对的形式存储在浏览器中，从而实现缓存的效果。\n\n**如何将静态资源缓存在 LocalStorage或IndexedDB**\n\n以下是一个使用LocalStorage将静态资源缓存的示例代码：\n\n```javascript\n// 定义一个数组，包含需要缓存的静态资源的URL\nvar resources = [\n  \u0027https://example.com/css/style.css\u0027,\n  \u0027https://example.com/js/main.js\u0027,\n  \u0027https://example.com/images/logo.png\u0027\n];\n\n// 遍历资源数组，将资源请求并存储在LocalStorage中\nresources.forEach(function(url) {\n  // 发起资源请求\n  fetch(url)\n    .then(function(response) {\n      // 检查请求是否成功\n      if (!response.ok) {\n        throw new Error(\u0027Request failed: \u0027 + response.status);\n      }\n      // 将响应数据存储在LocalStorage中\n      return response.text();\n    })\n    .then(function(data) {\n      // 将资源数据存储在LocalStorage中，以URL作为键名\n      localStorage.setItem(url, data);\n      console.log(\u0027Resource cached: \u0027 + url);\n    })\n    .catch(function(error) {\n      console.error(error);\n    });\n});\n```\n\n以下是一个使用IndexedDB将静态资源缓存的示例代码：\n\n```javascript\n// 打开或创建一个IndexedDB数据库\nvar request = indexedDB.open(\u0027myDatabase\u0027, 1);\n\n// 创建或更新数据库的对象存储空间\nrequest.onupgradeneeded = function(event) {\n  var db = event.target.result;\n  var objectStore = db.createObjectStore(\u0027resources\u0027, { keyPath: \u0027url\u0027 });\n  objectStore.createIndex(\u0027url\u0027, \u0027url\u0027, { unique: true });\n};\n\n// 成功打开数据库后，将资源请求并存储在IndexedDB中\nrequest.onsuccess = function(event) {\n  var db = event.target.result;\n  var transaction = db.transaction(\u0027resources\u0027, \u0027readwrite\u0027);\n  var objectStore = transaction.objectStore(\u0027resources\u0027);\n\n  resources.forEach(function(url) {\n    // 发起资源请求\n    fetch(url)\n      .then(function(response) {\n        // 检查请求是否成功\n        if (!response.ok) {\n          throw new Error(\u0027Request failed: \u0027 + response.status);\n        }\n        // 将响应数据存储在IndexedDB中\n        return response.blob();\n      })\n      .then(function(data) {\n        // 创建一个资源对象，以URL作为键名\n        var resource = { url: url, data: data };\n        // 将资源对象存储在IndexedDB中\n        objectStore.put(resource);\n        console.log(\u0027Resource cached: \u0027 + url);\n      })\n      .catch(function(error) {\n        console.error(error);\n      });\n  });\n\n  // 完成事务\n  transaction.oncomplete = function() {\n    console.log(\u0027All resources cached in IndexedDB.\u0027);\n  };\n\n  transaction.onerror = function(event) {\n    console.error(\u0027Transaction error:\u0027, event.target.error);\n  };\n};\n```\n\n以上代码仅为示例，实际应用中需要根据具体的需求进行相应的优化和错误处理。\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T14:26:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  583,
+    "filterTotalNum":  1907,
+    "prev":  "5cb71435-19b4-45ef-bcee-f2d9825af25e",
+    "next":  "41d27d78-a7fd-4c87-a1a4-99a96d7dedb9"
+}

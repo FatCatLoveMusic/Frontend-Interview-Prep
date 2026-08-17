@@ -1,0 +1,21 @@
+﻿{
+    "id":  445,
+    "exerciseKey":  "ba7ffa60-aa92-4e66-9b14-78520f4deeee",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "改造下面的代码，让它输出1，2，3，4，5",
+    "desc":  "for(var i = 1; i \u003c= 5; i ++){\n  setTimeout(function timer(){\n  \tconsole.log(i)\n  }, 0)\n}",
+    "options":  null,
+    "explanation":  "解决方法：\n\n* 利用IIFE(立即执行函数表达式)当每次for循环时，把此时的i变量传递到定时器中\n\n```js\nfor(var i = 1;i \u003c= 5;i++){\n  (function(j){\n    setTimeout(function timer(){\n    \tconsole.log(j)\n    }, 0)\n  })(i)\n}\n\n```\n\n* 给定时器传入第三个参数, 作为timer函数的第一个函数参数\n\n```js\nfor(var i=1;i\u003c=5;i++){\n  setTimeout(function timer(j){\n  \tconsole.log(j)\n  }, 0, i)\n}\n```\n\n* 使用ES6中的let\n```js\nfor(let i = 1; i \u003c= 5; i++){\n  setTimeout(function timer(){\n \t console.log(i)\n  },0)\n}\n\n```\nlet使JS发生革命性的变化，让JS有函数作用域变为了块级作用域，用let后作用域链不复存在。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:06:30.000Z",
+    "updateAt":  "2024-07-22T10:55:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  1475,
+    "filterTotalNum":  1907,
+    "prev":  "0356a1c0-f9a2-4fb1-98a5-fa409247fa8f",
+    "next":  "919bfdcc-3d20-469f-b789-f99cc15410fe"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1802,
+    "exerciseKey":  "0932f958-6b14-4aac-b469-4ed62242c65f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "用es5如何实现 let 和 const ？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n###### 实现 let\n\n`let` 大家应该用的非常熟悉了，定义一个仅作用于该代码块的变量。如果去 `babel` 上面在线转换一下，大家可以看到结果是 `var`。在 `es6` 出现以前我们一般使用无限接近闭包的形式或者立即执行函数的形式来定义不会被污染的变量。\n\n我们这也可以做类似的操作。\n\n```\n(function(){\n\tvar a = 1;\n    console.log(a)\n})();\n\nconsole.log(a)\n```\n\n效果不错，这大概也是使用 es6 的方便之处吧。\n\n###### 实现 const\n\n那么 `const` 该怎么实现呢？\n\nconst 声明一个只读的常量。一旦声明，常量的值就不能改变。\n\n有什么方法是可以限制一个值不能发生改变的呢？\n\n是的,需要用到 `Object.defineProperty`。\n\n其中有一个属性是这样的：\n\n\u003e writable：当前对象元素的值是否可修改。\n\n由于 `ES5` 环境没有 `block` 的概念，所以是无法百分百实现 `const`，只能是挂载到某个对象下，要么是全局的 `window`，要么就是自定义一个 `object` 来当容器\n\n```\nvar __const = function __const(data, value) {\n  window.data = value // 把要定义的data挂载到window下，并赋值value\n  Object.defineProperty(window, data, { // 利用Object.defineProperty的能力劫持当前对象，并修改其属性描述符\n    enumerable: false,\n    configurable: false,\n    get: function () {\n      return value\n    },\n    set: function (data) {\n      if (data !== value) { // 当要对当前属性进行赋值时，则抛出错误！\n        throw new TypeError(\u0027Assignment to constant variable.\u0027)\n      } else {\n        return value\n      }\n    }\n  })\n}\n__const(\u0027a\u0027, 10)\nconsole.log(a)\ndelete a\nconsole.log(a)\nfor (let item in window) { // 因为const定义的属性在global下也是不存在的，所以用到了enumerable: false来模拟这一功能\n  if (item === \u0027a\u0027) { // 因为不可枚举，所以不执行\n    console.log(window[item])\n  }\n}\na = 20 // 报错\n\n```\n\n代码有点略长，但是还算通透。那。。还有没有更简单一点的实现方法呢？至少不要这么长的代码demo了。答案是肯定的，只不过没有上面例子那么透彻。我们这次将用到es5的Object.freeze();\n\n```\nvar f = Object.freeze({\u0027name\u0027:\u0027admin\u0027});\nf.name = \u0027hello\u0027; // 严格模式下是会报错的\nf.name; // 打印出admin ,值没有被改变\n\n```\n\n想要的效果还是出来了，可以大概的定义一个常量了。\n\n那么一个新的问题来了，const 真的定义的一定是一个常量嘛？一定是不可变的嘛？我们看看代码的结果\n\n```\nconst a ={};\na.name=\u0027admin\u0027;\na.name // admin;\n\n```\n\nconst实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。\n\n对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。\n\n但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了。\n\n因此，将一个对象声明为常量必须非常小心。\n\n## 带来的新特性\n\nlet,const问世之前，js是没有块级作用域这种特性的，只有函数作用域，导致了很多稀奇古怪的bug。\n\n这里就要理解两个的区别，函数作用域好理解，就是函数{}包裹的区域，其实这里使用var，let，const都一样，外部是不能调用函数内部的变量的。\n\n但是块级就有区别了，最明显的就是if(){}。在函数内使用条件判断，花括号内使用let,const,那么条件外是访问不到条件内的变量的，代码就会更清晰一点。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-05-16T04:26:21.000Z",
+    "updateAt":  "2022-07-05T09:39:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1007,
+    "filterTotalNum":  1907,
+    "prev":  "1cda0ef6-a1fa-45f7-b48f-f3784c45e9fa",
+    "next":  "94c6d4eb-76c3-4756-956e-9cc277d9d93f"
+}

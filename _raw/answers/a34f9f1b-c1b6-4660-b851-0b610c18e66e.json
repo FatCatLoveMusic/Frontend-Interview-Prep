@@ -1,0 +1,21 @@
+﻿{
+    "id":  2055,
+    "exerciseKey":  "a34f9f1b-c1b6-4660-b851-0b610c18e66e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果空数组调用reduce会发生什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "当空数组调用`reduce()`方法时，如果没有提供初始值参数，则会抛出一个`TypeError`错误。这是因为在空数组上调用`reduce()`方法时，无法得到初始累积值。\n\n例如：\n\n```javascript\nconst emptyArray = [];\nconst result = emptyArray.reduce((accumulator, currentValue) =\u003e accumulator + currentValue);\n// TypeError: Reduce of empty array with no initial value\n```\n\n要解决这个问题，可以提供一个初始值参数作为`reduce()`的第二个参数。这样，在空数组的情况下，将使用该初始值作为结果返回。\n\n以下是对空数组使用`reduce()`并提供初始值的示例：\n\n```javascript\nconst emptyArray = [];\nconst initialValue = 0;\nconst result = emptyArray.reduce((accumulator, currentValue) =\u003e accumulator + currentValue, initialValue);\n\nconsole.log(result); // 输出: 0\n```\n\n在上述代码中，我们通过将初始值设置为0，确保了在空数组的情况下也能正确返回结果。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-12-17T09:57:55.000Z",
+    "updateAt":  "2024-07-19T09:08:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  756,
+    "filterTotalNum":  1907,
+    "prev":  "37ec6705-eb04-44c9-99eb-4ffda663c7f7",
+    "next":  "9b464276-64d0-4c3b-b908-0b5e34da878b"
+}

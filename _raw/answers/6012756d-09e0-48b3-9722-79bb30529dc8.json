@@ -1,0 +1,21 @@
+﻿{
+    "id":  2133,
+    "exerciseKey":  "6012756d-09e0-48b3-9722-79bb30529dc8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "在 DOM 中，如何判定 a 元素是否是 b 元素的子元素？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 DOM 中，可以使用 `Node.contains()` 或 `Node.compareDocumentPosition()` 方法判断元素之间的包含关系。\n\n---\n\n### 方法一：`contains`\n\n```js\nb.contains(a)\n```\n\n**说明**：当 `a` 是 `b` 的子节点（包括后代）时，返回 `true`，否则返回 `false`。\n\n```js\nconst a = document.querySelector(\u0027#child\u0027);\nconst b = document.querySelector(\u0027#parent\u0027);\nconsole.log(b.contains(a)); // true 表示 a 是 b 的子元素或后代\n```\n\n---\n\n### 方法二：`compareDocumentPosition`\n\n```js\n(b.compareDocumentPosition(a) \u0026 Node.DOCUMENT_POSITION_CONTAINED_BY) !== 0\n```\n\n**说明**：如果 `a` 被 `b` 包含（即 `a` 是 `b` 的后代节点），返回 `true`。",
+    "pivot":  "- 推荐使用 `b.contains(a)`，语义清晰，兼容性好。\n- `compareDocumentPosition` 更细粒度，适合需要精确判断各种节点关系的场景。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:27:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  692,
+    "filterTotalNum":  1907,
+    "prev":  "83f93d81-b47e-41ef-9ae6-b5c98beb63ff",
+    "next":  "eb7bd569-2124-4190-806e-d681d616a105"
+}

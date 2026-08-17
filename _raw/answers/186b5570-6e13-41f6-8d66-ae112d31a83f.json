@@ -1,0 +1,21 @@
+﻿{
+    "id":  3170,
+    "exerciseKey":  "186b5570-6e13-41f6-8d66-ae112d31a83f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Prompt Engineering 在 Agent 中起什么作用？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "在 Agent 中，Prompt Engineering 的作用更接近“行为协议设计”，而不是单纯让模型回答得更好。普通 Prompt 关注一次性输出，而 Agent 需要持续感知上下文、制定计划、调用工具、观察结果、修正策略，所以 Prompt 决定了 Agent 的工作方式和边界。\n\n一个好的 Agent Prompt 通常会明确几件事：任务目标是什么，哪些事情可以做，哪些事情不能做，遇到不确定信息如何处理，什么时候调用工具，工具结果如何被验证，以及最终输出应该符合什么格式。它相当于把“模型能力”约束成“可执行流程”。\n\n例如让 Agent 修改前端代码时，如果只说“修复这个 bug”，模型可能直接猜测原因并改代码；但如果 Prompt 中明确要求先阅读相关文件、定位调用链、保持现有代码风格、避免无关重构、修改后运行类型检查或测试，那么 Agent 的行为会更接近一个可靠工程师，而不是一个随机生成代码的模型。\n\nPrompt Engineering 还会影响 Agent 的稳定性。Agent 经常面对长上下文、多轮任务、工具失败、用户需求变化等情况。好的 Prompt 会让 Agent 具备更强的任务保持能力，例如持续跟踪目标、区分事实和推测、在信息不足时先澄清、在工具返回异常时尝试替代路径。这些都会直接影响 Agent 的可控性和成功率。\n\n另外，Prompt 也是安全和质量控制的一部分。它可以限制 Agent 不做高风险操作，比如不随意删除文件、不泄露敏感信息、不绕过权限；也可以要求 Agent 对关键结果进行校验，减少幻觉和误操作。对于生产环境中的 Agent，仅依赖模型本身是不够的，Prompt、工具权限、执行环境和评估机制需要一起设计。\n\n所以，Prompt Engineering 在 Agent 中的核心价值，是把大模型从“会生成内容”引导成“能按规则完成任务”。它定义 Agent 的角色、目标、流程、边界和输出标准，是 Agent 系统可用、可控、可评估的重要组成部分。",
+    "pivot":  "Prompt Engineering 在 Agent 中不是简单提示词优化，而是 Agent 行为协议设计。它决定 Agent 如何理解目标、拆解任务、调用工具、处理异常和输出结果。好的 Prompt 能提升 Agent 的稳定性、可控性、安全性和任务完成质量，是 Agent 从大模型能力走向工程化执行能力的关键一环。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-30T14:13:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  118,
+    "filterTotalNum":  1907,
+    "prev":  "86c4d8f2-b77d-4225-ae15-ab9674771342",
+    "next":  "7b0bfdf8-416d-404c-b97c-d3a713121cbd"
+}

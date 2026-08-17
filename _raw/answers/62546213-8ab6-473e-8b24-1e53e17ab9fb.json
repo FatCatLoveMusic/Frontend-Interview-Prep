@@ -1,0 +1,21 @@
+﻿{
+    "id":  2360,
+    "exerciseKey":  "62546213-8ab6-473e-8b24-1e53e17ab9fb",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个方法，可以对两个数组的维数进行对比",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "“维度”是指数组的嵌套层级。例如，`[1, 2]` 是一个 1 维数组，而 `[[1], [2]]` 是一个 2 维数组。\n\n以下是一个示例函数，用于计算数组的维度并对比两个数组的维度：\n\n```javascript\n// 计算数组的维度\nfunction getArrayDepth(arr) {\n  if (!Array.isArray(arr)) return 0;\n  return 1 + (arr.length \u003e 0 ? getArrayDepth(arr[0]) : 0);\n}\n\n// 对比两个数组的维度\nfunction compareArrayDepth(arr1, arr2) {\n  const depth1 = getArrayDepth(arr1);\n  const depth2 = getArrayDepth(arr2);\n  \n  if (depth1 \u003e depth2) {\n    return 1; // arr1 的维度更高\n  } else if (depth1 \u003c depth2) {\n    return -1; // arr2 的维度更高\n  } else {\n    return 0; // 两个数组的维度相同\n  }\n}\n\n// 示例\nconst array1 = [1, [2, [3]]];\nconst array2 = [1, 2, 3];\n\nconsole.log(compareArrayDepth(array1, array2)); // 输出 1，array1 的维度更高\n```\n\n### **解释**\n\n1. **`getArrayDepth` 函数**：\n   - 递归计算数组的深度。如果数组为空，则返回 0。\n   - 否则，递归计算第一个元素的深度，并加 1 作为当前数组的深度。\n\n2. **`compareArrayDepth` 函数**：\n   - 使用 `getArrayDepth` 计算两个数组的维度。\n   - 比较两个维度，返回 1、-1 或 0 表示哪个数组的维度更高，或者维度相同。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-10T11:30:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  569,
+    "filterTotalNum":  1907,
+    "prev":  "9dca4260-e672-471d-91b6-19a7cc16d876",
+    "next":  "b3e1a9a2-6cde-43a9-a095-7ff2e555a111"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1789,
+    "exerciseKey":  "ed616567-30f4-45d4-b910-04bd4a92f53e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "假设下面样式都作用于同一个节点元素`span`，判断下面哪个样式会生效",
+    "desc":  "```css\nbody#god div.dad span.son {width: 200px;}\nbody#god span#test {width: 250px;}\n```",
+    "options":  null,
+    "explanation":  "本题考察css的样式优先级权重，大家需要记住：\n\n当两个权值进行比较的时候，是从高到低逐级将等级位上的权重值（如 权值 1,0,0,0 对应--\u003e 第一等级权重值，第二等级权重值，第三等级权重值，第四等级权重值）来进行比较的，而不是简单的 1000个数 + 100个数 + 10个数 + 1个数 的总和来进行比较的，换句话说，低等级的选择器，个数再多也不会越等级超过高等级的选择器的优先级的。\n\n所以本题的分析思路是：\n* 先比较高权重位，即第一个样式的高权重为 `#god` = 100\n* 第二个样式的高权重为 `#god` + `#text` = 200\n* 100 \u003c 200\n* 所以最终计算结果是取 `width: 250px;`\n* 若两个样式的高权重数量一样的话，则需要比较下一较高权重！\n\n答案是  `width: 250px;`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-05-08T13:27:37.000Z",
+    "updateAt":  "2024-07-19T15:42:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1020,
+    "filterTotalNum":  1907,
+    "prev":  "e34edfe5-0ce6-47f8-9de0-b8a1bfe72be0",
+    "next":  "488b81cf-45fc-44e2-b839-8d80dce61636"
+}

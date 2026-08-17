@@ -1,0 +1,21 @@
+﻿{
+    "id":  619,
+    "exerciseKey":  "ece0e4b9-112c-4d3c-934c-822e8807fe46",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "iconfont是什么？有什么优缺点？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 什么是 IconFont\n\n\u003e 顾名思义，IconFont 就是字体图标。严格地说，就是一种字体，但是，它们不包含字母或数字，而是包含符号和字形。您可以使用 CSS 设置样式，就像设置常规文本一样，这使得 IconFont 成为 Web 开发时图标的热门选择。\n\n## 优点\n\n* 可以方便地将任何 CSS 效果应用于它们。\n* 因为它们是矢量图形，所以它们是可伸缩的。这意味着我们可以在不降低质量的情况下伸缩它们。\n* 我们只需要发送一个或少量 HTTP 请求来加载它们，而不是像图片，可能需要多个 HTTP 请求。\n* 由于尺寸小，它们加载速度快。\n* 它们在所有浏览器中都得到支持（甚至支持到 IE6）。\n\n## 不足\n\n* 不能用来显示复杂图像\n* 通常只限于一种颜色，除非应用一些 CSS 技巧\n* 字体图标通常是根据特定的网格设计的，例如 16x16, 32×32, 48×48等。如果由于某种原因将网格系统改为25×25，可能不会得到清晰的结果",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-09-25T01:54:19.000Z",
+    "updateAt":  "2024-07-22T10:07:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  1302,
+    "filterTotalNum":  1907,
+    "prev":  "144bb888-936e-42c8-bdcb-445b5c4dc774",
+    "next":  "cffcacf0-52fc-4d67-b9d0-3e7d477b92d0"
+}

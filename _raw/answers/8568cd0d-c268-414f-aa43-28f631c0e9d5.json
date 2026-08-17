@@ -1,0 +1,21 @@
+﻿{
+    "id":  2671,
+    "exerciseKey":  "8568cd0d-c268-414f-aa43-28f631c0e9d5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 (5).add(3).minus(2) 功能",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "可以通过在 Number 原型上定义 add 和 minus 方法来实现该功能，代码如下：\n\n```javascript\nNumber.prototype.add = function(num) {\n  return this + num;\n};\n\nNumber.prototype.minus = function(num) {\n  return this - num;\n};\n\nconsole.log((5).add(3).minus(2)); // 输出6\n```\n\n通过在 Number.prototype 上定义 add 和 minus 方法，实现了将数字类型的值转换为 Number 对象，并且可以链式调用这两个方法。最终返回的结果是一个数值类型的值。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-14T23:55:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  410,
+    "filterTotalNum":  1907,
+    "prev":  "9b0272bb-d110-45f6-a9e9-7e426c8288d5",
+    "next":  "263e22e5-d2ea-4a3d-bd3a-5b35678c06ee"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3033,
+    "exerciseKey":  "e4e723c1-b069-4500-8a3d-3d6866e00c9d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果需要完成一个协同文档的系统，你会如何进行架构设计呢",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "主要从 **一致性模型、数据结构、同步协议、性能与扩展性** 四个层面来设计。\n\n---\n\n## 一、总体架构分层\n\n**客户端（Web / App）**\n\n* 文档编辑器（富文本 / 表格 / Markdown）\n* 本地状态管理（操作队列、版本号）\n* 冲突解决算法（OT / CRDT）\n* WebSocket 实时通信\n* 离线缓存与重连恢复\n\n**服务端**\n\n* 协同引擎（OT / CRDT 处理）\n* 会话管理（在线用户、光标、选区）\n* 文档存储（快照 + 操作日志）\n* 权限与审计\n* 消息分发（广播变更）\n\n**存储层**\n\n* 文档快照（Snapshot）\n* 操作日志（Op Log）\n* 历史版本 / 回滚\n\n---\n\n## 二、核心问题 1：并发编辑一致性\n\n这是协同文档的**技术核心**。\n\n### 方案一：OT（Operational Transformation）\n\n**代表：Google Docs**\n\n**思路**\n\n* 所有编辑行为抽象成操作（insert / delete）\n* 服务端对并发操作进行 transform，保证顺序一致\n\n**优点**\n\n* 算法成熟\n* 网络开销小\n\n**缺点**\n\n* 实现复杂\n* 强依赖中心服务器\n* 对新类型文档扩展成本高\n\n**适合**\n\n* 强中心化、文档模型相对稳定的系统\n\n---\n\n### 方案二：CRDT（Conflict-free Replicated Data Type）\n\n**代表：Yjs / Automerge / Figma**\n\n**思路**\n\n* 数据结构天然支持并发合并\n* 不需要复杂 transform\n* 最终一致性\n\n**优点**\n\n* 天然支持离线\n* 无需中心化冲突解决\n* 客户端可直接合并\n\n**缺点**\n\n* 数据结构复杂\n* 数据体积偏大\n* 实现成本高\n\n**适合**\n\n* 多端、离线优先、弱中心化架构\n\n**👉 个人倾向：新项目优先 CRDT**\n\n---\n\n## 三、核心问题 2：文档数据模型设计\n\n### 文档抽象\n\n```ts\nDocument {\n  id\n  content   // CRDT / AST / Delta\n  version\n  meta\n}\n```\n\n### 操作抽象（以富文本为例）\n\n```ts\nOperation {\n  type: insert | delete | format\n  position\n  value\n  userId\n  timestamp\n}\n```\n\n### 存储策略\n\n* **快照 + 增量日志**\n* 定期做 snapshot，避免回放全部操作\n* 支持版本回溯与历史对比\n\n---\n\n## 四、核心问题 3：实时同步机制\n\n### 通信方式\n\n* **WebSocket（主通道）**\n* HTTP（初始化、历史数据）\n\n### 同步流程（典型）\n\n1. 客户端编辑 → 生成操作\n2. 本地立即应用（Optimistic Update）\n3. 通过 WS 发送到服务端\n4. 服务端校验 / 合并\n5. 广播给其他客户端\n6. 客户端应用远端操作\n\n### 重连 \u0026 离线\n\n* 本地操作队列\n* 带版本号 / vector clock\n* 重连后补发 diff\n\n---\n\n## 五、核心问题 4：协同体验增强\n\n### 光标与选区同步\n\n* 不进入文档主数据\n* 独立 channel 广播\n* 高频但可丢失\n\n### 用户状态\n\n* 在线列表\n* 编辑中提示\n* 编辑锁（针对块级结构）\n\n---\n\n## 六、性能与扩展性设计\n\n### 前端性能\n\n* 操作批量合并\n* 虚拟渲染（长文档）\n* diff 粒度控制（字符级 vs 块级）\n\n### 后端扩展\n\n* 文档级 shard（同一文档落到同一实例）\n* Redis / 内存存活会话\n* Kafka / MQ 做变更广播\n\n### 大文档优化\n\n* 分段 CRDT\n* 懒加载文档块\n* 局部同步\n\n---\n\n## 七、安全与权限\n\n* 文档级 / 块级权限\n* 操作校验（只读用户禁止 op）\n* 操作审计日志\n* 防止恶意刷操作\n\n---\n\n## 八、简化版技术选型示例\n\n| 层级   | 技术                    |\n| ---- | --------------------- |\n| 编辑器  | Slate / ProseMirror   |\n| 协同算法 | Yjs（CRDT）             |\n| 通信   | WebSocket             |\n| 后端   | Node.js / Go          |\n| 存储   | PostgreSQL + Redis    |\n| 消息   | Redis Pub/Sub / Kafka |\n\n",
+    "pivot":  "协同文档的核心在于并发一致性。\n\n采用 **CRDT 或 OT** 保证多端编辑一致性，使用 **WebSocket 实时同步操作**，通过 **快照 + 操作日志** 做持久化，并在客户端做乐观更新、离线支持和光标协同，从而在一致性、性能和用户体验之间取得平衡。",
+    "vipLimit":  1,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2026-01-31T14:59:55.000Z",
+    "updateAt":  "2026-01-31T14:59:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  172,
+    "filterTotalNum":  1907,
+    "prev":  "87822042-2e08-4f8d-915c-941541d0158d",
+    "next":  "e150e0ff-0182-4410-b082-b7d9dc215616"
+}

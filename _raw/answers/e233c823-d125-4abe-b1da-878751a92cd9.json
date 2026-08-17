@@ -1,0 +1,21 @@
+﻿{
+    "id":  1615,
+    "exerciseKey":  "e233c823-d125-4abe-b1da-878751a92cd9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第23题】下面代码的输出是什么？",
+    "desc":  "```js\nPromise.resolve(\u00271\u0027)\n  .then(res =\u003e {\n    console.log(res)\n  })\n  .finally(() =\u003e {\n    console.log(\u0027finally\u0027)\n  })\nPromise.resolve(\u00272\u0027)\n  .finally(() =\u003e {\n    console.log(\u0027finally2\u0027)\n  \treturn \u0027我是finally2返回的值\u0027\n  })\n  .then(res =\u003e {\n    console.log(\u0027finally2后面的then函数\u0027, res)\n  })\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n.finally()，这个功能一般不太用在面试中，不过如果碰到了你也应该知道该如何处理。\n\n其实只要记住它三个很重要的知识点就可以了：\n\n* .finally()方法不管Promise对象最后的状态如何都会执行\n* .finally()方法的回调函数不接受任何的参数，也就是说你在.finally()函数中是没法知道Promise最终的状态是resolved还是rejected的\n* 它最终返回的默认会是一个上一次的Promise对象值，不过如果抛出的是一个异常则返回异常的Promise对象。\n\n上面的代码中，这两个Promise的.finally都会执行，且就算finally2返回了新的值，它后面的then()函数接收到的结果却还是\u00272\u0027。\n\n## 结果\n```\n\u00271\u0027\n\u0027finally2\u0027\n\u0027finally\u0027\n\u0027finally2后面的then函数\u0027 \u00272\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:55:21.000Z",
+    "updateAt":  "2024-07-20T11:01:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  1175,
+    "filterTotalNum":  1907,
+    "prev":  "fa9e9946-de5b-4998-a224-8d512d3ccac2",
+    "next":  "9656ede7-6815-4a00-9df3-60c0219e4383"
+}

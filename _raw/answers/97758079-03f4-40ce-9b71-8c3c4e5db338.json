@@ -1,0 +1,21 @@
+﻿{
+    "id":  1992,
+    "exerciseKey":  "97758079-03f4-40ce-9b71-8c3c4e5db338",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "两个字符串的删除操作",
+    "desc":  "给定两个单词 `word1` 和 `word2` ，返回使得 `word1` 和 `word2`**相同**所需的**最小步数**。\n\n**每步** 可以删除任意一个字符串中的一个字符。\n\n**示例 1：**\n\n\n**输入:** word1 = \"sea\", word2 = \"eat\"\n**输出:** 2\n**解释:** 第一步将 \"sea\" 变为 \"ea\" ，第二步将 \"eat \"变为 \"ea\"\n\n**示例 2:**\n\n\n**输入：** word1 = \"leetcode\", word2 = \"etco\"\n**输出：** 4\n\n**提示：**\n\n* `1 \u003c= word1.length, word2.length \u003c= 500`\n* `word1` 和 `word2` 只包含小写英文字母\n\n```js\n/**\n * @param {string} word1\n * @param {string} word2\n * @return {number}\n */\nvar minDistance = function(word1, word2) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "### 解题思路\n\n1. dp数组含义\n\n    dp[i][j] 表示长度为[0,i-1]的字符串word1和长度为[0,j-1]的字符串word2想要达到相等，删除元素的最少次数\n\n2. 递推公式\n\n    - 如果word1[i - 1] === word2[j - 1] 那么不用删除\n        dp[i][j] = dp[i - 1][j - 1];\n    - 如果不同，有三种情况\n        1. 删除word1[i-1],最少次数为dp[i-1][j]+1;\n        2. 删除word2[j-1],最少次数为dp[i][j-1]+1;\n        3. 同时删除，最少次数为dp[i-1][j-1]+2;\n        \n        最后取三者中的最小值\n\n3. 初始化\n\n对于[i][0]跟[0][j]都需要初始化为对应i,j数值\n\n### 代码\n\n```javascript\n/**\n * @param {string} word1\n * @param {string} word2\n * @return {number}\n */\nvar minDistance = function (word1, word2) {\n    let len1 = word1.length, len2 = word2.length;\n\n    let dp = Array(len1 + 1).fill().map(() =\u003e Array(len2 + 1).fill(Infinity));\n\n    for (let i = 0; i \u003c= len1; i++) {\n        dp[i][0] = i;\n    }\n\n    for (let j = 0; j \u003c= len2; j++) {\n        dp[0][j] = j;\n    }\n\n    for (let i = 1; i \u003c= len1; i++) {\n        for (let j = 1; j \u003c= len2; j++) {\n            if (word1[i - 1] === word2[j - 1]) {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else {\n                dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 2);\n            }\n        }\n    }\n\n    return dp[len1][len2]\n};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-23T01:24:45.000Z",
+    "updateAt":  "2023-05-23T09:24:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  818,
+    "filterTotalNum":  1907,
+    "prev":  "a2443317-c9d1-408a-856e-d8ec18558a7a",
+    "next":  "bce3670f-ad2c-4b8f-bd0a-f3448eabc84f"
+}

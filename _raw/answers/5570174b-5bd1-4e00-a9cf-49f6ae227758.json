@@ -1,0 +1,21 @@
+﻿{
+    "id":  266,
+    "exerciseKey":  "5570174b-5bd1-4e00-a9cf-49f6ae227758",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "canvas在标签上设置宽高，与在style中设置宽高有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "canvas标签的width和height是画布实际宽度和高度，绘制的图形都是在这个上面。\n\n而style的width和height是canvas在浏览器中被渲染的高度和宽度。\n\n如果canvas的width和height没指定或值不正确，就被设置成默认值。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:45:02.000Z",
+    "updateAt":  "2021-07-04T16:01:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1653,
+    "filterTotalNum":  1907,
+    "prev":  "06af30a2-e542-4cf0-9793-999267a4007d",
+    "next":  "65fa7d0f-fd68-4c2d-9c2b-4f98d7a4f9e3"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2911,
+    "exerciseKey":  "96b19a65-3d26-43eb-ba9c-5cb4754dffc6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "对于 PC 端的 banner 组件，你会怎么适配超宽的屏幕？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 PC 端适配超宽屏幕的 banner 组件时，目标是让视觉中心不偏移，同时保证两边留白或延展自然：\n\n1. **限制内容区域最大宽度，居中显示**\n   ```css\n   .banner-inner {\n     max-width: 1440px;\n     margin: 0 auto;\n   }\n   ```\n\n2. **背景色或背景图延展至两侧**\n   ```css\n   .banner {\n     background: url(\u0027banner-bg.jpg\u0027) center/cover no-repeat;\n   }\n   ```\n\n3. **左右背景延展，内容区域居中**\n   - 内容居中处理视觉聚焦\n   - 背景可设置为**拉伸图像**、**渐变**或**重复填充**\n\n4. **媒体查询控制布局变化**（如在超大屏时调整 padding/margin 等）\n \n5. 使用一些工具库，通过拾取 banner 图片的背景色，实现灵活过度和模块背景色填充",
+    "pivot":  "- 内容区域设置 `max-width` 居中是关键  \n- 背景使用 cover/拉伸延展增强视觉体验  \n- 保持视觉焦点在中间，避免 banner 被拉伸变形",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2025-02-17T08:20:26.000Z",
+    "updateAt":  "2025-04-07T08:05:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  290,
+    "filterTotalNum":  1907,
+    "prev":  "4b939198-1e6c-488b-a4e7-7b609a4638bb",
+    "next":  "dcfb388f-ca87-4ff7-81d1-96552cd7bff4"
+}

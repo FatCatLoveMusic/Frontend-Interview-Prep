@@ -1,0 +1,21 @@
+﻿{
+    "id":  1767,
+    "exerciseKey":  "5cb7ee1c-c527-40f9-b00b-eb65bde48657",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "第二个子元素的高度是多少",
+    "desc":  "```html\n\u003cdiv class=\"container\"\u003e\n    \u003cdiv style=\"height: 100px\"\u003e\u003c/div\u003e\n    \u003cdiv style=\"min-height: 10px\"\u003e\u003c/div\u003e\n\u003c/div\u003e\n\u003cstyle\u003e\n    .container{\n        display: flex;\n    }\n    .container \u003e div {\n        width: 100px;\n    }\n\u003c/style\u003e\n```",
+    "options":  null,
+    "explanation":  "答案：100px\n\nFlex 布局会默认：\n\n* 把所有子项变成水平排列。\n* 默认不自动换行。\n* 让子项与其内容等宽，并把所有子项的高度变为最高子项的高度。\n\n\u003e 本答案由“前端面试题宝典”收集整理，PC端访问请前往： https://fe.ecool.fun/ ",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-10T07:57:16.000Z",
+    "updateAt":  "2022-04-10T15:57:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  1042,
+    "filterTotalNum":  1907,
+    "prev":  "a8c7e778-4bc6-40f2-ba07-865a4b2200aa",
+    "next":  "1df909e2-185f-453d-ab48-7832c604d551"
+}

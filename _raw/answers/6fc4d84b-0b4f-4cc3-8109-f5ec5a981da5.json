@@ -1,0 +1,21 @@
+﻿{
+    "id":  518,
+    "exerciseKey":  "6fc4d84b-0b4f-4cc3-8109-f5ec5a981da5",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“希尔排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法简介\n\n希尔排序的核心在于间隔序列的设定。既可以提前设定好间隔序列，也可以动态的定义间隔序列。动态定义间隔序列的算法是《算法（第4版》的合著者Robert Sedgewick提出的。\n\n## 算法描述\n\n先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：\n\n* 选择一个增量序列t1，t2，…，tk，其中ti\u003etj，tk=1；\n* 按增量序列个数k，对序列进行k 趟排序；\n* 每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。\n\n## 代码实现\n\n```javascript\nfunction shellSort(arr) {\n    var len = arr.length,\n        temp,\n        gap = 1;\n    console.time(\u0027希尔排序耗时:\u0027);\n    while(gap \u003c len/5) {          //动态定义间隔序列\n        gap =gap*5+1;\n    }\n    for (gap; gap \u003e 0; gap = Math.floor(gap/5)) {\n        for (var i = gap; i \u003c len; i++) {\n            temp = arr[i];\n            for (var j = i-gap; j \u003e= 0 \u0026\u0026 arr[j] \u003e temp; j-=gap) {\n                arr[j+gap] = arr[j];\n            }\n            arr[j+gap] = temp;\n        }\n    }\n    console.timeEnd(\u0027希尔排序耗时:\u0027);\n    return arr;\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(shellSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n\n```\n\n## 算法分析\n\n* 最佳情况：T(n) = O(nlog2 n)\n* 最坏情况：T(n) = O(nlog2 n)\n* 平均情况：T(n) =O(nlog n)\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2021-07-17T12:02:14.000Z",
+    "updateAt":  "2024-07-22T15:42:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1402,
+    "filterTotalNum":  1907,
+    "prev":  "42405faa-2be2-4ded-8836-96a05586cd43",
+    "next":  "f9ab9093-c472-475f-9d99-ddc69c56cfed"
+}

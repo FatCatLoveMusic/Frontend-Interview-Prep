@@ -1,0 +1,21 @@
+﻿{
+    "id":  606,
+    "exerciseKey":  "33d77817-96e1-4531-840c-26426223102c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "for...in和for...of有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "for…of 是ES6新增的遍历方式，允许遍历一个含有iterator接口的数据结构（数组、对象等）并且返回各项的值，和ES3中的for…in的区别如下：\n\n* for…of 遍历获取的是 **可迭代对象**的键值，for…in 获取的是对象的键名（**键名必须是可枚举的**）；\n* for… in 会遍历对象的整个原型链，性能非常差不推荐使用，而 for … of 只遍历当前对象不会遍历原型链；\n* 对于数组的遍历，for…in 会返回数组中所有可枚举的属性(包括原型链上可枚举的属性)，for…of 只返回数组的下标对应的属性值；\n\n总结： for...in 循环主要是为了遍历对象而生，不适用于遍历数组；for...of 循环可以用来遍历数组、类数组对象，字符串、Set、Map 以及 Generator 对象。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-08-22T10:29:52.000Z",
+    "updateAt":  "2024-09-13T01:10:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  1315,
+    "filterTotalNum":  1907,
+    "prev":  "eb100f99-89d5-4cdf-958f-d257aeb92614",
+    "next":  "6b6a6323-32e3-4082-91a4-d431a88436d9"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2468,
+    "exerciseKey":  "48d2a044-b6bd-469c-9122-f27ae6d0d74c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "use strict是什么，有什么用？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`\"use strict\"` 是 JavaScript 的严格模式声明，用于启用 ECMAScript 5 中引入的严格模式。严格模式提供了一种更严格的解析和执行 JavaScript 代码的方式，有助于提高代码的安全性和一致性。\n\n### 主要功能和用途\n\n1. **消除 JavaScript 中的一些不安全行为**：\n   - 在严格模式下，某些不安全的行为被禁止。例如，不能使用未声明的变量，防止全局变量的无意创建。\n\n2. **修复 JavaScript 的一些错误**：\n   - 严格模式修复了语言中的一些设计缺陷，使得错误更容易被发现和调试。例如，`delete` 不能删除不可删除的属性。\n\n3. **提高性能**：\n   - 在某些 JavaScript 引擎中，启用严格模式可以提高代码执行的性能，因为引擎可以对代码进行更多优化。\n\n4. **避免意外创建全局变量**：\n   - 严格模式下，所有变量必须先声明才可以使用。如果未声明变量就使用，会导致错误，而不是隐式创建全局变量。\n\n5. **禁止重复参数和对象属性**：\n   - 在严格模式下，函数的参数不能有重复的名称，对象的属性名也不能重复，这有助于避免潜在的错误。\n\n### 启用方式\n\n- **全局启用**：\n  在整个 JavaScript 文件的开头添加 `\"use strict\";`：\n  ```javascript\n  \"use strict\";\n  // 全局范围内的代码\n  ```\n\n- **函数级别启用**：\n  在函数内部添加 `\"use strict\";`，只对该函数内的代码有效：\n  ```javascript\n  function myFunction() {\n      \"use strict\";\n      // 函数范围内的代码\n  }\n  ```\n\n### 示例\n\n```javascript\n\"use strict\";\n\n// 错误：未声明的变量\nx = 10; // ReferenceError: x is not defined\n\n// 正确：必须先声明变量\nlet y = 20;\n\n// 错误：不能删除不可删除的属性\ndelete Object.prototype; // TypeError: Cannot delete property \u0027prototype\u0027 of function Object() { [native code] }\n```",
+    "pivot":  "`\"use strict\"` 启用严格模式，提供了更严格的代码执行环境，通过禁止一些不安全的行为、修复语言中的错误、提高代码性能等方式，帮助开发者编写更安全、可靠的代码。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-22T10:58:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  513,
+    "filterTotalNum":  1907,
+    "prev":  "b006d9ef-a87e-47c4-b5f9-6314204730e5",
+    "next":  "5296602e-3318-4ad0-81aa-023ab8454343"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1607,
+    "exerciseKey":  "1b41e9cc-194a-4e0c-8bc5-17a83af9abad",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第15题】下面代码的输出是什么？",
+    "desc":  "```js\nPromise.resolve(1)\n  .then(res =\u003e {\n    console.log(res);\n    return 2;\n  })\n  .catch(err =\u003e {\n    return 3;\n  })\n  .then(res =\u003e {\n    console.log(res);\n  });\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\nPromise可以链式调用，不过promise 每次调用 .then 或者 .catch 都会返回一个新的 promise，从而实现了链式调用, 它并不像一般我们任务的链式调用一样return this。\n\n上面的输出结果之所以依次打印出1和2，那是因为resolve(1)之后走的是第一个then方法，并没有走catch里，所以第二个then中的res得到的实际上是第一个then的返回值。\n\n且return 2会被包装成resolve(2)。\n\n## 结果\n```\n1\n2\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:42:40.000Z",
+    "updateAt":  "2022-01-09T23:01:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1183,
+    "filterTotalNum":  1907,
+    "prev":  "58350841-57d6-4b0a-9e31-57f5f0e16357",
+    "next":  "31621982-633a-4254-a1a4-b518f734c674"
+}

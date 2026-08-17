@@ -1,0 +1,21 @@
+﻿{
+    "id":  2458,
+    "exerciseKey":  "c830ad90-3291-4123-81db-223c81244f41",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "函数声明与函数表达式有什么区别",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "函数声明（Function Declaration）和函数表达式（Function Expression）是两种定义函数的方式，在 JavaScript 中有一些重要的区别。以下是它们的主要区别和特点：\n\n### 1. **函数声明（Function Declaration）**\n\n- **定义方式**：\n  ```javascript\n  function myFunction() {\n      console.log(\u0027Function Declaration\u0027);\n  }\n  ```\n\n- **特性**：\n  - **提升（Hoisting）**：函数声明会被提升到其所在作用域的顶部。这意味着你可以在函数声明之前调用它。\n  - **语法**：具有关键字 `function` 开头，后跟函数名、参数列表和函数体。\n  - **名称**：函数声明需要一个名字。\n  \n- **示例**：\n  ```javascript\n  console.log(myFunction()); // 输出: \u0027Function Declaration\u0027\n\n  function myFunction() {\n      return \u0027Function Declaration\u0027;\n  }\n  ```\n\n### 2. **函数表达式（Function Expression）**\n\n- **定义方式**：\n  ```javascript\n  const myFunction = function() {\n      console.log(\u0027Function Expression\u0027);\n  };\n  ```\n\n- **特性**：\n  - **提升（Hoisting）**：函数表达式不会被提升，只有在函数表达式定义之后才能调用它。\n  - **语法**：函数表达式是一个匿名函数（没有名称）或具名函数赋值给变量。\n  - **名称**：可以是匿名函数或具名函数。匿名函数没有名字，而具名函数有名字。\n  \n- **示例**：\n  ```javascript\n  // 错误：调用函数表达式之前不能使用\n  console.log(myFunction()); // TypeError: myFunction is not a function\n\n  const myFunction = function() {\n      return \u0027Function Expression\u0027;\n  };\n\n  console.log(myFunction()); // 输出: \u0027Function Expression\u0027\n  ```\n\n### 3. **具名函数表达式**\n\n具名函数表达式是函数表达式的一种形式，其中函数有一个名字。\n\n- **定义方式**：\n  ```javascript\n  const myFunction = function namedFunction() {\n      console.log(\u0027Named Function Expression\u0027);\n  };\n  ```\n\n- **特性**：\n  - **名称**：函数有一个名字（`namedFunction`），该名称仅在函数内部可用，用于递归调用或调试。\n  - **提升**：函数的名称不会被提升，但函数表达式本身的提升规则与普通函数表达式相同。\n  \n- **示例**：\n  ```javascript\n  const myFunction = function namedFunction() {\n      return \u0027Named Function Expression\u0027;\n  };\n\n  console.log(myFunction()); // 输出: \u0027Named Function Expression\u0027\n  ```",
+    "pivot":  "- **函数声明**：\n  - 通过关键字 `function` 定义。\n  - 会被提升到作用域顶部，允许在声明之前调用。\n  - 必须有一个函数名称。\n\n- **函数表达式**：\n  - 通过将一个函数赋值给一个变量来定义。\n  - 不会被提升，只有在定义之后才能调用。\n  - 可以是匿名函数或具名函数。\n\n选择使用函数声明还是函数表达式取决于具体需求。函数声明适用于需要在作用域内的任何位置都能访问的情况，而函数表达式适用于需要在定义之后才使用的情况，或者用于回调、事件处理程序等场景。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-22T11:10:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  519,
+    "filterTotalNum":  1907,
+    "prev":  "b3c9e524-a1b4-4348-9ce5-f2beb80caf32",
+    "next":  "b4fc9495-91fc-4903-aab7-66a563637c1d"
+}

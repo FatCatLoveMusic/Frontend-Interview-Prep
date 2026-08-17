@@ -1,0 +1,21 @@
+﻿{
+    "id":  41,
+    "exerciseKey":  "f6b74eb2-442e-4a56-904f-bee79587138c",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "下面哪些值是 falsy?",
+    "desc":  "```javascript\n0\nnew Number(0)\n(\u0027\u0027)\n(\u0027 \u0027)\nnew Boolean(false)\nundefined\n```",
+    "options":  "{\"options\":[\"0, \u0027\u0027, undefined\",\"0, new Number(0), \u0027\u0027, new Boolean(false), undefined\",\"0, \u0027\u0027, new Boolean(false), undefined\",\"All of them are falsy\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "只有 6 种 [falsy](https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy) 值:\n- `undefined`\n- `null`\n- `NaN`\n- `0`\n- `\u0027\u0027` (empty string)\n- `false`\n`Function` 构造函数, 比如 `new Number` 和 `new Boolean`，是 [truthy](https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy)。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:10:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  1878,
+    "filterTotalNum":  1907,
+    "prev":  "88f7458f-418d-4362-bafa-f3ed98083d02",
+    "next":  "aa12e754-f3cd-47f5-b1f0-1e0f746527cd"
+}

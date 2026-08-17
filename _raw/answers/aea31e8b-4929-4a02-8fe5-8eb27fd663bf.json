@@ -1,0 +1,21 @@
+﻿{
+    "id":  1543,
+    "exerciseKey":  "aea31e8b-4929-4a02-8fe5-8eb27fd663bf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个对象的 flatten 方法",
+    "desc":  "实现以下转换：\n\n```js\nconst obj = {\n\ta: {\n  \tb: 1,\n\t\tc: 2,\n\t\td: {\n\t\t\te: 5\n\t\t}\n  },\n  b: [1, 3, {a: 2, b: 3}],\n  c: 3\n}\n```\n\nflatten(obj){} 结果返回如下\n\n```js\n// {\n//   \u0027a.b\u0027: 1,\n//   \u0027a.c\u0027: 2,\n//   \u0027a.d.e\u0027: 5,\n//   \u0027b[0]\u0027: 1,\n//   \u0027b[1]\u0027: 3,\n//   \u0027b[2].a\u0027: 2,\n//   \u0027b[2].b\u0027: 3\n//    c: 3\n// }\n```\n\n",
+    "options":  null,
+    "explanation":  "从结果入手，可以看出需要对象进行遍历，把里面的属性值依次输出。\n\n核心方法体就是：传入对象的 key 值和 value，对 value 再进行递归遍历。\n\n而 js 的数据类型可以分为`基础数据类型`和`引用数据类型`，对于题目而言，基础数据类型无需再进行深层次遍历，引用数据类型需要再次进行递归。\n\n```js\nfunction flat(obj, key = \"\", res = {}, isArray = false) { \n  for (let [k, v] of Object.entries(obj)) { \n    if (Array.isArray(v)) { \n      let tmp = isArray ? key + \"[\" + k + \"]\" : key + k \n      flat(v, tmp, res, true) \n    } else if (typeof v === \"object\") { \n      let tmp = isArray ? key + \"[\" + k + \"].\" : key + k + \".\" \n      flat(v, tmp, res) \n    } else { \n      let tmp = isArray ? key + \"[\" + k + \"]\" : key + k \n      res[tmp] = v \n    } \n  } \n  return res \n}\n```\n\n还有一种写法更加容易理解：\n\n```js\nfunction objectFlat(obj = \u0027\u0027){\n  const res = {}\n  function flat(item , preKey = \u0027\u0027){\n    Object.entries(item).forEach(([key,value]) =\u003e {\n      let newKey = key\n      if (Array.isArray(item)){\n        // console.log(\u0027是数组\u0027)\n        newKey = preKey ? `${preKey}[${key}]` : key\n      }else{\n        newKey = preKey ? `${preKey}.${key}` : key\n      }\n      if (value \u0026\u0026 typeof value === \u0027object\u0027){\n        flat(value , newKey)\n      }else{\n        res[newKey] = value\n      }\n    })\n  }\n  flat(obj)\n  return res\n}\n\nconst source = { a: { b: { c: 1, d: 2 }, e: 3 }, f: { g: 2 } }\nconsole.log(objectFlat(source));\nconst obj = {\n  a: 1,\n  b: [1, 2, { c: true }],\n  c: { e: 2, f: 3 },\n  g: null,\n};\nconsole.log(objectFlat(obj));\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-11-17T11:41:58.000Z",
+    "updateAt":  "2021-11-17T19:52:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1246,
+    "filterTotalNum":  1907,
+    "prev":  "a0e34df4-b603-4b18-bcd6-ebf8c94b3325",
+    "next":  "87af03ec-e30e-40fb-b193-b203d070c112"
+}

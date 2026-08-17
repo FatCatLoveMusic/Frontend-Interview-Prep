@@ -1,0 +1,21 @@
+﻿{
+    "id":  110,
+    "exerciseKey":  "2a420371-13f4-46fc-a5d8-d2338682d8d6",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nfunction compareMembers(person1, person2 = person) {\n  if (person1 !== person2) {\n    console.log(\"Not the same!\")\n  } else {\n    console.log(\"They are the same!\")\n  }\n}\n\nconst person = { name: \"Lydia\" }\n\ncompareMembers(person)\n```",
+    "options":  "{\"options\":[\"Not the same!\",\"They are the same!\",\"ReferenceError\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "对象通过引用传递。 当我们检查对象的严格相等性（===）时，我们正在比较它们的引用。\n我们将“person2”的默认值设置为“person”对象，并将“person”对象作为“person1”的值传递。\n这意味着两个值都引用内存中的同一位置，因此它们是相等的。\n运行“ else”语句中的代码块，并记录`They are the same!` 。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:28:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  1809,
+    "filterTotalNum":  1907,
+    "prev":  "71637418-9f70-4504-9eed-ab1f3d6c702d",
+    "next":  "be757fef-dbff-48f4-b401-d7f04238cc81"
+}

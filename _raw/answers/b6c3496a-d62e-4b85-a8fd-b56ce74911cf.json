@@ -1,0 +1,21 @@
+﻿{
+    "id":  2136,
+    "exerciseKey":  "b6c3496a-d62e-4b85-a8fd-b56ce74911cf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请使用 js 实现 isEmpty 方法",
+    "desc":  "要求传入的参数是空数组、空对象、空字符串、0、undefined、null、空 map、空 set时，返回 true，否则返回 false\n\n```js\nfunction isEmpty(value) {\n    \n}\n```",
+    "options":  "",
+    "explanation":  "示例代码：\n\n```js\nfunction isEmpty(value) {\n  if (value == null) return true; // null 或 undefined\n  if (typeof value === \u0027string\u0027 \u0026\u0026 value.trim() === \u0027\u0027) return true;\n  if (typeof value === \u0027number\u0027 \u0026\u0026 value === 0) return true;\n  if (Array.isArray(value) \u0026\u0026 value.length === 0) return true;\n  if (value instanceof Map || value instanceof Set) return value.size === 0;\n  if (typeof value === \u0027object\u0027 \u0026\u0026 Object.keys(value).length === 0) return true;\n  return false;\n}\n```",
+    "pivot":  "- `null` / `undefined` → 空  \n- 空数组 / 空对象 / 空字符串 → 空  \n- `0` 被视为空（根据题意）  \n- 空 Map / Set 判断 `size === 0`  \n- 其他值都视为非空",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:13:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  689,
+    "filterTotalNum":  1907,
+    "prev":  "eb057db2-c26f-409f-8b38-64db8f949ef9",
+    "next":  "136ddfe0-6ea7-4e95-9f38-1bd936707220"
+}

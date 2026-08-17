@@ -1,0 +1,21 @@
+﻿{
+    "id":  2901,
+    "exerciseKey":  "65bb22ac-b04c-401a-b6d3-8b05f5d16422",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "position 的 sticky 有什么应用场景？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`position: sticky` 是一种结合了 `relative` 和 `fixed` 特性的定位方式，在一定的滚动范围内表现为相对定位，但当达到设定的阈值时会变成固定定位。它在前端开发中常用于创建随滚动动态固定的内容，提升用户体验。以下是一些常见的应用场景：\n\n### 1. **导航栏固定**\n   - 场景：页面有一个较长的内容，当用户滚动页面时，导航栏可以保持在视口顶部，方便用户随时访问导航选项。\n   - 这种场景中使用 `sticky` 使导航栏在滚动时停留在顶部。\n\n   ```css\n   .navbar {\n       position: sticky;\n       top: 0;\n       background-color: white;\n       z-index: 1000;\n   }\n   ```\n\n### 2. **内容目录（TOC）**\n   - 场景：在文章页面中，常有一个内容目录（Table of Contents）来帮助用户快速跳转到对应章节。使用 `sticky` 可以让目录随着用户的滚动停留在侧边，便于用户随时查看。\n   \n   ```css\n   .toc {\n       position: sticky;\n       top: 20px; /* 距离顶部 20px */\n   }\n   ```\n\n### 3. **表头固定**\n   - 场景：在一个有滚动条的表格中，让表头保持固定，以便用户在查看数据时，始终能看到列的名称。\n   - 在表头元素上使用 `position: sticky; top: 0;`，可以让表头在滚动时停留在表格的顶部。\n\n   ```css\n   th {\n       position: sticky;\n       top: 0;\n       background-color: #f1f1f1;\n   }\n   ```\n\n### 4. **浮动的侧边栏**\n   - 场景：在一个带有侧边栏的布局中，可以使侧边栏随滚动保持在视口的一个固定位置，避免用户需要返回顶部才能看到侧边内容。\n   - 设置 `top` 值，让侧边栏在到达该位置时停留。\n\n   ```css\n   .sidebar {\n       position: sticky;\n       top: 10px; /* 在距离视口顶部 10px 时固定 */\n   }\n   ```\n\n### 5. **分段内容的标题固定**\n   - 场景：长文档或博客文章中，常分成多个章节，每一章节的标题可以使用 `sticky` 实现“吸附效果”。当用户滚动到每一章节时，标题会停留在顶部，清晰指示当前章节内容。\n   - 设置 `top` 值，让标题随章节滚动到顶部时停留。\n\n   ```css\n   .section-title {\n       position: sticky;\n       top: 0;\n       background-color: #fff;\n       z-index: 1;\n   }\n   ```\n\n### 6. **购物车或价格信息的固定**\n   - 场景：在电商产品页面中，当用户浏览详细信息时，可以将购物车按钮或价格信息固定在侧边或底部，便于用户快速访问结算功能。\n   \n   ```css\n   .price-info {\n       position: sticky;\n       top: 10px;\n   }\n   ```",
+    "pivot":  "`position: sticky` 的应用场景主要集中在提升用户体验和易读性方面，适用于导航栏、侧边栏、内容目录、表头固定、章节标题、购物车等场景。它在需要“半固定”效果时非常有用，不仅减少了对 JavaScript 的依赖，还提高了页面的性能和可读性。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-11-09T03:09:43.000Z",
+    "updateAt":  "2024-11-09T03:09:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  300,
+    "filterTotalNum":  1907,
+    "prev":  "a8b24897-3f40-480f-a46b-2af8d6a07305",
+    "next":  "023bc117-e6d8-4099-a847-1143d97b2809"
+}

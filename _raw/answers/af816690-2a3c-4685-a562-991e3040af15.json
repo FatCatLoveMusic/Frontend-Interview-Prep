@@ -1,0 +1,21 @@
+﻿{
+    "id":  390,
+    "exerciseKey":  "af816690-2a3c-4685-a562-991e3040af15",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说webpack的热更新是如何做到的？原理是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "### 一、是什么\n\n`HMR `全称 `Hot Module Replacement`，可以理解为模块热替换，指在应用程序运行过程中，替换、添加、删除模块，而无需重新刷新整个应用\n\n例如，我们在应用运行过程中修改了某个模块，通过自动刷新会导致整个应用的整体刷新，那页面中的状态信息都会丢失\n\n如果使用的是 `HMR`，就可以实现只将修改的模块实时替换至应用中，不必完全刷新整个应用\n\n在`webpack`中配置开启热模块也非常的简单，如下代码：\n\n```js\nconst webpack = require(\u0027webpack\u0027)\nmodule.exports = {\n  // ...\n  devServer: {\n    // 开启 HMR 特性\n    hot: true\n    // hotOnly: true\n  }\n}\n```\n\n通过上述这种配置，如果我们修改并保存`css`文件，确实能够以不刷新的形式更新到页面中\n\n但是，当我们修改并保存`js`文件之后，页面依旧自动刷新了，这里并没有触发热模块\n\n所以，`HMR `并不像 `Webpack` 的其他特性一样可以开箱即用，需要有一些额外的操作\n\n我们需要去指定哪些模块发生更新时进行`HRM`，如下代码：\n\n```js\nif(module.hot){\n    module.hot.accept(\u0027./util.js\u0027,()=\u003e{\n        console.log(\"util.js更新了\")\n    })\n}\n```\n\n\n\n## 二、实现原理\n\n首先来看看一张图，如下：\n\n ![](https://static.ecool.fun//article/5f42e782-2b7a-4512-bc5b-8f041b1f2446.png)\n\n- Webpack Compile：将 JS 源代码编译成 bundle.js\n- HMR Server：用来将热更新的文件输出给 HMR Runtime\n- Bundle Server：静态资源文件服务器，提供文件访问路径\n- HMR Runtime：socket服务器，会被注入到浏览器，更新文件的变化\n- bundle.js：构建输出的文件\n- 在HMR Runtime 和 HMR Server之间建立 websocket，即图上4号线，用于实时更新文件变化\n\n上面图中，可以分成两个阶段：\n\n- 启动阶段为上图 1 - 2 - A - B\n\n在编写未经过`webpack`打包的源代码后，`Webpack Compile` 将源代码和 `HMR Runtime` 一起编译成 `bundle `文件，传输给` Bundle Server` 静态资源服务器\n\n- 更新阶段为上图 1 - 2 - 3 - 4\n\n当某一个文件或者模块发生变化时，`webpack `监听到文件变化对文件重新编译打包，编译生成唯一的` hash `值，这个`hash `值用来作为下一次热更新的标识\n\n根据变化的内容生成两个补丁文件：`manifest`（包含了 `hash` 和 `chundId `，用来说明变化的内容）和` chunk.js` 模块\n\n由于`socket`服务器在`HMR Runtime` 和 `HMR Server`之间建立 `websocket`链接，当文件发生改动的时候，服务端会向浏览器推送一条消息，消息包含文件改动后生成的`hash`值，如下图的`h`属性，作为下一次热更细的标识\n\n ![](https://static.ecool.fun//article/1b060148-c64c-4bfa-9192-df85c256351f.png)\n\n在浏览器接受到这条消息之前，浏览器已经在上一次` socket` 消息中已经记住了此时的` hash` 标识，这时候我们会创建一个 `ajax` 去服务端请求获取到变化内容的 `manifest` 文件\n\n`mainfest`文件包含重新`build`生成的`hash`值，以及变化的模块，对应上图的`c`属性\n\n浏览器根据 `manifest` 文件获取模块变化的内容，从而触发`render`流程，实现局部模块更新\n\n ![](https://static.ecool.fun//article/63b6fc8d-b950-4807-8b4c-4dcb45e2b07f.png)\n\n\n\n## 三、总结\n\n关于`webpack`热模块更新的总结如下：\n\n- 通过`webpack-dev-server`创建两个服务器：提供静态资源的服务（express）和Socket服务\n- express server 负责直接提供静态资源的服务（打包后的资源直接被浏览器请求和解析）\n- socket server 是一个 websocket 的长连接，双方可以通信\n- 当 socket server 监听到对应的模块发生变化时，会生成两个文件.json（manifest文件）和.js文件（update chunk）\n- 通过长连接，socket server 可以直接将这两个文件主动发送给客户端（浏览器）\n- 浏览器拿到两个新的文件后，通过HMR runtime机制，加载这两个文件，并且针对修改的模块进行更新\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-05T15:33:08.000Z",
+    "updateAt":  "2024-01-25T19:07:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  1530,
+    "filterTotalNum":  1907,
+    "prev":  "03d5dfc7-9bb9-4129-9145-b4da4d4fa11f",
+    "next":  "89eda79c-6cfb-4593-86d3-69d9ce9eb43d"
+}

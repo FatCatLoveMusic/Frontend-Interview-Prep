@@ -1,0 +1,21 @@
+﻿{
+    "id":  2278,
+    "exerciseKey":  "f3744f8f-ee93-4809-821a-5a7321e84865",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Node.js 是单线程的，那该如何充分利用多核 CPU 呢？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "虽然 Node.js 是单线程运行的，但可以通过多种方式利用多核 CPU 来提升性能，尤其是在需要处理大量并发请求或计算密集型任务时。\n\n以下是常用的多核利用方案：\n\n### 1. **使用 Cluster 模块**\n   - **原理**：Cluster 模块可以轻松地创建多个 Node.js 进程（称为工作进程），每个进程都运行相同的代码，并共享相同的服务器端口。\n   - **实现**：在主进程中创建多个子进程，每个子进程独立运行，分配给 CPU 核心，让多个进程共享负载。Cluster 模块会自动根据系统的核心数量生成对应数量的子进程，以提高多核利用率。\n\n   **示例代码**：\n   ```javascript\n   const cluster = require(\u0027cluster\u0027);\n   const http = require(\u0027http\u0027);\n   const numCPUs = require(\u0027os\u0027).cpus().length;\n\n   if (cluster.isMaster) {\n     console.log(`主进程 ${process.pid} 正在运行`);\n\n     // 为每个 CPU fork 一个工作进程\n     for (let i = 0; i \u003c numCPUs; i++) {\n       cluster.fork();\n     }\n\n     cluster.on(\u0027exit\u0027, (worker, code, signal) =\u003e {\n       console.log(`工作进程 ${worker.process.pid} 已退出`);\n       // 这里可以设置重新 fork 新的进程，以保证服务的高可用\n       cluster.fork();\n     });\n   } else {\n     // 工作进程可以共享相同的 TCP 连接\n     http.createServer((req, res) =\u003e {\n       res.writeHead(200);\n       res.end(\u0027Hello World\\n\u0027);\n     }).listen(8000);\n\n     console.log(`工作进程 ${process.pid} 已启动`);\n   }\n   ```\n\n### 2. **使用 Child Process 模块**\n   - **原理**：`child_process` 模块允许 Node.js 创建独立的子进程并与主进程进行通信，适用于需要在主进程之外完成计算密集型任务的情况。\n   - **实现**：通过 `fork()`、`exec()`、`spawn()` 等方法创建子进程并执行任务，可以利用不同的 CPU 核心来分担计算负载。\n\n   **示例代码**：\n   ```javascript\n   const { fork } = require(\u0027child_process\u0027);\n\n   // 创建一个子进程\n   const compute = fork(\u0027./compute.js\u0027); // 假设有一个计算密集型的文件 compute.js\n\n   compute.on(\u0027message\u0027, result =\u003e {\n     console.log(\u0027从子进程收到结果:\u0027, result);\n   });\n\n   // 发送任务到子进程\n   compute.send(\u0027开始计算\u0027);\n   ```\n\n### 3. **使用 Worker Threads 模块**\n   - **原理**：Worker Threads 模块允许在单个 Node.js 进程中创建多个线程，用于运行 JavaScript。每个线程都有自己的事件循环，适合计算密集型任务且避免了进程间的资源开销。\n   - **实现**：在主线程中启动多个 worker 线程来并行处理任务，通过共享 `SharedArrayBuffer` 或传递消息实现数据共享与通信。\n\n   **示例代码**：\n   ```javascript\n   const { Worker, isMainThread, parentPort, workerData } = require(\u0027worker_threads\u0027);\n\n   if (isMainThread) {\n     // 主线程\n     const worker = new Worker(__filename, { workerData: 42 });\n     worker.on(\u0027message\u0027, (message) =\u003e {\n       console.log(\u0027主线程收到消息:\u0027, message);\n     });\n   } else {\n     // 子线程\n     const result = workerData * 2; // 简单的计算任务\n     parentPort.postMessage(result);\n   }\n   ```\n\n### 4. **负载均衡和反向代理**\n   - **原理**：通过 Nginx 或 PM2 等工具对多个 Node.js 进程进行负载均衡，将请求分配给不同进程以充分利用多核 CPU。\n   - **实现**：例如使用 Nginx 作为反向代理，配置多个 Node.js 服务实例并进行轮询分发；或使用 PM2 启动集群模式，自动管理 Node.js 进程和多核利用。\n\n### 5. **使用 PM2 集群模式**\n   - **原理**：PM2 是一个强大的进程管理器，支持多核自动分配。它可以一键启动多个 Node.js 实例，让每个实例利用不同的 CPU 核心，并管理进程状态，自动重启失败进程。\n   - **实现**：PM2 的集群模式可根据服务器的 CPU 核心数量自动启动等量的进程。\n\n   **命令示例**：\n   ```bash\n   pm2 start app.js -i max  # 自动根据 CPU 核数启动进程\n   pm2 start app.js -i 4    # 手动指定 4 个进程\n   ```",
+    "pivot":  "Node.js 可以通过 Cluster 模块、Child Process 模块、Worker Threads 模块、PM2 集群模式和负载均衡等方式充分利用多核 CPU。选择方案时应根据应用的特性和场景来决定，计算密集型任务推荐 Worker Threads，而 PM2 是生产环境中简单且稳定的多核管理工具。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-29T01:58:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  615,
+    "filterTotalNum":  1907,
+    "prev":  "fdfd1894-4fed-4863-a88a-56f217b54539",
+    "next":  "3d4e5433-6d67-4a4c-8cc5-85257807d775"
+}

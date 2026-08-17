@@ -1,0 +1,21 @@
+﻿{
+    "id":  504,
+    "exerciseKey":  "b343227e-136a-405a-8a9d-b6d92259fa38",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何判断一个对象是不是空对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\n// 方法1\nObject.keys(obj).length === 0\n\n// 方法2\nJSON.stringify(obj) === \u0027{}\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-11T07:35:21.000Z",
+    "updateAt":  "2021-07-11T16:10:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1416,
+    "filterTotalNum":  1907,
+    "prev":  "eea30dfd-e506-419d-9563-0f4c84abbbe8",
+    "next":  "f555dca6-fcc1-433c-a4b5-bc0de8dba02b"
+}

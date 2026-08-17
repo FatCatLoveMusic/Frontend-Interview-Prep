@@ -1,0 +1,21 @@
+﻿{
+    "id":  2134,
+    "exerciseKey":  "83f93d81-b47e-41ef-9ae6-b5c98beb63ff",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请仅使用 css，实现类似 ChatGPT 中，文案一个个输出的打字机效果",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "可以使用纯 CSS 的动画 `@keyframes` 搭配 `ch` 单位实现。\n\n下面是一个基础的示例：\n\n### **HTML 结构**\n\n```html\n\u003cdiv class=\"typewriter\"\u003e\n  \u003cp class=\"text\"\u003e你好，我是 xx 机器人，很高兴为你服务。\u003c/p\u003e\n\u003c/div\u003e\n```\n\n### **CSS 实现打字机效果**\n\n```css\n.typewriter {\n  width: fit-content;\n  white-space: nowrap;\n  overflow: hidden;\n  border-right: 2px solid black; /* 光标效果 */\n}\n\n.text {\n  display: inline-block;\n  animation: typing 3s steps(20, end), blink 0.7s step-end infinite;\n  font-family: monospace;\n  font-size: 18px;\n}\n\n@keyframes typing {\n  from {\n    width: 0;\n  }\n  to {\n    width: 21ch; /* 与文字字符数相同 */\n  }\n}\n\n@keyframes blink {\n  50% {\n    border-color: transparent;\n  }\n}\n```\n\n### 说明：\n- `steps(n)`：打字机的关键，让字符一个个出现。`n` 需要与字符数量匹配。\n- `overflow: hidden + white-space: nowrap`：隐藏还未“打印”的字符。\n- `border-right`：模拟打字机的光标，并配合 `blink` 动画闪烁。",
+    "pivot":  "使用 `@keyframes` + `steps()` + `overflow` 实现字符逐个显示的打字机效果，再配合 `border-right` 营造光标感。纯 CSS 可实现基本效果，复杂场景可结合 JS 控制 timing 和内容。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-04-07T08:22:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  691,
+    "filterTotalNum":  1907,
+    "prev":  "136ddfe0-6ea7-4e95-9f38-1bd936707220",
+    "next":  "6012756d-09e0-48b3-9722-79bb30529dc8"
+}

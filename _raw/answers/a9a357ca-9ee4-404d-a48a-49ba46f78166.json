@@ -1,0 +1,21 @@
+﻿{
+    "id":  329,
+    "exerciseKey":  "a9a357ca-9ee4-404d-a48a-49ba46f78166",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 的事件代理机制和原生事件绑定混用会有什么问题？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "我们在平时的开发中应该尽可能的避免 React 的事件代理机制和原生事件绑定混用。\n\nReact 的合成事件层，并没有将事件直接绑定到 DOM 元素上，所以使用 e.stopPropagation() 来阻止原生 DOM 的冒泡的行为是不行的。阻止 React 事件冒泡的行为只能用于 React 合成事件系统，但是 在原生事件中的阻止冒泡行为，却可以阻止 React 合成事件的传播。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:02:36.000Z",
+    "updateAt":  "2021-07-04T21:29:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1591,
+    "filterTotalNum":  1907,
+    "prev":  "37cce645-6114-44e4-a440-3b7f0c9f8887",
+    "next":  "116db48b-6ad5-40f1-9f60-c5a525673395"
+}

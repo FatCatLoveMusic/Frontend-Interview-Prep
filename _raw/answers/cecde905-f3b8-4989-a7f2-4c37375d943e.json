@@ -1,0 +1,21 @@
+﻿{
+    "id":  3207,
+    "exerciseKey":  "cecde905-f3b8-4989-a7f2-4c37375d943e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何实现 Agent 的状态持久化？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "实现 Agent 状态持久化，关键不是把聊天记录存下来，而是把一次 Agent 运行恢复所需的全部上下文稳定地记录下来。Agent 的状态通常包含会话消息、当前任务目标、执行计划、工具调用结果、中间推理结果、工作流节点位置、长期记忆、临时变量、外部副作用记录以及失败重试信息。\n\n比较可靠的做法是把状态分成两层：事件日志和状态快照。\n\n事件日志记录 Agent 运行过程中发生了什么，比如用户输入、模型响应、工具调用开始、工具调用完成、节点切换、任务失败、人工接管等。它的优势是可追溯、可审计，也方便回放和排查问题。状态快照则记录某个时刻 Agent 可以继续执行的完整状态，比如当前执行到哪个节点、上下文变量是什么、待执行任务有哪些。恢复时优先读取最近的快照，再按需回放快照之后的事件。\n\n数据存储上，一般会按状态生命周期拆开设计。短期会话状态可以放 Redis，用于低延迟读取和过期清理；长期状态放数据库，比如 PostgreSQL、MySQL 或 MongoDB；大文件、工具产物、日志附件放对象存储；语义记忆则通常写入向量数据库，并用会话 ID、用户 ID、任务 ID 做关联。\n\n一个 Agent Run 的核心状态结构通常会包含这些字段：\n\n```ts\ntype AgentRunState = {\n  runId: string;\n  sessionId: string;\n  userId: string;\n  status: \u0027pending\u0027 | \u0027running\u0027 | \u0027waiting\u0027 | \u0027failed\u0027 | \u0027completed\u0027;\n  currentNode: string;\n  messages: Message[];\n  plan: PlanStep[];\n  variables: Record\u003cstring, unknown\u003e;\n  toolCalls: ToolCallRecord[];\n  artifacts: ArtifactRef[];\n  memoryRefs: string[];\n  checkpointVersion: number;\n  updatedAt: string;\n};\n```\n\n这里比较重要的是 `currentNode`、`variables` 和 `toolCalls`。因为 Agent 一旦中断，恢复时不能简单地重新跑一遍，否则可能重复发消息、重复扣款、重复写数据库。所以工具调用必须有独立记录，并且要设计幂等键，比如 `runId + toolCallId`。恢复时先判断这个工具是否已经成功执行过，成功过就复用结果，而不是再次调用。\n\n在工作流编排场景中，Agent 更适合被建模成状态机。每个节点执行前写入 checkpoint，执行后写入结果和下一个节点。这样即使进程崩溃，也可以从最后一个稳定节点继续执行。对于长任务，还可以引入 `waiting` 状态，让 Agent 在等待用户确认、外部回调、定时任务或人工审核时暂停，并在事件到达后恢复。\n\n持久化还需要考虑版本兼容。Agent 的 prompt、工具定义、工作流 DAG、状态 schema 都可能迭代。状态里应该记录 `agentVersion`、`workflowVersion` 和 `schemaVersion`，否则旧任务恢复时可能和新代码不兼容。复杂系统里还需要做状态迁移，或者让旧运行继续使用旧版本执行器。\n\n从前端视角看，界面不应该只依赖本地内存状态。页面刷新后，需要通过 `sessionId` 或 `runId` 拉取服务端状态，恢复消息列表、任务进度、当前等待用户输入的位置以及工具执行结果。对于实时执行过程，可以通过 WebSocket 或 SSE 接收增量事件，同时服务端仍然以持久化事件为准，前端只是渲染状态的投影。\n\n安全上，Agent 状态里可能包含用户隐私、业务数据、工具返回结果和访问凭证。持久化时需要做字段分级，敏感信息加密或脱敏，访问时按用户、租户、会话做权限校验，并设置合理的保留周期。尤其是工具 token 和第三方凭证，不应该直接作为普通状态明文存储。",
+    "pivot":  "- Agent 状态持久化的对象不只是聊天记录，还包括计划、节点位置、变量、工具结果、产物和记忆引用。\n- 推荐采用“事件日志 + 状态快照”的组合，兼顾可恢复、可审计和性能。\n- 工作流型 Agent 应该以状态机方式编排，通过 checkpoint 支持中断恢复。\n- 工具调用必须具备幂等设计，避免恢复后重复执行外部副作用。\n- 不同类型状态应使用不同存储：Redis、关系型数据库、对象存储、向量数据库各司其职。\n- 需要记录版本信息，处理 schema、prompt、工具和工作流升级后的兼容问题。\n- 前端应从服务端恢复状态，通过 SSE 或 WebSocket 展示增量过程。\n- 持久化过程中必须关注权限、加密、脱敏和数据生命周期。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-23T06:16:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  81,
+    "filterTotalNum":  1907,
+    "prev":  "dd2a24a9-9cc7-4d9d-a7ca-14fe5f45a08e",
+    "next":  "fddd420d-a2e6-473a-9823-feffd94a2550"
+}

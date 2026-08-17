@@ -1,0 +1,21 @@
+﻿{
+    "id":  42,
+    "exerciseKey":  "88f7458f-418d-4362-bafa-f3ed98083d02",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nconsole.log(typeof typeof 1)\n```",
+    "options":  "{\"options\":[\"\\\"number\\\"\",\"\\\"string\\\"\",\"\\\"object\\\"\",\"\\\"undefined\\\"\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "`typeof 1` 返回 `\"number\"`。\n`typeof \"number\"` 返回 `\"string\"`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:10:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1877,
+    "filterTotalNum":  1907,
+    "prev":  "95dd5690-238f-46ab-b232-6bff6520240a",
+    "next":  "f6b74eb2-442e-4a56-904f-bee79587138c"
+}

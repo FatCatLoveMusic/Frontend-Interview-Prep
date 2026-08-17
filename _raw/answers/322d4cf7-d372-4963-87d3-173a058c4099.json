@@ -1,0 +1,21 @@
+﻿{
+    "id":  50,
+    "exerciseKey":  "322d4cf7-d372-4963-87d3-173a058c4099",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "返回值是什么?",
+    "desc":  "```javascript\nconst firstPromise = new Promise((res, rej) =\u003e {\n  setTimeout(res, 500, \"one\");\n});\n\nconst secondPromise = new Promise((res, rej) =\u003e {\n  setTimeout(res, 100, \"two\");\n});\n\nPromise.race([firstPromise, secondPromise]).then(res =\u003e console.log(res));\n```",
+    "options":  "{\"options\":[\"\\\"one\\\"\",\"\\\"two\\\"\",\"\\\"two\\\" \\\"one\\\"\",\"\\\"one\\\" \\\"two\\\"\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "当我们向`Promise.race`方法中传入多个`Promise`时，会进行 _优先_ 解析。在这个例子中，我们用`setTimeout`给`firstPromise`和`secondPromise`分别设定了500ms和100ms的定时器。这意味着`secondPromise`会首先解析出字符串`two`。那么此时`res`参数即为`two`，是为输出结果。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:12:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  1869,
+    "filterTotalNum":  1907,
+    "prev":  "e110762f-dcc0-41a2-bd28-866b0c798cc5",
+    "next":  "c99dea56-2532-41b6-8ec2-68fec71da84a"
+}

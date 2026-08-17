@@ -1,0 +1,21 @@
+﻿{
+    "id":  2332,
+    "exerciseKey":  "41d27d78-a7fd-4c87-a1a4-99a96d7dedb9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 如何实现 vue 中 keep-alive 的功能？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 React 中实现类似于 Vue 中 `keep-alive` 的功能，可以使用组件状态和 React 的生命周期方法来控制组件的挂载和卸载。\n\n以下是一种实现方式：\n\n### **1. 使用状态管理组件**\n\n创建一个 `KeepAlive` 组件，用于存储和管理被“缓存”的组件。\n\n```jsx\nimport React, { useState } from \u0027react\u0027;\n\n// KeepAlive 组件\nconst KeepAlive = ({ children, name }) =\u003e {\n  const [cache, setCache] = useState({});\n\n  // 保存组件\n  const saveCache = () =\u003e {\n    setCache((prev) =\u003e ({\n      ...prev,\n      [name]: children,\n    }));\n  };\n\n  // 恢复组件\n  const getCachedComponent = () =\u003e {\n    return cache[name] || children;\n  };\n\n  // 组件挂载时保存\n  React.useEffect(() =\u003e {\n    saveCache();\n  }, [children]);\n\n  return \u003c\u003e{getCachedComponent()}\u003c/\u003e;\n};\n\n// 示例用法\nconst App = () =\u003e {\n  const [activeComponent, setActiveComponent] = useState(\u0027ComponentA\u0027);\n\n  return (\n    \u003cdiv\u003e\n      \u003cbutton onClick={() =\u003e setActiveComponent(\u0027ComponentA\u0027)}\u003eComponent A\u003c/button\u003e\n      \u003cbutton onClick={() =\u003e setActiveComponent(\u0027ComponentB\u0027)}\u003eComponent B\u003c/button\u003e\n\n      \u003cKeepAlive name={activeComponent}\u003e\n        {activeComponent === \u0027ComponentA\u0027 ? \u003cComponentA /\u003e : \u003cComponentB /\u003e}\n      \u003c/KeepAlive\u003e\n    \u003c/div\u003e\n  );\n};\n\nconst ComponentA = () =\u003e \u003cdiv\u003eComponent A\u003c/div\u003e;\nconst ComponentB = () =\u003e \u003cdiv\u003eComponent B\u003c/div\u003e;\n\nexport default App;\n```\n\n### **2. 实现逻辑**\n\n- **状态管理**：`KeepAlive` 组件使用一个状态 `cache` 来存储被缓存的组件。\n- **保存和恢复**：在组件挂载时保存当前子组件到缓存中；每次渲染时，检查缓存并返回之前的组件，避免重新渲染。\n- **使用示例**：通过按钮切换 `activeComponent` 的状态，展示不同的组件，同时保留它们的状态。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-19T01:23:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  584,
+    "filterTotalNum":  1907,
+    "prev":  "1f734f01-90ea-4e70-8968-5aed96d8662e",
+    "next":  "72fbff08-b2d4-4e13-bada-3b7b01f9041a"
+}

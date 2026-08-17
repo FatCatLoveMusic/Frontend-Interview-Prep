@@ -1,0 +1,21 @@
+﻿{
+    "id":  121,
+    "exerciseKey":  "7ce6573e-b10b-4962-a732-aec1ca3207a1",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst person = {\n  name: \"Lydia\",\n  age: 21\n}\n\nconst changeAge = (x = { ...person }) =\u003e x.age += 1\nconst changeAgeAndName = (x = { ...person }) =\u003e {\n  x.age += 1\n  x.name = \"Sarah\"\n}\n\nchangeAge(person)\nchangeAgeAndName()\n\nconsole.log(person)\n```",
+    "options":  "{\"options\":[\"{name: \\\"Sarah\\\", age: 22}\",\"{name: \\\"Sarah\\\", age: 23}\",\"{name: \\\"Lydia\\\", age: 22}\",\"{name: \\\"Lydia\\\", age: 23}\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "函数 `changeAge` 和函数 `changeAgeAndName` 有着不同的参数，定义一个 _新_ 生成的对象 `{ ...person }`。这个对象有着所有 `person` 对象 中 k/v 值的副本。\n首项, 我们调用 `changeAge` 函数并传递 `person` 对象作为它的参数。这个函数对 `age` 属性进行加一操作。`person` 现在是 `{ name: \"Lydia\", age: 22 }`。\n然后，我们调用函数 `changeAgeAndName` ，然而我们没有传递参数。取而代之，`x` 的值等价 _new_ 生成的对象: `{ ...person }`。因为它是一个新生成的对象，它并不会对对象 `person` 造成任何副作用。`person` 仍然等价于 `{ name: \"Lydia\", age: 22 }`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2024-08-03T21:05:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1798,
+    "filterTotalNum":  1907,
+    "prev":  "f57f9350-c543-46e3-8419-1ea5ab453971",
+    "next":  "fc6beb89-dcf0-456e-a4d0-746ec0968295"
+}

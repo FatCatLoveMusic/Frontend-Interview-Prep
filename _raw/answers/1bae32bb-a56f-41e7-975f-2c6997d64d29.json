@@ -1,0 +1,21 @@
+﻿{
+    "id":  2926,
+    "exerciseKey":  "1bae32bb-a56f-41e7-975f-2c6997d64d29",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何在前端安全地使用大语言模型 API，比如调用 OpenAI 接口进行文本生成？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 推荐方式：前端 → 后端中转 → OpenAI API\n\n前端**不应该直接调用 OpenAI 接口并暴露 API Key**，推荐通过后端中转调用，确保密钥安全、具备权限控制和请求管理能力。\n\n---\n\n### 架构示意：\n\n```\n前端页面\n    ↓ fetch 请求\n后端接口（自建中转 API）\n    ↓ 携带 API Key，请求参数控制\nOpenAI 接口（如 gpt-3.5）\n```\n\n---\n\n## 后端中转实现（Node.js 示例）\n\n```ts\n// Express 路由示例：/api/chat\nimport express from \u0027express\u0027;\nimport fetch from \u0027node-fetch\u0027;\n\nconst router = express.Router();\n\nrouter.post(\u0027/chat\u0027, async (req, res) =\u003e {\n  const userMessage = req.body.message;\n\n  const openaiRes = await fetch(\u0027https://api.openai.com/v1/chat/completions\u0027, {\n    method: \u0027POST\u0027,\n    headers: {\n      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n      \u0027Content-Type\u0027: \u0027application/json\u0027,\n    },\n    body: JSON.stringify({\n      model: \u0027gpt-3.5-turbo\u0027,\n      messages: [{ role: \u0027user\u0027, content: userMessage }],\n      stream: true,\n    }),\n  });\n\n  res.setHeader(\u0027Content-Type\u0027, \u0027text/event-stream\u0027);\n  openaiRes.body.pipe(res);\n});\n\nexport default router;\n```\n\n---\n\n## 前端请求中转接口（示例）：\n\n```ts\nconst res = await fetch(\u0027/api/chat\u0027, {\n  method: \u0027POST\u0027,\n  body: JSON.stringify({ message: \u0027你好\u0027 }),\n  headers: { \u0027Content-Type\u0027: \u0027application/json\u0027 },\n});\n```\n\n---\n\n## 不推荐做法：前端直接调用 OpenAI 接口\n\n```ts\n// 不安全的做法（密钥暴露）\nfetch(\u0027https://api.openai.com/v1/chat/completions\u0027, {\n  headers: {\n    Authorization: \u0027Bearer sk-xxxx\u0027, // 任何人都能拿到\n  },\n});\n```\n\n问题：\n- API Key 暴露在前端代码中；\n- 任何用户都可以复制密钥进行滥用；\n- 一旦泄露，可能导致额度被刷完或账号被封；\n- 无法做权限控制、调用审计等功能。\n\n---\n\n## 安全实践建议：\n\n1. 永远不要在前端暴露密钥；\n2. 搭建后端中转层，并做：\n   - 用户鉴权（如 token、cookie 验证）\n   - 频率限制（防止滥用）\n   - 日志记录（追踪异常或攻击）\n3. 接入限流、模型参数限制等防护；\n4. 对输出内容做安全过滤（如禁词、脱敏）；",
+    "pivot":  "- 前端不应暴露任何敏感密钥；\n- 正确的方式是调用后端中转接口，由后端与 OpenAI 通信；\n- 后端可以做权限验证、限流、内容过滤等安全控制；\n- 推荐配合流式输出实现 ChatGPT 类体验，保障安全与交互质量。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-04-14T01:50:15.000Z",
+    "updateAt":  "2025-04-14T01:50:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  276,
+    "filterTotalNum":  1907,
+    "prev":  "6ccec2ec-93df-48af-b4f0-24fd77749b60",
+    "next":  "4c58e87a-222a-458c-aab8-fd0c16580594"
+}

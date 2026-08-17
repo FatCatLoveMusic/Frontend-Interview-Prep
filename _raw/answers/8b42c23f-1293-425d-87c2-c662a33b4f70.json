@@ -1,0 +1,21 @@
+﻿{
+    "id":  126,
+    "exerciseKey":  "8b42c23f-1293-425d-87c2-c662a33b4f70",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst config = {\n\tlanguages: [],\n\tset language(lang) {\n\t\treturn this.languages.push(lang);\n\t}\n};\n\nconsole.log(config.language);\n```",
+    "options":  "{\"options\":[\"function language(lang) { this.languages.push(lang }\",\"0\",\"[]\",\"undefined\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "方法 `language` 是一个 `setter`。Setters 并不保存一个实际值，它们的使命在于 _修改_ 属性。当调用方法 `setter`， 返回 `undefined`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:30:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1793,
+    "filterTotalNum":  1907,
+    "prev":  "13232ee2-18b7-45a3-a633-c796611934e8",
+    "next":  "22d88306-35f1-4538-898c-2ce3e5303fea"
+}

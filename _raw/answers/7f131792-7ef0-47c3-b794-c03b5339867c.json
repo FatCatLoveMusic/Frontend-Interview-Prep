@@ -1,0 +1,21 @@
+﻿{
+    "id":  1773,
+    "exerciseKey":  "7f131792-7ef0-47c3-b794-c03b5339867c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "vue 中 $route 和 $router 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue.js 中，`$route` 和 `$router` 是 Vue Router 提供的两个不同的对象，分别用于不同的目的：\n\n1. **`$route`**：\n   - **功能**：`$route` 对象包含当前路由的信息，包括路径、参数、查询字符串、路由名称等。\n   - **使用**：用于访问当前路由的详细信息和状态。你可以从 `$route` 对象中获取路由参数、查询参数等。\n   - **示例**：\n     ```javascript\n     console.log(this.$route.path);        // 当前路由的路径\n     console.log(this.$route.params);      // 路由参数\n     console.log(this.$route.query);       // 查询字符串\n     ```\n\n2. **`$router`**：\n   - **功能**：`$router` 对象提供了控制路由的功能，例如导航到不同的路由、替换当前路由等。\n   - **使用**：用于编程式导航，控制路由的跳转。\n   - **示例**：\n     ```javascript\n     this.$router.push(\u0027/new-path\u0027);       // 导航到新路径\n     this.$router.replace(\u0027/another-path\u0027); // 替换当前路径\n     ```\n\n### 总结\n\n- **`$route`**：提供关于当前路由的信息。\n- **`$router`**：提供操作路由的方法，控制路由导航。\n",
+    "pivot":  "1. $route：$route 是一个当前路由信息的对象，包括当前 URL 路径、查询参数、路径参数等信息。$route 对象是只读的，不可以直接修改其属性值，而需要通过路由跳转来更新。\n\n2. $router：$router 是 Vue Router 的实例对象，包括了许多用于导航控制和路由操作的 API，例如 push、replace、go、forward 等方法。$router 可以用来动态地改变 URL，从而实现页面间的无刷新跳转。\n\n因此，$route 和 $router 在功能上有所不同，$route 主要用于获取当前路由信息，$router 则是用于进行路由操作，例如跳转到指定的路由、前进、后退等。通常来说，$route 和 $router 是紧密关联的，并且常常一起使用。",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-14T01:33:50.000Z",
+    "updateAt":  "2024-08-10T19:39:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1036,
+    "filterTotalNum":  1907,
+    "prev":  "07bfb2a3-8a44-492e-9dd2-96c8d85b3cb2",
+    "next":  "29821d8e-dc41-4581-91fe-9fde7658a559"
+}

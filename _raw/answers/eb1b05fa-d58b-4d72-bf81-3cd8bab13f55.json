@@ -1,0 +1,21 @@
+﻿{
+    "id":  326,
+    "exerciseKey":  "eb1b05fa-d58b-4d72-bf81-3cd8bab13f55",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "react-router 里的 \u003cLink\u003e 标签和 \u003ca\u003e 标签有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "对比 \u003ca\u003e 标签, Link 避免了不必要的重新渲染。\n\nreact-router是伴随着react框架出现的路由系统，它也是公认的一种优秀的路由解决方案。在使用react-router时候，我们常常会使用其自带的路径跳转组件Link,通过实现跳转；\n\nreact-router 接管了其默认的链接跳转行为，与传统的页面跳转有区别的是，Link 的 **“跳转”** 行为只会触发相匹配的对应的页面内容更新，而不会刷新整个页面。\n\nLink 跳转做了三件事情：\n\n* 有onclick那就执行onclick\n* click的时候阻止a标签默认事件\n* 根据跳转 href，用 history 跳转，此时只是链接变了，并没有刷新页面\n\n而 a 标签就是普通的超链接了，用于从当前页面跳转到href指向的另一个页面（非锚点情况）。\n",
+    "pivot":  "- **`\u003cLink\u003e`**：用于客户端导航，避免页面刷新，集成 React Router 的路由功能。\n- **`\u003ca\u003e`**：用于传统的 HTML 超链接，会导致页面刷新，适用于标准的页面导航。\n\n在使用 React Router 进行单页应用开发时，推荐使用 `\u003cLink\u003e` 标签来实现路由导航，以充分利用 SPA 的性能优势和用户体验。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-04T12:01:00.000Z",
+    "updateAt":  "2024-08-10T17:05:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  1594,
+    "filterTotalNum":  1907,
+    "prev":  "eaf64af1-8d01-495c-b9ca-c1d503e3ed8d",
+    "next":  "212673c7-7ea1-460a-b44f-2e3fe20f3397"
+}

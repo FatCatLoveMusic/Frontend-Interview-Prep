@@ -1,0 +1,21 @@
+﻿{
+    "id":  1613,
+    "exerciseKey":  "023f27d0-f90b-446d-bd6c-293e95f9c9b8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第21题】下面代码的输出是什么？",
+    "desc":  "```js\nPromise.reject(\u0027err!!!\u0027)\n  .then((res) =\u003e {\n    console.log(\u0027success\u0027, res)\n  }, (err) =\u003e {\n    console.log(\u0027error\u0027, err)\n  }).catch(err =\u003e {\n    console.log(\u0027catch\u0027, err)\n  })\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n.then函数中的两个参数。\n\n第一个参数是用来处理Promise成功的函数，第二个则是处理失败的函数。\n\n也就是说Promise.resolve(\u0027xxx\u0027)的值会进入成功的函数，Promise.reject(\u0027xxx\u0027)的值会进入失败的函数。\n\n## 答案\n```\n\u0027error\u0027 \u0027err!!!\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:51:25.000Z",
+    "updateAt":  "2023-03-26T08:41:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1177,
+    "filterTotalNum":  1907,
+    "prev":  "9656ede7-6815-4a00-9df3-60c0219e4383",
+    "next":  "7a27cdc8-5f66-4cea-8350-c20d0bd2836b"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1582,
+    "exerciseKey":  "bfffc416-1177-4c3c-bf93-622185a72fda",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "直接在script标签中写 export 为什么会报错？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "现代浏览器可以支持用 script 标签引入模块或者脚本，如果要引入模块，必须给 script 标签添加 type=“module”。如果引入脚本，则不需要 type。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:36:38.000Z",
+    "updateAt":  "2021-12-26T16:05:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  1208,
+    "filterTotalNum":  1907,
+    "prev":  "1934d168-5248-425b-9648-2c14f2b4f570",
+    "next":  "87170b9e-30c8-44a2-897c-d4ec6c62fcbb"
+}

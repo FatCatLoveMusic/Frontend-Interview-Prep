@@ -1,0 +1,21 @@
+﻿{
+    "id":  1611,
+    "exerciseKey":  "090868ab-fef9-4759-8b81-20708a165fa1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第19题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = Promise.resolve().then(() =\u003e {\n  return promise;\n})\npromise.catch(console.err)\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n.then 或 .catch 返回的值不能是 promise 本身，否则会造成死循环，因此结果会报错。\n\n## 结果\n\n```\nUncaught (in promise) TypeError: Chaining cycle detected for promise #\u003cPromise\u003e\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:48:36.000Z",
+    "updateAt":  "2022-01-09T23:01:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  1179,
+    "filterTotalNum":  1907,
+    "prev":  "7a27cdc8-5f66-4cea-8350-c20d0bd2836b",
+    "next":  "e0e3dbcd-2e8a-4756-9241-bbb23af9c2e8"
+}

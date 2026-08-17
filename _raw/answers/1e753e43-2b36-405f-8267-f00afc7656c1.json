@@ -1,0 +1,21 @@
+﻿{
+    "id":  1879,
+    "exerciseKey":  "1e753e43-2b36-405f-8267-f00afc7656c1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "遍历一个任意长度的list中的元素并依次创建异步任务，如何获取所有任务的执行结果？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "看到这个题目，大家首先想到的是 `Promise.all` 或者 `Promise.allSettled`。\n\n* `Promise.all`\n\n`Promise.all` 需要传入一个数组，数组中的元素都是 `Promise` 对象。当这些对象都执行成功时，则 all 对应的 promise 也成功，且执行 then 中的成功回调。如果有一个失败了，则 all 对应的 `promise` 失败，且失败时只能获得第一个失败 `Promise` 的数据。\n\n```js\nconst p1 = new Promise((resolve, reject) =\u003e {\n  resolve(\u0027成功了\u0027)\n})\nconst p2 = Promise.resolve(\u0027success\u0027)\nconst p3 = Promise.reject(\u0027失败\u0027)\n\nPromise.all([p1, p2]).then((result) =\u003e {\n  console.log(result)  //[\"成功了\", \"success\"]\n}).catch((error) =\u003e {\n  //未被调用\n})\n\nPromise.all([p1, p3, p2]).then((result) =\u003e {\n  //未被调用\n}).catch((error) =\u003e {\n  console.log(error)  //\"失败\"\n});\n```\n\n* `Promise.allSettled`\n\n`Promise.allSettled()` 可用于并行执行独立的异步操作，并收集这些操作的结果。\n\n`Promise.allSettled()` 方法返回一个在所有给定的 promise 都已经 fulfilled 或 rejected 后的 promise，并带有一个对象数组，每个对象表示对应的 promise 结果。\n\n```js\nPromise.allSettled([p1, p2, p3])\n.then(values =\u003e {\n    console.log(values)\n})\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:47:08.000Z",
+    "updateAt":  "2024-07-20T17:43:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  931,
+    "filterTotalNum":  1907,
+    "prev":  "17555ccc-83cf-4f7e-9834-8c1bb749e7d7",
+    "next":  "f72409bc-ca63-4891-8443-c68f48ff37e9"
+}

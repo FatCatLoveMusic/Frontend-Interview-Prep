@@ -1,0 +1,21 @@
+﻿{
+    "id":  53,
+    "exerciseKey":  "32bf429e-2cda-408b-905c-f6149bbb972b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nconsole.log(3 + 4 + \"5\");\n```",
+    "options":  "{\"options\":[\"\\\"345\\\"\",\"\\\"75\\\"\",\"12\",\"\\\"12\\\"\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "当所有运算符的 _优先级_ 相同时，计算表达式需要确定运算符的结合顺序，即从右到左还是从左往右。在这个例子中，我们只有一类运算符`+`，对于加法来说，结合顺序就是从左到右。\n`3 + 4`首先计算，得到数字`7`.\n由于类型的强制转换，`7 + \u00275\u0027`的结果是`\"75\"`. JavaScript将`7`转换成了字符串，可以参考问题15.我们可以用`+`号把两个字符串连接起来。 `\"7\" + \"5\"` 就得到了`\"75\"`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:13:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  1866,
+    "filterTotalNum":  1907,
+    "prev":  "90fb24f5-8333-44a9-b3b7-ef199eeaaaeb",
+    "next":  "ac5c3d92-55a9-4c88-b452-e0b583f13385"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  3178,
+    "exerciseKey":  "698434ed-322d-495f-be51-6739b5fa506e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Tool Schema 为什么通常使用 JSON Schema？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Tool Schema 通常使用 JSON Schema，核心原因是它很适合描述“结构化输入契约”。\n\n工具调用里的参数本质上通常是一个 JSON 对象，例如：\n\n```json\n{\n  \"userId\": \"123\",\n  \"limit\": 20,\n  \"includeArchived\": false\n}\n```\n\nJSON Schema 正好可以描述这个对象应该有哪些字段、字段类型是什么、哪些字段必填、取值范围如何、是否只能从枚举值里选择，以及嵌套对象和数组的结构。也就是说，它不仅能告诉模型“这个工具需要什么参数”，也能让运行时在真正调用工具前做校验。\n\n从工程角度看，JSON Schema 的优势在于标准化和生态成熟。它是语言无关的，前端、后端、LLM 平台、网关、OpenAPI、表单生成器、校验器都能理解或转换它。比如 TypeScript、Zod、Pydantic、OpenAPI 规范都可以和 JSON Schema 建立映射，这让工具定义、接口文档、参数校验、类型推导之间更容易打通。\n\n对大模型来说，JSON Schema 还有一个重要价值：它能降低输出不确定性。模型在选择工具和生成参数时，如果只有自然语言描述，很容易出现字段名写错、类型不对、漏传必填字段、传入不存在的选项等问题。JSON Schema 提供了明确边界，模型可以更稳定地产生符合要求的参数，系统也可以在调用前拦截非法输入。\n\n不过 JSON Schema 解决的是“结构正确”，不等于“语义正确”。例如它能限制 `date` 是字符串，甚至限制格式，但很难单独判断“这个日期是否符合业务上下文”。所以实际使用时，JSON Schema 通常还要配合字段描述、业务校验和工具执行层的安全控制。",
+    "pivot":  "JSON Schema 被广泛用于 Tool Schema，是因为工具参数通常就是 JSON 结构；它能清晰表达类型、必填项、枚举、数组、嵌套对象等约束；生态成熟、跨语言、易于和 OpenAPI、类型系统、校验器集成；同时也能帮助模型更稳定地生成合法参数，并让系统在执行工具前完成结构校验。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-30T01:36:33.000Z",
+    "isCollected":  false,
+    "currentIndex":  110,
+    "filterTotalNum":  1907,
+    "prev":  "8bea4913-1083-4e16-b903-f7ea584796e1",
+    "next":  "f6a3df21-affe-4483-adec-2c7a467f77c2"
+}

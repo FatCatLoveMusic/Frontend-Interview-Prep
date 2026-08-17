@@ -1,0 +1,21 @@
+﻿{
+    "id":  1953,
+    "exerciseKey":  "b773eb98-1739-43a4-b0fc-4c0deed6cb13",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 sum 方法",
+    "desc":  "```ts\n/**\n * @file 假设加法是一个异步过程，如何计算多个数组之和？\n */\nfunction sleep(ms: number) {\n    return new Promise(r =\u003e {\n        setTimeout(() =\u003e {\n            r(undefined)\n        }, ms);\n    })\n}\n\nasync function asyncAdd(a: number, b: number) {\n    await sleep(1000);\n    return a + b;\n}\n\nfunction sum(arr: number[]): Promise\u003cnumber\u003e {\n    // 补全这里代码，涉及 arr 中两数求和只能使用 asyncAdd，禁止使用加号\n    throw new Error(\u0027功能待实现\u0027);\n}\n\nconsole.time(\u0027a\u0027)\nsum([1, 2, 3, 4, 5, 6, 7, 8])\n    .then(v =\u003e {\n        console.log(v) // 36\n        console.timeEnd(\u0027a\u0027) // a: \u003c耗时\u003e\n    })\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 假设加法是一个异步过程，如何计算多个数组之和？\n */\nfunction sleep(ms: number) {\n  return new Promise((r) =\u003e {\n    setTimeout(() =\u003e {\n      r(undefined);\n    }, ms);\n  });\n}\n\nasync function asyncAdd(a: number, b: number) {\n  await sleep(1000);\n  return a + b;\n}\n\nasync function sum(arr: number[]): Promise\u003cnumber\u003e {\n  // 参考答案\n  var s: number = arr[0];\n  for (var i = 1; i \u003c arr.length; i++) {\n    s = await asyncAdd(s, arr[i]);\n  }\n  return s;\n}\n\nconsole.time(\"a\");\nsum([1, 2, 3, 4, 5, 6, 7, 8]).then((v) =\u003e {\n  console.log(v); // 36\n  console.timeEnd(\"a\"); // a: \u003c耗时\u003e\n});\n\nexport default {};\n\n```",
+    "pivot":  "**作答思路：**\n\n1. **定义异步加法函数**：首先，定义一个异步加法函数`asyncAdd`，该函数接受两个数字`a`和`b`，并返回它们的和。由于加法是异步的，需要使用`sleep`函数来模拟异步操作。\n\n2. **使用循环累加**：对于数组`arr`中的每个数字，使用`asyncAdd`函数将当前累加的和`s`与下一个数字相加。由于加法是异步的，需要在循环中使用`await`关键字来等待每个加法操作的完成。\n\n3. **返回最终结果**：循环结束后，`s`中存储的就是数组中所有数字的和。返回这个和作为`sum`函数的最终结果。\n\n4. **使用Promise处理异步操作**：由于`sum`函数内部使用了`asyncAdd`函数，因此`sum`函数本身也返回一个`Promise`。这样，可以使用`then`方法来处理异步操作的结果。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:29:41.000Z",
+    "updateAt":  "2024-08-10T17:07:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  857,
+    "filterTotalNum":  1907,
+    "prev":  "b9ca2e1f-d720-4b6a-ab77-acc5edd03c99",
+    "next":  "8694932e-df3f-492f-8ef9-b0e7aa486f2f"
+}

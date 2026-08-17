@@ -1,0 +1,21 @@
+﻿{
+    "id":  2275,
+    "exerciseKey":  "a28772a7-f8b5-40a7-b5ad-087b6576b7a6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "基于 axios 实现请求超时后，自动重试",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "使用 `axios` 封装请求超时自动重试的方法，可以通过设置请求拦截器和响应拦截器来实现。当请求发生超时错误时，递归调用该请求直到达到最大重试次数。\n\n### 实现步骤\n1. **设置默认超时时间**：在 `axios` 实例中配置超时时间。\n2. **设置最大重试次数**：在配置中设置一个最大重试次数。\n3. **重试逻辑**：在响应拦截器中，判断请求是否因为超时失败，如果超时则递归调用请求，直到达到最大重试次数。\n\n### 示例代码\n\n```javascript\nimport axios from \u0027axios\u0027;\n\n// 创建 axios 实例并配置超时和重试次数\nconst axiosInstance = axios.create({\n  timeout: 5000 // 设置超时时间为 5 秒\n});\n\nconst MAX_RETRIES = 3; // 最大重试次数\n\n// 封装请求方法\naxiosInstance.interceptors.response.use(\n  response =\u003e response, // 请求成功直接返回结果\n  async error =\u003e {\n    const config = error.config;\n\n    // 设置请求的重试次数\n    if (!config._retryCount) {\n      config._retryCount = 0;\n    }\n\n    // 检查是否达到最大重试次数\n    if (config._retryCount \u003c MAX_RETRIES \u0026\u0026 error.code === \u0027ECONNABORTED\u0027) {\n      config._retryCount += 1;\n      console.warn(`请求超时，正在进行第 ${config._retryCount} 次重试...`);\n      // 递归调用，重试请求\n      return axiosInstance(config);\n    }\n\n    // 如果已达到最大重试次数，抛出错误\n    return Promise.reject(error);\n  }\n);\n\n// 使用示例\nasync function fetchData() {\n  try {\n    const response = await axiosInstance.get(\u0027/api/data\u0027);\n    console.log(\u0027请求成功:\u0027, response.data);\n  } catch (error) {\n    console.error(\u0027请求失败:\u0027, error.message);\n  }\n}\n\nexport default axiosInstance;\n```\n\n### 代码说明\n1. **重试计数**：`config._retryCount` 用于记录请求的重试次数。\n2. **重试逻辑**：当错误是超时错误 `ECONNABORTED` 且未达到最大重试次数时，递归调用 `axiosInstance(config)` 发起重试。\n3. **失败处理**：达到最大重试次数后，错误会抛出到调用处。",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-10-29T02:09:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  617,
+    "filterTotalNum":  1907,
+    "prev":  "3d4e5433-6d67-4a4c-8cc5-85257807d775",
+    "next":  "f6b9383c-1ba2-47cc-a8db-5f9c4bbf77eb"
+}

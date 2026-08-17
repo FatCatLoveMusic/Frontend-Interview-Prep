@@ -1,0 +1,21 @@
+﻿{
+    "id":  2320,
+    "exerciseKey":  "48251068-35a0-4698-b7bd-2836e1222264",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么使用 webpack，将 JS 文件中的 css 提取到单独的样式文件中？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在前端项目中使用 Webpack 提取 JS 文件中的 CSS，可以通过以下步骤实现：\n\n### **1. 安装必要的依赖**\n\n首先，需要安装以下依赖：\n\n```bash\nnpm install --save-dev webpack webpack-cli style-loader css-loader mini-css-extract-plugin\n```\n\n### **2. 配置 Webpack**\n\n在 Webpack 配置文件 `webpack.config.js` 中，配置 `MiniCssExtractPlugin` 来提取 CSS。\n\n```javascript\nconst path = require(\u0027path\u0027);\nconst MiniCssExtractPlugin = require(\u0027mini-css-extract-plugin\u0027);\n\nmodule.exports = {\n  entry: \u0027./src/index.js\u0027, // 入口文件\n  output: {\n    filename: \u0027bundle.js\u0027,\n    path: path.resolve(__dirname, \u0027dist\u0027),\n  },\n  module: {\n    rules: [\n      {\n        test: /\\.css$/, // 匹配 CSS 文件\n        use: [\n          MiniCssExtractPlugin.loader, // 提取 CSS\n          \u0027css-loader\u0027, // 处理 CSS\n        ],\n      },\n    ],\n  },\n  plugins: [\n    new MiniCssExtractPlugin({\n      filename: \u0027styles.css\u0027, // 输出的 CSS 文件名\n    }),\n  ],\n};\n```\n\n### **3. 在 JavaScript 中引入 CSS**\n\n在你的 JS 文件中，引入 CSS 文件：\n\n```javascript\nimport \u0027./styles.css\u0027; // 引入 CSS 文件\n\nconsole.log(\u0027Hello, World!\u0027);\n```\n\n### **4. 运行 Webpack**\n\n使用以下命令构建项目：\n\n```bash\nnpx webpack --config webpack.config.js\n```\n\n### **5. 输出结果**\n\n构建完成后，生成的 `dist` 文件夹中会包含 `bundle.js` 和 `styles.css`，CSS 被成功提取到单独的文件中。",
+    "pivot":  "通过配置 Webpack 和使用 `MiniCssExtractPlugin`，可以方便地将 JS 文件中的 CSS 提取到单独的文件中。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-19T01:33:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  589,
+    "filterTotalNum":  1907,
+    "prev":  "f2180996-95e0-4926-aa8f-5c9fceb36330",
+    "next":  "d7f71615-0e65-4aee-b9ba-d50dbcab6e29"
+}

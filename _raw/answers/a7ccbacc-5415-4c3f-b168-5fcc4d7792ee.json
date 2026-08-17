@@ -1,0 +1,21 @@
+﻿{
+    "id":  1600,
+    "exerciseKey":  "a7ccbacc-5415-4c3f-b168-5fcc4d7792ee",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第八题】下面代码的输出是什么？",
+    "desc":  "```js\nconst promise = new Promise((resolve, reject) =\u003e {\n  console.log(1);\n  setTimeout(() =\u003e {\n    console.log(\"timerStart\");\n    resolve(\"success\");\n    console.log(\"timerEnd\");\n  }, 0);\n  console.log(2);\n});\npromise.then((res) =\u003e {\n  console.log(res);\n});\nconsole.log(4);\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n* 从上至下，先遇到new Promise，执行该构造函数中的代码1\n* 然后碰到了定时器，将这个定时器中的函数放到下一个宏任务的延迟队列中等待执行\n* 执行同步代码2\n* 跳出promise函数，遇到promise.then，但其状态还是为pending，这里理解为先不执行\n* 执行同步代码4\n* 一轮循环过后，进入第二次宏任务，发现延迟队列中有setTimeout定时器，执行它\n* 首先执行timerStart，然后遇到了resolve，将promise的状态改为resolved且保存结果并将之前的promise.then推入微任务队列\n* 继续执行同步代码timerEnd\n* 宏任务全部执行完毕，查找微任务队列，发现promise.then这个微任务，执行它。\n\n## 结果\n\n```\n1\n2\n4\n\"timerStart\"\n\"timerEnd\"\n\"success\"\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:32:21.000Z",
+    "updateAt":  "2024-07-20T11:01:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  1190,
+    "filterTotalNum":  1907,
+    "prev":  "a2c0b41f-1a7e-478b-9e0f-eba7e31a0b2c",
+    "next":  "c3d12ae7-e074-4072-a07a-aad43ec87e94"
+}

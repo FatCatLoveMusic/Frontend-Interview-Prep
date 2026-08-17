@@ -1,0 +1,21 @@
+﻿{
+    "id":  2402,
+    "exerciseKey":  "4d9c10d8-6509-4675-ba54-86c34d7116b4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "联合类型是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 TypeScript 中，**联合类型**（Union Types）是一种允许一个变量同时接受多个不同类型值的类型。这种类型通过使用竖线（`|`）来定义多个可能的类型，表示变量可以是这些类型中的任何一种。\n\n### **定义联合类型**\n\n联合类型的语法是将多个类型用竖线分隔。例如：\n\n```typescript\nlet value: string | number;\n```\n\n在上面的例子中，`value` 可以是 `string` 类型或 `number` 类型的值。\n\n### **使用联合类型**\n\n联合类型非常适合处理一个变量可能有多种不同类型的情况。它允许更灵活的函数参数、返回值和变量类型。\n\n**示例 1：函数参数**\n\n```typescript\nfunction printId(id: number | string) {\n  console.log(`The ID is: ${id}`);\n}\n\nprintId(101);         // 这是一个 number\nprintId(\"202\");       // 这是一个 string\n```\n\n在这个例子中，`printId` 函数的参数 `id` 可以是 `number` 或 `string` 类型。\n\n**示例 2：类型保护**\n\n使用联合类型时，你通常需要使用类型保护来确定实际的类型，以便对值进行正确的操作。\n\n```typescript\nfunction printLength(value: string | string[]) {\n  if (typeof value === \u0027string\u0027) {\n    console.log(`Length of string: ${value.length}`);\n  } else {\n    console.log(`Length of array: ${value.length}`);\n  }\n}\n\nprintLength(\"Hello, world!\"); // 输出: Length of string: 13\nprintLength([\"a\", \"b\", \"c\"]); // 输出: Length of array: 3\n```\n\n在这个例子中，`typeof` 操作符用于区分 `string` 和 `string[]` 类型，并进行相应的处理。\n\n**示例 3：对象类型的联合**\n\n```typescript\ntype Bird = { type: \u0027bird\u0027; fly: () =\u003e void };\ntype Fish = { type: \u0027fish\u0027; swim: () =\u003e void };\n\nfunction move(animal: Bird | Fish) {\n  if (animal.type === \u0027bird\u0027) {\n    animal.fly();\n  } else {\n    animal.swim();\n  }\n}\n```\n\n在这个例子中，`move` 函数接受 `Bird` 或 `Fish` 类型的对象。根据对象的 `type` 属性，函数可以调用相应的方法。\n\n### **联合类型的优势**\n\n- **灵活性**：允许变量、参数或返回值接受多种类型。\n- **类型安全**：与普通类型检查和类型保护一起使用，能够确保在编译时捕获潜在的类型错误。",
+    "pivot":  "- **联合类型**（Union Types）允许一个变量、参数或返回值接受多种不同的类型，通过使用竖线（`|`）来定义。\n- **类型保护**：使用 `typeof`、`instanceof` 或自定义类型保护来确保操作的正确性。\n- **适用场景**：适用于处理可能具有多种类型的值或情况。\n\n联合类型提高了代码的灵活性和可维护性，同时保持了类型安全。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-05T01:17:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  548,
+    "filterTotalNum":  1907,
+    "prev":  "bf8ce811-717a-4486-98c0-61726f5bf9d9",
+    "next":  "c39fb3f7-c3c7-4b17-aea5-655fb363bfd9"
+}

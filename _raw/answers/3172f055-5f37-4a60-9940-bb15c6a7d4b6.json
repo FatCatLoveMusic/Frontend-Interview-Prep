@@ -1,0 +1,21 @@
+﻿{
+    "id":  82,
+    "exerciseKey":  "3172f055-5f37-4a60-9940-bb15c6a7d4b6",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "以下是个纯函数么?",
+    "desc":  "```javascript\nfunction sum(a, b) {\n  return a + b;\n}\n```",
+    "options":  "{\"options\":[\"Yes\",\"No\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "纯函数在相同的输入值时，需产生相同的输出，其输出的结果，与输入值以外的其他隐藏信息或状态无关，也和由I/O设备产生的外部输出无关。\n纯函数不会产生副作用。\n纯函数与副作用的定义可参考：\nhttps://zh.wikipedia.org/wiki/%E5%89%AF%E4%BD%9C%E7%94%A8_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:23:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  1837,
+    "filterTotalNum":  1907,
+    "prev":  "56056900-f049-488c-a973-9788cc708e7b",
+    "next":  "4d6b5cd5-7b0d-460a-9a20-010d885349a0"
+}

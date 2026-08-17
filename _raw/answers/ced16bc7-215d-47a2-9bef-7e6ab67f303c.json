@@ -1,0 +1,21 @@
+﻿{
+    "id":  1623,
+    "exerciseKey":  "ced16bc7-215d-47a2-9bef-7e6ab67f303c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第31题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function fn () {\n  // return await 1234\n  // 等同于\n  return 123\n}\nfn().then(res =\u003e console.log(res))\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n正常情况下，async中的await命令是一个Promise对象，返回该对象的结果。\n\n但如果不是Promise对象的话，就会直接返回对应的值，相当于Promise.resolve()\n\n## 结果\n\n```\n123\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:09:42.000Z",
+    "updateAt":  "2022-01-09T23:15:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1167,
+    "filterTotalNum":  1907,
+    "prev":  "52ba6f44-41dd-44cb-a2f4-2dc1589fb02b",
+    "next":  "2c14e603-0e2b-4a05-89b7-d5c45804527a"
+}

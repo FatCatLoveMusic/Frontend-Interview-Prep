@@ -1,0 +1,21 @@
+﻿{
+    "id":  412,
+    "exerciseKey":  "827a8f47-1144-4ab1-9d6c-b7d3b3d6aebf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Function.prototype.call",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nFunction.prototype.call = function(context = window, ...args) {\n  if (typeof this !== \u0027function\u0027) {\n    throw new TypeError(\u0027Type Error\u0027);\n  }\n  const fn = Symbol(\u0027fn\u0027);\n  context[fn] = this;\n\n  const res = context[fn](...args);\n  delete context[fn];\n  return res;\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:02:36.000Z",
+    "updateAt":  "2021-07-07T00:13:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1508,
+    "filterTotalNum":  1907,
+    "prev":  "c6c4c722-bd37-41dd-b736-e836260b7863",
+    "next":  "c8245703-a177-4deb-a8be-24f73a3267b8"
+}

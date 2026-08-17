@@ -1,0 +1,21 @@
+﻿{
+    "id":  2570,
+    "exerciseKey":  "288b6f85-3e2d-4c05-a145-d463ead8a4dd",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么实现扫码登录？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "扫码登录是一种常见的身份验证方式，允许用户通过扫描二维码来登录应用。其基本实现流程如下：\n\n### **1. 生成二维码**\n\n1. **用户请求扫码登录**：\n   - 用户点击“扫码登录”按钮。\n\n2. **生成登录二维码**：\n   - 服务器生成一个唯一的登录凭证（如临时的唯一标识符或会话 ID）。\n   - 生成一个包含该凭证的二维码，并将其显示给用户。二维码可以使用图像生成库或 API（如 `qrcode` 库）生成。\n\n   ```javascript\n   const qr = require(\u0027qrcode\u0027);\n   const uuid = require(\u0027uuid\u0027);\n\n   const uniqueToken = uuid.v4();\n   qr.toDataURL(`https://yourapp.com/login?token=${uniqueToken}`, function (err, url) {\n     if (err) throw err;\n     // Send the URL to the client to display the QR code\n   });\n   ```\n\n### **2. 扫码和登录验证**\n\n1. **扫描二维码**：\n   - 用户使用手机扫描二维码。\n\n2. **验证登录请求**：\n   - 移动端应用将扫描到的二维码中的链接（包含的凭证）发送到服务器。\n   - 服务器验证凭证的有效性（如检查凭证是否有效、是否过期）。\n\n   ```javascript\n   app.get(\u0027/login\u0027, async (req, res) =\u003e {\n     const token = req.query.token;\n     // Verify token and handle login process\n   });\n   ```\n\n### **3. 用户确认登录**\n\n1. **显示登录请求**：\n   - 服务器将扫码请求与用户账户绑定，可能会要求用户确认登录（例如在后台管理系统中）。\n\n2. **用户确认**：\n   - 用户在后台确认登录请求。\n\n### **4. 通知移动端**\n\n1. **通知登录结果**：\n   - 一旦用户确认登录，服务器将登录成功的状态通知移动端应用。\n\n2. **更新用户状态**：\n   - 移动端应用接收到登录成功的通知后，更新用户的登录状态并重定向到应用的主界面。\n\n   ```javascript\n   app.post(\u0027/login/confirm\u0027, async (req, res) =\u003e {\n     const { token } = req.body;\n     // Handle login confirmation and update user session\n     // Notify mobile app about login success\n   });\n   ```\n\n### **5. 客户端处理**\n\n1. **接收通知**：\n   - 客户端（如 Web 应用）收到登录成功的通知后，更新应用状态并重定向用户。\n\n2. **更新用户界面**：\n   - 确保用户能够顺利进入应用并显示相应的用户信息。",
+    "pivot":  "扫码登录涉及生成二维码、验证用户凭证、用户确认登录及通知客户端等步骤。确保过程中的每一步都有合适的安全措施，以保护用户数据和防止未经授权的访问。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:31.000Z",
+    "updateAt":  "2024-08-15T19:21:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  468,
+    "filterTotalNum":  1907,
+    "prev":  "8a109788-5551-44a0-ba39-526632145959",
+    "next":  "c1aefc66-c3cb-4e29-961d-84a341071d8e"
+}

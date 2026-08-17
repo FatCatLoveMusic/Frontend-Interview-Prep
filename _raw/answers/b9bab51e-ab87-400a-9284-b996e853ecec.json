@@ -1,0 +1,21 @@
+﻿{
+    "id":  1821,
+    "exerciseKey":  "b9bab51e-ab87-400a-9284-b996e853ecec",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "连续 bind()多次，输出的值是什么？",
+    "desc":  "```js\nvar bar = function(){\n    console.log(this.x);\n}\nvar foo = {\n    x:3\n}\nvar sed = {\n    x:4\n}\nvar func = bar.bind(foo).bind(sed);\nfunc(); //?\n \nvar fiv = {\n    x:5\n}\nvar func = bar.bind(foo).bind(sed).bind(fiv);\nfunc(); //?\n```",
+    "options":  null,
+    "explanation":  "两次都输出 **3**。\n\n在Javascript中，多次 `bind()` 是无效的。\n\n更深层次的原因， `bind()` 的实现，相当于使用函数在内部包了一个 `call` / `apply` ，第二次 `bind()` 相当于再包住第一次 `bind()` ,故第二次以后的 `bind` 是无法生效的。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-06-05T12:43:31.000Z",
+    "updateAt":  "2022-06-05T20:43:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  988,
+    "filterTotalNum":  1907,
+    "prev":  "78f23cb3-8ee7-4f02-a995-e74ce3ad3836",
+    "next":  "f2e93a54-e57f-4c52-bd8c-9b9474c437ac"
+}

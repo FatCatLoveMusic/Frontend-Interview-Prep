@@ -1,0 +1,21 @@
+﻿{
+    "id":  3058,
+    "exerciseKey":  "7e56d9a7-fe8f-4b9f-819f-68247725f673",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 Hooks 的依赖数组原理",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这个问题的核心，不是“依赖数组怎么写”，而是：**React 是如何判断副作用是否需要重新执行的**。\n\n依赖数组的存在，本质是为了让 React 在两次 render 之间进行一次“浅层比较（shallow compare）”，从而决定是否跳过本次 effect 的执行。\n\n---\n\n## 一、从 useEffect 的执行时机说起\n\n```js\nuseEffect(() =\u003e {\n  // effect\n}, [a, b]);\n```\n\nReact 在每次 render 结束后，会把 effect 收集到 Fiber 节点的 effect 链表中。\n\n当进入 commit 阶段时，React 会：\n\n1. 取出当前 Fiber 上一次保存的依赖数组\n2. 与本次 render 生成的新依赖数组进行比较\n3. 决定是否标记该 effect 需要执行\n\n如果依赖变化，则：\n\n* 先执行上一次的 cleanup\n* 再执行新的 effect\n\n如果依赖未变化，则跳过。\n\n---\n\n## 二、底层判断逻辑\n\nReact 内部判断依赖是否变化，核心逻辑类似：\n\n```js\nfunction areHookInputsEqual(nextDeps, prevDeps) {\n  if (prevDeps === null) return false;\n\n  for (let i = 0; i \u003c prevDeps.length; i++) {\n    if (!Object.is(nextDeps[i], prevDeps[i])) {\n      return false;\n    }\n  }\n  return true;\n}\n```\n\n关键点有两个：\n\n### 1. 使用的是 Object.is\n\n不是 `===`，而是 `Object.is`，因此：\n\n* `NaN` 与 `NaN` 被认为相等\n* `+0` 与 `-0` 被认为不相等\n\n这是为了和 React 内部状态更新逻辑保持一致。\n\n### 2. 只做浅比较\n\n依赖数组中的每一项，只做引用层级的比较。\n\n这意味着：\n\n```js\nuseEffect(() =\u003e {}, [{}]);\n```\n\n每次 render 都会重新执行，因为对象引用变化。\n\n---\n\n## 三、为什么依赖数组必须写全\n\nReact 不会分析 effect 内部使用了哪些变量。\n\n依赖数组完全由开发者声明。\n\n如果 effect 内部使用了某个变量，但没有放入依赖数组，那么：\n\n* 变量变化时 effect 不会重新执行\n* effect 内部捕获的是旧闭包中的值\n* 出现“闭包陷阱”（stale closure）\n\n例如：\n\n```js\nuseEffect(() =\u003e {\n  console.log(count);\n}, []);\n```\n\n这里只会打印初始 count，因为 effect 永远不会重新执行。\n\n这不是 React 的 bug，而是依赖声明不完整。\n\nESLint 的 `react-hooks/exhaustive-deps` 插件，本质是在做静态分析，提醒依赖缺失。\n\n---\n\n## 四、空数组与不写依赖的区别\n\n```js\nuseEffect(() =\u003e {}, []);\n```\n\n表示：只在首次挂载时执行一次（以及卸载时 cleanup）。\n\n而：\n\n```js\nuseEffect(() =\u003e {});\n```\n\n表示：每次 render 后都执行。\n\n这两种语义差异非常大。\n\n---\n\n## 五、依赖数组与性能的关系\n\n依赖数组不是用来“优化性能”的工具，而是用来声明副作用与状态之间的关系。\n\n如果依赖声明准确：\n\n* effect 执行次数最少\n* 逻辑正确\n\n如果为了“减少执行”而故意删除依赖：\n\n* 会产生逻辑错误\n* 引入难以排查的状态不一致问题\n\n真正的优化方式应该是：\n\n* 使用 useMemo / useCallback 保持引用稳定\n* 或者重构 effect 逻辑\n\n---\n\n## 六、从 Fiber 角度理解\n\n每个 Hook 在 Fiber 上都会形成一个链表节点：\n\n* memoizedState：存储上一次依赖\n* next：指向下一个 Hook\n\n在下一次 render 时：\n\n* React 按调用顺序读取对应 Hook 节点\n* 拿到上一次的依赖\n* 进行对比\n\n这也是为什么 Hook 调用顺序必须稳定。\n\n依赖数组只是挂在这个 Hook 节点上的一段元数据。\n\n---\n\n## 七、一个常见误区\n\n很多人认为依赖数组是“监听变量变化”。\n\n实际上 React 并不会监听变量。\n\n变量变化只是触发 render，render 之后 React 才会在 commit 阶段做依赖比较。\n\n也就是说：\n\n依赖数组不参与“触发更新”，只参与“是否执行副作用”。\n\n\n",
+    "pivot":  "Hooks 的依赖数组本质是一次浅层引用比较机制。React 在 commit 阶段通过 Object.is 逐项比较新旧依赖数组，决定是否重新执行 effect，并在变化时先执行 cleanup。依赖数组不会监听变量变化，也不负责触发 render，只用于声明副作用与状态之间的关系。依赖缺失会导致闭包捕获旧值，依赖不稳定会导致 effect 频繁执行，因此依赖必须完整且保持引用稳定。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-03-03T14:36:25.000Z",
+    "updateAt":  "2026-03-03T14:36:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  147,
+    "filterTotalNum":  1907,
+    "prev":  "6e229410-c489-4f7f-bcc1-36ffc38d0eb5",
+    "next":  "86483690-5e1e-4dae-911e-0aba1644bd2f"
+}

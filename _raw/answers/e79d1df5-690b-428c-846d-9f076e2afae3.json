@@ -1,0 +1,21 @@
+﻿{
+    "id":  1776,
+    "exerciseKey":  "e79d1df5-690b-428c-846d-9f076e2afae3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "​const声明了数组，还能push元素吗，为什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以\n\n数组是引用类型，const声明的引用类型变量，不可以变的是变量引用始终指向某个对象，不能指向其他对象，但是所指向的某个对象本身是可以变的",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-17T12:26:12.000Z",
+    "updateAt":  "2022-04-17T20:26:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  1033,
+    "filterTotalNum":  1907,
+    "prev":  "487a7c86-fd00-4567-a6e2-dd6446e79e5e",
+    "next":  "c8997d09-6634-4e27-9f3f-5376a6e97f17"
+}

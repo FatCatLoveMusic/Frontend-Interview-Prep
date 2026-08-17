@@ -1,0 +1,21 @@
+﻿{
+    "id":  2891,
+    "exerciseKey":  "5e6f561b-5c29-482e-b07b-f08a4aa11432",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么让页面上的某块区域全屏展示？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以通过 HTML5 提供的 **全屏 API**，将该区域元素通过 `requestFullscreen()` 方法切换到全屏模式。\n\n### **步骤概述**\n1. 选择你希望全屏的某块区域（如一个 `div`）。\n2. 在事件中调用 `element.requestFullscreen()` 方法进入全屏。\n3. 可以监听全屏状态的变化（如退出全屏时的处理）。\n\n### **实现示例**\n\n```html\n\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n  \u003cmeta charset=\"UTF-8\"\u003e\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003e\n  \u003ctitle\u003e特定区域全屏展示\u003c/title\u003e\n  \u003cstyle\u003e\n    #fullscreenDiv {\n      width: 300px;\n      height: 200px;\n      background-color: lightcoral;\n      text-align: center;\n      line-height: 200px;\n      margin: 50px auto;\n      cursor: pointer;\n    }\n  \u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n  \u003cdiv id=\"fullscreenDiv\"\u003e点击全屏\u003c/div\u003e\n\n  \u003cscript\u003e\n    const fullscreenDiv = document.getElementById(\u0027fullscreenDiv\u0027);\n\n    // 点击该区域进入全屏\n    fullscreenDiv.addEventListener(\u0027click\u0027, function() {\n      if (fullscreenDiv.requestFullscreen) {\n        fullscreenDiv.requestFullscreen();\n      } else if (fullscreenDiv.mozRequestFullScreen) { // Firefox\n        fullscreenDiv.mozRequestFullScreen();\n      } else if (fullscreenDiv.webkitRequestFullscreen) { // Chrome, Safari and Opera\n        fullscreenDiv.webkitRequestFullscreen();\n      } else if (fullscreenDiv.msRequestFullscreen) { // IE/Edge\n        fullscreenDiv.msRequestFullscreen();\n      }\n    });\n\n    // 监听全屏状态变化\n    document.addEventListener(\u0027fullscreenchange\u0027, () =\u003e {\n      if (!document.fullscreenElement) {\n        console.log(\u0027退出全屏\u0027);\n      } else {\n        console.log(\u0027进入全屏\u0027);\n      }\n    });\n  \u003c/script\u003e\n\n\u003c/body\u003e\n\u003c/html\u003e\n```\n\n### **代码解析**\n1. **指定的区域**：页面上有一个 `div` 元素，`#fullscreenDiv`，点击它时该 `div` 进入全屏状态。\n2. **进入全屏**：调用 `fullscreenDiv.requestFullscreen()` 使 `div` 全屏。\n3. **退出全屏**：可以按 `Esc` 键退出全屏，或者调用 `document.exitFullscreen()` 方法。\n4. **兼容性处理**：由于各浏览器对全屏 API 的支持不同，我们进行了跨浏览器的兼容处理。\n\n### **监听全屏状态变化**\n使用 `fullscreenchange` 事件来监听进入或退出全屏的状态变化，可以在不同状态下执行一些操作（如重新调整布局、隐藏/显示退出全屏按钮等）。",
+    "pivot":  "通过全屏 API，可以轻松将页面中的某个元素切换为全屏模式。这在需要专注展示某块内容或页面时（如视频播放器、图表、图片查看器等）非常有用。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-10-17T01:40:29.000Z",
+    "updateAt":  "2024-10-17T01:40:36.000Z",
+    "isCollected":  false,
+    "currentIndex":  310,
+    "filterTotalNum":  1907,
+    "prev":  "bb716003-6366-45be-861e-df4f68f748fd",
+    "next":  "0fad3c15-63fe-4358-a202-397c983cae6f"
+}

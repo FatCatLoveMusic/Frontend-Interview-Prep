@@ -1,0 +1,21 @@
+﻿{
+    "id":  543,
+    "exerciseKey":  "0e5e7b73-c27f-4e4f-a8ff-c39927175a55",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "合并K个升序链表",
+    "desc":  "给你一个链表数组，每个链表都已经按升序排列。\n\n请你将所有链表合并到一个升序链表中，返回合并后的链表。\n\n示例 1：\n```\n输入：lists = [[1,4,5],[1,3,4],[2,6]]\n输出：[1,1,2,3,4,4,5,6]\n解释：链表数组如下：\n[\n  1-\u003e4-\u003e5,\n  1-\u003e3-\u003e4,\n  2-\u003e6\n]\n将它们合并到一个有序链表中得到。\n1-\u003e1-\u003e2-\u003e3-\u003e4-\u003e4-\u003e5-\u003e6\n```\n\n示例 2：\n\n```\n输入：lists = []\n输出：[]\n```\n\n示例 3：\n\n```\n输入：lists = [[]]\n输出：[]\n```\n\n提示：\n\n* k == lists.length\n* 0 \u003c= k \u003c= 10^4\n* 0 \u003c= lists[i].length \u003c= 500\n* -10^4 \u003c= lists[i][j] \u003c= 10^4\n* lists[i] 按 升序 排列\n* lists[i].length 的总和不超过 10^4\n\n```javascript\n/**\n * Definition for singly-linked list.\n * function ListNode(val, next) {\n *     this.val = (val===undefined ? 0 : val)\n *     this.next = (next===undefined ? null : next)\n * }\n */\n/**\n * @param {ListNode[]} lists\n * @return {ListNode}\n */\nvar mergeKLists = function(lists) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "```javascript\n/**\n * Definition for singly-linked list.\n * function ListNode(val) {\n *     this.val = val;\n *     this.next = null;\n * }\n */\n/**\n * @param {ListNode[]} lists\n * @return {ListNode}\n */\nvar mergeKLists = function(lists) {\n    if (lists.length === 0) return null;\n    return mergeArr(lists);\n};\nfunction mergeArr(lists) {\n    if (lists.length \u003c= 1) return lists[0];\n    let index = Math.floor(lists.length / 2);\n    const left = mergeArr(lists.slice(0, index))\n    const right = mergeArr(lists.slice(index));\n    return merge(left, right);\n}\nfunction merge(l1, l2) {\n    if (l1 == null \u0026\u0026 l2 == null) return null;\n    if (l1 != null \u0026\u0026 l2 == null) return l1;\n    if (l1 == null \u0026\u0026 l2 != null) return l2;\n    let newHead = null, head = null;\n    while (l1 != null \u0026\u0026 l2 != null) {\n        if (l1.val \u003c l2.val) {\n            if (!head) {\n                newHead = l1;\n                head = l1;\n            } else {\n                newHead.next = l1;\n                newHead = newHead.next;\n            }\n            l1 = l1.next;\n        } else {\n            if (!head) {\n                newHead = l2;\n                head = l2;\n            } else {\n                newHead.next = l2;\n                newHead = newHead.next;\n            }\n            l2 = l2.next;\n        }\n    }\n    newHead.next = l1 ? l1 : l2;\n    return head;\n}\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2021-07-25T02:10:54.000Z",
+    "updateAt":  "2024-08-10T21:17:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  1377,
+    "filterTotalNum":  1907,
+    "prev":  "f2005269-95e7-4d83-acbf-673a7bba78f9",
+    "next":  "d9e5d51b-5b8d-4b80-8011-6766a0323bb3"
+}

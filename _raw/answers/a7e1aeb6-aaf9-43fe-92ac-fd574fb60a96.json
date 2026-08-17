@@ -1,0 +1,21 @@
+﻿{
+    "id":  1587,
+    "exerciseKey":  "a7e1aeb6-aaf9-43fe-92ac-fd574fb60a96",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用input标签上传图片时，怎样触发默认拍照功能？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "capture 属性用于指定文件上传控件中媒体拍摄的方式。\n\n\n可选值：\n* user 前置\n* environment 后置\n* camera 相机\n* camcorder 摄像机\n* microphone 录音\n\n```html\n\u003cinput type=\u0027file\u0027 accept=\u0027image/*;\u0027 capture=\u0027camera\u0027\u003e\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-12-26T03:55:50.000Z",
+    "updateAt":  "2021-12-26T16:05:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1203,
+    "filterTotalNum":  1907,
+    "prev":  "257565c9-6179-4faa-a592-168f6269cc99",
+    "next":  "fd0bb7e5-19a0-4473-8b07-4f0e385afd3c"
+}

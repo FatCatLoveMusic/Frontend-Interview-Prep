@@ -1,0 +1,21 @@
+﻿{
+    "id":  2992,
+    "exerciseKey":  "86e910ba-7ddf-4664-9b5d-d4076da14992",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue路由的原理是什么？请简述Vue Router如何实现页面跳转和组件的动态加载。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue 的单页面应用（SPA）架构中，Vue Router 的核心目标是：**改变 URL 但不刷新页面，并根据 URL 映射对应的组件进行渲染**。\n\n这主要依赖于浏览器提供的原生能力以及 Vue 的响应式系统。\n\n### 1. 核心原理：监听 URL 的变化\n\nVue Router 主要支持两种模式来拦截 URL 的变动：\n\n* **Hash 模式**：\n利用 URL 中 `#` 及其后面的部分。当 `#` 后的路径发生变化时，浏览器不会向服务器发送请求，但会触发 `hashchange` 事件。Vue Router 通过监听该事件来感知路由变化。\n* **History 模式**：\n利用 HTML5 提供的 `history.pushState` 和 `history.replaceState` API。这两个 API 允许开发者在不刷新页面的前提下修改浏览器的历史记录栈和当前的 URL。同时，通过监听 `popstate` 事件，可以捕获用户点击浏览器前进/后退按钮的行为。\n\n### 2. 实现页面跳转的逻辑\n\n当用户触发跳转（如点击 `\u003crouter-link\u003e` 或调用 `router.push`）时，Vue Router 执行以下流程：\n\n1. **路径匹配**：根据目标 URL，在预先定义的路由映射表（Routes Map）中查找对应的路由记录。\n2. **执行导航守卫**：依次触发全局守卫、路由独享守卫和组件内守卫，确认是否允许本次跳转。\n3. **更新响应式状态**：一旦确认跳转，Vue Router 会更新内部的一个响应式变量（通常是 `_route`）。\n4. **触发视图渲染**：由于 `\u003crouter-view\u003e` 组件强依赖于这个响应式的路由对象，当该对象变化时，Vue 的响应式系统会触发 `\u003crouter-view\u003e` 的重新渲染，从而替换展示的组件。\n\n### 3. 组件的动态加载（路由懒加载）\n\n为了优化首屏加载速度，Vue Router 支持路由懒加载，其核心结合了 **ES 模块的动态导入（Dynamic Import）** 和 **Webpack/Vite 的代码分包（Code Splitting）** 功能。\n\n* **定义方式**：在路由配置中使用 `component: () =\u003e import(\u0027./Home.vue\u0027)`。\n* **实现原理**：\n* **构建阶段**：打包工具识别出 `import()` 语法，会将对应的组件及其依赖单独打包成一个独立的 JS 文件（Chunk）。\n* **运行阶段**：当路由匹配到该路径时，Vue Router 会执行这个函数。此时浏览器会通过网络请求去下载对应的 Chunk 文件。\n* **异步渲染**：下载完成后，Vue Router 会将加载到的组件内容缓存起来，并渲染到 `\u003crouter-view\u003e` 中。",
+    "pivot":  "* **路由监听**：Hash 模式靠 `hashchange` 事件，History 模式靠 `pushState` API 和 `popstate` 事件。\n* **视图同步**：利用 Vue 的响应式原理，通过修改全局路由对象触发 `\u003crouter-view\u003e` 组件的重绘。\n* **懒加载机制**：利用 ES6 动态导入语法，配合打包工具实现代码分包，按需从服务器拉取组件代码。\n* **流程控制**：通过一套复杂的导航守卫体系，控制跳转过程中的权限验证和逻辑处理。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-01-30T15:28:31.000Z",
+    "updateAt":  "2026-01-30T15:28:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  211,
+    "filterTotalNum":  1907,
+    "prev":  "bb28cc54-ee38-4d6c-bb9c-cc2116d8948a",
+    "next":  "35e4a8d7-248e-429c-b590-da73408f3d37"
+}

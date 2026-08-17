@@ -1,0 +1,21 @@
+﻿{
+    "id":  461,
+    "exerciseKey":  "71f4e5bf-6bfd-4220-985c-80d940f16766",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "TypeScript中的变量以及如何声明？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "变量是内存中用于存储值的命名空间。\n\n在 TypeScript 中声明变量的类型语法在变量名称后包括一个冒号（:)，后跟其类型。 与 JavaScript 相似，我们使用var关键字声明变量。\n\n在Typescript中声明变量时，必须遵循某些规则：\n\n* 变量名称必须是字母或数字。\n* 不能以数字开头名称。\n* 除下划线（ _ ）和美元（ $ ）符号外，它不能包含空格和特殊字符。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-08T14:51:45.000Z",
+    "updateAt":  "2021-07-11T10:59:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  1459,
+    "filterTotalNum":  1907,
+    "prev":  "d4a6dd39-06ce-454f-b1ef-4ec580faf27c",
+    "next":  "75a70014-1972-40d8-8173-1f3a475a0570"
+}

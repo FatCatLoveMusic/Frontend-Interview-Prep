@@ -1,0 +1,21 @@
+﻿{
+    "id":  1813,
+    "exerciseKey":  "2c3871df-1368-4abe-943d-6cf5695620bc",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "有效的括号",
+    "desc":  "给定一个只包括 `\u0027(\u0027`，`\u0027)\u0027`，`\u0027{\u0027`，`\u0027}\u0027`，`\u0027[\u0027`，`\u0027]\u0027` 的字符串 `s` ，判断字符串是否有效。\n\n有效字符串需满足：\n\n1. 左括号必须用相同类型的右括号闭合。\n2. 左括号必须以正确的顺序闭合。\n\n**示例 1：**\n\n\n**输入：** s = \"()\"\n\n**输出：** true\n\n**示例 2：**\n\n\n**输入：** s = \"()[]{}\"\n\n**输出：** true\n\n**示例 3：**\n\n\n**输入：** s = \"(]\"\n\n**输出：** false\n\n**示例 4：**\n\n\n**输入：** s = \"([)]\"\n\n**输出：** false\n\n**示例 5：**\n\n\n**输入：** s = \"{[]}\"\n\n**输出：** true\n\n**提示：**\n\n* `1 \u003c= s.length \u003c= 104`\n* `s` 仅由括号 `\u0027()[]{}\u0027` 组成\n\n```js\n/**\n * @param {string} s\n * @return {boolean}\n */\nvar isValid = function(s) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "判断括号的有效性可以使用「栈」这一数据结构来解决。\n\n我们遍历给定的字符串 s。当我们遇到一个左括号时，我们会期望在后续的遍历中，有一个相同类型的右括号将其闭合。由于**后遇到的左括号要先闭合**，因此我们可以将这个左括号放入栈顶。\n\n当我们遇到一个右括号时，我们需要将一个相同类型的左括号闭合。此时，我们可以取出栈顶的左括号并判断它们是否是相同类型的括号。如果不是相同的类型，或者栈中并没有左括号，那么字符串 s 无效，返回 false。为了快速判断括号的类型，我们可以使用哈希表存储每一种括号。哈希表的键为右括号，值为相同类型的左括号。\n\n在遍历结束后，如果栈中没有左括号，说明我们将字符串 s 中的所有左括号闭合，返回 true，否则返回 false。\n\n注意到有效字符串的长度一定为偶数，因此如果字符串的长度为奇数，我们可以直接返回 false，省去后续的遍历判断过程。\n\n```JavaScript\nvar isValid = function(s) {\n    const n = s.length;\n    if (n % 2 === 1) {\n        return false;\n    }\n    const pairs = new Map([\n        [\u0027)\u0027, \u0027(\u0027],\n        [\u0027]\u0027, \u0027[\u0027],\n        [\u0027}\u0027, \u0027{\u0027]\n    ]);\n    const stk = [];\n    for (let ch of s){\n        if (pairs.has(ch)) {\n            if (!stk.length || stk[stk.length - 1] !== pairs.get(ch)) {\n                return false;\n            }\n            stk.pop();\n        } \n        else {\n            stk.push(ch);\n        }\n    };\n    return !stk.length;\n};\n```\n\n**复杂度分析**\n\n- 时间复杂度：O(n)，其中 n 是字符串 s 的长度。\n\n- 空间复杂度：O(n+∣Σ∣)，其中 Σ 表示字符集，本题中字符串只包含 6 种括号，Σ = 6。栈中的字符数量为 O(n)，而哈希表使用的空间为 O(|Σ|)，相加即可得到总空间复杂度。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-05-16T14:56:08.000Z",
+    "updateAt":  "2022-05-16T22:56:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  996,
+    "filterTotalNum":  1907,
+    "prev":  "e1f26ce6-71ba-4f91-b9a6-42d732799863",
+    "next":  "f0664776-84fa-45ea-800d-3873b9180d36"
+}

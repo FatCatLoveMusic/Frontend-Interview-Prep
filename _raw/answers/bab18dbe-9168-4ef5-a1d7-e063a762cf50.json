@@ -1,0 +1,21 @@
+﻿{
+    "id":  1709,
+    "exerciseKey":  "bab18dbe-9168-4ef5-a1d7-e063a762cf50",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "时钟指针的夹角",
+    "desc":  "给你两个数 `hour` 和 `minutes` 。请你返回在时钟上，由给定时间的时针和分针组成的较小角的角度（60 单位制）。\n\n**示例 1：**\n\n![image.png](https://pic.rmb.bdstatic.com/bjh/d0120f6dcc249b00a8a6c6cc5df878d0.png)\n\n**输入：** hour = 12, minutes = 30\n\n**输出：** 165\n\n**示例 2：**\n\n![image.png](https://pic.rmb.bdstatic.com/bjh/481eaa09c42b10bc5b16f608063d818c.png)\n\n**输入：** hour = 3, minutes = 30\n\n**输出；** 75\n\n**示例 3：**\n\n![image.png](https://pic.rmb.bdstatic.com/bjh/c12b35ca6dc6462b4460a8e7dbfdeae0.png)\n\n**输入：** hour = 3, minutes = 15\n\n**输出：** 7.5\n\n**示例 4：**\n\n**输入：** hour = 4, minutes = 50\n\n**输出：** 155\n\n**示例 5：**\n\n**输入：** hour = 12, minutes = 0\n\n**输出：** 0\n\n**提示：**\n\n* `1 \u003c= hour \u003c= 12`\n* `0 \u003c= minutes \u003c= 59`\n* 与标准答案误差在 `10^-5` 以内的结果都被视为正确结果。\n\n```js\n/**\n * @param {number} hour\n * @param {number} minutes\n * @return {number}\n */\nvar angleClock = function(hour, minutes) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "# 解题思路\n\n以12点为界限来计算角度，首先计算时针到12点的角度，就等于整数点数模12（因为12应该取0）加上分钟/60在乘上360/12。比如12:30 就是(0+1/2)360/12=15度。\n\n在计算分钟到12点的角度，就是分钟数360/60。之后求这两个角度差的绝对值就是夹角，如果夹角大于180则再求一次补角返回即可。\n\n# 代码\n\n```js\n/**\n * @param {number} hour\n * @param {number} minutes\n * @return {number}\n */\nvar angleClock = function(hour, minutes) {\n    // 每分移动6°\n    let oneMinAngle = 6;  \n    // 每小时移动30°\n    let oneHourAngle = 30;\n    // 分针移动的角度\n    let minutesAngle = oneMinAngle * minutes;   \n    // 时针移动的角度 并且防止12点 所以 hour % 12\n    let hourAngle = (hour % 12 + minutes / 60.0) * oneHourAngle  \n    // 用时针的角度减去分针的角度，得其绝对值\n    let diff = Math.abs(hourAngle - minutesAngle);\n    // 返回最小值\n    return Math.min(diff, 360 - diff);\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-03-20T15:23:16.000Z",
+    "updateAt":  "2022-03-20T23:23:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  1081,
+    "filterTotalNum":  1907,
+    "prev":  "2f8aa80e-e3b0-4d10-843d-83e947dda744",
+    "next":  "bce43604-1941-4945-bade-2e6622f4420f"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  500,
+    "exerciseKey":  "fbcd6444-9c0f-492a-b138-bd205bb4bf1d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "async/await 和 Promise 有什么关系？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## Promise\n\n\u003e Promise 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。 这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象\n\n## async/await\n\nes2017的新语法，async/await就是generator + promise的语法糖\n\nasync/await 和 Promise 的关系非常的巧妙，await必须在async内使用，并装饰一个Promise对象，async返回的也是一个Promise对象。\n\nasync/await中的return/throw会代理自己返回的Promise的resolve/reject，而一个Promise的resolve/reject会使得await得到返回值或抛出异常。\n\n* 如果方法内无await节点\n\t* return 一个字面量则会得到一个{PromiseStatus: resolved}的Promise。\n\t* throw 一个Error则会得到一个{PromiseStatus: rejected}的Promise。\n\n* 如果方法内有await节点\n\t* async会返回一个{PromiseStatus: pending}的Promise（发生切换，异步等待Promise的执行结果）。\n\t* Promise的resolve会使得await的代码节点获得相应的返回结果，并继续向下执行。\n\t* Promise的reject 会使得await的代码节点自动抛出相应的异常，终止向下继续执行。",
+    "pivot":  "`async/await` 是 JavaScript 的一种语法糖，它建立在 `Promise` 之上，用于简化异步代码的编写和阅读。\n\n- **`Promise`** 是 JavaScript 中处理异步操作的基本机制。\n- **`async/await`** 是基于 `Promise` 的语法糖，使异步代码更简洁、易读。\n- `async/await` 使得异步代码的编写更像同步代码，提高了可读性，同时错误处理也变得更为直观。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-11T07:29:11.000Z",
+    "updateAt":  "2024-08-10T21:18:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  1420,
+    "filterTotalNum":  1907,
+    "prev":  "43972778-bd1d-4ff4-a153-6c6df65242e3",
+    "next":  "aaee81ad-a128-4bbf-b60b-aa2c9c3396c3"
+}

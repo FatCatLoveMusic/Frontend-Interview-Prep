@@ -1,0 +1,21 @@
+﻿{
+    "id":  556,
+    "exerciseKey":  "d6a31677-c085-4ce9-8841-257659a14034",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果让你来设计一个分页功能, 你会怎么设计? 前后端如何交互?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、是什么\n\n在我们做数据查询的时候，如果数据量很大，比如几万条数据，放在一个页面显示的话显然不友好，这时候就需要采用分页显示的形式，如每次只显示10条数据\n\n![](https://static.ecool.fun//article/f42f71c4-4bac-4806-98a8-7f91a20a6e31.png)\n\n要实现分页功能，实际上就是从结果集中显示第1~10条记录作为第1页，显示第11~20条记录作为第2页，以此类推\n\n因此，分页实际上就是从结果集中截取出第M~N条记录\n\n\n## 二、如何实现\n\n前端实现分页功能，需要后端返回必要的数据，如总的页数，总的数据量，当前页，当前的数据\n\n```js\n{\n \"totalCount\": 1836,   // 总的条数\n \"totalPages\": 92,  // 总页数\n \"currentPage\": 1   // 当前页数\n \"data\": [     // 当前页的数据\n   {\n ...\n   }\n]\n```\n\n后端采用`mysql`作为数据的持久性存储\n\n前端向后端发送目标的页码`page`以及每页显示数据的数量`pageSize`，默认情况每次取10条数据，则每一条数据的起始位置`start`为：\n\n```js\nconst start = (page - 1) * pageSize\n```\n\n当确定了`limit`和`start`的值后，就能够确定`SQL`语句：\n\n```JS\nconst sql = `SELECT * FROM record limit ${pageSize} OFFSET ${start};`\n```\n\n上诉`SQL`语句表达的意思为：截取从`start`到`start`+`pageSize`之间（左闭右开）的数据\n\n关于查询数据总数的`SQL`语句为，`record`为表名：\n\n```mysql\nSELECT COUNT(*) FROM record\n```\n\n因此后端的处理逻辑为：\n\n- 获取用户参数页码数page和每页显示的数目 pageSize ，其中page 是必须传递的参数，pageSize为可选参数，默认为10\n- 编写 SQL 语句，利用 limit 和 OFFSET 关键字进行分页查询\n- 查询数据库，返回总数据量、总页数、当前页、当前页数据给前端\n\n代码如下所示：\n\n```js\nrouter.all(\u0027/api\u0027, function (req, res, next) {\n  var param = \u0027\u0027;\n  // 获取参数\n  if (req.method == \"POST\") {\n    param = req.body;\n  } else {\n    param = req.query || req.params;\n  }\n  if (param.page == \u0027\u0027 || param.page == null || param.page == undefined) {\n    res.end(JSON.stringify({ msg: \u0027请传入参数page\u0027, status: \u0027102\u0027 }));\n    return;\n  }\n  const pageSize = param.pageSize || 10;\n  const start = (param.page - 1) * pageSize;\n  const sql = `SELECT * FROM record limit ${pageSize} OFFSET ${start};`\n  pool.getConnection(function (err, connection) {\n    if (err) throw err;\n    connection.query(sql, function (err, results) {\n      connection.release();\n      if (err) {\n        throw err\n      } else {\n        // 计算总页数\n        var allCount = results[0][0][\u0027COUNT(*)\u0027];\n        var allPage = parseInt(allCount) / 20;\n        var pageStr = allPage.toString();\n        // 不能被整除\n        if (pageStr.indexOf(\u0027.\u0027) \u003e 0) {\n          allPage = parseInt(pageStr.split(\u0027.\u0027)[0]) + 1;\n        }\n        var list = results[1];\n        res.end(JSON.stringify({ msg: \u0027操作成功\u0027, status: \u0027200\u0027, totalPages: allPage, currentPage: param.page, totalCount: allCount, data: list }));\n      }\n    })\n  })\n});\n```\n\n\n\n## 三、总结\n\n通过上面的分析，可以看到分页查询的关键在于，要首先确定每页显示的数量`pageSize`，然后根据当前页的索引`pageIndex`（从1开始），确定`LIMIT`和`OFFSET`应该设定的值：\n\n- LIMIT 总是设定为 pageSize\n- OFFSET 计算公式为 pageSize * (pageIndex - 1)\n\n确定了这两个值，就能查询出第 `N`页的数据\n",
+    "pivot":  "**作答思路**：\n\n设计分页功能时，一般考虑以下几点：\n\n1. **前后端分离**：前后端分离的架构中，前端负责展示和用户交互，后端负责数据处理和分页逻辑。\n2. **API设计**：后端API应该能够接收分页参数，如当前页码、每页显示条数等，并返回分页数据。\n3. **数据处理**：后端需要处理数据，计算出分页信息，包括总条数、总页数、当前页数据等。\n4. **前端展示**：前端根据后端返回的分页数据，动态生成分页控件和显示当前页数据。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-25T02:23:29.000Z",
+    "updateAt":  "2024-08-10T17:05:33.000Z",
+    "isCollected":  false,
+    "currentIndex":  1364,
+    "filterTotalNum":  1907,
+    "prev":  "dda1ce4e-518b-4023-898b-eeb9db4e9b51",
+    "next":  "dfc602d9-11d7-4730-99e2-312b4236f206"
+}

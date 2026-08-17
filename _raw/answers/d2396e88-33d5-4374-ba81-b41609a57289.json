@@ -1,0 +1,21 @@
+﻿{
+    "id":  405,
+    "exerciseKey":  "d2396e88-33d5-4374-ba81-b41609a57289",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个函数，判断输入是不是回文字符串。",
+    "desc":  "“回文串”是一个正读和反读都一样的字符串，比如“level”或者“noon”等等就是回文串。",
+    "options":  null,
+    "explanation":  "* 解法一\n```js\nfunction isPlalindrome(input) {\n  if (typeof input !== \u0027string\u0027) return false;\n  return input.split(\u0027\u0027).reverse().join(\u0027\u0027) === input;\n}\n```\n\n* 解法二\n```js\nfunction isPlalindrome(input) {\n  if (typeof input !== \u0027string\u0027) return false;\n  let i = 0, j = input.length - 1\n  while(i \u003c j) {\n      if(input.charAt(i) !== input.charAt(j)) return false\n      i ++\n      j --\n  }\n  return true\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T14:02:30.000Z",
+    "updateAt":  "2021-07-07T00:12:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  1515,
+    "filterTotalNum":  1907,
+    "prev":  "f56b93a9-52df-49ae-8d63-d7ee4f816f8b",
+    "next":  "5ee5ebe0-04c8-4852-a0fb-5c1178cb17dc"
+}

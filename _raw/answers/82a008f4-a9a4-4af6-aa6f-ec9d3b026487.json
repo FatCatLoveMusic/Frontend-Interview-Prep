@@ -1,0 +1,21 @@
+﻿{
+    "id":  437,
+    "exerciseKey":  "82a008f4-a9a4-4af6-aa6f-ec9d3b026487",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "\u00271\u0027.toString()为什么不会报错？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "其实在这个语句运行的过程中做了这样几件事情：\n\n```js\nvar s = new Object(\u00271\u0027);\ns.toString();\ns = null;\n```\n\n* 第一步: 创建Object类实例。注意为什么不是String ？ 由于Symbol和BigInt的出现，对它们调用new都会报错，目前ES6规范也不建议用new来创建基本类型的包装类。\n* 第二步: 调用实例方法。\n* 第三步: 执行完方法立即销毁这个实例。\n\n整个过程体现了 `基本包装类型` 的性质，而基本包装类型恰恰属于基本数据类型，包括Boolean, Number和String。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:58:33.000Z",
+    "updateAt":  "2024-07-22T11:51:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1483,
+    "filterTotalNum":  1907,
+    "prev":  "27491e6c-d92d-4d41-9bff-4781665945df",
+    "next":  "2caef7c7-6f12-4104-9a51-b360dc775357"
+}

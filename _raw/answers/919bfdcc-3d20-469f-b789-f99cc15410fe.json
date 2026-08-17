@@ -1,0 +1,21 @@
+﻿{
+    "id":  444,
+    "exerciseKey":  "919bfdcc-3d20-469f-b789-f99cc15410fe",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面执行后输出什么？",
+    "desc":  "```js\nfor(var i = 1; i \u003c= 5; i ++){\n  setTimeout(function timer(){\n  \tconsole.log(i)\n  }, 0)\n}\n```",
+    "options":  null,
+    "explanation":  "结论： 输出5个6。\n\n因为setTimeout为宏任务，由于JS中单线程eventLoop机制，在主线程同步任务执行完后才去执行宏任\n务，因此循环结束后setTimeout中的回调才依次执行，但输出i的时候当前作用域没有，往上一级再找，发现了i,此时循环已经结束，i变成了6。因此会全部输出6。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T16:04:07.000Z",
+    "updateAt":  "2021-07-07T00:14:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  1476,
+    "filterTotalNum":  1907,
+    "prev":  "ba7ffa60-aa92-4e66-9b14-78520f4deeee",
+    "next":  "8edaa033-4005-41cc-a255-f175f6c4eb6b"
+}

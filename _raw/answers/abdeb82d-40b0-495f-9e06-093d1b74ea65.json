@@ -1,0 +1,21 @@
+﻿{
+    "id":  2871,
+    "exerciseKey":  "abdeb82d-40b0-495f-9e06-093d1b74ea65",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "async/await 原理， 手写 async 函数？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "## async/await 的本质\n\nasync/await 是 ECMAScript 2017（ES8）中引入的一个语言特性，用于处理异步编程。async/await 实际上是对 Promise 的封装，通过让开发者以同步的方式编写异步代码，使得代码更加易读和易于维护。\n\nasync/await 是一种更加高级的异步编程方式，它使用了 Promise 作为底层实现，可以更好地处理异步编程中的错误和异常，避免了回调地狱和代码可读性差的问题。\n\n## 手写 async/await 实现\n\nasync/await 的实现可以通过封装 Promise 和 Generator 函数来实现，下面是一个简单的手写实现示例：\n```js\nfunction delay(ms) {\n  return new Promise((resolve) =\u003e {\n    setTimeout(() =\u003e {\n      resolve();\n    }, ms);\n  });\n}\n\nfunction* generator() {\n  console.log(\"start\");\n  yield delay(1000);\n  console.log(\"after 1 second\");\n  yield delay(2000);\n  console.log(\"after 2 more seconds\");\n}\n\nfunction async(generatorFunc) {\n  const iterator = generatorFunc();\n\n  function handle(iteratorResult) {\n    if (iteratorResult.done) {\n      return Promise.resolve(iteratorResult.value);\n    }\n\n    return Promise.resolve(iteratorResult.value).then((res) =\u003e {\n      return handle(iterator.next(res));\n    });\n  }\n\n  return handle(iterator.next());\n}\n\nasync(function () {\n  return generator();\n}).then(() =\u003e {\n  console.log(\"all done\");\n});\n```\n\n",
+    "pivot":  "- **`async/await`** 是 JavaScript 中处理异步操作的语法糖，使异步代码看起来更像同步代码。\n- **`async` 函数** 总是返回一个 Promise，**`await`** 关键字用于等待 Promise 解析。\n- **手写 `async` 函数** 需要模拟 Promise 的处理，并包装原函数以确保其返回 Promise 并处理错误。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2024-08-14T12:03:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  330,
+    "filterTotalNum":  1907,
+    "prev":  "d0fd3a52-1ddf-42b2-b9d8-f36fc885d237",
+    "next":  "5ee52126-6153-4409-a930-a01d2d313605"
+}

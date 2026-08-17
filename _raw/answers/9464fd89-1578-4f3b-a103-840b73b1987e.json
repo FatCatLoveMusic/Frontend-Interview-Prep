@@ -1,0 +1,21 @@
+﻿{
+    "id":  1919,
+    "exerciseKey":  "9464fd89-1578-4f3b-a103-840b73b1987e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何控制 input 输入框的输入字数？\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  " 一般是通过 maxlength 属性进行限制：\n \n ```js\n \u003cinput maxlength=\"5\" /\u003e\n ```\n \n 另外还可以通过监听 `οninput` 事件，对输入值进行处理。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-10-10T12:43:05.000Z",
+    "updateAt":  "2022-10-11T09:22:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  891,
+    "filterTotalNum":  1907,
+    "prev":  "8bf5ed84-131a-405e-9385-0b3b75a42723",
+    "next":  "f1a76998-d6bd-487e-ae2e-06a045f8e7aa"
+}

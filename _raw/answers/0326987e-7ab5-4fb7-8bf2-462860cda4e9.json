@@ -1,0 +1,21 @@
+﻿{
+    "id":  2956,
+    "exerciseKey":  "0326987e-7ab5-4fb7-8bf2-462860cda4e9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何用Promise.all实现并发请求？如何处理部分请求失败？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 1. 用 `Promise.all` 实现并发请求\n\n`Promise.all` 的特性是：**等待所有 Promise 全部成功，才会进入 `.then`；如果有一个失败，会立刻进入 `.catch`**。\n\n例子：\n\n```js\nfunction fetchData(url) {\n  return fetch(url).then(res =\u003e res.json());\n}\n\nPromise.all([\n  fetchData(\u0027/api/user\u0027),\n  fetchData(\u0027/api/order\u0027),\n  fetchData(\u0027/api/message\u0027),\n]).then(([user, order, message]) =\u003e {\n  console.log(\u0027全部成功:\u0027, user, order, message);\n}).catch(error =\u003e {\n  console.error(\u0027有请求失败:\u0027, error);\n});\n```\n\n这样就能同时发起多个请求（并发），等结果全部回来再统一处理。\n\n---\n\n## 2. 如何处理 **部分请求失败**\n\n### 方案 A: `Promise.allSettled`（推荐）\n\n* 它不会短路，所有 Promise 都会执行完。\n* 返回结果包含 `status: \"fulfilled\"` 或 `\"rejected\"`。\n\n```js\nPromise.allSettled([\n  fetchData(\u0027/api/user\u0027),\n  fetchData(\u0027/api/order\u0027),\n  fetchData(\u0027/api/message\u0027),\n]).then(results =\u003e {\n  results.forEach(result =\u003e {\n    if (result.status === \u0027fulfilled\u0027) {\n      console.log(\u0027成功:\u0027, result.value);\n    } else {\n      console.error(\u0027失败:\u0027, result.reason);\n    }\n  });\n});\n```\n\n这样就能做到“部分成功也能拿到”。\n\n---\n\n### 方案 B: 手动封装 catch，让 `Promise.all` 不被短路\n\n给每个请求加上 `.catch`，保证它不会抛错，而是返回一个标记：\n\n```js\nfunction safeFetch(promise) {\n  return promise\n    .then(res =\u003e ({ status: \u0027fulfilled\u0027, value: res }))\n    .catch(err =\u003e ({ status: \u0027rejected\u0027, reason: err }));\n}\n\nPromise.all([\n  safeFetch(fetchData(\u0027/api/user\u0027)),\n  safeFetch(fetchData(\u0027/api/order\u0027)),\n  safeFetch(fetchData(\u0027/api/message\u0027)),\n]).then(results =\u003e {\n  console.log(results);\n});\n```\n\n输出结构和 `allSettled` 一样，但可以兼容旧浏览器（没有 `allSettled` 的情况）。\n\n---\n\n### 方案 C: 按需兜底（部分失败时用默认值）\n\n比如请求失败时，给个默认数据继续用：\n\n```js\nPromise.all([\n  fetchData(\u0027/api/user\u0027).catch(() =\u003e ({ name: \u0027游客\u0027 })),\n  fetchData(\u0027/api/order\u0027).catch(() =\u003e []),\n  fetchData(\u0027/api/message\u0027).catch(() =\u003e []),\n]).then(([user, order, message]) =\u003e {\n  console.log(\u0027即使失败也有默认值:\u0027, user, order, message);\n});\n```\n",
+    "pivot":  "* **只要全部成功才继续 → 用 `Promise.all`**\n* **要拿到每个请求的完整结果（成功 + 失败） → 用 `Promise.allSettled`**\n* **需要容错或兜底值 → 在每个 Promise 上加 catch**",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2025-08-28T08:37:19.000Z",
+    "updateAt":  "2025-08-28T08:37:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  246,
+    "filterTotalNum":  1907,
+    "prev":  "a363afe0-ce04-4c69-8221-a0b8e01c9452",
+    "next":  "dabf3a5e-f0a0-4215-9248-ec012b3b722b"
+}

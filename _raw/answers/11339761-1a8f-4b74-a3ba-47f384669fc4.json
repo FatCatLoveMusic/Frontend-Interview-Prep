@@ -1,0 +1,21 @@
+﻿{
+    "id":  2633,
+    "exerciseKey":  "11339761-1a8f-4b74-a3ba-47f384669fc4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "移动零",
+    "desc":  "给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。\n\n示例:\n\n* 输入: [0,1,0,3,12]\n* 输出: [1,3,12,0,0]\n\n说明:\n\n* 必须在原数组上操作，不能拷贝额外的数组。\n* 尽量减少操作次数。",
+    "options":  "",
+    "explanation":  "### 解法1：\n\n```js\nfunction zeroMove(array) {\n  let len = array.length;\n  let j = 0;\n  for (let i = 0; i \u003c len - j; i++) {\n    if (array[i] === 0) {\n      array.push(0);\n      array.splice(i, 1);\n      i--;\n      j++;\n    }\n  }\n  return array;\n}\n```\n\n### 解法2：算法思路\n\n```js\nfunction moveZeroToLast(arr) {\n  let index = 0;\n  for (let i = 0, length = arr.length; i \u003c length; i++) {\n    if (arr[i] === 0) {\n      index++;\n    } else if (index !== 0) {\n      arr[i - index] = arr[i];\n      arr[i] = 0;\n    }\n  }\n  return arr;\n}\n```\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T13:59:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  435,
+    "filterTotalNum":  1907,
+    "prev":  "9ba9d7cb-840a-4910-8596-88c6349ead1e",
+    "next":  "c639112b-02cf-479d-a150-df9551f33e92"
+}

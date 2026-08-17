@@ -1,0 +1,21 @@
+﻿{
+    "id":  2995,
+    "exerciseKey":  "7d2ed248-95ed-4bf7-a201-ab1e436350a8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个 animate 方法，能够驱动元素从一个位置移动到另一个位置，要求支持动画的开始、暂停和取消功能。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "实现这类高性能动画的核心在于 **`requestAnimationFrame` (rAF)**。相比 `setTimeout`，rAF 能确保回调函数在浏览器每一次重绘之前执行，从而提供 60fps 左右的平滑体验。\n\n以下是一个采用 ES6 类封装的 `Animate` 方案，它通过计算时间偏移量（Offset）来支持精准的暂停与恢复。\n\n### 1. 代码实现\n\n```javascript\nclass Animator {\n    constructor(element) {\n        this.el = element;\n        this.requestId = null;\n        this.startTime = null;\n        this.pausedTime = 0; // 记录已消耗的动画时间\n        this.duration = 1000;\n        this.targetPos = { x: 0, y: 0 };\n        this.startPos = { x: 0, y: 0 };\n        this.isPaused = false;\n    }\n\n    move(x, y, duration = 1000) {\n        this.cancel(); // 启动新动画前重置\n        this.targetPos = { x, y };\n        this.duration = duration;\n        \n        // 获取当前位置作为起始点\n        const rect = this.el.getBoundingClientRect();\n        this.startPos = { x: rect.left, y: rect.top };\n        \n        this.startTime = performance.now();\n        this.isPaused = false;\n        this.pausedTime = 0;\n        \n        this._run();\n    }\n\n    _run() {\n        const step = (currentTime) =\u003e {\n            if (this.isPaused) return;\n\n            // 核心公式：进度 = (当前时间 - 开始时间 + 已跳过的时间) / 总时长\n            const elapsed = currentTime - this.startTime + this.pausedTime;\n            const progress = Math.min(elapsed / this.duration, 1);\n\n            // 线性插值计算当前坐标\n            const curX = this.startPos.x + (this.targetPos.x - this.startPos.x) * progress;\n            const curY = this.startPos.y + (this.targetPos.y - this.startPos.y) * progress;\n\n            this.el.style.transform = `translate(${curX}px, ${curY}px)`;\n\n            if (progress \u003c 1) {\n                this.requestId = requestAnimationFrame(step);\n            }\n        };\n        this.requestId = requestAnimationFrame(step);\n    }\n\n    pause() {\n        if (this.isPaused || !this.requestId) return;\n        this.isPaused = true;\n        // 记录暂停时的进度时间\n        this.pausedTime += performance.now() - this.startTime;\n        cancelAnimationFrame(this.requestId);\n    }\n\n    resume() {\n        if (!this.isPaused) return;\n        this.isPaused = false;\n        this.startTime = performance.now(); // 重设参考时间\n        this._run();\n    }\n\n    cancel() {\n        if (this.requestId) {\n            cancelAnimationFrame(this.requestId);\n            this.requestId = null;\n        }\n        this.isPaused = false;\n        this.pausedTime = 0;\n    }\n}\n\n```\n\n### 2. 核心逻辑解析\n\n* **状态保存与偏移量计算**：\n暂停功能的难点在于重新启动时如何衔接。本方案引入了 `pausedTime`。当暂停时，计算出已经跑了多久；当恢复（Resume）时，重新获取当前时间戳作为 `startTime`，并叠加 `pausedTime`。这样能确保动画进度百分比的计算是连续的。\n* **性能优化 (GPU 加速)**：\n代码中通过修改 `style.transform` 而非 `left/top` 来移动元素。这可以避开浏览器的重排（Layout）阶段，直接进入复合（Composite）阶段，利用 GPU 渲染提高流畅度。\n* **高精度时间戳**：\n使用了 `performance.now()` 而非 `Date.now()`。前者提供微秒级精度，且不受系统时间漂移影响，是处理动画逻辑的标准做法。\n\n### 3. 扩展建议\n\n在工程实践中，线性移动（Linear）通常显得僵硬。可以通过引入 **Easing Functions**（缓动函数，如 Ease-in-out）来修改 `progress` 的计算方式：\n\n从而使动画更符合物理直觉。",
+    "pivot":  "* **技术选型**：使用 `requestAnimationFrame` 保证动画与屏幕刷新率同步。\n* **状态转换**：通过记录 `pausedTime` 和动态重置 `startTime` 实现暂停与恢复的平滑衔接。\n* **渲染优化**：使用 `transform` 代替定位属性以减少重排开销。\n* **健壮性**：在 `move` 或 `cancel` 时及时清理 `requestId`，防止内存泄漏和动画重叠。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-01-30T15:37:48.000Z",
+    "updateAt":  "2026-01-30T15:37:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  208,
+    "filterTotalNum":  1907,
+    "prev":  "1044b4d4-a095-4730-b911-8426b8667baf",
+    "next":  "c176e5d4-a42e-4e1c-afb6-d7f8f4faa1d3"
+}

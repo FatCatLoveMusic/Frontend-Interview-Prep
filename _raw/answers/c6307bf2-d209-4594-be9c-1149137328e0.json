@@ -1,0 +1,21 @@
+﻿{
+    "id":  2147,
+    "exerciseKey":  "c6307bf2-d209-4594-be9c-1149137328e0",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "React 的循环渲染中，为什么不推荐使用 index 作为元素的 key？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 React 中，`key` 是用于标识每个列表项的唯一标识符，以便在渲染过程中有效跟踪每个元素的变化。\n\n虽然可以使用 `index` 作为 `key`，但并不推荐这样做，原因如下：\n\n### **1. 会导致不必要的重新渲染**\n当使用 `index` 作为 `key` 时，如果列表项的顺序发生变化（如增删或移动），React 无法正确识别哪个项是真正变化的。它可能会重用错误的 DOM 节点，导致性能问题或错误的 UI 展现。\n\n**示例：**\n```jsx\nconst items = [\u0027A\u0027, \u0027B\u0027, \u0027C\u0027];\n// 使用 index 作为 key\n{items.map((item, index) =\u003e (\n  \u003cdiv key={index}\u003e{item}\u003c/div\u003e\n))}\n\n// 假设删除了第一个项\nconst newItems = [\u0027B\u0027, \u0027C\u0027];\n```\nReact 会将第二个列表项 `B` 误认为是原来的第一个项，因为它们的 `key` 是相同的。\n\n---\n\n### **2. 导致状态错乱**\n如果列表项中有状态（如输入框的值），当列表顺序变化时，状态可能被错误地绑定到其他项上，造成用户体验问题。\n\n**示例：**\n```jsx\nfunction App() {\n  const [items, setItems] = React.useState([\u0027A\u0027, \u0027B\u0027, \u0027C\u0027]);\n  \n  const handleRemove = () =\u003e setItems([\u0027B\u0027, \u0027C\u0027]);\n  \n  return (\n    \u003c\u003e\n      {items.map((item, index) =\u003e (\n        \u003cinput key={index} defaultValue={item} /\u003e\n      ))}\n      \u003cbutton onClick={handleRemove}\u003eRemove First\u003c/button\u003e\n    \u003c/\u003e\n  );\n}\n```\n移除第一项后，输入框的值会混乱，因为 React 认为 `B` 的输入框与原来的第一个输入框是同一个节点。\n\n---\n\n### **3. 不满足唯一性要求**\nReact 要求每个 `key` 在同一级别的列表中必须是唯一的。如果使用 `index` 作为 `key`，当列表项的内容本身需要独立标识时，`index` 无法提供准确的唯一性。\n\n---\n\n### **推荐的做法**\n1. **使用唯一标识符**：如果列表项有唯一的 `id`，优先使用 `id` 作为 `key`。\n   ```jsx\n   const items = [{ id: 1, name: \u0027A\u0027 }, { id: 2, name: \u0027B\u0027 }];\n   {items.map(item =\u003e (\n     \u003cdiv key={item.id}\u003e{item.name}\u003c/div\u003e\n   ))}\n   ```\n\n2. **动态生成唯一标识符**：如果列表项没有唯一 `id`，可以使用库（如 `uuid`）生成唯一的 `key`。\n\n3. **仅在静态列表中使用 `index`**：如果列表内容不会动态增删或重排，可以安全使用 `index`。 ",
+    "pivot":  "- 使用 `index` 作为 `key` 会引发 **性能问题** 和 **UI 或状态混乱**，不适用于动态列表。\n- 推荐使用能唯一标识列表项的数据（如 `id`），在无法提供唯一标识的情况下，需谨慎使用 `index` 作为 `key`。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-01-22T11:53:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  681,
+    "filterTotalNum":  1907,
+    "prev":  "80467a7a-4f12-4b84-afd6-f63ffe0e0911",
+    "next":  "63b209be-9f39-4de8-aa1a-a8345e0851e9"
+}

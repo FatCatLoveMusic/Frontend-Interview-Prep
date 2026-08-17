@@ -1,0 +1,21 @@
+﻿{
+    "id":  2019,
+    "exerciseKey":  "49ab4d36-c9e1-42c9-9df1-a610dc9dac8e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "下面代码的输出是什么？",
+    "desc":  "```js\nconst obj = {\n fn1: () =\u003e console.log(this),\n fn2: function() {console.log(this)}\n}\n\nobj.fn1();\nobj.fn2();\n\nconst x = new obj.fn1();\nconst y = new obj.fn2();\n```",
+    "options":  null,
+    "explanation":  "在上面的代码中，obj 对象包含两个方法 fn1 和 fn2。fn1 使用箭头函数定义，而 fn2 使用普通函数定义。\n\n对于箭头函数，它没有自己的 this 值，也就是说它会捕获上下文中的 this 值，因此 fn1 中的 this 指向的是全局对象 window（或者 undefined，如果运行环境是严格模式）。因此，当我们调用 obj.fn1() 时，输出结果为 **window**（或 undefined）。\n\n对于普通函数，它的 this 值是在运行时动态绑定的。因此，当我们调用 obj.fn2() 时，输出结果为 **obj 对象本身**。\n\n接下来，代码中分别使用 new 运算符创建了 obj.fn1 和 obj.fn2 的实例 x 和 y。\n\n**由于箭头函数没有自己的 this 值，所以尝试使用 new 运算符创建实例会导致 TypeError 错误。**也就是 `new obj.fn1() ` 会报错。\n\n而对于普通函数，new 运算符可以正确地创建实例，并且 this 值指向新创建的实例对象。但因为上面执行  `new obj.fn1() `  时 js 已经报错，`new obj.fn2(); ` 并不会执行。",
+    "pivot":  "### 题目解析\n\n**关键点**： 箭头函数不能作为构造函数来调用，即不能使用 `new` 来调用箭头函数！\n\n1. **`obj.fn1()`**：\n    - **输出**: `undefined`\n    - **解释**: `fn1` 是一个箭头函数。箭头函数没有自己的 `this` 上下文，它们会从定义它们的词法环境中继承 `this`。在这个例子中，定义环境是全局作用域（或者是 ES 模块的模块作用域）。在严格模式或模块中，`this` 是 `undefined`，因此输出是 `undefined`。\n\n2. **`obj.fn2()`**：\n    - **输出**: `{ fn1: [Function: fn1], fn2: [Function: fn2] }`\n    - **解释**: `fn2` 是一个常规函数。常规函数有自己的 `this` 上下文，`this` 的值取决于函数的调用方式。当作为对象的方法调用时，`this` 指向该对象。在这个例子中，`obj` 是调用 `fn2` 的对象，因此 `this` 在 `fn2` 中指向 `obj`。\n\n3. **`new obj.fn1()`**：\n    - **输出**: `TypeError: obj.fn1 is not a constructor`\n    - **解释**: 箭头函数不能作为构造函数使用。箭头函数没有 `[[Construct]]` 方法，这是构造函数所必需的。尝试使用箭头函数作为构造函数会导致 `TypeError` 错误。\n\n4. **`new obj.fn2()`**：\n    - **输出**: `{ fn1: [Function: fn1], fn2: [Function: fn2] }`\n    - **解释**: `fn2` 是一个常规函数，可以作为构造函数使用。使用 `new` 关键字调用它时，会创建 `fn2` 的新实例。由于 `fn2` 是 `obj` 的一个方法，新实例的原型是 `obj`。因此，新实例具有与 `obj` 相同的属性，并且 `this` 在 `fn2` 中指向新创建的实例。输出反映了创建的新实例。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-30T01:12:25.000Z",
+    "updateAt":  "2024-08-10T17:07:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  792,
+    "filterTotalNum":  1907,
+    "prev":  "94b843ea-1ede-4fa4-81ae-a92e612b4439",
+    "next":  "991e859c-58aa-42e4-8ccb-2e74aba9a083"
+}

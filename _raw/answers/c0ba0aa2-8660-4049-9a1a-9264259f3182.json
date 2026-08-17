@@ -1,0 +1,21 @@
+﻿{
+    "id":  232,
+    "exerciseKey":  "c0ba0aa2-8660-4049-9a1a-9264259f3182",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue中给对象添加新属性时，界面不刷新怎么办?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、直接添加属性的问题\n\n我们从一个例子开始\n\n定义一个`p`标签，通过`v-for`指令进行遍历\n\n然后给`botton`标签绑定点击事件，我们预期点击按钮时，数据新增一个属性，界面也 新增一行\n\n```html\n\u003cp v-for=\"(value,key) in item\" :key=\"key\"\u003e\n    {{ value }}\n\u003c/p\u003e\n\u003cbutton @click=\"addProperty\"\u003e动态添加新属性\u003c/button\u003e\n```\n\n实例化一个`vue`实例，定义`data`属性和`methods`方法\n\n```js\nconst app = new Vue({\n    el:\"#app\",\n   \tdata:()=\u003e{\n       \titem:{\n            oldProperty:\"旧属性\"\n        }\n    },\n    methods:{\n        addProperty(){\n            this.items.newProperty = \"新属性\"  // 为items添加新属性\n            console.log(this.items)  // 输出带有newProperty的items\n        }\n    }\n})\n```\n\n点击按钮，发现结果不及预期，数据虽然更新了（`console`打印出了新属性），但页面并没有更新\n\n\n## 二、原理分析\n\n为什么产生上面的情况呢？\n\n下面来分析一下\n\n`vue2`是用过`Object.defineProperty`实现数据响应式\n\n```js\nconst obj = {}\nObject.defineProperty(obj, \u0027foo\u0027, {\n    get() {\n        console.log(`get foo:${val}`);\n        return val\n    },\n    set(newVal) {\n        if (newVal !== val) {\n            console.log(`set foo:${newVal}`);\n            val = newVal\n        }\n    }\n})\n```\n\n当我们访问`foo`属性或者设置`foo`值的时候都能够触发`setter`与`getter`\n\n```js\nobj.foo   \nobj.foo = \u0027new\u0027\n```\n\n但是我们为`obj`添加新属性的时候，却无法触发事件属性的拦截\n\n```js\nobj.bar  = \u0027新属性\u0027\n```\n\n原因是一开始`obj`的`foo`属性被设成了响应式数据，而`bar`是后面新增的属性，并没有通过`Object.defineProperty`设置成响应式数据\n\n## 三、解决方案\n\n`Vue` 不允许在已经创建的实例上动态添加新的响应式属性\n\n若想实现数据与视图同步更新，可采取下面三种解决方案：\n\n- Vue.set()\n- Object.assign()\n- $forcecUpdated()\n\n\n\n### Vue.set()\n\nVue.set( target, propertyName/index, value )\n\n参数\n\n- `{Object | Array} target`\n- `{string | number} propertyName/index`\n- `{any} value`\n\n返回值：设置的值\n\n通过`Vue.set`向响应式对象中添加一个`property`，并确保这个新 `property `同样是响应式的，且触发视图更新\n\n关于`Vue.set`源码（省略了很多与本节不相关的代码）\n\n源码位置：`src\\core\\observer\\index.js`\n\n```js\nfunction set (target: Array\u003cany\u003e | Object, key: any, val: any): any {\n  ...\n  defineReactive(ob.value, key, val)\n  ob.dep.notify()\n  return val\n}\n```\n\n这里无非再次调用`defineReactive`方法，实现新增属性的响应式\n\n关于`defineReactive`方法，内部还是通过`Object.defineProperty`实现属性拦截\n\n大致代码如下：\n\n```js\nfunction defineReactive(obj, key, val) {\n    Object.defineProperty(obj, key, {\n        get() {\n            console.log(`get ${key}:${val}`);\n            return val\n        },\n        set(newVal) {\n            if (newVal !== val) {\n                console.log(`set ${key}:${newVal}`);\n                val = newVal\n            }\n        }\n    })\n}\n```\n\n\n\n### Object.assign()\n\n直接使用`Object.assign()`添加到对象的新属性不会触发更新\n\n应创建一个新的对象，合并原对象和混入对象的属性\n\n```js\nthis.someObject = Object.assign({},this.someObject,{newProperty1:1,newProperty2:2 ...})\n```\n\n\n\n### $forceUpdate\n\n如果你发现你自己需要在 `Vue `中做一次强制更新，99.9% 的情况，是你在某个地方做错了事\n\n`$forceUpdate`迫使` Vue` 实例重新渲染\n\nPS：仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。\n\n\n\n### 小结\n\n- 如果为对象添加少量的新属性，可以直接采用`Vue.set()`\n\n- 如果需要为新对象添加大量的新属性，则通过`Object.assign()`创建新对象\n\n- 如果你实在不知道怎么操作时，可采取`$forceUpdate()`进行强制刷新 (不建议)\n  \n\nPS：`vue3`是用过`proxy`实现数据响应式的，直接动态添加新属性仍可以实现数据响应式\n\n",
+    "pivot":  "在Vue.js中，直接向已创建的Vue实例的响应式数据对象中添加新属性时，可能会遇到一个问题：这些新属性不会自动变为响应式，因此不会触发视图的更新。这是因为Vue 2.x版本使用`Object.defineProperty`来实现数据响应式，该方法只对预先定义的属性起作用。\n\n#### 原理分析\n\nVue 2.x使用`Object.defineProperty`来创建对象的响应式属性。这意味着当您访问或设置一个已通过这种方式定义的属性时，Vue会拦截这些操作并执行相应的getter和setter，从而使数据保持响应式。然而，当您添加一个新属性时，Vue不会自动将其设置为响应式，因为`Object.defineProperty`只对已经存在的属性有效。\n\n#### 解决方案\n\n为了解决这个问题，Vue提供了几种方法来确保新添加的属性也是响应式的：\n\n1. **Vue.set()**：Vue提供了一个全局的`Vue.set`方法，它可以用来向响应式对象中添加新的响应式属性。\n2. **Object.assign()**：如果您需要向对象添加多个新属性，可以创建一个新的对象，然后使用`Object.assign`方法将原对象和新属性合并。\n3. **$forceUpdate()**：这是一个不太推荐的方法，它迫使Vue实例重新渲染，包括其所有子组件。\n",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-04T03:36:01.000Z",
+    "updateAt":  "2024-08-10T17:04:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  1687,
+    "filterTotalNum":  1907,
+    "prev":  "51699bda-02be-4433-b2bf-450c2655594f",
+    "next":  "7e8c5dd0-90cc-451b-afdb-0c4150704768"
+}

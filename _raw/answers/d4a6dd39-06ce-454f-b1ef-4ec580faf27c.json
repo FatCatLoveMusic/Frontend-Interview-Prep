@@ -1,0 +1,21 @@
+﻿{
+    "id":  462,
+    "exerciseKey":  "d4a6dd39-06ce-454f-b1ef-4ec580faf27c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说一说TypeScript中的类及其特性。",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "TypeScript 引入了类，以便它们可以利用诸如封装和抽象之类的面向对象技术的好处。\n\nTypeScript 编译器将 TypeScript 中的类编译为普通的 JavaScript 函数，以跨平台和浏览器工作。\n\n一个类包括以下内容：\n\n* 构造器（Constructor）\n* 属性（Properties）\n* 方法（Methods）\n\n```\nclass Employee {\n    empID: number;\n    empName: string;\n \n    constructor(ID: number, name: string) {\n        this.empName = name;\n        this.empID = ID;\n    }\n \n    getSalary(): number {\n        return 40000;\n    }\n}\n```\n类的其他特性有：\n\n* 继承（Inheritance）\n* 封装（Encapsulation）\n* 多态（Polymorphism）\n* 抽象（Abstraction）",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，类（Class）是面向对象编程的基础，用于创建具有属性和方法的抽象实体。类具有以下特性：\n\n1. **属性**：类可以定义私有、公共或受保护的属性，用于存储数据。\n2. **方法**：类可以定义私有、公共或受保护的方法，用于执行操作。\n3. **继承**：类可以继承另一个类，子类可以重写父类的方法。\n4. **构造函数**：类有一个构造函数，用于初始化类的实例。\n5. **静态属性**：类可以定义静态属性，这些属性属于类本身，而不是类的实例。\n6. **静态方法**：类可以定义静态方法，这些方法也属于类本身，而不是类的实例。\n7. **抽象类**：抽象类不能被实例化，主要用于定义继承关系。\n\n**考察要点**：\n\n1. **类的基本概念**：理解类在面向对象编程中的基本概念和用途。\n2. **属性和方法**：了解如何在类中定义属性和方法。\n3. **继承和抽象类**：理解类在继承和抽象类方面的特性。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-08T14:53:56.000Z",
+    "updateAt":  "2024-08-10T17:05:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1458,
+    "filterTotalNum":  1907,
+    "prev":  "1b2049cf-9800-420d-b4f3-09238226d162",
+    "next":  "71f4e5bf-6bfd-4220-985c-80d940f16766"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  193,
+    "exerciseKey":  "ddec2e9f-993c-4298-8477-b7bc25db7713",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "== 和 ===有什么区别，分别在什么情况使用？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、等于操作符\n\n等于操作符用两个等于号（ == ）表示，如果操作数相等，则会返回 `true`\n\n前面文章，我们提到在`JavaScript`中存在隐式转换。等于操作符（==）在比较中会先进行类型转换，再确定操作数是否相等\n\n遵循以下规则：\n\n如果任一操作数是布尔值，则将其转换为数值再比较是否相等\n\n```js\nlet result1 = (true == 1); // true\n```\n\n如果一个操作数是字符串，另一个操作数是数值，则尝试将字符串转换为数值，再比较是否相等\n\n```js\nlet result1 = (\"55\" == 55); // true\n```\n\n如果一个操作数是对象，另一个操作数不是，则调用对象的 `valueOf() `方法取得其原始值，再根据前面的规则进行比较\n\n```js\nlet obj = {valueOf:function(){return 1}}\nlet result1 = (obj == 1); // true\n```\n\n`null `和` undefined `相等\n\n```js\nlet result1 = (null == undefined ); // true\n```\n\n如果有任一操作数是 `NaN` ，则相等操作符返回 `false` \n\n```js\nlet result1 = (NaN == NaN ); // false\n```\n\n如果两个操作数都是对象，则比较它们是不是同一个对象。如果两个操作数都指向同一个对象，则相等操作符返回` true `\n\n```\nlet obj1 = {name:\"xxx\"}\nlet obj2 = {name:\"xxx\"}\nlet result1 = (obj1 == obj2 ); // false\n```\n\n下面进一步做个小结：\n\n- 两个都为简单类型，字符串和布尔值都会转换成数值，再比较\n- 简单类型与引用类型比较，对象转化成其原始类型的值，再比较\n\n- 两个都为引用类型，则比较它们是否指向同一个对象\n\n- null 和 undefined 相等\n- 存在 NaN 则返回 false\n\n\n\n## 二、全等操作符\n\n全等操作符由 3 个等于号（ === ）表示，只有两个操作数在不转换的前提下相等才返回 `true`。即类型相同，值也需相同\n\n```js\nlet result1 = (\"55\" === 55); // false，不相等，因为数据类型不同\nlet result2 = (55 === 55); // true，相等，因为数据类型相同值也相同\n```\n\n`undefined` 和 `null` 与自身严格相等\n\n```js\nlet result1 = (null === null)  //true\nlet result2 = (undefined === undefined)  //true\n```\n\n\n\n## 三、区别\n\n相等操作符（==）会做类型转换，再进行值的比较，全等运算符不会做类型转换\n\n```js\nlet result1 = (\"55\" === 55); // false，不相等，因为数据类型不同\nlet result2 = (55 === 55); // true，相等，因为数据类型相同值也相同\n```\n\n`null` 和 `undefined` 比较，相等操作符（==）为`true`，全等为`false`\n\n```js\nlet result1 = (null == undefined ); // true\nlet result2 = (null  === undefined); // false\n```\n\n\n\n### 小结\n\n相等运算符隐藏的类型转换，会带来一些违反直觉的结果\n\n```js\n\u0027\u0027 == \u00270\u0027 // false\n0 == \u0027\u0027 // true\n0 == \u00270\u0027 // true\n\nfalse == \u0027false\u0027 // false\nfalse == \u00270\u0027 // true\n\nfalse == undefined // false\nfalse == null // false\nnull == undefined // true\n\n\u0027 \\t\\r\\n\u0027 == 0 // true\n```\n\n但在比较`null`的情况的时候，我们一般使用相等操作符`==`\n\n```js\nconst obj = {};\n\nif(obj.x == null){\n  console.log(\"1\");  //执行\n}\n```\n\n等同于下面写法\n\n```js\nif(obj.x === null || obj.x === undefined) {\n    ...\n}\n```\n\n使用相等操作符（==）的写法明显更加简洁了\n\n所以，除了在比较对象属性为`null`或者`undefined`的情况下，我们可以使用相等操作符（==），其他情况建议一律使用全等操作符（===）\n\n\n\n",
+    "pivot":  "### 等于操作符（==）\n\n- **定义**：使用两个等于号（==）表示，如果操作数相等，则返回 `true`。\n- **隐式类型转换**：在比较中会先进行类型转换，再确定操作数是否相等。\n- **类型转换规则**：\n  - 布尔值转换为数值：`true` 转换为 `1`，`false` 转换为 `0`。\n  - 字符串与数值比较：尝试将字符串转换为数值。\n  - 对象与非对象比较：调用对象的 `valueOf()` 方法取得其原始值。\n  - `null` 和 `undefined` 相等。\n  - 存在 `NaN` 则返回 `false`。\n  - 两个对象比较：比较它们是否指向同一个对象。\n\n### 全等操作符（===）\n\n- **定义**：使用三个等于号（===）表示，只有两个操作数在不转换的前提下相等才返回 `true`。\n- **类型和值比较**：要求类型相同且值相等。\n- **特殊值比较**：`undefined` 和 `null` 与自身严格相等。\n\n### 相等操作符（==）与全等操作符（===）的区别\n\n- **类型转换**：相等操作符会进行类型转换，全等操作符不会。\n- **特殊值比较**：在比较 `null` 和 `undefined` 时，相等操作符返回 `true`，全等操作符返回 `false`。\n\n### 总结\n\n- **相等操作符（==）**：用于比较值，在必要的情况下进行类型转换。\n- **全等操作符（===）**：用于比较值和类型，不进行类型转换。\n在使用相等操作符时，需要注意其隐式类型转换可能带来的非直观结果。在大多数情况下，建议使用全等操作符以确保比较的准确性和可预测性。在特定情况下，如比较 `null` 或 `undefined`，可以使用相等操作符以简化代码。\n",
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:48:10.000Z",
+    "updateAt":  "2024-08-10T17:04:28.000Z",
+    "isCollected":  false,
+    "currentIndex":  1726,
+    "filterTotalNum":  1907,
+    "prev":  "a5330a58-5be0-4f4f-8394-43392311ddaa",
+    "next":  "5eb78861-d964-4825-8531-316eca1df596"
+}

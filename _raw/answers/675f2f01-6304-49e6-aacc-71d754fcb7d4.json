@@ -1,0 +1,21 @@
+﻿{
+    "id":  2850,
+    "exerciseKey":  "675f2f01-6304-49e6-aacc-71d754fcb7d4",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "详细讲一下 Symbol 数据类型特征与实际使用案例？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`Symbol` 是 ES6 引入的一种基本数据类型，它用于创建唯一且不可变的值。它主要用于解决对象属性的命名冲突问题。以下是 `Symbol` 的主要特征和实际使用案例：\n\n### **1. 特征**\n\n**1.1 唯一性**\n\n每个 `Symbol` 值都是唯一的，即使它们具有相同的描述。两个不同的 `Symbol` 对象即使描述相同，也不会相等。\n\n```javascript\nconst sym1 = Symbol(\u0027description\u0027);\nconst sym2 = Symbol(\u0027description\u0027);\n\nconsole.log(sym1 === sym2); // false\n```\n\n**1.2 不可变性**\n\n`Symbol` 的值是不可变的，一旦创建，就不能改变。\n\n**1.3 隐私性**\n\n`Symbol` 属性不容易与其他属性冲突，因为每个 `Symbol` 都是唯一的。它们不会被 `for...in` 循环、`Object.keys()` 或 `JSON.stringify()` 处理，但可以通过 `Object.getOwnPropertySymbols()` 获取。\n\n### **2. 创建 Symbol**\n\n使用 `Symbol()` 函数创建 Symbol：\n\n```javascript\nconst sym = Symbol(\u0027description\u0027);\nconsole.log(sym); // Symbol(description)\n```\n\n### **3. 实际使用案例**\n\n**3.1 用作对象属性的唯一标识符**\n\n`Symbol` 可以用作对象的属性键，避免属性名冲突。\n\n```javascript\nconst mySymbol = Symbol(\u0027uniqueProperty\u0027);\n\nconst obj = {\n  [mySymbol]: \u0027value\u0027\n};\n\nconsole.log(obj[mySymbol]); // \u0027value\u0027\n```\n\n**3.2 定义私有对象属性**\n\n使用 `Symbol` 可以定义对象的“私有”属性，这些属性不会被意外覆盖或枚举到。\n\n```javascript\nconst privateProp = Symbol(\u0027private\u0027);\n\nclass MyClass {\n  constructor(value) {\n    this[privateProp] = value;\n  }\n\n  getPrivate() {\n    return this[privateProp];\n  }\n}\n\nconst instance = new MyClass(\u0027secret\u0027);\nconsole.log(instance.getPrivate()); // \u0027secret\u0027\nconsole.log(instance[privateProp]); // \u0027secret\u0027 (if you have the Symbol reference)\n```\n\n**3.3 定义和使用内置对象的符号属性**\n\nJavaScript 内置对象（如 `Object`, `Array`, `String` 等）有一些 Symbol 属性，用于定义特定行为或协议。\n\n- **`Symbol.iterator`**：定义对象的默认迭代器，用于 `for...of` 循环。\n\n```javascript\nconst iterable = {\n  *[Symbol.iterator]() {\n    yield 1;\n    yield 2;\n    yield 3;\n  }\n};\n\nfor (const value of iterable) {\n  console.log(value); // 1, 2, 3\n}\n```\n\n- **`Symbol.toStringTag`**：定义对象的默认字符串表示（`Object.prototype.toString`）。\n\n```javascript\nconst obj = {\n  [Symbol.toStringTag]: \u0027MyObject\u0027\n};\n\nconsole.log(Object.prototype.toString.call(obj)); // [object MyObject]\n```\n\n- **`Symbol.hasInstance`**：自定义 `instanceof` 行为。\n\n```javascript\nclass MyClass {\n  static [Symbol.hasInstance](instance) {\n    return instance instanceof Array;\n  }\n}\n\nconsole.log([] instanceof MyClass); // true\nconsole.log({} instanceof MyClass); // false\n```\n\n- **`Symbol.toPrimitive`**：自定义对象的原始值转换行为。\n\n```javascript\nconst obj = {\n  [Symbol.toPrimitive](hint) {\n    if (hint === \u0027string\u0027) return \u0027string representation\u0027;\n    if (hint === \u0027number\u0027) return 42;\n    return \u0027default representation\u0027;\n  }\n};\n\nconsole.log(String(obj)); // \u0027string representation\u0027\nconsole.log(Number(obj)); // 42\nconsole.log(+obj + 1); // 43\n```\n\n### **4. 组合使用**\n\n**4.1 扩展对象的行为**\n\n`Symbol` 还可以与其他 ES6 特性组合使用，例如 Proxy 和 Reflect API 来扩展对象行为。\n\n**示例代码**：\n\n```javascript\nconst handler = {\n  get(target, prop, receiver) {\n    if (prop === Symbol.toStringTag) {\n      return \u0027CustomObject\u0027;\n    }\n    return Reflect.get(target, prop, receiver);\n  }\n};\n\nconst proxy = new Proxy({}, handler);\nconsole.log(Object.prototype.toString.call(proxy)); // [object CustomObject]\n```",
+    "pivot":  "`Symbol` 提供了一种创建唯一标识符的方法，解决了对象属性名冲突的问题，并可用于定义特定的对象行为。它具有唯一性、不可变性和隐私性，在现代 JavaScript 编程中，用于增强对象和类的功能，定义和处理内置对象的特殊行为，以及在应用中创建更健壮的代码。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:45.000Z",
+    "updateAt":  "2026-01-21T02:07:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  340,
+    "filterTotalNum":  1907,
+    "prev":  "ee207d9a-ac6d-44dd-a8fc-e180fd37be36",
+    "next":  "4ce1a8c3-3ecd-481a-846b-a8b3ed1c989e"
+}

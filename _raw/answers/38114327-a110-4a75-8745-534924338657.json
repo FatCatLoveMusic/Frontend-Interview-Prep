@@ -1,0 +1,21 @@
+﻿{
+    "id":  1872,
+    "exerciseKey":  "38114327-a110-4a75-8745-534924338657",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个数字转中文的方法",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\n//阿拉伯数字转中文数字\nfunction NoToChinese(num) {\n    if (!/^\\d*(\\.\\d*)?$/.test(num)) {\n        alert(\"Number is wrong!\");\n        return \"Number is wrong!\";\n    }\n    var AA = new Array(\"零\", \"一\", \"二\", \"三\", \"四\", \"五\", \"六\", \"七\", \"八\", \"九\");\n    var BB = new Array(\"\", \"十\", \"百\", \"千\", \"万\", \"亿\", \"点\", \"\");\n    var a = (\"\" + num).replace(/(^0*)/g, \"\").split(\".\"),\n        k = 0,\n        re = \"\";\n    for (var i = a[0].length - 1; i \u003e= 0; i--) {\n        switch (k) {\n            case 0:\n                re = BB[7] + re;\n                break;\n            case 4:\n                if (!new RegExp(\"0{4}\\\\d{\" + (a[0].length - i - 1) + \"}$\").test(a[0]))\n                    re = BB[4] + re;\n                break;\n            case 8:\n                re = BB[5] + re;\n                BB[7] = BB[5];\n                k = 0;\n                break;\n        }\n        if (k % 4 == 2 \u0026\u0026 a[0].charAt(i + 2) != 0 \u0026\u0026 a[0].charAt(i + 1) == 0) re = AA[0] + re;\n        if (a[0].charAt(i) != 0) re = AA[a[0].charAt(i)] + BB[k % 4] + re;\n        k++;\n    }\n    if (a.length \u003e 1) //加上小数部分(如果有小数部分) \n    {\n        re += BB[6];\n        for (var i = 0; i \u003c a[1].length; i++) re += AA[a[1].charAt(i)];\n    }\n    return re;\n};\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:43:27.000Z",
+    "updateAt":  "2024-07-20T09:49:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  938,
+    "filterTotalNum":  1907,
+    "prev":  "3526fff1-d92d-4568-b6dd-549bc6c2a92e",
+    "next":  "45f892d7-8da0-4fd9-8550-8a7865cfcd43"
+}

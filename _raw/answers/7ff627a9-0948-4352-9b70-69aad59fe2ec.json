@@ -1,0 +1,21 @@
+﻿{
+    "id":  1549,
+    "exerciseKey":  "7ff627a9-0948-4352-9b70-69aad59fe2ec",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么检测浏览器版本？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "检测浏览器版本一共有两种方式：\n\n一种是检测 `window.navigator.userAgent` 的值，但这种方式很不可靠，因为 `userAgent` 可以被改写，并且早期的浏览器如 ie，会通过伪装自己的 userAgent 的值为 Mozilla 来躲过服务器的检测。\n\n第二种方式是功能检测，根据每个浏览器独有的特性来进行判断，如 ie 下独有的 `ActiveXObject`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:23:15.000Z",
+    "updateAt":  "2021-11-17T22:25:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  1240,
+    "filterTotalNum":  1907,
+    "prev":  "a8cc1054-2087-4adb-992c-33b88a188ddf",
+    "next":  "6b910440-48ae-49f9-8659-8aa880d239fb"
+}

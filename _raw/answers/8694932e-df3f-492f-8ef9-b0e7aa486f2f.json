@@ -1,0 +1,21 @@
+﻿{
+    "id":  1952,
+    "exerciseKey":  "8694932e-df3f-492f-8ef9-b0e7aa486f2f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 myAll 方法",
+    "desc":  "```ts\n/**\n * @file 实现 PromiseAll 方法\n */\n\nimport { sleep } from \"./8.sleep\";\n\nasync function myAll\u003cT extends unknown[] | []\u003e(values: T): Promise\u003c{ [P in keyof T]: Awaited\u003cT[P]\u003e }\u003e {\n    // 补全此处代码，使用 Promise.all 以外的语法完成\n    throw new Error(\u0027功能待实现\u0027);\n}\n\n// 一秒钟后返回结果 value\nasync function request(value: string) {\n    await sleep(1000);\n    return value;\n}\nasync function main() {\n    console.log(\u0027start\u0027);\n    const res = await myAll([\n        request(\u0027a\u0027),\n        request(\u0027b\u0027),\n        request(\u0027c\u0027),\n    ])\n    console.log(res); // 预期输出 start 一秒后输出 [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\n}\nmain()\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 实现 PromiseAll 方法\n */\n\nimport { sleep } from \"./8.sleep\";\n\nasync function myAll\u003cT extends unknown[] | []\u003e(\n  values: T\n): Promise\u003c{ [P in keyof T]: Awaited\u003cT[P]\u003e }\u003e {\n  // 补全此处代码，使用 Promise.all 以外的语法完成\n  // throw new Error(\u0027功能待实现\u0027);\n  var arr = [];\n  for (var i = 0; i \u003c values.length; i++) {\n    arr.push(await values[i]);\n  }\n  return arr as { [P in keyof T]: Awaited\u003cT[P]\u003e };\n}\n\n// 一秒钟后返回结果 value\nasync function request(value: string) {\n  await sleep(1000);\n  return value;\n}\nasync function main() {\n  console.log(\"start\");\n  const res = await myAll([request(\"a\"), request(\"b\"), request(\"c\")]);\n  console.log(res); // 预期输出 start 一秒后输出 [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\n}\nmain();\n\nexport default {};\n\n```",
+    "pivot":  "**作答思路**：\n\n实现`myAll`方法的基本思路是遍历传入的异步操作数组，并对每个操作进行异步等待，然后将所有操作的结果收集到一个对象中。\n\n实现思路：\n\n1. **定义函数**：创建一个函数`myAll`，它接受一个异步操作数组作为参数。\n2. **创建结果对象**：创建一个空的对象，用于存储每个异步操作的结果。\n3. **遍历操作数组**：使用数组的`forEach`方法遍历每个异步操作。\n4. **等待每个操作完成**：对每个异步操作使用`await`关键字来等待其完成。\n5. **存储结果**：将每个操作的结果存储在结果对象中。\n6. **返回结果对象**：遍历完成后，返回包含所有结果的对象。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:28:47.000Z",
+    "updateAt":  "2024-08-10T17:07:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  858,
+    "filterTotalNum":  1907,
+    "prev":  "b773eb98-1739-43a4-b0fc-4c0deed6cb13",
+    "next":  "5bd5fdd4-706a-49dd-9cbe-1f2a05779ffe"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1632,
+    "exerciseKey":  "dec780c4-3610-4673-b12f-add388ceec10",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第40题】下面代码的输出是什么？",
+    "desc":  "```js\nconst p1 = new Promise((resolve) =\u003e {\n  setTimeout(() =\u003e {\n    resolve(\u0027resolve3\u0027);\n    console.log(\u0027timer1\u0027)\n  }, 0)\n  resolve(\u0027resovle1\u0027);\n  resolve(\u0027resolve2\u0027);\n}).then(res =\u003e {\n  console.log(res)\n  setTimeout(() =\u003e {\n    console.log(p1)\n  }, 1000)\n}).finally(res =\u003e {\n  console.log(\u0027finally\u0027, res)\n})\n\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n* Promise的状态一旦改变就无法改变\n* finally不管Promise的状态是`resolved`还是`rejected`都会执行，且它的回调函数是接收不到Promise的结果的，所以finally()中的res是一个迷惑项。\n* 最后一个定时器打印出的p1其实是`.finally`的返回值，我们知道`.finally`的返回值如果在没有抛出错误的情况下默认会是上一个Promise的返回值，而这道题中`.finally`上一个Promise是`.then()`，但是这个`.then()`并没有返回值，所以p1打印出来的Promise的值会是`undefined`，如果你在定时器的下面加上一个`return 1`，则值就会变成1。\n\n## 结果\n```\n\u0027resolve1\u0027\n\u0027finally\u0027 undefined\n\u0027timer1\u0027\nPromise{\u003cresolved\u003e: undefined}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:23:27.000Z",
+    "updateAt":  "2024-07-20T11:01:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1158,
+    "filterTotalNum":  1907,
+    "prev":  "446d36f9-0845-432d-957a-7a9a2997a276",
+    "next":  "41c2b7e0-3ab2-4a94-8017-1804b0ddf868"
+}

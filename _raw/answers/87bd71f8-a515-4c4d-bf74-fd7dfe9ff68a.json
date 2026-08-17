@@ -1,0 +1,21 @@
+﻿{
+    "id":  1592,
+    "exerciseKey":  "87bd71f8-a515-4c4d-bf74-fd7dfe9ff68a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Z 字形变换",
+    "desc":  "将一个给定字符串 `s` 根据给定的行数 `numRows` ，以从上往下、从左到右进行 Z 字形排列。\n\n比如输入字符串为 `\"PAYPALISHIRING\"` 行数为 3 时，排列如下：\n\n```\nP   A   H   N\nA P L S I I G\nY   I   R\n```\n\n之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如：`\"PAHNAPLSIIGYIR\"`。\n\n请你实现这个将字符串进行指定行数变换的函数：\n\nstring convert(string s, int numRows);\n\n## 示例 1：\n\n```\n输入：s = \"PAYPALISHIRING\", numRows = 3\n输出：\"PAHNAPLSIIGYIR\"\n```\n\n## 示例 2：\n\n```\n输入：s = \"PAYPALISHIRING\", numRows = 4\n输出：\"PINALSIGYAHRPI\"\n解释：\nP     I    N\nA   L S  I G\nY A   H R\nP     I\n```\n\n## 示例 3：\n\n```\n输入：s = \"A\", numRows = 1\n输出：\"A\"\n```\n\n## 提示：\n\n* 1 \u003c= s.length \u003c= 1000\n* `s` 由英文字母（小写和大写）、\u0027,\u0027 和 \u0027.\u0027 组成\n* 1 \u003c= numRows \u003c= 1000\n\n\n\n",
+    "options":  null,
+    "explanation":  "## 方法一：按行排序\n\n### 思路\n\n通过从左向右迭代字符串，我们可以轻松地确定字符位于 Z 字形图案中的哪一行。\n\n### 算法\n\n我们可以使用 `min(numRows,len(s))` 个列表来表示 Z 字形图案中的非空行。\n\n从左到右迭代 s，将每个字符添加到合适的行。可以使用当前行和当前方向这两个变量对合适的行进行跟踪。\n\n只有当我们向上移动到最上面的行或向下移动到最下面的行时，当前方向才会发生改变。\n\n```javascript\n/**\n * @param {string} s\n * @param {number} numRows\n * @return {string}\n */\nvar convert = function (s, numRows) {\n     // 行数为1直接返回\n    if (numRows === 1) return s;\n    let res = \u0027\u0027;\n    // 遍历行数\n    for (let i = 0; i \u003c numRows; i++) {\n        let next, // 下一个字符\n            dire = i === numRows - 1 ? false : true, // 添加的方向\n            nextIndex = i;\n        // 添加当前行下一个直达不存在\n        while (next = s[nextIndex]) {\n            res += next;\n            nextIndex = nextIndex + 2 * (dire ? numRows - i : i + 1) - 2;\n            if (i !== 0 \u0026\u0026 i !== numRows - 1) {\n                dire = !dire\n            }\n        }\n    }\n    return res;\n};\n```\n\n### 复杂度分析\n\n* 时间复杂度：O(n)，其中 n == len(s)\n* 空间复杂度：O(n)\n\n\n## 方法二：按行访问\n\n### 思路\n\n按照与逐行读取 Z 字形图案相同的顺序访问字符串。\n\n### 算法\n\n首先访问 `行0` 中的所有字符，接着访问 `行1`，然后 `行2`，依此类推...\n\n对于所有整数 k，\n\n* `行0` 中的字符位于索引 `k(2⋅numRows−2)` 处;\n* `行numRows−1` 中的字符位于索引 `k(2⋅numRows−2)+numRows−1` 处;\n* 内部的 `行 i` 中的字符位于索引 `k(2⋅numRows−2)+i` 以及 `(k+1)(2⋅numRows−2)−i` 处;\n\n```javascript\n/**\n * @param {string} s\n * @param {number} numRows\n * @return {string}\n */\nvar convert = function (s, numRows) {\n    if(numRows===1) return s;\n    let row = [],// 存储对应行的字符\n        cur = numRows-2, // 代表当前行数（0 \u003c= cur \u003c= numRows-1）\n        curDire = true; // 方向\n    for (let i = 0; i \u003c s.length; i++) {\n        if (i \u003c numRows) {\n            // 每一行的首位元素\n            row[i] = s[i];\n        }else{\n            // 达到拐角的元素，变更方向\n             if(cur===(numRows-1) || cur===0){\n                curDire = !curDire;\n            }\n            // 添加行数到对应行\n            row[cur] += s[i]\n            // 行数变化\n            if(curDire){\n                cur--;\n            }else{\n                cur++;\n            }\n           \n        }\n    }\n    // 合并每一行的字符串\n    let res = row.reduce((pre,cur)=\u003epre+cur,\u0027\u0027)\n    return res;\n};\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-12-26T08:37:26.000Z",
+    "updateAt":  "2021-12-26T22:23:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  1198,
+    "filterTotalNum":  1907,
+    "prev":  "51f267dd-1550-48e2-9710-7cc8103dcc41",
+    "next":  "e928aade-65d6-438d-be11-8250f7784f4d"
+}

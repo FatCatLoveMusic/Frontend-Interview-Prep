@@ -1,0 +1,21 @@
+﻿{
+    "id":  271,
+    "exerciseKey":  "362a44f0-8be1-4e5b-abfc-f3ddadc4aa2e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "HTML5 有哪些新特性？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 新增语义化标签：nav、header、footer、aside、section、article\n* 音频、视频标签：audio、video\n* 数据存储：localStorage、sessionStorage\n* canvas（画布）、Geolocation（地理定位）、websocket（通信协议）\n* input标签新增属性：placeholder、autocomplete、autofocus、required\n* history API\n\t* go、forward、back、pushstate\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:55:52.000Z",
+    "updateAt":  "2021-07-04T16:01:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  1648,
+    "filterTotalNum":  1907,
+    "prev":  "19ba02c8-2fde-4dd3-b396-c2e9bb291269",
+    "next":  "ba6327df-ba59-4870-921c-36b8516c4451"
+}

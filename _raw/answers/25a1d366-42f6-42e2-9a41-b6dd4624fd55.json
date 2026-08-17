@@ -1,0 +1,21 @@
+﻿{
+    "id":  2476,
+    "exerciseKey":  "25a1d366-42f6-42e2-9a41-b6dd4624fd55",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "判断数组的方式有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "判断一个值是否为数组的方式有多种：\n\n### 1. **`Array.isArray()` 方法**\n\n- **描述**：这是 ES5 引入的标准方法，推荐用于检查一个值是否为数组。\n- **语法**：`Array.isArray(value)`\n- **示例**：\n  ```javascript\n  console.log(Array.isArray([1, 2, 3])); // true\n  console.log(Array.isArray(\u0027hello\u0027)); // false\n  ```\n\n### 2. **`instanceof` 操作符**\n\n- **描述**：使用 `instanceof` 操作符来判断对象是否是 `Array` 的实例。\n- **语法**：`value instanceof Array`\n- **示例**：\n  ```javascript\n  console.log([1, 2, 3] instanceof Array); // true\n  console.log(\u0027hello\u0027 instanceof Array); // false\n  ```\n\n### 3. **`Object.prototype.toString.call()` 方法**\n\n- **描述**：使用 `Object.prototype.toString.call()` 可以准确判断一个对象的类型，包括数组。它返回 `[object Array]` 对于数组，其他类型则返回不同的结果。\n- **语法**：`Object.prototype.toString.call(value)`\n- **示例**：\n  ```javascript\n  console.log(Object.prototype.toString.call([1, 2, 3])); // [object Array]\n  console.log(Object.prototype.toString.call(\u0027hello\u0027)); // [object String]\n  ```\n\n### 4. **`constructor` 属性**\n\n- **描述**：检查 `constructor` 属性是否为 `Array`。这种方法不如 `Array.isArray()` 可靠，因为 `constructor` 可以被改变。\n- **语法**：`value.constructor === Array`\n- **示例**：\n  ```javascript\n  console.log([1, 2, 3].constructor === Array); // true\n  console.log(\u0027hello\u0027.constructor === Array); // false\n  ```\n\n### 5. **`Array.prototype.isPrototypeOf()` 方法**\n\n- **描述**：检查数组的 `prototype` 是否在目标对象的 `prototype` 链上。这种方法也可以用来判断一个对象是否为数组。\n- **语法**：`Array.prototype.isPrototypeOf(value)`\n- **示例**：\n  ```javascript\n  console.log(Array.prototype.isPrototypeOf([1, 2, 3])); // true\n  console.log(Array.prototype.isPrototypeOf(\u0027hello\u0027)); // false\n  ```\n\n### 6. **使用 `constructor` 属性和原型链**\n\n- **描述**：结合 `constructor` 属性和原型链检查。这个方法有一定的局限性，不推荐使用。\n- **示例**：\n  ```javascript\n  function isArray(value) {\n    return value \u0026\u0026 typeof value === \u0027object\u0027 \u0026\u0026 value.constructor === Array;\n  }\n  \n  console.log(isArray([1, 2, 3])); // true\n  console.log(isArray(\u0027hello\u0027)); // false\n  ```",
+    "pivot":  "- **推荐方法**：使用 `Array.isArray()`，这是最简单、最可靠的方式来检查一个值是否为数组。\n- **其他方法**：`instanceof` 和 `Object.prototype.toString.call()` 也很有效，但有一些特定的局限性。`constructor` 和 `isPrototypeOf()` 方法不如 `Array.isArray()` 可靠，且在某些情况下可能会出现问题。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-22T04:06:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  508,
+    "filterTotalNum":  1907,
+    "prev":  "b90eb9af-fa06-4b4e-ba83-fbe34330cbf6",
+    "next":  "234049cc-fdfc-4f73-ad2c-e1a03b6cea84"
+}

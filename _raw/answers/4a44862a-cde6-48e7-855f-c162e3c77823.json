@@ -1,0 +1,21 @@
+﻿{
+    "id":  3251,
+    "exerciseKey":  "4a44862a-cde6-48e7-855f-c162e3c77823",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Agent 如何实现会话恢复？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "会话恢复不能只理解为“重新加载聊天记录”。对 Agent 来说，恢复的是一个可继续执行的任务现场，包括用户意图、对话上下文、计划状态、工具调用结果、文件/产物引用、未完成步骤以及已经产生过副作用的操作记录。\n\n比较稳妥的实现方式是把会话设计成一个可持久化的状态机，而不是只存一段 prompt。每轮交互、模型输出、工具调用、工具返回、人工确认、错误重试都以事件形式追加到日志中，同时在关键节点生成 checkpoint。恢复时先读取最近的 checkpoint，再回放后续事件，重建 Agent 的运行状态。\n\n典型的数据结构会包含这些内容：\n\n```ts\ntype AgentSession = {\n  sessionId: string;\n  userId: string;\n  status: \u0027idle\u0027 | \u0027running\u0027 | \u0027paused\u0027 | \u0027failed\u0027 | \u0027completed\u0027;\n  currentStep?: string;\n  contextVersion: number;\n  updatedAt: number;\n};\n\ntype AgentEvent = {\n  sessionId: string;\n  seq: number;\n  type: \u0027user_message\u0027 | \u0027assistant_message\u0027 | \u0027tool_call\u0027 | \u0027tool_result\u0027 | \u0027checkpoint\u0027;\n  payload: unknown;\n  idempotencyKey?: string;\n};\n```\n\n其中 `seq` 用来保证事件顺序，`idempotencyKey` 用来避免恢复后重复执行工具调用。例如 Agent 已经调用过“发送邮件”“创建工单”“扣减库存”这类有副作用的操作，恢复时不能因为模型重新推理而再执行一次。正确做法是恢复工具调用状态：已完成的工具调用直接复用结果，失败的工具调用根据策略决定重试、跳过或等待用户确认。\n\n上下文恢复也需要分层处理。短期上下文可以直接放入模型窗口，比如最近几轮消息、当前任务计划、正在处理的文件片段；长期上下文则需要通过摘要、向量检索或结构化 memory 重新注入。因为模型上下文窗口有限，所以不能无限拼接历史消息，而应该维护一个“可执行摘要”，记录目标、约束、已完成事项、关键决策和未解决问题。\n\n前端侧的恢复重点在于流式响应和连接中断处理。SSE 或 WebSocket 断开后，客户端重新连接时需要带上 `sessionId` 和最后收到的 `seq` 或 `cursor`。服务端根据 cursor 返回缺失事件，或者直接返回当前快照。这样用户刷新页面、切换设备、网络短暂中断后，仍然能看到 Agent 当前执行到哪里，哪些工具调用已经完成，哪些步骤仍在等待。\n\n如果 Agent 支持长任务，还需要把运行态和展示态解耦。后台任务继续执行，前端只是订阅事件流；如果任务被暂停，则 session 状态标记为 `paused`，恢复后从暂停点继续。多 Agent 场景下，还要保存每个子 Agent 的任务状态、输入输出、父子任务关系，否则只能恢复表层对话，无法恢复协作过程。\n\n工程上还要考虑版本兼容和安全边界。checkpoint 中最好带上 schema version，方便后续升级状态结构。会话恢复必须校验用户权限，不能只凭 sessionId 读取上下文。敏感工具调用结果、临时凭证、文件引用也要有过期和脱敏策略。\n\n最后，可靠的会话恢复通常依赖三个核心能力：事件日志保证过程可追溯，checkpoint 保证恢复效率，幂等机制保证不会重复产生副作用。只要这三点成立，Agent 才能从“聊天机器人”变成可中断、可恢复、可持续执行任务的工程系统。",
+    "pivot":  "Agent 会话恢复恢复的不是单纯聊天记录，而是完整任务现场。\n\n核心实现是事件日志加 checkpoint，通过回放事件重建状态。\n\n工具调用必须记录状态和幂等键，避免恢复后重复执行副作用操作。\n\n上下文需要分层恢复，近期消息直接注入，长期信息通过摘要、memory 或检索补充。\n\n前端需要基于 `sessionId`、`seq`、`cursor` 支持断线重连和事件补偿。\n\n长任务和多 Agent 场景下，要保存任务状态、子任务关系和中间产物引用。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T07:48:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  37,
+    "filterTotalNum":  1907,
+    "prev":  "cd9eb5c3-4162-45b2-b7da-7566c5935a64",
+    "next":  "eb3cba15-4f5b-4312-9d2e-b73b781c1c1e"
+}

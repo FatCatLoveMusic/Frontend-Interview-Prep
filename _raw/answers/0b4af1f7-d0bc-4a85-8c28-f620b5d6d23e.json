@@ -1,0 +1,21 @@
+﻿{
+    "id":  91,
+    "exerciseKey":  "0b4af1f7-d0bc-4a85-8c28-f620b5d6d23e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "哪个选项是将 hasName 设置为 true 的方法（不能将true作为参数传递）?",
+    "desc":  "```javascript\nfunction getName(name) {\n  const hasName = //\n}\n```",
+    "options":  "{\"options\":[\"!!name\",\"name\",\"new Boolean(name)\",\"name.length\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "使用逻辑非运算符`!`，将返回一个布尔值，使用`!! name`，我们可以确定`name`的值是真的还是假的。 如果`name`是真实的，那么`!name`返回`false`。 `!false`返回`true`。\n通过将`hasName`设置为`name`，可以将`hasName`设置为等于传递给`getName`函数的值，而不是布尔值`true`。\n`new Boolean（true）`返回一个对象包装器，而不是布尔值本身。\n`name.length`返回传递的参数的长度，而不是布尔值`true`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:25:45.000Z",
+    "isCollected":  false,
+    "currentIndex":  1828,
+    "filterTotalNum":  1907,
+    "prev":  "2e7f32d3-6c83-42f0-adbc-262e4dd53db1",
+    "next":  "0180cac7-51ae-4cc6-afe2-bfecf5448123"
+}

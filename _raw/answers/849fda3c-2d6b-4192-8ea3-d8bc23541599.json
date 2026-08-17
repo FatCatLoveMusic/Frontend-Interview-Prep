@@ -1,0 +1,21 @@
+﻿{
+    "id":  157,
+    "exerciseKey":  "849fda3c-2d6b-4192-8ea3-d8bc23541599",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst promise1 = Promise.resolve(\u0027First\u0027)\nconst promise2 = Promise.resolve(\u0027Second\u0027)\nconst promise3 = Promise.reject(\u0027Third\u0027)\nconst promise4 = Promise.resolve(\u0027Fourth\u0027)\n\nconst runPromises = async () =\u003e {\n\tconst res1 = await Promise.all([promise1, promise2])\n\tconst res2  = await Promise.all([promise3, promise4])\n\treturn [res1, res2]\n}\n\nrunPromises()\n\t.then(res =\u003e console.log(res))\n\t.catch(err =\u003e console.log(err))\n```",
+    "options":  "{\"options\":[\"[[\u0027First\u0027, \u0027Second\u0027], [\u0027Fourth\u0027]]\",\"[[\u0027First\u0027, \u0027Second\u0027], [\u0027Third\u0027, \u0027Fourth\u0027]]\",\"[[\u0027First\u0027, \u0027Second\u0027]]\",\"\u0027Third\u0027\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  " `Promise.all` 方法可以并行式运行promise。如果其中一个promise失败了，`Promise.all` 方法会带上被reject的promise的值_rejects_。在这个例子中， `promise3` 带着 `\"Third\"` 值reject。我们在调用 `runPromises` 时在 `runPromises` 函数内部的 `catch` 方法去捕获任意error从而捕获到被reject的值。因为 `promise3` 带着 `\"Third\"` 被reject，所以只有 `\"Third\"` 打印。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  1762,
+    "filterTotalNum":  1907,
+    "prev":  "c08daadf-ef79-48b0-8cda-3ab379624fa5",
+    "next":  "b77c84b0-6353-4eaa-ad71-6b75df79b94c"
+}

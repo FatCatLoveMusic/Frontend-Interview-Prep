@@ -1,0 +1,21 @@
+﻿{
+    "id":  3067,
+    "exerciseKey":  "0a146449-b17c-42f8-9029-7c56402adc98",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现发布订阅模式",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "发布订阅模式（Publish–Subscribe Pattern）是一种典型的 **消息通信模式**。其核心思想是将消息的发送者（Publisher）与接收者（Subscriber）进行解耦，消息不会直接发送给某个具体对象，而是发布到一个事件或主题（Topic）上，由所有订阅该事件的监听者统一接收。\n\n在前端应用中，这种模式常用于 **组件通信、事件总线、状态变化通知、插件系统等场景**。例如一个模块只负责发布事件，而其他模块只需要订阅事件即可响应变化，双方不需要知道彼此的存在。\n\n实现发布订阅模式通常需要三个核心能力：\n\n* 注册订阅（subscribe / on）\n* 发布事件（publish / emit）\n* 取消订阅（unsubscribe / off）\n\n本质上可以通过维护一个 **事件名 → 回调函数列表** 的映射结构来实现。\n\n一个简单实现如下：\n\n```javascript\nclass EventEmitter {\n  constructor() {\n    this.events = Object.create(null);\n  }\n\n  on(eventName, handler) {\n    if (!this.events[eventName]) {\n      this.events[eventName] = [];\n    }\n    this.events[eventName].push(handler);\n  }\n\n  emit(eventName, ...args) {\n    const handlers = this.events[eventName];\n    if (!handlers) return;\n\n    handlers.forEach(fn =\u003e fn(...args));\n  }\n\n  off(eventName, handler) {\n    const handlers = this.events[eventName];\n    if (!handlers) return;\n\n    this.events[eventName] = handlers.filter(fn =\u003e fn !== handler);\n  }\n}\n```\n\n使用方式如下：\n\n```javascript\nconst bus = new EventEmitter();\n\nfunction listener(data) {\n  console.log(\"收到消息:\", data);\n}\n\nbus.on(\"message\", listener);\n\nbus.emit(\"message\", \"hello\");\n\nbus.off(\"message\", listener);\n```\n\n当调用 `emit` 时，会找到对应事件的所有订阅函数并依次执行，从而实现消息广播。\n\n在工程实践中，通常还会扩展一些能力以增强可用性。例如支持 **一次性订阅（once）**，在触发一次后自动取消监听；支持 **事件队列拷贝**，避免在事件执行过程中修改数组导致遍历问题；或者支持 **命名空间事件**，方便大型系统进行事件隔离。\n\n一个常见的 `once` 实现方式是通过包装函数：\n\n```javascript\nonce(eventName, handler) {\n  const wrapper = (...args) =\u003e {\n    handler(...args);\n    this.off(eventName, wrapper);\n  };\n\n  this.on(eventName, wrapper);\n}\n```\n\n需要注意的是，在大型应用中如果发布订阅系统设计不当，也可能导致问题，例如事件链过长、调试困难或监听器未及时移除导致内存占用增加。因此在框架层面往往会限制事件总线的使用范围，更多场景通过 **状态管理（如 Redux / Pinia）或明确的数据流** 来替代。",
+    "pivot":  "发布订阅模式通过事件中心解耦消息发送者与接收者，核心实现是维护事件名与回调函数列表之间的映射关系。订阅阶段注册回调函数，发布阶段遍历执行所有监听函数，取消订阅则从列表中移除对应回调。工程实践中通常会扩展一次性订阅、事件隔离等能力，但在大型应用中需要避免滥用事件总线，以免造成事件链复杂和内存管理问题。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-03-17T01:22:55.000Z",
+    "updateAt":  "2026-03-17T01:22:59.000Z",
+    "isCollected":  false,
+    "currentIndex":  138,
+    "filterTotalNum":  1907,
+    "prev":  "46a530de-db64-4561-a680-591146f61c2c",
+    "next":  "cf82f359-6b3e-494b-ba24-11d79fabb8b8"
+}

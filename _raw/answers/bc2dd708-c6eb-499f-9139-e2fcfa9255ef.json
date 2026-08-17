@@ -1,0 +1,21 @@
+﻿{
+    "id":  464,
+    "exerciseKey":  "bc2dd708-c6eb-499f-9139-e2fcfa9255ef",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Typescript中泛型是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、是什么\n\n泛型程序设计（generic programming）是程序设计语言的一种风格或范式\n\n泛型允许我们在强类型程序设计语言中编写代码时使用一些以后才指定的类型，在实例化时作为参数指明这些类型\n在`typescript`中，定义函数，接口或者类的时候，不预先定义好具体的类型，而在使用的时候在指定类型的一种特性\n\n假设我们用一个函数，它可接受一个 `number` 参数并返回一个` number` 参数，如下写法：\n\n```ts\nfunction returnItem (para: number): number {\n    return para\n}\n```\n\n如果我们打算接受一个 `string` 类型，然后再返回 `string`类型，则如下写法：\n\n```ts\nfunction returnItem (para: string): string {\n    return para\n}\n```\n\n上述两种编写方式，存在一个最明显的问题在于，代码重复度比较高\n\n虽然可以使用 `any`类型去替代，但这也并不是很好的方案，因为我们的目的是接收什么类型的参数返回什么类型的参数，即在运行时传入参数我们才能确定类型\n\n这种情况就可以使用泛型，如下所示：\n\n```ts\nfunction returnItem\u003cT\u003e(para: T): T {\n    return para\n}\n```\n\n可以看到，泛型给予开发者创造灵活、可重用代码的能力\n\n\n\n## 二、使用方式\n\n泛型通过`\u003c\u003e`的形式进行表述，可以声明：\n\n- 函数\n\n- 接口\n- 类\n\n\n\n### 函数声明\n\n声明函数的形式如下：\n\n```ts\nfunction returnItem\u003cT\u003e(para: T): T {\n    return para\n}\n```\n\n定义泛型的时候，可以一次定义**多个类型参数**，比如我们可以同时定义泛型 `T` 和 泛型 `U`：\n\n```ts\nfunction swap\u003cT, U\u003e(tuple: [T, U]): [U, T] {\n    return [tuple[1], tuple[0]];\n}\n\nswap([7, \u0027seven\u0027]); // [\u0027seven\u0027, 7]\n```\n\n\n\n\n\n### 接口声明\n\n声明接口的形式如下：\n\n```ts\ninterface ReturnItemFn\u003cT\u003e {\n    (para: T): T\n}\n```\n\n那么当我们想传入一个number作为参数的时候，就可以这样声明函数:\n\n```ts\nconst returnItem: ReturnItemFn\u003cnumber\u003e = para =\u003e para\n```\n\n###\n\n### 类声明\n\n使用泛型声明类的时候，既可以作用于类本身，也可以作用与类的成员函数\n\n下面简单实现一个元素同类型的栈结构，如下所示：\n\n```ts\nclass Stack\u003cT\u003e {\n    private arr: T[] = []\n\n    public push(item: T) {\n        this.arr.push(item)\n    }\n\n    public pop() {\n        this.arr.pop()\n    }\n}\n```\n\n使用方式如下：\n\n```ts\nconst stack = new Stacn\u003cnumber\u003e()\n```\n\n如果上述只能传递 `string` 和 `number` 类型，这时候就可以使用 `\u003cT extends xx\u003e` 的方式猜实现**约束泛型**，如下所示：\n\n ![](https://static.ecool.fun//article/fab37f80-c8f9-48a9-ba72-2aa8c3af6b00.png)\n\n\n\n\n\n除了上述的形式，泛型更高级的使用如下：\n\n例如要设计一个函数，这个函数接受两个参数，一个参数为对象，另一个参数为对象上的属性，我们通过这两个参数返回这个属性的值\n\n这时候就设计到泛型的索引类型和约束类型共同实现\n\n### 索引类型、约束类型\n\n索引类型 `keyof T` 把传入的对象的属性类型取出生成一个联合类型，这里的泛型 U 被约束在这个联合类型中，如下所示：\n\n```ts\nfunction getValue\u003cT extends object, U extends keyof T\u003e(obj: T, key: U) {\n  return obj[key] // ok\n}\n```\n\n上述为什么需要使用泛型约束，而不是直接定义第一个参数为 `object`类型，是因为默认情况 `object` 指的是`{}`，而我们接收的对象是各种各样的，一个泛型来表示传入的对象类型，比如 `T extends object`\n\n使用如下图所示：\n\n ![](https://static.ecool.fun//article/19ea7bdd-176b-4db7-9bdb-72d1318c6fea.png)\n\n\n\n\n\n### 多类型约束\n\n例如如下需要实现两个接口的类型约束：\n\n```ts\ninterface FirstInterface {\n  doSomething(): number\n}\n\ninterface SecondInterface {\n  doSomethingElse(): string\n}\n\n```\n\n可以创建一个接口继承上述两个接口，如下：\n\n```ts\ninterface ChildInterface extends FirstInterface, SecondInterface {\n\n}\n```\n\n正确使用如下：\n\n```ts\nclass Demo\u003cT extends ChildInterface\u003e {\n  private genericProperty: T\n\n  constructor(genericProperty: T) {\n    this.genericProperty = genericProperty\n  }\n  useT() {\n    this.genericProperty.doSomething()\n    this.genericProperty.doSomethingElse()\n  }\n}\n```\n\n通过泛型约束就可以达到多类型约束的目的\n\n\n\n## 三、应用场景\n\n通过上面初步的了解，后述在编写 `typescript` 的时候，定义函数，接口或者类的时候，不预先定义好具体的类型，而在使用的时候在指定类型的一种特性的时候，这种情况下就可以使用泛型\n\n灵活的使用泛型定义类型，是掌握`typescript` 必经之路\n",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，泛型（Generics）是一种编程技术，允许你创建可重用的组件，这些组件可以处理多种数据类型。泛型允许你在不指定具体类型的情况下定义函数、类或接口，从而提高代码的复用性和可维护性。\n\n**考察要点**：\n\n1. **泛型概念**：理解泛型的基本概念和用途。\n2. **使用方式**：了解如何在TypeScript中使用泛型。\n",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-08T14:58:23.000Z",
+    "updateAt":  "2024-08-10T17:05:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1456,
+    "filterTotalNum":  1907,
+    "prev":  "cb091ae7-6a50-441b-9513-ef6638e5f123",
+    "next":  "1b2049cf-9800-420d-b4f3-09238226d162"
+}

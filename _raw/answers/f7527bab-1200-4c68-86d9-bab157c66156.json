@@ -1,0 +1,21 @@
+﻿{
+    "id":  131,
+    "exerciseKey":  "f7527bab-1200-4c68-86d9-bab157c66156",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nfunction getFine(speed, amount) {\n  const formattedSpeed = new Intl.NumberFormat(\u0027en-US\u0027, {\n    style: \u0027unit\u0027, unit: \u0027mile-per-hour\u0027\n  }).format(speed)\n\n  const formattedAmount = new Intl.NumberFormat(\u0027en-US\u0027, {\n    style: \u0027currency\u0027, currency: \u0027USD\u0027\n  }).format(amount)\n\n  return `The driver drove ${formattedSpeed} and has to pay ${formattedAmount}`\n}\n\nconsole.log(getFine(130, 300))\n```",
+    "options":  "{\"options\":[\"The driver drove 130 and has to pay 300\",\"The driver drove 130 mph and has to pay $300.00\",\"The driver drove undefined and has to pay undefined\",\"The driver drove 130.00 and has to pay 300.00\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "通过方法 `Intl.NumberFormat`，可以格式化任意区域的数字值。我们对数字值 `130` 进行 `mile-per-hour` 作为 `unit` 的 `en-US` 区域 格式化，结果为 `130 mph`。对数字值 `300` 进行 `USD` 作为 `currentcy` 的 `en-US` 区域格式化，结果为 `$300.00`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2025-08-04T06:26:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  1788,
+    "filterTotalNum":  1907,
+    "prev":  "e9b3318a-4d50-437b-8a59-532532cd7dc3",
+    "next":  "c8a6250a-c30b-4ddc-8b5c-5313c04e136e"
+}

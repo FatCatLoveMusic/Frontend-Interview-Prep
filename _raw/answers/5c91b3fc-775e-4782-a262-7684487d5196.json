@@ -1,0 +1,21 @@
+﻿{
+    "id":  2008,
+    "exerciseKey":  "5c91b3fc-775e-4782-a262-7684487d5196",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "删除链表的一个节点",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以通过以下步骤实现：\n\n1. 遍历链表，找到待删除节点的前一个节点。\n2. 将待删除节点的前一个节点的 next 指针指向待删除节点的下一个节点。\n3. 将待删除节点置为 null。\n\n下面是示例代码，假设链表的每个节点都有 val 和 next 两个属性：\n\n```js\nfunction deleteNode(head, val) {\n  // 如果要删除的节点是头节点，则直接返回 head.next\n  if (head.val === val) {\n    return head.next;\n  }\n\n  let prev = head;\n  let curr = head.next;\n\n  while (curr !== null) {\n    if (curr.val === val) {\n      prev.next = curr.next;\n      curr = null;\n      break;\n    } else {\n      prev = curr;\n      curr = curr.next;\n    }\n  }\n\n  return head;\n}\n```\n\n首先检查待删除节点是否为头节点。如果是，则直接返回头节点的下一个节点；否则，我们遍历链表并找到待删除节点的前一个节点和当前节点。\n\n当找到该节点时，我们将前一个节点的 next 指针指向待删除节点的下一个节点，并将待删除节点置为 null，以便 JavaScript 的垃圾回收机制能够回收内存，避免内存泄漏。\n\n最后，我们返回头节点作为函数的结果。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-28T02:41:41.000Z",
+    "updateAt":  "2023-07-08T15:59:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  802,
+    "filterTotalNum":  1907,
+    "prev":  "8169e336-3daa-4e6c-9f85-13c4a9a31467",
+    "next":  "684fd560-4d1b-4c3f-ac15-1e1bff86c443"
+}

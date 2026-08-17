@@ -1,0 +1,21 @@
+﻿{
+    "id":  382,
+    "exerciseKey":  "c4765da3-f74e-4190-b3c0-7b66f5cd05b0",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "如何提高webpack的打包速度",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cul\u003e\u003cli\u003ehappypack: 利用进程并行编译loader,利用缓存来使得 rebuild 更快,遗憾的是作者表示已经不会继续开发此项目,类似的替代者是\u003ca href=\"https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fwebpack-contrib%2Fthread-loader\" target=\"_blank\"\u003ethread-loader\u003c/a\u003e \u003c/li\u003e\u003cli\u003e \u003ca href=\"https://links.jianshu.com/go?to=https%3A%2F%2Fwebpack.docschina.org%2Fconfiguration%2Fexternals%2F\" target=\"_blank\"\u003e外部扩展(externals)\u003c/a\u003e: 将不怎么需要更新的第三方库脱离webpack打包，不被打入bundle中，从而减少打包时间,比如jQuery用script标签引入\u003c/li\u003e\u003cli\u003edll: 采用webpack的 DllPlugin 和 DllReferencePlugin 引入dll，让一些基本不会改动的代码先打包成静态资源,避免反复编译浪费时间\u003c/li\u003e\u003cli\u003e利用缓存: \u003ccode\u003ewebpack.cache\u003c/code\u003e、babel-loader.cacheDirectory、\u003ccode\u003eHappyPack.cache\u003c/code\u003e都可以利用缓存提高rebuild效率\u003c/li\u003e\u003cli\u003e缩小文件搜索范围: 比如babel-loader插件,如果你的文件仅存在于src中,那么可以\u003ccode\u003einclude: path.resolve(__dirname, \u0026#x27;src\u0026#x27;)\u003c/code\u003e,当然绝大多数情况下这种操作的提升有限,除非不小心build了node_modules文件\u003cbr/\u003e\u003c/li\u003e\u003c/ul\u003e",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-05T14:59:45.000Z",
+    "updateAt":  "2021-07-07T00:11:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1538,
+    "filterTotalNum":  1907,
+    "prev":  "ce8cb922-4de0-429b-9036-63d1dc387af9",
+    "next":  "9211a856-9131-4bb9-b7a3-e876bb528ee7"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2802,
+    "exerciseKey":  "3d4f17ec-2091-4826-8e11-d79363a9cb89",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 express middleware(中间件) 的工作原理",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### **1. 中间件的定义**\n中间件是一个函数，它接收请求对象 (`req`)、响应对象 (`res`) 和一个 `next` 函数。中间件函数可以对请求进行处理、修改响应、终止请求-响应周期，或者将请求传递给下一个中间件。\n\n### **2. 中间件的使用**\n中间件在 Express 应用程序中通过 `app.use()` 或者其他 HTTP 方法 (`app.get()`, `app.post()`, 等) 被注册。它们会按顺序执行。\n\n### **3. 中间件工作流程**\n\n1. **请求到达**：\n   - 当一个 HTTP 请求到达 Express 应用时，请求会从顶部开始传递给中间件链中的第一个中间件函数。\n\n2. **中间件执行**：\n   - 每个中间件函数可以对请求进行处理，比如修改请求对象 (`req`)、响应对象 (`res`)，或者执行某些操作（如日志记录、身份验证等）。\n   - 中间件可以通过调用 `next()` 函数将控制权传递给下一个中间件函数。如果不调用 `next()`，请求-响应周期会被中断，响应不会发送给客户端。\n\n3. **传递到下一个中间件**：\n   - 控制权转移到下一个中间件函数，直到所有中间件都执行完成，或者找到一个能够终止请求-响应周期的中间件。\n   - 如果请求没有被终止且所有中间件都执行完成，Express 会将请求传递到定义的路由处理函数（如果有的话），最后发送响应给客户端。\n\n4. **响应处理**：\n   - 最终的响应由最后一个中间件或路由处理函数生成并发送给客户端。如果某个中间件终止了请求-响应周期（比如通过 `res.send()` 或 `res.end()`），则后续的中间件将不会被执行。\n\n### **4. 中间件类型**\n\n1. **应用级中间件**：\n   - 使用 `app.use()` 注册的中间件，它们可以是所有路由的通用中间件，也可以针对特定路径。\n   - 示例：\n     ```javascript\n     app.use((req, res, next) =\u003e {\n         console.log(\u0027Request received\u0027);\n         next();\n     });\n     ```\n\n2. **路由级中间件**：\n   - 绑定到特定路由的中间件，仅在请求匹配到指定路由时才会执行。\n   - 示例：\n     ```javascript\n     app.get(\u0027/user/:id\u0027, (req, res, next) =\u003e {\n         console.log(\u0027User ID:\u0027, req.params.id);\n         next();\n     });\n     ```\n\n3. **错误处理中间件**：\n   - 用于处理错误的中间件，通常有四个参数 (`err`, `req`, `res`, `next`)。\n   - 示例：\n     ```javascript\n     app.use((err, req, res, next) =\u003e {\n         console.error(err.stack);\n         res.status(500).send(\u0027Something broke!\u0027);\n     });\n     ```\n\n4. **内置中间件**：\n   - Express 内置的中间件，如 `express.json()` 和 `express.static()`。\n   - 示例：\n     ```javascript\n     app.use(express.json()); // 解析 JSON 请求体\n     app.use(express.static(\u0027public\u0027)); // 提供静态文件\n     ```",
+    "pivot":  "- **请求到达**：请求会传递到中间件链的第一个中间件。\n- **中间件执行**：中间件处理请求、修改响应、调用 `next()` 或终止请求-响应周期。\n- **传递到下一个中间件**：控制权传递到链中的下一个中间件。\n- **响应处理**：最终由最后的中间件或路由处理函数生成响应并发送给客户端。\n\n中间件的设计使得 Express 应用程序能够灵活地处理各种功能和逻辑，通过组合和使用不同的中间件函数实现复杂的处理流程。",
+    "vipLimit":  1,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2024-08-14T19:43:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  355,
+    "filterTotalNum":  1907,
+    "prev":  "fac9701b-e86e-499a-b1eb-8ba6a79dd146",
+    "next":  "2ea94d0f-e412-4db2-9d42-20c7eb50284f"
+}

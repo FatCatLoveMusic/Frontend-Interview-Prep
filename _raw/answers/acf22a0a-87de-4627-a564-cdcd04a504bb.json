@@ -1,0 +1,21 @@
+﻿{
+    "id":  2611,
+    "exerciseKey":  "acf22a0a-87de-4627-a564-cdcd04a504bb",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "webpack 中的 externals 作用是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 Webpack 中，`externals` 是一个配置选项，用于指定哪些模块不应该被打包到最终的 bundle 中。这个选项的主要作用是避免将某些依赖项包括在打包文件中，而是将这些依赖项作为外部资源进行加载。以下是 `externals` 的详细作用和使用场景：\n\n### **1. 避免重复打包**\n\n如果你的项目依赖某些库，而这些库在运行时会从 CDN 或其他外部来源加载（比如 jQuery、React），你可以使用 `externals` 来避免将这些库重复打包到你的 bundle 中。这样可以减少 bundle 的体积，避免冗余的代码。\n\n### **2. 提高加载性能**\n\n通过将常用的第三方库（如 React、Lodash）标记为外部依赖，用户可以从 CDN 上加载这些库，通常 CDN 会提供更好的性能和缓存策略，从而提高页面的加载速度。\n\n### **3. 兼容环境**\n\n在一些特定环境下（如在某些特殊的构建配置中），你可能希望某些库或模块在运行时由外部提供，而不是被打包到应用中。使用 `externals` 可以方便地将这些库标记为外部依赖。\n\n### **如何使用 `externals`**\n\n在 `webpack.config.js` 中配置 `externals` 选项。例如，如果你希望将 `react` 和 `react-dom` 标记为外部依赖，可以这样配置：\n\n```javascript\nmodule.exports = {\n  // ...\n  externals: {\n    react: \u0027React\u0027,\n    \u0027react-dom\u0027: \u0027ReactDOM\u0027\n  }\n};\n```\n\n在这个例子中：\n\n- `react: \u0027React\u0027` 表示在打包过程中，`import React from \u0027react\u0027` 会被处理为使用全局变量 `React`，而不是打包到 bundle 中。\n- `react-dom: \u0027ReactDOM\u0027` 表示在打包过程中，`import ReactDOM from \u0027react-dom\u0027` 会被处理为使用全局变量 `ReactDOM`，而不是打包到 bundle 中。\n\n### **使用场景示例**\n\n- **使用 CDN 提供库**：当你通过 CDN 加载库时，可以将这些库设置为外部依赖。例如，通过 CDN 加载的 `jQuery`：\n\n  ```javascript\n  externals: {\n    jquery: \u0027jQuery\u0027\n  }\n  ```\n\n  这样在打包时，`import $ from \u0027jquery\u0027` 会被替换为使用全局变量 `jQuery`。\n\n- **多页面应用**：在多页面应用中，多个页面可能共享一些库，使用 `externals` 可以避免在每个页面的 bundle 中都包含这些共享库。\n\n- **第三方插件**：当你的应用依赖某些大型的第三方插件，且这些插件在运行时会由其他地方提供时，可以使用 `externals` 将其排除在打包之外。",
+    "pivot":  "`externals` 在 Webpack 中的作用是将特定的模块标记为外部依赖，避免将它们打包到最终的 bundle 中。这样可以减少打包文件的体积，提高加载性能，并在特定环境下实现更好的兼容性。通过配置 `externals`，你可以确保常用的第三方库或插件在运行时由外部提供。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:36.000Z",
+    "updateAt":  "2024-08-15T18:34:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  442,
+    "filterTotalNum":  1907,
+    "prev":  "45f3d2fd-ebbc-43d6-8dff-4e5ebcc79afc",
+    "next":  "72ab3559-3038-4a2c-985d-dd9004101ecf"
+}

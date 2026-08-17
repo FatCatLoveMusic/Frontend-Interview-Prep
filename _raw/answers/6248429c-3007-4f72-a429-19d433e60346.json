@@ -1,0 +1,21 @@
+﻿{
+    "id":  1907,
+    "exerciseKey":  "6248429c-3007-4f72-a429-19d433e60346",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "position: fixed 一定是相对于浏览器窗口进行定位吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "不一定。\n\n`position:fixed;`的元素会被移出正常文档流，并不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置，元素的位置在屏幕滚动时不会改变。`fixed` 属性会创建新的层叠上下文。\n\n当元素祖先的 `transform`, `perspective` 或 `filter` 属性`非 none` 时，容器由视口改为该祖先。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-10-10T12:40:23.000Z",
+    "updateAt":  "2022-10-30T11:08:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  903,
+    "filterTotalNum":  1907,
+    "prev":  "d82af9bd-ac3b-4948-b7c5-83ed83e08e2e",
+    "next":  "d1556373-ae6c-4145-9111-e5cd74417497"
+}

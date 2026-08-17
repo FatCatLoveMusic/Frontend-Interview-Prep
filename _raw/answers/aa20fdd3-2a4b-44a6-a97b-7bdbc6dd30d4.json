@@ -1,0 +1,21 @@
+﻿{
+    "id":  146,
+    "exerciseKey":  "aa20fdd3-2a4b-44a6-a97b-7bdbc6dd30d4",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst person = {\n\tname: \"Lydia Hallie\",\n\thobbies: [\"coding\"]\n};\n\nfunction addHobby(hobby, hobbies = person.hobbies) {\n\thobbies.push(hobby);\n\treturn hobbies;\n}\n\naddHobby(\"running\", []);\naddHobby(\"dancing\");\naddHobby(\"baking\", person.hobbies);\n\nconsole.log(person.hobbies);\n```",
+    "options":  "{\"options\":[\"[\\\"coding\\\"]\",\"[\\\"coding\\\", \\\"dancing\\\"]\",\"[\\\"coding\\\", \\\"dancing\\\", \\\"baking\\\"]\",\"[\\\"coding\\\", \\\"running\\\", \\\"dancing\\\", \\\"baking\\\"]\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "函数 `addHobby` 接受两个参数，`hobby` 和 `hobbies`，其中 `hobbies` 的默认值是 `person` 对象中的 `hobbies` 属性。\n\n首先，我们调用函数 `addHobby`，并给 `hobby` 传递 `\"running\"` 以及给 `hobbies` 传递一个空数组。因为我们给 `hobbies` 传递了空数组，`\"running\"` 被添加到这个空数组，该操作不影响 `person` 对象中的 `hobbies` 属性。\n\n然后，我们调用函数 `addHobby`，并给 `hobby` 传递 `\"dancing\"`。我们不向 `hobbies` 传递值，因此它获取其默认值 —— 对象 `person` 的属性 `hobbies`。我们向数组 `person.hobbies` push `dancing`。\n\n最后，我们调用函数 `addHobby`，并向 `hobby` 传递值 `\"baking\"`，并且向 `hobbies` 传递 `person.hobbies`。我们向数组 `person.hobbies` push `dancing`。\n\npushing `dancing` 和 `baking` 之后，`person.hobbies` 的值为 `[\"coding\", \"dancing\", \"baking\"]`",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-12-25T17:23:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  1773,
+    "filterTotalNum":  1907,
+    "prev":  "a7afe475-998a-4be3-97a0-c8c7ccabd6e6",
+    "next":  "b586c729-13ac-45ae-807c-8a7a0a23c7a4"
+}

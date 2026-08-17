@@ -1,0 +1,21 @@
+﻿{
+    "id":  159,
+    "exerciseKey":  "a84229a5-810b-463d-9d53-d22fc59fc528",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么?",
+    "desc":  "```javascript\nconst createMember = ({ email, address = {}}) =\u003e {\n\tconst validEmail = /.+\\@.+\\..+/.test(email)\n\tif (!validEmail) throw new Error(\"Valid email pls\")\n\n\treturn {\n\t\temail,\n\t\taddress: address ? address : null\n\t}\n}\n\nconst member = createMember({ email: \"my@email.com\" })\nconsole.log(member)\n```",
+    "options":  "{\"options\":[\"{ email: \\\"my@email.com\\\", address: null }\",\"{ email: \\\"my@email.com\\\" }\",\"{ email: \\\"my@email.com\\\", address: {} }\",\"{ email: \\\"my@email.com\\\", address: undefined }\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  " `address` 的默认值是一个空对象 `{}`。当我们设置 `member` 变量为 `createMember` 函数返回的对象，我们没有为address参数传值，意味着address的值为默认的空对象 `{}`。一个空对象是一个truthy值，意味着 `address ? address : null` 条件会返回 `true`。address的值为空对象 `{}`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:36:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  1760,
+    "filterTotalNum":  1907,
+    "prev":  "f1a7b0d9-bb14-4d85-97e2-a1668c60098c",
+    "next":  "c08daadf-ef79-48b0-8cda-3ab379624fa5"
+}

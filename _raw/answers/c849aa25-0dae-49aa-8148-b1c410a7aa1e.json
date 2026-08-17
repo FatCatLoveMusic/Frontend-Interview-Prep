@@ -1,0 +1,21 @@
+﻿{
+    "id":  260,
+    "exerciseKey":  "c849aa25-0dae-49aa-8148-b1c410a7aa1e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "常用的 meta 元素有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003e The \u003cmeta\u003e tag provides metadata about the HTML document. Metadata will not be displayed on the page, but will be machine parsable.\n\n\u003cmeta\u003e 元素标签是提供有关HTML文档的元数据，元数据不会显示在页面上，但是能够被机器识别。\n\n总而言之, meta标签是用来让机器识别的，同时它对SEO起着重要的作用。\n\n## charset\n\n指定了html文档的编码格式，常用的是utf-8(Unicode的字符编码)，还有ISO-8859-1(拉丁字母的字符编码)。当然还有其他的，但是一般不常用也就不介绍了\n\n```html\n\u003cmeta charset=\"utf-8\"\u003e\n```\n\n## name \u0026 content\n\n指定元数据的名称(这部分对SEO非常有用)\n\n* author——定义了页面的作者\n\n```html\n\u003cmeta name=\"author\" content=\"Tony\"\u003e\n```\n\n* keywords——为搜索引擎提供关键字\n\n```html\n\u003cmeta name=\"keywords\" content=\"HTML, CSS, JavaScript\"\u003e\n```\n\n* description——对网页整体的描述\n\n```html\n\u003cmeta name=\"description\" content=\"My tutorials on HTML, CSS and JavaScript\"\u003e\n```\n\n* viewport——对页面视图相关进行定义\n\n```\nwidth=device-width——将页面宽度设置为跟随屏幕宽度变化而变化\ninitial-scale=1.0——设置浏览器首次加载页面时的初始缩放比例(0.0-10.0正数)\nmaximum-scale=1.0——允许用户缩放的最大比例(0.0-10.0正数)，必须大于等于minimum-scale\nminimum-scale=1.0——允许用户缩放的最小比例(0.0-10.0正数)，必须小于等于maximum-scale\nuser-scalable=no——是否允许用户手动缩放(yes或者no)\n```\n\n``` html\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, minmum-scale=1.0\"\u003e\n```\n\n* generator——包含生成页面软件的标识符\n\n\u003e which contains the identifier of the software that generated the page.\n\n```html\n\u003cmeta name=\"generator\" content=\"Hexo 3.8.0\"\u003e\n```\n\n* theme-color——定义主题颜色\n\n```html\n\u003cmeta name=\"theme-color\" content=\"#222\"\u003e\n```\n\n* http-equiv \u0026 content\n\n\u003e Provides an HTTP header for the information/value of the content attribute\n\n* refresh——每30s刷新一次文档\n\n```html\n\u003cmeta http-equiv=\"refresh\" content=\"30\"\u003e\n```\n\n* X-UA-Compatible——告知浏览器以何种版本渲染界面。下面的例子有限使用IE最新版本\n\n```html\n\u003cmeta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\"\u003e\n```\n\n关于是否有必要使用这一条在stack overflow尚且有争议。个人认为如果不想兼容低版本的IE，可以直接忽略这一条。\n\n* Cache-Control——请求和响应遵循的缓存机制，可以声明缓存的内容，修改过期时间，可多次声明\n\n\u003e no-transform——不得对资源进行转换或转变。\n\u003e no-siteapp——禁止百度进行转码\n\n```html\n\u003cmeta http-equiv=\"Cache-Control\" content=\"no-transform\"\u003e\n\u003cmeta http-equiv=\"Cache-Control\" content=\"no-siteapp\"\u003e\n```\n\n* property \u0026 content\n\n可以让网页成为一个富媒体对象，同意网页内容被其他网站引用，同时在应用的时候不会只是一个链接，会提取相应的信息展现给用户。\n\n```html\n\u003cmeta property=\"og:type\" content=\"website\"\u003e\n\u003cmeta property=\"og:url\" content=\"https://zjgyb.github.io/index.html\"\u003e\n\u003cmeta property=\"og:site_name\" content=\"tony\u0027s blog\"\u003e\n```\n",
+    "pivot":  "- **字符集**：`\u003cmeta charset=\"UTF-8\"\u003e`\n- **描述**：`\u003cmeta name=\"description\" content=\"...\"\u003e`\n- **关键词**：`\u003cmeta name=\"keywords\" content=\"...\"\u003e`\n- **作者**：`\u003cmeta name=\"author\" content=\"...\"\u003e`\n- **视口**：`\u003cmeta name=\"viewport\" content=\"...\"\u003e`\n- **刷新和重定向**：`\u003cmeta http-equiv=\"refresh\" content=\"...\"\u003e`\n- **网页权限设置**：`\u003cmeta name=\"robots\" content=\"...\"\u003e`\n- **兼容性**：`\u003cmeta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"\u003e`\n- **Open Graph** 和 **Twitter Card** 元素用于社交媒体优化：`\u003cmeta property=\"og:image\" content=\"...\"\u003e`、`\u003cmeta name=\"twitter:card\" content=\"summary_large_image\"\u003e`",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T05:17:07.000Z",
+    "updateAt":  "2024-08-10T21:37:46.000Z",
+    "isCollected":  false,
+    "currentIndex":  1659,
+    "filterTotalNum":  1907,
+    "prev":  "2acd6447-af1d-4430-837f-a468b6c76ffe",
+    "next":  "c1ee1a9b-5955-4dc1-a89d-2ce7b017616a"
+}

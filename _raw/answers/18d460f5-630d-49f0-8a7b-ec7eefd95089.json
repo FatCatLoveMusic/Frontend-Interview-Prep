@@ -1,0 +1,21 @@
+﻿{
+    "id":  1754,
+    "exerciseKey":  "18d460f5-630d-49f0-8a7b-ec7eefd95089",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现斐波那契数列",
+    "desc":  "斐波那契数，指的是这样一个数列：1、1、2、3、5、8、13、21、……\n\n在数学上，斐波那契数列以如下被以递归的方法定义：F0=0，F1=1，Fn=Fn-1+Fn-2（n\u003e=2，n∈N*），用文字来说，就是斐波那契数列由 0 和 1 开始，之后的斐波那契数列系数就由之前的两数相加。",
+    "options":  null,
+    "explanation":  "常用的计算斐波那契数列的方法分为两大类：递归和循环。\n\n## 递归\n\n### 方法一：普通递归\n\n代码优美逻辑清晰。但是有重复计算的问题，如：当n为5的时候要计算fibonacci(4) + fibonacci(3)，当n为4的要计算fibonacci(3) + fibonacci(2) ，这时fibonacci(3)就是重复计算了。运行 fibonacci(50) 会出现浏览器假死现象，毕竟递归需要堆栈，数字过大内存不够。\n\n```js\nfunction fibonacci(n) {\n    if (n == 1 || n == 2) {\n        return 1\n    };\n    return fibonacci(n - 2) + fibonacci(n - 1);\n}\nfibonacci(30)\n```\n\n### 方法二：改进递归-把前两位数字做成参数避免重复计算\n\n```js\nfunction fibonacci(n) {\n    function fib(n, v1, v2) {\n        if (n == 1)\n            return v1;\n        if (n == 2)\n            return v2;\n        else\n            return fib(n - 1, v2, v1 + v2)\n    }\n    return fib(n, 1, 1)\n}\nfibonacci(30)\n```\n\n###  方法三：改进递归-利用闭包特性把运算结果存储在数组里，避免重复计算\n\n```js\nvar fibonacci = function () {\n    let memo = [0, 1];\n    let fib = function (n) {\n        if (memo[n] == undefined) {\n            memo[n] = fib(n - 2) + fib(n - 1)\n        }\n        return memo[n]\n    }\n    return fib;\n}()\nfibonacci(30)\n```\n\n### 方法四：改进递归-摘出存储计算结果的功能函数\n\n```js\nvar memoizer = function (func) {\n    let memo = [];\n    return function (n) {\n        if (memo[n] == undefined) {\n            memo[n] = func(n)\n        }\n        return memo[n]\n    }\n};\nvar fibonacci=memoizer(function(n){\n    if (n == 1 || n == 2) {\n        return 1\n    };\n    return fibonacci(n - 2) + fibonacci(n - 1);\n})\nfibonacci(30)\n```\n\n## 循环\n\n### 方法一：普通for循环\n\n```js\nfunction fibonacci(n) {\n    var n1 = 1, n2 = 1, sum;\n    for (let i = 2; i \u003c n; i++) {\n        sum = n1 + n2\n        n1 = n2\n        n2 = sum\n    }\n    return sum\n}\nfibonacci(30)\n```\n\n### 方法二：for循环+解构赋值\n\n```js\nvar fibonacci = function (n) {\n    let n1 = 1; n2 = 1;\n    for (let i = 2; i \u003c n; i++) {\n        [n1, n2] = [n2, n1 + n2]\n    }\n    return n2\n}\nfibonacci(30)\n```\n\n\u003e 本答案由“前端面试题宝典”收集整理，PC端访问请前往： https://fe.ecool.fun/ ",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-04-10T01:34:11.000Z",
+    "updateAt":  "2022-04-10T09:34:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  1055,
+    "filterTotalNum":  1907,
+    "prev":  "ea676360-c8f5-4ce4-bc66-5c3e4f7eddb6",
+    "next":  "e3a135b5-e6d4-4f1f-8e02-0c977e2ce768"
+}

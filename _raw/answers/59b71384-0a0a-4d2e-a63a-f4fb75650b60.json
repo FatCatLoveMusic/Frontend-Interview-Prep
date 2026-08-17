@@ -1,0 +1,21 @@
+﻿{
+    "id":  1629,
+    "exerciseKey":  "59b71384-0a0a-4d2e-a63a-f4fb75650b60",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第37题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function async1 () {\n  try {\n    await Promise.reject(\u0027error!!!\u0027)\n  } catch(e) {\n    console.log(e)\n  }\n  console.log(\u0027async1\u0027);\n  return Promise.resolve(\u0027async1 success\u0027)\n}\nasync1().then(res =\u003e console.log(res))\nconsole.log(\u0027script start\u0027)\n\n```",
+    "options":  null,
+    "explanation":  "```\n\u0027script start\u0027\n\u0027error!!!\u0027\n\u0027async1\u0027\n\u0027async1 success\u0027\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:18:09.000Z",
+    "updateAt":  "2022-01-09T23:24:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  1161,
+    "filterTotalNum":  1907,
+    "prev":  "570eed0a-2340-4c59-a6c0-967db6a7dc48",
+    "next":  "32b06302-58e6-44df-acb7-6c975dcc2957"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2081,
+    "exerciseKey":  "d17cf190-40d8-4405-bc82-eb54480ca38c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "try...catch 可以捕获到异步代码中的错误吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "不能。\n\n以下面代码为例：\n\n```js\ntry {\n  setTimeout(() =\u003e {\n    throw new Error(\u0027err\u0027)\n  }, 200);\n} catch (err) {\n  console.log(err);\n}\n```\n\nsetTimeout是一个异步函数，它的回调函数会在指定的延时后被放入事件队列，等待当前执行栈清空后才执行。因此，当setTimeout的回调函数执行并抛出错误时，try...catch已经执行完毕，无法捕捉到异步回调中的错误。\n\n对于异步代码，需要结合 Promise 、async/await 或者事件监听器等机制来处理错误。",
+    "pivot":  "### 思路和要点\n\n1. **理解 try...catch 的局限性**：\n   - `try...catch` 只能捕获同步代码块中的错误，对于异步代码中的错误无法捕获。\n\n2. **示例分析**：\n   - 分析给出的示例代码：\n\n     ```javascript\n     try {\n       setTimeout(() =\u003e {\n         throw new Error(\u0027err\u0027)\n       }, 200);\n     } catch (err) {\n       console.log(err);\n     }\n     ```\n\n   - 由于 `setTimeout` 是异步函数，其回调会在指定延时后被放入事件队列，当执行栈清空后才执行，因此 `try...catch` 无法捕获异步回调中的错误。\n\n3. **处理异步代码中的错误**：\n   - **使用 Promise**：\n     - 在使用 Promise 时，可以通过 `.catch` 方法捕获错误。\n     - 示例：\n\n       ```javascript\n       new Promise((resolve, reject) =\u003e {\n         setTimeout(() =\u003e {\n           reject(new Error(\u0027err\u0027));\n         }, 200);\n       }).catch(err =\u003e {\n         console.error(err);\n       });\n       ```\n\n   - **使用 async/await**：\n     - 使用 `async/await` 可以使异步代码看起来像同步代码，并结合 `try...catch` 捕获错误。\n     - 示例：\n\n       ```javascript\n       async function asyncFunction() {\n         try {\n           await new Promise((resolve, reject) =\u003e {\n             setTimeout(() =\u003e {\n               reject(new Error(\u0027err\u0027));\n             }, 200);\n           });\n         } catch (err) {\n           console.error(err);\n         }\n       }\n\n       asyncFunction();\n       ```\n\n   - **使用事件监听器**：\n     - 通过事件监听器捕获异步操作中的错误。\n     - 示例：\n\n       ```javascript\n       window.addEventListener(\u0027error\u0027, (event) =\u003e {\n         console.error(event.error);\n       });\n\n       setTimeout(() =\u003e {\n         throw new Error(\u0027err\u0027);\n       }, 200);\n       ```\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-02-01T07:30:51.000Z",
+    "updateAt":  "2024-08-10T17:07:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  732,
+    "filterTotalNum":  1907,
+    "prev":  "19da1c13-87a9-4fb4-98ae-0af28c7f03e6",
+    "next":  "4c0c461d-35da-4944-be7a-88e75e861d62"
+}

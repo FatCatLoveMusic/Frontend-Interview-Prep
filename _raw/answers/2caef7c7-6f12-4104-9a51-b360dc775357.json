@@ -1,0 +1,21 @@
+﻿{
+    "id":  436,
+    "exerciseKey":  "2caef7c7-6f12-4104-9a51-b360dc775357",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "null是对象吗？为什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "null不是对象。\n\n虽然 typeof null 会输出 object，但是这只是 JS 存在的一个悠久 Bug。在 JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，000 开头代表是对象然而 null 表示为全零，所以将它错误的判断为 object 。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:57:38.000Z",
+    "updateAt":  "2021-07-07T00:14:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1484,
+    "filterTotalNum":  1907,
+    "prev":  "82a008f4-a9a4-4af6-aa6f-ec9d3b026487",
+    "next":  "b9bd9552-5748-45b1-88a8-f36e45f6261f"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  431,
+    "exerciseKey":  "879ca17c-91e6-488d-a835-d89715f382c0",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "单例模式",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cp\u003e\u003cstrong\u003e1.什么是单例\u003c/strong\u003e\u003cbr/\u003e \u003c/p\u003e\u003cul\u003e\u003cli\u003e保证一个类只有一个实例，并且提供一个访问该全局访问点\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003e 2.那些地方用到了单例模式\u003c/strong\u003e\u003cbr/\u003e \u003c/p\u003e\u003col\u003e\u003cli\u003e网站的计数器，一般也是采用单例模式实现，否则难以同步。\u003c/li\u003e\u003cli\u003e应用程序的日志应用，一般都是单例模式实现，只有一个实例去操作才好，否则内容不好追加显示。\u003c/li\u003e\u003cli\u003e多线程的线程池的设计一般也是采用单例模式，因为线程池要方便对池中的线程进行控制\u003c/li\u003e\u003cli\u003eWindows的（任务管理器）就是很典型的单例模式，他不能打开俩个\u003c/li\u003e\u003cli\u003ewindows的（回收站）也是典型的单例应用。在整个系统运行过程中，回收站只维护一个实例。\u003c/li\u003e\u003c/ol\u003e\u003cp\u003e\u003cstrong\u003e 3.单例优缺点\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cbr/\u003e \u003cstrong\u003e优点：\u003c/strong\u003e\u003c/p\u003e\u003col\u003e\u003cli\u003e在单例模式中，活动的单例只有一个实例，对单例类的所有实例化得到的都是相同的一个实例。这样就防止其它对象对自己的实例化，确保所有的对象都访问一个实例\u003c/li\u003e\u003cli\u003e单例模式具有一定的伸缩性，类自己来控制实例化进程，类就在改变实例化进程上有相应的伸缩性。\u003c/li\u003e\u003cli\u003e提供了对唯一实例的受控访问。\u003c/li\u003e\u003cli\u003e由于在系统内存中只存在一个对象，因此可以节约系统资源，当需要频繁创建和销毁的对象时单例模式无疑可以提高系统的性能。\u003c/li\u003e\u003cli\u003e允许可变数目的实例。\u003c/li\u003e\u003cli\u003e避免对共享资源的多重占用。\u003c/li\u003e\u003c/ol\u003e\u003cp\u003e \u003cstrong\u003e缺点：\u003c/strong\u003e\u003c/p\u003e\u003col\u003e\u003cli\u003e不适用于变化的对象，如果同一类型的对象总是要在不同的用例场景发生变化，单例就会引起数据的错误，不能保存彼此的状态。\u003c/li\u003e\u003cli\u003e由于单利模式中没有抽象层，因此单例类的扩展有很大的困难。\u003c/li\u003e\u003cli\u003e单例类的职责过重，在一定程度上违背了“单一职责原则”。\u003c/li\u003e\u003cli\u003e滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为的单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；如果实例化的对象长时间不被利用，系统会认为是垃圾而被回收，这将导致对象状态的丢失。\u003c/li\u003e\u003c/ol\u003e\u003cp\u003e\u003cstrong\u003e \u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e 5.单例创建方式\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cbr/\u003e \u003cstrong\u003e（主要使用懒汉和懒汉式）\u003c/strong\u003e\u003cbr/\u003e \u003c/p\u003e\u003col\u003e\u003cli\u003e饿汉式:类初始化时,会立即加载该对象，线程天生安全,调用效率高。\u003c/li\u003e\u003cli\u003e懒汉式: 类初始化时,不会初始化该对象,真正需要使用的时候才会创建该对象,具备懒加载功能。\u003c/li\u003e\u003c/ol\u003e\u003cp\u003e \u003c/p\u003e",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:36:49.000Z",
+    "updateAt":  "2021-07-11T10:52:57.000Z",
+    "isCollected":  false,
+    "currentIndex":  1489,
+    "filterTotalNum":  1907,
+    "prev":  "5a6bab0d-b96e-42ce-bfce-ba3b38e32728",
+    "next":  "6b924c4e-203a-4034-aa34-025b36cbab12"
+}

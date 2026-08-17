@@ -1,0 +1,21 @@
+﻿{
+    "id":  141,
+    "exerciseKey":  "e7e3a667-d380-4b69-aa9b-aa80e86937f0",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "以下哪一项会对对象 `person` 有副作用？",
+    "desc":  "```javascript\nconst person = { name: \"Lydia Hallie\" };\n\nObject.seal(person);\n```",
+    "options":  "{\"options\":[\"person.name = \\\"Evan Bacon\\\"\",\"person.age = 21\",\"delete person.name\",\"Object.assign(person, { age: 21 })\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "使用 `Object.seal` 我们可以防止新属性 _被添加_，或者存在属性 _被移除_.\n然而，你仍然可以对存在属性进行更改。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:33:12.000Z",
+    "isCollected":  false,
+    "currentIndex":  1778,
+    "filterTotalNum":  1907,
+    "prev":  "6612daa5-7854-4379-bdb9-46398ef4f87c",
+    "next":  "6a8b4695-3386-491a-8711-2dd53eba399e"
+}

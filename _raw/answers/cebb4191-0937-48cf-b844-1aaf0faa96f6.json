@@ -1,0 +1,21 @@
+﻿{
+    "id":  515,
+    "exerciseKey":  "cebb4191-0937-48cf-b844-1aaf0faa96f6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“冒泡排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法描述\n\n冒泡排序是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。\n\n## 算法步骤\n\n* 比较相邻的元素。如果第一个比第二个大，就交换他们两个。\n* 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。\n* 针对所有的元素重复以上的步骤，除了最后一个。\n* 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。\n\n```javascript\nfunction bubbleSort(arr) {\n    var len = arr.length;\n    for (var i = 0; i \u003c len; i++) {\n        for (var j = 0; j \u003c len - 1 - i; j++) {\n            if (arr[j] \u003e arr[j+1]) {        //相邻元素两两对比\n                var temp = arr[j+1];        //元素交换\n                arr[j+1] = arr[j];\n                arr[j] = temp;\n            }\n        }\n    }\n    return arr;\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(bubbleSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n```\n\n## 改进冒泡排序\n\n设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于pos位置之后的记录均已交换到位,故在进行下一趟排序时只要扫描到pos位置即可。\n\n```javascript\nfunction bubbleSort2(arr) {\n    console.time(\u0027改进后冒泡排序耗时\u0027);\n    var i = arr.length-1;  //初始时,最后位置保持不变\n    while ( i\u003e 0) {\n        var pos= 0; //每趟开始时,无记录交换\n        for (var j= 0; j\u003c i; j++)\n            if (arr[j]\u003e arr[j+1]) {\n                pos= j; //记录交换的位置\n                var tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;\n            }\n        i= pos; //为下一趟排序作准备\n     }\n     console.timeEnd(\u0027改进后冒泡排序耗时\u0027);\n     return arr;\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(bubbleSort2(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n```\n\n## 继续优化\n\n传统冒泡排序中每一趟排序操作只能找到一个最大值或最小值,我们考虑利用在每趟排序中进行正向和反向两遍冒泡的方法一次可以得到两个最终值(最大者和最小者) , 从而使排序趟数几乎减少了一半。\n\n```javascript\nfunction bubbleSort3(arr3) {\n    var low = 0;\n    var high= arr.length-1; //设置变量的初始值\n    var tmp,j;\n    console.time(\u00272.改进后冒泡排序耗时\u0027);\n    while (low \u003c high) {\n        for (j= low; j\u003c high; ++j) //正向冒泡,找到最大者\n            if (arr[j]\u003e arr[j+1]) {\n                tmp = arr[j]; arr[j]=arr[j+1];arr[j+1]=tmp;\n            }\n        --high;                 //修改high值, 前移一位\n        for (j=high; j\u003elow; --j) //反向冒泡,找到最小者\n            if (arr[j]\u003carr[j-1]) {\n                tmp = arr[j]; arr[j]=arr[j-1];arr[j-1]=tmp;\n            }\n        ++low;                  //修改low值,后移一位\n    }\n    console.timeEnd(\u00272.改进后冒泡排序耗时\u0027);\n    return arr3;\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(bubbleSort3(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-17T11:54:19.000Z",
+    "updateAt":  "2024-07-22T15:42:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  1405,
+    "filterTotalNum":  1907,
+    "prev":  "6f6f9aed-420d-4ceb-a919-1a3aa779fc38",
+    "next":  "769ab8fd-1070-42d3-817e-48d9b37374ff"
+}

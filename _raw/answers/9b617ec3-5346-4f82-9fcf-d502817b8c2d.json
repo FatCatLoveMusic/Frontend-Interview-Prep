@@ -1,0 +1,21 @@
+﻿{
+    "id":  1590,
+    "exerciseKey":  "9b617ec3-5346-4f82-9fcf-d502817b8c2d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "a == 1 \u0026\u0026 a == 2 \u0026\u0026 a == 3 可能为 true 吗？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 第一种方案\n\n把 `a` 定义为一个对象，通过重写toString方法。根据规则，== 左边为对象类型，右边为Number，在比较时会调用 `a` 的toString方法，所以每次调用时都将返回值加1。\n\n```js\nconst a = {\n    value: 1,\n    toString: function () {\n        return a.value++\n    }\n}\nconsole.log(a == 1 \u0026\u0026 a == 2 \u0026\u0026 a == 3) // true\n```\n\n## 第二种方案\n\n用相同的方法重写valueOf方法。\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-12-26T04:02:27.000Z",
+    "updateAt":  "2021-12-26T16:06:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  1200,
+    "filterTotalNum":  1907,
+    "prev":  "e928aade-65d6-438d-be11-8250f7784f4d",
+    "next":  "389f9946-a2d7-4bba-adde-f18330e5b2e4"
+}

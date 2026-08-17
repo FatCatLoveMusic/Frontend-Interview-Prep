@@ -1,0 +1,21 @@
+﻿{
+    "id":  47,
+    "exerciseKey":  "343c64fa-f996-4d17-a20f-dec32f7b256b",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "setInterval 方法的返回值是什么？",
+    "desc":  "```javascript\nsetInterval(() =\u003e console.log(\u0027Hi\u0027), 1000)\n```",
+    "options":  "{\"options\":[\"一个唯一的id\",\"该方法指定的毫秒数\",\"传递的函数\",\"undefined\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "`setInterval` 返回一个唯一的 id。此 id 可被用于 `clearInterval` 函数来取消定时。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-04T18:12:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1872,
+    "filterTotalNum":  1907,
+    "prev":  "d0fd0142-dd09-4d9a-9465-012c30cd921e",
+    "next":  "a762c5d6-5e0b-4b4c-b1c3-eea744b38d3d"
+}

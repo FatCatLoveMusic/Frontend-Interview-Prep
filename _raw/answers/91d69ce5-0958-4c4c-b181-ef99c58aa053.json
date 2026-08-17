@@ -1,0 +1,21 @@
+﻿{
+    "id":  151,
+    "exerciseKey":  "91d69ce5-0958-4c4c-b181-ef99c58aa053",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction getFruit(fruits) {\n\tconsole.log(fruits?.[1]?.[1])\n}\n\ngetFruit([[\u0027🍊\u0027, \u0027🍌\u0027], [\u0027🍍\u0027]])\ngetFruit()\ngetFruit([[\u0027🍍\u0027], [\u0027🍊\u0027, \u0027🍌\u0027]])\n```",
+    "options":  "{\"options\":[\"null, undefined, 🍌\",\"[], null, 🍌\",\"[], [], 🍌\",\"undefined, undefined, 🍌\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`?` 允许我们去选择性地访问对象内部更深层的嵌套属性。 我们尝试打印 `fruits` 数组索引值为 `1` 的子数组内部的索引值为 `1` 的元素。 如果在 `fruits` 数组索引值 为 `1` 的位置不存在元素，会直接返回 `undefined`。 如果 `fruits` 数组在索引值为 `1` 的位置存在元素，但是子数组在索引值为 `1` 的位置不存在元素，也会返回 `undefined`。\n首先，我们尝试打印 `[[\u0027🍊\u0027, \u0027🍌\u0027], [\u0027🍍\u0027]]` 的子数组 `[\u0027🍍\u0027]` 的第2个元素。这个子数组只包含一个元素，也就意味着在索引值为 `1` 的位置不存在元素，所以返回的是 `undefined` 。\n其次，我们在没有传入任何参数调用了 `getFruits` 函数，也就意味着形参 `fruits` 的默认值为`undefined`。因为我们选择性地链接了 `fruits` 在索引值为 `1` 的元素，因为在索引值为 `1` 的位置不存在元素，因此返回的是 `undefined` 。\n最后，我们尝试打印 `[\u0027🍍\u0027], [\u0027🍊\u0027, \u0027🍌\u0027]` 的子数组 `[\u0027🍊\u0027, \u0027🍌\u0027]` 的第2个元素。子数组索引值为 `1`的位置为 `🍌` ，因此它被打印出了。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:35:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1768,
+    "filterTotalNum":  1907,
+    "prev":  "1e8328ad-0ecd-428e-862c-a75c50e1a205",
+    "next":  "a0908792-bdd8-4de6-bb2e-3480a753c3d3"
+}

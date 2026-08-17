@@ -1,0 +1,21 @@
+﻿{
+    "id":  2357,
+    "exerciseKey":  "b3e1a9a2-6cde-43a9-a095-7ff2e555a111",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "vue-cli 有哪些功能？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "Vue CLI 是 Vue.js 官方提供的一个工具，用于快速构建和管理 Vue.js 项目。它提供了一系列功能，使得开发者能够高效地创建、配置和管理 Vue 应用。\n\n以下是 Vue CLI 的主要功能和所做的事情：\n\n### **1. 项目初始化**\n\n- **快速创建项目**：使用命令行工具快速生成新的 Vue 项目结构，包括基础的配置文件和示例代码。\n  \n  ```bash\n  vue create my-project\n  ```\n\n- **选择预设**：在创建项目时，可以选择预定义的配置预设，或者根据项目需求自定义选择功能（如 Vue Router、Vuex、TypeScript 等）。\n\n### **2. 配置管理**\n\n- **Webpack 配置**：Vue CLI 内置了对 Webpack 的配置，开发者可以在不深入理解 Webpack 的情况下，使用预配置的功能。\n  \n- **可扩展性**：通过 `vue.config.js` 文件，允许开发者自定义和扩展默认配置。\n\n### **3. 开发环境**\n\n- **开发服务器**：提供内置的开发服务器，支持热重载（Hot Module Replacement），使得开发过程更加高效和流畅。\n\n  ```bash\n  npm run serve\n  ```\n\n### **4. 构建和打包**\n\n- **生产构建**：支持一键构建项目并输出到 `dist` 文件夹，适合部署到生产环境。\n\n  ```bash\n  npm run build\n  ```\n\n- **优化功能**：内置了多种优化功能，如代码压缩、Tree Shaking、懒加载等，提高最终构建产物的性能。\n\n### **5. 插件系统**\n\n- **插件生态**：支持官方和社区开发的插件，可以在项目中方便地安装和使用，如 Vue Router、Vuex、PWA 支持等。\n\n  ```bash\n  vue add router\n  ```\n\n- **自定义插件**：开发者可以创建自定义插件，扩展 Vue CLI 的功能。\n\n### **6. 脚手架功能**\n\n- **生成组件**：提供命令生成 Vue 组件、页面、路由等代码片段，减少重复工作。\n\n  ```bash\n  vue generate component MyComponent\n  ```\n\n### **7. 统一的工具链**\n\n- **支持多种语言和工具**：支持 TypeScript、Sass、Less、Pug 等多种语言和工具，简化开发流程。\n\n### **8. 代码质量管理**\n\n- **Linting**：集成 ESLint，可以在开发过程中实时检查代码质量。\n\n- **测试框架**：支持集成测试框架，如 Jest 和 Mocha，以提高代码的可靠性。\n\n### **9. 文档生成**\n\n- **自动生成文档**：支持生成 API 文档和组件文档，便于开发和维护。\n\n### **10. Vue UI**\n\n- **图形化界面**：提供 Vue UI 工具，允许开发者通过图形界面管理项目配置、插件、依赖等，无需手动编辑配置文件。\n\n  ```bash\n  vue ui\n  ```",
+    "pivot":  "Vue CLI 提供了一套完整的解决方案，涵盖了项目初始化、配置管理、开发环境、构建打包、插件系统等多个方面。通过 Vue CLI，开发者可以快速高效地构建 Vue.js 应用，专注于业务逻辑而不必花费过多时间在项目配置上。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-19T01:19:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  570,
+    "filterTotalNum":  1907,
+    "prev":  "62546213-8ab6-473e-8b24-1e53e17ab9fb",
+    "next":  "d5521e12-af4e-4d82-a259-41b204bad6b5"
+}

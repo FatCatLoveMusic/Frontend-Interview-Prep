@@ -1,0 +1,21 @@
+﻿{
+    "id":  1614,
+    "exerciseKey":  "9656ede7-6815-4a00-9df3-60c0219e4383",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第22题】下面代码的输出是什么？",
+    "desc":  "```js\nPromise.resolve()\n  .then(function success (res) {\n    throw new Error(\u0027error!!!\u0027)\n  }, function fail1 (err) {\n    console.log(\u0027fail1\u0027, err)\n  }).catch(function fail2 (err) {\n    console.log(\u0027fail2\u0027, err)\n  })\n```",
+    "options":  null,
+    "explanation":  "## 解析\n\n由于Promise调用的是resolve()，因此.then()执行的应该是success()函数，可是success()函数抛出的是一个错误，它会被后面的catch()给捕获到，而不是被fail1函数捕获。\n\n## 结果\n\n```\nfail2 Error: error!!!\n    at success\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-01-09T14:53:20.000Z",
+    "updateAt":  "2022-01-09T23:02:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  1176,
+    "filterTotalNum":  1907,
+    "prev":  "e233c823-d125-4abe-b1da-878751a92cd9",
+    "next":  "023f27d0-f90b-446d-bd6c-293e95f9c9b8"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  410,
+    "exerciseKey":  "b66b6742-6ef1-4359-82ae-c69e2a041549",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Array.prototype.reduce()",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nArray.prototype.reduce = function(callback, initialValue) {\n  if (this == undefined) {\n    throw new TypeError(\u0027this is null or not defined\u0027);\n  }\n  if (typeof callback !== \u0027function\u0027) {\n    throw new TypeError(callbackfn + \u0027 is not a function\u0027);\n  }\n  const O = Object(this);\n  const len = this.length \u003e\u003e\u003e 0;\n  let accumulator = initialValue;\n  let k = 0;\n  // 如果第二个参数为undefined的情况下\n  // 则数组的第一个有效值作为累加器的初始值\n  if (accumulator === undefined) {\n    while (k \u003c len \u0026\u0026 !(k in O)) {\n      k++;\n    }\n    // 如果超出数组界限还没有找到累加器的初始值，则TypeError\n    if (k \u003e= len) {\n      throw new TypeError(\u0027Reduce of empty array with no initial value\u0027);\n    }\n    accumulator = O[k++];\n  }\n  while (k \u003c len) {\n    if (k in O) {\n      accumulator = callback.call(undefined, accumulator, O[k], k, O);\n    }\n    k++;\n  }\n  return accumulator;\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:01:32.000Z",
+    "updateAt":  "2021-07-07T00:12:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  1510,
+    "filterTotalNum":  1907,
+    "prev":  "c8245703-a177-4deb-a8be-24f73a3267b8",
+    "next":  "f1974383-8f98-4cd9-8a8e-f0c51e61b275"
+}

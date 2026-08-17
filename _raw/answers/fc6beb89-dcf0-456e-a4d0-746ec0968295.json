@@ -1,0 +1,21 @@
+﻿{
+    "id":  120,
+    "exerciseKey":  "fc6beb89-dcf0-456e-a4d0-746ec0968295",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "哪一个方法会返回 \u0027Hello world!\u0027 ？",
+    "desc":  "```javascript\nconst myMap = new Map()\nconst myFunc = () =\u003e \u0027greeting\u0027\n\nmyMap.set(myFunc, \u0027Hello world!\u0027)\n\n//1\nmyMap.get(\u0027greeting\u0027)\n//2\nmyMap.get(myFunc)\n//3\nmyMap.get(() =\u003e \u0027greeting\u0027)\n```",
+    "options":  "{\"options\":[\"1\",\"2\",\"2 and 3\",\"All of them\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "当通过 `set` 方法添加一个键值对，一个传递给 `set`方法的参数将会是键名，第二个参数将会是值。在这个case里，键名为 _函数_ `() =\u003e \u0027greeting\u0027`，值为`\u0027Hello world\u0027`。 `myMap` 现在就是 `{ () =\u003e \u0027greeting\u0027 =\u003e \u0027Hello world!\u0027 }`。\n1 是错的，因为键名不是 `\u0027greeting\u0027` 而是 `() =\u003e \u0027greeting\u0027`。\n3 是错的，因为我们给`get` 方法传递了一个新的函数。对象受 _引用_ 影响。函数也是对象，因此两个函数严格上并不等价，尽管他们相同：他们有两个不同的内存引用地址。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2024-08-03T21:05:30.000Z",
+    "isCollected":  false,
+    "currentIndex":  1799,
+    "filterTotalNum":  1907,
+    "prev":  "7ce6573e-b10b-4962-a732-aec1ca3207a1",
+    "next":  "6c0d11e8-a6cf-4f70-af8b-17f0490f36e2"
+}

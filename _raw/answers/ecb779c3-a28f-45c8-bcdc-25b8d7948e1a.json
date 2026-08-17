@@ -1,0 +1,21 @@
+﻿{
+    "id":  34,
+    "exerciseKey":  "ecb779c3-a28f-45c8-bcdc-25b8d7948e1a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nconst obj = { a: \u0027one\u0027, b: \u0027two\u0027, a: \u0027three\u0027 }\nconsole.log(obj)\n```",
+    "options":  "{\"options\":[\"{ a: \\\"one\\\", b: \\\"two\\\" }\",\"{ b: \\\"two\\\", a: \\\"three\\\" }\",\"{ a: \\\"three\\\", b: \\\"two\\\" }\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "如果你有两个名称相同的键，则键会被替换掉。它仍然位于第一个键出现的位置，但是值是最后出现那个键的值。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:10:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1885,
+    "filterTotalNum":  1907,
+    "prev":  "643af0aa-f567-45df-89ac-aaa8b4d8f927",
+    "next":  "979c6688-b432-487d-81bb-7250ae59840a"
+}

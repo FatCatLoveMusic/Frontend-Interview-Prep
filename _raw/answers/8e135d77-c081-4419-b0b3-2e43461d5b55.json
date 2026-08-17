@@ -1,0 +1,21 @@
+﻿{
+    "id":  1839,
+    "exerciseKey":  "8e135d77-c081-4419-b0b3-2e43461d5b55",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "浏览器乱码的原因是什么？如何解决？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n**产生乱码的原因：**\n\n- 网页源代码是`gbk`的编码，而内容中的中文字是`utf-8`编码的，这样浏览器打开即会出现`html`乱码，反之也会出现乱码；\n- `html`网页编码是`gbk`，而程序从数据库中调出呈现是`utf-8`编码的内容也会造成编码乱码；\n- 浏览器不能自动检测网页编码，造成网页乱码。\n\n\n\n**解决办法：**\n\n- 使用软件编辑HTML网页内容；\n- 如果网页设置编码是`gbk`，而数据库储存数据编码格式是`UTF-8`，此时需要程序查询数据库数据显示数据前进程序转码；\n- 如果浏览器浏览时候出现网页乱码，在浏览器中找到转换编码的菜单进行转换。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-06-25T06:34:05.000Z",
+    "updateAt":  "2024-07-22T10:06:44.000Z",
+    "isCollected":  false,
+    "currentIndex":  971,
+    "filterTotalNum":  1907,
+    "prev":  "969cddcd-b1ac-4285-86f6-ae0a8eaf828a",
+    "next":  "c8a51567-945f-461d-b632-0209dd1917f5"
+}

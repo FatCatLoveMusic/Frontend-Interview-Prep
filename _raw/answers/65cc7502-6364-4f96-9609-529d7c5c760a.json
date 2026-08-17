@@ -1,0 +1,21 @@
+﻿{
+    "id":  2064,
+    "exerciseKey":  "65cc7502-6364-4f96-9609-529d7c5c760a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "描述下列代码的执行结果",
+    "desc":  "```js\nfoo(typeof a);\nfunction foo(p) {\n  console.log(this);\n  console.log(p);\n  console.log(typeof b);\n  let b = 0;\n}\n```",
+    "options":  null,
+    "explanation":  "最终答案：**输出全局对象、\u0027undefined\u0027，然后抛出 ReferenceError 错误。**\n\n这段代码涉及了几个关键点：**变量提升（Hoisting）**、**`typeof` 运算符的特性**、**函数作用域内的 `let` 声明的“暂时性死区”**，以及函数调用中的 **`this` 指向**。\n\n### 一、代码分析\n\n```js\nfoo(typeof a);\n\nfunction foo(p) {\n  console.log(this);\n  console.log(p);\n  console.log(typeof b);\n  let b = 0;\n}\n```\n\n---\n\n### 二、运行步骤拆解\n\n#### 步骤 1：全局执行环境解析阶段\n\n* 函数 `foo` 被函数声明提升，因此在调用 `foo(...)` 时已可用；\n* `a` 并未声明；\n* 全局变量中没有 `b`，其声明在函数作用域内，且使用了 `let`，存在**暂时性死区（TDZ）**。\n\n---\n\n#### 步骤 2：执行 `foo(typeof a)`\n\n* `typeof a`：虽然变量 `a` 未定义，但 **`typeof` 操作符在访问未声明变量时不会抛错**，而是返回 `\u0027undefined\u0027`；\n\n  * 所以 `typeof a` 的值是 `\u0027undefined\u0027`；\n* `foo` 被调用，参数 `p` 传入 `\u0027undefined\u0027`。\n\n---\n\n#### 步骤 3：函数 `foo` 开始执行\n\n```js\nfunction foo(p) {\n  console.log(this);    // (1)\n  console.log(p);       // (2)\n  console.log(typeof b);// (3)\n  let b = 0;\n}\n```\n\n* `(1) console.log(this);`\n  在非严格模式下，`this` 指向 **全局对象（浏览器中为 `window`，Node 中为 `global`）**；\n  若开启严格模式，则为 `undefined`；由于题目未开启严格模式，这里输出全局对象。\n\n* `(2) console.log(p);`\n  输出参数值，即 `\u0027undefined\u0027`\n\n* `(3) console.log(typeof b);`\n  关键点：**变量 `b` 在此处已被创建，但尚未初始化（let 声明的特性）**，处于 TDZ（暂时性死区）。\n  访问它会触发 `ReferenceError` 异常。\n\n---\n\n### 三、执行结果（非严格模式下）\n\n```plaintext\n\u003cglobal object\u003e  // console.log(this)\n\"undefined\"      // console.log(p)\nReferenceError: Cannot access \u0027b\u0027 before initialization\n```\n\n",
+    "pivot":  "* `typeof 未声明变量` 不会抛错，会返回 `\u0027undefined\u0027`；\n* `let`/`const` 声明的变量在所在作用域内存在**暂时性死区（TDZ）**，在初始化之前访问会抛出 `ReferenceError`；\n* 函数参数在执行前就已被初始化；\n* 非严格模式下函数中的 `this` 指向全局对象。",
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-12-17T10:22:23.000Z",
+    "updateAt":  "2025-08-04T06:31:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  747,
+    "filterTotalNum":  1907,
+    "prev":  "7b776a5f-f2b7-4b8e-ad83-930c67a75142",
+    "next":  "b42993a0-daf4-47df-b933-2fbded17cdff"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1851,
+    "exerciseKey":  "4fabe17b-9140-475e-acce-4f49e60c6840",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么实现洗牌算法？",
+    "desc":  "洗牌算法是将原来的数组进行打散，使原数组的某个数在打散后的数组中的每个位置上等概率的出现，即为乱序算法。\n\n请使用 js 实现一个洗牌算法。",
+    "options":  null,
+    "explanation":  "# 洗牌算法(shuffle)的js实现\n\n## Fisher-Yates\n\n先看最经典的 [Fisher-Yates](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle) 的洗牌算法\n\n这里有一个该算法的[可视化实现](https://bost.ocks.org/mike/shuffle/)\n\n其算法思想就是 **从原始数组中随机抽取一个新的元素到新数组中**\n1. 从还没处理的数组（假如还剩n个）中，产生一个[0, n]之间的随机数 random\n2. 从剩下的n个元素中把第 random 个元素取出到新数组中 \n3. 删除原数组第random个元素\n4. 重复第 2 3 步直到所有元素取完\n5. 最终返回一个新的打乱的数组 \n\n按步骤一步一步来就很简单的实现\n\n``` js\nfunction shuffle(arr){\n    var result = [],\n        random;\n    while(arr.length\u003e0){\n        random = Math.floor(Math.random() * arr.length);\n        result.push(arr[random])\n        arr.splice(random, 1)\n    }\n    return result;\n}\n```\n\n这种算法要去除原数组 arr 中的元素，所以时间复杂度为 O(n2)\n## Knuth-Durstenfeld Shuffle\n\nFisher-Yates 洗牌算法的一个变种是 Knuth Shuffle\n\n**每次从未处理的数组中随机取一个元素，然后把该元素放到数组的尾部，即数组的尾部放的就是已经处理过的元素**，这是一种原地打乱的算法，每个元素随机概率也相等，时间复杂度从 Fisher 算法的 O(n2)提升到了 O(n)\n1. 选取数组(长度n)中最后一个元素(arr[length-1])，将其与n个元素中的任意一个交换，此时最后一个元素已经确定\n2. 选取倒数第二个元素(arr[length-2])，将其与n-1个元素中的任意一个交换\n3. 重复第 1 2 步，直到剩下1个元素为止\n\n``` js\nfunction shuffle(arr){\n    var length = arr.length,\n        temp,\n        random;\n    while(0 != length){\n        random = Math.floor(Math.random() * length)\n        length--;\n        // swap\n        temp = arr[length];\n        arr[length] = arr[random];\n        arr[random] = temp;\n    }\n    return arr;\n}\n```\n\nDurstenfeld Shuffle的算法是从数组第一个开始，和Knuth的区别是遍历的方向不同\n## Other\n### Array.sort()\n\n利用Array的sort方法可以更简洁的实现打乱，对于数量小的数组来说足够。因为随着数组元素增加，随机性会变差。\n\n``` js\n[1,2,3,4,5,6].sort(function(){\n    return .5 - Math.random();\n})\n```\n### ES6\n\nKnuth-Durstenfeld shuffle 的 ES6 实现，代码更简洁\n\n``` js\n\nfunction shuffle(arr){\n    let n = arr.length, random;\n    while(0!=n){\n        random =  (Math.random() * n--) \u003e\u003e\u003e 0; // 无符号右移位运算符向下取整\n        [arr[n], arr[random]] = [arr[random], arr[n]] // ES6的结构赋值实现变量互换\n    }\n    return arr;\n}\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-07-16T02:52:42.000Z",
+    "updateAt":  "2024-07-22T11:40:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  959,
+    "filterTotalNum":  1907,
+    "prev":  "f196bf54-110a-4440-896a-a678835bea83",
+    "next":  "d535efce-d820-4ad3-9723-e0e7373f542f"
+}

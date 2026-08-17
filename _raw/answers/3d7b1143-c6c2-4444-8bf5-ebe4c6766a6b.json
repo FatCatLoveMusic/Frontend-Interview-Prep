@@ -1,0 +1,21 @@
+﻿{
+    "id":  2930,
+    "exerciseKey":  "3d7b1143-c6c2-4444-8bf5-ebe4c6766a6b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "当前主流大模型 API（如 OpenAI、Claude、文心一言）在前端调用时需要注意哪些问题？如何做统一封装？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在前端调用主流大模型 API（如 OpenAI、Claude、文心一言）时，**安全性、稳定性、通用性、可扩展性** 是核心关注点。\n\n下面从注意事项和封装思路两个方面说明。\n\n---\n\n## 一、调用注意事项\n\n### 1. **API Key 安全性**\n- 不要在浏览器中直接暴露 API Key。\n- 正确做法：**前端调用自己后端的中转接口**，由后端与大模型服务通信。\n- 可以对请求做鉴权 + 限流防刷。\n\n### 2. **跨域和网络限制**\n- 一些 API 不支持跨域直接请求，前端必须通过后端代理；\n- Claude、文心一言等大模型需要内网白名单、API Token 等设置。\n\n### 3. **流式响应处理（SSE / Stream）**\n- OpenAI 使用 `fetch` + `ReadableStream` 处理 `text/event-stream`；\n- 前端需做好流数据拼接、打断重试、超时控制；\n- Claude（Anthropic）也支持流式返回，处理方式类似。\n\n### 4. **模型差异兼容**\n- 不同模型接口返回格式不一样，前端需有统一的数据结构；\n- 如 OpenAI 的流式响应按 `delta.content` 解析，而文心一言可能是 `result` 字段。\n\n---\n\n## 二、封装建议（前后端协作）\n\n### 后端接口结构（前端不直接调用大模型）\n\n```ts\nPOST /api/llm/chat\n{\n  provider: \u0027openai\u0027 | \u0027claude\u0027 | \u0027wenxin\u0027,\n  model: \u0027gpt-4\u0027 | \u0027claude-3-opus\u0027,\n  messages: [\n    { role: \u0027user\u0027, content: \u0027写一段产品介绍文案\u0027 }\n  ],\n  stream: true\n}\n```\n\n### 前端封装模块设计\n\n```ts\n// src/services/llm/index.ts\nexport interface ChatRequest {\n  provider: \u0027openai\u0027 | \u0027claude\u0027 | \u0027wenxin\u0027;\n  model: string;\n  messages: Message[];\n  stream?: boolean;\n}\n\nexport function chat(request: ChatRequest, onMessage: (text: string) =\u003e void) {\n  return fetch(\u0027/api/llm/chat\u0027, {\n    method: \u0027POST\u0027,\n    body: JSON.stringify(request),\n    headers: { \u0027Content-Type\u0027: \u0027application/json\u0027 }\n  }).then((res) =\u003e {\n    if (request.stream) {\n      const reader = res.body?.getReader()\n      const decoder = new TextDecoder(\u0027utf-8\u0027);\n      let buffer = \u0027\u0027;\n      reader?.read().then(function process({ done, value }) {\n        if (done) return;\n        buffer += decoder.decode(value, { stream: true });\n        buffer.split(\u0027\\n\\n\u0027).forEach(line =\u003e {\n          if (line.startsWith(\u0027data:\u0027)) {\n            const payload = JSON.parse(line.replace(\u0027data: \u0027, \u0027\u0027));\n            onMessage(payload.delta?.content || payload.result || \u0027\u0027);\n          }\n        });\n        return reader.read().then(process);\n      });\n    } else {\n      return res.json();\n    }\n  });\n}\n```\n\n### 前端使用方式\n\n```ts\nchat({\n  provider: \u0027openai\u0027,\n  model: \u0027gpt-4\u0027,\n  messages: [{ role: \u0027user\u0027, content: \u0027介绍下 AIGC 是什么\u0027 }],\n  stream: true\n}, (text) =\u003e {\n  setOutput(prev =\u003e prev + text); // 实现流式展示\n});\n```\n\n---\n\n## 三、部分建议\n\n| 方向         | 建议                                  |\n|--------------|---------------------------------------|\n| 多模型兼容   | 使用 adapter 设计模式封装不同模型调用逻辑 |\n| 错误处理     | 包括超时、断流、token 过期等兜底提示    |\n| 日志监控     | 后端记录请求上下文，便于调试与审计       |\n| 并发控制     | 防止用户快速连续请求，前端加锁节流       |\n| 缓存优化     | 可选将上下文或部分结果缓存               |",
+    "pivot":  "1. 前端不应直接调用大模型 API，要通过安全后端代理；\n2. 注意不同模型 API 的参数格式、流式解析方式差异；\n3. 封装统一接口便于切换模型，提升稳定性和扩展性；\n4. 前端应实现良好的流式处理、错误提示、响应中断支持。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-04-14T02:01:51.000Z",
+    "updateAt":  "2025-04-14T02:01:55.000Z",
+    "isCollected":  false,
+    "currentIndex":  272,
+    "filterTotalNum":  1907,
+    "prev":  "e8fdf26b-2148-4954-bcc8-908423e2eeed",
+    "next":  "c7c51194-cef4-4d20-bafd-88d5d1ac2921"
+}

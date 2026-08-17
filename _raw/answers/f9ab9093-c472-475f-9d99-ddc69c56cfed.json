@@ -1,0 +1,21 @@
+﻿{
+    "id":  517,
+    "exerciseKey":  "f9ab9093-c472-475f-9d99-ddc69c56cfed",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“插入排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法简介\n\n插入排序（Insertion-Sort）是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。\n\n## 算法描述\n\n一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：\n\n* 从第一个元素开始，该元素可以认为已经被排序；\n* 取出下一个元素，在已经排序的元素序列中从后向前扫描；\n* 如果该元素（已排序）大于新元素，将该元素移到下一位置；\n* 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；\n* 将新元素插入到该位置后；\n* 重复步骤2~5。\n\n## 代码实现\n\n```javascript\nfunction insertionSort(array) {\n    if (Object.prototype.toString.call(array).slice(8, -1) === \u0027Array\u0027) {\n        console.time(\u0027插入排序耗时：\u0027);\n        for (var i = 1; i \u003c array.length; i++) {\n            var key = array[i];\n            var j = i - 1;\n            while (j \u003e= 0 \u0026\u0026 array[j] \u003e key) {\n                array[j + 1] = array[j];\n                j--;\n            }\n            array[j + 1] = key;\n        }\n        console.timeEnd(\u0027插入排序耗时：\u0027);\n        return array;\n    } else {\n        return \u0027array is not an Array!\u0027;\n    }\n}\n```\n\n## 改进插入排序\n\n查找插入位置时使用二分查找的方式\n\n```javascript\nfunction binaryInsertionSort(array) {\n    if (Object.prototype.toString.call(array).slice(8, -1) === \u0027Array\u0027) {\n        console.time(\u0027二分插入排序耗时：\u0027);\n\n        for (var i = 1; i \u003c array.length; i++) {\n            var key = array[i], left = 0, right = i - 1;\n            while (left \u003c= right) {\n                var middle = parseInt((left + right) / 2);\n                if (key \u003c array[middle]) {\n                    right = middle - 1;\n                } else {\n                    left = middle + 1;\n                }\n            }\n            for (var j = i - 1; j \u003e= left; j--) {\n                array[j + 1] = array[j];\n            }\n            array[left] = key;\n        }\n        console.timeEnd(\u0027二分插入排序耗时：\u0027);\n\n        return array;\n    } else {\n        return \u0027array is not an Array!\u0027;\n    }\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(binaryInsertionSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n```\n\n## 算法分析\n\n* 最佳情况：输入数组按升序排列。T(n) = O(n)\n* 最坏情况：输入数组按降序排列。T(n) = O(n2)\n* 平均情况：T(n) = O(n2)\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-17T12:00:16.000Z",
+    "updateAt":  "2024-07-22T15:42:42.000Z",
+    "isCollected":  false,
+    "currentIndex":  1403,
+    "filterTotalNum":  1907,
+    "prev":  "6fc4d84b-0b4f-4cc3-8109-f5ec5a981da5",
+    "next":  "6f6f9aed-420d-4ceb-a919-1a3aa779fc38"
+}

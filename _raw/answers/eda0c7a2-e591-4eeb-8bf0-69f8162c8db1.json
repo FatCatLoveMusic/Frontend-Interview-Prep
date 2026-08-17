@@ -1,0 +1,21 @@
+﻿{
+    "id":  1934,
+    "exerciseKey":  "eda0c7a2-e591-4eeb-8bf0-69f8162c8db1",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何把一个对象变成可迭代对象？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可迭代对象（Iterable object）是数组的泛化，这个概念是在说任何对象都可以被定制为可在 `for..of` 循环中使用的对象。\n\n也就是说，可以应用 `for..of` 的对象被称为 `可迭代对象`。\n\n## 迭代器\n\n在 JavaScript 中，**迭代器**是一个对象，它定义一个序列，并在终止时可能返回一个返回值。\n\n更具体地说，迭代器是通过使用 `next()` 方法实现 `Iterator protocol` 的任何一个对象，该方法返回具有两个属性的对象： \n\n* `value`，这是序列中的 `next` 值\n* `done`，如果已经迭代到序列中的最后一个值，则它为 `true` \n\n如果 `value` 和 `done` 一起存在，则它是迭代器的返回值。\n\n一旦创建，迭代器对象可以通过重复调用 `next() `显式地迭代。\n\n迭代一个迭代器被称为消耗了这个迭代器，因为它通常只能执行一次。\n\n在产生终止值之后，对 `next()` 的额外调用应该继续返回 `{done: true}`。\n\nJavascript 中最常见的迭代器是 Array 迭代器，它只是按顺序返回关联数组中的每个值。\n\n虽然很容易想象所有迭代器都可以表示为数组，但事实并非如此。数组必须完整分配，但迭代器仅在必要时使用，因此可以表示无限大小的序列，例如 0 和无穷大之间的整数范围。\n\n这是一个可以做到这一点的例子。它允许创建一个简单的范围迭代器，它定义了从开始（包括）到结束（独占）间隔步长的整数序列。它的最终返回值是它创建的序列的大小，由变量 iterationCount 跟踪。\n\n```js\nlet index = 0\nconst bears = [\u0027ice\u0027, \u0027panda\u0027, \u0027grizzly\u0027]\n\nlet iterator = {\n  next() {\n    if (index \u003c bears.length) {\n      return { done: false, value: bears[index++] }\n    }\n\n    return { done: true, value: undefined }\n  }\n}\n\nconsole.log(iterator.next()) //{ done: false, value: \u0027ice\u0027 }\nconsole.log(iterator.next()) //{ done: false, value: \u0027panda\u0027 }\nconsole.log(iterator.next()) //{ done: false, value: \u0027grizzly\u0027 }\nconsole.log(iterator.next()) //{ done: true, value: undefined }\n```\n\n## 实现可迭代对象\n\n如果一个对象拥有 `[Symbol.iterator]` 方法，并且该方法返回一个迭代器对象，这样的对象即可称为`可迭代对象`。\n\n```js\nlet info = {\n  bears: [\u0027ice\u0027, \u0027panda\u0027, \u0027grizzly\u0027],\n  [Symbol.iterator]: function() {\n    let index = 0\n    let _iterator = {\n       //这里一定要箭头函数，或者手动保存上层作用域的this\n       next: () =\u003e {\n        if (index \u003c this.bears.length) {\n          return { done: false, value: this.bears[index++] }\n        }\n  \n        return { done: true, value: undefined }\n      }\n    }\n\n    return _iterator\n  }\n}\n\nlet iter = info[Symbol.iterator]()\nconsole.log(iter.next())\nconsole.log(iter.next())\nconsole.log(iter.next())\nconsole.log(iter.next())\n\n//符合可迭代对象协议 就可以利用 for of 遍历\nfor (let bear of info) {\n  console.log(bear)\n}\n//ice panda grizzly\n```",
+    "pivot":  "在JavaScript中，一个普通的对象默认不是可迭代对象，因为它没有实现迭代器协议（即没有`Symbol.iterator`方法）。要使对象变得可迭代，你需要手动给该对象添加一个`Symbol.iterator`方法。\n\n`Symbol.iterator`方法应该返回一个迭代器对象，该对象有一个`next()`方法，该方法返回一个对象，该对象包含`value`和`done`两个属性。`value`属性是当前迭代的值，`done`属性是一个布尔值，表示迭代是否完成。\n\n可以通过几种方式来实现`Symbol.iterator`方法：\n\n1. **直接编写迭代器逻辑**：在`Symbol.iterator`方法中编写逻辑来逐个返回对象的属性或值。这通常涉及到维护一个内部状态（如索引或迭代器位置）来跟踪当前迭代的位置。\n\n2. **使用生成器函数**：生成器函数提供了一种更简洁的方式来编写迭代器。你可以使用`function*`语法定义一个生成器函数，并在其中使用`yield`语句来逐个返回值。如果你想要迭代对象的属性或值，你可以结合使用`Object.keys()`, `Object.values()`, 或 `Object.entries()`等方法来简化逻辑。\n\n3. **委托迭代**：如果你的对象包含另一个可迭代对象（如数组或另一个实现了`Symbol.iterator`方法的对象），你可以在你的`Symbol.iterator`方法中简单地返回那个内部对象的迭代器。这可以通过使用`yield*`语句（在生成器函数中）来实现，它会委托迭代给另一个迭代器。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-01-09T11:42:26.000Z",
+    "updateAt":  "2024-08-10T17:07:07.000Z",
+    "isCollected":  false,
+    "currentIndex":  876,
+    "filterTotalNum":  1907,
+    "prev":  "460a9714-1001-4beb-b12a-be8fec732879",
+    "next":  "e4c43a21-1621-4281-9340-1839ec880382"
+}

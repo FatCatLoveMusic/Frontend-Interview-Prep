@@ -1,0 +1,21 @@
+﻿{
+    "id":  44,
+    "exerciseKey":  "7288dc5d-1485-4275-8a19-acf2bdc7f909",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\n(() =\u003e {\n  let x, y\n  try {\n    throw new Error()\n  } catch (x) {\n    (x = 1), (y = 2)\n    console.log(x)\n  }\n  console.log(x)\n  console.log(y)\n})()\n```",
+    "options":  "{\"options\":[\"1 undefined 2\",\"undefined undefined undefined\",\"1 1 2\",\"1 undefined undefined\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "`catch` 代码块接收参数 `x`。当我们传递参数时，这与之前定义的变量 `x` 不同 。这个 `x` 是属于 `catch` 块级作用域的。\n然后，我们将块级作用域中的变量赋值为 `1`，同时也设置了变量 `y` 的值。现在，我们打印块级作用域中的变量 `x`，值为 `1`。\n`catch` 块之外的变量 `x` 的值仍为 `undefined`， `y` 的值为 `2`。当我们在 `catch` 块之外执行 `console.log(x)` 时，返回 `undefined`，`y` 返回 `2`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:11:18.000Z",
+    "isCollected":  false,
+    "currentIndex":  1875,
+    "filterTotalNum":  1907,
+    "prev":  "e4de3d64-0a56-4bdc-b07f-d310987218e9",
+    "next":  "95dd5690-238f-46ab-b232-6bff6520240a"
+}

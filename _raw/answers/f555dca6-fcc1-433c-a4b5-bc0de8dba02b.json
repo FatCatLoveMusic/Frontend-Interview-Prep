@@ -1,0 +1,21 @@
+﻿{
+    "id":  503,
+    "exerciseKey":  "f555dca6-fcc1-433c-a4b5-bc0de8dba02b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "NaN 是什么，用 typeof 会输出什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "NaN：Not a Number，表示非数字\n\ntypeof NaN === \u0027number\u0027",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-11T07:33:49.000Z",
+    "updateAt":  "2021-07-11T16:10:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1417,
+    "filterTotalNum":  1907,
+    "prev":  "b343227e-136a-405a-8a9d-b6d92259fa38",
+    "next":  "097902c0-17b4-4416-9926-3ad88a55416e"
+}

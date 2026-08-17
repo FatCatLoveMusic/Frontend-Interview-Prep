@@ -1,0 +1,21 @@
+﻿{
+    "id":  65,
+    "exerciseKey":  "43fc5697-d7c8-4d68-9ac7-f074d8a7b185",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nconst user = { name: \"Lydia\", age: 21 };\nconst admin = { admin: true, ...user };\n\nconsole.log(admin);\n```",
+    "options":  "{\"options\":[\"{ admin: true, user: { name: \\\"Lydia\\\", age: 21 } }\",\"{ admin: true, name: \\\"Lydia\\\", age: 21 }\",\"{ admin: true, user: [\\\"Lydia\\\", 21] }\",\"{ admin: true }\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "扩展运算符`...`为对象的组合提供了可能。你可以复制对象中的键值对，然后把它们加到另一个对象里去。在本例中，我们复制了`user`对象键值对，然后把它们加入到`admin`对象中。`admin`对象就拥有了这些键值对，所以结果为`{ admin: true, name: \"Lydia\", age: 21 }`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:15:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1854,
+    "filterTotalNum":  1907,
+    "prev":  "576883a2-f601-4c53-9f8c-be61a07168bf",
+    "next":  "a44172d8-ec2b-42f2-9efe-52af96e97ef8"
+}

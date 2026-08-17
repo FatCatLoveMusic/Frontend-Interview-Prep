@@ -1,0 +1,21 @@
+﻿{
+    "id":  1681,
+    "exerciseKey":  "1d338445-7c02-4ffa-9541-1f7a00896244",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS 垂直居中有哪些实现方式？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "我们在布局一个页面时，通常都会用到水平居中和垂直居中，处理水平居中很好处理，不外乎就是设定margin:0 auto;或是text-align:center;,就可以轻松解决掉水平居中的问题，但一直以来最麻烦对齐问题就是「垂直居中」，以下将介绍几种单纯利用CSS垂直居中的方式，只需要理解背后的原理就可以轻松应用。\n\n下面为公共代码：\n\n```html\n\u003cdiv class=\"box\"\u003e\n    \u003cdiv class=\"small\"\u003esmall\u003c/div\u003e\n\u003c/div\u003e\n```\n\n```css\n.box {\n    width: 300px;\n    height: 300px;\n    background: #ddd;\n}\n.small {\n    background: red;\n}\n\n```\n\n## absolute + margin实现\n\n方法一：\n\n```css\n.box {\n    position: relative;\n}\n.small {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    width: 100px;\n    height: 100px;\n}\n```\n\n方法二：\n\n```css\n.box {\n    position: relative;\n}\n.small {\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    margin: auto;\n    width: 100px;\n    height: 100px;\n}\n```\n\n## absolute + calc 实现\n\n```css\n.box {\n    position: relative;\n}\n.small {\n    position: absolute;\n    top: calc(50% - 50px);\n    left: calc(50% - 50px);\n    width: 100px;\n    height: 100px;\n}\n```\n\n## absolute + transform 实现\n\n```css\n.box {\n    position: relative;\n}\n.small {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate3d(-50%,-50%,0);\n    width: 100px;\n    height: 100px;\n}\n\n```\n\n## 转行内元素\n\n```css\n.box {\n    line-height: 300px;\n    text-align: center;\n    font-size: 0px;\n}\n.small {\n    padding: 6px 10px;\n    font-size: 16px;\n    display: inline-block;\n    vertical-align: middle;\n    line-height: 16px;\n}\n```\n\n## table-cell\n\n```\n.box {\n    display: table-cell;\n    text-align: center;\n    vertical-align: middle;\n}\n.small {\n    padding: 6px 10px;\n    display: inline-block;\n}\n```\n\n## flex\n\n方法一：\n\n```css\n.box {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n```\n\n方法二：\n\n```css\n.box {\n    display: flex;\n    justify-content: center;\n}\n.small {\n    align-self: center;\n}\n```\n\n\n## 08 grid\n\n网格布局（Grid）是最强大的 CSS 布局方案。\n\n它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。以前，只能通过复杂的 CSS 框架达到的效果，现在浏览器内置了。\n\n下面是4种使用grid实现水平垂直居中的例子。\n\n方法一：\n\n```css\n.box {\n    display: grid;\n    justify-items: center;\n    align-items: center;\n}\n```\n\n方法二：\n\n```css\n.box {\n    display: grid;\n}\n.small {\n    justify-self: center;\n    align-self: center;\n}\n```\n\n方法三：\n\n```css\n.box {\n    display: grid;\n    justify-items: center;\n}\n.small {\n    align-self: center;\n}\n\n```\n\n方法四：\n\n```css\n.box {\n    display: grid;\n    align-items: center;\n}\n.small {\n    justify-self: center;\n}\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2022-03-06T15:00:50.000Z",
+    "updateAt":  "2024-07-19T15:53:25.000Z",
+    "isCollected":  false,
+    "currentIndex":  1109,
+    "filterTotalNum":  1907,
+    "prev":  "c3faa4b5-e73e-47f6-af7b-1f9c73d74126",
+    "next":  "e9f00b7b-d638-4d98-8166-7f056fb2b6a1"
+}

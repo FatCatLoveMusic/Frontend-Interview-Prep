@@ -1,0 +1,21 @@
+﻿{
+    "id":  360,
+    "exerciseKey":  "549f8d07-a907-4c86-93c1-d3e8fef30613",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "说说常规的前端性能优化手段",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cul\u003e\u003cli\u003econtent方面\u003cbr/\u003e\u003c/li\u003e\u003cul\u003e\u003cli\u003e减少HTTP请求：合并文件、CSS精灵、inline Image\u003c/li\u003e\u003cli\u003e减少DNS查询：DNS查询完成之前浏览器不能从这个主机下载任何任何文件。方法：DNS缓存、将资源分布到恰当数量的主机名，平衡并行下载和DNS查询\u003c/li\u003e\u003cli\u003e避免重定向：多余的中间访问\u003c/li\u003e\u003cli\u003e使Ajax可缓存\u003c/li\u003e\u003cli\u003e非必须组件延迟加载\u003c/li\u003e\u003cli\u003e未来所需组件预加载\u003c/li\u003e\u003cli\u003e减少DOM元素数量\u003c/li\u003e\u003cli\u003e将资源放到不同的域下：浏览器同时从一个域下载资源的数目有限，增加域可以提高并行下载量\u003c/li\u003e\u003cli\u003e减少iframe数量\u003c/li\u003e\u003cli\u003e不要404\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003eServer方面\u003cbr/\u003e\u003c/li\u003e\u003cul\u003e\u003cli\u003e使用CDN\u003c/li\u003e\u003cli\u003e添加Expires或者Cache-Control响应头\u003c/li\u003e\u003cli\u003e对组件使用Gzip压缩\u003c/li\u003e\u003cli\u003e配置ETag\u003c/li\u003e\u003cli\u003eFlush Buffer Early\u003c/li\u003e\u003cli\u003eAjax使用GET进行请求\u003c/li\u003e\u003cli\u003e避免空src的img标签\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003eCookie方面\u003cbr/\u003e\u003c/li\u003e\u003cul\u003e\u003cli\u003e减小cookie大小\u003c/li\u003e\u003cli\u003e引入资源的域名不要包含cookie\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003ecss方面\u003cbr/\u003e\u003c/li\u003e\u003cul\u003e\u003cli\u003e将样式表放到页面顶部\u003c/li\u003e\u003cli\u003e不使用CSS表达式\u003c/li\u003e\u003cli\u003e不使用IE的Filter\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003eJavascript方面\u003cbr/\u003e\u003c/li\u003e\u003cul\u003e\u003cli\u003e将脚本放到页面底部\u003c/li\u003e\u003cli\u003e将javascript和css从外部引入\u003c/li\u003e\u003cli\u003e压缩javascript和css\u003c/li\u003e\u003cli\u003e删除不需要的脚本\u003c/li\u003e\u003cli\u003e减少DOM访问\u003c/li\u003e\u003cli\u003e合理设计事件监听器\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e图片方面\u003cbr/\u003e\u003c/li\u003e\u003cul\u003e\u003cli\u003e优化图片：根据实际颜色需要选择色深、压缩\u003c/li\u003e\u003cli\u003e优化css精灵\u003c/li\u003e\u003cli\u003e不要在HTML中拉伸图片\u003c/li\u003e\u003cli\u003e保证favicon.ico小并且可缓存\u003c/li\u003e\u003c/ul\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp\u003e\u003cstrong\u003e答题思路\u003c/strong\u003e：列举常规的前端性能优化手段，并简要说明每项手段的目的。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e1. 资源压缩：减小HTML、CSS、JavaScript文件体积。\u003c/p\u003e\u003cp\u003e2. 图片优化：压缩图片大小，使用适当的图片格式。\u003c/p\u003e\u003cp\u003e3. 利用浏览器缓存：通过设置缓存策略，减少重复资源加载。\u003c/p\u003e\u003cp\u003e4. CSS Sprites：合并多个图片，减少HTTP请求。\u003c/p\u003e\u003cp\u003e5. 延迟加载：对非关键资源使用懒加载，减少初始加载时间。\u003c/p\u003e\u003cp\u003e6. 异步脚本：使用async或defer属性异步加载JavaScript。\u003c/p\u003e\u003cp\u003e7. 减少HTTP请求：合并文件，减少请求次数。\u003c/p\u003e\u003cp\u003e8. 代码分割：将代码分割成多个小块，按需加载。\u003c/p\u003e\u003cp\u003e9. 使用CDN：加速静态资源的加载速度。\u003c/p\u003e\u003cp\u003e10. 网络优化：使用HTTP/2，减少传输延迟。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003e考察要点\u003c/strong\u003e：对前端性能优化方法的了解和应用能力。\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-04T15:37:40.000Z",
+    "updateAt":  "2024-07-18T18:24:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  1560,
+    "filterTotalNum":  1907,
+    "prev":  "d627f91c-d910-447b-88b5-4f424799aa84",
+    "next":  "a1c9963f-fb40-4d8a-aa47-e5cca8c885b7"
+}

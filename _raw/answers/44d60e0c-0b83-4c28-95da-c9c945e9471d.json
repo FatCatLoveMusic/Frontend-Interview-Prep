@@ -1,0 +1,21 @@
+﻿{
+    "id":  3243,
+    "exerciseKey":  "44d60e0c-0b83-4c28-95da-c9c945e9471d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Agent 的 Trace（链路追踪）如何实现？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Agent 的 Trace 本质上不是简单打印日志，而是把一次用户请求在 Agent 系统中的完整执行过程结构化记录下来，让后续可以还原：为什么这样规划、调用了哪些工具、每一步输入输出是什么、哪里慢、哪里失败、成本消耗在哪里。\n\n一个比较完整的 Trace 需要先定义清楚链路模型。通常会用 `traceId` 表示一次完整任务，用 `spanId` 表示其中一个执行单元，用 `parentSpanId` 表示父子关系。例如一次对话请求可以是一个 Trace，下面包含用户输入解析、意图识别、Planner、LLM 调用、RAG 检索、工具调用、代码执行、结果汇总等多个 Span。\n\n```ts\ntype AgentSpan = {\n  traceId: string;\n  spanId: string;\n  parentSpanId?: string;\n  name: string;\n  type: \u0027agent\u0027 | \u0027llm\u0027 | \u0027tool\u0027 | \u0027retrieval\u0027 | \u0027memory\u0027 | \u0027guardrail\u0027;\n  startTime: number;\n  endTime?: number;\n  status: \u0027running\u0027 | \u0027success\u0027 | \u0027error\u0027;\n  input?: unknown;\n  output?: unknown;\n  error?: {\n    message: string;\n    stack?: string;\n  };\n  metadata?: {\n    model?: string;\n    tokens?: number;\n    cost?: number;\n    toolName?: string;\n    retryCount?: number;\n  };\n};\n```\n\n实现时一般会在 Agent Runtime 层做统一埋点，而不是在业务代码里到处手写日志。比如封装 `runAgent`、`callLLM`、`callTool`、`retrieveMemory` 这些核心能力，每个能力开始时创建 Span，结束时补充耗时、状态、输出摘要和错误信息。这样 Trace 能覆盖所有关键路径，并且不会依赖开发者手动记日志。\n\n```ts\nasync function withSpan\u003cT\u003e(\n  name: string,\n  type: AgentSpan[\u0027type\u0027],\n  fn: () =\u003e Promise\u003cT\u003e,\n) {\n  const parent = traceContext.current();\n  const span = traceStore.startSpan({\n    traceId: parent.traceId,\n    parentSpanId: parent.spanId,\n    name,\n    type,\n  });\n\n  return traceContext.run(span, async () =\u003e {\n    try {\n      const result = await fn();\n      traceStore.endSpan(span.spanId, {\n        status: \u0027success\u0027,\n        output: summarize(result),\n      });\n      return result;\n    } catch (error) {\n      traceStore.endSpan(span.spanId, {\n        status: \u0027error\u0027,\n        error: normalizeError(error),\n      });\n      throw error;\n    }\n  });\n}\n```\n\n链路上下文的传递很关键。前端发起请求时可以生成或接收一个 `traceId`，通过请求头传给后端，例如 `x-trace-id`。后端进入 Agent Runtime 后继续沿用这个 `traceId`，不同 Agent、工具服务、向量库服务、消息队列任务之间继续传递上下文。Node 服务里通常可以用 `AsyncLocalStorage` 保存当前 Span 上下文，避免异步调用中丢失父子关系。跨服务时则通过 HTTP Header、RPC Metadata、队列消息字段继续传递。\n\nAgent 的 Trace 还要比传统后端 Trace 多记录一些 Agent 特有信息。比如 LLM 调用要记录模型名、温度、token 数、耗时、重试次数、finish reason；工具调用要记录工具名、参数摘要、返回摘要、异常；RAG 要记录 query、召回文档 ID、相似度、是否命中；规划器要记录 plan、step 状态和中间 observation。这样排查问题时才能判断是模型幻觉、检索质量差、工具失败，还是编排逻辑有问题。\n\n在展示层，Trace 通常做成树形结构加时间瀑布图。树形结构方便看 Agent 的决策层级，瀑布图方便看耗时分布。对于并行工具调用，还需要支持 Span 之间的时间重叠，甚至用 `links` 表示非严格父子关系。对于流式输出场景，可以把 token streaming、tool event、agent step event 作为 Span 下的事件流实时上报，前端实时渲染执行过程。\n\n数据采集层一般不建议同步阻塞主流程，可以先写入内存队列，再批量上报到 Collector。落地方案可以接 OpenTelemetry，把 Agent Span 映射成标准 Span，再存到 Jaeger、Tempo、ClickHouse、Elastic 这类系统中。也可以自建 Trace 表，核心是支持按 `traceId` 查询完整链路，按用户、会话、工具、模型、错误类型、耗时范围做检索分析。\n\n生产环境还必须处理隐私和成本问题。Prompt、用户输入、工具参数里可能有敏感信息，不能原样全量入库，通常要做脱敏、摘要化、截断和权限控制。高流量系统还要做采样，例如错误请求全采样、慢请求全采样、正常请求按比例采样。对于调试环境可以记录更详细的输入输出，线上默认只保留摘要和必要元数据。\n\n一个成熟的 Agent Trace 最终应该能回答几个问题：一次任务执行了哪些步骤，每一步为什么发生，输入输出是什么，哪里失败，哪里最慢，花了多少 token 和成本，以及能否基于这条 Trace 复现问题。",
+    "pivot":  "Agent Trace 的核心是用 `traceId + spanId + parentSpanId` 建立一次任务的完整执行树。实现上应在 Agent Runtime 层统一封装 LLM、工具、检索、记忆、规划等能力，自动生成 Span，而不是分散手写日志。链路上下文需要通过请求头、异步上下文、队列消息跨前端、后端和工具服务传递。数据记录要覆盖 Agent 特有的模型调用、工具调用、RAG 命中、规划步骤、token 成本和错误信息。线上落地时还要考虑实时展示、OpenTelemetry 集成、采样、脱敏、权限控制和问题复现能力。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-16T07:49:47.000Z",
+    "isCollected":  false,
+    "currentIndex":  45,
+    "filterTotalNum":  1907,
+    "prev":  "14279b05-b4b2-4505-8d3a-d5c4467e8023",
+    "next":  "703d2079-1ad7-46af-bb9d-dc24f841e186"
+}

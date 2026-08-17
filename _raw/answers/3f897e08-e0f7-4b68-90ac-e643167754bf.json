@@ -1,0 +1,21 @@
+﻿{
+    "id":  1864,
+    "exerciseKey":  "3f897e08-e0f7-4b68-90ac-e643167754bf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "[\u00271\u0027,\u00272\u0027,\u00273\u0027].map(parseInt) 的返回值是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "首先整个题目考校的是两个函数，和一个字符串转数字的概念\n\n1. 数组的`map`函数，接受三个参数，当前值，当前索引，当前数组。\n2. parseInt接受两个参数，需要转换的字符串，基数（基数取值范围2\\~36）  \n\n```js\nvar new_array = arr.map(function callback(currentValue, index, array) {  \n // Return element for new_array  \n})  \nparseInt(string, radix)\n```\n\n3. 根据上面的两个函数的解释，我们可以发现实际上，上面的`[\u00271\u0027,\u00272\u0027,\u00273\u0027].map(parseInt)` 其实就是等价于下面的代码。  \n\n```js\n[\u00271\u0027,\u00272\u0027,\u00273\u0027].map((item, index) =\u003e {  \n    return parseInt(item, index)  \n})  \n//  parseInt(\u00271\u0027, 0)  1  \n//  parseInt(\u00272\u0027, 1)  NaN  \n//  parseInt(\u00273\u0027, 2)  NaN\n```\n\n4. 如果我们需要返回1，2，3需要怎么办？  \n\n```js\nfunction parseIntFun(item) {  \n    return parseInt(item, 10)  \n}  \n[\u00271\u0027,\u00272\u0027,\u00273\u0027].map(parseIntFun)  \n//  parseInt(\u00271\u0027, 10)  1  \n//  parseInt(\u00272\u0027, 10)  2  \n//  parseInt(\u00273\u0027, 10)  3\n```\n\n综上所述，返回值是 [1,NaN,NaN] ",
+    "pivot":  "`[\u00271\u0027,\u00272\u0027,\u00273\u0027].map(parseInt)` 的返回值是 `[1, NaN, NaN]`，因为 `map` 方法调用 `parseInt` 时，不仅传递了数组中的字符串，还传递了索引作为 `parseInt` 的第二个参数（基数），导致 `\u00272\u0027` 和 `\u00273\u0027` 无法以非法的基数解析，从而返回 `NaN`。\n\n正确的做法是使用箭头函数明确指定基数，如 `[\u00271\u0027, \u00272\u0027, \u00273\u0027].map(str =\u003e parseInt(str, 10))`，或者使用 `Number` 函数代替 `parseInt`，即 `[\u00271\u0027, \u00272\u0027, \u00273\u0027].map(Number)`。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-07-24T03:58:10.000Z",
+    "updateAt":  "2024-08-10T17:06:51.000Z",
+    "isCollected":  false,
+    "currentIndex":  946,
+    "filterTotalNum":  1907,
+    "prev":  "0b096e94-b846-448b-ae4b-b4f500e96bf1",
+    "next":  "c1480af9-8901-495f-8a26-f6c5e530a6a2"
+}

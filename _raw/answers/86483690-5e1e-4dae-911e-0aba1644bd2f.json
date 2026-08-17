@@ -1,0 +1,21 @@
+﻿{
+    "id":  3057,
+    "exerciseKey":  "86483690-5e1e-4dae-911e-0aba1644bd2f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 Class 语法糖的底层实现",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这个问题的关键在于理解：`class` 并不是一种新的面向对象机制，而是对 **原型继承（prototype-based inheritance）** 的语法封装。底层仍然是函数构造器 + 原型链。\n\n如果把 `class` 当作 Java 那种基于类的模型去理解，就会产生误解。\n\n---\n\n先看一个简单例子：\n\n```js\nclass Person {\n  constructor(name) {\n    this.name = name;\n  }\n\n  say() {\n    console.log(this.name);\n  }\n\n  static create(name) {\n    return new Person(name);\n  }\n}\n```\n\n它在底层大致等价于：\n\n```js\nfunction Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.say = function () {\n  console.log(this.name);\n};\n\nPerson.create = function (name) {\n  return new Person(name);\n};\n```\n\n---\n\n一、实例方法的实现\n\n类中的方法：\n\n```js\nsay() {}\n```\n\n本质是定义在 `Person.prototype` 上。\n\n并且具有几个默认特性：\n\n* 不可枚举（enumerable: false）\n* 可写（writable: true）\n* 可配置（configurable: true）\n\n这和直接给 prototype 赋值略有区别，因为手动赋值默认是可枚举的。\n\n---\n\n二、constructor 的本质\n\n`constructor` 本质仍然是一个函数。\n\n但 `class` 定义的构造函数有两个特殊点：\n\n1. 不能作为普通函数调用\n\n   ```js\n   Person(); // 报错\n   ```\n\n   必须通过 `new`。\n\n2. 默认开启严格模式（strict mode）\n\n这是和 ES5 构造函数的重要差异。\n\n---\n\n三、继承的底层实现\n\n```js\nclass Student extends Person {\n  constructor(name, grade) {\n    super(name);\n    this.grade = grade;\n  }\n}\n```\n\n底层大致等价于：\n\n```js\nfunction Student(name, grade) {\n  Person.call(this, name);\n  this.grade = grade;\n}\n\nStudent.prototype = Object.create(Person.prototype);\nStudent.prototype.constructor = Student;\n\n// 继承静态方法\nObject.setPrototypeOf(Student, Person);\n```\n\n这里有两个关键继承链：\n\n1. 实例继承链：\n   Student.prototype → Person.prototype\n\n2. 构造函数继承链（静态方法继承）：\n   Student → Person\n\n很多人只记得 prototype 继承，忽略了构造函数本身的原型链。\n\n---\n\n四、super 的底层机制\n\n`super` 并不是简单的 `Parent.prototype.method.call(this)`。\n\n它依赖于一个内部机制：\n\n[[HomeObject]]\n\n当方法定义在 class 内部时，会隐式绑定一个 HomeObject，用于在运行时确定“当前方法属于哪个对象”，从而正确查找父类方法。\n\n这也是为什么下面写法不能正确使用 super：\n\n```js\nconst obj = {\n  method() {}\n};\n```\n\n只有 class 或对象字面量简写方法才有 [[HomeObject]]。\n\n---\n\n五、class 的一些“语法层面增强”\n\n虽然本质还是原型，但 class 增加了一些语义约束：\n\n* 方法默认不可枚举\n* 必须使用 new\n* 自动严格模式\n* 支持 static 方法\n* 支持 getter / setter\n* 支持私有字段（#field）\n\n尤其是私有字段：\n\n```js\nclass A {\n  #x = 1;\n}\n```\n\n这个已经不再是纯原型模拟可以实现的，而是引擎层面的私有槽（private slot），编译到 ES5 时通常需要 WeakMap 来模拟。\n\n---\n\n六、为什么说它是“语法糖”\n\n因为：\n\n* 实例仍然是对象\n* 继承仍然是原型链\n* 方法仍然挂在 prototype 上\n* 构造器本质仍然是函数\n\nclass 并没有引入新的对象模型，只是让语法更接近传统面向对象语言，同时补充了一些约束与语义增强。\n\n---\n\n七、工程理解层面\n\n理解 class 的底层实现非常重要，因为很多问题本质都是原型链问题：\n\n* 方法查找路径\n* instanceof 判断机制\n* 静态方法继承\n* super 调用行为\n* this 绑定\n\n如果只停留在 class 表层语法，很难排查继承链相关问题。\n",
+    "pivot":  "class 是基于函数构造器和原型链的语法封装，实例方法本质挂载在 prototype 上，继承通过 Object.create 构建原型链，同时通过构造函数原型链继承静态方法。super 依赖内部 [[HomeObject]] 机制定位父类方法。class 并未引入新的对象模型，而是在原型继承基础上增加语义约束与语法增强。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2026-03-03T14:29:36.000Z",
+    "updateAt":  "2026-03-03T14:29:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  148,
+    "filterTotalNum":  1907,
+    "prev":  "7e56d9a7-fe8f-4b9f-819f-68247725f673",
+    "next":  "c2a29dec-432f-46eb-a149-d37278017e31"
+}

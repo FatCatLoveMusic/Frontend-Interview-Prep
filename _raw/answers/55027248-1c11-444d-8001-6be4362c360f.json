@@ -1,0 +1,21 @@
+﻿{
+    "id":  524,
+    "exerciseKey":  "55027248-1c11-444d-8001-6be4362c360f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“基数排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法简介\n\n基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。\n\n## 算法描述\n\n具体算法描述如下：\n\n* 取得数组中的最大数，并取得位数；\n* arr为原始数组，从最低位开始取每个位组成radix数组；\n* 对radix进行计数排序（利用计数排序适用于小范围数的特点）；\n\n## 代码实现\n\n```javascript\n/**\n * 基数排序适用于：\n *  (1)数据范围较小，建议在小于1000\n *  (2)每个数值都要大于等于0\n * @author damonare\n * @param  arr 待排序数组\n * @param  maxDigit 最大位数\n */\n//LSD Radix Sort\n\nfunction radixSort(arr, maxDigit) {\n    var mod = 10;\n    var dev = 1;\n    var counter = [];\n    console.time(\u0027基数排序耗时\u0027);\n    for (var i = 0; i \u003c maxDigit; i++, dev *= 10, mod *= 10) {\n        for(var j = 0; j \u003c arr.length; j++) {\n            var bucket = parseInt((arr[j] % mod) / dev);\n            if(counter[bucket]== null) {\n                counter[bucket] = [];\n            }\n            counter[bucket].push(arr[j]);\n        }\n        var pos = 0;\n        for(var j = 0; j \u003c counter.length; j++) {\n            var value = null;\n            if(counter[j]!=null) {\n                while ((value = counter[j].shift()) != null) {\n                      arr[pos++] = value;\n                }\n          }\n        }\n    }\n    console.timeEnd(\u0027基数排序耗时\u0027);\n    return arr;\n}\nvar arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];\nconsole.log(radixSort(arr,2)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n\n```\n\n## 算法分析\n\n* 最佳情况：T(n) = O(n * k)\n* 最差情况：T(n) = O(n * k)\n* 平均情况：T(n) = O(n * k)\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-17T12:16:24.000Z",
+    "updateAt":  "2024-08-10T21:17:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1396,
+    "filterTotalNum":  1907,
+    "prev":  "d9fc73ae-b463-4632-bbf9-dbb1a0cfa83d",
+    "next":  "73e0dfb8-798e-4380-888b-7e5ae349e2d8"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  415,
+    "exerciseKey":  "c50bec05-c350-46bd-a2a6-dd5f9a6cdf46",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 throttle（节流）函数",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "高频时间触发,但n秒内只会执行一次,所以节流会稀释函数的执行频率。\n```js\nconst throttle = (fn, time) =\u003e {\n  let flag = true;\n  return function() {\n    if (!flag) return;\n    flag = false;\n    setTimeout(() =\u003e {\n      fn.apply(this, arguments);\n      flag = true;\n    }, time);\n  }\n}\n\n```\n\n节流常应用于鼠标不断点击触发、监听滚动事件。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:04:52.000Z",
+    "updateAt":  "2021-07-07T00:13:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  1505,
+    "filterTotalNum":  1907,
+    "prev":  "e22ceb33-c162-4e98-a395-880716003777",
+    "next":  "c77b5c6f-9fcc-40a6-bbf0-9f412d6ce94c"
+}

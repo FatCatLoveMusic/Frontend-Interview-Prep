@@ -1,0 +1,21 @@
+﻿{
+    "id":  1951,
+    "exerciseKey":  "5bd5fdd4-706a-49dd-9cbe-1f2a05779ffe",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请实现下面的 sleep 方法",
+    "desc":  "```ts\n/**\n * @file 返回一个 Promise，并在 ms 毫秒后 Promise 变为完成状态\n */\n\nexport function sleep(ms: number): Promise\u003cundefined\u003e {\n  // 补全此处代码\n    throw new Error(\u0027功能待实现\u0027);\n}\n\nasync function main(){\n    console.log(\u0027a\u0027)\n    await sleep(1000);\n    console.log(\u0027b\u0027);\n    await sleep(1000);\n    console.log(\u0027c\u0027);\n}\nmain()\n\nexport default {}\n```",
+    "options":  null,
+    "explanation":  "```ts\n/**\n * @file 返回一个 Promise，并在 ms 毫秒后 Promise 变为完成状态\n */\n\nexport function sleep(ms: number): Promise\u003cundefined\u003e {\n  // 参考答案\n  return new Promise(\n    (\n      resolve: (value: undefined) =\u003e void,\n      reject: (value: undefined) =\u003e void\n    ) =\u003e {\n      setTimeout(() =\u003e {\n        resolve(undefined);\n      }, ms);\n    }\n  );\n}\n\nasync function main() {\n  console.log(\"a\");\n  await sleep(1000);\n  console.log(\"b\");\n  await sleep(1000);\n  console.log(\"c\");\n}\nmain();\n\nexport default {};\n\n```",
+    "pivot":  "**作答思路：**\n\n创建一个`Promise`，并在指定的毫秒数后将其解决（即变为完成状态）。\n\n1. **创建Promise**：使用`new Promise`创建一个新的`Promise`实例。\n2. **设置超时**：使用`setTimeout`设置一个定时器，指定在多少毫秒后执行回调函数。\n3. **解决Promise**：在定时器到期时，调用`resolve`函数，并传入一个值（在这个例子中，传入`undefined`）。\n4. **处理拒绝**：虽然在这个例子中没有使用`reject`函数，但你可以添加错误处理逻辑，例如当定时器设置有误时拒绝`Promise`。\n5. **返回Promise**：最后，返回这个`Promise`实例。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-03-12T15:28:04.000Z",
+    "updateAt":  "2024-08-10T17:07:11.000Z",
+    "isCollected":  false,
+    "currentIndex":  859,
+    "filterTotalNum":  1907,
+    "prev":  "8694932e-df3f-492f-8ef9-b0e7aa486f2f",
+    "next":  "6d0bf8a4-24f0-4794-84c9-19e0c811b3ed"
+}

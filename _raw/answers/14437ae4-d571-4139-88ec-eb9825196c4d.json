@@ -1,0 +1,21 @@
+﻿{
+    "id":  123,
+    "exerciseKey":  "14437ae4-d571-4139-88ec-eb9825196c4d",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nlet num = 1;\nconst list = [\"🥳\", \"🤠\", \"🥰\", \"🤪\"];\n\nconsole.log(list[(num += 1)]);\n```",
+    "options":  "{\"options\":[\"🤠\",\"🥰\",\"SyntaxError\",\"ReferenceError\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "通过 `+=` 操作符，我们对值 `num` 进行加 `1` 操作。 `num` 有初始值 `1`，因此 `1 + 1` 的执行结果为 `2`。数组 `list` 的第二项为 🥰，`console.log(list[2])` 输出 🥰.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:30:35.000Z",
+    "isCollected":  false,
+    "currentIndex":  1796,
+    "filterTotalNum":  1907,
+    "prev":  "289617b6-a28f-4528-be36-ac9e08e9d2c1",
+    "next":  "f57f9350-c543-46e3-8419-1ea5ab453971"
+}

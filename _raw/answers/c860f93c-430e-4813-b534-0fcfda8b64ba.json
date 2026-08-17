@@ -1,0 +1,21 @@
+﻿{
+    "id":  1565,
+    "exerciseKey":  "c860f93c-430e-4813-b534-0fcfda8b64ba",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何检测浏览器所支持的最小字体大小？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以使用 JS 设置 DOM 的字体为某一个值，然后再取出来，如果值设置成功，就说明支持。\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-11-17T14:41:41.000Z",
+    "updateAt":  "2021-11-17T22:49:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1225,
+    "filterTotalNum":  1907,
+    "prev":  "e1584502-c0d4-416f-abe4-cc0a01c6002d",
+    "next":  "1ea15cb6-7aa1-4d94-8bae-f20fa5594c87"
+}

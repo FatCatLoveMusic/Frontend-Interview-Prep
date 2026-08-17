@@ -1,0 +1,21 @@
+﻿{
+    "id":  1985,
+    "exerciseKey":  "a3ff14a6-c938-4cfc-b5a3-57cb201d92d7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "不定长二维数组的全排列",
+    "desc":  "给定任意二维数组，输出所有的排列组合项。\n\n比如 `[[\u0027A\u0027,\u0027B\u0027], [\u0027a\u0027,\u0027b\u0027], [1, 2]]`，输出 `[\u0027Aa1\u0027,\u0027Aa2\u0027,\u0027Ab1\u0027,\u0027Ab2\u0027,\u0027Ba1\u0027,\u0027Ba2\u0027,\u0027Bb1\u0027,\u0027Bb2\u0027]`",
+    "options":  null,
+    "explanation":  "可以采用动态规划的方式，下一次的结果，依赖上一次的结果，比如第一次的结果是 `[\u0027A\u0027, \u0027B\u0027]`,下一个增加了 `[\u0027a\u0027, \u0027b\u0027]` 就可以在上一次的基础上变为 `[\u0027Aa\u0027, \u0027Ab\u0027, \u0027Ba\u0027, \u0027Bb\u0027]`，依次类推\n\n## 代码实现\n\n```javascript\n/**\n * 动态规划，下一次的结果，依赖上一次的结果\n * @param {array} arr \n */\nfunction permutate(arr) {\n    // 第一次的结果就是二维数组的第0项\n\tlet res = arr[0].slice();\n\n\tfor (let i = 1; i \u003c arr.length; i++) {\n\t\tconst pre = res.slice();\n\t\tres = [];\n\t\tpre.forEach(item =\u003e {\n\t\t\tarr[i].forEach(curr =\u003e {\n\t\t\t\tres.push(item + curr)\n\t\t\t})\n\t\t});\n\t}\n\tconsole.log(res)\n\treturn res;\n}\n```\n\n多维数组的全排列问题，和全排列问题类似，但是不同于全排类问题。全排列问题使用的是DFS，而多维数组的全排列则使用的是动态规划，后一个结果依赖于前一个结果。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2023-05-15T13:39:03.000Z",
+    "updateAt":  "2023-05-23T09:29:02.000Z",
+    "isCollected":  false,
+    "currentIndex":  825,
+    "filterTotalNum":  1907,
+    "prev":  "6ddaaa89-e126-4d68-b71d-8a13c2df7315",
+    "next":  "330533b2-c523-486a-b2f5-8b10cb6e6173"
+}

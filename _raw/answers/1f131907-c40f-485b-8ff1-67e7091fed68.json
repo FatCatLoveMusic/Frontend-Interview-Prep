@@ -1,0 +1,21 @@
+﻿{
+    "id":  1734,
+    "exerciseKey":  "1f131907-c40f-485b-8ff1-67e7091fed68",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "position：absolute绝对定位，是相对于谁的定位？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "CSS position属性用于指定一个元素在文档中的定位方式。top，right，bottom 和 left 属性则决定了该元素的最终位置。\n\nabsolute的元素会被移出正常文档流，并不为元素预留空间，通过指定元素相对于最近的 **非 static 定位祖先元素** 的偏移，来确定元素位置。绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2022-04-05T08:51:48.000Z",
+    "updateAt":  "2022-04-05T16:52:03.000Z",
+    "isCollected":  false,
+    "currentIndex":  1068,
+    "filterTotalNum":  1907,
+    "prev":  "03a18e13-9f57-423e-97bb-7c2e54a806cb",
+    "next":  "e8631603-4764-426e-b62b-ddd6dd663d4f"
+}

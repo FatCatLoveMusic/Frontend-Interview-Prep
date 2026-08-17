@@ -1,0 +1,21 @@
+﻿{
+    "id":  2252,
+    "exerciseKey":  "fb13c516-f611-42db-9b72-27d9730be3b6",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如果需要使用 JS 执行 100 万个任务，如何保证浏览器不卡顿？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### **1. 使用分块处理（Chunking）**\n将 100 万个任务分成小块，逐块处理，每块处理完成后将控制权交还给浏览器，利用空闲时间继续处理。\n\n**实现方式：`setTimeout` 或 `setInterval`**\n```javascript\nfunction processInChunks(tasks, chunkSize = 100) {\n  function processChunk() {\n    const chunk = tasks.splice(0, chunkSize);\n    chunk.forEach(task =\u003e task());\n    if (tasks.length \u003e 0) {\n      setTimeout(processChunk, 0); // 让出主线程\n    }\n  }\n  processChunk();\n}\n\n// 示例\nconst tasks = Array.from({ length: 1000000 }, (_, i) =\u003e () =\u003e console.log(i));\nprocessInChunks(tasks);\n```\n\n---\n\n### **2. 使用浏览器空闲时间：`requestIdleCallback`**\n`requestIdleCallback` 可以利用浏览器的空闲时间执行任务，避免占用主线程的关键资源时间。\n\n```javascript\nfunction processWithIdleCallback(tasks) {\n  function processChunk(deadline) {\n    while (deadline.timeRemaining() \u003e 0 \u0026\u0026 tasks.length \u003e 0) {\n      const task = tasks.shift();\n      task();\n    }\n    if (tasks.length \u003e 0) {\n      requestIdleCallback(processChunk);\n    }\n  }\n  requestIdleCallback(processChunk);\n}\n\n// 示例\nconst tasks = Array.from({ length: 1000000 }, (_, i) =\u003e () =\u003e console.log(i));\nprocessWithIdleCallback(tasks);\n```\n\n---\n\n### **3. 使用 `Web Workers`**\n将任务放到 Web Worker 中执行，避免阻塞主线程。\n\n**主线程代码：**\n```javascript\nconst worker = new Worker(\"worker.js\");\nworker.postMessage(1000000); // 发送任务数量\nworker.onmessage = (e) =\u003e {\n  console.log(e.data); // 接收 worker 处理结果\n};\n```\n\n**Worker 脚本（`worker.js`）：**\n```javascript\nonmessage = (e) =\u003e {\n  const tasks = e.data;\n  for (let i = 0; i \u003c tasks; i++) {\n    // 模拟任务\n  }\n  postMessage(\"All tasks completed!\");\n};\n```\n\n---\n\n### **4. 批处理和任务调度器**\n创建自定义任务调度器，根据优先级和剩余时间动态分配任务。\n\n```javascript\nclass Scheduler {\n  constructor() {\n    this.tasks = [];\n  }\n\n  add(task) {\n    this.tasks.push(task);\n  }\n\n  run(chunkSize = 100) {\n    const execute = () =\u003e {\n      const chunk = this.tasks.splice(0, chunkSize);\n      chunk.forEach(task =\u003e task());\n      if (this.tasks.length \u003e 0) {\n        setTimeout(execute, 0);\n      }\n    };\n    execute();\n  }\n}\n\n// 示例\nconst scheduler = new Scheduler();\nfor (let i = 0; i \u003c 1000000; i++) {\n  scheduler.add(() =\u003e console.log(i));\n}\nscheduler.run();\n```\n\n---\n\n### **5. 使用 `async/await` 与微任务**\n利用 `Promise` 和 `await` 将任务切分到微任务队列中，减少对主线程的持续占用。\n\n```javascript\nasync function processTasks(tasks) {\n  for (let i = 0; i \u003c tasks.length; i++) {\n    tasks[i]();\n    if (i % 100 === 0) {\n      await new Promise(resolve =\u003e setTimeout(resolve, 0)); // 让出主线程\n    }\n  }\n}\n\n// 示例\nconst tasks = Array.from({ length: 1000000 }, (_, i) =\u003e () =\u003e console.log(i));\nprocessTasks(tasks);\n```\n",
+    "pivot":  "为了保证浏览器不卡顿，核心思路是**避免长时间占用主线程**，让浏览器有机会执行渲染和其他任务。\n\n具体的方法有：\n1. 使用 **分块处理** 或 **空闲时间调度**。\n2. 利用 **Web Workers** 将任务移到子线程。\n3. 结合 **Promise** 和 **异步操作** 处理任务。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:14.000Z",
+    "updateAt":  "2024-12-10T01:57:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  633,
+    "filterTotalNum":  1907,
+    "prev":  "894ea0dc-d1e1-437f-b440-ded53a7ec575",
+    "next":  "83f4766f-9498-4a02-9fe1-0aa86c105371"
+}

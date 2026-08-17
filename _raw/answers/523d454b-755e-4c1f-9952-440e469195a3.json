@@ -1,0 +1,21 @@
+﻿{
+    "id":  2392,
+    "exerciseKey":  "523d454b-755e-4c1f-9952-440e469195a3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "HTML 部分标签中的 crossorigin 属性，作用是什么？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`crossorigin` 属性用于指定如何处理跨域请求，特别是在加载外部资源（如图片、字体或脚本）时。它主要用于 `\u003clink\u003e` 和 `\u003cimg\u003e` 标签以及一些其他 HTML 元素。该属性的作用是定义浏览器如何处理 CORS（跨域资源共享）请求。\n\n### **`crossorigin` 属性的取值和作用**\n\n1. **`anonymous`**\n\n   - **作用**：请求不会包含凭证（如 Cookies 和 HTTP 认证信息）。这是默认的 CORS 策略，适用于大多数情况，特别是公共资源。\n   - **示例**：\n     ```html\n     \u003clink rel=\"stylesheet\" href=\"styles.css\" crossorigin=\"anonymous\"\u003e\n     \u003cimg src=\"image.jpg\" crossorigin=\"anonymous\"\u003e\n     ```\n   - **用途**：用于公共资源，例如从 CDN 加载的样式表或图片，这些资源不需要用户认证。\n\n2. **`use-credentials`**\n\n   - **作用**：请求会包含凭证（如 Cookies 和 HTTP 认证信息），用于需要身份验证的资源。要求服务器在响应头中包含 `Access-Control-Allow-Credentials: true`。\n   - **示例**：\n     ```html\n     \u003clink rel=\"stylesheet\" href=\"styles.css\" crossorigin=\"use-credentials\"\u003e\n     \u003cimg src=\"image.jpg\" crossorigin=\"use-credentials\"\u003e\n     ```\n   - **用途**：用于需要用户认证的资源，例如需要登录的内容。\n\n### **如何工作**\n\n- **资源请求**：当浏览器请求跨域资源时，会根据 `crossorigin` 属性的值决定是否发送凭证。\n- **响应头**：服务器需要在响应头中设置 CORS 相关的头信息（如 `Access-Control-Allow-Origin` 和 `Access-Control-Allow-Credentials`），以允许资源被成功加载。",
+    "pivot":  "- **`crossorigin=\"anonymous\"`**：请求不包含凭证，适用于公开资源。\n- **`crossorigin=\"use-credentials\"`**：请求包含凭证，适用于需要用户认证的资源。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-05T01:32:08.000Z",
+    "isCollected":  false,
+    "currentIndex":  556,
+    "filterTotalNum":  1907,
+    "prev":  "9d35a1bc-a10f-45d0-a6ee-a141327bd9a8",
+    "next":  "849cda15-e60a-43ed-984c-f873afdd174f"
+}

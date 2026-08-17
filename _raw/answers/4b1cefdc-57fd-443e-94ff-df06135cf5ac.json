@@ -1,0 +1,21 @@
+﻿{
+    "id":  1781,
+    "exerciseKey":  "4b1cefdc-57fd-443e-94ff-df06135cf5ac",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "e.target 和 e.currentTarget  有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 冒泡 \u0026 捕获\n\n当你触发一个元素的事件的时候，该事件从该元素的祖先元素传递下去，此过程为` 捕获 `，而到达此元素之后，又会向其祖先元素传播上去，此过程为` 冒泡 `\n\n```html\n    \u003cdiv id=\"a\"\u003e\n      \u003cdiv id=\"b\"\u003e\n        \u003cdiv id=\"c\"\u003e\n          \u003cdiv id=\"d\"\u003e哈哈哈哈哈\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n```\n\n![](https://static.ecool.fun//article/c3fdb11f-9b42-47af-841a-b933f383c6ee.jpeg)\n\n## addEventListener\n\n` addEventListener `是为元素绑定事件的方法，他接收三个参数：\n- 第一个参数：绑定的事件名\n- 第二个参数：执行的函数\n- 第三个参数：\n  - false：默认，代表冒泡时绑定\n  - true：代表捕获时绑定\n  \n## target \u0026 currentTarget\n\n### false\n\n我们给四个div元素绑定事件，且` addEventListener `第三个参数不设置，则默认设置为` false `\n\n```js\nconst a = document.getElementById(\u0027a\u0027)\nconst b = document.getElementById(\u0027b\u0027)\nconst c = document.getElementById(\u0027c\u0027)\nconst d = document.getElementById(\u0027d\u0027)\na.addEventListener(\u0027click\u0027, (e) =\u003e {\n  const {\n    target,\n    currentTarget\n  } = e\n  console.log(`target是${target.id}`)\n  console.log(`currentTarget是${currentTarget.id}`)\n})\nb.addEventListener(\u0027click\u0027, (e) =\u003e {\n  const {\n    target,\n    currentTarget\n  } = e\n  console.log(`target是${target.id}`)\n  console.log(`currentTarget是${currentTarget.id}`)\n})\nc.addEventListener(\u0027click\u0027, (e) =\u003e {\n  const {\n    target,\n    currentTarget\n  } = e\n  console.log(`target是${target.id}`)\n  console.log(`currentTarget是${currentTarget.id}`)\n})\nd.addEventListener(\u0027click\u0027, (e) =\u003e {\n  const {\n    target,\n    currentTarget\n  } = e\n  console.log(`target是${target.id}`)\n  console.log(`currentTarget是${currentTarget.id}`)\n})\n```\n\n现在我们点击，看看输出的东西，可以看出触发的是d，而执行的元素是冒泡的顺序\n```js\ntarget是d currentTarget是d\ntarget是d currentTarget是c\ntarget是d currentTarget是b\ntarget是d currentTarget是a\n```\n\n### true\n\n我们把四个事件第三个参数都设置为` true `，我们看看输出结果，可以看出触发的是d，而执行的元素是捕获的顺序\n```js\ntarget是d currentTarget是a\ntarget是d currentTarget是b\ntarget是d currentTarget是c\ntarget是d currentTarget是d\n```\n\n### 区别\n\n我们可以总结出：\n- ` e.target `：**触发**事件的元素\n- ` e.currentTarget `：**绑定**事件的元素\n",
+    "pivot":  "在 JavaScript 中，事件对象（通常表示为 `e`）在事件处理函数中被传递，用于描述事件的具体信息。`e.target` 和 `e.currentTarget` 是事件对象中的两个属性，它们都提供了事件发生时相关联的 DOM 元素，但它们的指向略有不同。\n\n1. **e.target**：\n   - 它指的是触发事件的实际元素。\n   - 举例来说，如果你有一个按钮点击事件，`e.target` 就是那个按钮元素。\n   - 即使事件是委托给另一个元素（比如一个包含多个按钮的容器），`e.target` 仍然是那个触发点击的按钮。\n\n2. **e.currentTarget**：\n   - 它指的是事件处理函数正在被调用的元素。\n   - 举例来说，如果你有一个按钮点击事件，并且这个事件处理函数被委托给一个容器元素，那么 `e.currentTarget` 就是那个容器元素。\n   - 即使点击事件是由按钮触发的，`e.currentTarget` 仍然是那个容器元素，而不是按钮本身。\n\n总结来说，`e.target` 是触发事件的元素，而 `e.currentTarget` 是事件处理函数所在的元素。在事件委托中，这两个属性通常会指向不同的元素。\n",
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2022-04-20T04:29:18.000Z",
+    "updateAt":  "2024-08-10T17:06:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  1028,
+    "filterTotalNum":  1907,
+    "prev":  "0d0de429-d6eb-4eda-a614-0a3a22c05237",
+    "next":  "919d2e94-71b1-4096-b263-4a1edb0231be"
+}

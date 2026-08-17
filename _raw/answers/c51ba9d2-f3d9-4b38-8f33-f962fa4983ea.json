@@ -1,0 +1,21 @@
+﻿{
+    "id":  1876,
+    "exerciseKey":  "c51ba9d2-f3d9-4b38-8f33-f962fa4983ea",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "怎么把函数中的 arguments 转成数组？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "函数中的 arguments 是一个对象，不是一个数组，严格来说它是一个类数组对象。\n\n## 1、调用数组的原型方法来转换\n\n```js\nvar foo = function(a,b){\n\tvar arr = Array.prototype.slice.call(arguments);\n\tconsole.log(arr)\n}\nfoo(1,2) //(2) [1, 2]\n```\n\n## 2、使用ES6的新语法 `Array.from()` 来转换\n\n`Array.from` 方法用于将两类对象转为真正的数组：类似数组的对象和可遍历对象（包括Set和Map）。\n\n```js\nvar foo = function(a,b){\n\tvar arr = Array.from(arguments);\n\tconsole.log(arr)\n}\nfoo(1,2) // (2) [1, 2]\n```\n\n## 3、使用 for \n\n使用 for 循环挨个将 arguments 对象中的内容复制给新数组中\n\n```js\nfunction toArray(){\n    var args = []; \n    for (var i = 1; i \u003c arguments.length; i++) { \n        args.push(arguments[i]); \n    } \n    return args;\n}\n```\n\n## 4、利用 ES6 中的 rest 参数转换\n\n```js\nlet a = (…args) =\u003e args;\n```\n",
+    "pivot":  "### 转换 `arguments` 为数组的几种方法\n\n#### 1. 调用数组的原型方法\n\n通过 `Array.prototype.slice.call(arguments)`，可以借用数组的 `slice` 方法将 `arguments` 转换为数组。\n\n```js\nvar foo = function(a, b) {\n  var arr = Array.prototype.slice.call(arguments);\n  console.log(arr); // [1, 2]\n};\nfoo(1, 2);\n```\n\n#### 2. 使用 `Array.from()`\n\n`Array.from()` 是 ES6 中新增的方法，用于将类数组对象转换为真正的数组。\n\n```js\nvar foo = function(a, b) {\n  var arr = Array.from(arguments);\n  console.log(arr); // [1, 2]\n};\nfoo(1, 2);\n```\n\n#### 3. 使用 `for` 循环\n\n通过 `for` 循环遍历 `arguments` 对象，并将每个元素添加到新数组中。\n\n```js\nfunction toArray() {\n  var args = [];\n  for (var i = 0; i \u003c arguments.length; i++) {\n    args.push(arguments[i]);\n  }\n  return args;\n}\n```\n\n#### 4. 利用 ES6 的 rest 参数\n\nES6 引入了 rest 参数，允许我们将不定数量的参数表示为一个数组。\n\n```js\nlet a = (...args) =\u003e args;\nconsole.log(a(1, 2)); // [1, 2]\n```\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-08-07T14:45:32.000Z",
+    "updateAt":  "2024-08-10T17:06:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  934,
+    "filterTotalNum":  1907,
+    "prev":  "983ff108-fded-4272-96b6-24a0a20af286",
+    "next":  "bae25a07-be25-4857-ae96-9f9e1130286e"
+}

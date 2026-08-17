@@ -1,0 +1,21 @@
+﻿{
+    "id":  454,
+    "exerciseKey":  "149adb7b-11b7-4cc2-be36-f36b38d36f81",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "TypeScript 的内置数据类型有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* boolean：表示布尔值，可以是 true 或 false。 \n* number：表示数字，包括整数和浮点数。 \n* string：表示字符串。可以使用单引号或双引号来表示字符串。 \n* void：表示没有任何返回值的函数的返回类型。 \n* null 和 undefined：这两个类型是所有类型的子类型。 symbol：表示独特的值，类似于数字或字符串。\n\n除此之外，TypeScript 还支持以下复合类型：\n\n* array：表示一个元素类型为 T 的数组。例如，number[] 表示一个数字数组。 \n* tuple：表示已知元素数量和类型的数组。例如，[string, number] 表示一个字符串和数字组成的元组。 \n* enum：表示一个命名的常量枚举。 \n* any：表示任意类型。 \n* unknown：与 any 类似，但是在更严格的类型检查下使用。 \n* object：表示非原始类型的对象。 \n* 还有一些其他的类型，例如 never、union 和 intersection，它们可以用于描述更复杂的类型。",
+    "pivot":  "**作答思路：**\n\nTypeScript 内置的数据类型包括：\n\n1. **基本数据类型**：\n   - `string`：字符串类型。\n   - `number`：数值类型。\n   - `boolean`：布尔类型。\n   - `void`：表示无值，通常用于函数返回类型。\n   - `null`：表示空值。\n   - `undefined`：表示未定义。\n2. **复合数据类型**：\n   - `object`：表示非原始数据类型。\n   - `function`：表示函数类型。\n3. **枚举类型**：\n   - `enum`：用于定义一组命名的常量。\n4. **联合类型**：\n   - 使用`|`符号将多个类型组合在一起，表示一个值可以是这些类型的任意一个。\n5. **元组类型**：\n   - 使用`[]`将多个不同类型的值组合在一起，表示一个值可以是这些类型的任意一个。\n6. **任意类型**：\n   - `any`：表示一个值可以是任何类型。\n7. **never类型**：\n   - 表示永远不会发生的情况，通常用于函数返回类型。\n8. **void类型**：\n   - 表示没有任何类型，通常用于函数返回类型。\n\n**考察要点**：\n\n1. **基本数据类型**：理解TypeScript中的基本数据类型。\n2. **复合数据类型**：理解TypeScript中的复合数据类型。\n3. **枚举类型**：了解TypeScript中的枚举类型。\n4. **联合类型和元组类型**：理解TypeScript中的联合类型和元组类型。\n5. **任意类型和never类型**：了解TypeScript中的任意类型和never类型。\n",
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-07T15:18:19.000Z",
+    "updateAt":  "2024-08-10T17:05:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  1466,
+    "filterTotalNum":  1907,
+    "prev":  "70b0b59f-d4d7-41c2-be2b-94ffcbedb717",
+    "next":  "aa95a786-7e51-4769-ab64-80f1adaf3580"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2046,
+    "exerciseKey":  "6a451db6-ddbe-4f76-8519-8ce6d47af8b3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "如何禁止别人调试自己的前端代码？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\n## 1. 无限 debugger\n\n前端页面防止调试的方法主要是通过不断 debugger 来疯狂输出断点，因为 debugger 在控制台被打开的时候就会执行。由于程序被 debugger 阻止，所以无法进行断点调试，所以网页的请求也是看不到的。\n\n以下是使用无限debugger方式阻止代码调试的示例：\n\n```\n/**\n* 基础禁止调试代码\n*/\n(() =\u003e {\n    function ban() {\n      setInterval(() =\u003e {\n        debugger;\n      }, 50);\n    }\n    try {\n      ban();\n    } catch (err) { }\n})();\n```\n\n不过，如果仅仅是加上面那么简单的代码，对于一些技术人员而言作用不大。可以通过控制台中的 Deactivate breakpoints 按钮或者使用快捷键 Ctrl + F8 关闭无限 debugger。这种方式虽然能去掉碍眼的 debugger，但是无法通过左侧的行号添加 breakpoint。\n\n## 2. 禁止断点的对策\n\n如果将 setInterval 中的代码写在一行，就能禁止用户断点，即使添加 logpoint 为 false 也无用。当然即使有些人想到用左下角的格式化代码，将其变成多行也是没用的。\n\n```\n(() =\u003e {\n  function ban() {\n    setInterval(() =\u003e { debugger; }, 50);\n  }\n  try {\n    ban();\n  } catch (err) { }\n})();\n```\n\n## 3. 忽略执行的代码\n\n可以通过添加 `add script ignore list` 需要忽略执行代码行或文件，也可以达到禁止无限 debugger。\n\n不过，我们可以通过将 debugger 改写成 `Function(\"debugger\")();` 的形式来应对，Function 构造器生成的 debugger 会在每一次执行时开启一个临时 js 文件。当然使用的时候，为了更加的安全，最好使用加密后的脚本。\n\n```js\n// 加密前\n(() =\u003e {\n  function ban() {\n    setInterval(() =\u003e {\n      Function(\u0027debugger\u0027)();\n    }, 50);\n  }\n  try {\n    ban();\n  } catch (err) { }\n})();\n\n// 加密后\neval(function(c,g,a,b,d,e){d=String;if(!\"\".replace(/^/,String)){for(;a--;)e[a]=b[a]||a;b=[function(f){return e[f]}];d=function(){return\"\\w+\"};a=1}for(;a--;)b[a]\u0026\u0026(c=c.replace(new RegExp(\"\\b\"+d(a)+\"\\b\",\"g\"),b[a]));return c}(\u0027(()=\u003e{1 0(){2(()=\u003e{3(\"4\")()},5)}6{0()}7(8){}})();\u0027,9,9,\"block function setInterval Function debugger 50 try catch err\".split(\" \"),0,{}));\n\n```\n\n## 4. 终极增强防调试\n\n为了让自己写出来的代码更加的晦涩难懂，需要对上面的代码再优化一下：将 `Function(\u0027debugger\u0027).call()` 改成 `(function(){return false;})[\u0027constructor\u0027](debugger)\\[\u0027call\u0027\\]()`;\n\n并且添加条件，当窗口外部宽高和内部宽高的差值大于一定的值 ，我把 body 里的内容换成指定内容，当然使用的时候，为了更加的安全，最好加密后再使用。\n\n```\n(() =\u003e {\n  function block() {\n    if (window.outerHeight - window.innerHeight \u003e 200 || window.outerWidth - window.innerWidth \u003e 200) {\n      document.body.innerHTML = \"检测到非法调试,请关闭后刷新重试!\";\n    }\n    setInterval(() =\u003e {\n      (function () {\n        return false;\n      }\n      [\u0027constructor\u0027](\u0027debugger\u0027)\n      [\u0027call\u0027]());\n    }, 50);\n  }\n  try {\n    block();\n  } catch (err) { }\n})();\n```\n\n## 5. 其他防调试技术\n\n除此之外，我们还可以通过【禁止右键菜单】、【禁止F12快捷键】、【检测开发者工具】等手段来禁止调试。\n\n#### 禁止右键菜单\n\n禁止右键菜单是目前比较常见的一种禁止调试的方法，因为浏览器默认右键菜单是可以调出开发者工具的。可以通过以下JS代码实现：\n\n```js\ndocument.oncontextmenu = function () {\n    return false;\n};\n```\n\n这样一来，当用户在富文本编辑器的区域内右键时，就不会弹出菜单，从而避免了用户调出开发者工具的情况。\n\n#### 禁止F12快捷键\n\nF12快捷键是打开开发者工具的常用快捷键，禁止这个快捷键也是一种禁止调试的方法。可以通过以下JS代码实现：\n\n```js\ndocument.onkeydown = function (e) {\n    if (e.keyCode === 123) {\n        return false;\n    }\n};\n```\n\n这样一来，当用户按下F12键时，就会被拦截，从而避免了用户打开开发者工具的情况。\n\n#### 检测开发者工具\n\n还有一种方法是通过检测开发者工具是否打开来实现禁止调试的目的，可以通过以下JS代码实现：\n\n```js\nsetInterval(function () {\n    if (typeof console.clear !== \u0027undefined\u0027) {\n        location.reload();\n    }\n}, 1000);\n```\n\n这段代码会每隔1秒检测一次当前页面是否打开了开发者工具，如果发现开发者工具已经打开，则会刷新当前页面，从而避免用户使用开发者工具对页面进行调试。\n\n\n\n点击查看原文：[原文链接](https://mp.weixin.qq.com/s?__biz=Mzk0NTI2NDgxNQ==\u0026mid=2247489707\u0026idx=1\u0026sn=e1c00785af7bb6983ae03229247398a6\u0026chksm=c319596bf46ed07de2de6b9dc540a8c24e6f2d5bfdf39cac9b5f77db3d3e9356f7bac6cc8a1c\u0026token=1211258579\u0026lang=zh_CN#rd)",
+    "pivot":  "**答题思路：**\n\n1. 无限debugger：通过设置定时器不断执行debugger语句，阻止开发者工具的正常使用，但可以通过关闭断点或格式化代码来绕过。\n2. 禁止断点对策：将debugger语句放在一行内，即使格式化代码也无法添加断点。\n3. 忽略执行代码：将debugger封装在Function构造器中，使其在每次执行时生成临时js文件，从而绕过忽略列表。\n4. 终极增强防调试：优化代码结构，增加检测窗口大小变化，一旦发现调试行为，替换页面内容，提高安全性。\n5. 其他防调试技术：禁止右键菜单、禁止F12快捷键、检测开发者工具是否打开，通过这些手段进一步防止调试。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-09-24T10:15:14.000Z",
+    "updateAt":  "2024-08-10T17:07:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  765,
+    "filterTotalNum":  1907,
+    "prev":  "19719ee6-50b8-42fe-bf35-ef78f32fa209",
+    "next":  "f5dbd066-d3dd-4b92-9305-8ec83c387cde"
+}

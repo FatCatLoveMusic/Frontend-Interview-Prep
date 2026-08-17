@@ -1,0 +1,21 @@
+﻿{
+    "id":  2352,
+    "exerciseKey":  "2290b1c2-ef7e-4152-81b0-5de2bb3c4adf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "splice 和 slice 有什么区别？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "**关键词**：Array 方法 splice、Array 方法 slice、splice 和 slice 区别\n\n`splice()` 和 `slice()` 是 JavaScript 中用于操作数组的两个方法，它们的功能和用法有一些区别。\n\n1. `splice()` 方法：\n   - 功能：从数组中添加、删除或替换元素。\n   - 用法：`array.splice(start, deleteCount, item1, item2, ...)`。\n   - 参数：\n      - `start`：表示修改的起始位置的下标。\n      - `deleteCount`：可选参数，表示要删除的元素数量。\n      - `item1, item2, ...`：可选参数，表示要添加到数组的元素。\n   - 返回值：返回一个被删除元素组成的数组。\n\n2. `slice()` 方法：\n   - 功能：从数组中提取指定范围内的元素，返回一个新的数组。\n   - 用法：`array.slice(start, end)`。\n   - 参数：\n      - `start`：可选参数，表示提取的起始位置的下标。\n      - `end`：可选参数，表示提取的结束位置的下标（不包含该位置的元素）。\n   - 返回值：返回一个新的数组，包含提取出的元素。\n\n主要区别：\n- `splice()` 方法会对原数组进行修改，而 `slice()` 方法不会修改原数组，而是返回一个新的数组。\n- `splice()` 方法可以在指定位置添加、删除或替换元素，而 `slice()` 方法只能提取指定范围内的元素。\n- `splice()` 方法返回被删除的元素组成的数组，而 `slice()` 方法返回一个新的数组。\n\n总结：\n- 如果需要修改原数组，并且需要添加、删除或替换元素，可以使用 `splice()` 方法。\n- 如果只是需要提取指定范围内的元素，并且不想修改原数组，可以使用 `slice()` 方法。\n",
+    "pivot":  "- `splice` 可以修改数组本身\n- `slice` 只是选取数组的一部分，只读的",
+    "vipLimit":  1,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T14:02:53.000Z",
+    "isCollected":  false,
+    "currentIndex":  573,
+    "filterTotalNum":  1907,
+    "prev":  "cd8610f3-6c27-4b95-a657-c9d018b4ad23",
+    "next":  "ac53c402-1c0b-4ccc-b8f0-c629bf0260bf"
+}

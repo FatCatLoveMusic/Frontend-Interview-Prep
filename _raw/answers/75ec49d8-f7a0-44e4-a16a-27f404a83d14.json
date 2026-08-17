@@ -1,0 +1,21 @@
+﻿{
+    "id":  1785,
+    "exerciseKey":  "75ec49d8-f7a0-44e4-a16a-27f404a83d14",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "你知道哪些应用层协议？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "应用层常见的协议：\n\n* 超文本传输 Http、Https\n* 文本传输：FTP\n* 电子邮件：SMTP、POP3、IMAP\n* 动态主机配置：DHCP\n* 域名系统：DNS",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-05-06T14:01:17.000Z",
+    "updateAt":  "2022-05-06T22:01:22.000Z",
+    "isCollected":  false,
+    "currentIndex":  1024,
+    "filterTotalNum":  1907,
+    "prev":  "68137df5-8569-4ae7-8c01-3b30419cf537",
+    "next":  "f430e672-45b0-4836-9ef0-09f427900dd4"
+}

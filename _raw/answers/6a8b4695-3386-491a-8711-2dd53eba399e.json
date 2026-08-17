@@ -1,0 +1,21 @@
+﻿{
+    "id":  140,
+    "exerciseKey":  "6a8b4695-3386-491a-8711-2dd53eba399e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst handler = {\n\tset: () =\u003e console.log(\"Added a new property!\"),\n\tget: () =\u003e console.log(\"Accessed a property!\")\n};\n\nconst person = new Proxy({}, handler);\n\nperson.name = \"Lydia\";\nperson.name;\n```",
+    "options":  "{\"options\":[\"Added a new property!\",\"Accessed a property!\",\"Added a new property! Accessed a property!\",\"没有任何输出\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "使用 Proxy 对象，我们可以给一个对象添加自定义行为。在这个 case，我们传递一个包含以下属性的对象 `handler` : `set` and `get`。每当我们 _设置_ 属性值时 `set` 被调用，每当我们 _获取_ 时 `get` 被调用。\n第一个参数是一个空对象 `{}`，作为 `person` 的值。对于这个对象，自定义行为被定义在对象 `handler`。如果我们向对象 `person` 添加属性，`set` 将被调用。如果我们获取 `person` 的属性, `get` 将被调用。\n首先，我们向 proxy 对象(`person.name = \"Lydia\"`)添加一个属性 `name`。`set` 被调用并输出 `\"Added a new property!\"`。\n然后，我们获取 proxy 对象的一个属性，对象 handler 的属性 `get` 被调用。输出 `\"Accessed a property!\"`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:33:05.000Z",
+    "isCollected":  false,
+    "currentIndex":  1779,
+    "filterTotalNum":  1907,
+    "prev":  "e7e3a667-d380-4b69-aa9b-aa80e86937f0",
+    "next":  "79eaaf8e-f456-4527-847e-58bad43fd47a"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  1971,
+    "exerciseKey":  "7612b7e0-4f37-4cd9-9d91-b8ae2995a2a9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现一个批量请求函数，要求能够限制并发量",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "这道题比较有意思，其实就是要实现一个限制最大并发的  Promise.all()。\n\n实现思路也比较简单，就是在每个请求结束后，看队列中是否有未完成的请求，如果有，就按顺序进行下一个请求。\n\n```js \nfunction multiRequest(urls = [], maxNum) {\n    // 请求总数量\n    const sum = urls.length;\n    // 根据请求数量创建一个数组来保存请求的结果\n    const result = new Array(sum).fill(false);\n    // 当前完成的数量\n    let count = 0;\n\n    return new Promise((resolve, reject) =\u003e {\n        // 请求maxNum个\n        while (count \u003c maxNum) {\n            next();\n        }\n        function next() {\n            let current = count++;\n            // 处理边界条件\n            if (current \u003e= sum) {\n                // 请求全部完成就将promise置为成功状态, 然后将result作为promise值返回\n                !result.includes(false) \u0026\u0026 resolve(result);\n                return;\n            }\n            const url = urls[current];\n            console.log(`开始 ${current}`, new Date().toLocaleString());\n            fetch(url).then(res =\u003e {\n                // 保存请求结果\n                result[current] = res;\n                console.log(`完成 ${current}`, new Date().toLocaleString());\n                // 请求没有全部完成, 就递归\n                if (current \u003c sum) {\n                    next();\n                }\n            }).catch(err =\u003e {\n                console.log(`结束 ${current}`, new Date().toLocaleString());\n                result[current] = err;\n                // 请求没有全部完成, 就递归\n                if (current \u003c sum) {\n                    next();\n                }\n            });\n        }\n    });\n}\n\nconst url = `https://www.baidu.com/s?wd=javascript`;\nconst urls = new Array(100).fill(url);\n\n(async () =\u003e {\n    const res = await multiRequest(urls, 10);\n    console.log(res);\n})();\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2023-05-15T13:15:16.000Z",
+    "updateAt":  "2023-09-24T18:36:54.000Z",
+    "isCollected":  false,
+    "currentIndex":  839,
+    "filterTotalNum":  1907,
+    "prev":  "99dbb991-2615-4a8c-9374-73769803692d",
+    "next":  "f56eac8e-a286-4971-a9c4-77df60335d0c"
+}

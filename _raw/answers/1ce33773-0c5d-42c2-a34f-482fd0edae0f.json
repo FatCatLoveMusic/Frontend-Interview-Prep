@@ -1,0 +1,21 @@
+﻿{
+    "id":  2707,
+    "exerciseKey":  "1ce33773-0c5d-42c2-a34f-482fd0edae0f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "useEffect的第二个参数，是如何判断实现依赖是否发生变化的？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`useEffect` 的第二个参数（**依赖数组 dependency array**）本质上是 React 用来做 **变更检测（change detection）** 的机制，用于决定：\n\n\u003e 当前 render 完成后，这个 effect 是否需要重新执行。\n\n核心问题是：**React 如何判断依赖“发生变化”？**\n\n---\n\n# 一、结论先行\n\nReact 对依赖数组执行的是：\n\n## **逐项浅比较（shallow comparison）**\n\n并且比较算法使用：\n\n```\nObject.is(prevDep, nextDep)\n```\n\n而不是 `===`，也不是深比较。\n\n---\n\n# 二、源码层面的判断逻辑（简化版）\n\nReact 在 commit 阶段会保存上一次的依赖：\n\n```js\n// pseudo code\nfunction areHookInputsEqual(nextDeps, prevDeps) {\n  if (prevDeps === null) return false;\n\n  for (let i = 0; i \u003c prevDeps.length; i++) {\n    if (!Object.is(prevDeps[i], nextDeps[i])) {\n      return false;\n    }\n  }\n  return true;\n}\n```\n\n判断规则：\n\n| 条件                 | effect 是否重新执行 |\n| ------------------ | ------------- |\n| 任一依赖 Object.is 不相等 | 重新执行          |\n| 全部相等               | 跳过执行          |\n\n---\n\n# 三、为什么使用 `Object.is` 而不是 `===`\n\n`Object.is` 与 `===` 基本一致，但修复了两个 JS 边界问题：\n\n| 比较            | `===` | `Object.is` |\n| ------------- | ----- | ----------- |\n| `NaN === NaN` | false | true        |\n| `+0 === -0`   | true  | false       |\n\n因此 React 能更精确判断数值变化。\n\n---\n\n# 四、重要：这是“引用比较”，不是值比较\n\n这是很多问题的根源。\n\nReact **不会深度比较对象内容**。\n\n---\n\n## 示例 1：对象依赖（常见坑）\n\n```js\nuseEffect(() =\u003e {\n  console.log(\"run\");\n}, [{ a: 1 }]);\n```\n\n每次 render：\n\n```js\n{ a: 1 } !== { a: 1 } // 新引用\n```\n\n结果：\n\n```\neffect 每次都会执行\n```\n\n原因：\n\n* 新对象 = 新内存地址\n* Object.is 返回 false\n\n---\n\n## 示例 2：数组同理\n\n```js\nuseEffect(() =\u003e {}, [[1,2,3]]);\n```\n\n永远触发。\n\n---\n\n## 示例 3：函数依赖\n\n```js\nuseEffect(() =\u003e {}, [() =\u003e {}]);\n```\n\n函数每次 render 都重新创建：\n\n```\n新函数引用 → effect 重跑\n```\n\n这就是为什么需要：\n\n```\nuseCallback()\n```\n\n---\n\n# 五、React 的依赖判断流程（完整链路）\n\n一次组件更新时：\n\n```\nrender阶段\n   ↓\n计算新的 deps 数组\n   ↓\n与上一次 deps 做 Object.is 逐项比较\n   ↓\n是否标记 effect 为 Dirty\n   ↓\ncommit 阶段执行 effect\n```\n\n注意：\n\n\u003e 比较发生在 render 之后、effect 执行之前。\n\n---\n\n# 六、三种依赖写法的行为差异\n\n---\n\n## 1️⃣ 不写依赖\n\n```js\nuseEffect(fn);\n```\n\n等价于：\n\n```\n每次 render 后执行\n```\n\n---\n\n## 2️⃣ 空数组\n\n```js\nuseEffect(fn, []);\n```\n\n行为：\n\n```\n只在 mount 执行一次\n```\n\n原因：\n\n* 没有依赖永远不会变化\n\n---\n\n## 3️⃣ 指定依赖\n\n```js\nuseEffect(fn, [count]);\n```\n\n只有：\n\n```\nObject.is(prevCount, nextCount) === false\n```\n\n才执行。\n\n---\n\n# 七、高级理解：为什么 React 不做深比较？\n\n如果 deep compare：\n\n### 性能灾难\n\n```js\nuseEffect(() =\u003e {}, [bigObject]);\n```\n\n深比较复杂度：\n\n```\nO(n) ~ O(n²)\n```\n\n在 Fiber 高频 render 下不可接受。\n\nReact 的设计原则是：\n\n\u003e 依赖稳定性由开发者保证，而不是框架自动推断。\n\n---\n\n# 八、工程级最佳实践\n\n## 1️⃣ 稳定引用\n\n```js\nconst options = useMemo(() =\u003e ({ page: 1 }), []);\n```\n\n---\n\n## 2️⃣ 稳定函数\n\n```js\nconst handler = useCallback(() =\u003e {}, []);\n```\n\n---\n\n## 3️⃣ 拆分依赖（非常重要）\n\n不要：\n\n```js\nuseEffect(()=\u003e{}, [user]);\n```\n\n而是：\n\n```js\nuseEffect(()=\u003e{}, [user.id]);\n```\n\n降低无意义触发。",
+    "pivot":  "`useEffect` 的依赖变化判断机制是：\n\n\u003e React 在每次 render 后，使用 `Object.is` 对依赖数组进行逐项浅比较，只要任一依赖的引用或值发生变化，就重新执行 effect。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:41.000Z",
+    "updateAt":  "2026-02-24T03:02:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  393,
+    "filterTotalNum":  1907,
+    "prev":  "fbe1ba95-3c26-4d09-b65d-c2dda661b280",
+    "next":  "52369964-6576-4581-90a6-b71aa61ad9f3"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  411,
+    "exerciseKey":  "c8245703-a177-4deb-a8be-24f73a3267b8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Function.prototype.apply()",
+    "desc":  "第一个参数是绑定的this，默认为window，第二个参数是数组或类数组",
+    "options":  null,
+    "explanation":  "```js\nFunction.prototype.apply = function(context, args) {\n   context = (context === undefined || context === null) ? globalThis : Object(context);\n  if (typeof this !== \u0027function\u0027) {\n    throw new TypeError(\u0027Type Error\u0027);\n  }\n  const fn = Symbol(\u0027fn\u0027);\n  context[fn] = this;\n\n  const res = context[fn](...args);\n  delete context[fn];\n  return res;\n}\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:02:12.000Z",
+    "updateAt":  "2025-08-26T09:01:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  1509,
+    "filterTotalNum":  1907,
+    "prev":  "827a8f47-1144-4ab1-9d6c-b7d3b3d6aebf",
+    "next":  "b66b6742-6ef1-4359-82ae-c69e2a041549"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  43,
+    "exerciseKey":  "95dd5690-238f-46ab-b232-6bff6520240a",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nconst numbers = [1, 2, 3]\nnumbers[10] = 11\nconsole.log(numbers)\n```",
+    "options":  "{\"options\":[\"[1, 2, 3, 7 x null, 11]\",\"[1, 2, 3, 11]\",\"[1, 2, 3, 7 x empty, 11]\",\"SyntaxError\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "当你为数组设置超过数组长度的值的时候， JavaScript 会创建名为 \"empty slots\" 的东西。它们的值实际上是 `undefined`。你会看到以下场景：\n`[1, 2, 3, 7 x empty, 11]`\n这取决于你的运行环境（每个浏览器，以及 node 环境，都有可能不同）",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:11:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  1876,
+    "filterTotalNum":  1907,
+    "prev":  "7288dc5d-1485-4275-8a19-acf2bdc7f909",
+    "next":  "88f7458f-418d-4362-bafa-f3ed98083d02"
+}

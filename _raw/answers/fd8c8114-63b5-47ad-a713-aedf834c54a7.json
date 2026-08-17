@@ -1,0 +1,21 @@
+﻿{
+    "id":  3235,
+    "exerciseKey":  "fd8c8114-63b5-47ad-a713-aedf834c54a7",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么 LangGraph 更适合 Agent？",
+    "desc":  "",
+    "options":  null,
+    "explanation":  "Agent 的难点不在于“调一次大模型”，而在于让大模型在不确定环境里持续决策：什么时候调用工具、调用哪个工具、失败后怎么重试、是否需要人审、上下文如何保留、多 Agent 如何交接。LangGraph 更适合 Agent，核心原因是它把这些问题建模成了“有状态的图执行”。\n\n传统 Chain 更像一条固定流水线，适合输入输出路径相对稳定的任务；但 Agent 往往需要循环、分支和动态路由。LangGraph 用节点表示模型调用、工具调用、业务逻辑或子 Agent，用边表示下一步流转条件，所以可以自然表达“计划、执行、观察、再计划”的 Agent Loop，也能表达多 Agent 协作、审批流、异常回退等复杂控制流。\n\n更关键的是，LangGraph 把状态作为一等公民。Agent 每一步的中间结果、消息、工具返回、用户确认、任务进度都可以沉淀在统一的 state 里，而不是散落在 prompt 拼接或临时变量中。这使得 Agent 的行为更容易调试、复盘和控制。官方文档也把 LangGraph 定位为面向 long-running、stateful agents 的低层编排框架，并强调 durable execution、streaming、human-in-the-loop 等能力：[LangGraph overview](https://docs.langchain.com/oss/javascript/langgraph)。\n\n在生产场景里，Agent 还会遇到长任务、中断恢复、人工审批、失败重试和可观测性问题。LangGraph 的 checkpoint / durable execution 能让执行过程被持久化，任务失败或中断后可以从已有状态继续，而不是从头再跑；human-in-the-loop 机制也允许在关键节点暂停，等待人工确认后再恢复。这些能力比“封装一个自动调用工具的 Agent”更接近真实业务系统的要求：[Durable execution](https://docs.langchain.com/oss/javascript/langgraph/durable-execution)。\n\n不过 LangGraph 并不是所有场景都必须用。如果只是简单问答、RAG 查询或单轮工具调用，直接用普通 Chain 或轻量 Agent 会更简单。LangGraph 的优势主要体现在复杂、长流程、可恢复、可审计、需要明确控制权的 Agent 系统中。",
+    "pivot":  "LangGraph 更适合 Agent，是因为 Agent 本质上是有状态、可循环、可分支、可中断恢复的决策系统，而不是线性调用链。它通过图结构表达复杂控制流，通过 state 管理上下文和中间结果，通过 durable execution 支持长任务恢复，通过 human-in-the-loop 支持人工干预。因此，在生产级复杂 Agent 场景中，LangGraph 比传统 Chain 更可控、更可靠，也更容易调试和演进。",
+    "vipLimit":  0,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2026-06-08T12:33:49.000Z",
+    "updateAt":  "2026-06-09T08:19:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  53,
+    "filterTotalNum":  1907,
+    "prev":  "edbd469b-eae8-410e-baf6-82483f6f48b1",
+    "next":  "9e1ef83c-0b0a-4ec0-8a3b-6bd414215a24"
+}

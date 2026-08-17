@@ -1,0 +1,21 @@
+﻿{
+    "id":  359,
+    "exerciseKey":  "a1c9963f-fb40-4d8a-aa47-e5cca8c885b7",
+    "category":  "QA",
+    "renderType":  "html",
+    "title":  "CSRF攻击及防护",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "\u003cul\u003e\u003cli\u003e跨站点请求伪造（Cross-Site Request Forgeries），冒充用户发起请求（在用户不知情的情况下）， 完成一些违背用户意愿的事情（如修改用户信息，删初评论等）。\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e1、可能造成危害：\u003c/strong\u003e\u003cbr/\u003e\u003c/li\u003e\u003col\u003e\u003cli\u003e利用已通过认证的用户权限更新设定信息等；\u003c/li\u003e\u003cli\u003e利用已通过认证的用户权限购买商品；\u003c/li\u003e\u003cli\u003e利用已通过的用户权限在留言板上发表言论。\u003c/li\u003e\u003c/ol\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e2、防御：\u003c/strong\u003e\u003cbr/\u003e\u003c/li\u003e\u003col\u003e\u003cli\u003e验证码；强制用户必须与应用进行交互，才能完成最终请求。\u003c/li\u003e\u003cli\u003e尽量使用 post ，限制 get 使用；get 太容易被拿来做 csrf 攻击；\u003c/li\u003e\u003cli\u003e请求来源限制，此种方法成本最低，但是并不能保证 100% 有效，因为服务器并不是什么时候都能取到 Referer，而且低版本的浏览器存在伪造 Referer 的风险。\u003c/li\u003e\u003cli\u003etoken 验证 CSRF 防御机制是公认最合适的方案。\u003c/li\u003e\u003c/ol\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e使用token的原理：\u003c/strong\u003e\u003cbr/\u003e\u003c/li\u003e\u003col\u003e\u003cli\u003e第一步：后端随机产生一个 token，把这个token 保存到 session 状态中；同时后端把这个token 交给前端页面；\u003c/li\u003e\u003cli\u003e第二步：前端页面提交请求时，把 token 加入到请求数据或者头信息中，一起传给后端；\u003c/li\u003e\u003cli\u003e后端验证前端传来的 token 与 session 是否一致，一致则合法，否则是非法请求。\u003c/li\u003e\u003c/ol\u003e\u003c/ul\u003e\u003cp\u003e\u003c/p\u003e",
+    "pivot":  "\u003cp\u003e\u003cstrong\u003e答题要点：\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp\u003e\u003c/p\u003e\u003cp style=\"text-align:left;text-indent:2em;\"\u003eCSRF（Cross-Site Request Forgery，跨站请求伪造）攻击是一种网络攻击方式，攻击者盗用用户的登录凭证，诱使用户在不知情的情况下执行非本意的操作。这种攻击利用了网站对用户登录状态的信任，用户一旦登录某个网站，攻击者就可以在用户不知情的情况下，使用用户的登录凭证向该网站发送恶意请求，导致用户账户受到损害。\u003c/p\u003e\u003ch3 style=\"text-align:left;text-indent:2em;\"\u003eCSRF攻击原理\u003c/h3\u003e\u003col\u003e\u003cli\u003e\u003cstrong\u003e用户登录网站A\u003c/strong\u003e：用户通过认证登录了网站A，网站A在用户的浏览器中设置了一个Cookie。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e用户访问网站B\u003c/strong\u003e：用户在浏览器的地址栏输入网站B的网址，或者点击了网站B的链接。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e网站B执行请求\u003c/strong\u003e：网站B执行了一个会改变用户账户状态的请求，比如转账、修改密码等。由于用户的浏览器中还保留着网站A的Cookie，这个请求会携带网站A的Cookie。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e网站A响应请求\u003c/strong\u003e：网站A接收到请求后，认为请求来自已经登录的用户，因此没有进行额外的验证，直接响应了请求。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e用户账户受损\u003c/strong\u003e：用户在不知情的情况下，账户状态被改变，遭受了损失。\u003c/li\u003e\u003c/ol\u003e\u003ch3 style=\"text-align:left;text-indent:2em;\"\u003eCSRF攻击防护\u003c/h3\u003e\u003col\u003e\u003cli\u003e\u003cstrong\u003e验证Referer字段\u003c/strong\u003e：服务器端可以检查Referer字段，确保请求来自可信的来源。但这种方法存在局限性，因为Referer可以被伪造。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e验证Token\u003c/strong\u003e：在请求中加入一个Token，服务器端在处理请求时验证Token的有效性。Token可以是随机的，每次请求都会生成一个不同的Token。这种方法相对安全，但需要客户端和服务器端都进行相应的修改。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e设置Cookie的HttpOnly属性\u003c/strong\u003e：Cookie的HttpOnly属性可以防止Cookie被JavaScript读取，从而减少CSRF攻击的风险。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e使用CORS（跨源资源共享）\u003c/strong\u003e：服务器端设置CORS策略，限制哪些域名可以访问特定的资源。这种方法可以防止第三方网站直接访问受保护的资源，从而减少CSRF攻击的风险。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e设置SameSite属性\u003c/strong\u003e：Cookie的SameSite属性可以限制Cookie在跨站请求中的发送，从而减少CSRF攻击的风险。\u003c/li\u003e\u003c/ol\u003e",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-04T15:33:42.000Z",
+    "updateAt":  "2024-07-18T23:22:04.000Z",
+    "isCollected":  false,
+    "currentIndex":  1561,
+    "filterTotalNum":  1907,
+    "prev":  "549f8d07-a907-4c86-93c1-d3e8fef30613",
+    "next":  "7b581439-bd9d-486d-a045-ff33f1d32b99"
+}

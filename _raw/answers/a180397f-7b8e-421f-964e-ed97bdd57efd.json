@@ -1,0 +1,21 @@
+﻿{
+    "id":  288,
+    "exerciseKey":  "a180397f-7b8e-421f-964e-ed97bdd57efd",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "CSS3新增伪类有那些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* p:first-of-type 选择属于其父元素的首个元素\n* p:last-of-type 选择属于其父元素的最后元素\n* p:only-of-type 选择属于其父元素唯一的元素\n* p:only-child 选择属于其父元素的唯一子元素\n* p:nth-child(2) 选择属于其父元素的第二个子元素\n* :enabled :disabled 表单控件的禁用状态。\n* :checked 单选框或复选框被选中。\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T09:38:17.000Z",
+    "updateAt":  "2021-07-04T19:23:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  1632,
+    "filterTotalNum":  1907,
+    "prev":  "5c174882-c1e7-4c08-a71a-f4c991be552f",
+    "next":  "d26004b5-4091-4a30-b66f-7c6e78dd34c8"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  2138,
+    "exerciseKey":  "6f4723ca-870c-4d43-b461-5dcdcec428af",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请求失败会弹出一个 toast，如何保证批量请求失败时， 只弹出一个 toast？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "### 方法 1: **使用防抖（Debounce）**\n防抖可以确保在一定时间内只触发一次 `toast`。如果多个请求在短时间内失败，防抖会将这些失败的请求合并，只弹出一个 `toast`。\n\n```javascript\nlet toastTimeout = null;\n\nfunction showToast(message) {\n    if (toastTimeout) clearTimeout(toastTimeout); // 清除之前的定时器\n    toastTimeout = setTimeout(() =\u003e {\n        // 实际显示 toast 的逻辑\n        console.log(message);\n        toastTimeout = null; // 重置定时器\n    }, 300); // 设置防抖时间为 300ms\n}\n\n// 模拟批量请求失败\nfunction handleFailedRequests() {\n    showToast(\"请求失败，请稍后重试\");\n    showToast(\"请求失败，请稍后重试\");\n    showToast(\"请求失败，请稍后重试\");\n}\n\nhandleFailedRequests(); // 只会弹出一个 toast\n```\n\n**总结：**\n防抖通过在短时间内合并多次触发，确保只执行一次 `toast` 显示逻辑。适用于短时间内多次触发相同事件的场景。\n\n---\n\n### 方法 2: **使用标志位（Flag）**\n通过设置一个标志位，确保在第一次请求失败时弹出 `toast`，并在一定时间内忽略后续的失败请求。\n\n```javascript\nlet isToastShown = false;\n\nfunction showToast(message) {\n    if (!isToastShown) {\n        console.log(message); // 实际显示 toast 的逻辑\n        isToastShown = true;\n\n        // 重置标志位，例如 5 秒后允许再次弹出 toast\n        setTimeout(() =\u003e {\n            isToastShown = false;\n        }, 5000); // 5 秒后重置\n    }\n}\n\n// 模拟批量请求失败\nfunction handleFailedRequests() {\n    showToast(\"请求失败，请稍后重试\");\n    showToast(\"请求失败，请稍后重试\");\n    showToast(\"请求失败，请稍后重试\");\n}\n\nhandleFailedRequests(); // 只会弹出一个 toast\n```\n\n**总结：**\n标志位方法通过控制 `toast` 的显示状态，确保在一定时间内只弹出一个 `toast`。适用于需要明确控制 `toast` 显示频率的场景。\n\n---\n\n### 方法 3: **批量请求的统一错误处理**\n如果批量请求是通过 `Promise.all` 或类似的方式发起的，可以在统一的错误处理逻辑中弹出 `toast`。\n\n```javascript\nfunction showToast(message) {\n    console.log(message); // 实际显示 toast 的逻辑\n}\n\nasync function handleBatchRequests() {\n    const requests = [\n        fetch(\u0027/api/request1\u0027).catch(() =\u003e {}),\n        fetch(\u0027/api/request2\u0027).catch(() =\u003e {}),\n        fetch(\u0027/api/request3\u0027).catch(() =\u003e {}),\n    ];\n\n    try {\n        await Promise.all(requests);\n    } catch (error) {\n        // 统一处理错误\n        showToast(\"部分请求失败，请稍后重试\");\n    }\n}\n\nhandleBatchRequests(); // 只会弹出一个 toast\n```\n\n**总结：**\n通过统一错误处理，可以在批量请求失败时只弹出一个 `toast`。适用于批量请求的场景，且逻辑清晰。\n\n---\n\n### 方法 4: **使用队列和单例模式**\n将 `toast` 显示逻辑封装为一个单例，并使用队列管理多个失败请求的消息，确保每次只显示一个 `toast`。\n\n```javascript\nclass ToastManager {\n    constructor() {\n        this.queue = [];\n        this.isShowing = false;\n    }\n\n    showToast(message) {\n        this.queue.push(message);\n        if (!this.isShowing) {\n            this.displayNextToast();\n        }\n    }\n\n    displayNextToast() {\n        if (this.queue.length \u003e 0) {\n            this.isShowing = true;\n            const message = this.queue.shift();\n            console.log(message); // 实际显示 toast 的逻辑\n\n            // 模拟 toast 消失后的回调\n            setTimeout(() =\u003e {\n                this.isShowing = false;\n                this.displayNextToast();\n            }, 3000); // 假设 toast 显示 3 秒\n        }\n    }\n}\n\nconst toastManager = new ToastManager();\n\n// 模拟批量请求失败\nfunction handleFailedRequests() {\n    toastManager.showToast(\"请求失败，请稍后重试\");\n    toastManager.showToast(\"请求失败，请稍后重试\");\n    toastManager.showToast(\"请求失败，请稍后重试\");\n}\n\nhandleFailedRequests(); // 会依次弹出 toast，但不会同时弹出多个\n```\n\n**总结：**\n通过队列和单例模式，可以确保 `toast` 依次显示，避免同时弹出多个 `toast`。适用于需要按顺序显示消息的场景。",
+    "pivot":  "在批量请求失败的场景下，可以通过以下方法确保只弹出一个 `toast`：\n1. **防抖**：适用于短时间内多次触发相同事件的场景。\n2. **标志位**：适用于需要明确控制 `toast` 显示频率的场景。\n3. **统一错误处理**：适用于批量请求的场景，逻辑清晰。\n4. **队列和单例模式**：适用于需要按顺序显示消息的场景。",
+    "vipLimit":  1,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:29:51.000Z",
+    "updateAt":  "2025-02-08T01:05:16.000Z",
+    "isCollected":  false,
+    "currentIndex":  687,
+    "filterTotalNum":  1907,
+    "prev":  "e81ec006-41fe-49da-ac71-ebe42cec6b66",
+    "next":  "eb057db2-c26f-409f-8b38-64db8f949ef9"
+}

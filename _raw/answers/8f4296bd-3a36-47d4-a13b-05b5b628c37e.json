@@ -1,0 +1,21 @@
+﻿{
+    "id":  1912,
+    "exerciseKey":  "8f4296bd-3a36-47d4-a13b-05b5b628c37e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用正则表达式实现以下需求：筛选出数组中只包含大小写字母的字符串，并将结果转换成大写\n",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "可以先使用正则表达式 `/^[a-zA-Z]+$/` 来匹配只包含大小写字母的字符串，使用 `Array.prototype.filter()` 方法来筛选符合条件的元素，然后使用 `Array.prototype.map()` 方法将每个元素转换成大写，最终得到了一个新的数组 `filteredArr`。\n\n \n参考代码如下：\n \n```js\nconst arr = [\u0027Abc\u0027, \u0027DeF\u0027, \u0027123\u0027, \u0027_ghI\u0027];\n\nconst filteredArr = arr.filter(item =\u003e /^[a-zA-Z]+$/.test(item))\n                       .map(item =\u003e item.toUpperCase());\n\nconsole.log(filteredArr); // [\"ABC\", \"DEF\"]\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-10-10T12:42:18.000Z",
+    "updateAt":  "2023-04-23T20:15:09.000Z",
+    "isCollected":  false,
+    "currentIndex":  898,
+    "filterTotalNum":  1907,
+    "prev":  "9491596e-4423-4426-b300-a31ded121bc1",
+    "next":  "1199c5d8-034c-4cb0-a3c7-55ef5f6ec56f"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  459,
+    "exerciseKey":  "ffbc9199-6e3a-4e6f-a2dd-b77c339aef2c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "TypeScript 中的 getter/setter 是什么？你如何使用它们？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Getter 和 setter 是特殊类型的方法，可帮助你根据程序的需要委派对私有变量的不同级别的访问。\n\nGetters 允许你引用一个值但不能编辑它。Setter 允许你更改变量的值，但不能查看其当前值。这些对于实现封装是必不可少的。\n\n例如，新雇主可能能够了解get公司的员工人数，但无权set了解员工人数。\n\n```typescript\nconst fullNameMaxLength = 10;\nclass Employee {\n  private _fullName: string = \"\";\n  get fullName(): string {\n    return this._fullName;\n  }\n  set fullName(newName: string) {\n    if (newName \u0026\u0026 newName.length \u003e fullNameMaxLength) {\n      throw new Error(\"fullName has a max length of \" + fullNameMaxLength);\n    }\n    this._fullName = newName;\n  }\n}\nlet employee = new Employee();\nemployee.fullName = \"Bob Smith\";\nif (employee.fullName) {\n  console.log(employee.fullName);\n}\n```",
+    "pivot":  "**作答思路：**\n\n在TypeScript中，`getter`和`setter`是一对用于读取和修改类属性的方法。它们用于封装对属性的访问，以提供更好的数据保护和类型检查。\n使用`getter`和`setter`的步骤如下：\n\n1. **定义属性**：在类中定义一个属性。\n2. **定义getter**：为属性定义一个getter方法，它没有参数，并返回属性值。\n3. **定义setter**：为属性定义一个setter方法，它接受一个参数，并设置属性值。\n4. **使用getter和setter**：通过属性名来调用getter和setter，而不是直接访问属性。\n\n**考察要点**：\n\n1. **getter和setter概念**：理解getter和setter的基本概念和用途。\n2. **使用步骤**：了解如何定义和使用getter和setter。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-08T14:46:22.000Z",
+    "updateAt":  "2024-08-10T17:05:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1461,
+    "filterTotalNum":  1907,
+    "prev":  "75a70014-1972-40d8-8173-1f3a475a0570",
+    "next":  "58972e2f-584c-4073-af2a-f6b0c81f447d"
+}

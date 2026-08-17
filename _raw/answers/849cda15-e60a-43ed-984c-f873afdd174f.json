@@ -1,0 +1,21 @@
+﻿{
+    "id":  2390,
+    "exerciseKey":  "849cda15-e60a-43ed-984c-f873afdd174f",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "for...of、for...in、for 循环， 三者有什么区别？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "`for...of`、`for...in` 和 `for` 是 JavaScript 中用于循环的三种不同结构，每种结构有不同的用途和特性。\n\n### **1. `for` 循环**\n\n- **作用**：最基本的循环结构，可以用于遍历数组、对象等。\n- **用法**：需要初始化变量、设置循环条件和更新变量。\n- **示例**：\n  ```javascript\n  for (let i = 0; i \u003c 5; i++) {\n    console.log(i); // 输出 0, 1, 2, 3, 4\n  }\n  ```\n\n- **特点**：\n  - 用于精确控制循环次数。\n  - 可以用于遍历数组或其他可迭代对象，也适用于遍历对象的属性，但需要额外处理。\n\n### **2. `for...in` 循环**\n\n- **作用**：用于遍历对象的可枚举属性（包括继承的属性）。\n- **用法**：遍历对象的所有属性（不包括 Symbol 属性）。\n- **示例**：\n  ```javascript\n  const obj = { a: 1, b: 2, c: 3 };\n  for (let key in obj) {\n    console.log(key, obj[key]); // 输出 \"a 1\", \"b 2\", \"c 3\"\n  }\n  ```\n\n- **特点**：\n  - 遍历对象的属性名（键），不是数组元素。\n  - 不保证属性的顺序。\n  - 适合遍历对象的键，而不适用于遍历数组。\n\n### **3. `for...of` 循环**\n\n- **作用**：用于遍历可迭代对象（如数组、字符串、Set、Map 等）的元素。\n- **用法**：直接遍历迭代对象的值。\n- **示例**：\n  ```javascript\n  const array = [10, 20, 30];\n  for (let value of array) {\n    console.log(value); // 输出 10, 20, 30\n  }\n  ```\n\n- **特点**：\n  - 遍历可迭代对象的值。\n  - 不适用于遍历对象的属性，只适用于数组或其他可迭代对象。\n  - 保证了遍历的顺序。",
+    "pivot":  "- **`for` 循环**：最基础的循环结构，适用于各种情况，包括数组和对象，但需要手动控制循环变量和条件。\n- **`for...in` 循环**：用于遍历对象的可枚举属性（包括继承的属性），不适用于数组。\n- **`for...of` 循环**：用于遍历可迭代对象的值，适用于数组、字符串、Set、Map 等，但不适用于普通对象。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T01:19:37.000Z",
+    "isCollected":  false,
+    "currentIndex":  557,
+    "filterTotalNum":  1907,
+    "prev":  "523d454b-755e-4c1f-9952-440e469195a3",
+    "next":  "67cbcaf9-15c4-447f-a7c8-d515f68a2097"
+}

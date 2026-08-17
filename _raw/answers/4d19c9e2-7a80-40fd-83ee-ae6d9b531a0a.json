@@ -1,0 +1,21 @@
+﻿{
+    "id":  637,
+    "exerciseKey":  "4d19c9e2-7a80-40fd-83ee-ae6d9b531a0a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Promise.all 和 Promise.allSettled 有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "一句话概括`Promise.allSettled`和`Promise.all`的最大不同：`Promise.allSettled`永远不会被**reject**。\n\n## Promise.all的痛点\n\n当需要处理多个Promise并行时，大多数情况下Promise.all用起来是非常顺手的，比如下面这样\n\n```js\nconst delay = n =\u003e new Promise(resolve =\u003e setTimeout(resolve, n));\n\nconst promises = [\n  delay(100).then(() =\u003e 1),\n  delay(200).then(() =\u003e 2),\n  ]\n\nPromise.all(promises).then(values=\u003econsole.log(values))\n// 最终输出： [1, 2]\n```\n\n可是，是一旦有一个promise出现了异常，被reject了，情况就会变的麻烦。\n\n```js\nconst promises = [\n  delay(100).then(() =\u003e 1),\n  delay(200).then(() =\u003e 2),\n  Promise.reject(3)\n  ]\n\nPromise.all(promises).then(values=\u003econsole.log(values))\n// 最终输出： Uncaught (in promise) 3\n\nPromise.all(promises)\n.then(values=\u003econsole.log(values))\n.catch(err=\u003econsole.log(err))\n// 加入catch语句后，最终输出：3\n```\n\n尽管能用catch捕获其中的异常，但你会发现其他执行成功的Promise的消息都丢失了，仿佛石沉大海一般。\n\n要么全部成功，要么全部重来，这是Promise.all本身的强硬逻辑，也是痛点的来源，不能说它错，但这的确给Promise.allSettled留下了立足的空间。\n\n## Promise.allSettled\n\n假如使用Promise.allSettled来处理这段逻辑会怎样呢?\n\n```js\nconst promises = [\n  delay(100).then(() =\u003e 1),\n  delay(200).then(() =\u003e 2),\n  Promise.reject(3)\n  ]\n\nPromise.allSettled(promises).then(values=\u003econsole.log(values))\n// 最终输出： \n//    [\n//      {status: \"fulfilled\", value: 1},\n//      {status: \"fulfilled\", value: 2},\n//      {status: \"rejected\", value: 3},\n//    ]\n```\n\n可以看到所有promise的数据都被包含在then语句中，且每个promise的返回值多了一个status字段，表示当前promise的状态，没有任何一个promise的信息被丢失。\n\n因此，当用Promise.allSettled时，我们只需专注在then语句里，当有promise被异常打断时，我们依然能妥善处理那些已经成功了的promise，不必全部重来。\n",
+    "pivot":  "### Promise.all\n\n- **作用**：当所有给定的Promise都被解决时，`Promise.all` 返回一个包含所有解决值的数组。如果任何一个Promise被拒绝，则返回的Promise将被拒绝，并传递给拒绝原因。\n- **示例**：\n\n  ```javascript\n  Promise.all([promise1, promise2, promise3]).then(values =\u003e {\n    // values 是解决值数组\n  }).catch(reason =\u003e {\n    // reason 是第一个被拒绝的Promise的原因\n  });\n  ```\n\n### Promise.allSettled\n\n- **作用**：当所有给定的Promise都被解决或拒绝时，`Promise.allSettled` 返回一个包含每个Promise结果的数组。每个结果都是一个对象，其中包含 `status`（解决或拒绝的状态）和 `value`（如果解决，则是解决值；如果拒绝，则是拒绝原因）。\n- **示例**：\n\n  ```javascript\n  Promise.allSettled([promise1, promise2, promise3]).then(results =\u003e {\n    // results 是一个包含每个Promise结果的对象数组\n  }).catch(reason =\u003e {\n    // 不会被调用，因为所有Promise都已经被解决或拒绝\n  });\n  ```\n\n### 区别\n\n1. **结果类型**：`Promise.all` 返回一个数组，其中包含所有Promise的解决值。`Promise.allSettled` 返回一个数组，其中包含每个Promise的结果对象。\n2. **处理拒绝**：`Promise.all` 会在任何Promise被拒绝时立即拒绝，而`Promise.allSettled` 会等待所有Promise都解决或拒绝后才返回结果。\n3. **适用场景**：`Promise.all` 适用于你关心所有Promise是否解决的情况。`Promise.allSettled` 适用于你只关心所有Promise是否都解决或拒绝，而不关心解决值或拒绝原因的情况。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-10-12T10:20:48.000Z",
+    "updateAt":  "2024-08-10T17:05:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  1284,
+    "filterTotalNum":  1907,
+    "prev":  "d428fd54-972b-44de-b0ab-cb8ac1ed27ca",
+    "next":  "1592fd61-1555-4646-a2a0-438828b5b8e5"
+}

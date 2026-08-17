@@ -1,0 +1,21 @@
+﻿{
+    "id":  3048,
+    "exerciseKey":  "efa108f0-e78a-48e7-b722-e6b67c32a494",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue3 中，动态绑定v-bind:class=\"{ active: isActive }\"会被编译成什么样的JS代码？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "以 **Vue 3（编译器 + 运行时分离架构）** 为背景，`v-bind:class=\"{ active: isActive }\"` 在编译阶段并不会以“指令”的形式存在到运行时，而是被**直接编译成普通的 JavaScript 表达式 + 运行时辅助函数调用**。\n\n下面从**模板 → render 函数 → 运行时执行**三个层次把这件事讲清楚。\n\n---\n\n## 一、模板层的输入\n\n模板代码：\n\n```vue\n\u003cdiv v-bind:class=\"{ active: isActive }\"\u003e\u003c/div\u003e\n```\n\n等价的简写形式是：\n\n```vue\n\u003cdiv :class=\"{ active: isActive }\"\u003e\u003c/div\u003e\n```\n\n---\n\n## 二、编译阶段：模板如何被转换\n\n### 1. AST 阶段的识别\n\n编译器在解析模板 AST 时会识别出：\n\n* `class` 是一个 **动态绑定**\n* 表达式是一个 **对象字面量**\n* key 是静态字符串 `\"active\"`\n* value 是作用域变量 `isActive`\n\n这一步不会生成字符串拼接，而是保留**表达式语义**。\n\n---\n\n### 2. 转换为 render 函数中的 props 表达式\n\n在 Vue 3 中，模板最终会被编译为类似下面的 render 函数（示意）：\n\n```js\nimport { openBlock, createElementBlock, normalizeClass } from \"vue\";\n\nexport function render(_ctx, _cache) {\n  return openBlock(), createElementBlock(\n    \"div\",\n    {\n      class: normalizeClass({ active: _ctx.isActive })\n    },\n    null\n  );\n}\n```\n\n这是回答这个问题时**最关键的一段代码形态**。\n\n---\n\n## 三、关键点拆解\n\n### 1. `isActive` 如何访问\n\n```js\n_ctx.isActive\n```\n\n说明几点：\n\n* 模板中的变量会被提升为 render 函数的上下文 `_ctx`\n* 编译阶段并不关心它是 `ref`、`reactive` 还是普通值\n* 取值逻辑完全交给运行时响应式系统\n\n---\n\n### 2. 为什么要调用 `normalizeClass`\n\n```js\nnormalizeClass({ active: _ctx.isActive })\n```\n\n这是因为 Vue 允许 `class` 接受多种类型：\n\n* 字符串：`\"a b\"`\n* 数组：`[\"a\", condition \u0026\u0026 \"b\"]`\n* 对象：`{ a: true, b: false }`\n* 以上形式的任意嵌套组合\n\n`normalizeClass` 的职责是：\n\n\u003e **把任意合法的 class 表达式，规范化为最终可直接写入 DOM 的字符串**\n\n例如：\n\n```js\n{ active: true, disabled: false }\n```\n\n会被规范化为：\n\n```text\n\"active\"\n```\n\n---\n\n### 3. 为什么 class 不会直接写成字符串拼接\n\n一个直觉实现可能是：\n\n```js\nclass: _ctx.isActive ? \"active\" : \"\"\n```\n\n但 Vue 不这样做，原因是：\n\n* 会破坏数组 / 对象 / 混合写法的统一处理\n* 会导致多 class 合并逻辑分散在编译阶段\n* 不利于运行时复用和优化\n\n因此 Vue 选择：\n\n\u003e **编译期保留结构，运行时统一归一化**\n\n---\n\n## 四、运行时执行时发生了什么\n\n当组件 render effect 执行时：\n\n1. 访问 `_ctx.isActive`\n2. 触发响应式 `get`，建立依赖\n3. `normalizeClass` 返回字符串\n4. Virtual DOM 中的 `class` 属性发生变化\n5. Diff 阶段只更新该元素的 `className`\n\n当 `isActive` 变化时：\n\n* render effect 重新执行\n* class 重新计算\n* DOM class 被最小化更新\n\n---\n\n## 五、Vue 2 与 Vue 3 的差异补充（加分点）\n\n在 Vue 2 中，生成的是类似：\n\n```js\n_c(\u0027div\u0027, {\n  class: { active: isActive }\n})\n```\n\n对象结构在运行时由 `updateClass` 处理。\n\nVue 3 把这一步拆得更明确：\n\n* 编译期更“纯”\n* 运行时通过 `normalizeClass` 明确边界\n* 更利于 tree-shaking 和静态分析\n",
+    "pivot":  "`v-bind:class=\"{ active: isActive }\"` 在 Vue 3 中会被编译为 render 函数中的普通 props 表达式，核心形式是 `class: normalizeClass({ active: _ctx.isActive })`；模板变量通过 `_ctx` 访问；对象结构不会在编译期被拍平，而是交由运行时统一归一化为字符串；这种设计保证了 class 多种写法的统一处理，并与响应式系统自然衔接。",
+    "vipLimit":  1,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2026-02-01T15:16:45.000Z",
+    "updateAt":  "2026-02-01T15:16:48.000Z",
+    "isCollected":  false,
+    "currentIndex":  157,
+    "filterTotalNum":  1907,
+    "prev":  "e82c31fa-cae7-499a-90a5-2fa56a7c3f59",
+    "next":  "09829c97-8c72-4436-a05f-f91355630197"
+}

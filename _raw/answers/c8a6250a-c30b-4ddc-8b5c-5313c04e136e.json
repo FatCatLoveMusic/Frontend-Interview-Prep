@@ -1,0 +1,21 @@
+﻿{
+    "id":  130,
+    "exerciseKey":  "c8a6250a-c30b-4ddc-8b5c-5313c04e136e",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst myFunc = ({ x, y, z }) =\u003e {\n\tconsole.log(x, y, z);\n};\n\nmyFunc(1, 2, 3);\n```",
+    "options":  "{\"options\":[\"1 2 3\",\"{1: 1} {2: 2} {3: 3}\",\"{ 1: undefined } undefined undefined\",\"undefined undefined undefined\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "`myFunc` 期望接收一个包含 `x`, `y` 和 `z` 属性的对象作为它的参数。因为我们仅仅传递三个单独的数字值 (1, 2, 3) 而不是一个含有 `x`, `y` 和 `z` 属性的对象 ({x: 1, y: 2, z: 3})， `x`, `y` 和 `z` 有着各自的默认值 `undefined`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:31:19.000Z",
+    "isCollected":  false,
+    "currentIndex":  1789,
+    "filterTotalNum":  1907,
+    "prev":  "f7527bab-1200-4c68-86d9-bab157c66156",
+    "next":  "758b3c03-bac2-4d4f-a900-63f478a1e770"
+}

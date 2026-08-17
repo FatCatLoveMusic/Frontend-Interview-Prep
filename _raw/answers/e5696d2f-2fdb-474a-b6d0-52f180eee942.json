@@ -1,0 +1,21 @@
+﻿{
+    "id":  60,
+    "exerciseKey":  "e5696d2f-2fdb-474a-b6d0-52f180eee942",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "下面代码的输出是什么?",
+    "desc":  "```javascript\nclass Dog {\n  constructor(name) {\n    this.name = name;\n  }\n}\n\nDog.prototype.bark = function() {\n  console.log(`Woof I am ${this.name}`);\n};\n\nconst pet = new Dog(\"Mara\");\n\npet.bark();\n\ndelete Dog.prototype.bark;\n\npet.bark();\n```",
+    "options":  "{\"options\":[\"\\\"Woof I am Mara\\\", TypeError\",\"\\\"Woof I am Mara\\\",\\\"Woof I am Mara\\\"\",\"\\\"Woof I am Mara\\\", undefined\",\"TypeError, TypeError\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "我们可以用`delete`关键字删除对象的属性，对原型也是适用的。删除了原型的属性后，该属性在原型链上就不可用了。在本例中，函数`bark`在执行了`delete Dog.prototype.bark`后不可用, 然而后面的代码还在调用它。\n当我们尝试调用一个不存在的函数时`TypeError`异常会被抛出。在本例中就是 `TypeError: pet.bark is not a function`，因为`pet.bark`是`undefined`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:14:38.000Z",
+    "isCollected":  false,
+    "currentIndex":  1859,
+    "filterTotalNum":  1907,
+    "prev":  "e3c4f27f-343c-4b70-b95e-6163888c6eb5",
+    "next":  "30a6a5e1-fc54-4f16-b102-5a174ae023dd"
+}

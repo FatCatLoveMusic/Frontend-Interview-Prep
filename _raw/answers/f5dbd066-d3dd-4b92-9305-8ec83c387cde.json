@@ -1,0 +1,21 @@
+﻿{
+    "id":  2045,
+    "exerciseKey":  "f5dbd066-d3dd-4b92-9305-8ec83c387cde",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b1c5a3",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "下面是实现示例：\n\n```javascript\nfunction compressString(str) {\n  let compressed = \u0027\u0027;\n  let count = 1;\n\n  for (let i = 0; i \u003c str.length; i++) {\n    if (str[i] === str[i + 1]) {\n      // 如果当前字符与下一个字符相同，增加计数器\n      count++;\n    } else {\n      // 否则，将当前字符及其计数器追加到结果中\n      compressed += str[i] + count;\n      count = 1; // 重置计数器\n    }\n  }\n\n  // 返回较短的字符串（原始字符串或压缩后的字符串）\n  return compressed.length \u003c str.length ? compressed : str;\n}\n\n// 示例用法\nconsole.log(compressString(\u0027aabcccccaaa\u0027)); // 输出 \"a2b1c5a3\"\nconsole.log(compressString(\u0027abcdefg\u0027)); // 输出 \"abcdefg\" （未发生压缩）\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-08-20T13:22:42.000Z",
+    "updateAt":  "2024-03-12T21:45:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  766,
+    "filterTotalNum":  1907,
+    "prev":  "6a451db6-ddbe-4f76-8519-8ce6d47af8b3",
+    "next":  "75bfc3cb-35b7-464b-bf6f-ae2722da04e8"
+}

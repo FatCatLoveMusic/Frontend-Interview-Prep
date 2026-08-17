@@ -1,0 +1,21 @@
+﻿{
+    "id":  523,
+    "exerciseKey":  "73e0dfb8-798e-4380-888b-7e5ae349e2d8",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "请手写“桶排序”",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 算法简介\n\n桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排\n\n## 算法描述\n\n具体算法描述如下：\n\n* 设置一个定量的数组当作空桶；\n* 遍历输入数据，并且把数据一个一个放到对应的桶里去；\n* 对每个不是空的桶进行排序；\n* 从不是空的桶里把排好序的数据拼接起来。\n\n## 代码实现\n\n```javascript\n/*方法说明：桶排序\n@param  array 数组\n@param  num   桶的数量*/\nfunction bucketSort(array, num) {\n    if (array.length \u003c= 1) {\n        return array;\n    }\n    var len = array.length, buckets = [], result = [], min = max = array[0], regex = \u0027/^[1-9]+[0-9]*$/\u0027, space, n = 0;\n    num = num || ((num \u003e 1 \u0026\u0026 regex.test(num)) ? num : 10);\n    console.time(\u0027桶排序耗时\u0027);\n    for (var i = 1; i \u003c len; i++) {\n        min = min \u003c= array[i] ? min : array[i];\n        max = max \u003e= array[i] ? max : array[i];\n    }\n    space = (max - min + 1) / num;\n    for (var j = 0; j \u003c len; j++) {\n        var index = Math.floor((array[j] - min) / space);\n        if (buckets[index]) {   //  非空桶，插入排序\n            var k = buckets[index].length - 1;\n            while (k \u003e= 0 \u0026\u0026 buckets[index][k] \u003e array[j]) {\n                buckets[index][k + 1] = buckets[index][k];\n                k--;\n            }\n            buckets[index][k + 1] = array[j];\n        } else {    //空桶，初始化\n            buckets[index] = [];\n            buckets[index].push(array[j]);\n        }\n    }\n    while (n \u003c num) {\n        result = result.concat(buckets[n]);\n        n++;\n    }\n    console.timeEnd(\u0027桶排序耗时\u0027);\n    return result;\n}\nvar arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];\nconsole.log(bucketSort(arr,4));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]\n```\n\n## 算法分析\n\n桶排序最好情况下使用线性时间O(n)，桶排序的时间复杂度，取决与对各个桶之间数据进行排序的时间复杂度，因为其它部分的时间复杂度都为O(n)。很显然，桶划分的越小，各个桶之间的数据越少，排序所用的时间也会越少。但相应的空间消耗就会增大。\n\n* 最佳情况：T(n) = O(n+k)\n* 最差情况：T(n) = O(n+k)\n* 平均情况：T(n) = O(n2)",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-17T12:14:39.000Z",
+    "updateAt":  "2024-07-22T11:43:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1397,
+    "filterTotalNum":  1907,
+    "prev":  "55027248-1c11-444d-8001-6be4362c360f",
+    "next":  "4972c81e-86f9-4ef4-b59b-ae3d7680374c"
+}

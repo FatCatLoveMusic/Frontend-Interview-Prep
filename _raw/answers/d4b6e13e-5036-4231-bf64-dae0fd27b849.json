@@ -1,0 +1,21 @@
+﻿{
+    "id":  1795,
+    "exerciseKey":  "d4b6e13e-5036-4231-bf64-dae0fd27b849",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现 Promise.race 函数",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`Promise.race` 函数返回一个 `Promise`，它将与参数中第一个完成的promise状态相同。它可以是完成（ resolves），也可以是失败（rejects），这要取决于第一个完成的方式是两个中的哪个。\n\n如果传的迭代是空的，则返回的 promise 将永远等待。\n\n如果迭代包含一个或多个非承诺值和/或已解决/拒绝的承诺，则 Promise.race 将解析为迭代中找到的第一个值。\n\n```javascript\nPromise.race = function(arr) {\n  return new Promise(function(resolve, reject) {\n    if (!Array.isArray(arr)) {\n      return reject(new TypeError(\u0027Promise.race accepts an array\u0027));\n    }\n\n    for (var i = 0, len = arr.length; i \u003c len; i++) {\n      Promise.resolve(arr[i]).then(resolve, reject);\n    }\n  });\n};\n\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-05-10T14:29:16.000Z",
+    "updateAt":  "2022-05-10T22:33:14.000Z",
+    "isCollected":  false,
+    "currentIndex":  1014,
+    "filterTotalNum":  1907,
+    "prev":  "43899450-bd19-491c-b9b0-0277f61725b0",
+    "next":  "5adab921-8dfb-4a65-9f44-38ae8a70820f"
+}

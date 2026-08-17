@@ -1,0 +1,21 @@
+﻿{
+    "id":  1634,
+    "exerciseKey":  "9f0dbfc0-bd61-4956-8093-d604ac401983",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现mergePromise函数",
+    "desc":  "实现mergePromise函数，把传进去的数组按顺序先后执行，并且把返回的数据先后放到数组data中。\n\n```js\nconst time = (timer) =\u003e {\n  return new Promise(resolve =\u003e {\n    setTimeout(() =\u003e {\n      resolve()\n    }, timer)\n  })\n}\nconst ajax1 = () =\u003e time(2000).then(() =\u003e {\n  console.log(1);\n  return 1\n})\nconst ajax2 = () =\u003e time(1000).then(() =\u003e {\n  console.log(2);\n  return 2\n})\nconst ajax3 = () =\u003e time(1000).then(() =\u003e {\n  console.log(3);\n  return 3\n})\n\nfunction mergePromise () {\n  // 在这里写代码\n}\n\nmergePromise([ajax1, ajax2, ajax3]).then(data =\u003e {\n  console.log(\"done\");\n  console.log(data); // data 为 [1, 2, 3]\n});\n\n// 要求分别输出\n// 1\n// 2\n// 3\n// done\n// [1, 2, 3]\n\n```",
+    "options":  null,
+    "explanation":  "这道题有点类似于Promise.all()，不过.all()不需要管执行顺序，只需要并发执行就行了。但是这里需要等上一个执行完毕之后才能执行下一个。\n\n解题思路：\n\n* 定义一个数组data用于保存所有异步操作的结果\n* 初始化一个`const promise = Promise.resolve()`，然后循环遍历数组，在promise后面添加执行ajax任务，同时要将添加的结果重新赋值到promise上。\n\n```js\nfunction mergePromise (ajaxArray) {\n  // 存放每个ajax的结果\n  const data = [];\n  let promise = Promise.resolve();\n  ajaxArray.forEach(ajax =\u003e {\n  \t// 第一次的then为了用来调用ajax\n  \t// 第二次的then是为了获取ajax的结果\n    promise = promise.then(ajax).then(res =\u003e {\n      data.push(res);\n      return data; // 把每次的结果返回\n    })\n  })\n  // 最后得到的promise它的值就是data\n  return promise;\n}\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:27:24.000Z",
+    "updateAt":  "2024-07-20T11:10:43.000Z",
+    "isCollected":  false,
+    "currentIndex":  1156,
+    "filterTotalNum":  1907,
+    "prev":  "584f7b53-5e4b-48b9-ad7b-ae4789647ada",
+    "next":  "446d36f9-0845-432d-957a-7a9a2997a276"
+}

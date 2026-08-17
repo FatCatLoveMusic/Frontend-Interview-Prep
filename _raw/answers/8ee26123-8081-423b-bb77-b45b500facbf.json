@@ -1,0 +1,21 @@
+﻿{
+    "id":  539,
+    "exerciseKey":  "8ee26123-8081-423b-bb77-b45b500facbf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "回文链表",
+    "desc":  "请判断一个链表是否为回文链表。\n\n示例 1:\n```\n输入: 1-\u003e2\n输出: false\n```\n\n示例 2:\n```\n输入: 1-\u003e2-\u003e2-\u003e1\n输出: true\n```",
+    "options":  null,
+    "explanation":  "## 方案一\n\n利用链表的后续遍历，使用函数调用栈作为后序遍历栈，来判断是否回文\n```javascript\nvar isPalindrome = function(head) {\n    let left = head;\n    function traverse(right) {\n        if (right == null) return true;\n        let res = traverse(right.next);\n        res = res \u0026\u0026 (right.val === left.val);\n        left = left.next;\n        return res;\n    }\n    return traverse(head);\n};\n```\n\n## 方案二\n\n通过快、慢指针找链表中点，然后反转链表，比较两个链表两侧是否相等，来判断是否是回文链表\n\n```javascript\nvar isPalindrome = function(head) {\n    // 反转 slower 链表\n    let right = reverse(findCenter(head));\n    let left = head;\n    // 开始比较\n    while (right != null) {\n        if (left.val !== right.val) {\n            return false;\n        }\n        left = left.next;\n        right = right.next;\n    }\n    return true;\n}\nfunction findCenter(head) {\n    let slower = head, faster = head;\n    while (faster \u0026\u0026 faster.next != null) {\n        slower = slower.next;\n        faster = faster.next.next;\n    }\n    // 如果 faster 不等于 null，说明是奇数个，slower 再移动一格\n    if (faster != null) {\n        slower = slower.next;\n    }\n    return slower;\n}\nfunction reverse(head) {\n    let prev = null, cur = head, nxt = head;\n    while (cur != null) {\n        nxt = cur.next;\n        cur.next = prev;\n        prev = cur;\n        cur = nxt;\n    }\n    return prev;\n}\n\n```\n\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-19T14:23:46.000Z",
+    "updateAt":  "2021-07-25T10:31:56.000Z",
+    "isCollected":  false,
+    "currentIndex":  1381,
+    "filterTotalNum":  1907,
+    "prev":  "e9f01da3-63b7-4098-ab32-89df1dca2ec4",
+    "next":  "ccc4f906-dcd4-4eed-93b1-13ba4d853093"
+}

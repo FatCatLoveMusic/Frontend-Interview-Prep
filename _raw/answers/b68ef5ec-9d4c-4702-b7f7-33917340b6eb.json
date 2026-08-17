@@ -1,0 +1,21 @@
+﻿{
+    "id":  1939,
+    "exerciseKey":  "b68ef5ec-9d4c-4702-b7f7-33917340b6eb",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "x 的平方根 ",
+    "desc":  "给你一个非负整数 `x` ，计算并返回 `x` 的 **算术平方根** 。\n\n由于返回类型是整数，结果只保留 **整数部分** ，小数部分将被 **舍去 。**\n\n**注意：** 不允许使用任何内置指数函数和算符，例如 `pow(x, 0.5)` 或者 `x ** 0.5` 。\n\n**示例 1：**\n\n\n**输入：** x = 4\n\n**输出：** 2\n\n**示例 2：**\n\n\n**输入：** x = 8\n\n**输出：** 2\n\n**解释：** 8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。\n\n**提示：**\n\n* `0 \u003c= x \u003c= 2^31 - 1`\n\n```\n/**\n * @param {number} x\n * @return {number}\n */\nvar mySqrt = function(x) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "## 二分法\n\n* 整数x的平方根一定小于或等于x\n* 除0之外的所有整数的平方根都大于或等于1\n* 整数x的平方根一定是在1到x的范围内，取这个范围内的中间数字mid，并判断mid的平方是否小于或等于x，如果mid的平方小于x\n* 那么接着判断(mid+1)的平方是否大于x，如果(mid+1)的平方大于x，那么mid就是x的平方根\n* 如果mid的平方小于x并且(mid+1)的平方小于x，那么x的平方根比mid大，接下来搜索从mid+1到x的范围\n* 如果mid的平方大于x，则x的平方根小于mid，接下来搜索1到mid-1的范围\n* 然后在相应的范围内重复这个过程，总是取出位于范围中间的mid\n\n\n```js\n/**\n * @param {number} x\n * @return {number}\n */\nvar mySqrt = function (x) {\n  // 整数x的平方根一定是在1到x的范围内\n  let left = 1,\n    right = x;\n  while (left \u003c= right) {\n    // 中间值  下面这样写是防止溢出\n    let mid = left + ((right - left) \u003e\u003e 1);\n    // 判断mid的平方是否小于或等于x，如果mid的平方小于x\n    if (mid \u003c= x / mid) {\n      // 判断(mid+1)的平方是否大于x，如果(mid+1)的平方大于x，那么mid就是x的平方根\n      if (mid + 1 \u003e x / (mid + 1)) {\n        return mid;\n      }\n      // 如果mid的平方小于x并且(mid+1)的平方小于x，那么x的平方根比mid大，接下来搜索从mid+1到x的范围\n      left = mid + 1;\n    } else {\n      // 如果mid的平方大于x，则x的平方根小于mid，接下来搜索1到mid-1的范围\n      right = mid - 1;\n    }\n  }\n  // 如果输入参数是0，left等于1而right等于0，就直接返回0\n  return 0;\n};\n```\n\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2023-02-19T07:21:27.000Z",
+    "updateAt":  "2023-02-19T15:21:34.000Z",
+    "isCollected":  false,
+    "currentIndex":  871,
+    "filterTotalNum":  1907,
+    "prev":  "d27c3517-ab5a-49f5-91e9-fd973eb1cd11",
+    "next":  "b6b259e0-f798-4fb3-92cf-76c22d7fdf7f"
+}

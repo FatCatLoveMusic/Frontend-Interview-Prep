@@ -1,0 +1,21 @@
+﻿{
+    "id":  1847,
+    "exerciseKey":  "2ed6f1f7-b974-475a-b314-f1962c744faf",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "你常用的 React Hooks 有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "React 提供了一系列的 Hooks，用于在函数组件中添加和管理状态、副作用等功能。\n\n以下是一些常用的 React Hooks：\n\n1. `useState`：用于在函数组件中添加状态管理。\n\n2. `useEffect`：用于处理副作用操作（如数据获取、订阅、事件监听等）。\n\n3. `useContext`：用于在组件树中获取和使用共享的上下文。\n\n4. `useReducer`：用于管理复杂状态逻辑的替代方案，类似于 Redux 的 reducer。\n\n5. `useCallback`：用于缓存回调函数，以便在依赖未变化时避免重复创建新的函数实例。\n\n6. `useMemo`：用于缓存计算结果，以便在依赖未变化时避免重复计算。\n\n7. `useRef`：用于在函数组件之间保存可变的值，并且不会引发重新渲染。\n\n8. `useLayoutEffect`：与 `useEffect` 类似，但在浏览器完成绘制之前同步执行。\n\n9. `useImperativeHandle`：用于自定义暴露给父组件的实例值或方法。\n\n10. `useDebugValue`：用于在开发者工具中显示自定义的钩子相关标签。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-07-03T05:19:54.000Z",
+    "updateAt":  "2024-07-23T10:16:23.000Z",
+    "isCollected":  false,
+    "currentIndex":  963,
+    "filterTotalNum":  1907,
+    "prev":  "8ecafda7-0ae6-40bd-b8c6-385d02fa7165",
+    "next":  "914e2cac-b426-467e-b61c-e0987031ea84"
+}

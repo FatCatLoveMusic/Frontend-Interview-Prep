@@ -1,0 +1,21 @@
+﻿{
+    "id":  1996,
+    "exerciseKey":  "4adc7ac9-1770-42b1-b6c2-375b8907dc0a",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "body-parser 这个中间件是做什么用的？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`body-parser` 是一个 Node.js 中间件，用于解析 HTTP 请求中的请求体（RequestBody），并将其转换为 JSON 格式或其他格式的数据对象。它可以帮助开发者方便地从 POST、PUT、DELETE 等请求中获取请求体数据，并进行相应的处理。\n\n具体来说，`body-parser` 支持以下几种请求体数据格式：\n\n1. JSON 格式：通过 `json()` 方法解析 JSON 格式的请求体数据，并将其转换为 JavaScript 对象。\n\n2. URL 编码格式：通过 `urlencoded()` 方法解析 URL 编码格式的请求体数据，并将其转换为 JavaScript 对象。\n\n3. 多部分数据格式：通过 `multipart()` 方法解析多部分数据格式的请求体数据，并将其转换为 JavaScript 对象。\n\n下面是一个简单的使用 `body-parser` 解析请求体数据的示例代码：\n\n```javascript\nconst express = require(\u0027express\u0027);\nconst bodyParser = require(\u0027body-parser\u0027);\n\nconst app = express();\n\n// 解析 URL 编码格式的请求体数据\napp.use(bodyParser.urlencoded({ extended: false }));\n\n// 解析 JSON 格式的请求体数据\napp.use(bodyParser.json());\n\n// 处理 POST 请求\napp.post(\u0027/api/login\u0027, (req, res) =\u003e {\n  const { username, password } = req.body;\n  console.log(`username: ${username}`);\n  console.log(`password: ${password}`);\n  res.send(\u0027Login Success!\u0027);\n});\n\napp.listen(3000, () =\u003e {\n  console.log(\u0027Server running on http://localhost:3000\u0027);\n});\n```\n\n上面使用 `body-parser` 中间件分别解析了 URL 编码格式和 JSON 格式的请求体数据，并通过 `req.body` 获取请求体数据对象。在 POST 请求的处理函数中，打印了用户输入的用户名和密码，并返回了一个登录成功的响应消息。\n\n在使用 `body-parser` 中间件时，需要根据实际情况选择合适的解析方法，并注意配置参数，以防止出现安全漏洞和错误数据。同时，在处理 HTTP 请求时，需要对请求体数据进行有效性验证和安全性检查，以保证数据的可靠性和完整性。",
+    "pivot":  "**答题思路**：\n\n`body-parser` 是一个流行的 Node.js 中间件，主要用于解析传入的请求体（request body），以便开发者可以在请求处理程序中以易于访问的格式（如对象）获取这些数据。\n\n**考察要点**：\n\n- **请求体解析**：理解 `body-parser` 如何将 HTTP 请求体中的原始数据（如 JSON、Buffer、字符串等）解析成 JavaScript 对象或其他格式。\n- **中间件的作用**：了解在 Node.js 或类似框架（如 Express）中，中间件如何插入到请求处理流程中，以执行特定的任务（如请求体解析）。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-24T01:22:26.000Z",
+    "updateAt":  "2024-08-10T17:07:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  814,
+    "filterTotalNum":  1907,
+    "prev":  "95185ca6-291f-4160-b65d-f291dfdf8a4f",
+    "next":  "01c53308-5633-49ba-b528-7d55cee5aa12"
+}

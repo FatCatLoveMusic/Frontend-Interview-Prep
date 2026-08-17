@@ -1,0 +1,21 @@
+﻿{
+    "id":  2962,
+    "exerciseKey":  "d6a85a95-95f9-4606-a98d-280bd6c82c9b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Vue2中为什么需要$set方法？如何用它解决对象新增属性的响应性问题？  ",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 Vue 2 中，需要 `$set` 的核心原因是 **对象属性的新增在 Vue 2 中无法被自动侦测**，即响应式系统的局限性。\n\n## 1. Vue 2 响应式原理回顾\n\n* Vue 2 使用 `Object.defineProperty` 对 `data` 对象的每个属性进行 getter/setter 劫持，实现响应式。\n* 但 **只能劫持已存在的属性**。\n* 因此，对对象新增属性时，Vue 无法侦测到变化，也无法触发视图更新。\n\n示例：\n\n```js\ndata() {\n  return {\n    user: { name: \u0027Alice\u0027 }\n  }\n},\nmounted() {\n  this.user.age = 18 // ❌ 无法触发视图更新\n}\n```\n\n---\n\n## 2. `$set` 的作用\n\n* Vue 提供 `$set`（或全局 `Vue.set`）来显式添加响应式属性。\n* 它的作用是：\n\n  1. 在对象或数组上新增属性\n  2. 保证该属性是 **响应式的**\n  3. 自动触发视图更新\n\n### 示例\n\n```js\nthis.$set(this.user, \u0027age\u0027, 18) // ✅ 响应式，视图会更新\n```\n\n等价于：\n\n```js\nVue.set(this.user, \u0027age\u0027, 18)\n```\n\n---\n\n## 3. `$set` 对数组的作用\n\n* Vue 2 数组在某些操作（如通过索引直接赋值 `arr[index] = value`）也不会触发视图更新。\n* 通过 `$set` 可以解决：\n\n```js\nthis.$set(this.items, 1, \u0027newValue\u0027) // 正确更新视图\n```\n\n---\n\n## 4. 使用场景总结\n\n1. **对象新增属性**\n\n```js\nthis.$set(obj, \u0027newProp\u0027, value)\n```\n\n2. **数组通过索引修改元素**\n\n```js\nthis.$set(arr, index, newValue)\n```\n\n3. **保证响应式系统能够侦测到变化**\n\n* 不用 `$set`，新增或修改可能导致视图不更新\n\n---\n\n## 5. Vue 3 的变化\n\n* Vue 3 使用 **Proxy** 实现响应式，不再存在 `$set` 的限制\n* 对象新增属性、数组索引赋值都可以自动触发视图更新\n",
+    "pivot":  "* **问题来源**：Vue 2 的响应式依赖 `Object.defineProperty`，只能劫持已有属性\n* **解决方案**：`$set` / `Vue.set`\n* **作用**：新增属性或修改数组索引时，保证响应式生效并更新视图\n* **使用场景**：对象动态添加字段、数组通过索引修改元素",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2025-08-28T09:00:46.000Z",
+    "updateAt":  "2025-08-28T09:00:50.000Z",
+    "isCollected":  false,
+    "currentIndex":  240,
+    "filterTotalNum":  1907,
+    "prev":  "4e5f6035-c1a8-48b1-a561-e2d4710e3698",
+    "next":  "2446e942-5af4-4e38-98b5-5bb96b968a2c"
+}

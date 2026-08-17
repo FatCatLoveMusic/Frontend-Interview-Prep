@@ -1,0 +1,21 @@
+﻿{
+    "id":  3115,
+    "exerciseKey":  "46a530de-db64-4561-a680-591146f61c2c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "各种大模型场景给出的 Coding plan 套餐中，Tokens 和 Credits 分别是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在各种 AI Coding 产品或者 Agent 平台中，`Tokens` 和 `Credits` 本质上都是“资源消耗单位”，但两者的抽象层级不同。\n\n可以简单理解为：\n\n* `Tokens` 更偏底层，是大模型真实计算时的文本计量单位\n* `Credits` 更偏平台层，是厂商自定义的“额度”或者“点数”\n\n很多产品会同时出现这两个概念，但它们并不是一回事。\n\n---\n\n先说 `Tokens`。\n\n大模型并不是按“字符”或者“单词”理解内容，而是会把文本拆成一个个 token。\n\n例如：\n\n```txt\nconst name = \"Tom\"\n```\n\n对于模型来说，可能会被拆成：\n\n```txt\n[\"const\", \" name\", \" =\", \" \\\"Tom\\\"\", ...]\n```\n\n中文通常一个汉字接近 1~2 个 token。\n\n英文一般：\n\n* 1 token ≈ 0.75 个英文单词\n* 1000 token 大约是几百到上千字文本\n\n所以：\n\n* 输入提示词会消耗 tokens\n* 模型输出代码也会消耗 tokens\n* 上下文越长，消耗越大\n\n尤其在 Coding 场景中：\n\n* 上传整个项目\n* 自动读取几十个文件\n* 长上下文 Agent\n* 多轮对话\n* 自动修复代码\n\n都会导致 token 消耗非常快。\n\n因此很多产品会写：\n\n```txt\n每月 10M tokens\n上下文窗口 128K\n```\n\n意思是：\n\n* 总共允许消耗 1000 万 token\n* 单次上下文最大支持 128K token\n\n---\n\n再说 `Credits`。\n\nCredits 本质上是平台自定义的“计费货币”。\n\n它和 token 不一定是 1:1 的关系。\n\n因为平台除了调用 LLM，还可能包含：\n\n* 多模型路由\n* GPU 时间\n* Agent 调度\n* 文件索引\n* 向量检索\n* 浏览器操作\n* 云端沙箱\n* MCP Tool 调用\n* 多步骤推理\n\n这些成本并不只是 token。\n\n所以很多平台会设计：\n\n```txt\n1 次高级 Agent = 20 credits\n1 次 Claude Sonnet 调用 = 3 credits\n1 次 GPT-5 调用 = 10 credits\n```\n\n本质上是平台在做统一计费。\n\n也就是说：\n\n\u003e Credits 是平台层面的“消费额度”，Tokens 是模型层面的“文本计算量”。\n\n---\n\n在 AI Coding 场景里，Credits 往往有几个典型用途。\n\n例如：\n\n### 1. 区分不同模型成本\n\n不同模型价格差异极大。\n\n例如：\n\n* GPT-5 Pro\n* Claude Opus\n* Gemini Ultra\n\n调用成本可能相差几十倍。\n\n如果直接暴露 token 价格，用户会非常难理解。\n\n所以平台通常改成：\n\n```txt\n高级模型每次消耗更多 credits\n```\n\n这样更容易商业化。\n\n---\n\n### 2. 控制 Agent 行为\n\nAgent 类产品最大的成本，其实不是单轮聊天，而是：\n\n* 自动读代码库\n* 自动执行命令\n* 自动修 Bug\n* 自动生成 PR\n* 自动跑测试\n\n一次任务可能内部调用几十次模型。\n\n因此很多 Coding Agent 会这样设计：\n\n```txt\n自动修复一次 bug：50 credits\n自动生成项目：120 credits\n```\n\n本质是在限制 Agent 滥用。\n\n---\n\n### 3. 避免用户过度关注 token\n\n普通用户很难理解：\n\n```txt\n为什么一次代码生成用了 38,421 tokens\n```\n\n但理解：\n\n```txt\n还剩 320 credits\n```\n\n就简单很多。\n\n因此 Credits 更像“游戏点券”或“算力额度”。\n\n---\n\n实际产品里，常见还有几种关系：\n\n| 类型             | 本质              |\n| -------------- | --------------- |\n| Tokens         | 大模型输入输出文本量      |\n| Context Window | 单次最大上下文 token 数 |\n| Credits        | 平台统一资源额度        |\n| Request        | 单次请求次数          |\n| GPU Hours      | GPU 使用时间        |\n| Agent Runs     | Agent 执行次数      |\n\n---\n\n很多 AI Coding 产品的套餐，本质是：\n\n```txt\nCredits -\u003e 内部兑换成 Token / GPU / Agent 成本\n```\n\n例如：\n\n```txt\n1000 credits\n≈\n可调用 GPT-5 100 次\n或者 Claude Opus 20 次\n```\n\n平台内部会有一套换算规则。\n\n---\n\n还有一个比较关键的点：\n\n很多产品宣传：\n\n```txt\nUnlimited Tokens\n```\n\n但实际上并不是真的无限。\n\n通常会隐藏：\n\n* TPM（每分钟 token 限制）\n* RPM（每分钟请求数）\n* 并发限制\n* 高峰期限流\n* Agent 次数限制\n* Fair Use Policy\n\n因此：\n\n\u003e “Unlimited Tokens” 很多时候只是“不单独按 token 计费”，并不代表无限算力。",
+    "pivot":  "Tokens 是大模型底层的文本计算单位，输入和输出都会消耗 token；上下文越长、代码越多，token 消耗越大。Credits 则是 AI 平台自定义的统一资源额度，用来封装模型调用、GPU、Agent 执行、工具调用等综合成本。Coding 场景中，Tokens 更偏技术层面的模型消耗，而 Credits 更偏产品和商业层面的计费体系。",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2026-03-23T01:44:57.000Z",
+    "updateAt":  "2026-05-18T08:27:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  137,
+    "filterTotalNum":  1907,
+    "prev":  "7396ddf6-52d8-4f27-94f4-27e04d7cc15b",
+    "next":  "0a146449-b17c-42f8-9029-7c56402adc98"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  191,
+    "exerciseKey":  "39513146-d7a4-41ad-963f-ba32242ddc55",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Javascript字符串的常用方法有哪些？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、操作方法\n\n我们也可将字符串常用的操作方法归纳为增、删、改、查，需要知道字符串的特点是一旦创建了，就不可变\n\n\n\n### 增\n\n这里增的意思并不是说直接增添内容，而是创建字符串的一个副本，再进行操作\n\n除了常用`+`以及`${}`进行字符串拼接之外，还可通过`concat`\n\n#### concat\n\n用于将一个或多个字符串拼接成一个新字符串\n\n```js\nlet stringValue = \"hello \";\nlet result = stringValue.concat(\"world\");\nconsole.log(result); // \"hello world\"\nconsole.log(stringValue); // \"hello\"\n```\n\n\n\n### 删\n\n这里的删的意思并不是说删除原字符串的内容，而是创建字符串的一个副本，再进行操作\n\n常见的有：\n\n- slice()\n- substr()\n- substring()\n\n这三个方法都返回调用它们的字符串的一个子字符串，而且都接收一或两个参数。\n\n```js\nlet stringValue = \"hello world\";\nconsole.log(stringValue.slice(3)); // \"lo world\"\nconsole.log(stringValue.substring(3)); // \"lo world\"\nconsole.log(stringValue.substr(3)); // \"lo world\"\nconsole.log(stringValue.slice(3, 7)); // \"lo w\"\nconsole.log(stringValue.substring(3,7)); // \"lo w\"\nconsole.log(stringValue.substr(3, 7)); // \"lo worl\"\n```\n\n\n\n### 改\n\n这里改的意思也不是改变原字符串，而是创建字符串的一个副本，再进行操作\n\n常见的有：\n\n- trim()、trimLeft()、trimRight()\n\n- repeat()\n- padStart()、padEnd()\n- toLowerCase()、 toUpperCase()\n\n\n\n#### trim()、trimLeft()、trimRight()\n\n删除前、后或前后所有空格符，再返回新的字符串\n\n```js\nlet stringValue = \" hello world \";\nlet trimmedStringValue = stringValue.trim();\nconsole.log(stringValue); // \" hello world \"\nconsole.log(trimmedStringValue); // \"hello world\"\n```\n\n\n\n#### repeat()\n\n接收一个整数参数，表示要将字符串复制多少次，然后返回拼接所有副本后的结果\n\n```js\nlet stringValue = \"na \";\nlet copyResult = stringValue.repeat(2) // na na \n```\n\n\n\n#### padEnd()\n\n复制字符串，如果小于指定长度，则在相应一边填充字符，直至满足长度条件\n\n```js\nlet stringValue = \"foo\";\nconsole.log(stringValue.padStart(6)); // \" foo\"\nconsole.log(stringValue.padStart(9, \".\")); // \"......foo\"\n```\n\n\n\n### toLowerCase()、 toUpperCase()\n\n大小写转化\n\n```js\nlet stringValue = \"hello world\";\nconsole.log(stringValue.toUpperCase()); // \"HELLO WORLD\"\nconsole.log(stringValue.toLowerCase()); // \"hello world\"\n```\n\n\n\n### 查\n\n除了通过索引的方式获取字符串的值，还可通过：\n\n- chatAt()\n\n- indexOf()\n\n- startWith()\n\n- includes()\n\n  \n\n#### charAt()\n\n返回给定索引位置的字符，由传给方法的整数参数指定\n\n```js\nlet message = \"abcde\";\nconsole.log(message.charAt(2)); // \"c\"\n```\n\n\n\n#### indexOf()\n\n从字符串开头去搜索传入的字符串，并返回位置（如果没找到，则返回 -1 ）\n\n```js\nlet stringValue = \"hello world\";\nconsole.log(stringValue.indexOf(\"o\")); // 4\n```\n\n\n\n#### startWith()、includes()\n\n从字符串中搜索传入的字符串，并返回一个表示是否包含的布尔值\n\n```js\nlet message = \"foobarbaz\";\nconsole.log(message.startsWith(\"foo\")); // true\nconsole.log(message.startsWith(\"bar\")); // false\nconsole.log(message.includes(\"bar\")); // true\nconsole.log(message.includes(\"qux\")); // false\n```\n\n\n\n\n\n## 二、转换方法\n\n### split\n\n把字符串按照指定的分割符，拆分成数组中的每一项\n\n```js\nlet str = \"12+23+34\"\nlet arr = str.split(\"+\") // [12,23,34]\n```\n\n\n\n## 三、模板匹配方法\n\n针对正则表达式，字符串设计了几个方法：\n\n- match()\n- search()\n- replace()\n\n\n\n### match()\n\n接收一个参数，可以是一个正则表达式字符串，也可以是一个` RegExp `对象，返回数组\n\n```js\nlet text = \"cat, bat, sat, fat\";\nlet pattern = /.at/;\nlet matches = text.match(pattern);\nconsole.log(matches[0]); // \"cat\"\n```\n\n\n\n### search()\n\n接收一个参数，可以是一个正则表达式字符串，也可以是一个` RegExp `对象，找到则返回匹配索引，否则返回 -1\n\n```js\nlet text = \"cat, bat, sat, fat\";\nlet pos = text.search(/at/);\nconsole.log(pos); // 1\n```\n\n\n\n### replace()\n\n接收两个参数，第一个参数为匹配的内容，第二个参数为替换的元素（可用函数）\n\n```js\nlet text = \"cat, bat, sat, fat\";\nlet result = text.replace(\"at\", \"ond\");\nconsole.log(result); // \"cond, bat, sat, fat\"\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-03T13:45:44.000Z",
+    "updateAt":  "2024-07-20T18:39:29.000Z",
+    "isCollected":  false,
+    "currentIndex":  1728,
+    "filterTotalNum":  1907,
+    "prev":  "5eb78861-d964-4825-8531-316eca1df596",
+    "next":  "4b009a64-6d98-4469-89d4-9c254d682fa6"
+}

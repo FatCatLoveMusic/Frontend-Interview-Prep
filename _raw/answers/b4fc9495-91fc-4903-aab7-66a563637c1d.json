@@ -1,0 +1,21 @@
+﻿{
+    "id":  2457,
+    "exerciseKey":  "b4fc9495-91fc-4903-aab7-66a563637c1d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JS 创建对象的方式有哪些？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "以下是创建对象的主要方法：\n\n### 1. **对象字面量（Object Literal）**\n\n- **定义**：直接使用花括号 `{}` 来创建对象。\n- **示例**：\n  ```javascript\n  const person = {\n      name: \u0027John\u0027,\n      age: 30,\n      greet() {\n          console.log(\u0027Hello!\u0027);\n      }\n  };\n  ```\n\n- **特点**：\n  - 语法简洁。\n  - 适合创建简单对象或用于字面量初始化。\n\n### 2. **构造函数（Constructor Function）**\n\n- **定义**：使用函数作为构造函数来创建对象，通过 `new` 关键字实例化对象。\n- **示例**：\n  ```javascript\n  function Person(name, age) {\n      this.name = name;\n      this.age = age;\n      this.greet = function() {\n          console.log(\u0027Hello!\u0027);\n      };\n  }\n\n  const john = new Person(\u0027John\u0027, 30);\n  ```\n\n- **特点**：\n  - 适用于创建具有相同结构和行为的多个对象。\n  - 使用 `new` 关键字实例化。\n\n### 3. **`Object.create` 方法**\n\n- **定义**：使用 `Object.create` 方法创建新对象，并指定其原型对象。\n- **示例**：\n  ```javascript\n  const personPrototype = {\n      greet() {\n          console.log(\u0027Hello!\u0027);\n      }\n  };\n\n  const john = Object.create(personPrototype);\n  john.name = \u0027John\u0027;\n  john.age = 30;\n  ```\n\n- **特点**：\n  - 新创建的对象继承指定的原型对象。\n  - 可用于创建对象继承层次结构。\n\n### 4. **类（Class）**\n\n- **定义**：使用 ES6 引入的 `class` 语法来定义对象的构造函数和方法。\n- **示例**：\n  ```javascript\n  class Person {\n      constructor(name, age) {\n          this.name = name;\n          this.age = age;\n      }\n\n      greet() {\n          console.log(\u0027Hello!\u0027);\n      }\n  }\n\n  const john = new Person(\u0027John\u0027, 30);\n  ```\n\n- **特点**：\n  - 提供了更清晰和现代的语法来定义对象。\n  - 类的语法是构造函数的语法糖，实际底层仍然使用原型链。\n\n### 5. **`Object` 构造函数**\n\n- **定义**：使用 `Object` 构造函数来创建一个空对象或从现有对象创建新对象。\n- **示例**：\n  ```javascript\n  const person = new Object();\n  person.name = \u0027John\u0027;\n  person.age = 30;\n  person.greet = function() {\n      console.log(\u0027Hello!\u0027);\n  };\n  ```\n\n- **特点**：\n  - 与对象字面量相比，语法稍显冗长。\n  - `Object` 构造函数通常不用于创建对象，更多是用于处理对象的属性。\n\n### 6. **工厂函数（Factory Function）**\n\n- **定义**：使用普通函数返回一个新对象，工厂函数可以有多个返回值并提供封装。\n- **示例**：\n  ```javascript\n  function createPerson(name, age) {\n      return {\n          name: name,\n          age: age,\n          greet() {\n              console.log(\u0027Hello!\u0027);\n          }\n      };\n  }\n\n  const john = createPerson(\u0027John\u0027, 30);\n  ```\n\n- **特点**：\n  - 提供了与构造函数类似的功能，但不需要使用 `new` 关键字。\n  - 可以返回不同结构的对象。",
+    "pivot":  "- **对象字面量**：创建简单对象，语法简洁。\n- **构造函数**：用于创建多个类似的对象，使用 `new` 关键字。\n- **`Object.create`**：用于创建继承自指定原型的新对象。\n- **类（Class）**：提供了现代的对象创建和继承语法，具有更好的可读性和组织结构。\n- **`Object` 构造函数**：用于创建对象，但不常用。\n- **工厂函数**：返回新对象，封装创建逻辑，避免使用 `new`。\n\n选择创建对象的方法通常取决于你的具体需求，包括对象的复杂性、继承关系和可读性要求。",
+    "vipLimit":  1,
+    "level":  1.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-23T05:13:58.000Z",
+    "isCollected":  false,
+    "currentIndex":  520,
+    "filterTotalNum":  1907,
+    "prev":  "c830ad90-3291-4123-81db-223c81244f41",
+    "next":  "55beb2ca-b7a6-4c28-8f75-14d43e2bda4a"
+}

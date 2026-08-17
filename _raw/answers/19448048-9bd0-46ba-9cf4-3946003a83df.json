@@ -1,0 +1,21 @@
+﻿{
+    "id":  422,
+    "exerciseKey":  "19448048-9bd0-46ba-9cf4-3946003a83df",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现AJAX",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "```js\nconst getJSON = function(url) {\n  return new Promise((resolve, reject) =\u003e {\n    const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject(\u0027Mscrosoft.XMLHttp\u0027);\n    xhr.open(\u0027GET\u0027, url, true);\n    xhr.setRequestHeader(\u0027Accept\u0027, \u0027application/json\u0027);\n    xhr.onreadystatechange = function() {\n      if (xhr.readyState !== 4) return;\n      if (xhr.status === 200 || xhr.status === 304) {\n        resolve(xhr.responseText);\n      } else {\n        reject(new Error(xhr.responseText));\n      }\n    }\n    xhr.send();\n  })\n}\n\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-06T15:10:31.000Z",
+    "updateAt":  "2025-08-26T01:39:06.000Z",
+    "isCollected":  false,
+    "currentIndex":  1498,
+    "filterTotalNum":  1907,
+    "prev":  "3d3c752d-f969-44ce-acaf-18e43d52f069",
+    "next":  "4c9292a2-a801-48c4-8d22-10642613c6f4"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  399,
+    "exerciseKey":  "6c221f8f-6a86-45f9-8141-59c21388c073",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "进程与线程有什么区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 进程是系统进行资源分配和调度的一个独立单位\n* 线程是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位\n* 一个进程至少由一个线程组成。\n\n线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈)，但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-06T13:36:19.000Z",
+    "updateAt":  "2021-07-07T00:12:15.000Z",
+    "isCollected":  false,
+    "currentIndex":  1521,
+    "filterTotalNum":  1907,
+    "prev":  "d7d29afc-ce7b-480d-aab0-66f70b25ce46",
+    "next":  "6a7426e0-2423-42c7-aa9f-55a67290b8db"
+}

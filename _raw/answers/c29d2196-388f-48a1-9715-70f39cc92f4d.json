@@ -1,0 +1,21 @@
+﻿{
+    "id":  596,
+    "exerciseKey":  "c29d2196-388f-48a1-9715-70f39cc92f4d",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Object.is() 与比较操作符 “===”、“==” 的区别？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "* 使用双等号（==）进行相等判断时，如果两边的类型不一致，则会进行强制类型转化后再进行比较。\n* 使用三等号（===）进行相等判断时，如果两边的类型不一致时，不会做强制类型准换，直接返回 false。\n* 使用 Object.is 来进行相等判断时，一般情况下和三等号的判断相同，它处理了一些特殊的情况，比如 -0 和 +0 不再相等，两个 NaN 是相等的。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-08-22T10:11:56.000Z",
+    "updateAt":  "2021-08-22T18:37:39.000Z",
+    "isCollected":  false,
+    "currentIndex":  1325,
+    "filterTotalNum":  1907,
+    "prev":  "74d6fe86-2acf-4b0c-a588-0738302ced01",
+    "next":  "8200a6ae-94f7-4056-bdb8-6bd84b383500"
+}

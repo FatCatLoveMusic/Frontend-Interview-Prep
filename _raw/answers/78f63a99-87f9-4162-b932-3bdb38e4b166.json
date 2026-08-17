@@ -1,0 +1,21 @@
+﻿{
+    "id":  57,
+    "exerciseKey":  "78f63a99-87f9-4162-b932-3bdb38e4b166",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么?",
+    "desc":  "```javascript\nfunction greeting() {\n  throw \"Hello world!\";\n}\n\nfunction sayHi() {\n  try {\n    const data = greeting();\n    console.log(\"It worked!\", data);\n  } catch (e) {\n    console.log(\"Oh no an error:\", e);\n  }\n}\n\nsayHi();\n```",
+    "options":  "{\"options\":[\"\\\"It worked! Hello world!\\\"\",\"\\\"Oh no an error: undefined\",\"SyntaxError: can only throw Error objects\",\"\\\"Oh no an error: Hello world!\"],\"isMulti\":false,\"answer\":[3]}",
+    "explanation":  "通过`throw`语句，我么可以创建自定义错误。 而通过它，我们可以抛出异常。异常可以是一个\u003cb\u003e字符串\u003c/b\u003e, 一个 \u003cb\u003e数字\u003c/b\u003e, 一个 \u003cb\u003e布尔类型\u003c/b\u003e 或者是一个 \u003cb\u003e对象\u003c/b\u003e。在本例中，我们的异常是字符串`\u0027Hello world\u0027`.\n通过 `catch`语句，我们可以设定当`try`语句块中抛出异常后应该做什么处理。在本例中抛出的异常是字符串`\u0027Hello world\u0027`. `e`就是这个字符串，因此被输出。最终结果就是`\u0027Oh an error: Hello world\u0027`.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:13:49.000Z",
+    "isCollected":  false,
+    "currentIndex":  1862,
+    "filterTotalNum":  1907,
+    "prev":  "f03cba69-b0fd-4450-b3e0-cb6a1f855bac",
+    "next":  "19bf40bd-7685-4eba-bd6e-9c7d00e0ec55"
+}

@@ -1,0 +1,21 @@
+﻿{
+    "id":  297,
+    "exerciseKey":  "12770dfd-79d2-4c0b-80e1-e19f3ab85c82",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "两个同级的相邻元素之间，有看不见的空白间隔，是什么原因引起的？有什么解决办法？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "行框的排列会受到中间空白（回车空格）等的影响，因为空格也属于字符,这些空白也会被应用样式，占据空间，所以会有间隔，把字符大小设为0，就没有空格了。\n\n解决方法：\n\n* 相邻元素代码代码全部写在一排\n* 浮动元素，float:left;\n* 在父级元素中用font-size:0;",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-04T10:29:06.000Z",
+    "updateAt":  "2021-07-04T19:24:26.000Z",
+    "isCollected":  false,
+    "currentIndex":  1623,
+    "filterTotalNum":  1907,
+    "prev":  "14912aa6-d4d4-4af9-ad73-e7641f3a6212",
+    "next":  "27da945d-848c-4af3-bc27-65e4833776b2"
+}

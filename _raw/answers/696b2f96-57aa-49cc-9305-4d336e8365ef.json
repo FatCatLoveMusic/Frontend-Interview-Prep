@@ -1,0 +1,21 @@
+﻿{
+    "id":  115,
+    "exerciseKey":  "696b2f96-57aa-49cc-9305-4d336e8365ef",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "这个函数干了什么?",
+    "desc":  "```javascript\nJSON.parse()\n```",
+    "options":  "{\"options\":[\"Parses JSON to a JavaScript value\",\"Parses a JavaScript object to JSON\",\"Parses any JavaScript value to JSON\",\"Parses JSON to a JavaScript object only\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "使用`JSON.parse()`方法，我们可以将JSON字符串解析为JavaScript值。\n```javascript\n// 将数字字符串化为有效的JSON，然后将JSON字符串解析为JavaScript值:\nconst jsonNumber = JSON.stringify(4) // \u00274\u0027\nJSON.parse(jsonNumber) // 4\n// 将数组值字符串化为有效的JSON，然后将JSON字符串解析为JavaScript值:\nconst jsonArray = JSON.stringify([1, 2, 3]) // \u0027[1, 2, 3]\u0027\nJSON.parse(jsonArray) // [1, 2, 3]\n// 将对象字符串化为有效的JSON，然后将JSON字符串解析为JavaScript值:\nconst jsonArray = JSON.stringify({ name: \"Lydia\" }) // \u0027{\"name\":\"Lydia\"}\u0027\nJSON.parse(jsonArray) // { name: \u0027Lydia\u0027 }\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:29:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  1804,
+    "filterTotalNum":  1907,
+    "prev":  "3bd8f12b-0050-4323-869c-4b63d7820276",
+    "next":  "c7c6762f-bc84-4b0c-9f05-79072db1e1ea"
+}

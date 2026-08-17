@@ -1,0 +1,21 @@
+﻿{
+    "id":  125,
+    "exerciseKey":  "22d88306-35f1-4538-898c-2ce3e5303fea",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconst groceries = [\"banana\", \"apple\", \"peanuts\"];\n\nif (groceries.indexOf(\"banana\")) {\n\tconsole.log(\"We have to buy bananas!\");\n} else {\n\tconsole.log(`We don\u0027t have to buy bananas!`);\n}\n```",
+    "options":  "{\"options\":[\"We have to buy bananas!\",\"We don\u0027t have to buy bananas\",\"undefined\",\"1\"],\"isMulti\":false,\"answer\":[1]}",
+    "explanation":  "我们传递了一个状态 `groceries.indexOf(\"banana\")` 给if条件语句。`groceries.indexOf(\"banana\")` 返回 `0`， 一个 falsy 的值。因为if条件语句的状态为 falsy，`else` 块区内的代码执行，并且 `We don\u0027t have to buy bananas!` 被输出.",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:30:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  1794,
+    "filterTotalNum":  1907,
+    "prev":  "8b42c23f-1293-425d-87c2-c662a33b4f70",
+    "next":  "289617b6-a28f-4528-be36-ac9e08e9d2c1"
+}

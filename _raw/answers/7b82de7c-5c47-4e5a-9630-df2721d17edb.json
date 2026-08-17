@@ -1,0 +1,21 @@
+﻿{
+    "id":  2010,
+    "exerciseKey":  "7b82de7c-5c47-4e5a-9630-df2721d17edb",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Promise 的 finally 怎么实现的？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "Promise.prototype.finally 方法是 ES2018 引入的一个方法，用于在 Promise 执行结束后无论成功与否都会执行的操作。在实际应用中，finally 方法通常用于释放资源、清理代码或更新 UI 界面等操作。\n\n以下是一个简单的实现方式：\n\n```js\nPromise.prototype.finally = function(callback) {\n  const P = this.constructor;\n  return this.then(\n    value =\u003e P.resolve(callback()).then(() =\u003e value),\n    reason =\u003e P.resolve(callback()).then(() =\u003e { throw reason })\n  );\n}\n```\n\n我们定义了一个名为 finally 的函数，它使用了 Promise 原型链的方式实现了 finally 方法。该函数接收一个回调函数作为参数，并返回一个新的 Promise 对象。如果原始 Promise 成功，则会先调用 callback 函数，然后将结果传递给下一个 Promise；如果失败，则会先调用 callback 函数，然后将错误信息抛出。\n\n可以看到，在实现中，我们首先通过 this.constructor 获取当前 Promise 实例的构造函数，然后分别处理 Promise 的 resolved 和 rejected 状态的情况。在 resolved 状态时，我们先调用 callback 函数，然后将结果传递给新创建的 Promise 对象；在 rejected 状态时，我们也是先调用 callback 函数，然后将错误信息抛出。\n\n这样，我们就完成了 Promise.prototype.finally 方法的实现。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3.5,
+    "appId":  7,
+    "createAt":  "2023-05-28T02:47:20.000Z",
+    "updateAt":  "2024-07-19T13:41:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  800,
+    "filterTotalNum":  1907,
+    "prev":  "e414a927-8d10-41e9-a56d-70493aff652d",
+    "next":  "8169e336-3daa-4e6c-9f85-13c4a9a31467"
+}

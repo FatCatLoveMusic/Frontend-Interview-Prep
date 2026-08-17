@@ -1,0 +1,21 @@
+﻿{
+    "id":  2032,
+    "exerciseKey":  "d6b01c3c-e671-4edf-a739-35745ff5119e",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "为什么要区分宏任务和微任务？它们的执行优先级是什么？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "宏任务（macrotask）和微任务（microtask）的区分主要是为了解决 JavaScript 引擎中不同任务之间的执行优先级问题。\n\n宏任务通常包括以下几种：\n\n- setTimeout 和 setInterval 定时器\n- DOM 事件处理程序\n- AJAX 请求的回调函数\n- script 标签的加载和执行\n\n对于宏任务，JavaScript 引擎会将其添加到任务队列（task queue）中，在当前任务执行完毕后按顺序依次执行。\n\n而微任务通常包括以下几种：\n\n- Promise 的 then 方法和 catch 方法\n- async/await 中的 await 表达式\n- MutationObserver 监听器\n\n对于微任务，JavaScript 引擎也会将其添加到任务队列中，但是微任务的执行在当前宏任务执行结束后立即进行，也就是说微任务具有更高的执行优先级，可以优先于下一个宏任务执行。\n\n通过区分宏任务和微任务，我们可以更好地控制任务的执行顺序，提高应用程序的性能和响应速度。例如，在处理一些异步操作时，可以使用 Promise 来代替普通的回调函数，并通过 then 方法和 catch 方法来实现更灵活、更高效的任务处理方式。同时，在编写代码时需要注意，尽量避免在宏任务中进行耗时操作，以免影响其他任务的执行。\n\n总之，宏任务和微任务的区分是为了更好地协调任务的执行优先级，提高 JavaScript 的运行效率和代码的可读性。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-31T01:17:16.000Z",
+    "updateAt":  "2024-07-19T10:43:00.000Z",
+    "isCollected":  false,
+    "currentIndex":  779,
+    "filterTotalNum":  1907,
+    "prev":  "ac91c80a-17f4-4ede-931e-2f458660e3e0",
+    "next":  "dbf9172e-1193-44cb-a534-3c16ae07de2d"
+}

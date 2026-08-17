@@ -1,0 +1,21 @@
+﻿{
+    "id":  1892,
+    "exerciseKey":  "b41d5c3e-04c4-4873-867c-62ebf28ce369",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "实现以下转换，合并连续的数字",
+    "desc":  "[1,2,3,4,6,7,9,13,15]=\u003e[\u00271-\u003e4\u0027,\u00276-\u003e7\u0027,\u00279\u0027,\u002713\u0027,\u002715\u0027]",
+    "options":  null,
+    "explanation":  "本题是一道比较简单的数组处理题目，主要有两个处理步骤：\n\n* 将超过一个的连续数字元素，合并成 `x-\u003ey`，比如 [1,2,3,4] 转成 `[\u00271-\u003e4\u0027]`\n* 将非连续的数字元素，转成字符串\n\n具体的实现代码如下：\n\n```js\nfunction shortenArray(arr) {\n  // 处理边界\n  if (!Array.isArray(arr) || arr.length \u003c= 1) {\n    return arr;\n  }\n\n  // 记录结果\n  const result = [];\n\n  // 记录连续数字的开始位置\n  let start = 0;\n  // 记录连续数字的结束位置\n  let last = 0;\n\n  function pushArr(arrStart, arrEnd) {\n    if (arrStart === arrEnd) {\n      result.push(arr[arrStart].toString());\n    } else {\n      result.push(`${arr[arrStart]}-\u003e${arr[arrEnd]}`);\n    }\n  }\n\n  // 一次循环获取结果\n  for (let i = 1; i \u003c arr.length; i++) {\n    const temp = arr[i];\n    if (arr[last] + 1 === temp) {\n      last = i;\n    } else {\n      pushArr(start, last);\n      start = i;\n      last = i;\n    }\n  }\n\n  // 处理剩余数据\n  pushArr(start, last);\n\n  return result;\n}\n\nshortenArray([1, 2, 3, 4, 6, 7, 9, 13, 15]); // [\u00271-\u003e4\u0027,\u00276-\u003e7\u0027,\u00279\u0027,\u002713\u0027,\u002715\u0027]\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2022-09-27T01:33:20.000Z",
+    "updateAt":  "2024-07-20T17:42:41.000Z",
+    "isCollected":  false,
+    "currentIndex":  918,
+    "filterTotalNum":  1907,
+    "prev":  "cb703abf-4024-4ad1-8135-782ef6afe339",
+    "next":  "987220ea-bf52-48ea-a6bd-106e97167e81"
+}

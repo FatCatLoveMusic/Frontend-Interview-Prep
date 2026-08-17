@@ -1,0 +1,21 @@
+﻿{
+    "id":  552,
+    "exerciseKey":  "f866a768-1751-49cc-aff2-133021222b20",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "说说 Node 文件查找的优先级以及 Require 方法的文件查找策略?",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "## 一、模块规范\n\n`NodeJS`对`CommonJS`进行了支持和实现，让我们在开发`node`的过程中可以方便的进行模块化开发：\n\n- 在Node中每一个js文件都是一个单独的模块\n- 模块中包括CommonJS规范的核心变量：exports、module.exports、require\n- 通过上述变量进行模块化开发\n\n而模块化的核心是导出与导入，在`Node`中通过`exports`与`module.exports`负责对模块中的内容进行导出，通过`require`函数导入其他模块（自定义模块、系统模块、第三方库模块）中的内容\n\n\n\n## 二、查找策略\n\n`require`方法接收一下几种参数的传递：\n\n- 原生模块：http、fs、path等\n- 相对路径的文件模块：./mod或../mod\n- 绝对路径的文件模块：/pathtomodule/mod\n- 目录作为模块：./dirname\n- 非原生模块的文件模块：mod\n\n`require`参数较为简单，但是内部的加载却是十分复杂的，其加载优先级也各自不同，如下图：\n\n ![](https://static.ecool.fun//article/b2d6abb0-d8f5-4398-bcd3-5ee967d1da14.png)\n\n从上图可以看见，文件模块存在缓存区，寻找模块路径的时候都会优先从缓存中加载已经存在的模块\n\n\n\n### 原生模块\n\n而像原生模块这些，通过`require `方法在解析文件名之后，优先检查模块是否在原生模块列表中，如果在则从原生模块中加载\n\n\n\n### 绝对路径、相对路径\n\n如果`require`绝对路径的文件，则直接查找对应的路径，速度最快\n\n相对路径的模块则相对于当前调用`require`的文件去查找\n\n如果按确切的文件名没有找到模块，则 `NodeJs` 会尝试带上 `.js`、`.json `或 `.node `拓展名再加载\n\n\n### 目录作为模块\n\n默认情况是根据根目录中`package.json`文件的`main`来指定目录模块，如：\n\n```json\n{ \"name\" : \"some-library\",\n  \"main\" : \"main.js\" }\n```\n\n如果这是在` ./some-library node_modules `目录中，则 `require(\u0027./some-library\u0027)` 会试图加载 `./some-library/main.js`\n\n如果目录里没有 `package.json`文件，或者 `main`入口不存在或无法解析，则会试图加载目录下的 `index.js` 或 `index.node` 文件\n\n\n\n\n\n### 非原生模块\n\n在每个文件中都存在`module.paths`，表示模块的搜索路径，`require`就是根据其来寻找文件\n\n在`window`下输出如下：\n\n```js\n[ \u0027c:\\\\nodejs\\\\node_modules\u0027,\n\u0027c:\\\\node_modules\u0027 ]\n```\n\n可以看出`module path`的生成规则为：从当前文件目录开始查找`node_modules`目录；然后依次进入父目录，查找父目录下的`node_modules`目录，依次迭代，直到根目录下的`node_modules`目录\n\n当都找不到的时候，则会从系统`NODE_PATH`环境变量查找\n\n#### 举个例子：\n\n如果在`/home/ry/projects/foo.js`文件里调用了 `require(\u0027bar.js\u0027)`，则 Node.js 会按以下顺序查找：\n\n- /home/ry/projects/node_modules/bar.js\n- /home/ry/node_modules/bar.js\n- /home/node_modules/bar.js\n- /node_modules/bar.js\n\n这使得程序本地化它们的依赖，避免它们产生冲突\n\n\n\n## 三、总结\n\n通过上面模块的文件查找策略之后，总结下文件查找的优先级：\n\n- 缓存的模块优先级最高\n\n- 如果是内置模块，则直接返回，优先级仅次缓存的模块\n- 如果是绝对路径 / 开头，则从根目录找\n- 如果是相对路径 ./开头，则从当前require文件相对位置找\n- 如果文件没有携带后缀，先从js、json、node按顺序查找\n- 如果是目录，则根据 package.json的main属性值决定目录下入口文件，默认情况为 index.js\n- 如果文件为第三方模块，则会引入 node_modules 文件，如果不在当前仓库文件中，则自动从上级递归查找，直到根目录\n",
+    "pivot":  "**作答思路：**\n\n在Node.js中，文件查找的优先级是从内向外依次查找，直到找到匹配的文件为止。具体顺序如下：\n\n1. **模块的缓存**：如果当前模块的缓存中有该文件，直接返回。\n2. **模块的目录**：检查模块的目录下是否有该文件。\n3. **node_modules目录**：检查当前模块的`node_modules`目录下是否有该文件。\n4. **上级目录的node_modules**：检查上级目录的`node_modules`目录下是否有该文件。\n5. **全局安装的模块**：检查全局安装的模块目录下是否有该文件。\nRequire方法的文件查找策略是先在模块的缓存中查找，如果缓存中没有，则按照上述优先级从内向外查找。\n**考察要点**：\n1. **文件查找优先级**：理解Node.js中文件查找的优先级顺序。\n2. **Require方法查找策略**：理解Require方法如何查找文件，以及查找顺序。\n",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2021-07-25T02:19:47.000Z",
+    "updateAt":  "2024-08-10T17:05:31.000Z",
+    "isCollected":  false,
+    "currentIndex":  1368,
+    "filterTotalNum":  1907,
+    "prev":  "bc224611-840e-4ed9-a922-67708c085da3",
+    "next":  "2b415f44-7a22-4e74-bef4-1b7c09e170d4"
+}

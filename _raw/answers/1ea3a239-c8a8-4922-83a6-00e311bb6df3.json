@@ -1,0 +1,21 @@
+﻿{
+    "id":  1987,
+    "exerciseKey":  "1ea3a239-c8a8-4922-83a6-00e311bb6df3",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "数组转树",
+    "desc":  "将下列数组进行转换：\n\n```js\nconst list = [\n  {id: 1, name: \u0027部门1\u0027, pid: 0},\n  {id: 2, name: \u0027部门1-1\u0027, pid: 1},\n  {id: 3, name: \u0027部门1-2\u0027, pid: 1},\n  {id: 4, name: \u0027部门1-1-1\u0027, pid: 2},\n  {id: 5, name: \u0027部门1-2-1\u0027, pid: 3},\n  {id: 6, name: \u0027部门2\u0027, pid: 0},\n  {id: 7, name: \u0027部门2-1\u0027, pid: 6},\n  {id: 8, name: \u0027部门3\u0027, pid: 0},\n]\n```\n\n期望结果：\n\n```js\nconst listTree = [\n  {\n    id: 1,\n    name: \u0027部门1\u0027,\n    pid: 0,\n    children: [\n      {\n        id: 2,\n        name: \u0027部门1-1\u0027,\n        pid: 1,\n        children: [\n          {\n            id: 4, \n            name: \u0027部门1-1-1\u0027, \n            pid: 2,\n            children: []\n          }\n        ]\n      },\n      {\n        id: 3,\n        name: \u0027部门1-2\u0027,\n        pid: 1,\n        children: [\n          {\n            id: 5, \n            name: \u0027部门1-2-1\u0027, \n            pid: 3,\n            children: []\n          }\n        ]\n      }\n    ]\n  },\n  {\n    id: 6,\n    name: \u0027部门2\u0027,\n    pid: 0,\n    children: [\n      {\n        id: 7, \n        name: \u0027部门2-1\u0027, \n        pid: 6,\n        children: []\n      }\n    ]\n  },\n  {\n    id: 8,\n    name: \u0027部门3\u0027,\n    pid: 0,\n    children: []\n  }\n]\n\n```",
+    "options":  null,
+    "explanation":  " ## 递归实现\n```js\n// 递归查找获取子节点\nconst getChild = (list, result, pid) =\u003e {\n  for(const item of list) {\n    if(item.pid === pid) {\n      const newItem = { ...item, children: [] };\n      result.push(newItem);\n      getChild(list, newItem.children, item.id);\n    }\n  }\n}\n// 调用递归实现\nconst listToTree = (list, pid) =\u003e {\n  const result = [];\n  getChild(list, result, pid);\n  return result;\n}\nlistToTree(list, 0)\n```\n\n## Map对象实现\n\n```js\nconst listToTree = (list) =\u003e {\n  // 最终树形结构输出的结果\n  const result = [];\n  const itemMap = {};\n  for(const item of list) {\n    const id = item.id;\n    const pid = item.pid;\n    if(!itemMap[id]) {\n      itemMap[id] = {\n        children: [],\n      };\n    }\n    itemMap[id] = {\n      ...item,\n      children: itemMap[id][\"children\"],\n    };\n    const treeItem = itemMap[id];\n    if(pid === 0) {\n      result.push(treeItem)\n    } else {\n      if(!itemMap[pid]) {\n        itemMap[pid] = {\n          children: []\n        }\n      }\n      itemMap[pid].children.push(treeItem);\n    }\n  }\n  return result;\n}\n\nlistToTree(list, 0)\n```\n\n## filter实现\n\n```js\nconst listToTree = (list, key) =\u003e {\n  const tree = list.filter(function(parent) {\n    // 返回每一项得的子级数据\n    const branchArr = list.filter((child) =\u003e parent.id === child[key]);\n    parent.children = [];\n    // 如果存在子级，则给父级添加一个children属性并赋值\n    if (branchArr.length \u003e 0) {\n      parent.children = branchArr;\n    }\n    // 返回第一层\n    return parent[key] == 0;\n  });\n  return tree;\n}\n// 传入原始数据和父级pid的key\nlistToTree(list, \u0027pid\u0027)\n```\n",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2023-05-15T13:40:02.000Z",
+    "updateAt":  "2023-08-20T21:21:13.000Z",
+    "isCollected":  false,
+    "currentIndex":  823,
+    "filterTotalNum":  1907,
+    "prev":  "e47771cd-99ca-4650-96ce-66087c1418a4",
+    "next":  "6ddaaa89-e126-4d68-b71d-8a13c2df7315"
+}

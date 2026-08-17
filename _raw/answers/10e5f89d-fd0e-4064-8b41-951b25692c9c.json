@@ -1,0 +1,21 @@
+﻿{
+    "id":  2342,
+    "exerciseKey":  "10e5f89d-fd0e-4064-8b41-951b25692c9c",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "Object 对象有哪些场景 api ？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "**关键词**：Object对象api\n\n| 方法/属性                      | 描述                                                         |\n| ------------------------------ | ------------------------------------------------------------ |\n| `Object.keys(obj)`             | 返回一个由给定对象的所有可枚举自身属性的名称组成的数组         |\n| `Object.values(obj)`           | 返回一个给定对象所有可枚举属性值的数组                         |\n| `Object.entries(obj)`          | 返回一个给定对象自身可枚举属性的 [key, value] 数组            |\n| `Object.assign(target, ...sources)` | 将一个或多个源对象的可枚举属性复制到目标对象，并返回目标对象   |\n| `Object.create(proto, [propertiesObject])` | 使用指定的原型对象和属性创建一个新对象                      |\n| `Object.defineProperty(obj, prop, descriptor)` | 定义对象中的新属性或修改现有属性的配置                      |\n| `Object.getOwnPropertyDescriptor(obj, prop)` | 返回指定对象上一个自有属性对应的属性描述符                  |\n| `Object.freeze(obj)`           | 冻结一个对象，使其属性无法修改、添加或删除                     |\n| `Object.is(value1, value2)`    | 判断两个值是否相同                                           |\n| `Object.seal(obj)`             | 封闭一个对象，防止向对象添加新属性，但允许修改或删除现有属性    |\n| `Object.getPrototypeOf(obj)`   | 返回指定对象的原型（`__proto__`）                            |\n| `Object.setPrototypeOf(obj, proto)` | 设置指定对象的原型（`__proto__`）                            |\n",
+    "pivot":  null,
+    "vipLimit":  1,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-09T14:18:08.000Z",
+    "isCollected":  false,
+    "currentIndex":  579,
+    "filterTotalNum":  1907,
+    "prev":  "9e75bdd5-d3aa-4840-8842-9d4dcf7b1c24",
+    "next":  "3a91fb38-d634-4bd1-85a7-3961884ed3ef"
+}

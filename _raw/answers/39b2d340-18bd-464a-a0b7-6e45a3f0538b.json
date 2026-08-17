@@ -1,0 +1,21 @@
+﻿{
+    "id":  1857,
+    "exerciseKey":  "39b2d340-18bd-464a-a0b7-6e45a3f0538b",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "路径总和",
+    "desc":  "给你二叉树的根节点 `root` 和一个表示目标和的整数 `targetSum` 。判断该树中是否存在 **根节点到叶子节点** 的路径，这条路径上所有节点值相加等于目标和 `targetSum` 。如果存在，返回 `true` ；否则，返回 `false` 。\n\n**叶子节点** 是指没有子节点的节点。\n\n**示例 1：**\n\n![](https://assets.leetcode.com/uploads/2021/01/18/pathsum1.jpg) \n\n\n**输入：** root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22\n\n**输出：** true\n\n**解释：** 等于目标和的根节点到叶节点路径如上图所示。\n\n**示例 2：**\n\n![](https://assets.leetcode.com/uploads/2021/01/18/pathsum2.jpg) \n\n\n**输入：** root = [1,2,3], targetSum = 5\n\n**输出：** false\n\n**解释：** 树中存在两条根节点到叶子节点的路径：\n\n```\n(1 --\u003e 2): 和为 3\n(1 --\u003e 3): 和为 4\n```\n不存在 sum = 5 的根节点到叶子节点的路径。\n\n**示例 3：**\n\n\n**输入：** root = [], targetSum = 0\n\n**输出：** false\n\n**解释：** 由于树是空的，所以不存在根节点到叶子节点的路径。\n\n**提示：**\n\n* 树中节点的数目在范围 `[0, 5000]` 内\n* `-1000 \u003c= Node.val \u003c= 1000`\n* `-1000 \u003c= targetSum \u003c= 1000`\n\n```js\n/**\n * Definition for a binary tree node.\n * function TreeNode(val, left, right) {\n *     this.val = (val===undefined ? 0 : val)\n *     this.left = (left===undefined ? null : left)\n *     this.right = (right===undefined ? null : right)\n * }\n */\n/**\n * @param {TreeNode} root\n * @param {number} targetSum\n * @return {boolean}\n */\nvar hasPathSum = function(root, targetSum) {\n\n};\n```",
+    "options":  null,
+    "explanation":  "### 方法一：DFS（递归）\n**思路**：\n将问题转化为，当前节点的子节点到叶子节点的路径和是否等于`targetSum - root.val`。递归遍历到叶子节点为止。\n**递归分析**\n- 终止条件：当前节点为null，返回false；当前节点为叶子节点，判断sum是否等于val\n- 递归推进：递归判断左右子节点，返回结果\n\n### 代码\n\n```javascript\n/**\n * Definition for a binary tree node.\n * function TreeNode(val, left, right) {\n *     this.val = (val===undefined ? 0 : val)\n *     this.left = (left===undefined ? null : left)\n *     this.right = (right===undefined ? null : right)\n * }\n */\n/**\n * @param {TreeNode} root\n * @param {number} targetSum\n * @return {boolean}\n */\nvar hasPathSum = function (root, targetSum) {\n  if (!root) {\n    return false;\n  }\n\n  if (!root.left \u0026\u0026 !root.right) {\n    return root.val === targetSum;\n  }\n\n  return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);\n};\n```\n时间复杂度O(N)：其中 N 是树的节点数。对每个节点访问一次。\n\n空间复杂度O(H)：其中 HH 是树的高度。空间复杂度主要取决于递归时栈空间的开销，最坏情况下，树呈现链状，空间复杂度为 O(N)。平均情况下树的高度与节点数的对数正相关，空间复杂度为 O(logN)。\n\n### 方法二：BFS（队列或栈）\n**思路**：\n进行广度优先遍历，使用两个队列，一个队列用于保存节点，一个队列用于保存对应节点到根节点的路径和。如果当前节点是叶子节点，则判断路径和是否等于sum。（使用栈也一样，只不过顺序不同而已，队列先遍历左子树，栈先遍历右子树）\n\n### 代码：\n```\nvar hasPathSum = function(root, targetSum) {\n    if(root == null){\n        return false;\n    }\n    var queue1 = [root];\n    var queue2 = [root.val];\n    while(queue1.length !== 0){\n        var node = queue1.shift();\n        var rootVal = queue2.shift();\n        if(node.left == null \u0026\u0026 node.right == null \u0026\u0026 rootVal == targetSum){\n            return true;\n        }\n        if(node.left){\n            queue1.push(node.left);\n            queue2.push(node.left.val + rootVal);\n        }\n        if(node.right){\n            queue1.push(node.right);\n            queue2.push(node.right.val + rootVal);\n        }\n    }\n    return false;\n};\n```\n\n时间复杂度O(N)：其中 N 是树的节点数。对每个节点访问一次。\n\n空间复杂度O(N)：其中 N 是树的节点数。空间复杂度主要取决于队列的开销，队列中的元素个数不会超过树的节点数。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2022-07-17T11:59:14.000Z",
+    "updateAt":  "2022-07-17T19:59:21.000Z",
+    "isCollected":  false,
+    "currentIndex":  953,
+    "filterTotalNum":  1907,
+    "prev":  "252664a5-1524-46f0-b6ae-ae7e2874f6e2",
+    "next":  "8c5e8658-706c-448c-bce9-3bdbb615b625"
+}

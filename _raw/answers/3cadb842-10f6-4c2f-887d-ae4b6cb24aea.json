@@ -1,0 +1,21 @@
+﻿{
+    "id":  2429,
+    "exerciseKey":  "3cadb842-10f6-4c2f-887d-ae4b6cb24aea",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "使用 async/await 时，是否有必要加 try catch?",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在使用 `async/await` 时，是否需要添加 `try...catch` 语句取决于你如何处理错误以及你的应用程序的需求。总体而言，添加 `try...catch` 是一个好的实践，因为它可以帮助你捕获并处理异步操作中的错误，从而提高代码的健壮性和可靠性。\n\n### 为什么需要 `try...catch`\n\n1. **捕获异步操作中的错误**：\n   - `async/await` 本质上是基于 `Promise` 的语法糖。当 `await` 关键字后面的 `Promise` 被拒绝（rejected）时，它会抛出一个错误。使用 `try...catch` 可以捕获这个错误并进行处理，避免未捕获的异常导致程序崩溃。\n   \n   ```javascript\n   async function fetchData() {\n       try {\n           const response = await fetch(\u0027https://api.example.com/data\u0027);\n           const data = await response.json();\n           return data;\n       } catch (error) {\n           console.error(\u0027Error fetching data:\u0027, error);\n           // Handle the error or throw it again\n       }\n   }\n   ```\n\n2. **确保代码的健壮性**：\n   - 即使错误发生，也可以通过 `catch` 块进行适当的处理（如记录错误、显示用户友好的错误信息、执行清理操作等），从而确保应用程序能够继续运行或安全地终止。\n   \n   ```javascript\n   async function performTask() {\n       try {\n           await task1();\n           await task2();\n           await task3();\n       } catch (error) {\n           console.error(\u0027Error performing tasks:\u0027, error);\n           // Clean up or notify the user\n       }\n   }\n   ```\n\n3. **特定情况下的错误处理**：\n   - 有时，你可能希望在每个 `await` 操作后处理错误，而不是在函数级别进行统一处理。在这种情况下，可以为每个异步操作添加 `try...catch` 块。\n   \n   ```javascript\n   async function processMultipleTasks() {\n       try {\n           await task1();\n       } catch (error) {\n           console.error(\u0027Error in task1:\u0027, error);\n           return; // Exit or handle accordingly\n       }\n       \n       try {\n           await task2();\n       } catch (error) {\n           console.error(\u0027Error in task2:\u0027, error);\n       }\n       \n       // Continue with other tasks\n   }\n   ```\n\n### 什么时候可以不使用 `try...catch`\n\n1. **上层调用处理**：\n   - 如果你确定上层调用者会处理错误，或者你希望错误冒泡到更高的层级，可以选择不在当前 `async` 函数中捕获错误，而是让调用者处理。\n\n   ```javascript\n   async function fetchData() {\n       const response = await fetch(\u0027https://api.example.com/data\u0027);\n       return await response.json();\n   }\n\n   async function main() {\n       try {\n           const data = await fetchData();\n           console.log(data);\n       } catch (error) {\n           console.error(\u0027Error in main:\u0027, error);\n       }\n   }\n   ```\n\n2. **简化代码**：\n   - 在一些简单的或不太关键的异步操作中，你可能选择不处理错误，尤其是在开发阶段。但在生产代码中，还是建议处理错误。\n",
+    "pivot":  "-  **推荐使用**：为了健壮性和可维护性，通常建议在使用 `async/await` 时加上 `try...catch`，以捕获和处理潜在的错误。\n- **根据需求决定**：如果错误处理逻辑已经在上层处理，或你希望错误冒泡，或者你在短期内需要快速开发和调试，可以暂时不加 `try...catch`。",
+    "vipLimit":  1,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:26.000Z",
+    "updateAt":  "2024-08-28T01:22:32.000Z",
+    "isCollected":  false,
+    "currentIndex":  530,
+    "filterTotalNum":  1907,
+    "prev":  "f672cd2e-5419-4157-8f71-b2ce317c3b9c",
+    "next":  "0a0d4005-feca-46c9-9a69-6757f231a032"
+}

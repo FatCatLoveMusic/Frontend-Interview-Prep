@@ -1,0 +1,21 @@
+﻿{
+    "id":  2403,
+    "exerciseKey":  "bf8ce811-717a-4486-98c0-61726f5bf9d9",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "unknown 是什么类型？",
+    "desc":  "",
+    "options":  "",
+    "explanation":  "在 TypeScript 中，`unknown` 表示一个未知的值。它是 TypeScript 3.0 引入的，相比 `any` 类型，`unknown` 更加安全，因为它要求在进行操作之前必须先进行类型检查。\n\n### **特点和使用**\n\n1. **类型安全性**：\n\n   - **`unknown`**：代表任何值，但在你对 `unknown` 类型的值进行操作之前，必须首先进行类型检查或类型断言。这意味着你不能直接对 `unknown` 类型的值进行任何操作，直到你明确知道它的实际类型。\n   - **`any`**：允许对值进行任何操作，不需要先进行类型检查。这可能会导致类型安全问题，因为你可以对 `any` 类型的值进行任何操作而不受到编译器的约束。\n\n2. **类型保护**：\n\n   - 当你将一个值的类型声明为 `unknown` 时，必须使用类型保护机制（如 `typeof`、`instanceof` 或类型断言）来确保类型安全。\n\n**示例**：\n\n```typescript\nfunction handleUnknown(value: unknown) {\n  if (typeof value === \u0027string\u0027) {\n    // 只有在 value 确定为 string 类型时才能使用 string 方法\n    console.log(value.toUpperCase());\n  } else if (typeof value === \u0027number\u0027) {\n    // 只有在 value 确定为 number 类型时才能使用 number 方法\n    console.log(value.toFixed(2));\n  } else {\n    console.log(\u0027Unsupported type\u0027);\n  }\n}\n```\n\n在这个示例中，`handleUnknown` 函数对 `unknown` 类型的值进行了类型检查，确保在实际操作之前确认了它的类型。这种方式比直接使用 `any` 更安全，因为它强制要求进行类型检查。\n\n### **`unknown` 和 `any` 的区别**\n\n- **类型安全性**：\n  - **`unknown`**：必须进行类型检查后才能使用。编译器会强制你确保类型安全。\n  - **`any`**：允许对值进行任何操作，没有类型检查限制，可能会导致潜在的类型错误。\n\n- **适用场景**：\n  - **`unknown`**：适用于需要处理不确定类型的值，但仍希望保持类型安全的场景。\n  - **`any`**：适用于当你确定不会对值进行任何操作或者在类型转换时无法确定类型的场景，但使用 `any` 会丧失类型安全。",
+    "pivot":  "- **`unknown` 类型**：表示一个未知的值，在对其进行操作之前必须进行类型检查或类型断言。它提供了比 `any` 更严格的类型安全。\n- **与 `any` 的比较**：\n  - **`unknown`**：要求在操作之前进行类型检查。\n  - **`any`**：允许任何操作，但可能会导致类型安全问题。",
+    "vipLimit":  1,
+    "level":  2.5,
+    "appId":  7,
+    "createAt":  "2024-08-13T08:30:22.000Z",
+    "updateAt":  "2024-09-04T01:29:52.000Z",
+    "isCollected":  false,
+    "currentIndex":  547,
+    "filterTotalNum":  1907,
+    "prev":  "a38952da-3035-4553-95f6-1e2688ffeadc",
+    "next":  "4d9c10d8-6509-4675-ba54-86c34d7116b4"
+}

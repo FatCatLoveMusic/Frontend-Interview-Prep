@@ -1,0 +1,21 @@
+﻿{
+    "id":  28,
+    "exerciseKey":  "2dec0eee-6b2c-4d4a-920b-6acef97924b7",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出是什么？",
+    "desc":  "```javascript\nfunction getAge(...args) {\n  console.log(typeof args)\n}\n\ngetAge(21)\n```",
+    "options":  "{\"options\":[\"\\\"number\\\"\",\"\\\"array\\\"\",\"\\\"object\\\"\",\"\\\"NaN\\\"\"],\"isMulti\":false,\"answer\":[2]}",
+    "explanation":  "扩展运算符（`...args`）会返回实参组成的数组。而数组是对象，因此 `typeof args` 返回 `\"object\"`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:09:20.000Z",
+    "isCollected":  false,
+    "currentIndex":  1891,
+    "filterTotalNum":  1907,
+    "prev":  "56761806-2660-4eac-8e8a-ced03357c95d",
+    "next":  "b8242a9b-8f0f-4c56-ab8f-cc092b3f1db3"
+}

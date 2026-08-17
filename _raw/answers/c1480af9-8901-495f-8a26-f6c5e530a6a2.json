@@ -1,0 +1,21 @@
+﻿{
+    "id":  1863,
+    "exerciseKey":  "c1480af9-8901-495f-8a26-f6c5e530a6a2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "POST请求的 Content-Type 常见的有哪几种？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "在 `POST` 请求中，`Content-Type` 头部字段用于指定请求主体的数据格式。常见的 `Content-Type` 类型如下：\n\n1. **application/x-www-form-urlencoded**\n   - **说明**：这是 HTML 表单默认的 `Content-Type`，键值对格式，数据在 URL 编码后传递。\n   - **格式**：`key1=value1\u0026key2=value2`\n   - **常用场景**：简单表单提交，如登录、注册等。\n\n2. **multipart/form-data**\n   - **说明**：用于上传文件的表单提交方式，将表单数据和文件数据一起分段发送。\n   - **格式**：每个字段分割为多段，各段包含字段名、数据类型和内容。\n   - **常用场景**：文件上传，如图片、文档等。\n\n3. **application/json**\n   - **说明**：以 JSON 格式传递数据，数据结构化、可读性强。\n   - **格式**：`{ \"key1\": \"value1\", \"key2\": \"value2\" }`\n   - **常用场景**：前后端交互中的常见选择，尤其是 RESTful API 请求。\n\n4. **text/plain**\n   - **说明**：纯文本格式，数据不会经过编码或处理，服务器直接接收。\n   - **格式**：`plain text data`\n   - **常用场景**：简单的文本数据提交。\n\n5. **application/octet-stream**\n   - **说明**：用于传输二进制数据，如文件或流，未指定具体的文件类型。\n   - **格式**：原始二进制数据\n   - **常用场景**：文件上传（不需区分文件类型），如传输音视频流。",
+    "pivot":  "`POST` 请求中常用的 `Content-Type` 有 `application/x-www-form-urlencoded`、`multipart/form-data`、`application/json`、`text/plain` 和 `application/octet-stream`。\n\n选择 `Content-Type` 类型取决于数据格式和应用场景，`application/json` 和 `multipart/form-data` 是现代前后端交互中最常用的选择。",
+    "vipLimit":  0,
+    "level":  3,
+    "appId":  7,
+    "createAt":  "2022-07-24T03:54:24.000Z",
+    "updateAt":  "2024-10-30T01:46:27.000Z",
+    "isCollected":  false,
+    "currentIndex":  947,
+    "filterTotalNum":  1907,
+    "prev":  "3f897e08-e0f7-4b68-90ac-e643167754bf",
+    "next":  "e87bce7c-af1c-41f3-ae56-142be0e3c999"
+}

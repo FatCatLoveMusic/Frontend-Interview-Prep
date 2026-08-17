@@ -1,0 +1,21 @@
+﻿{
+    "id":  2974,
+    "exerciseKey":  "1b03eb29-4d2b-4075-b919-262882691392",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "JSON.stringify 遇到 bigint 的类型的数据，会怎么处理？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "`JSON.stringify()` **无法直接序列化 `BigInt` 类型的数据**，如果遇到 `BigInt` 值，会**抛出异常**。\n\n来看个例子：\n\n```js\nconst obj = { id: 123n };\nJSON.stringify(obj);\n```\n\n运行后会报错：\n\n```\nTypeError: Do not know how to serialize a BigInt\n```\n\n### 原因：\n\nJSON 规范本身并 **不支持 `BigInt` 类型**，只支持以下几种数据类型：\n\n* string\n* number（普通数字）\n* boolean\n* null\n* object\n* array\n\n而 `BigInt` 是 ES2020 新增的类型，不属于 JSON 的标准类型。\n\n---\n\n### 常见解决方案：\n\n#### 1. 在序列化前手动转换为字符串\n\n```js\nconst obj = { id: 123n };\nconst json = JSON.stringify(obj, (_, value) =\u003e\n  typeof value === \u0027bigint\u0027 ? value.toString() : value\n);\nconsole.log(json); // {\"id\":\"123\"}\n```\n\n这样序列化后，可以在解析时再手动恢复：\n\n```js\nconst parsed = JSON.parse(json, (_, value) =\u003e\n  /^\\d+$/.test(value) ? BigInt(value) : value\n);\nconsole.log(parsed.id); // 123n\n```\n\n#### 2. 使用第三方库\n\n像 `json-bigint` 这样的库可以支持 `BigInt` 的序列化与反序列化：\n\n```bash\nnpm install json-bigint\n```\n\n示例：\n\n```js\nconst JSONbig = require(\u0027json-bigint\u0027);\nconst obj = { id: 123n };\n\nconst str = JSONbig.stringify(obj);\nconsole.log(str); // {\"id\":123}\n\nconst parsed = JSONbig.parse(str);\nconsole.log(parsed.id); // 123n\n```\n",
+    "pivot":  "`JSON.stringify()` 无法直接序列化 `BigInt` 类型的数据",
+    "vipLimit":  1,
+    "level":  1,
+    "appId":  7,
+    "createAt":  "2025-11-05T07:18:32.000Z",
+    "updateAt":  "2025-11-05T07:18:40.000Z",
+    "isCollected":  false,
+    "currentIndex":  228,
+    "filterTotalNum":  1907,
+    "prev":  "83e26176-c58a-4015-80c8-a10093243af7",
+    "next":  "913ff070-8e11-4025-b2e4-283a4dfa26b4"
+}

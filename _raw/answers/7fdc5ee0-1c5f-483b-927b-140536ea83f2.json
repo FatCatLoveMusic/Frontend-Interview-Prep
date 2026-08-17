@@ -1,0 +1,21 @@
+﻿{
+    "id":  1626,
+    "exerciseKey":  "7fdc5ee0-1c5f-483b-927b-140536ea83f2",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "【Promise第34题】下面代码的输出是什么？",
+    "desc":  "```js\nasync function async1() {\n  console.log(\"async1 start\");\n  await async2();\n  console.log(\"async1 end\");\n}\n\nasync function async2() {\n  console.log(\"async2\");\n}\n\nconsole.log(\"script start\");\n\nsetTimeout(function() {\n  console.log(\"setTimeout\");\n}, 0);\n\nasync1();\n\nnew Promise(function(resolve) {\n  console.log(\"promise1\");\n  resolve();\n}).then(function() {\n  console.log(\"promise2\");\n});\nconsole.log(\u0027script end\u0027)\n\n```",
+    "options":  null,
+    "explanation":  "经过前面的题目解析，相信这道题可以很容易得出结果。\n\n## 结果\n\n```\n\u0027script start\u0027\n\u0027async1 start\u0027\n\u0027async2\u0027\n\u0027promise1\u0027\n\u0027script end\u0027\n\u0027async1 end\u0027\n\u0027promise2\u0027\n\u0027setTimeout\u0027\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  4,
+    "appId":  7,
+    "createAt":  "2022-01-09T15:14:28.000Z",
+    "updateAt":  "2022-01-09T23:16:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1164,
+    "filterTotalNum":  1907,
+    "prev":  "26bf47fe-07e4-4014-b3ea-8a745f70d718",
+    "next":  "a1902422-cbf4-4551-9f88-891eb1777e8d"
+}

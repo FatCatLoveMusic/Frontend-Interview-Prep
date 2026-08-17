@@ -1,0 +1,21 @@
+﻿{
+    "id":  118,
+    "exerciseKey":  "fe5c8180-dafd-428e-86d7-4360811d5321",
+    "category":  "Choice",
+    "renderType":  "md",
+    "title":  "输出什么？",
+    "desc":  "```javascript\nconsole.log(`${(x =\u003e x)(\u0027I love\u0027)} to program`)\n```",
+    "options":  "{\"options\":[\"I love to program\",\"undefined to program\",\"${(x =\u003e x)(\u0027I love\u0027) to program\",\"TypeError\"],\"isMulti\":false,\"answer\":[0]}",
+    "explanation":  "带有模板字面量的表达式首先被执行。相当于字符串会包含表达式，这个立即执行函数 `(x =\u003e x)(\u0027I love\u0027)` 返回的值. 我们向箭头函数 `x =\u003e x` 传递 `\u0027I love\u0027` 作为参数。`x` 等价于返回的 `\u0027I love\u0027`。这就是结果 `I love to program`。",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  0.5,
+    "appId":  7,
+    "createAt":  "2021-07-02T15:33:04.000Z",
+    "updateAt":  "2021-07-03T22:30:01.000Z",
+    "isCollected":  false,
+    "currentIndex":  1801,
+    "filterTotalNum":  1907,
+    "prev":  "6c0d11e8-a6cf-4f70-af8b-17f0490f36e2",
+    "next":  "d73bb354-253c-4832-80e1-0aa525bc7dc9"
+}

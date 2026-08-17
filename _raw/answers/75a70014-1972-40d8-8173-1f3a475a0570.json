@@ -1,0 +1,21 @@
+﻿{
+    "id":  460,
+    "exerciseKey":  "75a70014-1972-40d8-8173-1f3a475a0570",
+    "category":  "QA",
+    "renderType":  "md",
+    "title":  "TypeScript 中的类是什么？你如何定义它们？",
+    "desc":  null,
+    "options":  null,
+    "explanation":  "类表示一组相关对象的共享行为和属性。\n\n例如，我们的类可能是Student，其所有对象都具有该attendClass方法。另一方面，John是一个单独的 type 实例，Student可能有额外的独特行为，比如attendExtracurricular.\n\n你使用关键字声明类class：\n```\nclass Student {    \n    studCode: number;    \n    studName: string;    \n    constructor(code: number, name: string) {    \n    \tthis.studName = name;    \n    \tthis.studCode = code; \n    }\n }\n```",
+    "pivot":  null,
+    "vipLimit":  0,
+    "level":  2,
+    "appId":  7,
+    "createAt":  "2021-07-08T14:48:19.000Z",
+    "updateAt":  "2021-07-11T10:59:17.000Z",
+    "isCollected":  false,
+    "currentIndex":  1460,
+    "filterTotalNum":  1907,
+    "prev":  "71f4e5bf-6bfd-4220-985c-80d940f16766",
+    "next":  "ffbc9199-6e3a-4e6f-a2dd-b77c339aef2c"
+}
