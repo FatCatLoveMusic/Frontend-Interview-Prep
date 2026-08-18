@@ -91,7 +91,7 @@ $r.code   # 0 表示有效
 - `scripts/kb_common.ps1` 的 Markdown→HTML 转换器已支持图片语法：生成详情页时遇到 `![alt](url)` 会自动调用 `Get-LocalImageName`，优先复用 `images/` 已有文件，否则自动下载到 `images/` 后引用；下载失败则退化为远程 URL 并打印 WARN。
 - 图片命名取自 URL 末段文件名；同名文件按 basename 复用（兼容扩展名修正）。
 - **注意**：`_config/` 目录（含 `cookies.json` 登录凭证）已被 `.gitignore` 排除，**切勿上传 GitHub**。
-- 分类 Markdown（`分类题库/`）中的图片引用同样已改为本地相对路径 `../images/<文件名>`。
+
 
 ## GitHub 提交指引（内容有改动后）
 
