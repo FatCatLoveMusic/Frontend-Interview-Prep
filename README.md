@@ -5,7 +5,9 @@
 
 ## 在线浏览
 
-直接用浏览器打开 `index.html` 即可使用，支持三层穿透导航：
+**[在线访问知识库](https://fatcatlovemusic.github.io/Frontend-Interview-Prep/)**
+
+也可以直接用浏览器打开 `index.html` 使用，支持三层穿透导航：
 
 - **首页** → 分类卡片 + 全局搜索
 - **分类页** → 该分类下的题目列表（分类内连续编号）
